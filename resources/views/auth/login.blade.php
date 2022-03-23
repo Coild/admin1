@@ -11,8 +11,6 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-{{asset('/css/app.css')}}
-{{url('/css/app.css')}}
 <body class="bg-primary1">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
