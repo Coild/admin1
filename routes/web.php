@@ -107,6 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/aplicant', [pemilik::class, 'tampil_aplicant']);
     Route::post('/terima', [pemilik::class, 'terima']);
     Route::post('/tolak', [pemilik::class, 'tolak']);
+    Route::post('/update_posisi', [pemilik::class, 'update_posisi']);
     Route::get('/karyawan', [pemilik::class, 'tampil_karyawan']);
 
     //super admin

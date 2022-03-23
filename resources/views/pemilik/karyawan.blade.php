@@ -37,18 +37,19 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_peralatan" method="post" role="form">
+                                    <form action="/update_posisi" method="post" role="form">
                                         @csrf
 
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="id" id="isi_id" />
                                         <label for="inputName">Nama</label>
                                         <input name="nama" type="text" class="form-control" id="inputName" placeholder="Nama Alat" />
                                         <div class="form-group">
                                             <label for="inputEmail">Posisi</label>
-                                            <select style="height: 35px;" class="form-control" name="bulan" id="inlineFormCustomSelect">
-                                                <option value="0" selected>Pilih posisi</option>
-                                                <option value="1">Pengawas</option>
-                                                <option value="2">Pegawai</option>
+                                            <select style="height: 35px;" class="form-control" name="posisi" id="inlineFormCustomSelect">
+                                                <option value="2" selected>Pilih posisi</option>
+                                                <option value="2">Pengawas</option>
+                                                <option value="4">Pegawai</option>
                                             </select>
                                         </div>
                                 </div>
@@ -88,9 +89,15 @@
                         <tr>
                             <td scope="col">1</td>
                             <td id="namap" scope="col">Coba</td>
-                            <td id="posisi" scope="col">Pengawas</td>
+                            <td id="posisi" scope="col">
+                                @if ($row->level===2)
+                                    {{"pengawas"}}
+                                @else
+                                    {{"pegawai"}}
+                                @endif
+                            </td>
                             <td scope="col">
-                                <a class="btn btn-white btn-sm " id="detil" data-toggle="modal" data-target="#modalForm1" data-nama="<?= $row->nama ?>" data-posisi="<?= $row->level ?>" >
+                                <a class="btn btn-white btn-sm " id="detil" data-toggle="modal" data-target="#modalForm1" data-id="<?= $row->id ?>" data-nama="<?= $row->nama ?>" data-posisi="<?= $row->level ?>">
                                     <i class="fa fa-edit "></i>
                                 </a>
                             </td>
@@ -113,13 +120,14 @@
     // $(document).ready(function() {
     $(document).on('click', "#detil", function() {
         var nama = $(this).data('nama');
+        var id = $(this).data('id');
         var posisi = $(this).data('posisi');
 
 
-        console.log("ini " + nama + " posisi "+posisi);
+        // console.log("ini " + nama + " posisi "+posisi);
         $("#inputName").val(nama);
         // $("#isi_p").val(p);
-        // $("#isi_id11").val(id);
+        $("#isi_id").val(id);
     })
     // });
 </script>

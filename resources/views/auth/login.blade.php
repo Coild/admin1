@@ -11,6 +11,7 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="bg-primary1">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -27,6 +28,9 @@
                                 </div>
                                 <div class="card-body">
                                     <form action="/login" method="post">
+                                        @if(Session::has('message'))
+                                        <p class="alert alert-info">{{ Session::get('message') }}</p>
+                                        @endif
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">

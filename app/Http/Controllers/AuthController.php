@@ -37,14 +37,18 @@ class AuthController extends Controller
         // dd(Auth::user());
         // echo Auth::user()->username;
         if (Auth::attempt($data)) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            echo "Login Success";
-            return redirect('/setting');
+            // echo "Login Success";
+            if (Auth::user()->level < 0) {
+                Auth::logout();
+                return  view('tunggu');
+            } else
+                return redirect('/setting');
         } else { // false
 
             //Login Fail
             echo "Login fail";
             Session::flash('error', 'Email atau password salah');
-            return redirect('/login');
+            // return redirect('/login');
         }
     }
 
@@ -60,7 +64,7 @@ class AuthController extends Controller
         $user->nama = ucwords(strtolower($request->username));
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
-        $user->pabrik = $request->pabrik;
+        $user->pabrik = $request->search;
         $user->level = -1;
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
