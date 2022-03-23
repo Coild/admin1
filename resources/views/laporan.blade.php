@@ -15,15 +15,15 @@
 
 
             <div class="card mb-4">
-                <button class="btn btn-success btn-lg mb-3" data-toggle="modal" data-target="#modalForm">
-                    Tambah Perizinan
-                </button>
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Pencarian Laporan
-                </div>
-                <div class="card-body">
 
+                <div class="card-body">
+                    <button class="btn btn-success btn-lg mb-3" data-toggle="modal" data-target="#modalForm">
+                        Tambah Perizinan
+                    </button>
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Pencarian Laporan
+                    </div>
                     <form action="tampillaporan" method="post">
                         <div class="form-group row">
                             <div class="col">
