@@ -416,6 +416,18 @@ class Admin extends Controller
         return view('laporan', ['batch' => $data]);
     }
 
+    public function tampil_periksapersonil() {
+        return "loading";
+    }
+
+    public function tampil_periksasanialat() {
+        return view('catatan.higidansani.periksasanialat');
+    }
+
+    public function tampil_periksasaniruang() {
+        return view('catatan.higidansani.periksasaniruang');
+    }
+
     //yusril
     public function tambah_pelatihanhiginitas(Request $req)
     {
