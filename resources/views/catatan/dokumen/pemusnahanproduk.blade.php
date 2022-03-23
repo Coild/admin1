@@ -18,7 +18,6 @@
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
                             Tambah Pemusnahan Produk
                         </button>
-
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
                             <div class="modal-dialog">

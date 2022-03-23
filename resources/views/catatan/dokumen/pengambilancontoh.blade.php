@@ -31,7 +31,6 @@
                                     Bahan Baku
                                 </div>
                                 <div class="card-body">
-
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4">

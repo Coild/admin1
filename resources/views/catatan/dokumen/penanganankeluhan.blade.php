@@ -11,7 +11,6 @@
             <div class="row">
 
                 <div class="card mb-4">
-
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
