@@ -10,18 +10,18 @@ class CreateContohkemasansTable extends Migration
     {
         Schema::create('contohkemasans', function (Blueprint $table) {
 
-		$table->integer('id_kemasan',11);
+		$table->id('id_kemasan');
 		$table->string('nama_kemasan',200);
-		$table->integer('no_batch',11);
-		$table->timestamp('tanggal_ambil')->nullable()->default('NULL');
-		$table->timestamp('kedaluwarsa')->nullable()->default('NULL');
-		$table->integer('jumlah_kemasanbox',11);
-		$table->integer('jumlah_produk',11);
+		$table->integer('no_batch',0)->unsigned();
+		$table->date('tanggal_ambil')->nullable();
+		$table->date('kedaluwarsa')->nullable();
+		$table->integer('jumlah_kemasanbox',0)->unsigned();
+		$table->integer('jumlah_produk',0)->unsigned();
 		$table->string('jenis_warnakemasan',200);
-		$table->tinyInteger('kesimpulan',1);
-		$table->integer('user_id',11);
-		$table->timestamp('created_at')->nullable()->default('NULL');
-		$table->timestamp('updated_at')->nullable()->default('NULL');
+		$table->tinyInteger('kesimpulan',0)->unsigned();
+		$table->integer('user_id',0)->unsigned();
+		$table->timestamp('created_at')->nullable();
+		$table->timestamp('updated_at')->nullable();
 
         });
     }

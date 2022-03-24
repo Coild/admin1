@@ -12,15 +12,15 @@ class CreatePenanganankeluhansTable extends Migration
 
 		$table->string('id_penanganankeluhan',20);
 		$table->string('nama_customer',100);
-		$table->timestamp('tanggal_keluhan')->nullable()->default('NULL');
+		$table->timestamp('tanggal_keluhan')->nullable();
 		$table->string('keluhan',100);
-		$table->timestamp('tanggal_ditanggapi')->nullable()->default('NULL');
+		$table->timestamp('tanggal_ditanggapi')->nullable();
 		$table->string('produk_yang_digunakan',100);
 		$table->string('penanganan_keluhan',100);
 		$table->string('tindak_lanjut',100);
-		$table->integer('user_id',11);
-		$table->timestamp('created_at')->nullable()->default('NULL');
-		$table->timestamp('updated_at')->nullable()->default('NULL');
+		$table->integer('user_id',11,0);
+		$table->timestamp('created_at')->nullable();
+		$table->timestamp('updated_at')->nullable();
 
         });
     }
