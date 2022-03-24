@@ -18,7 +18,7 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                        Tambah Perizinan
+                        Tambah Pengolahan Batch
                     </button>
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm" role="dialog">
