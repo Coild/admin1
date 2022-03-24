@@ -12,14 +12,14 @@ class CreateContohprodukjadisTable extends Migration
 
 		$table->id('id_produkjadi',11);
 		$table->string('nama_produkjadi',200);
-		$table->integer('no_batch',4,false)->unsigned();
-		$table->timestamp('tanggal_ambil')->nullable();
-		$table->timestamp('kedaluwarsa')->nullable();
-		$table->integer('jumlah_produkbox',11,false);
-		$table->integer('jumlah_produk',11,false);
+		$table->integer('no_batch',false)->unsigned();
+		$table->date('tanggal_ambil')->nullable();
+		$table->date('kedaluwarsa')->nullable();
+		$table->integer('jumlah_produkbox',false);
+		$table->integer('jumlah_produk',false);
 		$table->string('jenis_warnakemasan',200);
-		$table->tinyInteger('kesimpulan',1,false)->unsigned();
-		$table->integer('user_id',11,false)->unsigned();
+		$table->tinyInteger('kesimpulan',false)->unsigned();
+		$table->integer('user_id',false)->unsigned();
 		$table->timestamp('created_at')->nullable();
 		$table->timestamp('updated_at')->nullable();
 

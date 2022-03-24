@@ -11,16 +11,16 @@ class CreatePengoprasianalatsTable extends Migration
         Schema::create('pengoprasianalats', function (Blueprint $table) {
 
 		$table->integer('id_operasi',20);
-		$table->integer('pob',11,0);
-		$table->timestamp('tanggal')->nullable();
+		$table->integer('pob',0)->unsigned();
+		$table->date('tanggal')->nullable();
 		$table->string('nama_alat',200);
 		$table->string('tipe_merek',200);
 		$table->string('ruang',200);
-		$table->timestamp('mulai')->nullable();
-		$table->timestamp('selesai')->nullable();
+		$table->date('mulai')->nullable();
+		$table->date('selesai')->nullable();
 		$table->string('oleh',200);
 		$table->string('ket',200);
-		$table->integer('user_id',11,0);
+		$table->integer('user_id',0)->unsigned();
 		$table->timestamp('created_at')->nullable();
 		$table->timestamp('updated_at')->nullable();
 
@@ -31,4 +31,4 @@ class CreatePengoprasianalatsTable extends Migration
     {
         Schema::dropIfExists('pengoprasianalats');
     }
-}
+};

@@ -10,14 +10,14 @@ class CreatePenarikanproduksTable extends Migration
     {
         Schema::create('penarikanproduks', function (Blueprint $table) {
 
-		$table->string('id_produk_penarikan',20);
-		$table->timestamp('tanggal_penarikan')->nullable();
+		$table->id('id_produk_penarikan',20);
+		$table->date('tanggal_penarikan')->nullable();
 		$table->string('nama_distributor',100);
 		$table->string('produk_ditarik',20);
-		$table->integer('jumlah_produk_ditarik',10,0);
+		$table->integer('jumlah_produk_ditarik',0)->unsigned();
 		$table->string('id_batch',20);
 		$table->string('alasan_penarikan',100);
-		$table->integer('user_id',11,0);
+		$table->integer('user_id',0)->unsigned();
 		$table->timestamp('created_at')->nullable();
 		$table->timestamp('updated_at')->nullable();
 

@@ -12,18 +12,18 @@ class CreatePelulusanproduksTable extends Migration
 
 		$table->integer('id_pelulusan',11);
 		$table->string('nama_bahan',200);
-		$table->integer('no_batch',11,0);
-		$table->timestamp('kedaluwarsa')->nullable();
+		$table->integer('no_batch',0)->unsigned();
+		$table->date('kedaluwarsa')->nullable();
 		$table->string('nama_pemasok',200);
-		$table->timestamp('tanggal')->nullable();
+		$table->date('tanggal')->nullable();
 		$table->string('warna',30);
 		$table->string('bau',30);
 		$table->string('ph',5);
 		$table->string('berat_jenis',20);
-		$table->tinyInteger('kesimpulan',1,0);
-		$table->integer('user_id',11,0);
+		$table->tinyInteger('kesimpulan',0)->unsigned();
+		$table->integer('user_id',0)->unsigned();
 		$table->timestamp('created_at')->nullable();
-		$table->integer('updated_at',11,0)->nullable();
+		$table->integer('updated_at',0)->nullable()->unsigned();
 
         });
     }
