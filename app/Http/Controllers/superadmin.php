@@ -24,7 +24,7 @@ class superadmin extends Controller
             'nama' => $request['pabrik'],
         ];
 
-        // pabrik::insert($hasil);
+        pabrik::insert($hasil);
         $pabrik  = pabrik::all()->where('nama', $request['pabrik'] );
         // dd($pabrik);
         $user = new User;
@@ -32,7 +32,9 @@ class superadmin extends Controller
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->level = 1;
-        $user->pabrik = $pabrik[1]['pabrik_id']; 
+        foreach  ($pabrik as $row) {
+            $user->pabrik = $row['pabrik_id']; 
+        }
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
 

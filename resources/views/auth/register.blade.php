@@ -52,7 +52,7 @@
                                             </div>
                                         </div> -->
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu Pembersihan</label>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label mb-3">Pabrik</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control" name="search" id="inlineFormCustomSelect">
                                                     <option selected>Choose...</option>

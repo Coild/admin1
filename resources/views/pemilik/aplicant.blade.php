@@ -13,7 +13,7 @@
         <div class="row">
 
 
-            <div class="card ">
+            <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Karyawan
@@ -84,15 +84,15 @@
                             <td scope="col">{{$row['nama']}}</td>
                             <td scope="col">
                                 <form action="terima" method="post" style="float: left; margin-right:15px;">
-                                @csrf    
-                                <input type="hidden" name="id" value="{{$row['id']}}">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$row['id']}}">
                                     <button type="submit" class="btn btn-success btn-m">
                                         Terima
                                     </button>
                                 </form>
                                 <form action="tolak" method="post">
-                                @csrf  
-                                <input type="hidden" name="id" value="{{$row['id']}}">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$row['id']}}">
                                     <button type="submit" class="btn btn-danger btn-m">
                                         Tolak
                                     </button>

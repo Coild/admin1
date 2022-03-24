@@ -70,23 +70,26 @@
                                 <div class="collapse" id="protappabrik1" aria-labelledby="headingOne" data-bs-parent="#protappabrik0">
                                     <nav class="sb-sidenav-menu-nested nav">
 
-                                        <a class="nav-link" href="terimaserahsimpan">Penerimaan Penyerahan dan Penyimapanan</a>
-                                        <a class="nav-link" href="">Pengambilan Contoh</a>
-                                        <a class="nav-link" href="">Spesifikasi Bahan</a>
-                                        <a class="nav-link" href="#">Pelatihan Higiene dan Sanitasi Bagi Karyawan</a>
-                                        <a class="nav-link" href="#">Pengoperasian Peralatan Utama</a>
-                                        <a class="nav-link" href="#">Struktur Organisasi Personil yang Menjabat</a>
-                                        <a class="nav-link" href="#">Penimbangan</a>
+                                        <a class="nav-link" href="penerimaanBB">Penerimaan Penyerahan dan
+                                            Penyimapanan</a>
+                                        <a class="nav-link" href="ambilcontoh">Pengambilan Contoh</a>
+                                        <a class="nav-link" href="program-dan-pelatihan-higiene-dan-sanitasi">Program dan Pelatihan
+                                            Higiene dan Sanitasi</a>
+                                        <a class="nav-link" href="pengoprasian-alat">Pengoperasian Peralatan
+                                            Utama</a>
+                                        <a class="nav-link" href="penimbangan">Penimbangan</a>
                                         <a class="nav-link" href="pengolahanbatch">Pengolahan Batch</a>
                                         <a class="nav-link" href="#">Pengemasan Batch</a>
-                                        <a class="nav-link" href="#">Peberian Nomor Batch</a>
-                                        <a class="nav-link" href="#">Pelulusan Produk Jadi</a>
-                                        <a class="nav-link" href="#">Uji Ulang Bahan Baku</a>
-                                        <a class="nav-link" href="#">Penanganan Keluhan</a>
-                                        <a class="nav-link" href="#">Penarikan Produk</a>
-                                        <a class="nav-link" href="#">Pemusnahan Produk</a>
+                                        <a class="nav-link" href="#">Pemberian Nomor Batch</a>
+                                        <a class="nav-link" href="pelulusan-produk">Pelulusan Produk Jadi</a>
+                                        <a class="nav-link" href="pendistribusian-produk">Pendistribusian
+                                            Produk</a>
+                                        <a class="nav-link" href="penanganan-keluhan">Penanganan Keluhan</a>
+                                        <a class="nav-link" href="penarikan-produk">Penarikan Produk</a>
+                                        <a class="nav-link" href="pemusnahan-produk">Pemusnahan Produk</a>
                                         <a class="nav-link" href="#">Penanganan Contoh Tertinggal</a>
                                         <a class="nav-link" href="#">Pembuatan PROTAP dan Penomoran</a>
+                                        <a class="nav-link" href="#">Kartu Stok</a>
                                         <a class="nav-link" href="#">Ceklis & TTD Yang Sudah Dibersihkan</a>
                                     </nav>
                                 </div>

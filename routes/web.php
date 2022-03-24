@@ -138,6 +138,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat']);
     Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk']);
     Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh']);
+    Route::get('penimbangan', [Admin::class, 'tampil_penimbangan']);
+    Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan']);
+    Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara']);
+    Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang']);
+    Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan']);
+    Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk']);
+    Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan']);
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan']);
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat']);
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas']);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, dip, distribusiproduk, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
@@ -646,25 +646,134 @@ class Admin extends Controller
     {
         $id = Auth::user()->id;
         $hasil = [
-            'nama_bahan' => $req['nama_bahan'],
+            'id_bahanbaku' => $req['kode_bahan'],
+            'nama_bahanbaku' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
-            'nama_pemasok' => $req['nama_pemasok'],
-            'tanggal' => $req['tanggal'],
-            'warna' => $req['warna'],
-            'bau' => $req['bau'],
-            'ph' => $req['ph'],
-            'berat_jenis' => $req['nerat_jenis'],
+            'jumlah_bahanbakubox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
             'kesimpulan' => $req['kesimpulan'],
             'user_id' => $id,
         ];
 
-        pelulusanproduk::insert($hasil);
+        contohbahanbaku::insert($hasil);
 
-        return redirect('/pelulusan-produk');
+        return redirect('/ambilcontoh#pills-home');
+    }
+    public function tambah_contohproduk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'id_produkjadi' => $req['kode_produk'],
+            'nama_produkjadi' => $req['nama_produk'],
+            'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'jumlah_produkbox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+            'kesimpulan' => $req['kesimpulan'],
+            'user_id' => $id,
+        ];
+
+        contohprodukjadi::insert($hasil);
+
+        return redirect('/ambilcontoh#pills-profile');
+    }
+    public function tambah_contohkemasan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'id_kemasan' => $req['kode_kemasan'],
+            'nama_kemasan' => $req['nama_kemasan'],
+            'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+            'kesimpulan' => $req['kesimpulan'],
+            'user_id' => $id,
+        ];
+
+        contohkemasan::insert($hasil);
+
+        return redirect('/ambilcontoh#pills-contact');
     }
     public function tampil_pengambilancontoh()
     {
-        return view('catatan.dokumen.pengambilancontoh');
+        $data = contohbahanbaku::all();
+        $data1 = contohprodukjadi::all();
+        $data2 = contohkemasan::all();
+        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+    }
+    public function tambah_penimbanganbahan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'timbang_bahan_id' => $req['kode_penimbangan'],
+            'tanggal' => $req['tanggal'],
+            'nama_bahan' => $req['nama_bahan'],
+            'no_loth' => $req['no_loth'],
+            'nama_suplier' => $req['nama_suplier'],
+            'jumlah_bahan' => $req['jumlah_bahan'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'pjt' => $req['pjt'],
+            'user_id' => $id,
+        ];
+
+        timbangbahan::insert($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+
+    public function tambah_penimbanganprodukantara(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'timbang_produk_id' => $req['kode_produk'],
+            'tanggal' => $req['tanggal'],
+            'nama_produk_antara' => $req['nama_produk'],
+            'no_batch' => $req['nobatch'],
+            'asal_produk' => $req['asal_produk'],
+            'jumlah_produk' => $req['jumlah_produk'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'untuk_produk' => $req['untuk_produk'],
+            'pjt' => $req['pjt'],
+            'user_id' => $id,
+        ];
+
+        timbangproduk::insert($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function tambah_ruangtimbang(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'id_ruangtimbang' => $req['kode_ruangtimbang'],
+            'tanggal' => $req['tanggal'],
+            'nama_bahan_baku' => $req['nama_bahanbaku'],
+            'no_loth' => $req['no_loth'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'jumlah_permintaan' => $req['jumlah_permintaan'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'untuk_produk' => $req['untuk_produk'],
+            'pjt' => $req['pjt'],
+            'user_id' => $id,
+        ];
+
+        ruangtimbang::insert($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function tampil_penimbangan()
+    {
+        $data = timbangbahan::all();
+        $data1 = timbangproduk::all();
+        $data2 = contohkemasan::all();
+        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
 }
