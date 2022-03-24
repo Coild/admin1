@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, superadmin};
+use App\Http\Controllers\{Admin, AuthController, pemilik, superadmin,protapController};
+use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes for your applicatpion. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
@@ -61,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
     Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid']);
     Route::post('/printpengolahanbatch', [Admin::class, 'cetak_pengolahanbatch']);
+    Route::get('/ajukan_batch/{id}',[Admin::class,'ajukan_batch']);
 
 
     Route::get('/laporan', [Admin::class, 'tampil_laporan']);
@@ -99,9 +101,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/programlatih', [Admin::class, 'tampil_programlatih']);
     Route::get('/teraalat', [Admin::class, 'tampil_teraalat']);
 
+    //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
     Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat']);
     Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
+
+    //pprotap
+    Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
+    Route::get('/tampil_protap/{jenis}', [protapController::class, 'tampil_protap']);
+    Route::get('/hapus_protap/{id}/{jenis}', [protapController::class, 'hapus_protap']);
 
     //pemilik
     Route::get('/aplicant', [pemilik::class, 'tampil_aplicant']);
@@ -114,7 +122,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);
     Route::get('/pabrik', [superadmin::class, 'tampil_pabrik']);
     Route::post('/register_pabrik', [superadmin::class, 'register']);
-    Route::get('/protap', [superadmin::class, 'tampil_protap']);
+    // Route::get('/protap', [superadmin::class, 'tampil_protap']);
 
     //yusril
     Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi']);

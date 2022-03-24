@@ -218,6 +218,20 @@ class Admin extends Controller
         ]);
     }
 
+    public function ajukan_batch($id) {
+        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+            'status' => 1,
+        ]);
+        $data = pengolahanbatch::all()->where('nomor_batch', $id);
+        $kom = komposisi::all()->where('nomor_batch', $id);
+        $alat = peralatan::all()->where('nomor_batch', $id);
+        $nimbang = penimbangan::all()->where('nomor_batch', $id);
+        return view('catatan.dokumen.detailbatch', [
+            'id' => $id,
+            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
+        ]);
+    }
+
     public function cetak_pengolahanbatch(Request $req)
     {
         $id = $req['nobatch'];
@@ -242,6 +256,7 @@ class Admin extends Controller
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kemasan' => $req['kemasan'],
+            'status' => 0,
             'user_id' => $id,
         ];
 

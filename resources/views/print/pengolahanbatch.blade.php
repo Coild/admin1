@@ -43,7 +43,7 @@
         <!-- Write HTML just like a web page -->
         <h2 style="text-align: center;">Catatan Pengolahan Batch</h2>
         <center>
-        <table style="border: 5px; align-item: center">
+        <table style="border: 5px; ">
             <tr>
                 <td rowspan="2" style="width: 34%;">
                     <img src="asset/img/bpom1.jpg" alt="">
@@ -54,7 +54,7 @@
                     <h5>PRODUKSI</h5>
                 </td>
                 <td style="width: 33%; height:50%">
-                    <h4>Sesuia dengan POB Nomor</h4>
+                    <h4>Sesuai dengan POB Nomor</h4>
                 </td>
             </tr>
             <tr>
