@@ -443,6 +443,34 @@ class Admin extends Controller
         return view('catatan.higidansani.periksasaniruang');
     }
 
+
+    // Bagian Pengawas
+
+    public function tampil_req_batch() {
+        $data = pengolahanbatch::all()->where('status',1);
+        return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
+    }
+
+    public function tolak_batch($id) {
+        
+        $pabrik=Auth::user()->pabrik;
+        $user =pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+            'status' => 0,
+        ]);
+        $data = pengolahanbatch::all()->where('status',1);
+        return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
+    }
+
+    public function terima_batch($id) {
+        $pabrik=Auth::user()->pabrik;
+        $user =pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+            'status' => 3,
+        ]);
+        $data = pengolahanbatch::all()->where('status',1);
+        return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
+    }
+
+
     //yusril
     public function tambah_pelatihanhiginitas(Request $req)
     {

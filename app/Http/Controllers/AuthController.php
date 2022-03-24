@@ -53,8 +53,9 @@ class AuthController extends Controller
     }
 
     public function showFormRegister()
-    {
-        return view('auth.register');
+    {   
+        $data = pabrik::all();
+        return view('auth.register',['data' => $data]);
     }
 
     public function register(Request $request)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{protap};
+use App\Models\{pengolahanbatch, protap};
 
 
 use Illuminate\Support\Facades\Auth;
@@ -51,4 +51,24 @@ class protapController extends Controller
          // // user::deleted()
          return redirect('/tampil_protap/'.$jenis);
      }
+
+     public function tolak (Request $req)  {
+        $data = pengolahanbatch::all()->where('status',1);
+        $post = protap::all()->where('id',  $req->id)->each->delete();
+        return view("catatanpelaksana.pengolahanbatch",['data' => $data ]);
+    }
+
+    public function terima(Request $req) {
+
+        // dd($req->id);
+        $pabrik=Auth::user()->pabrik;
+        $data = protap::all()->where('pabrik',$pabrik)
+        ->where('level',-1);
+        $user = protap::all()->where("id", $req->id)->first()->update([
+            'status' => 2,
+        ]);
+        
+        return view("catatanpelaksana.dokumen.pengolahanbatch",['data' => $data ]);
+    }
+
 }

@@ -63,6 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid']);
     Route::post('/printpengolahanbatch', [Admin::class, 'cetak_pengolahanbatch']);
     Route::get('/ajukan_batch/{id}',[Admin::class,'ajukan_batch']);
+    Route::get('/list_ajukan_batch/{id}',[Admin::class,'ajukan_batch']);
+    Route::get('/tolak_batch/{id}',[Admin::class,'tolak_batch']);
+    Route::get('/terima_batch/{id}',[Admin::class,'terima_batch']);
+
 
 
     Route::get('/laporan', [Admin::class, 'tampil_laporan']);
