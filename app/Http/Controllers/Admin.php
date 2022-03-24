@@ -185,8 +185,9 @@ class Admin extends Controller
 
     //tampil batch
     public function tampil_pengolahanbatch()
-    {
-        $data = pengolahanbatch::all();
+    { 
+        $pabrik = Auth::user()->pabrik;
+        $data = pengolahanbatch::all()->where('pabrik',$pabrik);
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
@@ -260,9 +261,10 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
+        // dd($hasil);
+
         pengolahanbatch::insert($hasil);
-        $to = $req['no_batch'];
-        return redirect('/pengolahanbatch', ['id', $to]);
+        return redirect('/pengolahanbatch');
     }
 
     //komposisi
