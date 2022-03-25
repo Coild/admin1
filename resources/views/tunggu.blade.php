@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="card-footer text-left py-3">
                                     <div class="small">
-                                <a href="/" class="btn  btn-succes">Kembali</a>        
+                                <a href="/" class="btn  btn-succes  ">Kembali</a>        
                                 </div>
 
                                 </div>
