@@ -10,13 +10,88 @@ use Illuminate\Http\Request;
 
 class protapController extends Controller
 {
-     //COA
+ 
      public function tampil_protap ($jenis)
      {
          $id = Auth::user()->id;
          $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
          ->where('protap_jenis', $jenis);
-         return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis]);
+         if ($jenis == 1) {
+            $judul ="Penerimaan Penyerahan dan
+            Penyimapanan";
+         }
+         if ($jenis == 2) {
+            $judul ="Pengambilan Contoh";
+         }
+         if ($jenis == 3) {
+            $judul ="Spesifikasi Bahan";
+         }
+         if ($jenis == 4) {
+             $judul =  "Pelatihan Higiene dan Sanitasi Bagi
+             Karyawan";
+         }
+         if ($jenis == 5) {
+            $judul ="Pengoperasian Peralatan Utama";
+         }
+         if ($jenis == 6) {
+            $judul ="Struktur Organisasi Personil yang
+            Menjabat";            
+         }
+         if ($jenis == 7) {
+            $judul ="Penimbangan";
+         }
+         if ($jenis == 8) {
+            $judul ="Pengolahan Batch";
+         }
+         if ($jenis == 9) {
+            $judul ="Pengemasan Batch";
+         }
+         if ($jenis == 10) {
+            $judul ="Pemberian Nomor Batch";
+         }
+         if ($jenis == 11) {
+            $judul ="Pelulusan Produk Jadi";
+         }
+         if ($jenis == 12) {
+            $judul ="Uji Ulang Bahan Baku";
+         }
+         if ($jenis == 13) {
+            $judul ="Penanganan Keluhan";
+         }
+         if ($jenis == 14) {
+            $judul ="Penarikan Produk";
+         }
+         if ($jenis == 15) {
+            $judul ="Pemusnahan Produk";
+         }
+         if ($jenis == 16) {
+            $judul ="Penanganan Contoh Tertinggal";
+         }
+         if ($jenis == 17) {
+            $judul ="Pembuatan PROTAP dan Penomoran";
+         }
+         if ($jenis == 18) {
+            $judul ="Ceklis & TTD Yang Sudah Dibersihkan";
+         }
+         if ($jenis == 19) {
+            $judul ="Label Status Kebersihan
+            Peralatan Sebelum Pengguanaan";
+         }
+         if ($jenis == 20) {
+            $judul ="Program Pemeriksaan Kesehatan
+            Untuk Personil Prodi";
+         }
+         if ($jenis == 21) {
+            $judul ="Pembersihan dan Sanitasi";
+         }
+         if ($jenis == 22) {
+            $judul ="Pembersihan dan Sanitasi Ruangan";
+         }
+         if ($jenis == 23) {
+            $judul ="Penerapan Higieni Perorangan";
+         }
+         
+         return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis, 'judul'  => $judul]);
      }
  
      public function hapus_protap ($id,$jenis)

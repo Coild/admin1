@@ -59,7 +59,7 @@
                                             <div class="col-sm-10">
                                                 <select class="form-control" name="search"
                                                     id="inlineFormCustomSelect">
-                                                    <option selected>Choose...</option>
+                                                    <option value="0" selected>Choose...</option>
                                                     @foreach ($data as $row)
                                                         <option value="1">{{ $row['nama'] }}</option>
                                                     @endforeach

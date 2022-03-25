@@ -8,7 +8,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">PROTAP </h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">PROTAP</li>
+            <li class="breadcrumb-item active">{{$judul}}</li>
         </ol>
         <div class="row">
 
