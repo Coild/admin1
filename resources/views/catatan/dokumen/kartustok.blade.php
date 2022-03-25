@@ -1,12 +1,12 @@
 @extends('layout.app')
 @section('title')
-    <title>Pendistribusian Produk</title>
+    <title>Kartu Stok</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Catatan Pendistribusian Produk</h1>
-            <ol class="breadcrumb mb-4">Pendistribusian Produk</li>
+            <h1>Catatan Kartu Stok</h1>
+            <ol class="breadcrumb mb-4">Kartu Stok</li>
             </ol>
             <div class="row">
 
@@ -16,7 +16,7 @@
                         <!-- Button to trigger modal -->
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
                             onclick="setdatetoday()">
-                            Tambah Pendistribusian Produk
+                            Tambah Kartu Stok
                         </button>
 
                         <!-- Modal -->
@@ -26,18 +26,18 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel">
-                                            Entry Pendistribusian Produk
+                                            Entry Kartu Stok
                                         </h4>
                                     </div>
 
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_distribusi" id='forminput'>
+                                        <form method="post" action="tambah_kartustok" id='forminput'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
-                                                    Distribusi
+                                                    Kartu Stok
                                                 </div>
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
@@ -46,10 +46,10 @@
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
-                                                            Pendistribusian</label>
+                                                            Kartu Stok</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="kode_distribusi" class="form-control"
-                                                                id="inputEmail3" placeholder="Kode Pendistribusian" />
+                                                            <input type="text" name="kode_stok" class="form-control"
+                                                                id="inputEmail3" placeholder="Kode Kartu Stok" />
                                                         </div>
                                                     </div>
 
@@ -115,7 +115,7 @@
                                 <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $row['id_distribusi'] }}</td>
+                                    <td>{{ $row['id_kartustok'] }}</td>
                                     <td>{{ $row['tanggal'] }}</td>
                                     <td>{{ $row['id_batch'] }}</td>
                                     <td>{{ $row['jumlah'] }}</td>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, superadmin,protapController};
+use App\Http\Controllers\{Admin, AuthController, pemilik, superadmin, protapController};
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +24,7 @@ Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
-Route::view('/template','print.template');
+Route::view('/template', 'print.template');
 
 Route::get('/resetpass', function () {
     return view('auth.resetpass');
@@ -63,10 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
     Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid']);
     Route::post('/printpengolahanbatch', [Admin::class, 'cetak_pengolahanbatch']);
-    Route::get('/ajukan_batch/{id}',[Admin::class,'ajukan_batch']);
-    Route::get('/list_ajukan_batch/{id}',[Admin::class,'ajukan_batch']);
-    Route::get('/tolak_batch/{id}',[Admin::class,'tolak_batch']);
-    Route::get('/terima_batch/{id}',[Admin::class,'terima_batch']);
+    Route::get('/ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
+    Route::get('/list_ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
+    Route::get('/tolak_batch/{id}', [Admin::class, 'tolak_batch']);
+    Route::get('/terima_batch/{id}', [Admin::class, 'terima_batch']);
 
 
 
@@ -139,6 +139,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk']);
     Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh']);
     Route::get('penimbangan', [Admin::class, 'tampil_penimbangan']);
+    Route::get('kartu-stok', [Admin::class, 'tampil_kartustok']);
+    Route::post('tambah_kartustok', [Admin::class, 'tambah_kartustok']);
     Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan']);
     Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara']);
     Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang']);

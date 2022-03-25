@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
@@ -782,5 +782,26 @@ class Admin extends Controller
         $data1 = timbangproduk::all();
         $data2 = ruangtimbang::all();
         return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+    }
+    public function tambah_kartustok(Request $req)
+    {
+        $id = Auth::user()->id;
+        $hasil = [
+            'id_kartustok' => $req['kode_stok'],
+            'tanggal' => $req['tanggal'],
+            'id_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'nama_distributor' => $req['nama_distributor'],
+            'user_id' => $id,
+        ];
+
+        kartustok::insert($hasil);
+
+        return redirect('/kartu-stok');
+    }
+    public function tampil_kartustok()
+    {
+        $data = kartustok::all();
+        return view('catatan.dokumen.kartustok', ['data' => $data]);
     }
 }

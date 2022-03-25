@@ -43,7 +43,7 @@
                                         <a class="nav-link" href="pemusnahan-produk">Pemusnahan Produk</a>
                                         <a class="nav-link" href="#">Penanganan Contoh Tertinggal</a>
                                         <a class="nav-link" href="#">Pembuatan PROTAP dan Penomoran</a>
-                                        <a class="nav-link" href="#">Kartu Stok</a>
+                                        <a class="nav-link" href="kartu-stok">Kartu Stok</a>
                                         <a class="nav-link" href="#">Ceklis & TTD Yang Sudah Dibersihkan</a>
                                     </nav>
                                 </div>
