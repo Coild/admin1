@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>Pemusnahan Produk</title>
+    <title>Pendistribusian Produk</title>
 @endsection
 @section('content')
     <main>
@@ -14,7 +14,8 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                            onclick="setdatetoday()">
                             Tambah Pendistribusian Produk
                         </button>
 
@@ -38,32 +39,27 @@
                                                     <i class="fas fa-table me-1"></i>
                                                     Distribusi
                                                 </div>
+                                                <div class="card-header" id='headertgl'></div>
                                                 @csrf
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <div class="card-body">
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kode
+                                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
                                                             Pendistribusian</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="kode_distribusi" class="form-control"
                                                                 id="inputEmail3" placeholder="Kode Pemusnahan" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal
-                                                            Pendistribusian</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="datetime-local" name="tanggal"
-                                                                class="form-control" id="inputEmail3" placeholder="" />
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" id='ambil_tanggal' class="form-control"
+                                                        name="tanggal" placeholder="" />
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">No
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                             Batch</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="no_batch" class="form-control"
                                                                 id="inputEmail3" placeholder="No Batch" />
                                                         </div>
@@ -71,17 +67,17 @@
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3"
-                                                            class="col-sm-2 col-form-label">Jumlah</label>
-                                                        <div class="col-sm-10">
+                                                            class="col-sm-3 col-form-label">Jumlah</label>
+                                                        <div class="col-sm">
                                                             <input type="text" name="jumlah" class="form-control"
                                                                 id="inputEmail3" placeholder="Jumlah" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Distributor</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="nama_distributor"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Nama Distributor" />
@@ -114,14 +110,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0; ?>
                             @foreach ($data as $row)
-                                <?php $i = 0;
-                                $i++; ?>
+                                <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['id_distribusi'] }}</td>
                                     <td>{{ $row['tanggal'] }}</td>
-                                    <td>{{ $row['tanggal'] }}</td>
+                                    <td>{{ $row['id_batch'] }}</td>
                                     <td>{{ $row['jumlah'] }}</td>
                                     <td>{{ $row['nama_distributor'] }}</td>
                                     <td>

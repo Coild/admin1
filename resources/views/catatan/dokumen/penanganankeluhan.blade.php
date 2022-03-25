@@ -14,7 +14,8 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                            onclick="setdatetoday()">
                             Tambah Penanganan Keluhan
                         </button>
                         <!-- Modal -->
@@ -39,56 +40,52 @@
                                                     <i class="fas fa-table me-1"></i>
                                                     Penanganan Keluhan
                                                 </div>
+                                                <div class="card-header" id="headertgl">
+                                                </div>
                                                 <div class="card-body">
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                             Keluhan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="kode_keluhan" class="form-control"
                                                                 id="inputEmail3" placeholder="Kode Keluhan" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Customer</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="nama_customer" class="form-control"
                                                                 id="inputEmail3" placeholder="Nama Customer" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal
-                                                            Keluhan</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="datetime-local" name="tanggal_keluhan"
-                                                                class="form-control" id="inputEmail3" placeholder="" />
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" name="tanggal_keluhan" class="form-control"
+                                                        id="ambil_tanggal" placeholder="" />
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3"
-                                                            class="col-sm-2 col-form-label">Keluhan</label>
-                                                        <div class="col-sm-10">
+                                                            class="col-sm-3 col-form-label">Keluhan</label>
+                                                        <div class="col-sm">
                                                             <input type="text" name="keluhan" class="form-control"
                                                                 id="inputEmail3" placeholder="Keluhan" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Tanggal
                                                             Tanggapi Keluhan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="datetime-local" name="tanggal_tanggapi_keluhan"
                                                                 class="form-control" id="inputEmail3" placeholder="" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Produk Yang
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                             Digunakan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="produk_yang_digunakan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Produk Yang Digunakan" />
@@ -96,9 +93,9 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Penanganan
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Penanganan
                                                             Keluhan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="penanganan_keluhan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Penanganan Keluhan" />
@@ -106,9 +103,9 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tindak
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Tindak
                                                             Lanjut</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="tindak_lanjut" class="form-control"
                                                                 id="inputEmail3" placeholder="Tindak Lanjut" />
                                                         </div>
@@ -145,9 +142,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0; ?>
                             @foreach ($data as $row)
-                                <?php $i = 0;
-                                $i++; ?>
+                                <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['id_penanganankeluhan'] }}</td>

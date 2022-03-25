@@ -16,7 +16,8 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                            onclick="setdatetoday()">
                             Tambah Pelatihan
                         </button>
                         <!-- Modal -->
@@ -35,6 +36,7 @@
                                         <p class="statusMsg"></p>
                                         <form method="post" action="tambah_pelatihanhiginitas" id='forminput'>
                                             <div class="card mb-4">
+                                                <div class="card-header" id='headertgl'></div>
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
                                                     Pelatihan
@@ -42,20 +44,21 @@
                                                 <div class="card-body">
                                                     @csrf
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                    <input type="hidden" id='ambil_tanggal'>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                             Pelatihan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="kode_pelatihan" class="form-control"
                                                                 id="inputEmail3" placeholder="Kode Pelatihan" required />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Materi
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Materi
                                                             Pelatihan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="materi_pelatihan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Materi Pelatihan" />
@@ -63,9 +66,9 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Peserta
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Peserta
                                                             Pelatihan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="peserta_pelatihan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Peserta 1, Peserta 2,..." />
@@ -74,17 +77,17 @@
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3"
-                                                            class="col-sm-2 col-form-label">Pelatih</label>
-                                                        <div class="col-sm-10">
+                                                            class="col-sm-3 col-form-label">Pelatih</label>
+                                                        <div class="col-sm">
                                                             <input type="text" name="pelatih" class="form-control"
                                                                 id="inputEmail3" placeholder="Pelatih 1, Pelatih 2,..." />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Metode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Metode
                                                             Pelatihan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="metode_pelatihan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Metode Pelatihan" />
@@ -94,18 +97,18 @@
                                                     <div class="form-group row">
                                                         <label for="inputEmail3"
                                                             class="col-sm-2 col-form-label">Jadwal</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3"
-                                                                    class="col-sm-2 col-form-label">Mulai</label>
-                                                                <div class="col-sm-10">
+                                                                    class="col-sm-3 col-form-label">Mulai</label>
+                                                                <div class="col-sm">
                                                                     <input type="datetime-local" name="mulai"
                                                                         class="form-control" id="inputEmail3"
                                                                         placeholder="xx/xx/xxxx" />
                                                                 </div>
                                                                 <label for="inputEmail3"
-                                                                    class="col-sm-2 col-form-label">Selesai</label>
-                                                                <div class="col-sm-10">
+                                                                    class="col-sm-3 col-form-label">Selesai</label>
+                                                                <div class="col-sm">
                                                                     <input type="datetime-local" name="berakhir"
                                                                         class="form-control" id="inputEmail3"
                                                                         placeholder="xx/xx/xxxx" />
@@ -115,9 +118,9 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Metode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Metode
                                                             Penilaian</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="metode_penilaian"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Metode Penilaian" />
@@ -153,9 +156,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0; ?>
                             @foreach ($data as $row)
-                                <?php $i = 0;
-                                $i++; ?>
+                                <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['id_programpelatihan'] }}</td>

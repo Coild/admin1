@@ -185,9 +185,9 @@ class Admin extends Controller
 
     //tampil batch
     public function tampil_pengolahanbatch()
-    { 
+    {
         $pabrik = Auth::user()->pabrik;
-        $data = pengolahanbatch::all()->where('pabrik',$pabrik);
+        $data = pengolahanbatch::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
@@ -219,7 +219,8 @@ class Admin extends Controller
         ]);
     }
 
-    public function ajukan_batch($id) {
+    public function ajukan_batch($id)
+    {
         $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
             'status' => 1,
         ]);
@@ -433,42 +434,48 @@ class Admin extends Controller
         return view('laporan', ['batch' => $data]);
     }
 
-    public function tampil_periksapersonil() {
+    public function tampil_periksapersonil()
+    {
         return "loading";
     }
 
-    public function tampil_periksasanialat() {
+    public function tampil_periksasanialat()
+    {
         return view('catatan.higidansani.periksasanialat');
     }
 
-    public function tampil_periksasaniruang() {
+    public function tampil_periksasaniruang()
+    {
         return view('catatan.higidansani.periksasaniruang');
     }
 
 
     // Bagian Pengawas
 
-    public function tampil_req_batch() {
-        $data = pengolahanbatch::all()->where('status',1);
+    public function tampil_req_batch()
+    {
+        $data = pengolahanbatch::all()->where('status', 1);
         return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
-    public function tolak_batch($id) {
-        
-        $pabrik=Auth::user()->pabrik;
-        $user =pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+    public function tolak_batch($id)
+    {
+
+        $pabrik = Auth::user()->pabrik;
+        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
             'status' => 0,
         ]);
-        $data = pengolahanbatch::all()->where('status',1);
+        $data = pengolahanbatch::all()->where('status', 1);
         return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
-    public function terima_batch($id) {
-        $pabrik=Auth::user()->pabrik;
-        $user =pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+    public function terima_batch($id)
+    {
+        $pabrik = Auth::user()->pabrik;
+        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
             'status' => 3,
         ]);
-        $data = pengolahanbatch::all()->where('status',1);
+        $data = pengolahanbatch::all()->where('status', 1);
         return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
@@ -773,7 +780,7 @@ class Admin extends Controller
     {
         $data = timbangbahan::all();
         $data1 = timbangproduk::all();
-        $data2 = contohkemasan::all();
+        $data2 = ruangtimbang::all();
         return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
 }

@@ -100,7 +100,7 @@
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kedaluwarsa</label>
                                                                     <div class="col-sm">
-                                                                        <input type="datetime-local" name="kedaluwarsa"
+                                                                        <input type="date" name="kedaluwarsa"
                                                                             class="form-control 1" id="inputEmail3"
                                                                             placeholder="" />
                                                                     </div>
@@ -182,9 +182,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php $i = 0; ?>
                                             @foreach ($data as $row)
-                                                <?php $i = 0;
-                                                $i++; ?>
+                                                <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['id_bahanbaku'] }}</td>
@@ -295,7 +295,7 @@
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kedaluwarsa</label>
                                                                     <div class="col-sm">
-                                                                        <input type="datetime-local" name="kedaluwarsa"
+                                                                        <input type="date" name="kedaluwarsa"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="" />
                                                                     </div>
@@ -378,9 +378,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php $i = 0; ?>
                                             @foreach ($data1 as $row)
-                                                <?php $i = 0;
-                                                $i++; ?>
+                                                <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['id_produkjadi'] }}</td>
@@ -491,7 +491,7 @@
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kedaluwarsa</label>
                                                                     <div class="col-sm">
-                                                                        <input type="datetime-local" name="kedaluwarsa"
+                                                                        <input type="date" name="kedaluwarsa"
                                                                             class="form-control 3" id="inputEmail3"
                                                                             placeholder="" />
                                                                     </div>
@@ -574,9 +574,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php $i = 0; ?>
                                             @foreach ($data2 as $row)
-                                                <?php $i = 0;
-                                                $i++; ?>
+                                                <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['id_kemasan'] }}</td>
