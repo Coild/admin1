@@ -5,7 +5,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Catatan Pengambilan Contoh</h1>
+            <h1 class="mt-4">Catatan Peimbangan</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -297,7 +297,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                    Produk Antara" />
+                                                                                                                                                                                                                                        Produk Antara" />
                                                                     </div>
                                                                 </div>
 
