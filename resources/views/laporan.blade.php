@@ -17,9 +17,7 @@
             <div class="card mb-4">
 
                 <div class="card-body">
-                    <button class="btn btn-success btn-lg mb-3" data-toggle="modal" data-target="#modalForm">
-                        Tambah Perizinan
-                    </button>
+                   
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
                         Pencarian Laporan

@@ -21,7 +21,7 @@
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu Pembersihan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="bulan" id="inlineFormCustomSelect">
+                            <select style="height: 35px;" class="form-control" name="bulan" id="inlineFormCustomSelect">
                                 <option selected>Choose...</option>
                                 <option value="1">Pagi</option>
                                 <option value="2">Sore</option>
@@ -84,7 +84,7 @@
                                         <div class="form-group row">
                                             <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu</label> -->
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="bulan" id="inlineFormCustomSelect">
+                                                <select class="form-control" style="height: 35px;" name="bulan" id="inlineFormCustomSelect">
                                                     <option selected>Choose...</option>
                                                     <option value="1">Ruang mixing,filling,pengemasan primer</option>
                                                     <option value="2">Ruang timbang</option>

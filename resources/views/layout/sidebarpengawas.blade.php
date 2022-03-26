@@ -136,23 +136,23 @@
 
                 <div class="sb-sidenav-menu-heading">Summary</div>
 
-                <a class="nav-link" href="laporan">
+                <a class="nav-link" href="{{route('laporan')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Laporan
                 </a>
 
 
-                <a class="nav-link" href="perizinan">
+                <a class="nav-link" href="{{route('perizinan')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Perizinan
                 </a>
 
-                <a class="nav-link" href="coa">
+                <a class="nav-link" href="{{route('coa')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     COA
                 </a>
 
-                <a class="nav-link" href="dip">
+                <a class="nav-link" href="{{route('dip')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     DIP
                 </a>

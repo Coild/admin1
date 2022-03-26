@@ -34,15 +34,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::post('/input_coa', [Admin::class, 'tambah_coa']);
-    Route::get('/coa', [Admin::class, 'tampil_coa']);
+    Route::get('/coa', [Admin::class, 'tampil_coa'])->name('coa');
     Route::get('/hapus_coa/{id}', [Admin::class, 'hapus_coa']);
 
     Route::post('/input_dip', [Admin::class, 'tambah_dip']);
-    Route::get('/dip', [Admin::class, 'tampil_dip']);
+    Route::get('/dip', [Admin::class, 'tampil_dip'])->name('dip');
     Route::get('/hapus_dip/{id}', [Admin::class, 'hapus_dip']);
 
     Route::post('/input_perizinan', [Admin::class, 'tambah_perizinan']);
-    Route::get('/perizinan', [Admin::class, 'tampil_perizinan']);
+    Route::get('/perizinan', [Admin::class, 'tampil_perizinan'])->name('perizinan');
     Route::get('/hapus_perizinan/{id}', [Admin::class, 'hapus_perizinan']);
 
     Route::post('/input_pobpabrik', [Admin::class, 'tambah_pobpabrik']);
@@ -51,8 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
 
-    Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch']);
-    Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
+    Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
+    // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
     Route::post('/input_komposisi', [Admin::class, 'tambah_komposisi']);
     Route::post('/input_peralatan', [Admin::class, 'tambah_peralatan']);
     Route::post('/input_penimbangan', [Admin::class, 'tambah_penimbangan']);
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    Route::get('/laporan', [Admin::class, 'tampil_laporan']);
+    Route::get('/laporan', [Admin::class, 'tampil_laporan'])->name('laporan');
 
     Route::get('/index', function () {
         return view('index');
@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/penerimaanBB', function () {
         return view('catatan.dokumen.penerimaanBB');
-    });
+    })->name('penerimaanBB');
 
     Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
     Route::post('/input_produk', [Admin::class, 'tambah_produk']);

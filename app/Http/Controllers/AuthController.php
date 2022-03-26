@@ -33,16 +33,25 @@ class AuthController extends Controller
             'nama'     => $request->input('username'),
             'password'  => $request->input('password'),
         ];
+        
         Auth::attempt($data);
         // dd(Auth::user());
         // echo Auth::user()->username;
         if (Auth::attempt($data)) { // true sekalian session field di users nanti bisa dipanggil via Auth
             // echo "Login Success";
+            
             if (Auth::user()->level < 0) {
                 Auth::logout();
                 return  view('tunggu');
-            } else
+            } else{
+                $data = pabrik::all()->where('pabrik_id',Auth::user()->pabrik);
+                foreach($data as $row){
+                    session(['pabrik' => $row['nama']]);
+                    // echo $row['nama'];
+                }
+                
                 return redirect('/setting');
+            }
         } else { // false
 
             //Login Fail
