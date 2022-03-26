@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>Pembersihan Ruangan</title>
+    <title>Pengolahan Batches</title>
 @endsection
 
 @section('content')
@@ -114,11 +114,9 @@
                                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Bentuk
                                                             Sediaan</label>
                                                         <div class="col-sm-10">
-                                                            <div class="col-sm-10">
-                                                                <input type="text" name="betuk sediaan"
-                                                                    class="form-control" id="inputEmail3"
-                                                                    placeholder="Bentuk Sediaan" />
-                                                            </div>
+                                                            <input style="height: 35px;" class="form-control"
+                                                                name="bentuk sediaan" id="inlineFormCustomSelect"
+                                                                type="text" />
                                                         </div>
                                                     </div>
 
@@ -166,8 +164,7 @@
                         <tbody>
                             @foreach ($data as $row)
                                 <?php $i = 0;
-                                $i++;
-                                $id = $row['nomor_batch']; ?>
+                                $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['kode_produk'] }}</td>
@@ -185,7 +182,7 @@
 
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="/detil_batch/{{ $id }}">Buka</a>
+                                        <a class="btn btn-primary" href="detil_batch/{{ $row['nomor_batch'] }}">Buka</a>
                                     </td>
                                 </tr>
                             @endforeach

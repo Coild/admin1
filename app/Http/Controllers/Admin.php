@@ -250,6 +250,7 @@ class Admin extends Controller
     public function tambah_batch(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
             'pob' => $req['pob'],
             'kode_produk' => $req['kode_produk'],
@@ -258,6 +259,7 @@ class Admin extends Controller
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kemasan' => $req['kemasan'],
+            'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
         ];
@@ -284,7 +286,7 @@ class Admin extends Controller
         komposisi::insert($hasil);
 
         $to = $req['no_batch'];
-        return redirect('/detil_batch',$to);
+        return redirect('/detil_batch', $to);
     }
 
     //peralatan
@@ -302,7 +304,7 @@ class Admin extends Controller
         peralatan::insert($hasil);
 
         $to = $req['no_batch'];
-        return redirect('/pengolahanbatch/'.$to);
+        return redirect('/pengolahanbatch/' . $to);
     }
 
     //catat penimbangan
