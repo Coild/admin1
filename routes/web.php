@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
 
     Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch']);
-    Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch']);
+    Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
     Route::post('/input_komposisi', [Admin::class, 'tambah_komposisi']);
     Route::post('/input_peralatan', [Admin::class, 'tambah_peralatan']);
     Route::post('/input_penimbangan', [Admin::class, 'tambah_penimbangan']);
@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/hapus_penimbangan/{id}/{ke}', [Admin::class, 'hapus_penimbangan']);
     Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
     // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
-    Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid']);
+    Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid'])->name('detil_batch');
     Route::post('/printpengolahanbatch', [Admin::class, 'cetak_pengolahanbatch']);
     Route::get('/ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
     Route::get('/list_ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);

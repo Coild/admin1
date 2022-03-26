@@ -159,7 +159,7 @@
                     <tbody>
                         @foreach ($data as $row)
                         <?php $i = 0;
-                        $i++; ?>
+                        $i++; $id = $row['nomor_batch'];?>
                         <tr>
                             <td>{{ $i }}</td>
                             <td>{{ $row['kode_produk'] }}</td>
@@ -177,7 +177,7 @@
 
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="detil_batch/{{ $row['nomor_batch'] }}">Buka</a>
+                                <a class="btn btn-primary" href="/detil_batch/{{$id}}">Buka</a>
                             </td>
                         </tr>
                         @endforeach

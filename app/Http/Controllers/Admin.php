@@ -284,7 +284,7 @@ class Admin extends Controller
         komposisi::insert($hasil);
 
         $to = $req['no_batch'];
-        return redirect('/pengolahanbatch', ['id', $to]);
+        return redirect('/detil_batch',$to);
     }
 
     //peralatan
@@ -302,7 +302,7 @@ class Admin extends Controller
         peralatan::insert($hasil);
 
         $to = $req['no_batch'];
-        return redirect('/pengolahanbatch', ['id', $to]);
+        return redirect('/pengolahanbatch/'.$to);
     }
 
     //catat penimbangan
