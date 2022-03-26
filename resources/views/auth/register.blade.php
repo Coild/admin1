@@ -61,7 +61,7 @@
                                                     id="inlineFormCustomSelect">
                                                     <option value="0" selected>Choose...</option>
                                                     @foreach ($data as $row)
-                                                        <option value="1">{{ $row['nama'] }}</option>
+                                                        <option value="{{$row['pabrik_id']}}">{{ $row['nama'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
