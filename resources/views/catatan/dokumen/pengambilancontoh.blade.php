@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('title')
-    <title>Pengambilan Contoh</title>
+    <title>Pengambilan Sampel</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Catatan Pengambilan Contoh</h1>
+            <h1 class="mt-4">Catatan Pengambilan Sampel</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -172,7 +172,7 @@
                                                 <th scope="col">Kode Bahan Baku</th>
                                                 <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Contoh</th>
+                                                <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
                                                 <th scope="col">Jumlah bahan baku dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
@@ -368,7 +368,7 @@
                                                 <th scope="col">Kode Produk</th>
                                                 <th scope="col">Nama Produk</th>
                                                 <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Contoh</th>
+                                                <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
                                                 <th scope="col">Jumlah Produk dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
@@ -564,7 +564,7 @@
                                                 <th scope="col">Kode Bahan Baku</th>
                                                 <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Contoh</th>
+                                                <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
                                                 <th scope="col">Jumlah bahan baku dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
