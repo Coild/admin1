@@ -142,34 +142,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/protap', [superadmin::class, 'tampil_protap']);
 
     //yusril
-<<<<<<< HEAD
-    Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi']);
-    Route::get('pemusnahan-produk', [Admin::class, 'tampil_pemusnahanproduk']);
-    Route::get('penanganan-keluhan', [Admin::class, 'tampil_penanganankeluhan']);
-    Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk']);
-    Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi']);
-    Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat']);
-    Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk']);
-    Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh']);
-    Route::get('penimbangan', [Admin::class, 'tampil_penimbangan']);
-    Route::get('kartu-stok', [Admin::class, 'tampil_kartustok']);
-    Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan']);
-    Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas']);
-    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi']);
-    Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan']);
-    Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara']);
-    Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang']);
-    Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan']);
-    Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk']);
-    Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan']);
-    Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan']);
-    Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat']);
-    Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas']);
-    Route::post('tambah_pemusnahanproduk', [Admin::class, 'tambah_pemusnahanproduk']);
-    Route::post('tambah_keluhan', [Admin::class, 'tambah_keluhan']);
-    Route::post('tambah_penarikan', [Admin::class, 'tambah_penarikan']);
-    Route::post('tambah_distribusi', [Admin::class, 'tambah_distribusi']);
-=======
     Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi'])->name('program-dan-pelatihan-higiene-dan-sanitasi');
     Route::get('pemusnahan-produk', [Admin::class, 'tampil_pemusnahanproduk'])->name('pemusnahan-produk');
     Route::get('penanganan-keluhan', [Admin::class, 'tampil_penanganankeluhan'])->name('penanganan-keluhan');
@@ -194,5 +166,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_keluhan', [Admin::class, 'tambah_keluhan'])->name('tambah_keluhan');
     Route::post('tambah_penarikan', [Admin::class, 'tambah_penarikan'])->name('tambah_penarikan');
     Route::post('tambah_distribusi', [Admin::class, 'tambah_distribusi'])->name('tambah_distribusi');
->>>>>>> 895d79952e7e67b2701676f66cec6b2a88fc51b0
 });
