@@ -17,7 +17,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                        aria-controls="pills-contact" aria-selected="false">Produk Jadi</a>
+                        aria-controls="pills-contact" aria-selected="false">Produk Antara</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-detail-tab" data-toggle="pill" href="#pills-detail" role="tab"
+                        aria-controls="pills-detail" aria-selected="false">Produk Jadi</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -44,7 +48,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Bahan Baku</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Stok Bahan Baku</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -146,9 +150,9 @@
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
-                                                    <td> <?php if ($row['status'] == 0) {
-    echo 'Diajukan';
-} ?></td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Belum Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -188,7 +192,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Bahan Kemas</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Stok Bahan Kemas</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -290,9 +294,9 @@
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
-                                                    <td> <?php if ($row['status'] == 0) {
-    echo 'Diajukan';
-} ?></td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Belum Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -332,7 +336,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Produk Jadi</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Stok Produk Jadi</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -434,9 +438,9 @@
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
-                                                    <td> <?php if ($row['status'] == 0) {
-    echo 'Diajukan';
-} ?></td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Belum Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />

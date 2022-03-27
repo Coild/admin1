@@ -152,9 +152,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
     Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');
     Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
-    Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan']);
-    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi']);
-    Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas']);
+    Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan'])->name('tambah_kartustokbahan');
+    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
+    Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas'])->name('tambah_kartustokbahankemas');
     Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
     Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
     Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang'])->name('tambah_ruangtimbang');
@@ -164,7 +164,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');
-    Route::post('tambah_pemusnahanproduk', [Admin::class, 'tambah_pemusnahanproduk'])->name('tambah_pemusnahanproduk');
+    Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
     Route::post('tambah_keluhan', [Admin::class, 'tambah_keluhan'])->name('tambah_keluhan');
     Route::post('tambah_penarikan', [Admin::class, 'tambah_penarikan'])->name('tambah_penarikan');
     Route::post('tambah_distribusi', [Admin::class, 'tambah_distribusi'])->name('tambah_distribusi');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
@@ -188,7 +188,8 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         $data = pengolahanbatch::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
+        $data2 = produk::all();
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
     }
 
     public function tampil_detilbatch(Request $req)
@@ -258,6 +259,8 @@ class Admin extends Controller
             'nomor_batch' => $req['no_batch'],
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
+            'kategori' => $req['kategori'],
+            'bentuk_kategori' => $req['bentuk_kategori'],
             'kemasan' => $req['kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -506,31 +509,6 @@ class Admin extends Controller
     {
         $data = programpelatihan::all();
         return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data]);
-    }
-    public function tambah_pemusnahanproduk(Request $req)
-    {
-        $id = Auth::user()->id;
-        $hasil = [
-            'id_produk_pemusnahan' => $req['kode_pemusnahan'],
-            'tanggal_pemusnahan' => $req['tanggal'],
-            'nama_produk_jadi' => $req['nama_produk_jadi'],
-            'id_batch' => $req['no_batch'],
-            'asal_produk_jadi' => $req['asal_produk_jadi'],
-            'jumlah_produk_jadi' => $req['jumlah_produk_jadi'],
-            'alasan_pemusnahan' => $req['alasan_pemusnahan'],
-            'cara_pemunsnahan' => $req['cara_pemusnahan'],
-            'nama_petugas' => $req['petugas'],
-            'user_id' => $id,
-        ];
-
-        pemusnahanproduk::insert($hasil);
-
-        return redirect('/pemusnahan-produk');
-    }
-    public function tampil_pemusnahanproduk()
-    {
-        $data = pemusnahanproduk::all();
-        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data]);
     }
     public function tambah_keluhan(Request $req)
     {
@@ -849,5 +827,36 @@ class Admin extends Controller
         $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
         $data2 = kartustokprodukjadi::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+    }
+    public function tambah_pemusnahanbahan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'id_pemusnahanbahan' => $req['kode_pemusnahan'],
+            'tanggal_pemusnahan' => $req['tanggal'],
+            'nama_produk_jadi' => $req['nama_produk_jadi'],
+            'id_batch' => $req['no_batch'],
+            'asal_produk_jadi' => $req['asal_produk_jadi'],
+            'jumlah_produk_jadi' => $req['jumlah_produk_jadi'],
+            'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+            'cara_pemunsnahan' => $req['cara_pemusnahan'],
+            'nama_petugas' => $req['petugas'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        pemusnahanbahanbaku::insert($hasil);
+
+        return redirect('/pemusnahan-produk');
+    }
+    public function tampil_pemusnahanproduk()
+    {
+        $pabrik = Auth::user()->pabrik;
+        $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
+        $data1 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
+        $data2 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
+        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
 }

@@ -21,6 +21,8 @@ class CreatePengolahanbatchesTable extends Migration
             $table->string("nomor_batch", 100);
             $table->string("besar_batch", 100);
             $table->string("bentuk_sedia", 100);
+            $table->string("kategori", 100);
+            $table->string("bentuk_kategory", 100);
             $table->string("kemasan", 100);
             $table->integer('pabrik', false);
             $table->integer("status", false);

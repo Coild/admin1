@@ -44,7 +44,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Bahan Baku</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Penimbangan Bahan Baku</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -297,7 +297,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                        Produk Antara" />
+                                                                                                                                                                                                                                            Produk Antara" />
                                                                     </div>
                                                                 </div>
 

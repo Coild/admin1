@@ -216,7 +216,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomor Batch</label>
                                                 <input type="text" class="form-control" id="inputName"
-                                                    placeholder="Pemasok" />
+                                                    placeholder="Nomor Batch" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah</label>

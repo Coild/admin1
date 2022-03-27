@@ -35,7 +35,7 @@
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
                                         onclick="setdatetoday1(1)">
-                                        Tambah Contoh Bahan Baku
+                                        Tambah Sampel Bahan Baku
                                     </button>
 
                                     <!-- Modal -->
@@ -44,7 +44,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Bahan Baku</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Sampel Bahan Baku</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -230,7 +230,7 @@
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
                                         onclick="setdatetoday1(2)">
-                                        Tambah Contoh Produk
+                                        Tambah Sampel Produk
                                     </button>
 
                                     <!-- Modal -->
@@ -239,7 +239,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Produk</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Sampel Produk</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -426,7 +426,7 @@
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm6"
                                         onclick="setdatetoday1(3)">
-                                        Tambah Contoh Kemasan
+                                        Tambah Sampel Kemasan
                                     </button>
 
                                     <!-- Modal -->
@@ -435,7 +435,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Contoh Kemasan</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Sampel Kemasan</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
