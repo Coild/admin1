@@ -54,15 +54,8 @@ function salert() {
     }
 }
 function salert1(params) {
-    let cek;
-    if (params == 1) {
-        cek = "1";
-    } else if (params == 2) {
-        cek = "2";
-    } else if (params == 3) {
-        cek = "3";
-    }
-    const mycomp = document.getElementsByClassName("form-control " + cek);
+    const mycomp = document.getElementsByClassName("form-control " + params);
+    console.log(mycomp);
     var valid = false;
     console.log(mycomp);
     for (i = 0; i < mycomp.length; i++) {
@@ -98,7 +91,7 @@ function salert1(params) {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById("forminput" + cek).submit();
+                    document.getElementById("forminput" + params).submit();
                     swalWithBootstrapButtons.fire(
                         "Tersimpan!",
                         "Data berhasil disimpan.",
@@ -127,17 +120,9 @@ function setdatetoday() {
 }
 
 function setdatetoday1(params) {
-    let cek;
-    if (params == 1) {
-        cek = "1";
-    } else if (params == 2) {
-        cek = "2";
-    } else if (params == 3) {
-        cek = "3";
-    }
     const d = new Date();
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
-    document.getElementById("ambil_tanggal" + cek).value = today;
-    document.getElementById("headertgl" + cek).innerHTML =
+    document.getElementById("ambil_tanggal" + params).value = today;
+    document.getElementById("headertgl" + params).innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;
 }

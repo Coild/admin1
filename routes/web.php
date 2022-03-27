@@ -115,8 +115,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/teraalat', [Admin::class, 'tampil_teraalat']);
 
     //pjt
-    Route::get('/pjt_pengolahanbatch', [pjt::class,'tampil_pengolahanbatch']);
-    Route::post('/pjt_pengolahanbatch', [pjt::class,'terima_pengolahanbatch']);
+    Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch']);
+    Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
@@ -152,7 +152,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
     Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');
     Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
-    Route::post('tambah_kartustok', [Admin::class, 'tambah_kartustok'])->name('tambah_kartustok');
+    Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan']);
+    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi']);
+    Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas']);
     Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
     Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
     Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang'])->name('tambah_ruangtimbang');
