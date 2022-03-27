@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                <a class="nav-link collapsed" href="karyawan">
+                <a class="nav-link collapsed" href="/dashboard">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DASHBOARD
                 </a>
