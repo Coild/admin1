@@ -122,6 +122,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
     Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat']);
     Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
+    Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 
     //pprotap
     Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);

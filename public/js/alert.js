@@ -4,6 +4,7 @@ function salert() {
     for (i = 0; i < mycomp.length; i++) {
         if (mycomp[i].value == "") {
             valid = true;
+            break;
         }
     }
     if (valid) {
@@ -124,5 +125,13 @@ function setdatetoday1(params) {
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
     document.getElementById("ambil_tanggal" + params).value = today;
     document.getElementById("headertgl" + params).innerHTML =
+        '<i class="fas fa-calendar me-1"></i> ' + today;
+}
+
+function setdatetoday2() {
+    const d = new Date();
+    const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
+    document.getElementById("ambil_tanggalx").value = today;
+    document.getElementById("headertglx").innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;
 }

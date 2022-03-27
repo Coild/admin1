@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, periksaruang, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
@@ -451,7 +451,32 @@ class Admin extends Controller
 
     public function tampil_periksasaniruang()
     {
-        return view('catatan.higidansani.periksasaniruang');
+        $pabrik = Auth::user()->pabrik;
+        $data = periksaruang::all()->where('pabrik', $pabrik);
+        return view('catatan.higidansani.periksasaniruang', ['data' => $data]);
+    }
+    public function tambah_periksaruang(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'waktu' => $req['waktu'],
+            'nama_ruangan' => $req['nama_ruangan'],
+            'lantai' => $req['lantai'],
+            'dinding' => $req['dinding'],
+            'meja' => $req['meja'],
+            'jendela' => $req['jendela'],
+            'kontainer' => $req['kontainer'],
+            'langit' => $req['langit'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        periksaruang::insert($hasil);
+
+        return redirect('/periksasaniruang');
     }
 
 
