@@ -20,7 +20,12 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
+                <li><a class="dropdown-item" href="/gantipassword">Ganti Pasword</a></li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                
             </ul>
         </li>
     </ul>

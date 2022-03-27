@@ -49,6 +49,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pobpabrik', [Admin::class, 'tampil_pobpabrik']);
     Route::get('/hapus_pobpabrik/{id}', [Admin::class, 'hapus_pobpabrik']);
 
+    
+
+    Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
+    Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
+
     Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
 
     Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
