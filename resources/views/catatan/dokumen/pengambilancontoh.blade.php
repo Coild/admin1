@@ -177,7 +177,6 @@
                                                 <th scope="col">Jumlah bahan baku dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
-                                                <th scope="col">Kesimpulan</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -195,11 +194,6 @@
                                                     <td>{{ $row['jumlah_bahanbakubox'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['jenis_warnakemasan'] }}</td>
-                                                    <td><?php if ($row['kesimpulan'] == 1) {
-                                                        echo 'Lulus';
-                                                    } else {
-                                                        echo 'Ditolak';
-                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -373,7 +367,6 @@
                                                 <th scope="col">Jumlah Produk dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
-                                                <th scope="col">Kesimpulan</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -391,11 +384,6 @@
                                                     <td>{{ $row['jumlah_produkbox'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['jenis_warnakemasan'] }}</td>
-                                                    <td><?php if ($row['kesimpulan'] == 1) {
-                                                        echo 'Lulus';
-                                                    } else {
-                                                        echo 'Ditolak';
-                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -569,7 +557,6 @@
                                                 <th scope="col">Jumlah bahan baku dalam master Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
-                                                <th scope="col">Kesimpulan</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -587,11 +574,6 @@
                                                     <td>{{ $row['jumlah_kemasanbox'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['jenis_warnakemasan'] }}</td>
-                                                    <td><?php if ($row['kesimpulan'] == 1) {
-                                                        echo 'Lulus';
-                                                    } else {
-                                                        echo 'Ditolak';
-                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
