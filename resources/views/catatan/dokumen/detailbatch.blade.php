@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-<title>Pembersihan Ruangan</title>
+<title>Pngolahan Batch</title>
 @endsection
 
 @section('content')

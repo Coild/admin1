@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-<title>PROTAP</title>
+<title>PROTAP - {{$judul}}</title>
 @endsection
 
 @section('content')

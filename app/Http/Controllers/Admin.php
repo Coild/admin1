@@ -405,7 +405,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $hasil = [
             'bahanbaku_nama' => $req['nama'],
-            'bahanbaku_kode' => $req['alamat'],
+            'bahanbaku_kode' => $req['kode'],
             'user_id' => $id,
         ];
 

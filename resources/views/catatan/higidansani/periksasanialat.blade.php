@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="bulan" id="inlineFormCustomSelect">
+                                <select class="form-control" style="height: 35px;" name="bulan" id="inlineFormCustomSelect">
                                     <option selected>Choose...</option>
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>

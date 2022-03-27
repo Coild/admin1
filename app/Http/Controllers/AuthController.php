@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\user;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AuthController extends Controller
 {
@@ -33,29 +34,36 @@ class AuthController extends Controller
             'nama'     => $request->input('username'),
             'password'  => $request->input('password'),
         ];
+
         Auth::attempt($data);
         // dd(Auth::user());
         // echo Auth::user()->username;
         if (Auth::attempt($data)) { // true sekalian session field di users nanti bisa dipanggil via Auth
             // echo "Login Success";
+
             if (Auth::user()->level < 0) {
                 Auth::logout();
                 return  view('tunggu');
-            } else
+            } else {
+                $data = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
+                foreach ($data as $row) {
+                    session(['pabrik' => $row['nama']]);
+                }
                 return redirect('/setting');
+            }
         } else { // false
 
             //Login Fail
-            echo "Login fail";
-            Session::flash('error', 'Email atau password salah');
-            // return redirect('/login');
+            
+            
+            return redirect('/login')->with('message', 'Email atau password salah');
         }
     }
 
     public function showFormRegister()
-    {   
+    {
         $data = pabrik::all();
-        return view('auth.register',['data' => $data]);
+        return view('auth.register', ['data' => $data]);
     }
 
     public function register(Request $request)
@@ -83,6 +91,25 @@ class AuthController extends Controller
     {
         Auth::logout(); // menghapus session yang aktif
         return redirect('login');
+    }
+
+    public function tampil_ganti_password()
+    {
+        return view('Auth.gantipassword');
+    }
+
+    public function ganti_password(Request $req)
+    {
+        if (Hash::check($req['lama'] ,Auth::user()->password)) {
+            $id = Auth::user()->id;
+            $user = User::all()->where("id", $id)->first()->update([
+                'password' => Hash::make($req['baru']),
+            ]);
+        } else {
+            return redirect('/gantipassword')->with('status', 'Kata sandi lama anda salah!');
+        }
+        
+        return redirect('/');//->with('status', 'Kata sandi lama anda salah!');
     }
 
     public function autocompleteSearch(Request $request)

@@ -3,6 +3,11 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
+                <a class="nav-link collapsed" href="/dashboard">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    DASHBOARD
+                </a>
+
                 <a class="nav-link collapsed" href="karyawan">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     KELOLA USER
@@ -15,9 +20,6 @@
 
             </div>
         </div>
-        <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            UD. Semeloto
-        </div>
+
     </nav>
 </div>

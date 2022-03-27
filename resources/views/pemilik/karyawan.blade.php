@@ -48,8 +48,8 @@
                                             <label for="inputEmail">Posisi</label>
                                             <select style="height: 35px;" class="form-control" name="posisi" id="inlineFormCustomSelect">
                                                 <option value="2" selected>Pilih posisi</option>
-                                                <option value="2">Pengawas</option>
-                                                <option value="4">Pegawai</option>
+                                                <option value="2">Penanggung Jawab</option>
+                                                <option value="3">Pelaksana</option>
                                             </select>
                                         </div>
                                 </div>
@@ -88,12 +88,12 @@
                         $i++;  ?>
                         <tr>
                             <td scope="col">1</td>
-                            <td id="namap" scope="col">Coba</td>
+                            <td id="namap" scope="col">{{$row['nama']}}</td>
                             <td id="posisi" scope="col">
                                 @if ($row->level===2)
-                                    {{"pengawas"}}
+                                    {{"Penanggung Jawab Teknis"}}
                                 @else
-                                    {{"pegawai"}}
+                                    {{"Pelaksana"}}
                                 @endif
                             </td>
                             <td scope="col">
