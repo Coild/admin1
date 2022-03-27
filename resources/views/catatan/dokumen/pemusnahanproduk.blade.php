@@ -198,11 +198,12 @@
                                                     <td>{{ $row['nama_produk_jadi'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['asal_produk_jadi'] }}</td>
+                                                    <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['alasan_pemusnahan'] }}</td>
-                                                    <td>{{ $row['cara_pemusnahan'] }}</td>
+                                                    <td>{{ $row['cara_pemunsnahan'] }}</td>
                                                     <td>{{ $row['nama_petugas'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
-                                                        echo 'Belum Diajukan';
+                                                        echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
