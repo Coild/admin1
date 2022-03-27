@@ -13,11 +13,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                        aria-controls="pills-profile" aria-selected="false">Produk Antara</a>
+                        aria-controls="pills-profile" aria-selected="false">Bahan Kemas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                        aria-controls="pills-contact" aria-selected="false">Ruang Timbang</a>
+                        aria-controls="pills-contact" aria-selected="false">Produk Jadi</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -54,7 +54,7 @@
                                                         <div class="card-header">Bahan Baku</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_kartustok"
+                                                            <form role="form" method="post" action="tambah_kartustokbahan"
                                                                 id='forminput1'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
@@ -109,7 +109,7 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
                                                             </form>
@@ -131,6 +131,7 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
                                                 <th scope="col">Nama Distributor</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -140,11 +141,14 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kartustok'] }}</td>
+                                                    <td>{{ $row['id_kartustokbahan'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
+                                                    <td> <?php if ($row['status'] == 0) {
+    echo 'Diajukan';
+} ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -168,14 +172,14 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Produk Antara
+                                    Bahan Kemas
                                 </div>
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
                                         onclick="setdatetoday1(2)">
-                                        Tambah Penimbangan Produk Antara
+                                        Tambah Kartu Stok Bahan Kemas
                                     </button>
 
                                     <!-- Modal -->
@@ -184,118 +188,71 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Penimbangan Produk Antara
-                                                    </h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Contoh Bahan Kemas</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
                                                 <div class="modal-body">
                                                     <div class="card mb-4">
                                                         <div class="card-header" id='headertgl2'></div>
-                                                        <div class="card-header">Produk Antara</div>
+                                                        <div class="card-header">Bahan Kemas</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
                                                             <form role="form" method="post"
-                                                                action="tambah_penimbanganprodukantara" id='forminput2'>
+                                                                action="tambah_kartustokbahankemas" id='forminput2'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
+                                                                <div class="card-body">
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Produk Antara</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="kode_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Kode Produk" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-4 col-form-label">Kode
+                                                                            Kartu Stok</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="kode_stok"
+                                                                                class="form-control 2" id="inputEmail3"
+                                                                                placeholder="Kode Kartu Stok" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
-                                                                        Produk Antara</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Nama Produk" />
+                                                                    <input type="hidden" id='ambil_tanggal2'
+                                                                        class="form-control 2" name="tanggal"
+                                                                        placeholder="" />
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">No
+                                                                            Batch</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="no_batch"
+                                                                                class="form-control 2" id="inputEmail3"
+                                                                                placeholder="No Batch" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">No
-                                                                        Batch</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nobatch"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="No Batch" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Jumlah</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="jumlah"
+                                                                                class="form-control 2" id="inputEmail3"
+                                                                                placeholder="Jumlah" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <input type="hidden" name="tanggal" id='ambil_tanggal2'
-                                                                    class="form-control 2" placeholder="" />
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Asal Produk</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="asal_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Asal Produk" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Distributor</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="nama_distributor"
+                                                                                class="form-control 2" id="inputEmail3"
+                                                                                placeholder="Nama Distributor" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk Antara</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jumlah_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Jumlah
-                                                                                                                                                                                                                                                                                Produk Antara" />
-                                                                    </div>
                                                                 </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Hasil
-                                                                        Penimbangan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="hasil_penimbangan"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Hasil Penimbangan" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Untuk
-                                                                        Produk</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="untuk_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Untuk Produk" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Persetujuan
-                                                                        PJT</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 2" name="pjt"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">Disetujui</option>
-                                                                            <option value="0">Ditolak</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(2)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -318,20 +275,24 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
                                                 <th scope="col">Nama Distributor</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $i = 0; ?>
-                                            @foreach ($data as $row)
+                                            @foreach ($data1 as $row)
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kartustok'] }}</td>
+                                                    <td>{{ $row['id_kartustokbahankemas'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
+                                                    <td> <?php if ($row['status'] == 0) {
+    echo 'Diajukan';
+} ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -360,127 +321,82 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm6"
+                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm3"
                                         onclick="setdatetoday1(3)">
-                                        Tambah Ruang Timbang
+                                        Tambah Kartu Stok Bahan Kemas
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="modalForm6" role="dialog">
+                                    <div class="modal fade" id="modalForm3" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Ruang Timbang</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Contoh Produk Jadi</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
                                                 <div class="modal-body">
                                                     <div class="card mb-4">
                                                         <div class="card-header" id='headertgl3'></div>
-                                                        <div class="card-header">Ruang Timbang</div>
+                                                        <div class="card-header">Produk Jadi </div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_ruangtimbang"
-                                                                id='forminput3'>
+                                                            <form role="form" method="post"
+                                                                action="tambah_kartustokprodukjadi" id='forminput3'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
+                                                                <div class="card-body">
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Ruang Timbang</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="kode_ruangtimbang"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Kode Ruang Timbang" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-4 col-form-label">Kode
+                                                                            Kartu Stok</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="kode_stok"
+                                                                                class="form-control 3" id="inputEmail3"
+                                                                                placeholder="Kode Kartu Stok" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
-                                                                        Bahan Baku</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_bahanbaku"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Nama Bahan Baku" />
+                                                                    <input type="hidden" id='ambil_tanggal3'
+                                                                        class="form-control 3" name="tanggal"
+                                                                        placeholder="" />
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">No
+                                                                            Batch</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="no_batch"
+                                                                                class="form-control 3" id="inputEmail3"
+                                                                                placeholder="No Batch" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">No Loth</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="no_loth"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="No Loth" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Jumlah</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="jumlah"
+                                                                                class="form-control 3" id="inputEmail3"
+                                                                                placeholder="Jumlah" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah Bahan
-                                                                        Baku</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jumlah_bahanbaku"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jumlah Bahan Baku" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Distributor</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="nama_distributor"
+                                                                                class="form-control 3" id="inputEmail3"
+                                                                                placeholder="Nama Distributor" />
+                                                                        </div>
                                                                     </div>
+
                                                                 </div>
-
-                                                                <input type="hidden" name="tanggal" id='ambil_tanggal3'
-                                                                    class="form-control 3" placeholder="" />
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Permintaan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jumlah_permintaan"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jumlah Permintaan" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Hasil
-                                                                        Penimbangan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="hasil_penimbangan"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Hasil Penimbangan" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Untuk
-                                                                        Produk</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="untuk_produk"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Untuk Produk" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Persetujuan
-                                                                        PJT</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 3" name="pjt"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">Disetujui</option>
-                                                                            <option value="0">Ditolak</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(3)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -498,37 +414,29 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
+                                                <th scope="col">Kode Distribusi</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Bahan Baku</th>
-                                                <th scope="col">Nama Bahan Baku</th>
-                                                <th scope="col">No Loth</th>
-                                                <th scope="col">Jumlah Bahan Baku</th>
-                                                <th scope="col">Jumlah Permintaan</th>
-                                                <th scope="col">Hasil Penimbangan (Kg)</th>
-                                                <th scope="col">Untuk Produk</th>
-                                                <th scope="col">Persetujuan PJT</th>
+                                                <th scope="col">No Batch</th>
+                                                <th scope="col">Jumlah Produk</th>
+                                                <th scope="col">Nama Distributor</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $i = 0; ?>
-                                            @foreach ($data as $row)
+                                            @foreach ($data2 as $row)
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
+                                                    <td>{{ $row['id_kartustokprodukjadi'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['id_ruangtimbang'] }}</td>
-                                                    <td>{{ $row['nama_bahan_baku'] }}</td>
-                                                    <td>{{ $row['no_loth'] }}</td>
-                                                    <td>{{ $row['jumlah_bahan_baku'] }}</td>
-                                                    <td>{{ $row['jumlah_permintaan'] }}</td>
-                                                    <td>{{ $row['hasil_penimbangan'] }}</td>
-                                                    <td>{{ $row['untuk_produk'] }}</td>
-                                                    <td><?php if ($row['pjt'] == 1) {
-                                                        echo 'Disetujui';
-                                                    } else {
-                                                        echo 'Ditolak';
-                                                    } ?></td>
+                                                    <td>{{ $row['id_batch'] }}</td>
+                                                    <td>{{ $row['jumlah'] }}</td>
+                                                    <td>{{ $row['nama_distributor'] }}</td>
+                                                    <td> <?php if ($row['status'] == 0) {
+    echo 'Diajukan';
+} ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />

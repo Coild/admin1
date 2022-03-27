@@ -15,8 +15,7 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                            onclick="setdatetoday()">
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
                             Tambah Pemusnahan Produk
                         </button>
                         <!-- Modal -->
@@ -39,9 +38,6 @@
                                                     <i class="fas fa-table me-1"></i>
                                                     Pemusnahan
                                                 </div>
-                                                <div class="card-header" id="headertgl">
-
-                                                </div>
                                                 @csrf
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <div class="card-body">
@@ -55,8 +51,14 @@
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" id='ambil_tanggal' class="form-control"
-                                                        name="tanggal" placeholder="" />
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-2 col-form-label">Tanggal</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="datetime-local" name="tanggal"
+                                                                class="form-control" id="inputEmail3" placeholder="" />
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Produk
@@ -154,9 +156,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
                             @foreach ($data as $row)
-                                <?php $i++; ?>
+                                <?php $i = 0;
+                                $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['id_produk_pemusnahan'] }}</td>
@@ -164,9 +166,8 @@
                                     <td>{{ $row['nama_produk_jadi'] }}</td>
                                     <td>{{ $row['id_batch'] }}</td>
                                     <td>{{ $row['asal_produk_jadi'] }}</td>
-                                    <td>{{ $row['jumlah_produk_jadi'] }}</td>
                                     <td>{{ $row['alasan_pemusnahan'] }}</td>
-                                    <td>{{ $row['cara_pemunsnahan'] }}</td>
+                                    <td>{{ $row['cara_pemusnahan'] }}</td>
                                     <td>{{ $row['nama_petugas'] }}</td>
                                     <td>
                                         <form method="post" action="detil_batch">

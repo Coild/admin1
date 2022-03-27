@@ -162,9 +162,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0; ?>
                             @foreach ($data as $row)
-                                <?php $i = 0;
-                                $i++; ?>
+                                <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['kode_produk'] }}</td>

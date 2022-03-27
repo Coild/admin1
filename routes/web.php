@@ -140,7 +140,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh']);
     Route::get('penimbangan', [Admin::class, 'tampil_penimbangan']);
     Route::get('kartu-stok', [Admin::class, 'tampil_kartustok']);
-    Route::post('tambah_kartustok', [Admin::class, 'tambah_kartustok']);
+    Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan']);
+    Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas']);
+    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi']);
     Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan']);
     Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara']);
     Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang']);
