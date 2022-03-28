@@ -1,14 +1,14 @@
 @extends('layout.app')
 @section('title')
-<title>Daftar Dokumen</title>
+<title>Daftar Batch</title>
 @endsection
 
 @section('content')
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Daftar Dokumen</h1>
+        <h1 class="mt-4">Daftar Batch</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Daftar Dokumen</li>
+            <li class="breadcrumb-item active">Daftar Batch</li>
         </ol>
         <div class="row">
 
@@ -20,25 +20,25 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nomor Batch</th>
-                                <th scope="col">Nama Dokumen</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach($data as $row)
                             <tr><?php $no = 0;
                                 $no++; ?>
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['laporan_batch']}}</th>
-                                <th scope="col">{{$row['laporan_nama']}}</th>
                                 <th scope="col">
-
+                                    
                                     <a href="/audit_dokumen/{{$row['laporan_batch']}}" type="submit" class="btn btn-success">
                                         Lihat
                                     </a>
                                 </th>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
 

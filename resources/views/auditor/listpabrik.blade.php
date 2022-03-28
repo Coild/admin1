@@ -1,14 +1,14 @@
 @extends('layout.app')
 @section('title')
-<title>Pengolahan Batch</title>
+<title>Daftar Pabrik</title>
 @endsection
 
 @section('content')
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Pengolahan Batch</h1>
+        <h1 class="mt-4">Daftar Pabrik</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Pengolahan Batch</li>
+            <li class="breadcrumb-item active">Daftar Pabrik</li>
         </ol>
         <div class="row">
 
@@ -20,25 +20,26 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Pabrik</th>
-                                <th scope="col">Pemilik</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data as $row)
-                            <tr><?php $no = 0;
-                                $no++; ?>
+                            @foreach($pabrik as $row)
+                            
+                            <tr><?php $no=0; $no++;?>
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['nama']}}</th>
                                 <th scope="col">
-
-                                    <a href="/audit_batch/{{$row['pabrik__id']}}" type="submit" class="btn btn-success">
-                                        Lihat
-                                    </a>
+                                    <form action="/audit_batch/{{$row['pabrik_id']}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="">
+                                          <button type="submit" class="btn btn-success">
+                                              Lihat
+                                          </button>
+                                    </form>
                                 </th>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
 

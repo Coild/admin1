@@ -263,6 +263,7 @@ class Admin extends Controller
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
             "user_id" => $id,
         ];
 
