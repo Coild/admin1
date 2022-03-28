@@ -56,6 +56,7 @@
         <!-- Write HTML just like a web page -->
         <h2 style="text-align: center;">Catatan Pengolahan Batch</h2>
         <center>
+            @foreach($kop as $row)
             <table class="table ">
                 <tr>
                     <td rowspan="2">
@@ -65,15 +66,16 @@
                         Bagian </br> Produksi
                     </td>
                     <td>
-                        Sesuai dengan POB no :
+                        Sesuai dengan POB no : {{'dummy'}}
                     </td>
                 </tr>
                 <tr>
-                    <td>Disusun Oleh <br> nama <br><br>Tanggal <br> 14 Oktober 2019</td>
-                    <td>Disetujui Oleh <br> nama <br><br>Tanggal <br> 14 Oktober 2019</td>
+                    <td>Disusun Oleh <br> {{$row['laporan_diajukan']}}<br><br>Tanggal <br>  {{$row['tgl_diajukan']}}</td>
+                    <td>Disetujui Oleh <br>  {{$row['laporan_diterima']}} <br><br>Tanggal <br>  {{$row['tgl_diterima']}}</td>
 
                 </tr>
             </table>
+            @endforeach
             <h3>Batch</h3>
             <table>
                 <tr>

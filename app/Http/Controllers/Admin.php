@@ -245,11 +245,12 @@ class Admin extends Controller
         // dd($id);
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
         $kom = komposisi::all()->where('nomor_batch', $id);
-        // dd($kom);
+        $kop = laporan::all()->where('laporan_batch', $id)->where('laporan_nama','pengolahan batch');
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
         return view('print.pengolahanbatch', [
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
+            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang, 
+            'kop' => $kop
 
         ]);
     }
