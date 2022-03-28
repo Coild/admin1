@@ -8,7 +8,7 @@
                     DASHBOARD
                 </a>
 
-                <a class="nav-link collapsed" href="pabrik">
+                <a class="nav-link collapsed" href="audit_pabrik">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DAFTAR PABRIK
                 </a>

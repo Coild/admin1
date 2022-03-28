@@ -119,6 +119,12 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/programlatih', [Admin::class, 'tampil_programlatih']);
     // Route::get('/teraalat', [Admin::class, 'tampil_teraalat']);
 
+
+    //Auditor
+    Route::get('/audit_pabrik', [Auditor::class, 'list_pabrik']);
+    Route::get('/audit_batch', [Auditor::class, 'list_batch']);
+    Route::get('/audit_', [Auditor::class, 'list_laporan']);
+
     //pjt
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);

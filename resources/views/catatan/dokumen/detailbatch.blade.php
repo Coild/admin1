@@ -13,7 +13,8 @@
         <div class="row">
             @foreach ($data as $row)
             <?php $nobatch = $row['nomor_batch'];
-            $status = $row['status']; ?>
+            $status = $row['status']; 
+            $awal=0; $akhir=0;?>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -304,7 +305,7 @@
                                     <form action="/input_penimbangan" method="post" role="form">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="nobatch" value="{$nobatch}}" />
+                                        <input type="hidden" name="nobatch" value="{{$nobatch}}" />
                                         <div class="form-group">
                                             <label for="inputName">Kode Bahan</label>
                                             <input type="text" name="kode_bahan" class="form-control" id="inputName" placeholder="Kode Bahan" />
