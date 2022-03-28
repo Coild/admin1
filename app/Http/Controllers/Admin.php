@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, periksaruang, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -155,28 +155,6 @@ class Admin extends Controller
     }
 
     //catat bersh ruangan
-    public function tambah_catatbersih(Request $req)
-    {
-        $id = Auth::user()->id;
-        $hasil = [
-            'catatbersih_produk' => $req['tahun'] . "-" . $req['bulan'] . "-" . '1',
-            'catatbersih_batchnum' => $req['batchnum'],
-            'catatbersih_prosedurnum' => $req['produk_nama'],
-            'catatbersih_namaruang' => $req['namaruang'],
-            'catatbersih_carabersih' => $req['carabersih'],
-            'catatbersih_pelaksana' => $req['pelaksana'],
-            'catatbersih_periksa' => $req['periksa'],
-            'catatbersih_lantaidinding' => $req['lantaidinding'] == null ? 0 : 1,
-            'catatbersih_meja' => $req['meja'] == null ? 0 : 1,
-            'catatbersih_jendela' => $req['jendela'] == null ? 0 : 1,
-            'catatbersih_plafon' => $req['plafon'] == null ? 0 : 1,
-            'user_id' => $id,
-        ];
-
-        catatbersih::insert($hasil);
-
-        return redirect('/pembersihanruangan');
-    }
 
     public function tampil_penerimaanbb()
     {
@@ -241,7 +219,7 @@ class Admin extends Controller
 
     public function cetak_pengolahanbatch(Request $req)
     {
-        $id = $req['nobatch'];  
+        $id = $req['nobatch'];
         // dd($id);
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
         $kom = komposisi::all()->where('nomor_batch', $id);
@@ -278,12 +256,12 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $laporan = [
-           'laporan_nama' => 'pengolahan batch',
-           'laporan_batch' => $req['no_batch'],
-           'laporan_diajukan' => Auth::user()->nama,
-           'laporan_diterima' => "belum",
-           'tgl_diajukan' => $tgl,
-           'tgl_diterima' => $tgl,
+            'laporan_nama' => 'pengolahan batch',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
             "user_id" => $id,
         ];
 
@@ -487,7 +465,7 @@ class Admin extends Controller
         // // user::deleted()
         return redirect('/setting');
     }
-    
+
 
     public function tampil_setting()
     {
@@ -507,20 +485,63 @@ class Admin extends Controller
 
     public function tampil_laporan()
     {
-        $data = laporan::all()->where('laporan_diterima','!=','belum');
+        $data = laporan::all()->where('laporan_diterima', '!=', 'belum');
         return view('laporan', ['batch' => $data]);
     }
 
     public function tampil_periksapersonil()
     {
-        return "loading";
+        $data = Periksapersonil::all()->where('laporan_diterima', '!=', 'belum');
+        return view('catatan.higidansani.periksapersonil', ['data' => $data]);
+    }
+
+    public function tambah_periksapersonil(Request $req)
+    {
+        $file = $req->file('file');
+        $exten = $file->getClientOriginalExtension();
+        $nama = $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $tujuan_upload = 'health_personil';
+        $file->move($tujuan_upload, $nama);
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama' => $req['nama_personil'],
+            'nama_file' => $nama,
+            'pabrik' => $pabrik,
+            'user_id' => $id,
+        ];
+        Periksapersonil::insert($hasil);
+        return redirect('/periksapersonil');
     }
 
     public function tampil_periksasanialat()
     {
-        return view('catatan.higidansani.periksasanialat');
+        $pabrik = Auth::user()->pabrik;
+        $data1 = periksaruang::all();
+        $data = Periksaalat::all()->where('pabrik', $pabrik);
+        return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1]);
     }
+    public function tambah_periksaalat(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'nama_ruangan' => $req['nama_ruangan'],
+            'nama_alat' => $req['nama_alat'],
+            'bagian_alat' => $req['bagian_alat'],
+            'cara_pembersihan' => $req['cara_pembersihan'],
+            'pelaksana' => $req['pelaksana'],
+            'keterangan' => $req['keterangan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
 
+        Periksaalat::insert($hasil);
+
+        return redirect('/periksasanialat');
+    }
     public function tampil_periksasaniruang()
     {
         $pabrik = Auth::user()->pabrik;

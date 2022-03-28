@@ -1,6 +1,7 @@
 function salert() {
     const mycomp = document.getElementsByClassName("form-control");
     var valid = false;
+    console.log(mycomp);
     for (i = 0; i < mycomp.length; i++) {
         if (mycomp[i].value == "") {
             valid = true;
@@ -54,6 +55,30 @@ function salert() {
             });
     }
 }
+
+function filecheck() {
+    const fileInput = document.getElementById("fileform");
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.pdf)$/i;
+    if (!allowedExtensions.exec(filePath)) {
+        Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Format File Tidak Didukung",
+        });
+        fileInput.value = "";
+        return false;
+    } else if (fileInput.files[0].size / 1024 > 1024) {
+        Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Ukuran Terlalu Besar",
+        });
+        fileInput.value = "";
+        return false;
+    }
+}
+
 function salert1(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
     console.log(mycomp);

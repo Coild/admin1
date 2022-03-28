@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
 
-    Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
+    // Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
 
     Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
     // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
@@ -125,7 +125,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
+    Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
     Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat']);
+    Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
     Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 

@@ -1,137 +1,169 @@
 @extends('layout.app')
 @section('title')
-<title>COA</title>
+    <title>COA</title>
 @endsection
 
 @section('content')
-<main>
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Peralatan </h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Catatan Pembersihan Alat</li>
-        </ol>
-        <form action="/input_catatbersih" method="post">
-            @csrf
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Peralatan</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Catatan Pembersihan Peralatan</li>
+            </ol>
             <div class="row">
                 <!-- Entry Data -->
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Entry Data
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bulan</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" style="height: 35px;" name="bulan" id="inlineFormCustomSelect">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Januari</option>
-                                    <option value="2">Februari</option>
-                                    <option value="3">Maret</option>
-                                    <option value="4">April</option>
-                                    <option value="5">Mei</option>
-                                    <option value="6">Juni</option>
-                                    <option value="7">Juli</option>
-                                    <option value="8">Agustus</option>
-                                    <option value="9">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Pelaksana</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="batchnum" class="form-control" id="inputPassword3" placeholder="Pelaksana">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Disetujui Oleh</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="batchnum" class="form-control" id="inputPassword3" placeholder="Disetujui Oleh">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Keterangan</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="batchnum" class="form-control" id="inputPassword3" placeholder="Keterangan">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bagian yang dibersihkan  -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Daftar yang Dibersihkan
-                    </div>
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                            Tambah Data Alat
-                        </button>
-
                         <!-- Modal -->
-                        <div class="modal fade" id="modalForm" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Entry Data
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- pop up end -->
                         <div class="table-responsive-lg">
-                            <form>
-                                <table class="table col-lg-13">
-                                    <thead>
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Pembersihan Alat
+                            </div>
+                            <button class="btn btn-success btn-lg mt-3" data-toggle="modal" data-target="#modalForm">
+                                Tambah Pembersihan Alat
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalForm" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Tambah Pembersihan Alat
+                                            </h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="tambah_periksaalat" method="post" id="forminput">
+                                                <div class="card-header" id='headertglx'></div>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        @csrf
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="tanggal" id='ambil_tanggalx'
+                                                            class="form-control" placeholder="" />
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                            Ruangan</label>
+                                                        <div class="col-sm">
+                                                            <select style="height: 35px;" class="form-control"
+                                                                name="nama_ruangan" id="inlineFormCustomSelect">
+                                                                <option value="">Choose...
+                                                                </option>
+                                                                @foreach ($data1 as $row)
+                                                                    <option value="{{ $row['nama_ruangan'] }}">
+                                                                        {{ $row['nama_ruangan'] }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                            Alat</label>
+                                                        <div class="col-sm">
+                                                            <input placeholder="Nama Alat" class="form-control"
+                                                                name="nama_alat" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Bagian
+                                                            Alat</label>
+                                                        <div class="col-sm">
+                                                            <input placeholder="Bagian Alat" class="form-control"
+                                                                name="bagian_alat" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Cara
+                                                            Pembersihan</label>
+                                                        <div class="col-sm">
+                                                            <input placeholder="Cara Pembersihan" class="form-control"
+                                                                name="cara_pembersihan" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-3 col-form-label">Pelaksana</label>
+                                                        <div class="col-sm">
+                                                            <input placeholder="Pelaksana" class="form-control"
+                                                                name="pelaksana" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-3 col-form-label">Keterangan</label>
+                                                        <div class="col-sm">
+                                                            <input placeholder="Keterangan" class="form-control"
+                                                                name="keterangan" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 d-flex justify-content-center">
+                                                        <a class="btn btn-primary" onclick="salert()" href="#"
+                                                            style="float:left;  margin-left:25px" role="button">Tambah
+                                                            Catatan Pembersihan Alat</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <table class="table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">Nama Ruangan</th>
+                                        <th scope="col">Nama Alat</th>
+                                        <th scope="col">Bagian Alat</th>
+                                        <th scope="col">Cara Pembersihan</th>
+                                        <th scope="col">Pelaksana</th>
+                                        <th scope="col">Persetujuan</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 0; ?>
+                                    @foreach ($data as $row)
+                                        <?php $i++; ?>
                                         <tr>
-                                            <th scope="col" style="width:5%" class="text-center">No</th>
-                                            <th scope="col" style="width:35%" class="text-center">Bagian yang Dibersihkan</th>
-                                            <th scope="col" style="width:30%" class="text-center">Tanggal</th>
-                                            <th scope="col" style="width:30%" class="text-center">Jam</th>
-
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $row['tanggal'] }}</td>
+                                            <td>{{ $row['nama_ruangan'] }}</td>
+                                            <td>{{ $row['nama_alat'] }}</td>
+                                            <td>{{ $row['bagian_alat'] }}</td>
+                                            <td>{{ $row['cara_pembersihan'] }}</td>
+                                            <td>{{ $row['pelaksana'] }}</td>
+                                            <td>{{ $row['persetujuan'] }}</td>
+                                            <td>{{ $row['keterangan'] }}</td>
+                                            <td>
+                                                @if ($row['status'] == 0)
+                                                    Diajukan
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <form method="post" action="detil_batch">
+                                                    <input type="hidden" name="_token" value="" />
+                                                    <input type="hidden" name="nobatch" value="" />
+                                                    <button type="submit" class="btn btn-primary">Buka</button>
+                                                </form>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                    @endforeach
+                                </tbody>
+                            </table>
 
-                                        <td scope="col" class="text-center">1</td>
-                                        <td scope="col" class="text-center">Spatula</td>
-                                        <td scope="col">
-                                            <center>
-                                                <input type="date" style="width: 80%;" class="form-control" id="tgl" name="tgl" />
-                                            </center>
-                                        </td>
-                                        <td scope="col">
-                                            <center>
-                                                <input type="time" style="width: 80%;" class="form-control" id="jam" name="jam" />
-                                            </center>
-                                        </td>
-                                        <td scope="col" class="justify-content-center"></td>
-                                    </tbody>
-                                </table>
-                                <div class="col-lg-12 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Simpan</button>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Semula  class="d-flex justify-content-center"-->
-        </form>
-
-</main>
+    </main>
 @endsection
