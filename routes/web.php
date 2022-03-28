@@ -122,8 +122,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Auditor
     Route::get('/audit_pabrik', [Auditor::class, 'list_pabrik']);
-    Route::get('/audit_batch', [Auditor::class, 'list_batch']);
-    Route::get('/audit_', [Auditor::class, 'list_laporan']);
+    Route::get('/audit_dokumen/{id}', [Auditor::class, 'list_dokumen']);
+    Route::post('/audit_batch/{id}', [Auditor::class, 'list_batch']);
+    Route::get('/audit_laporan', [Auditor::class, 'list_laporan']);
 
     //pjt
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
