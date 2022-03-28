@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController};
+use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor};
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 
@@ -156,7 +156,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/audit', [superadmin::class, 'tampil_audit']);
     Route::post('/register_pabrik', [superadmin::class, 'register']);
     Route::post('/register_audit', [superadmin::class, 'register_audit']);
-    
+
     // Route::get('/protap', [superadmin::class, 'tampil_protap']);
 
     //yusril
