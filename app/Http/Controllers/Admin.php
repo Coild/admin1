@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, periksaruang, produk, programpelatihan, programpelatihanhiginitas, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, periksaruang, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
@@ -214,9 +215,12 @@ class Admin extends Controller
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
+        $olah = produksi::all()->where('id_batch', $id);
+        $rekon = rekonsiliasi::all()->where('id_batch', $id);
         return view('catatan.dokumen.detailbatch', [
             'id' => $id,
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
+            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
+            'list_olah' => $olah, 'rekon' => $rekon
         ]);
     }
 
@@ -237,9 +241,11 @@ class Admin extends Controller
 
     public function cetak_pengolahanbatch(Request $req)
     {
-        $id = $req['nobatch'];
+        $id = $req['nobatch'];  
+        // dd($id);
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
         $kom = komposisi::all()->where('nomor_batch', $id);
+        // dd($kom);
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
         return view('print.pengolahanbatch', [
@@ -260,15 +266,29 @@ class Admin extends Controller
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kategori' => $req['kategori'],
-            'bentuk_kategori' => $req['bentuk_kategori'],
+            'bentuk_kategory' => $req['bentuk_kategori'],
             'kemasan' => $req['kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
         ];
 
-        // dd($hasil);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
 
+        $laporan = [
+           'laporan_nama' => 'pengolahan batch',
+           'laporan_batch' => $req['no_batch'],
+           'laporan_diajukan' => Auth::user()->nama,
+           'laporan_diterima' => "belum",
+           'tgl_diajukan' => $tgl,
+           'tgl_diterima' => $tgl,
+            "user_id" => $id,
+        ];
+
+        // dd($hasil);
+        laporan::insert($laporan);
         pengolahanbatch::insert($hasil);
         return redirect('/pengolahanbatch');
     }
@@ -288,8 +308,8 @@ class Admin extends Controller
 
         komposisi::insert($hasil);
 
-        $to = $req['no_batch'];
-        return redirect('/detil_batch', $to);
+        $to = $req['nobatch'];
+        return redirect('/detil_batch/' . $to);
     }
 
     //peralatan
@@ -306,8 +326,8 @@ class Admin extends Controller
 
         peralatan::insert($hasil);
 
-        $to = $req['no_batch'];
-        return redirect('/pengolahanbatch/' . $to);
+        $to = $req['nobatch'];
+        return redirect('/detil_batch/' . $to);
     }
 
     //catat penimbangan
@@ -329,7 +349,42 @@ class Admin extends Controller
 
         penimbangan::insert($hasil);
 
-        return redirect('/detil_batch/' . $nobatch);
+        $to = $req['nobatch'];
+        return redirect('/detil_batch/' . $to);
+    }
+
+    //olah
+    public function tambah_olah(Request $req)
+    {
+        $id = Auth::user()->id;
+        $nobatch = $req['nobatch'];
+        $hasil = [
+            'isi' => $req['isi'],
+            'id_batch' => $nobatch,
+            'user_id' => $id,
+        ];
+
+        produksi::insert($hasil);
+
+        $to = $req['nobatch'];
+        return redirect('/detil_batch/' . $to);
+    }
+
+    public function tambah_rekonsiliasi(Request $req)
+    {
+        $id = Auth::user()->id;
+        $nobatch = $req['nobatch'];
+        $hasil = [
+            'awal' => $req['awal'],
+            'akhir' => $req['akhir'],
+            'id_batch' => $nobatch,
+            'user_id' => $id,
+        ];
+
+        rekonsiliasi::insert($hasil);
+
+        $to = $req['nobatch'];
+        return redirect('/detil_batch/' . $to);
     }
 
     public function hapus_komposisi($id, $to)
@@ -340,20 +395,36 @@ class Admin extends Controller
         return redirect('/detil_batch/' . $to);
     }
 
-    public function hapus_peralatan($id)
+    public function hapus_peralatan($id, $to)
     {
         $data = peralatan::all()->where('peralatan_id', $id);
         $post = peralatan::all()->where('peralatan_id', $id)->each->delete();
 
-        return redirect('/pengolahanbatch');
+        return redirect('/detil_batch/' . $to);
     }
 
-    public function hapus_penimbangan($id)
+    public function hapus_penimbangan($id, $to)
     {
         $data = penimbangan::all()->where('penimbangan_id', $id);
         $post = penimbangan::all()->where('penimbangan_id', $id)->each->delete();
 
-        return redirect('/pengolahanbatch');
+        return redirect('/detil_batch/' . $to);
+    }
+
+    public function hapus_olah($id, $to)
+    {
+        $data = produksi::all()->where('produksi_id', $id);
+        $post = produksi::all()->where('produksi_id', $id)->each->delete();
+
+        return redirect('/detil_batch/' . $to);
+    }
+
+    public function hapus_rekonsiliasi($id, $to)
+    {
+        $data = rekonsiliasi::all()->where('rekonsiliasi_id', $id);
+        $post = rekonsiliasi::all()->where('rekonsiliasi_id', $id)->each->delete();
+
+        return redirect('/detil_batch/' . $to);
     }
 
     public function tambah_company(Request $req)
@@ -416,6 +487,7 @@ class Admin extends Controller
         // // user::deleted()
         return redirect('/setting');
     }
+    
 
     public function tampil_setting()
     {
@@ -435,7 +507,7 @@ class Admin extends Controller
 
     public function tampil_laporan()
     {
-        $data = pengolahanbatch::all();
+        $data = laporan::all()->where('laporan_diterima','!=','belum');
         return view('laporan', ['batch' => $data]);
     }
 

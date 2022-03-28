@@ -63,9 +63,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/input_komposisi', [Admin::class, 'tambah_komposisi']);
     Route::post('/input_peralatan', [Admin::class, 'tambah_peralatan']);
     Route::post('/input_penimbangan', [Admin::class, 'tambah_penimbangan']);
+    Route::post('/input_olah', [Admin::class, 'tambah_olah']);
+    Route::post('/input_rekonsiliasi', [Admin::class, 'tambah_rekonsiliasi']);
+
+
     Route::get('/hapus_komposisi/{id}/{ke}', [Admin::class, 'hapus_komposisi']);
     Route::get('/hapus_peralatan/{id}/{ke}', [Admin::class, 'hapus_peralatan']);
     Route::get('/hapus_penimbangan/{id}/{ke}', [Admin::class, 'hapus_penimbangan']);
+    Route::get('/hapus_olah/{id}/{ke}', [Admin::class, 'hapus_olah']);
     Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
     // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
     Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid'])->name('detil_batch');
@@ -115,7 +120,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/teraalat', [Admin::class, 'tampil_teraalat']);
 
     //pjt
-    Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch']);
+    Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
     //higi dansani
@@ -135,6 +140,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tolak', [pemilik::class, 'tolak']);
     Route::post('/update_posisi', [pemilik::class, 'update_posisi']);
     Route::get('/karyawan', [pemilik::class, 'tampil_karyawan']);
+    Route::post('/karyawan', [pemilik::class, 'hapus_karyawan']);
 
     //super admin
     // Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);

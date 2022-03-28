@@ -75,6 +75,8 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Laporan</th>
+                        <th scope="col">Diajukan</th>
+                        <th scope="col">Diterima</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -85,12 +87,14 @@
                     $i++; ?>
                     <tr>
                         <th scope="row">{{$i}}</th>
-                        <td>Pngoolahan Batch</td>
+                        <td>{{$row['laporan_nama']}}</td>
+                        <td>{{$row['laporan_diajukan']}}</td>
+                        <td>{{$row['laporan_diterima']}}</td>
                         <td>
-                            <form method="post" action="printpengolahanbatch">
+                            <form method="post" action="/printpengolahanbatch">
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}" />
+                                <input type="hidden" name="nobatch" value="{{ $row['laporan_batch'] }}" />
                                 <button type="submit" class="btn btn-primary">Buka</button>
                             </form>
                         </td>

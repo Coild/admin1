@@ -37,7 +37,7 @@
 
 </head>
 
-<body>
+<body class="A4">
 
     <div class="container">
 
