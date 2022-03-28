@@ -85,7 +85,7 @@
                     <tbody>
                         @foreach($data as $row)
                         <?php $i = 0;
-                        $i++;  ?>
+                        $i++;  $nama = $row['nama']?>
                         <tr>
                             <td scope="col">1</td>
                             <td id="namap" scope="col">{{$row['nama']}}</td>
@@ -97,9 +97,16 @@
                                 @endif
                             </td>
                             <td scope="col">
-                                <a class="btn btn-white btn-sm " id="detil" data-toggle="modal" data-target="#modalForm1" data-id="<?= $row->id ?>" data-nama="<?= $row->nama ?>" data-posisi="<?= $row->level ?>">
-                                    <i class="fa fa-edit "></i>
+                                <a  style="float:left;" class="btn btn-white btn-sm " id="detil" data-toggle="modal" data-target="#modalForm1" data-id="<?= $row->id ?>" data-nama="<?= $row->nama ?>" data-posisi="<?= $row->level ?>">
+                                    <i class="fa fa-edit "></i> Edit
                                 </a>
+                                <form action="" method="post" >
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$row['id']}}">
+                                <button type="submit" class="btn btn-white btn-sm "  id="hapus" onclick="confirm('apakah anda yakin ingin menghapus {{$nama}}?')" >
+                                    <i class="fa fa-exit "></i> Hapus
+                                </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

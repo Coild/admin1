@@ -17,17 +17,19 @@ class pemilik extends Controller
 
     public function tolak (Request $req)  {
         $post = user::all()->where('id',  $req->id)->each->delete();
+        return redirect('/aplicant');
     }
 
     public function terima(Request $req) {
 
         // dd($req->id);
         $pabrik=Auth::user()->pabrik;
-        $data = user::all()->where('pabrik',$pabrik)
-        ->where('level',-1);
-        $user = user::all()->where("id", $req->id)->first()->update([
+        
+        user::all()->where("id", $req->id)->first()->update([
             'level' => 3,
         ]);
+        $data = user::all()->where('pabrik',$pabrik)
+        ->where('level',-1);
         
         return view("pemilik.aplicant",['data' => $data ]);
     }
@@ -38,6 +40,15 @@ class pemilik extends Controller
         ->where('level','>=',2);
         return view("pemilik.karyawan",['data' => $data ]);
 
+    }
+
+    public function hapus_karyawan(Request $req)  {
+        // dd($req);
+        $post = user::all()->where('id',  $req->id)->each->delete();
+        $pabrik=Auth::user()->pabrik;
+        $data = user::all()->where('pabrik',$pabrik)
+        ->where('level','>=',2);
+        return view("pemilik.karyawan",['data' => $data ]);
     }
 
    public function update_posisi(Request $req){

@@ -12,8 +12,8 @@
         </ol>
         <div class="row">
             @foreach ($data as $row)
-            <?php $nobatch = $row['nomor_batch']; 
-            $status = $row['status'];?>
+            <?php $nobatch = $row['nomor_batch'];
+            $status = $row['status']; ?>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -97,7 +97,9 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
-                    <button  class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" <?php if($status>0) {echo 'disabled';} ?>>
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" <?php if ($status > 0) {
+                                                                                                            echo 'disabled';
+                                                                                                        } ?>>
                         Tambah Komposisi
                     </button>
 
@@ -118,7 +120,7 @@
                                     <form action="/input_komposisi" method="post" role="form">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}" />
+                                        <input type="hidden" name="nobatch" value="{{$nobatch}}" />
                                         <div class="form-group">
                                             <label for="inputName">Nama BB</label>
                                             <input type="text" name="id" class="form-control" id="inputName" placeholder="Nama BB" />
@@ -171,7 +173,9 @@
                                 <td>{{ $row['komposisi_id'] }}</td>
                                 <td>{{ $row['komposisi_persen'] }}</td>
                                 <td>
-                                    <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}/{{ $id }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                    <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}/{{ $id }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                            echo 'disabled';
+                                                                                        } ?>>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -188,7 +192,9 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1" <?php if($status>0) {echo 'disabled';} ?>>
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1" <?php if ($status > 0) {
+                                                                                                                echo 'disabled';
+                                                                                                            } ?>>
                         Tambah Peralatan
                     </button>
 
@@ -209,7 +215,7 @@
                                     <form action="/input_peralatan" method="post" role="form">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}" />
+                                        <input type="hidden" name="nobatch" value="{{$nobatch}}" />
                                         <div class="form-group">
                                             <label for="inputName">Nama Alat</label>
                                             <input name="nama" type="text" class="form-control" id="inputName" placeholder="Nama Alat" />
@@ -256,7 +262,9 @@
                                 <td>{{ $row['peralatan_nama'] }}</td>
                                 <td>{{ $row['peralatan_id'] }}</td>
                                 <td>
-                                    <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                    <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                            echo 'disabled';
+                                                                                        } ?>>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -273,7 +281,9 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2" <?php if($status>0) {echo 'disabled';} ?>>
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2" <?php if ($status > 0) {
+                                                                                                                echo 'disabled';
+                                                                                                            } ?>>
                         Data Penimbangan
                     </button>
 
@@ -294,7 +304,7 @@
                                     <form action="/input_penimbangan" method="post" role="form">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}" />
+                                        <input type="hidden" name="nobatch" value="{$nobatch}}" />
                                         <div class="form-group">
                                             <label for="inputName">Kode Bahan</label>
                                             <input type="text" name="kode_bahan" class="form-control" id="inputName" placeholder="Kode Bahan" />
@@ -383,115 +393,133 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Produk
+                    Pegolahan
+                </div>
+                <div class="card-body">
+                    <!-- pop up -->
+                    <!-- Button to trigger modal -->
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm3" <?php if ($status > 0) {
+                                                                                                                echo 'disabled';
+                                                                                                            } ?>>
+                        Perlakuan
+                    </button>
 
-                    <div class="dropdown float-right">
-                        <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <div class="dropdown-menu">
-                            <li><a class="nav-link active bg-white text-dark" href="#tab-0" data-toggle="tab">Padat</a>
-                            </li>
-                            <li><a class="nav-link bg-white text-dark" href="#tab-1" data-toggle="tab">Cair</a></li>
-                            <li><a class="nav-link bg-white text-dark" href="#tab-2" data-toggle="tab">kental</a></li>
-                            <li><a class="nav-link bg-white text-dark" href="#tab-3" data-toggle="tab">Bubuk</a></li>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalForm3" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Masukan keterangan
+                                    </h4>
+                                </div>
+
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <p class="statusMsg"></p>
+                                    <form action="/input_olah" method="post" role="form">
+                                        @csrf
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="nobatch" value="{{$nobatch}}" />
+                                        <div class="form-group">
+                                            <label for="inputName">Isi</label>
+                                            <input type="text" name="isi" class="form-control" id="inputName" placeholder="keterangan" />
+                                        </div>
+
+                                        <!-- Modal Footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary submitBtn" onclick="submitContactForm()">
+                                                Tambah
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
+
+                    <!-- pop up end -->
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Pengolahan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($list_olah as $row)
+                            <?php $i++;
+                            ?>
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $row['isi'] }}</td>
+                                <td>
+                                    <a href="/hapus_olah/{{ $row['produksi_id'] }}/{{ $id }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                            echo 'disabled';
+                                                                                        } ?>>Hapus</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<?php foreach($rekon as $row) {
+    $awal = $row['awal'];
+    $akhir = $row['akhir'];
+}?>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Rekonsiliasi hasil
+
                 </div>
                 <div class="card-body">
 
-                    <div class="row m-t-sm">
-                        <div class="col-lg-12">
-                            <div class="panel blank-panel">
-
-                                <div class="panel-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab-0">
-                                            <b>tab-0</b>
-                                        </div>
-                                        <div class="tab-pane" id="tab-1">
-                                            <b>tab-1</b>
-                                        </div>
-                                        <div class="tab-pane" id="tab-2">
-                                            <b>tab-2</b>
-                                        </div>
-                                        <div class="tab-pane " id="tab-3">
-                                            <div class="wrapper wrapper-content animated fadeInRight">
-                                                <b>tab-3</b>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                    <form action="/input_rekonsiliasi" method="post" role="form">
+                        @csrf
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="hidden" name="nobatch" value="{{$nobatch}}" />
+                        <div class="form-group">
+                            <label for="inputName">Perkiraan</label>
+                            <input type="text" name="awal" value="{{$awal}}" class="form-control" id="inputName" placeholder="keterangan" />
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="inputName">Hasil</label>
+                            <input type="text" name="akhir" value="{{$akhir}}" class="form-control" id="inputName" placeholder="keterangan" />
+                        </div>
+                        <center>
+                        <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
+                                                                                            echo 'disabled';
+                                                                                        } ?>> Simpan </button>
+                        </center>
+
+                    </form>
+
                     <center>
                         <form action="/ajukan_batch/{{$nobatch}}">
-                        <button type="submit" class="btn btn-success btn-lg mt-5" <?php if($status>0) {echo 'disabled';} ?>>
-                            Ajukan
-                        </button>
+                            <button type="submit" class="btn btn-success btn-lg mt-5" <?php if ($status > 0) {
+                                                                                            echo 'disabled';
+                                                                                        } ?>>
+                                Ajukan
+                            </button>
                         </form>
                     </center>
-                    <!-- <table class="table">
-                            <tr>
-                                <th scope="col">Tahap Pengolahan</th>
-                                <th scope="col">Paraf Bagian Pengawasa Mutu</th>
-                            </tr>
-                        </table>
 
-                        <form>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-8 col-form-label">Bahan yang sudah dikirim dari gudang bahan baku akan
-                                    ditimbang terlebih dahulu</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Tari</option>
-                                        <option value="2">Dira</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-8 col-form-label">Bahan yang sudah ditimbang, ditimang diruang
-                                    mixing</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Tari</option>
-                                        <option value="2">Dira</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-8 col-form-label">Setelah Selesai, Proses mixing akan dikarantina
-                                    terlebih dahulu</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Tari</option>
-                                        <option value="2">Dira</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-8 col-form-label">Setelah dinyatakan lulus, baru kemudian dibawa keruang
-                                    filling untuk dilakukan pengemasan</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Tari</option>
-                                        <option value="2">Dira</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form> -->
                 </div>
             </div>
+
+
         </div>
     </div>
 </main>

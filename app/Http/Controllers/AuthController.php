@@ -49,7 +49,7 @@ class AuthController extends Controller
                 foreach ($data as $row) {
                     session(['pabrik' => $row['nama']]);
                 }
-                return redirect('/setting');
+                return redirect('/dashboard');
             }
         } else { // false
 
