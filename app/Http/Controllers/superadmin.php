@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\Session;
 
 class superadmin extends Controller
 {
-    public function tampil_dashboard () {
+    public function tampil_dashboard()
+    {
         return view("admin.dashboard");
     }
 
-    public function tampil_pabrik () {
+    public function tampil_pabrik()
+    {
         return view("admin.tambahuser");
+    }
+
+    public function tampil_audit()
+    {
+        return view("admin.tambahauditor");
     }
     public function register(Request $request)
     {
@@ -25,15 +32,15 @@ class superadmin extends Controller
         ];
 
         pabrik::insert($hasil);
-        $pabrik  = pabrik::all()->where('nama', $request['pabrik'] );
+        $pabrik  = pabrik::all()->where('nama', $request['pabrik']);
         // dd($pabrik);
         $user = new User;
         $user->nama = ucwords(strtolower($request->username));
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->level = 1;
-        foreach  ($pabrik as $row) {
-            $user->pabrik = $row['pabrik_id']; 
+        foreach ($pabrik as $row) {
+            $user->pabrik = $row['pabrik_id'];
         }
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
@@ -46,8 +53,29 @@ class superadmin extends Controller
             return redirect('showregister');
         }
     }
-    public function tampil_protap () {
-        return view("admin.ubahprotap");
+
+    public function register_audit(Request $request)
+    {
+        $user = new User;
+        $user->nama = ucwords(strtolower($request->username));
+        $user->namadepan = $request->namadepan;
+        $user->namabelakang = $request->namabelakang;
+        $user->level = 4;
+        $user->pabrik = 0;
+        $user->password = bcrypt($request->password);
+        $simpan = $user->save();
+
+        if ($simpan) {
+            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
+            return redirect('/audit');
+        } else {
+            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
+            return redirect('showregister');
+        }
     }
 
+    public function tampil_protap()
+    {
+        return view("admin.ubahprotap");
+    }
 }

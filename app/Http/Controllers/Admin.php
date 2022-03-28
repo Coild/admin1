@@ -260,7 +260,7 @@ class Admin extends Controller
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kategori' => $req['kategori'],
-            'bentuk_kategori' => $req['bentuk_kategori'],
+            'bentuk_kategory' => $req['bentuk_kategori'],
             'kemasan' => $req['kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,

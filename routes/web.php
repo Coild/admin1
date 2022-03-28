@@ -139,7 +139,10 @@ Route::group(['middleware' => 'auth'], function () {
     //super admin
     // Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);
     Route::get('/pabrik', [superadmin::class, 'tampil_pabrik']);
+    Route::get('/audit', [superadmin::class, 'tampil_audit']);
     Route::post('/register_pabrik', [superadmin::class, 'register']);
+    Route::post('/register_audit', [superadmin::class, 'register_audit']);
+    
     // Route::get('/protap', [superadmin::class, 'tampil_protap']);
 
     //yusril

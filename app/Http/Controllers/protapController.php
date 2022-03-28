@@ -117,6 +117,11 @@ class protapController extends Controller
          $hasil = [
              'protap_file' => $nama,
              'protap_nama' => $req['nama'],
+             'protap_ruangan' => $req['ruangan'],
+             'protap_diajukan' => $req['diajukan'],
+             'protap_tgl_diajukan' => $req['tgl_diajukan'],
+             'protap_diterima' => $req['diterima'],
+             'protap_tgl_diterima' => $req['tgl_diterima'],
              'protap_jenis' => $jenis,
              'protap_pabrik'=> $pabrik,
              'user_id' => $id,
