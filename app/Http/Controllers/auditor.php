@@ -12,7 +12,7 @@ class auditor extends Controller
         $data = pabrik::all();
 
         // dd($data);
-        return view('auditor.listpabrik',['pabrik'=>$data]);
+        return view('auditor.listpabrik',['data'=>$data]);
     }
 
     public function list_dokumen ($id) {
