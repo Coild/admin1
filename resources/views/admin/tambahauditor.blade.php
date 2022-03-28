@@ -1,12 +1,14 @@
 @extends('layout.app')
 @section('title')
-<title>Tambah Pabrik</title>
+<title>Tambah Auditor
+
+</title>
 @endsection
 
 @section('content')
 <main>
     <div class="container">
-        <form action="/register_pabrik" method="post">
+        <form action="/register_audit" method="post">
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 

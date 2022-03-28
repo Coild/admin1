@@ -42,7 +42,34 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-group">
                                             <label for="inputName">Nama PROTAP</label>
-                                            <input type="text" class="form-control" id="inputName" name="nama" />
+                                            <input type="text" class="form-control" id="inputName" name="nomer" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputName">Disusun Oleh</label>
+                                            <input type="text" class="form-control" id="inputName" name="diajukan" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputName">Tanggal  Disusun</label>
+                                            <input type="text" class="form-control" id="inputName" name="tgl_diajukan" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputName">Disetjui Oleh</label>
+                                            <input type="text" class="form-control" id="inputName" name="disetujui" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputName">Tanggal  Disetjui</label>
+                                            <input type="text" class="form-control" id="inputName" name="tgl_disetujui" />
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="inputName">Ruangan</label>
+                                            <input type="text" class="form-control" id="inputName" name="nomer" />
                                         </div>
 
                                         <div class="form-group">
