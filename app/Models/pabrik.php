@@ -14,6 +14,6 @@ class pabrik extends Model
         'alamat',
         'no_hp',
         'logo',
-        'nama'
+        'namagit '
     ];
 }
