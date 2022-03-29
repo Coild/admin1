@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{jabatan,pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ class Admin extends Controller
     //COA
     public function tampil_coa()
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $data = coa::all()->where('user_id', $id);
         return view('/coa', ['list_coa' => $data]);
     }
@@ -35,7 +35,7 @@ class Admin extends Controller
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $nama);
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'coa_file' => $nama,
             'coa_nama' => $req['nama'],
@@ -50,7 +50,7 @@ class Admin extends Controller
     //DIP
     public function tampil_dip()
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $data = dip::all()->where('user_id', $id);
         return view('/dip', ['list_dip' => $data]);
     }
@@ -71,7 +71,7 @@ class Admin extends Controller
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/dip/';
         $file->move($tujuan_upload, $nama);
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'dip_file' => $nama,
             'dip_nama' => $req['nama'],
@@ -86,7 +86,7 @@ class Admin extends Controller
     //perizinan
     public function tampil_perizinan()
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $data = perizinan::all()->where('user_id', $id);
         return view('/perizinan', ['list_perizinan' => $data]);
     }
@@ -107,7 +107,7 @@ class Admin extends Controller
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/perizinan/';
         $file->move($tujuan_upload, $nama);
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'perizinan_file' => $nama,
             'perizinan_nama' => $req['nama'],
@@ -117,6 +117,42 @@ class Admin extends Controller
         perizinan::insert($hasil);
         // // user::deleted()
         return redirect('/perizinan');
+    }
+
+    //DIP
+    public function tampil_jabatan()
+    {
+        $id = Auth::user()->pabrik;
+        $data = jabatan::all()->where('user_id', $id);
+        return view('jabatanpersonil', ['list_dip' => $data]);
+    }
+
+    public function hapus_jabatan($id)
+    {
+        $data = jabatan::all()->where('jabatan_id', $id);
+        // dd($data);
+        unlink("asset/dip/" . $data[0]['jabatan_file']);
+        $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
+
+        return redirect('/jabatan');
+    }
+
+    public function tambah_jabatan(Request $req)
+    {
+        $file = $req->file('upload');
+        $nama = $file->getClientOriginalName();
+        $tujuan_upload = 'asset/dip/';
+        $file->move($tujuan_upload, $nama);
+        $id = Auth::user()->pabrik;
+        $hasil = [
+            'jabatan_file' => $nama,
+            'jabatan_nama' => $req['nama'],
+            'user_id' => $id,
+        ];
+
+        jabatan::insert($hasil);
+        // // user::deleted()
+        return redirect('/jabatan');
     }
 
     //pob

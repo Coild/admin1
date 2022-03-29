@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoasTable extends Migration
+class CreateJabatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCoasTable extends Migration
      */
     public function up()
     {
-        Schema::create('coas', function (Blueprint $table) {
-            $table->id('coa_id',5);
-            $table->string('coa_nama', 255);
-            $table->string('coa_file', 255);
+        Schema::create('jabatans', function (Blueprint $table) {
+            $table->id('jabatan_id',5);
+            $table->string('jabatan_nama', 255);
+            $table->string('jabatan_file', 255);
             $table->integer("user_id",false);
-            $table->timestamps();  
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCoasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coas');
+        Schema::dropIfExists('jabatans');
     }
 }

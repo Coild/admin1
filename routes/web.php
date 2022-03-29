@@ -45,6 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/perizinan', [Admin::class, 'tampil_perizinan'])->name('perizinan');
     Route::get('/hapus_perizinan/{id}', [Admin::class, 'hapus_perizinan']);
 
+    Route::post('/input_jabatan', [Admin::class, 'tambah_jabatan']);
+    Route::get('/jabatan', [Admin::class, 'tampil_jabatan'])->name('jabatan');
+    Route::get('/hapus_jabatan/{id}', [Admin::class, 'hapus_jabatan']);
+
     Route::post('/input_pobpabrik', [Admin::class, 'tambah_pobpabrik']);
     Route::get('/pobpabrik', [Admin::class, 'tampil_pobpabrik']);
     Route::get('/hapus_pobpabrik/{id}', [Admin::class, 'hapus_pobpabrik']);

@@ -176,7 +176,7 @@
                     DIP
                 </a>
 
-                <a class="nav-link" href="{{route('dip')}}">
+                <a class="nav-link" href="{{route('jabatan')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Daftar Jabatan Personil
                 </a>

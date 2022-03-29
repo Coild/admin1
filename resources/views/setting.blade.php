@@ -191,7 +191,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary" href="/input_company">SIMPAN</button>
+            <button type="submit" class="btn btn-primary" href="/input_company" onclick="salert()">SIMPAN</button>
 
 
         </div>

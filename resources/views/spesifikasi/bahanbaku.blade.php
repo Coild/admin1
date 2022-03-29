@@ -47,14 +47,14 @@
 
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Pilih File</label>
-                                            <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                            <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1" onchange="return filecheck()">
                                         </div>
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-primary submitBtn">
+                                            <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
                                                 Tambah
                                             </button>
                                         </div>

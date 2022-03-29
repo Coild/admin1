@@ -1,14 +1,14 @@
 @extends('layout.app')
 @section('title')
-<title>COA</title>
+<title>Jabtan Personil</title>
 @endsection
 
 @section('content')
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">COA </h1>
+        <h1 class="mt-4">Jabatan Personil </h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">COA</li>
+            <li class="breadcrumb-item active">Jabatan Personil</li>
         </ol>
         <div class="row">
 
@@ -19,7 +19,7 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                        Tambah COA
+                        Tambah Jabatan Personil
                     </button>
 
                     <!-- Modal -->
@@ -29,24 +29,24 @@
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="myModalLabel">
-                                        Entry COA
+                                        Entry Jabatan Personil
                                     </h4>
                                 </div>
 
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_coa" method="post" enctype="multipart/form-data" role="form">
+                                    <form action="/input_jabatan" method="post" enctype="multipart/form-data" role="form">
 
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-group">
-                                            <label for="inputName">Nama COA</label>
+                                            <label for="inputName">Keterangan</label>
                                             <input type="text" class="form-control" id="inputName" name="nama" />
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Pilih File COA</label>
+                                            <label for="exampleFormControlFile1">Pilih File</label>
                                             <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
                                         </div>
                                         <!-- Modal Footer -->
@@ -73,24 +73,24 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Nama COA</th>
+                                <th scope="col">Nama DIP</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 0 ?>
-                            @foreach($list_coa as $row)
-                            <?php $i++; 
-                            $nama = $row['coa_nama'];
+                            @foreach($list_dip as $row)
+                            <?php $i++;
+                            $nama = $row['jabatan_nama'];
                             ?>
                             <tr>
                                 <th scope="row">{{$i}}</th>
-                                <td>{{$row['coa_nama']}}</td>
-                                <td><a href="/hapus_coa/{{$row['coa_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus {{$nama}}? ')">Hapus</a>
-                                    <a href="/asset/coa/{{$row['coa_file']}}" button type="button" class="btn btn-primary">Buka</button>
+                                <td>{{$row['jabatan_nama']}}</td>
+                                <td><a href="/hapus_jabatan/{{$row['jabatan_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus {{$nama}}? ')">Hapus</a>
+                                    <a href="/asset/dip/{{$row['jabatan_file']}}" button type="button" class="btn btn-primary">Buka</button>
                                 </td>
                             </tr>
-        
+
                             @endforeach
                         </tbody>
                     </table>
