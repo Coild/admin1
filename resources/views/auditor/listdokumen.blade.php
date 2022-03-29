@@ -32,10 +32,15 @@
                                 <th scope="col">{{$row['laporan_batch']}}</th>
                                 <th scope="col">{{$row['laporan_nama']}}</th>
                                 <th scope="col">
-
-                                    <a href="/audit_request/{{$row['laporan_batch']}}/{{$row['laporan_nama']}}" type="submit" class="btn btn-success">
-                                        Request
-                                    </a>
+                                    <form action="/tambah_request" method="post">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['laporan_batch']}}">
+                                        <input type="hidden" name="nama" value="{{$row['laporan_nama']}}">
+                                        <input type="hidden" name="pabrik" value="{{$row['pabrik_id']}}">
+                                        <button type="submit" href="/audit_request" type="submit" class="btn btn-success">
+                                            Request
+                                        </button>
+                                    </form>
                                 </th>
                             </tr>
                             @endforeach

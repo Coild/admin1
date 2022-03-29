@@ -13,6 +13,11 @@
                     DAFTAR PABRIK
                 </a>
 
+                <a class="nav-link collapsed" href="list_audit">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    DAFTAR AUDIT
+                </a>
+
             </div>
         </div>
         

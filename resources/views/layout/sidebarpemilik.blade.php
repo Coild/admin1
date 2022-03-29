@@ -18,6 +18,11 @@
                     DAFTAR APLIKAN
                 </a>
 
+                <a class="nav-link collapsed" href="bos_audit">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    DAFTAR AUDIT
+                </a>
+
             </div>
         </div>
 

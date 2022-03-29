@@ -31,10 +31,16 @@
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['laporan_batch']}}</th>
                                 <th scope="col">
-                                    
-                                    <a href="/audit_dokumen/{{$row['laporan_batch']}}" type="submit" class="btn btn-success">
-                                        Lihat
-                                    </a>
+
+                                    <form action="/audit_dokumen" method="post">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['laporan_batch']}}">
+                                        <input type="hidden" name="nama" value="{{$row['laporan_nama']}}">
+                                        <input type="hidden" name="pabrik" value="{{$row['pabrik_id']}}">
+                                        <button type="submit" href="/audit_request" type="submit" class="btn btn-success">
+                                           Lihat
+                                        </button>
+                                    </form>
                                 </th>
                             </tr>
                             @endforeach

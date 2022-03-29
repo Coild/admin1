@@ -26,11 +26,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                       
+                       @foreach($data as $row)
+                       <?php $i=0; $i++; ?>
                         <tr>
+                        <th scope="col">{{$i}}</th>
+                            <th scope="col">{{$row['nobatch']}}</th>
+                            <th scope="col">{{$row['audit_laporan']}}</th>
+                            <th scope="col">
+                                @if($row['audit_status']==0)
+                                {{'Diajukan'}}
+                                @else
+                                {{'Diterima'}}
+                                @endif
+                            </th>
+                            <th scope="col">
+                            @if($row['audit_status']==0)
                             
+                            <button class="btn btn-success" disabled> Lihat </button>
+                                <!-- {{'Diajukan'}} -->
+                                @else
+                                <!-- {{'Diajukan'}} -->
+                                <button class="btn btn-success"> Lihat </button>
+                                @endif
+                            </th>
                         </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
 

@@ -122,9 +122,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Auditor
     Route::get('/audit_pabrik', [Auditor::class, 'list_pabrik']);
-    Route::get('/audit_dokumen/{id}', [Auditor::class, 'list_dokumen']);
-    Route::post('/audit_batch/{id}', [Auditor::class, 'list_batch']);
-    Route::get('/audit_laporan', [Auditor::class, 'list_laporan']);
+    Route::post('/audit_dokumen', [Auditor::class, 'list_dokumen']);
+    Route::post('/audit_batch', [Auditor::class, 'list_batch']);
+    Route::get('/list_audit', [Auditor::class, 'list_request']);
+
+    Route::post('tambah_request',[Auditor::class,'tambah_request']);
 
     //pjt
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
@@ -137,6 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
     Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
+    
 
     //pprotap
     Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
@@ -150,6 +153,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update_posisi', [pemilik::class, 'update_posisi']);
     Route::get('/karyawan', [pemilik::class, 'tampil_karyawan']);
     Route::post('/karyawan', [pemilik::class, 'hapus_karyawan']);
+    Route::get('/bos_audit', [pemilik::class, 'list_request']);
+    Route::post('/terima_request', [pemilik::class, 'terima_request']);
 
     //super admin
     // Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);

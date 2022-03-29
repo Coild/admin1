@@ -21,6 +21,7 @@ class CreateLaporansTable extends Migration
             $table->date('tgl_diajukan');
             $table->string('laporan_diterima', 255);
             $table->date('tgl_diterima');
+            $table->integer("pabrik_id",false);
             $table->integer("user_id",false);
             $table->timestamps();
         });
