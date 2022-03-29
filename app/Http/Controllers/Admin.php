@@ -468,6 +468,26 @@ class Admin extends Controller
         return redirect('/setting');
     }
 
+    public function hapus_produk($id)
+    {
+        produk::all()->where('produk_id', $id)->each->delete();
+        return redirect('/setting');
+    }
+
+    public function hapus_kemasan($id)
+    {
+        kemasan::all()->where('kemasan_id', $id)->each->delete();
+        return redirect('/setting');
+    }
+
+    public function hapus_bahanbaku($id)
+    {
+        bahanbaku::all()->where('bahanbaku_id', $id)->each->delete();
+        return redirect('/setting');
+    }
+
+
+
 
     public function tampil_setting()
     {

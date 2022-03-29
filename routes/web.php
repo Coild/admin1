@@ -104,6 +104,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/input_bahanbaku', [Admin::class, 'tambah_bahanbaku']);
     Route::post('/input_company', [Admin::class, 'tambah_company']);
 
+    Route::get('/hapus_kemasan/{id}', [Admin::class, 'hapus_kemasan']);
+    Route::get('/hapus_bahanbaku/{id}', [Admin::class, 'hapus_bahanbaku']);
+    Route::get('/hapus_produk/{id}', [Admin::class, 'hapus_produk']);
+
     Route::get('/spek_bahan_baku', [pjt::class, 'tampil_bahan_baku'])->name("tampil_bahanbaku");
     Route::get('/spek_bahan_kemas', [pjt::class, 'tampil_bahan_kemas'])->name("tampil_bahankemas");
     Route::get('/spek_produk_antara', [pjt::class, 'tampil_produk_antara'])->name("tampil_produkantara");

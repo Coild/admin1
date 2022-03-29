@@ -85,7 +85,7 @@
                                 <td>{{$row['produk_nama']}}</td>
                                 <td>{{$row['produk_kode']}}</td>
                                 <td>
-                                    <a href="#" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                    <a href="/hapus_produk/{{$row['produk_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
                                 </td>
                             </tr>
                             <?php $i++;
@@ -128,7 +128,7 @@
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$row['kemasan_nama']}}</td>
                                 <td>
-                                    <a href="#" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                    <a href="/hapus_kemasan/{{$row['kemasan_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -175,7 +175,7 @@
                                 <td>{{$row['bahanbaku_nama']}}</td>
                                 <td>{{$row['bahanbaku_kode']}}</td>
                                 <td>
-                                    <a href="#" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                    <a href="/hapus_bahanbaku/{{$row['bahanbaku_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
