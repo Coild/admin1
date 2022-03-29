@@ -14,7 +14,11 @@ class CreateSpesifikasisTable extends Migration
     public function up()
     {
         Schema::create('spesifikasis', function (Blueprint $table) {
-            $table->id();
+            $table->id('spesifikasi_id');
+            $table->string('kategori');
+            $table->string('keterangan');
+            $table->string('file');
+            $table->integer('pabrik_id',0)->unsigned();
             $table->timestamps();
         });
     }

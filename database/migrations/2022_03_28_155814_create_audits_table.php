@@ -14,7 +14,12 @@ class CreateAuditsTable extends Migration
     public function up()
     {
         Schema::create('audits', function (Blueprint $table) {
-            $table->id();
+            $table->id('audit_id');
+            $table->string('nobatch', 255);
+            $table->string('audit_laporan', 255);
+            $table->integer('audit_pabrik', 0)->unsigned();
+            $table->string('nama_audit',255);
+            $table->string('audit_status');
             $table->timestamps();
         });
     }

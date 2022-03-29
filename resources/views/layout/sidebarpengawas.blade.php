@@ -129,6 +129,37 @@
                     Laporan
                 </a>
 
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#spesifikasi" aria-expanded="false" aria-controls="spesifikasi">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Spesifikasi Bahan
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="spesifikasi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <div class="collapse" id="spesifikasi" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{route('tampil_bahanbaku')}}"> Spesifikasi Bahan Baku
+                                    <div class="sb-sidenav-collapse-arrow">
+                                </a>
+                               
+                                <a class="nav-link" href="{{route('tampil_bahankemas')}}"> Spesifikasi Bahan Kemas
+                                    <div class="sb-sidenav-collapse-arrow">
+                                </a>
+
+                                <a class="nav-link" href="{{route('tampil_produkantara')}}"> Spesifikasi Produk Antara
+                                    <div class="sb-sidenav-collapse-arrow">
+                                </a>
+
+                                <a class="nav-link" href="{{route('tampil_produkjadi')}}"> Spesifikasi Produk Jadi
+                                    <div class="sb-sidenav-collapse-arrow">
+                                </a>
+                                
+                            </nav>
+                        </div>
+
+                    </nav>
+                </div>
+
 
                 <a class="nav-link" href="{{route('perizinan')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

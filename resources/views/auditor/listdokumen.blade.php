@@ -33,8 +33,8 @@
                                 <th scope="col">{{$row['laporan_nama']}}</th>
                                 <th scope="col">
 
-                                    <a href="/audit_dokumen/{{$row['laporan_batch']}}" type="submit" class="btn btn-success">
-                                        Lihat
+                                    <a href="/audit_request/{{$row['laporan_batch']}}/{{$row['laporan_nama']}}" type="submit" class="btn btn-success">
+                                        Request
                                     </a>
                                 </th>
                             </tr>

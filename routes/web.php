@@ -97,27 +97,27 @@ Route::group(['middleware' => 'auth'], function () {
         return view('catatan.dokumen.penerimaanBB');
     })->name('penerimaanBB');
 
+    //sidebar
     Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
     Route::post('/input_produk', [Admin::class, 'tambah_produk']);
     Route::post('/input_kemasan', [Admin::class, 'tambah_kemasan']);
     Route::post('/input_bahanbaku', [Admin::class, 'tambah_bahanbaku']);
     Route::post('/input_company', [Admin::class, 'tambah_company']);
 
-    // //View Belum jadi
-    // Route::get('/ambilbahanbaku', [Admin::class, 'tampil_ambilbahanbaku']);
-    // Route::get('/ambilkemasan', [Admin::class, 'tampil_ambilkemasan']);
-    // Route::get('/ambilprodukjadi', [Admin::class, 'tampil_ambilprodukjadi']);
-    // Route::get('/bersihdanpakaialat', [Admin::class, 'tampil_bersihdanpakaialat']);
-    // Route::get('/kemasbatch', [Admin::class, 'tampil_kemasbatch']);
-    // Route::get('/latihhigidansani', [Admin::class, 'tampil_latihhigidansani']);
-    // Route::get('/pembersihanalat', [Admin::class, 'tampil_pembersihanalat']);
-    // Route::get('/pendistribusian', [Admin::class, 'tampil_pendistribusian']);
-    // Route::get('/penggunaanutama', [Admin::class, 'tampil_penggunaanutama']);
-    // Route::get('/periksabahanbaku', [Admin::class, 'tampil_periksabahanbaku']);
-    // Route::get('/periksakemasan', [Admin::class, 'tampil_periksakemasan']);
-    // Route::get('/periksaproduksijadi', [Admin::class, 'tampil_periksaproduksijadi']);
-    // Route::get('/programlatih', [Admin::class, 'tampil_programlatih']);
-    // Route::get('/teraalat', [Admin::class, 'tampil_teraalat']);
+    Route::get('/spek_bahan_baku', [pjt::class, 'tampil_bahan_baku'])->name("tampil_bahanbaku");
+    Route::get('/spek_bahan_kemas', [pjt::class, 'tampil_bahan_kemas'])->name("tampil_bahankemas");
+    Route::get('/spek_produk_antara', [pjt::class, 'tampil_produk_antara'])->name("tampil_produkantara");
+    Route::get('/spek_produk_jadi', [pjt::class, 'tampil_produk_jadi'])->name("tampil_produkjadi");
+
+    Route::post('/tambah_bahan_baku', [pjt::class, 'tambah_bahan_baku'])->name("tambah_bahanbaku");
+    Route::post('/tambah_bahan_kemas', [pjt::class, 'tambah_bahan_kemas'])->name("tambah_bahankemas");
+    Route::post('/tambah_produk_antara', [pjt::class, 'tambah_produk_antara'])->name("tambah_produkantara");
+    Route::post('/tambah_produk_jadi', [pjt::class, 'tambah_produk_jadi'])->name("tambah_produkjadi");
+
+    Route::get('/hapus_bahan_baku/{id}', [pjt::class, 'hapus_bahanbaku'])->name("hapus_bahanbaku");
+    Route::get('/hapus_bahan_kemas/{id}', [pjt::class, 'hapus_bahankemas'])->name("hapus_bahankemas");
+    Route::get('/hapus_produk_antara/{id}', [pjt::class, 'hapus_produkantara'])->name("hapus_produkantara");
+    Route::get('/hapus_produk_jadi/{id}', [pjt::class, 'hapus_produkjadi'])->name("hapus_produkjadi");
 
 
     //Auditor
