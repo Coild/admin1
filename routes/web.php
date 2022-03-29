@@ -93,9 +93,13 @@ Route::group(['middleware' => 'auth'], function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
 
-    Route::get('/penerimaanBB', function () {
-        return view('catatan.dokumen.penerimaanBB');
-    })->name('penerimaanBB');
+    Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');
+    Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
+    Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
+    Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');
+    Route::post('/tambah_penerimaanprodukkeluar', [Admin::class, 'tambah_penerimaanprodukkeluar'])->name('tambah_penerimaanprodukkeluar');
+    Route::post('/tambah_penerimaakemasanmasuk', [Admin::class, 'tambah_penerimaakemasanmasuk'])->name('tambah_penerimaakemasanmasuk');
+    Route::post('/tambah_penerimaankemasankeluar', [Admin::class, 'tambah_penerimaankemasankeluar'])->name('tambah_penerimaankemasankeluar');
 
     //sidebar
     Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
@@ -130,7 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/audit_batch', [Auditor::class, 'list_batch']);
     Route::get('/list_audit', [Auditor::class, 'list_request']);
 
-    Route::post('tambah_request',[Auditor::class,'tambah_request']);
+    Route::post('tambah_request', [Auditor::class, 'tambah_request']);
 
     //pjt
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
@@ -143,7 +147,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
     Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
-    
+
 
     //pprotap
     Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
@@ -192,6 +196,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');
+    Route::post('tambah_pelatihancpkb', [Admin::class, 'tambah_pelatihancpkb'])->name('tambah_pelatihancpkb');
     Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
     Route::post('tambah_keluhan', [Admin::class, 'tambah_keluhan'])->name('tambah_keluhan');
     Route::post('tambah_penarikan', [Admin::class, 'tambah_penarikan'])->name('tambah_penarikan');

@@ -145,13 +145,13 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kartustokbahan'] }}</td>
+                                                    <td>{{ $row['kode_kartu'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
-                                                        echo 'Belum Diajukan';
+                                                        echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
@@ -289,7 +289,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kartustokbahankemas'] }}</td>
+                                                    <td>{{ $row['kode_kartu'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
@@ -320,14 +320,14 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Ruang Timbang
+                                    Produk Antara
                                 </div>
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm3"
                                         onclick="setdatetoday1(3)">
-                                        Tambah Kartu Stok Bahan Kemas
+                                        Tambah Kartu Stok Produk Antara
                                     </button>
 
                                     <!-- Modal -->
@@ -433,7 +433,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kartustokprodukjadi'] }}</td>
+                                                    <td>{{ $row['kode_kartu'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>

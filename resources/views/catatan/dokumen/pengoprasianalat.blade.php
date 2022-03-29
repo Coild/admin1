@@ -82,7 +82,7 @@
                                                             class="col-sm-3 col-form-label">Ruang</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="ruang" class="form-control"
-                                                                id="inputEmail3" placeholder="Tipe/Merek" />
+                                                                id="inputEmail3" placeholder="Ruang" />
                                                         </div>
                                                     </div>
 
@@ -159,6 +159,7 @@
                                 <th scope="col">Selesai</th>
                                 <th scope="col">Oleh</th>
                                 <th scope="col">Keterangan</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -177,6 +178,9 @@
                                     <td>{{ $row['selesai'] }}</td>
                                     <td>{{ $row['oleh'] }}</td>
                                     <td>{{ $row['ket'] }}</td>
+                                    <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
                                     <td>
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />

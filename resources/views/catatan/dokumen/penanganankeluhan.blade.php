@@ -138,6 +138,7 @@
                                 <th scope="col">Produk Yang Digunakan</th>
                                 <th scope="col">Penanganan Keluhan</th>
                                 <th scope="col">Tindak Lanjut</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -147,7 +148,7 @@
                                 <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $row['id_penanganankeluhan'] }}</td>
+                                    <td>{{ $row['kode_keluhan'] }}</td>
                                     <td>{{ $row['nama_customer'] }}</td>
                                     <td>{{ $row['tanggal_keluhan'] }}</td>
                                     <td>{{ $row['keluhan'] }}</td>
@@ -155,6 +156,9 @@
                                     <td>{{ $row['produk_yang_digunakan'] }}</td>
                                     <td>{{ $row['penanganan_keluhan'] }}</td>
                                     <td>{{ $row['tindak_lanjut'] }}</td>
+                                    <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
                                     <td>
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />

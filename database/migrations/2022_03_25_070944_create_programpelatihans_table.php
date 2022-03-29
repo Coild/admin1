@@ -9,8 +9,8 @@ class CreateProgrampelatihansTable extends Migration
     public function up()
     {
         Schema::create('programpelatihans', function (Blueprint $table) {
-
             $table->integer('id_programpelatihan', 11);
+            $table->string('kode_pelatihan', 100);
             $table->string('materi_pelatihan', 100);
             $table->string('peserta_pelatihan', 100);
             $table->string('pelatih', 100);
@@ -18,9 +18,10 @@ class CreateProgrampelatihansTable extends Migration
             $table->date('jadwal_mulai_pelatihan')->nullable();
             $table->date('jadwal_berakhir_pelatihan')->nullable();
             $table->string('metode_penilaian', 100);
-            $table->integer('user_id', 0)->unsigned();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->integer('pabrik', false);
+            $table->tinyInteger('status', 0)->unsigned();
+            $table->integer("user_id", false);
+            $table->timestamps();
         });
     }
 

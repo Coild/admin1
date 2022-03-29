@@ -46,11 +46,11 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                             Penarikan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="kode_penarikan" class="form-control"
-                                                                id="inputEmail3" placeholder="Kode Pemusnahan" />
+                                                                id="inputEmail3" placeholder="Kode Penarikan" />
                                                         </div>
                                                     </div>
 
@@ -58,9 +58,9 @@
                                                         name="tanggal" placeholder="" />
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Distributor</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="nama_distributor"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Nama Distributor" />
@@ -68,18 +68,18 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Produk
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Produk
                                                             Ditarik</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="produk_ditarik" class="form-control"
                                                                 id="inputEmail3" placeholder="Produk Ditarik" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Jumlah
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                                             Produk Ditarik</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="jumlah_produk_ditarik"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Jumlah Produk Ditarik" />
@@ -87,18 +87,18 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">No
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                             Batch</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="no_batch" class="form-control"
                                                                 id="inputEmail3" placeholder="No Batch" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Alasan
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Alasan
                                                             Penarikan</label>
-                                                        <div class="col-sm-10">
+                                                        <div class="col-sm">
                                                             <input type="text" name="alasan_penarikan"
                                                                 class="form-control" id="inputEmail3"
                                                                 placeholder="Alasan Penarikan" />
@@ -131,6 +131,7 @@
                                 <th scope="col">Jumlah Produk Ditarik</th>
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Alasan Penarikan</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -141,13 +142,16 @@
                                 $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $row['id_produk_penarikan'] }}</td>
+                                    <td>{{ $row['kode_penarikan'] }}</td>
                                     <td>{{ $row['tanggal_penarikan'] }}</td>
                                     <td>{{ $row['nama_distributor'] }}</td>
                                     <td>{{ $row['produk_ditarik'] }}</td>
                                     <td>{{ $row['jumlah_produk_ditarik'] }}</td>
-                                    <td>{{ $row['id_batch'] }}</td>
+                                    <td>{{ $row['no_batch'] }}</td>
                                     <td>{{ $row['alasan_penarikan'] }}</td>
+                                    <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
                                     <td>
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />

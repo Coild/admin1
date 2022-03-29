@@ -15,14 +15,16 @@ class CreateRuangtimbangsTable extends Migration
     {
         Schema::create('ruangtimbangs', function (Blueprint $table) {
             $table->id("id_ruangtimbang", 10);
+            $table->string("kode_ruangtimbang", 10);
             $table->date('tanggal')->nullable();
             $table->string("nama_bahan_baku", 100);
-            $table->integer("no_loth", 0)->unsigned();
+            $table->string("no_loth", 20);
             $table->string("jumlah_bahan_baku", 100);
-            $table->integer("jumlah_permintaan", 0)->unsigned();
-            $table->integer("hasil_penimbangan", 0)->unsigned();
+            $table->string("jumlah_permintaan", 20);
+            $table->string("hasil_penimbangan", 20);
             $table->string("untuk_produk", 100);
-            $table->tinyInteger('pjt', 0)->unsigned();
+            $table->integer('status', 0)->unsigned();
+            $table->integer('pabrik', false);
             $table->integer("user_id", false);
             $table->timestamps();
         });

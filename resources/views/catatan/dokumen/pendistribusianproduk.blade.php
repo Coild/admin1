@@ -106,6 +106,7 @@
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Jumlah Produk</th>
                                 <th scope="col">Nama Distributor</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -115,11 +116,14 @@
                                 <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $row['id_distribusi'] }}</td>
+                                    <td>{{ $row['kode_distribusi'] }}</td>
                                     <td>{{ $row['tanggal'] }}</td>
                                     <td>{{ $row['id_batch'] }}</td>
                                     <td>{{ $row['jumlah'] }}</td>
                                     <td>{{ $row['nama_distributor'] }}</td>
+                                    <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
                                     <td>
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />

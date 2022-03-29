@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -158,10 +158,135 @@ class Admin extends Controller
 
     public function tampil_penerimaanbb()
     {
-        // echo Auth::user()->name;
-        return view('catatan.dokumen.penerimaanBB');
+        $pabrik = Auth::user()->pabrik;
+        $data = PPbahanbakumasuk::all()->where('pabrik', $pabrik);
+        $data1 = PPbahanbakukeluar::all()->where('pabrik', $pabrik);
+        $data2 = PPprodukjadimasuk::all()->where('pabrik', $pabrik);
+        $data3 = PPprodukjadikeluar::all()->where('pabrik', $pabrik);
+        $data4 = PPkemasanmasuk::all()->where('pabrik', $pabrik);
+        $data5 = PPkemasankeluar::all()->where('pabrik', $pabrik);
+        return view('catatan.dokumen.penerimaanBB', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'data4' => $data4, 'data5' => $data5]);
     }
-
+    public function tambah_penerimaanbbmasuk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_bahan' => $req['nama_bahanbaku'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPbahanbakumasuk::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
+    public function tambah_penerimaanbbkeluar(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_bahan' => $req['nama_bahanbaku'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPbahanbakukeluar::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
+    public function tambah_penerimaanprdukmasuk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_produkjadi' => $req['nama_produkjadi'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPprodukjadimasuk::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
+    public function tambah_penerimaanprodukkeluar(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_produk' => $req['nama_produk'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPprodukjadikeluar::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
+    public function tambah_penerimaakemasanmasuk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_kemasan' => $req['nama_kemasan'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPkemasanmasuk::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
+    public function tambah_penerimaankemasankeluar(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'tanggal' => $req['tanggal'],
+            'nama_kemasan' => $req['nama_kemasan'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        PPkemasankeluar::insert($data);
+        // // user::deleted()
+        return redirect('penerimaanBB');
+    }
     //tampil batch
     public function tampil_pengolahanbatch()
     {
@@ -223,11 +348,11 @@ class Admin extends Controller
         // dd($id);
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
         $kom = komposisi::all()->where('nomor_batch', $id);
-        $kop = laporan::all()->where('laporan_batch', $id)->where('laporan_nama','pengolahan batch');
+        $kop = laporan::all()->where('laporan_batch', $id)->where('laporan_nama', 'pengolahan batch');
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
         return view('print.pengolahanbatch', [
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang, 
+            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
             'kop' => $kop
 
         ]);
@@ -245,7 +370,6 @@ class Admin extends Controller
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kategori' => $req['kategori'],
-            'bentuk_kategory' => $req['bentuk_kategori'],
             'kemasan' => $req['kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -629,8 +753,9 @@ class Admin extends Controller
     public function tambah_pelatihanhiginitas(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_programpelatihan' => $req['kode_pelatihan'],
+            'kode_pelatihan' => $req['kode_pelatihan'],
             'materi_pelatihan' => $req['materi_pelatihan'],
             'peserta_pelatihan' => $req['peserta_pelatihan'],
             'pelatih' => $req['pelatih'],
@@ -638,6 +763,8 @@ class Admin extends Controller
             'jadwal_mulai_pelatihan' => $req['mulai'],
             'jadwal_berakhir_pelatihan' => $req['berakhir'],
             'metode_penilaian' => $req['metode_penilaian'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -645,16 +772,41 @@ class Admin extends Controller
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
+    public function tambah_pelatihancpkb(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pelatihan' => $req['kode_pelatihan'],
+            'materi_pelatihan' => $req['materi_pelatihan'],
+            'peserta_pelatihan' => $req['peserta_pelatihan'],
+            'pelatih' => $req['pelatih'],
+            'metode_pelatihan' => $req['metode_pelatihan'],
+            'jadwal_mulai_pelatihan' => $req['mulai'],
+            'jadwal_berakhir_pelatihan' => $req['berakhir'],
+            'metode_penilaian' => $req['metode_penilaian'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        Pelatihancpkb::insert($hasil);
+
+        return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
+    }
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
-        $data = programpelatihan::all();
-        return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data]);
+        $pabrik = Auth::user()->pabrik;
+        $data = programpelatihan::all()->where('pabrik', $pabrik);
+        $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
+        return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data, 'data1' => $data1]);
     }
     public function tambah_keluhan(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_penanganankeluhan' => $req['kode_keluhan'],
+            'kode_keluhan' => $req['kode_keluhan'],
             'nama_customer' => $req['nama_customer'],
             'tanggal_keluhan' => $req['tanggal_keluhan'],
             'keluhan' => $req['keluhan'],
@@ -662,6 +814,8 @@ class Admin extends Controller
             'produk_yang_digunakan' => $req['produk_yang_digunakan'],
             'penanganan_keluhan' => $req['penanganan_keluhan'],
             'tindak_lanjut' => $req['tindak_lanjut'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -671,20 +825,24 @@ class Admin extends Controller
     }
     public function tampil_penanganankeluhan()
     {
-        $data = penanganankeluhan::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = penanganankeluhan::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.penanganankeluhan', ['data' => $data]);
     }
     public function tambah_penarikan(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_produk_penarikan' => $req['kode_penarikan'],
+            'kode_penarikan' => $req['kode_penarikan'],
             'tanggal_penarikan' => $req['tanggal'],
             'nama_distributor' => $req['nama_distributor'],
             'produk_ditarik' => $req['produk_ditarik'],
             'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'],
-            'id_batch' => $req['no_batch'],
+            'no_batch' => $req['no_batch'],
             'alasan_penarikan' => $req['alasan_penarikan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -694,18 +852,22 @@ class Admin extends Controller
     }
     public function tampil_penarikanproduk()
     {
-        $data = penarikanproduk::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = penarikanproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.penarikanproduk', ['data' => $data]);
     }
     public function tambah_distribusi(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_distribusi' => $req['kode_distribusi'],
+            'kode_distribusi' => $req['kode_distribusi'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
             'nama_distributor' => $req['nama_distributor'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -715,12 +877,14 @@ class Admin extends Controller
     }
     public function tampil_distribusi()
     {
-        $data = distribusiproduk::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = distribusiproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pendistribusianproduk', ['data' => $data]);
     }
     public function tambah_operasialat(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
             'pob' => $req['pelaksanaan_pob'],
             'tanggal' => $req['tanggal'],
@@ -731,6 +895,8 @@ class Admin extends Controller
             'selesai' => $req['selesai'],
             'oleh' => $req['oleh'],
             'ket' => $req['ket'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -740,11 +906,13 @@ class Admin extends Controller
     }
     public function tampil_pengorasianalat()
     {
-        $data = pengoprasianalat::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
     }
     public function tambah_pelulusan(Request $req)
     {
+        $pabrik = Auth::user()->pabrik;
         $id = Auth::user()->id;
         $hasil = [
             'nama_bahan' => $req['nama_bahan'],
@@ -755,8 +923,9 @@ class Admin extends Controller
             'warna' => $req['warna'],
             'bau' => $req['bau'],
             'ph' => $req['ph'],
-            'berat_jenis' => $req['nerat_jenis'],
-            'kesimpulan' => $req['kesimpulan'],
+            'berat_jenis' => $req['berat_jenis'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -766,22 +935,25 @@ class Admin extends Controller
     }
     public function tampil_pelulusanproduk()
     {
-        $data = pelulusanproduk::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = pelulusanproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pelulusanproduk', ['data' => $data]);
     }
     public function tambah_contohbahan(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_bahanbaku' => $req['kode_bahan'],
+            'kode_bahan' => $req['kode_bahan'],
             'nama_bahanbaku' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
-            'jumlah_bahanbakubox' => $req['jumlah_box'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
-            'kesimpulan' => $req['kesimpulan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -792,16 +964,18 @@ class Admin extends Controller
     public function tambah_contohproduk(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_produkjadi' => $req['kode_produk'],
+            'kode_produk' => $req['kode_produk'],
             'nama_produkjadi' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
-            'jumlah_produkbox' => $req['jumlah_box'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
-            'kesimpulan' => $req['kesimpulan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -812,8 +986,9 @@ class Admin extends Controller
     public function tambah_contohkemasan(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_kemasan' => $req['kode_kemasan'],
+            'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
@@ -821,7 +996,8 @@ class Admin extends Controller
             'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
-            'kesimpulan' => $req['kesimpulan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -831,23 +1007,26 @@ class Admin extends Controller
     }
     public function tampil_pengambilancontoh()
     {
-        $data = contohbahanbaku::all();
-        $data1 = contohprodukjadi::all();
-        $data2 = contohkemasan::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = contohbahanbaku::all()->where('pabrik', $pabrik);
+        $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
+        $data2 = contohkemasan::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
     public function tambah_penimbanganbahan(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'timbang_bahan_id' => $req['kode_penimbangan'],
+            'kode_timbang' => $req['kode_penimbangan'],
             'tanggal' => $req['tanggal'],
             'nama_bahan' => $req['nama_bahan'],
             'no_loth' => $req['no_loth'],
             'nama_suplier' => $req['nama_suplier'],
             'jumlah_bahan' => $req['jumlah_bahan'],
             'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'pjt' => $req['pjt'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -859,8 +1038,9 @@ class Admin extends Controller
     public function tambah_penimbanganprodukantara(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'timbang_produk_id' => $req['kode_produk'],
+            'kode_timbang' => $req['kode_produk'],
             'tanggal' => $req['tanggal'],
             'nama_produk_antara' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
@@ -868,7 +1048,8 @@ class Admin extends Controller
             'jumlah_produk' => $req['jumlah_produk'],
             'hasil_penimbangan' => $req['hasil_penimbangan'],
             'untuk_produk' => $req['untuk_produk'],
-            'pjt' => $req['pjt'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -879,8 +1060,9 @@ class Admin extends Controller
     public function tambah_ruangtimbang(Request $req)
     {
         $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_ruangtimbang' => $req['kode_ruangtimbang'],
+            'kode_ruangtimbang' => $req['kode_ruangtimbang'],
             'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
             'no_loth' => $req['no_loth'],
@@ -888,7 +1070,8 @@ class Admin extends Controller
             'jumlah_permintaan' => $req['jumlah_permintaan'],
             'hasil_penimbangan' => $req['hasil_penimbangan'],
             'untuk_produk' => $req['untuk_produk'],
-            'pjt' => $req['pjt'],
+            'pabrik' => $pabrik,
+            'status' => 0,
             'user_id' => $id,
         ];
 
@@ -898,9 +1081,10 @@ class Admin extends Controller
     }
     public function tampil_penimbangan()
     {
-        $data = timbangbahan::all();
-        $data1 = timbangproduk::all();
-        $data2 = ruangtimbang::all();
+        $pabrik = Auth::user()->pabrik;
+        $data = timbangbahan::all()->where('pabrik', $pabrik);
+        $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+        $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
     public function tambah_kartustokbahan(Request $req)
@@ -908,7 +1092,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_kartustokbahan' => $req['kode_stok'],
+            'kode_kartu' => $req['kode_stok'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],

@@ -127,20 +127,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Persetujuan
-                                                                        PJT</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;" class="form-control 1"
-                                                                            name="pjt" id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">Disetujui</option>
-                                                                            <option value="0">Ditolak</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -164,8 +150,8 @@
                                                 <th scope="col">No Loth</th>
                                                 <th scope="col">Nama Suplier</th>
                                                 <th scope="col">Jumlah Bahan Baku</th>
-                                                <th scope="col">Hasil Penimbangan (Kg)</th>
-                                                <th scope="col">Persetujuan PJT</th>
+                                                <th scope="col">Hasil Penimbangan</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -176,16 +162,14 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['timbang_bahan_id'] }}</td>
+                                                    <td>{{ $row['kode_timbang'] }}</td>
                                                     <td>{{ $row['nama_bahan'] }}</td>
                                                     <td>{{ $row['no_loth'] }}</td>
                                                     <td>{{ $row['nama_suplier'] }}</td>
                                                     <td>{{ $row['jumlah_bahan'] }}</td>
                                                     <td>{{ $row['hasil_penimbangan'] }}</td>
-                                                    <td><?php if ($row['pjt'] == 1) {
-                                                        echo 'Disetujui';
-                                                    } else {
-                                                        echo 'Ditolak';
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
@@ -246,11 +230,11 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kode
-                                                                        Produk Antara</label>
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="kode_produk"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Kode Produk" />
+                                                                            placeholder="Kode Penimbangan" />
                                                                     </div>
                                                                 </div>
 
@@ -297,7 +281,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                            Produk Antara" />
+                                                                                                                                                                                                                                                                                        Produk Antara" />
                                                                     </div>
                                                                 </div>
 
@@ -323,21 +307,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Persetujuan
-                                                                        PJT</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 2" name="pjt"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">Disetujui</option>
-                                                                            <option value="0">Ditolak</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(2)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -356,14 +325,14 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Produk Antara</th>
+                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Produk Antara</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Asal Produk</th>
                                                 <th scope="col">Jumlah Produk Antara</th>
-                                                <th scope="col">Hasil Penimbangan (Kg)</th>
+                                                <th scope="col">Hasil Penimbangan</th>
                                                 <th scope="col">Untuk Produk</th>
-                                                <th scope="col">Persetujuan PJT</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -374,17 +343,15 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['timbang_produk_id'] }}</td>
+                                                    <td>{{ $row['kode_timbang'] }}</td>
                                                     <td>{{ $row['nama_produk_antara'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
                                                     <td>{{ $row['asal_produk'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['hasil_penimbangan'] }}</td>
                                                     <td>{{ $row['untuk_produk'] }}</td>
-                                                    <td><?php if ($row['pjt'] == 1) {
-                                                        echo 'Disetujui';
-                                                    } else {
-                                                        echo 'Ditolak';
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
@@ -520,21 +487,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Persetujuan
-                                                                        PJT</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 3" name="pjt"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">Disetujui</option>
-                                                                            <option value="0">Ditolak</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(3)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -553,14 +505,14 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Bahan Baku</th>
+                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">No Loth</th>
                                                 <th scope="col">Jumlah Bahan Baku</th>
                                                 <th scope="col">Jumlah Permintaan</th>
-                                                <th scope="col">Hasil Penimbangan (Kg)</th>
+                                                <th scope="col">Hasil Penimbangan</th>
                                                 <th scope="col">Untuk Produk</th>
-                                                <th scope="col">Persetujuan PJT</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -571,17 +523,15 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['id_ruangtimbang'] }}</td>
+                                                    <td>{{ $row['kode_ruangtimbang'] }}</td>
                                                     <td>{{ $row['nama_bahan_baku'] }}</td>
                                                     <td>{{ $row['no_loth'] }}</td>
                                                     <td>{{ $row['jumlah_bahan_baku'] }}</td>
                                                     <td>{{ $row['jumlah_permintaan'] }}</td>
                                                     <td>{{ $row['hasil_penimbangan'] }}</td>
                                                     <td>{{ $row['untuk_produk'] }}</td>
-                                                    <td><?php if ($row['pjt'] == 1) {
-                                                        echo 'Disetujui';
-                                                    } else {
-                                                        echo 'Ditolak';
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">

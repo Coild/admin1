@@ -109,11 +109,12 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        bahan baku dalam master Box</label>
+                                                                        Bahan Baku dalam Box</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="jumlah_box"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Jumlah bahan baku dalam master Box" />
+                                                                            placeholder="Jumlah Jumlah
+                                                                                        Bahan Baku dalam Box" />
                                                                     </div>
                                                                 </div>
 
@@ -138,20 +139,6 @@
                                                                             placeholder="Jenis dan Warna Kemasan" />
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kesimpulan</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;" class="form-control 1"
-                                                                            name="kesimpulan" id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">LULUS</option>
-                                                                            <option value="0">DITOLAK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -174,7 +161,7 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah bahan baku dalam master Box</th>
+                                                <th scope="col">Jumlah Bahan Baku Dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
                                                 <th scope="col">Action</th>
@@ -186,12 +173,12 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_bahanbaku'] }}</td>
+                                                    <td>{{ $row['kode_bahan'] }}</td>
                                                     <td>{{ $row['nama_bahanbaku'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
                                                     <td>{{ $row['tanggal_ambil'] }}</td>
                                                     <td>{{ $row['kedaluwarsa'] }}</td>
-                                                    <td>{{ $row['jumlah_bahanbakubox'] }}</td>
+                                                    <td>{{ $row['jumlah_kemasanbox'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['jenis_warnakemasan'] }}</td>
                                                     <td>
@@ -298,11 +285,11 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk dalam master Box</label>
+                                                                        Produk dalam Box</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="jumlah_box"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Jumlah bahan baku dalam master Box" />
+                                                                            placeholder="Jumlah Produk Dalam Box" />
                                                                     </div>
                                                                 </div>
 
@@ -328,20 +315,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kesimpulan</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 2" name="kesimpulan"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">LULUS</option>
-                                                                            <option value="0">DITOLAK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(2)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -364,7 +337,7 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah Produk dalam master Box</th>
+                                                <th scope="col">Jumlah Produk dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
                                                 <th scope="col">Action</th>
@@ -376,12 +349,12 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_produkjadi'] }}</td>
+                                                    <td>{{ $row['kode_produk'] }}</td>
                                                     <td>{{ $row['nama_produkjadi'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
                                                     <td>{{ $row['tanggal_ambil'] }}</td>
                                                     <td>{{ $row['kedaluwarsa'] }}</td>
-                                                    <td>{{ $row['jumlah_produkbox'] }}</td>
+                                                    <td>{{ $row['jumlah_kemasanbox'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
                                                     <td>{{ $row['jenis_warnakemasan'] }}</td>
                                                     <td>
@@ -488,11 +461,11 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        Kemasan dalam master Box</label>
+                                                                        Kemasan dalam Box</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="jumlah_box"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jumlah bahan baku dalam master Box" />
+                                                                            placeholder="Jumlah Kemasan dalam Box" />
                                                                     </div>
                                                                 </div>
 
@@ -518,20 +491,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kesimpulan</label>
-                                                                    <div class="col-sm">
-                                                                        <select style="height: 35px;"
-                                                                            class="form-control 3" name="kesimpulan"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected>Pilih...</option>
-                                                                            <option value="1">LULUS</option>
-                                                                            <option value="0">DITOLAK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
                                                                 <a class="btn btn-primary" onclick="salert1(3)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -554,7 +513,7 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Tanggal Pengambilan Sampel</th>
                                                 <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah bahan baku dalam master Box</th>
+                                                <th scope="col">Jumlah Kemasan Dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
                                                 <th scope="col">Action</th>
@@ -566,7 +525,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['id_kemasan'] }}</td>
+                                                    <td>{{ $row['kode_kemasan'] }}</td>
                                                     <td>{{ $row['nama_kemasan'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
                                                     <td>{{ $row['tanggal_ambil'] }}</td>

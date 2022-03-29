@@ -123,27 +123,13 @@
                                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Berat
                                                                 Jenis</label>
                                                             <div class="col-sm">
-                                                                <input type="text" name="nerat_jenis" class="form-control"
+                                                                <input type="text" name="berat_jenis" class="form-control"
                                                                     id="inputEmail3" placeholder="Berat Jenis" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row">
-                                                            <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Kesimpulan</label>
-                                                            <div class="col-sm">
-                                                                <select style="height: 35px;" class="form-control"
-                                                                    name="kesimpulan" id="inlineFormCustomSelect">
-                                                                    <option selected>Pilih...</option>
-                                                                    <option value="1">LULUS</option>
-                                                                    <option value="0">DITOLAK</option>
-                                                                </select>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
-
                                                 <a class="btn btn-primary" onclick="salert()" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
@@ -169,7 +155,7 @@
                                 <th scope="col">Bau</th>
                                 <th scope="col">pH</th>
                                 <th scope="col">Berat Jenis</th>
-                                <th scope="col">Kesimpulan</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -188,10 +174,10 @@
                                     <td>{{ $row['bau'] }}</td>
                                     <td>{{ $row['ph'] }}</td>
                                     <td>{{ $row['berat_jenis'] }}</td>
-                                    <td><?php if ($row['kesimpulan'] == 1) {
-                                        echo 'Lulus';
+                                    <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
                                     } else {
-                                        echo 'Ditolak';
+                                        echo 'Disetujui';
                                     } ?></td>
                                     <td>
                                         <form method="post" action="detil_batch">
