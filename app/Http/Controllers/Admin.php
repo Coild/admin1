@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-=======
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
->>>>>>> 9ea7ed81ef0422c1ec0741ac7ff7df01fba493ba
+use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
