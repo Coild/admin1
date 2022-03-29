@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+// use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -1161,12 +1162,12 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_pemusnahanbahan' => $req['kode_pemusnahan'],
+            'kode_pemusnahan' => $req['kode_pemusnahan'],
             'tanggal_pemusnahan' => $req['tanggal'],
-            'nama_produk_jadi' => $req['nama_produk_jadi'],
-            'id_batch' => $req['no_batch'],
-            'asal_produk_jadi' => $req['asal_produk_jadi'],
-            'jumlah_produk_jadi' => $req['jumlah_produk_jadi'],
+            'nama_bahanbaku' => $req['nama_bahanbaku'],
+            'no_batch' => $req['no_batch'],
+            'asal_bahanbaku' => $req['asal_bahanbaku'],
+            'jumlah_bahanbaku' => $req['jumlah_bahanbaku'],
             'alasan_pemusnahan' => $req['alasan_pemusnahan'],
             'cara_pemunsnahan' => $req['cara_pemusnahan'],
             'nama_petugas' => $req['petugas'],
@@ -1179,13 +1180,83 @@ class Admin extends Controller
 
         return redirect('/pemusnahan-produk');
     }
+    public function tambah_pemusnahanbahankemas(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pemusnahan' => $req['kode_pemusnahan'],
+            'tanggal_pemusnahan' => $req['tanggal'],
+            'nama_bahan_kemas' => $req['nama_bahankemas'],
+            'no_batch' => $req['no_batch'],
+            'asal_bahankemas' => $req['asal_bahankemas'],
+            'jumlah_bahankemas' => $req['jumlah_bahankemas'],
+            'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+            'cara_pemunsnahan' => $req['cara_pemusnahan'],
+            'nama_petugas' => $req['petugas'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        Pemusnahanbahankemas::insert($hasil);
+
+        return redirect('/pemusnahan-produk');
+    }
+    public function tambah_pemusnahanprodukantara(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pemusnahan' => $req['kode_pemusnahan'],
+            'tanggal_pemusnahan' => $req['tanggal'],
+            'nama_produkantara' => $req['nama_produkantara'],
+            'no_batch' => $req['no_batch'],
+            'asal_produkantara' => $req['asal_produkantara'],
+            'jumlah_produkantara' => $req['jumlah_produkantara'],
+            'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+            'cara_pemunsnahan' => $req['cara_pemusnahan'],
+            'nama_petugas' => $req['petugas'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        Pemusnahanprodukantara::insert($hasil);
+
+        return redirect('/pemusnahan-produk');
+    }
+    public function tambah_pemusnahanprodukjadi(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pemusnahan' => $req['kode_pemusnahan'],
+            'tanggal_pemusnahan' => $req['tanggal'],
+            'nama_produkjadi' => $req['nama_produkantara'],
+            'no_batch' => $req['no_batch'],
+            'asal_produkjadi' => $req['asal_produkantara'],
+            'jumlah_produkjadi' => $req['jumlah_produkantara'],
+            'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+            'cara_pemunsnahan' => $req['cara_pemusnahan'],
+            'nama_petugas' => $req['petugas'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        Pemusnahanprodukjadi::insert($hasil);
+
+        return redirect('/pemusnahan-produk');
+    }
     public function tampil_pemusnahanproduk()
     {
         $pabrik = Auth::user()->pabrik;
         $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
-        $data1 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
-        $data2 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+        $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
+        $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
+        $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
+        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
     }
     public function tambah_kalibrasialat(Request $req)
     {

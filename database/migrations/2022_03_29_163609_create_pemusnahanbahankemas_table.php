@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePemusnahanbahanbakusTable extends Migration
+class CreatePemusnahanbahankemasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePemusnahanbahanbakusTable extends Migration
      */
     public function up()
     {
-        Schema::create('pemusnahanbahanbakus', function (Blueprint $table) {
-            $table->string('id_pemusnahanbahan', 20)->primary_key();
+        Schema::create('pemusnahanbahankemas', function (Blueprint $table) {
+            $table->id('id_pemusnahanbahankemas', 20);
+            $table->string('kode_pemusnahan', 20);
             $table->date('tanggal_pemusnahan')->nullable();
-            $table->string('nama_produk_jadi', 100);
-            $table->string('id_batch', 20);
-            $table->string('asal_produk_jadi', 20);
-            $table->integer('jumlah_produk_jadi', 0)->unsigned();
+            $table->string('nama_bahan_kemas', 100);
+            $table->string('no_batch', 20);
+            $table->string('asal_bahankemas', 20);
+            $table->string('jumlah_bahankemas', 20);
             $table->string('alasan_pemusnahan', 100);
             $table->string('cara_pemunsnahan', 100);
             $table->string('nama_petugas', 100);
@@ -37,6 +38,6 @@ class CreatePemusnahanbahanbakusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemusnahanbahanbakus');
+        Schema::dropIfExists('pemusnahanbahankemas');
     }
 }
