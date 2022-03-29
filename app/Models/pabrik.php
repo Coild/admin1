@@ -9,4 +9,11 @@ class pabrik extends Model
 {
     use HasFactory;
     protected $primaryKey = 'pabrik_id';
+
+    protected $fillable = [
+        'alamat',
+        'no_hp',
+        'logo',
+        'nama'
+    ];
 }

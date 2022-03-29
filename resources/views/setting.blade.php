@@ -27,27 +27,32 @@
                         <div class="form-group row" margin-bottom=10px;>
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="Nama">
+                                <input type="text" name="nama" value="{{$nama}}" class="form-control" id="inputEmail3" placeholder="Nama">
                             </div>
                         </div>
                         <div class="form-group row" margin-bottom=10px;>
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
-                                <input type="text" name="alamat" class="form-control" id="inputEmail3" placeholder="Alamat">
+                                <input type="text" name="alamat" value="{{$alamat}}" class="form-control" id="inputEmail3" placeholder="Alamat">
                             </div>
                         </div>
                         <div class="form-group row" margin-bottom=10px;>
                             <label for="inputEmail3" class="col-sm-2 col-form-label">No. telp</label>
                             <div class="col-sm-10">
-                                <input type="text" name="telp" class="form-control" id="inputEmail3" placeholder="No. Telp">
+                                <input type="text" name="telp" value="{{$no_hp}}" class="form-control" id="inputEmail3" placeholder="No. Telp">
                             </div>
                         </div>
 
                         <div class="form-group row" margin-bottom=10px;>
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Logo</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-7">
                                 <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
                             </div>
+                            <div class="col-sm-3" margin-bottom=10px;>
+                                <img src="asset/logo/{{$logo}}" style="height: 150px; width:auto" class="img-fluid mt-5" alt="Responsive image" background-repeat:>
+
+                            </div>
+
                         </div>
 
                 </div>

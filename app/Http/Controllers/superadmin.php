@@ -29,6 +29,9 @@ class superadmin extends Controller
 
         $hasil = [
             'nama' => $request['pabrik'],
+            'alamat' => 'Belum',
+            'no_hp' => 'Belum',
+            'logo' => 'logo.png'
         ];
 
         pabrik::insert($hasil);

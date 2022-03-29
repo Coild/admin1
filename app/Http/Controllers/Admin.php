@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -537,17 +537,13 @@ class Admin extends Controller
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/logo/';
         $file->move($tujuan_upload, $nama);
-        $id = Auth::user()->id;
-        $hasil = [
-            'company_nama' => $req['nama'],
-            'company_alamat' => $req['alamat'],
-            'company_telepon' => $req['telp'],
-            'company_logo' => $nama,
-            'user_id' => $id,
-        ];
-
-        company::insert($hasil);
-        // // user::deleted()
+        $id = Auth::user()->pabrik;
+        $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
+            'alamat' => $req['alamat'],
+            'no_hp' => $req['telp'],
+            'logo' => $nama,
+        ]);
+        
         return redirect('/setting');
     }
 
@@ -619,11 +615,19 @@ class Admin extends Controller
             return view('tunggu');
         } else {
             $id = Auth::user()->id;
+            $pabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik);
+            foreach ($pabrik as $row){
+                $nama = $row['nama'];
+                $alamat = $row['alamat'];
+                $no_hp = $row['no_hp'];
+                $logo = $row['logo'];
+            }
             $kom = company::all()->where('user_id', $id);
             $produk = produk::all()->where('user_id', $id);
             $kemasan = kemasan::all()->where('user_id', $id);
             $bahanbaku = bahanbaku::all()->where('user_id', $id);
             return view('setting', [
+                'alamat' => $alamat, 'no_hp' => $no_hp,'nama' => $nama, 'logo' => $logo,
                 'list_com' => $kom, 'list_produk' => $produk, 'list_kemasan' => $kemasan, 'list_bahanbaku' => $bahanbaku
             ]);
         }
