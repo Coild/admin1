@@ -198,6 +198,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');
     Route::post('tambah_pelatihancpkb', [Admin::class, 'tambah_pelatihancpkb'])->name('tambah_pelatihancpkb');
     Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
+    Route::post('tambah_pemusnahanbahankemas', [Admin::class, 'tambah_pemusnahanbahankemas'])->name('tambah_pemusnahanbahankemas');
+    Route::post('tambah_pemusnahanprodukantara', [Admin::class, 'tambah_pemusnahanprodukantara'])->name('tambah_pemusnahanprodukantara');
+    Route::post('tambah_pemusnahanprodukjadi', [Admin::class, 'tambah_pemusnahanprodukjadi'])->name('tambah_pemusnahanprodukjadi');
     Route::post('tambah_keluhan', [Admin::class, 'tambah_keluhan'])->name('tambah_keluhan');
     Route::post('tambah_penarikan', [Admin::class, 'tambah_penarikan'])->name('tambah_penarikan');
     Route::post('tambah_distribusi', [Admin::class, 'tambah_distribusi'])->name('tambah_distribusi');
