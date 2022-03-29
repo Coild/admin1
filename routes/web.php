@@ -205,4 +205,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan'])->name('tambah_kartustokbahan');
     Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas'])->name('tambah_kartustokbahankemas');
     Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
+    Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
+    Route::post('tambah_kalibrasialat', [Admin::class, 'tambah_kalibrasialat'])->name('tambah_kalibrasialat');
 });
