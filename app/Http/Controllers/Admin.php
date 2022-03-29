@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+=======
+use App\Models\{bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+>>>>>>> 9ea7ed81ef0422c1ec0741ac7ff7df01fba493ba
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -1186,5 +1190,29 @@ class Admin extends Controller
         $data1 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
         $data2 = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+    }
+    public function tambah_kalibrasialat(Request $req)
+    {
+        $file = $req->file('file');
+        $exten = $file->getClientOriginalExtension();
+        $nama = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $tujuan_upload = 'kalibrasi_alat';
+        $file->move($tujuan_upload, $nama);
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama_alat' => $req['nama_alat'],
+            'nama_file' => $nama,
+            'pabrik' => $pabrik,
+            'user_id' => $id,
+        ];
+        Kalibrasialat::insert($hasil);
+        return redirect('/kalibrasi-alat');
+    }
+    public function tampil_kalibrasialat()
+    {
+        $pabrik = Auth::user()->pabrik;
+        $data = Kalibrasialat::all()->where('pabrik', $pabrik);
+        return view('catatan.dokumen.kalibrasialat', ['data' => $data]);
     }
 }
