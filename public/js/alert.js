@@ -1,7 +1,6 @@
 function salert() {
     const mycomp = document.getElementsByClassName("form-control");
     var valid = false;
-    console.log(mycomp);
     for (i = 0; i < mycomp.length; i++) {
         if (mycomp[i].value == "") {
             valid = true;

@@ -64,7 +64,7 @@
                                                         <label class="col-sm-3 col-form-label"
                                                             for="exampleFormControlFile1">Dokumen Kalibrasi</label>
                                                         <div class="col-sm">
-                                                            <input type="file" name="file" class="form-control-file"
+                                                            <input type="file" name="file" class="form-control"
                                                                 id="fileform" onchange="return filecheck()">
                                                         </div>
                                                     </div>
