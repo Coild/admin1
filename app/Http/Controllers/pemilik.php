@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\audit;
+use App\Models\pabrik;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -65,6 +66,21 @@ class pemilik extends Controller
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
         return view("pemilik.karyawan", ['data' => $data]);
+    }
+
+    public function ganti_struktur(Request $req)
+    {
+        $file = $req->file('upload');
+        $nama = $file->getClientOriginalName();
+        $tujuan_upload = 'asset/struktur/';
+        $file->move($tujuan_upload, $nama);
+        $id = Auth::user()->pabrik;
+        // dd($id);
+        $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
+            'struktur' => $nama,
+        ]);
+        // // user::deleted()
+        return redirect('/dashboard');
     }
 
     public function list_request()

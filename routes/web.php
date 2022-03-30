@@ -53,9 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pobpabrik', [Admin::class, 'tampil_pobpabrik']);
     Route::get('/hapus_pobpabrik/{id}', [Admin::class, 'hapus_pobpabrik']);
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [Admin::class, 'dashboard'])->name('dashboard');
 
     Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
@@ -167,6 +165,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/karyawan', [pemilik::class, 'hapus_karyawan']);
     Route::get('/bos_audit', [pemilik::class, 'list_request']);
     Route::post('/terima_request', [pemilik::class, 'terima_request']);
+    Route::post('/ganti_struktur', [pemilik::class, 'ganti_struktur']);
 
     //super admin
     // Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);
@@ -174,6 +173,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/audit', [superadmin::class, 'tampil_audit']);
     Route::post('/register_pabrik', [superadmin::class, 'register']);
     Route::post('/register_audit', [superadmin::class, 'register_audit']);
+    Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
 
     // Route::get('/protap', [superadmin::class, 'tampil_protap']);
 

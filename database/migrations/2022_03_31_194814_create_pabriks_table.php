@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAturansTable extends Migration
+class CreatePabriksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateAturansTable extends Migration
      */
     public function up()
     {
-        Schema::create('aturans', function (Blueprint $table) {
-            $table->id('aturan_id');
-            $table->string('nama',255);
-            $table->date('tgl_upload');
+        Schema::create('pabriks', function (Blueprint $table) {
+            $table->id('pabrik_id');
+            $table->string("nama",125);
+            $table->string("alamat",256);
+            $table->string("no_hp",125);
+            $table->string("logo",125);
+            $table->string("struktur",125);
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateAturansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aturans');
+        Schema::dropIfExists('pabriks');
     }
 }

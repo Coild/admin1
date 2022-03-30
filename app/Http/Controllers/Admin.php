@@ -3,14 +3,36 @@
 namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-use App\Models\{jabatan,pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{aturan, jabatan,pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Exists;
 
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
+
 class Admin extends Controller
 {
+    public function dashboard() {
+        $pabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik);
+        foreach($pabrik as $data){
+            $struktur = $data['struktur'];
+        }
+
+        $isibaru = aturan::all()->where('kategori','Aturan Baru')->sortByDesc('tgl_upload')->first();
+        $isiproduk = aturan::all()->where('kategori','Aturan Produk')->sortByDesc('tgl_upload')->first();
+        $isipabrik = aturan::all()->where('kategori','Aturan Pabrik')->sortByDesc('tgl_upload')->first();
+        $isiiklan = aturan::all()->where('kategori','Aturan Iklan')->sortByDesc('tgl_upload')->first();
+
+        $baru = isset($isibaru) ? 'asset/aturam/'.$isibaru['nama'] : '#';
+        $pabrik = isset($isipabrik['nama']) ?  'asset/aturam/'.$isipabrik['nama'] : '#';
+        $produk = isset($isiproduk) ?  'asset/aturam/'.$isiproduk['nama'] : '#';
+        $iklan = isset($isiiklan) ?  'asset/aturam/'.$isiiklan['nama'] : '#';
+
+        return view('dashboard',['struktur' => $struktur,'baru'=>$baru,'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+    }
+
     //COA
     public function tampil_coa()
     {

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\aturan;
 use App\Models\pabrik;
 use App\Models\user;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class superadmin extends Controller
@@ -31,7 +33,8 @@ class superadmin extends Controller
             'nama' => $request['pabrik'],
             'alamat' => 'Belum',
             'no_hp' => 'Belum',
-            'logo' => 'logo.png'
+            'logo' => 'logo.png',
+            'struktur' => 'logo.png'
         ];
 
         pabrik::insert($hasil);
@@ -50,7 +53,7 @@ class superadmin extends Controller
 
         if ($simpan) {
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect('/login');
+            return redirect('/dashboard');
         } else {
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect('showregister');
@@ -80,5 +83,20 @@ class superadmin extends Controller
     public function tampil_protap()
     {
         return view("admin.ubahprotap");
+    }
+
+    public function input_aturan(Request $req) {
+        $file = $req->file('upload');
+        $nama = $file->getClientOriginalName();
+        $tujuan_upload = 'asset/aturan/';
+        $file->move($tujuan_upload, $nama);
+        $data = [
+            'nama' => $nama,
+            'kategori' => $req['kategori'],
+            'tgl_upload' => $req['tgl'],
+        ];
+        aturan::insert($data);
+        // // user::deleted()
+        return redirect('dashboard');
     }
 }
