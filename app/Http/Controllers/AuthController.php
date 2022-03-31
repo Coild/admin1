@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AuthController extends Controller
