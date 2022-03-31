@@ -16,7 +16,6 @@ class Admin extends Controller
         foreach ($pabrik as $data) {
             $struktur = $data['struktur'];
         }
-
         $isibaru = aturan::all()->where('kategori', 'Aturan Baru')->sortByDesc('tgl_upload')->first();
         $isiproduk = aturan::all()->where('kategori', 'Aturan Produk')->sortByDesc('tgl_upload')->first();
         $isipabrik = aturan::all()->where('kategori', 'Aturan Pabrik')->sortByDesc('tgl_upload')->first();
@@ -28,7 +27,7 @@ class Admin extends Controller
         $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
 
         return view('dashboard', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
-    }
+        }
 
     //COA
     public function tampil_coa()

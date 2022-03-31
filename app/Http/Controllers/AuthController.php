@@ -54,16 +54,17 @@ class AuthController extends Controller
         } else { // false
 
             //Login Fail
-            
-            
+
+
             return redirect('/login')->with('message', 'Email atau password salah');
         }
     }
 
     public function showFormRegister()
     {
+        $data1 = user::all('nama');
         $data = pabrik::all();
-        return view('auth.register', ['data' => $data]);
+        return view('auth.register', ['data' => $data, 'data1' => $data1]);
     }
 
     public function register(Request $request)
@@ -100,7 +101,7 @@ class AuthController extends Controller
 
     public function ganti_password(Request $req)
     {
-        if (Hash::check($req['lama'] ,Auth::user()->password)) {
+        if (Hash::check($req['lama'], Auth::user()->password)) {
             $id = Auth::user()->id;
             $user = User::all()->where("id", $id)->first()->update([
                 'password' => Hash::make($req['baru']),
@@ -108,8 +109,8 @@ class AuthController extends Controller
         } else {
             return redirect('/gantipassword')->with('status', 'Kata sandi lama anda salah!');
         }
-        
-        return redirect('/');//->with('status', 'Kata sandi lama anda salah!');
+
+        return redirect('/'); //->with('status', 'Kata sandi lama anda salah!');
     }
 
     public function autocompleteSearch(Request $request)

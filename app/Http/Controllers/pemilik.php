@@ -93,10 +93,10 @@ class pemilik extends Controller
     {
         // dd($req);
         $user = audit::all()->where("audit_pabrik", $req->pabrik)
-        ->where("nobatch",$req->nobatch)
-        ->where("audit_laporan",$req->laporan)->first()->update([
-            'audit_status' => 1
-        ]);
+            ->where("nobatch", $req->nobatch)
+            ->where("audit_laporan", $req->laporan)->first()->update([
+                'audit_status' => 1
+            ]);
         return redirect('bos_audit');
     }
 }
