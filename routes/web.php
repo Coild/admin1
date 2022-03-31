@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tolak_batch/{id}', [Admin::class, 'tolak_batch']);
     Route::get('/terima_batch/{id}', [Admin::class, 'terima_batch']);
 
-    
+
 
 
 
@@ -168,7 +168,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tolak', [pemilik::class, 'tolak']);
     Route::post('/update_posisi', [pemilik::class, 'update_posisi']);
     Route::get('/karyawan', [pemilik::class, 'tampil_karyawan']);
-    Route::post('/karyawan', [pemilik::class, 'hapus_karyawan']);
+    Route::post('/hapus_karyawan', [pemilik::class, 'hapus_karyawan']);
     Route::get('/bos_audit', [pemilik::class, 'list_request']);
     Route::post('/terima_request', [pemilik::class, 'terima_request']);
     Route::post('/ganti_struktur', [pemilik::class, 'ganti_struktur']);
@@ -203,7 +203,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
     Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');
     Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan'])->name('tambah_contohkemasan');
-    
+
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');

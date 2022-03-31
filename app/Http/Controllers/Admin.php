@@ -16,7 +16,6 @@ class Admin extends Controller
         foreach ($pabrik as $data) {
             $struktur = $data['struktur'];
         }
-
         $isibaru = aturan::all()->where('kategori', 'Aturan Baru')->sortByDesc('tgl_upload')->first();
         $isiproduk = aturan::all()->where('kategori', 'Aturan Produk')->sortByDesc('tgl_upload')->first();
         $isipabrik = aturan::all()->where('kategori', 'Aturan Pabrik')->sortByDesc('tgl_upload')->first();
@@ -27,7 +26,7 @@ class Admin extends Controller
         $produk = isset($isiproduk) ?  'asset/aturam/' . $isiproduk['nama'] : '#';
         $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
 
-        return view('dashboard', ['struktur' => $struktur, 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+        return view('dashboard', ['struktur' => $struktur ?? "", 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
     }
 
     //COA
@@ -733,7 +732,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer= Periksaalat::insertGetId($hasil);
+        $nomer = Periksaalat::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -1068,7 +1067,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer=pengoprasianalat::insertGetId($hasil);
+        $nomer = pengoprasianalat::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());

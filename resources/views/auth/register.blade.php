@@ -9,6 +9,9 @@
     <meta name="author" content="" />
     <title>Register - SB Admin</title>
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="js/alert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 
@@ -24,7 +27,7 @@
                                     <h3 class="text-center font-weight-light my-4">Create Account</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/register" method="post">
+                                    <form action="/register" method="post" id='forminput'>
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
@@ -45,7 +48,7 @@
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" name="username" id="inputEmail" type="text"
+                                            <input class="form-control" name="username" id="username" type="text"
                                                 placeholder="name@example.com" />
                                             <label for="inputEmail">Username</label>
                                         </div>
@@ -59,9 +62,10 @@
                                             <div class="col-sm-10">
                                                 <select class="form-control" name="search"
                                                     id="inlineFormCustomSelect">
-                                                    <option value="0" selected>Choose...</option>
+                                                    <option value="" selected>Choose...</option>
                                                     @foreach ($data as $row)
-                                                        <option value="{{$row['pabrik_id']}}">{{ $row['nama'] }}</option>
+                                                        <option value="{{ $row['pabrik_id'] }}">{{ $row['nama'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -82,9 +86,9 @@
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><button type="submit"
+                                                <div class="d-grid"><a href="#" onclick="register()"
                                                         class="btn btn-primary btn-block" href="/">Create
-                                                        Account</button></div>
+                                                        Account</a></div>
                                             </div>
                                     </form>
                                 </div>
@@ -128,6 +132,9 @@
                 });
             }
         });
+    </script>
+    <script>
+        const username = <?php echo $data1; ?>;
     </script>
 </body>
 
