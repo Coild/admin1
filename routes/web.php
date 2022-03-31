@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor};
+use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, PrintController};
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +29,11 @@ Route::view('/template', 'print.template');
 Route::get('/resetpass', function () {
     return view('auth.resetpass');
 });
+
+//print    
+Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
+Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+ROute::get('/dummy', [PrintController::class, 'dummy']);
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -76,11 +81,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
     // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
     Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid'])->name('detil_batch');
-    Route::post('/printpengolahanbatch', [Admin::class, 'cetak_pengolahanbatch']);
     Route::get('/ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
     Route::get('/list_ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
     Route::get('/tolak_batch/{id}', [Admin::class, 'tolak_batch']);
     Route::get('/terima_batch/{id}', [Admin::class, 'terima_batch']);
+
+    
 
 
 
@@ -197,6 +203,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
     Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');
     Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan'])->name('tambah_contohkemasan');
+    
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');

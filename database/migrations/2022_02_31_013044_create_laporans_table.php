@@ -17,6 +17,7 @@ class CreateLaporansTable extends Migration
             $table->id('laporan_id',5);
             $table->string('laporan_nama', 255);
             $table->string('laporan_batch', 255);
+            $table->integer('laporan_nomor',0)->unsigned();
             $table->string('laporan_diajukan', 255);
             $table->date('tgl_diajukan');
             $table->string('laporan_diterima', 255);

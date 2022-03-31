@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <style>
+        P {
+            margin-bottom: 3px;
+        }
         table {
             width: 100%;
             margin-top: -15;
@@ -26,8 +29,35 @@
             font-weight: lighter;
             /* margin-bottom: auto; */
         }
+
+        @page {
+            size: auto;
+            margin: 5mm;
+        }
+
+        /* Kop Surat */
+        .kop {
+            border-bottom: 5px solid black;
+        }
+
+        .rangkasurat {
+            width: 980px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .tengah {
+            text-align: center;
+        }
+
+        /* isi */
+        .isi {
+            text-align: center;
+        }
     </style>
-    <title>A4</title>
+
+    <title>print</title>
 
     <!-- Normalize or reset CSS with your favorite library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
@@ -51,33 +81,85 @@
 
     <!-- Each sheet element should have the class "sheet" -->
     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
-    <section class="sheet padding-10mm">
 
-        <!-- Write HTML just like a web page -->
-        <h2 style="text-align: center;">Catatan Pengolahan Batch</h2>
+    <section class="sheet padding-10mm" style="height: auto;">
+        <!-- Kop Surat -->
+
+        <table width="100%" class="kop">
+            <tr>
+                <td style="border:none;">
+                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
+                </td>
+                <td class="tengah" style="border:none;">
+                    <h1 style="font-weight: bolder; margin-bottom: -15px">
+                        UD. SEMELOTO
+                    </h1>
+                    <h3 style="margin-bottom: -0px">
+                        JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                    </h3>
+                    <h5>
+                        DESA LENANGGUAR KABUPATEN SUMBAWA
+                    </h5>
+                </td>
+            </tr>
+        </table>
         <center>
+            <br>
             @foreach($kop as $row)
-            <table class="table ">
+            <table class="table table-bordered">
                 <tr>
-                    <td rowspan="2">
-                        <img src="{{asset('asset/logo/logo.jpg')}}" ;alt="Your Picture">
+                    <td rowspan="4">
+                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height: 100px; width:auto;" ;alt="Your Picture">
                     </td>
-                    <td>
-                        Bagian </br> Produksi
+                    <td rowspan="2" style="text-align: center;">
+                        CATATAN<br>PENGOLAHAN BATCH
                     </td>
-                    <td>
-                        Sesuai dengan POB no : {{'dummy'}}
+                    <td colspan="3">Halaman:</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" colspan="3">
+                        Nomor: <br>
+                        Tanggal Berlaku: <br>
                     </td>
                 </tr>
                 <tr>
-                    <td>Disusun Oleh <br> {{$row['laporan_diajukan']}}<br><br>Tanggal <br>  {{$row['tgl_diajukan']}}</td>
-                    <td>Disetujui Oleh <br>  {{$row['laporan_diterima']}} <br><br>Tanggal <br>  {{$row['tgl_diterima']}}</td>
+                    <td  rowspan="2" >
+                    BAGIAN
+                        
+                    </td>
+                    <!-- <td rowspan="3">
+                            Nomor: <br>
+                            Tanggal Berlaku: <br>
+                        </td> -->
 
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td rowspan="3">
+                        Disusun Oleh <br>
+                        {{$row['laporan_diajukan']}} <br>
+                        Tanggal <br>
+                        {{$row['tgl_diajukan']}}
+                    </td>
+                    <td rowspan="3">
+                        Disetujui Oleh <br>
+                        {{$row['laporan_diterima']}} <br>
+                        Tanggal <br>
+                        {{$row['tgl_diajukan']}}
+                    </td>
+                    <td rowspan="3" colspan="3">
+                        Mengganti Nomor <br>
+                        Tanggal <br>
+                        09 Oktober 2019
+                    </td>
                 </tr>
             </table>
             @endforeach
-            <h3>Batch</h3>
+
+
+            <p style="text-align: left; margin-top: 15px; ">1. BATCH</p>
             <table>
+            
                 <tr>
                     <td>Kode</td>
                     <td>Nama</td>
@@ -87,7 +169,6 @@
                     <td>Kemasan</td>
                     <td>Tanggal Pengolahan</td>
                 </tr>
-                <br><br>
                 @foreach ($data as $row)
                 <tr>
                     <td>{{$row['kode_produk']}}</td>
@@ -100,8 +181,7 @@
                 </tr>
                 @endforeach
             </table>
-            <br><br>
-            <h3>Komposisi</h3>
+            <p style="text-align: left; margin-top: 15px;">2. KOMPOSISI</p>
             <table>
 
                 <tr>
@@ -126,8 +206,7 @@
 
             </table>
 
-            <br><br><br><br>
-            <h3>Perlatan</h3>
+            <p style="text-align: left; margin-top: 15px;">2. PERALATAN</p>
             <table class="table">
 
                 <tr>
@@ -149,8 +228,7 @@
                 @endforeach
 
             </table>
-            <br><br>
-            <h3>Bahan</h3>
+            <p style="text-align: left; margin-top: 15px;">2. BAHAN</p>
             <table class="table">
 
                 <tr>
@@ -182,6 +260,21 @@
                 @endforeach
 
             </table>
+
+            <p style="text-align: left; margin-top: 15px;">5. REKONSILISASI</p>
+                <table class="table isi table-bordered">
+                    <tr>
+                        <td>Rekonsiliasi Hasil</td>
+                        <td>Diperiksa Oleh</td>
+                        <td>Disetujui Oleh</td>
+                    </tr>
+                    <tr>
+                        <td>isi 1</td>
+                        <td>isi 2</td>
+                        <td>isi 3</td>
+                    </tr>
+                </table>
+            
 
         </center>
     </section>

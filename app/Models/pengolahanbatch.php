@@ -12,5 +12,6 @@ class pengolahanbatch extends Model
 
     protected $fillable = [
         'status',
+        'batch'
     ];
 }

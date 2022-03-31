@@ -3,30 +3,31 @@
 namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-use App\Models\{aturan, jabatan,pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class Admin extends Controller
 {
-    public function dashboard() {
-        $pabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik);
-        foreach($pabrik as $data){
+    public function dashboard()
+    {
+        $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
+        foreach ($pabrik as $data) {
             $struktur = $data['struktur'];
         }
 
-        $isibaru = aturan::all()->where('kategori','Aturan Baru')->sortByDesc('tgl_upload')->first();
-        $isiproduk = aturan::all()->where('kategori','Aturan Produk')->sortByDesc('tgl_upload')->first();
-        $isipabrik = aturan::all()->where('kategori','Aturan Pabrik')->sortByDesc('tgl_upload')->first();
-        $isiiklan = aturan::all()->where('kategori','Aturan Iklan')->sortByDesc('tgl_upload')->first();
+        $isibaru = aturan::all()->where('kategori', 'Aturan Baru')->sortByDesc('tgl_upload')->first();
+        $isiproduk = aturan::all()->where('kategori', 'Aturan Produk')->sortByDesc('tgl_upload')->first();
+        $isipabrik = aturan::all()->where('kategori', 'Aturan Pabrik')->sortByDesc('tgl_upload')->first();
+        $isiiklan = aturan::all()->where('kategori', 'Aturan Iklan')->sortByDesc('tgl_upload')->first();
 
-        $baru = isset($isibaru) ? 'asset/aturam/'.$isibaru['nama'] : '#';
-        $pabrik = isset($isipabrik['nama']) ?  'asset/aturam/'.$isipabrik['nama'] : '#';
-        $produk = isset($isiproduk) ?  'asset/aturam/'.$isiproduk['nama'] : '#';
-        $iklan = isset($isiiklan) ?  'asset/aturam/'.$isiiklan['nama'] : '#';
+        $baru = isset($isibaru) ? 'asset/aturam/' . $isibaru['nama'] : '#';
+        $pabrik = isset($isipabrik['nama']) ?  'asset/aturam/' . $isipabrik['nama'] : '#';
+        $produk = isset($isiproduk) ?  'asset/aturam/' . $isiproduk['nama'] : '#';
+        $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
 
-        return view('dashboard',['struktur' => $struktur,'baru'=>$baru,'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+        return view('dashboard', ['struktur' => $struktur, 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
     }
 
     //COA
@@ -400,22 +401,6 @@ class Admin extends Controller
         ]);
     }
 
-    public function cetak_pengolahanbatch(Request $req)
-    {
-        $id = $req['nobatch'];
-        // dd($id);
-        $data = pengolahanbatch::all()->where('nomor_batch', $id);
-        $kom = komposisi::all()->where('nomor_batch', $id);
-        $kop = laporan::all()->where('laporan_batch', $id)->where('laporan_nama', 'pengolahan batch');
-        $alat = peralatan::all()->where('nomor_batch', $id);
-        $nimbang = penimbangan::all()->where('nomor_batch', $id);
-        return view('print.pengolahanbatch', [
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
-            'kop' => $kop
-
-        ]);
-    }
-
     public function tambah_batch(Request $req)
     {
         $id = Auth::user()->id;
@@ -434,6 +419,8 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
+        $nomer = pengolahanbatch::insertGetId($hasil);
+
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
@@ -441,6 +428,7 @@ class Admin extends Controller
         $laporan = [
             'laporan_nama' => 'pengolahan batch',
             'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
@@ -451,7 +439,6 @@ class Admin extends Controller
 
         // dd($hasil);
         laporan::insert($laporan);
-        pengolahanbatch::insert($hasil);
         return redirect('/pengolahanbatch');
     }
 
@@ -601,7 +588,7 @@ class Admin extends Controller
             'no_hp' => $req['telp'],
             'logo' => $nama,
         ]);
-        
+
         return redirect('/setting');
     }
 
@@ -673,8 +660,8 @@ class Admin extends Controller
             return view('tunggu');
         } else {
             $id = Auth::user()->id;
-            $pabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik);
-            foreach ($pabrik as $row){
+            $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
+            foreach ($pabrik as $row) {
                 $nama = $row['nama'];
                 $alamat = $row['alamat'];
                 $no_hp = $row['no_hp'];
@@ -685,7 +672,7 @@ class Admin extends Controller
             $kemasan = kemasan::all()->where('user_id', $id);
             $bahanbaku = bahanbaku::all()->where('user_id', $id);
             return view('setting', [
-                'alamat' => $alamat, 'no_hp' => $no_hp,'nama' => $nama, 'logo' => $logo,
+                'alamat' => $alamat, 'no_hp' => $no_hp, 'nama' => $nama, 'logo' => $logo,
                 'list_com' => $kom, 'list_produk' => $produk, 'list_kemasan' => $kemasan, 'list_bahanbaku' => $bahanbaku
             ]);
         }
@@ -746,7 +733,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        Periksaalat::insert($hasil);
+        $nomer= Periksaalat::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'periksa sanitasi alat',
+            'laporan_batch' => $req['no_batch'] ?? 0,
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/periksasanialat');
     }
@@ -775,7 +779,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        periksaruang::insert($hasil);
+        $nomer = periksaruang::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'periksa sanitasi ruangan',
+            'laporan_batch' => $req['no_batch'] ?? 0,
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/periksasaniruang');
     }
@@ -830,7 +851,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        programpelatihan::insert($hasil);
+        $nomer = programpelatihan::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pelatihan higiene dan sanitasi',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
@@ -852,7 +890,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        Pelatihancpkb::insert($hasil);
+        $nomer = Pelatihancpkb::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pelatihan cpkb',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
@@ -881,7 +936,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        penanganankeluhan::insert($hasil);
+        $nomer = penanganankeluhan::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penanganan keluhan',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/penanganan-keluhan');
     }
@@ -908,7 +980,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        penarikanproduk::insert($hasil);
+        $nomer = penarikanproduk::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penarikan produk',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/penarikan-produk');
     }
@@ -933,7 +1022,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        distribusiproduk::insert($hasil);
+        $nomer = distribusiproduk::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'distribusi produk',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pendistribusian-produk');
     }
@@ -962,8 +1068,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        pengoprasianalat::insert($hasil);
+        $nomer=pengoprasianalat::insertGetId($hasil);
 
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pengolahan batch',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('/pengoprasian-alat');
     }
     public function tampil_pengorasianalat()
@@ -991,7 +1113,23 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        pelulusanproduk::insert($hasil);
+        $nomer = pelulusanproduk::insertGetId($hasil);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pelulusan produk jadi',
+            'laporan_batch' => $req['nobatch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pelulusan-produk');
     }
@@ -1019,7 +1157,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        contohbahanbaku::insert($hasil);
+        $nomer = contohbahanbaku::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penambahan contoh bahan baku',
+            'laporan_batch' => $req['nobatch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/ambilcontoh#pills-home');
     }
@@ -1041,7 +1196,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        contohprodukjadi::insert($hasil);
+        $nomer = contohprodukjadi::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penambahan contoh produk',
+            'laporan_batch' => $req['nobatch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/ambilcontoh#pills-profile');
     }
@@ -1063,7 +1235,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        contohkemasan::insert($hasil);
+        $nomer = contohkemasan::insertGetiD($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penambahan contoh kemasan',
+            'laporan_batch' => $req['nobatch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/ambilcontoh#pills-contact');
     }
@@ -1092,7 +1281,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        timbangbahan::insert($hasil);
+        $nomer = timbangbahan::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penimbangan bahan',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -1115,7 +1321,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        timbangproduk::insert($hasil);
+        $nomer = timbangproduk::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'penimbangan produk utama',
+            'laporan_batch' => $req['nobatch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -1137,7 +1360,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        ruangtimbang::insert($hasil);
+        $nomer = ruangtimbang::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'ruang timbang',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -1164,7 +1404,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        kartustokbahan::insert($hasil);
+        $nomer = kartustokbahan::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'kartu stok bahan',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/kartu-stok');
     }
@@ -1183,7 +1440,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        kartustokbahankemas::insert($hasil);
+        $nomer = kartustokbahankemas::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'kartu stok bahan kemas',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/kartu-stok');
     }
@@ -1202,7 +1476,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        kartustokprodukjadi::insert($hasil);
+        $nomer = kartustokprodukjadi::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'kartu stok produk jadi',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/kartu-stok');
     }
@@ -1233,7 +1524,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        pemusnahanbahanbaku::insert($hasil);
+        $nomer = pemusnahanbahanbaku::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pemusnahan bahan',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pemusnahan-produk');
     }
@@ -1256,7 +1564,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        Pemusnahanbahankemas::insert($hasil);
+        $nomer = Pemusnahanbahankemas::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pemusnahan bahan kemas',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pemusnahan-produk');
     }
@@ -1279,7 +1604,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        Pemusnahanprodukantara::insert($hasil);
+        $nomer = Pemusnahanprodukantara::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pemusnahan produk antara',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pemusnahan-produk');
     }
@@ -1302,7 +1644,24 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        Pemusnahanprodukjadi::insert($hasil);
+        $nomer = Pemusnahanprodukjadi::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'pemusnahan produk jadi',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
 
         return redirect('/pemusnahan-produk');
     }
@@ -1330,7 +1689,25 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'user_id' => $id,
         ];
-        Kalibrasialat::insert($hasil);
+        $nomer = Kalibrasialat::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'kalibrasi alat',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+
         return redirect('/kalibrasi-alat');
     }
     public function tampil_kalibrasialat()
