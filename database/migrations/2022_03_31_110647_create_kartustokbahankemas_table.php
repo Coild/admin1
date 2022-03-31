@@ -15,7 +15,6 @@ class CreateKartustokbahankemasTable extends Migration
     {
         Schema::create('kartustokbahankemas', function (Blueprint $table) {
             $table->id('id_kartustokbahankemas', 20);
-            $table->date('tanggal')->nullable();
             $table->string('kode_kartu', 20);
             $table->string('id_batch', 20);
             $table->date('tanggal')->nullable();
