@@ -7,10 +7,6 @@ use App\Models\{aturan, jabatan,pabrik,bahanbaku, catatbersih, coa, company, con
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Exists;
-
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
 
 class Admin extends Controller
 {
