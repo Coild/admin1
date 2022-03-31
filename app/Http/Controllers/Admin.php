@@ -676,7 +676,7 @@ class Admin extends Controller
             $kemasan = kemasan::all()->where('user_id', $id);
             $bahanbaku = bahanbaku::all()->where('user_id', $id);
             return view('setting', [
-                'alamat' => $alamat, 'no_hp' => $no_hp, 'nama' => $nama, 'logo' => $logo,
+                'alamat' => $alamat ?? "kosong", 'no_hp' => $no_hp ?? "kosong", 'nama' => $nama ?? "kosong", 'logo' => $logo ?? "kosong",
                 'list_com' => $kom, 'list_produk' => $produk, 'list_kemasan' => $kemasan, 'list_bahanbaku' => $bahanbaku
             ]);
         }
