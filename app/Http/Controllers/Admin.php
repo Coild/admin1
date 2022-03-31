@@ -391,9 +391,12 @@ class Admin extends Controller
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
+        $olah = produksi::all()->where('id_batch', $id);
+        $rekon = rekonsiliasi::all()->where('id_batch', $id);
         return view('catatan.dokumen.detailbatch', [
             'id' => $id,
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
+            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
+            'list_olah' => $olah, 'rekon' => $rekon
         ]);
     }
 
