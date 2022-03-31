@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\{pengolahanbatch,laporan, spesifikasi};
+use App\Models\{kartustokbahan, pengolahanbatch,laporan, spesifikasi};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +27,59 @@ class pjt extends Controller
         // return view('catatanpelaksana.dokumen.pengolahanbatch',['data'=>$data]);
         return redirect('/pjt_pengolahanbatch');
     } 
+
+    public function terima_kartustok_bahanbaku(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        // dd($req['id']);
+        $user = kartustokbahan::all()->where("id_batch", $req['id'])->first()->update([
+            'status' => 1,
+        ]);
+        $user = laporan::all()->where("laporan_batch", $req['id'])
+        ->where('laporan_nama','kartu stok bahan')
+        ->first()->update([
+            'laporan_diterima' => Auth::user()->nama,
+            'tgl_diterima' => $tgl,
+        ]);
+        // return view('catatanpelaksana.dokumen.pengolahanbatch',['data'=>$data]);
+        return redirect('/kartu-stok');
+    }
+    
+    public function terima_kartustok_bahankemas(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $user = pengolahanbatch::all()->where("id_batch", $req['id'])
+        ->first()->update([
+            'status' => 1,
+        ]);
+        $user = laporan::all()->where("laporan_batch", $req['id'])
+        ->where('laporan_nama','kartu stok bahan kemas')
+        ->first()->update([
+            'laporan_diterima' => Auth::user()->nama,
+            'tgl_diterima' => $tgl,
+        ]);
+        // return view('catatanpelaksana.dokumen.pengolahanbatch',['data'=>$data]);
+        return redirect('/kartu-stok');
+    }
+
+    public function terima_kartustok_produkantara(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $user = pengolahanbatch::all()->where("id_batch", $req['id'])->first()->update([
+            'status' => 1,
+        ]);
+        $user = laporan::all()->where("laporan_batch", $req['id'])
+        ->where('laporan_nama','kartu stok produk antara')->first()->update([
+            'laporan_diterima' => Auth::user()->nama,
+            'tgl_diterima' => $tgl,
+        ]);
+        // return view('catatanpelaksana.dokumen.pengolahanbatch',['data'=>$data]);
+        return redirect('/kartu-stok');
+    }
 
     //sidebar
     public function tampil_bahan_baku () {

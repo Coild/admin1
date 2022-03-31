@@ -37,10 +37,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal"
                                         data-target="#modalForm1">
                                         Tambah Barang Masuk
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm1" role="dialog">
@@ -189,10 +191,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal"
                                         data-target="#modalForm2">
                                         Tambah Barang Keluar
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm2" role="dialog">
@@ -329,10 +333,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal"
                                         data-target="#modalForm3">
                                         Produk Jadi Masuk
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm3" role="dialog">
@@ -482,10 +488,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal"
                                         data-target="#modalForm4">
                                         Tambah Produk Keluar
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm4" role="dialog">
@@ -622,10 +630,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(5)" data-toggle="modal"
                                         data-target="#modalForm5">
                                         Tambah Kemasan Masuk
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm5" role="dialog">
@@ -775,10 +785,12 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" onclick="setdatetoday1(6)" data-toggle="modal"
                                         data-target="#modalForm6">
                                         Kemasan Keluar
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm6" role="dialog">

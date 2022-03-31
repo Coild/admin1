@@ -21,27 +21,38 @@
                                 <div class="collapse" id="cttpabrik1" aria-labelledby="headingOne" data-bs-parent="#cttpabrik0">
                                     <nav class="sb-sidenav-menu-nested nav">
 
-                                        <a class="nav-link" href="#">Penerimaan Penyerahan dan
+                                        <a class="nav-link" href="{{ route('penerimaanBB') }}">Penerimaan
+                                            Penyerahan dan
                                             Penyimapanan</a>
-                                        <a class="nav-link" href="#">Pengambilan Sample</a>
-                                        <a class="nav-link" href="#">Program dan Pelatihan
+                                        <a class="nav-link" href="{{ route('ambilcontoh') }}">Pengambilan
+                                            Sample</a>
+                                        <a class="nav-link" href="{{ route('program-dan-pelatihan-higiene-dan-sanitasi') }}">Program
+                                            dan
+                                            Pelatihan
                                             Higiene dan Sanitasi</a>
-                                        <a class="nav-link" href="#">Pengoperasian Peralatan
+                                        <a class="nav-link" href="{{ route('pengoprasian-alat') }}">Pengoperasian
+                                            Peralatan
                                             Utama</a>
-                                        <a class="nav-link" href="#">Penimbangan</a>
-                                        <a class="nav-link" href="{{route('pjt_pengolahanbatch')}}">Pengolahan Batch</a>
+                                        <a class="nav-link" href="{{ route('penimbangan') }}">Penimbangan</a>
+                                        <a class="nav-link" href="{{ route('pengolahanbatch') }}">Pengolahan
+                                            Batch</a>
                                         <a class="nav-link" href="#">Pengemasan Batch</a>
-                                        <a class="nav-link" href="#">Cara Pemberian Nomor Batch</a>
-                                        <a class="nav-link" href="#">Pelulusan Produk Jadi</a>
-                                        <a class="nav-link" href="#">Pendistribusian
+                                        <!-- <a class="nav-link" href="#">Cara Pemberian Nomor Batch</a> -->
+                                        <a class="nav-link" href="{{ route('pelulusan-produk') }}">Pelulusan
+                                            Produk Jadi</a>
+                                        <a class="nav-link" href="{{ route('pendistribusian-produk') }}">Pendistribusian
                                             Produk</a>
-                                        <a class="nav-link" href="#">Penanganan Keluhan</a>
-                                        <a class="nav-link" href="#">Penarikan Produk</a>
-                                        <a class="nav-link" href="#">Pemusnahan Produk</a>
+                                        <a class="nav-link" href="{{ route('penanganan-keluhan') }}">Penanganan
+                                            Keluhan</a>
+                                        <a class="nav-link" href="{{ route('penarikan-produk') }}">Penarikan
+                                            Produk</a>
+                                        <a class="nav-link" href="{{ route('pemusnahan-produk') }}">Pemusnahan
+                                            Produk</a>
                                         <!-- <a class="nav-link" href="#">Penanganan Contoh Tertinggal</a> -->
-                                        <a class="nav-link" href="#">Pembuatan PROTAP dan Penomoran</a>
-                                        <a class="nav-link" href="#">Kartu Stok</a>
-                                        <a class="nav-link" href="#">Ceklis & TTD Yang Sudah Dibersihkan</a>
+                                        <!-- <a class="nav-link" href="#">Pembuatan PROTAP dan Penomoran</a> -->
+                                        <a class="nav-link" href="{{ route('kartu-stok') }}">Kartu Stok</a>
+                                        <a class="nav-link" href="{{ route('kalibrasi-alat') }}">Kalibrasi
+                                            Alat</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#cttpabrik2" aria-expanded="false" aria-controls="cttpabrik2" href="#">Higiene dan Sanitasi
@@ -141,7 +152,7 @@
                                 <a class="nav-link" href="{{route('tampil_bahanbaku')}}"> Spesifikasi Bahan Baku
                                     <div class="sb-sidenav-collapse-arrow">
                                 </a>
-                               
+
                                 <a class="nav-link" href="{{route('tampil_bahankemas')}}"> Spesifikasi Bahan Kemas
                                     <div class="sb-sidenav-collapse-arrow">
                                 </a>
@@ -153,7 +164,7 @@
                                 <a class="nav-link" href="{{route('tampil_produkjadi')}}"> Spesifikasi Produk Jadi
                                     <div class="sb-sidenav-collapse-arrow">
                                 </a>
-                                
+
                             </nav>
                         </div>
 

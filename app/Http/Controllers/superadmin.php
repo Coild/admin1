@@ -26,6 +26,12 @@ class superadmin extends Controller
     {
         return view("admin.tambahauditor");
     }
+
+    public function tampil_inspek()
+    {
+        return view("admin.tambahinspek");
+    }
+
     public function register(Request $request)
     {
 
@@ -80,6 +86,26 @@ class superadmin extends Controller
         }
     }
 
+    public function register_inspek(Request $request)
+    {
+        $user = new User;
+        $user->nama = ucwords(strtolower($request->username));
+        $user->namadepan = $request->namadepan;
+        $user->namabelakang = $request->namabelakang;
+        $user->level = 5;
+        $user->pabrik = 0;
+        $user->password = bcrypt($request->password);
+        $simpan = $user->save();
+
+        if ($simpan) {
+            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
+            return redirect('/audit');
+        } else {
+            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
+            return redirect('showregister');
+        }
+    }
+
     public function tampil_protap()
     {
         return view("admin.ubahprotap");
@@ -99,4 +125,6 @@ class superadmin extends Controller
         // // user::deleted()
         return redirect('dashboard');
     }
+
+    
 }

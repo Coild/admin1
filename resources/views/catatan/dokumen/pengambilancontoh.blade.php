@@ -33,10 +33,12 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
                                         onclick="setdatetoday1(1)">
                                         Tambah Sampel Bahan Baku
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm4" role="dialog">
@@ -209,10 +211,12 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
                                         onclick="setdatetoday1(2)">
                                         Tambah Sampel Produk
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm5" role="dialog">
@@ -385,10 +389,12 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm6"
                                         onclick="setdatetoday1(3)">
                                         Tambah Sampel Kemasan
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm6" role="dialog">

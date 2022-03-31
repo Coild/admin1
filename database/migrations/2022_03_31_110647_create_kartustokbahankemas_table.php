@@ -17,6 +17,7 @@ class CreateKartustokbahankemasTable extends Migration
             $table->id('id_kartustokbahankemas', 20);
             $table->string('kode_kartu', 20);
             $table->string('id_batch', 20);
+            $table->date('tanggal')->nullable();
             $table->string('jumlah', 30);
             $table->string('nama_distributor', 100);
             $table->integer('pabrik', false);

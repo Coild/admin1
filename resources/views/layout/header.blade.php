@@ -6,7 +6,17 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
-            <a class="navbar-brand ps-3" style="color: white;">{{session('pabrik')}} ({{Auth::user()->nama}})</a>
+            <a class="navbar-brand ps-3" style="color: white;">
+            @if(Auth::user()->level==0)
+                {{'Admin'}}
+            @elseif(Auth::user()->level==4)
+                {{'Auditor'}}
+            @elseif(Auth::user()->level==5)
+                {{'inspektor'}}
+            @else
+                {{session('pabrik')}}
+            @endif 
+                ({{Auth::user()->nama}})</a>
             <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /> -->
             <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
         </div>

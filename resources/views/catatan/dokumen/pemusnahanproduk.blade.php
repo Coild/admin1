@@ -37,10 +37,12 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
                                         onclick="setdatetoday1(1)">
                                         Tambah Pemusnahan Bahan Baku
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm1" role="dialog">
@@ -233,10 +235,12 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
+                                    @if(Auth::user()->level!=2)
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2"
                                         onclick="setdatetoday1(2)">
                                         Tambah Pemusnahan Bahan Kemas
                                     </button>
+                                    @endif
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalForm2" role="dialog">
@@ -429,10 +433,12 @@
                                     <div class="card-body">
                                         <!-- pop up -->
                                         <!-- Button to trigger modal -->
+                                        @if(Auth::user()->level!=2)
                                         <button class="btn btn-success btn-lg" data-toggle="modal"
                                             data-target="#modalForm3" onclick="setdatetoday1(3)">
                                             Tambah Pemusnahan Produk Antara
                                         </button>
+                                        @if(Auth::user()->level!=2)
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="modalForm3" role="dialog">
@@ -629,10 +635,12 @@
                                     <div class="card-body">
                                         <!-- pop up -->
                                         <!-- Button to trigger modal -->
+                                        @if(Auth::user()->level!=2)
                                         <button class="btn btn-success btn-lg" data-toggle="modal"
                                             data-target="#modalForm4" onclick="setdatetoday1(4)">
                                             Tambah Pemusnahan Produk Jadi
                                         </button>
+                                        @endif
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="modalForm4" role="dialog">

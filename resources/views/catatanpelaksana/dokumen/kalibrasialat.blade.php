@@ -1,14 +1,14 @@
 @extends('layout.app')
 @section('title')
-    <title>COA</title>
+    <title>Kalibrasi Alat</title>
 @endsection
 
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Periksa Personil </h1>
+            <h1 class="mt-4">Kalibrasi Alat</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Higiene dan Sanitasi Periksa Personil</li>
+                <li class="breadcrumb-item active">Kalibrasi Alat</li>
             </ol>
             <div class="row">
 
@@ -18,7 +18,7 @@
                         <!-- Button to trigger modal -->
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
                             onclick="setdatetoday()">
-                            Tambah Pemeriksaan Personil
+                            Tambah Kalibrasi Alat
                         </button>
 
                         <!-- Modal -->
@@ -28,19 +28,19 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel">
-                                            Entry Periksa Personil
+                                            Entry Kalibrasi Alat
                                         </h4>
                                     </div>
 
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_periksapersonil" enctype="multipart/form-data"
+                                        <form method="post" action="tambah_kalibrasialat" enctype="multipart/form-data"
                                             id='forminput'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
-                                                    Personil
+                                                    Kalibrasi Alat
                                                 </div>
                                                 <div class="card-header" id="headertgl">
                                                 </div>
@@ -53,16 +53,16 @@
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                            Personil</label>
+                                                            Alat</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_personil" class="form-control"
-                                                                id="inputEmail3" placeholder="Nama Personil" />
+                                                            <input type="text" name="nama_alat" class="form-control"
+                                                                id="inputEmail3" placeholder="Nama Alat" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label"
-                                                            for="exampleFormControlFile1">Surat Sehat</label>
+                                                            for="exampleFormControlFile1">Dokumen Kalibrasi</label>
                                                         <div class="col-sm">
                                                             <input type="file" name="file" class="form-control"
                                                                 id="fileform" onchange="return filecheck()">
@@ -86,7 +86,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Nama Personil</th>
+                                <th scope="col">Nama Alat</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -97,9 +97,9 @@
                                 $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $row['nama'] }}</td>
+                                    <td>{{ $row['nama_alat'] }}</td>
                                     <td>
-                                        <a href="health_personil/{{ $row['nama_file'] }}" class="btn btn-primary">Buka</a>
+                                        <a href="kalibrasi_alat/{{ $row['nama_file'] }}" class="btn btn-primary">Buka</a>
                                     </td>
                                 </tr>
                             @endforeach

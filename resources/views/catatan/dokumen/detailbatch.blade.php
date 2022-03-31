@@ -13,8 +13,9 @@
         <div class="row">
             @foreach ($data as $row)
             <?php $nobatch = $row['nomor_batch'];
-            $status = $row['status']; 
-            $awal=0; $akhir=0;?>
+            $status = $row['status'];
+            $awal = 0;
+            $akhir = 0; ?>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -98,11 +99,13 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
+                    @if(Auth::user()->level!=2)
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" <?php if ($status > 0) {
                                                                                                             echo 'disabled';
                                                                                                         } ?>>
                         Tambah Komposisi
                     </button>
+                    @endif
 
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm" role="dialog">
@@ -175,8 +178,8 @@
                                 <td>{{ $row['komposisi_persen'] }}</td>
                                 <td>
                                     <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}/{{ $id }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                            echo 'disabled';
-                                                                                        } ?>>Hapus</a>
+                                                                                                                                                                                    echo 'disabled';
+                                                                                                                                                                                } ?>>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -193,11 +196,13 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
+                    @if(Auth::user()->level!=2)
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1" <?php if ($status > 0) {
                                                                                                                 echo 'disabled';
                                                                                                             } ?>>
                         Tambah Peralatan
                     </button>
+                    @endif
 
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm1" role="dialog">
@@ -264,8 +269,8 @@
                                 <td>{{ $row['peralatan_id'] }}</td>
                                 <td>
                                     <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                            echo 'disabled';
-                                                                                        } ?>>Hapus</a>
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -282,12 +287,13 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
+                    @if(Auth::user()->level!=2)
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2" <?php if ($status > 0) {
                                                                                                                 echo 'disabled';
                                                                                                             } ?>>
                         Data Penimbangan
                     </button>
-
+                    @endif
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm2" role="dialog">
                         <div class="modal-dialog">
@@ -399,12 +405,13 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
+                    @if(Auth::user()->level!=2)
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm3" <?php if ($status > 0) {
                                                                                                                 echo 'disabled';
                                                                                                             } ?>>
                         Perlakuan
                     </button>
-
+                    @endif
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm3" role="dialog">
                         <div class="modal-dialog">
@@ -464,8 +471,8 @@
                                 <td>{{ $row['isi'] }}</td>
                                 <td>
                                     <a href="/hapus_olah/{{ $row['produksi_id'] }}/{{ $id }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                            echo 'disabled';
-                                                                                        } ?>>Hapus</a>
+                                                                                                                                                                            echo 'disabled';
+                                                                                                                                                                        } ?>>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -474,10 +481,10 @@
                 </div>
             </div>
 
-<?php foreach($rekon as $row) {
-    $awal = $row['awal'];
-    $akhir = $row['akhir'];
-}?>
+            <?php foreach ($rekon as $row) {
+                $awal = $row['awal'];
+                $akhir = $row['akhir'];
+            } ?>
 
             <div class="card mb-4">
                 <div class="card-header">
@@ -499,23 +506,28 @@
                             <label for="inputName">Hasil</label>
                             <input type="text" name="akhir" value="{{$akhir}}" class="form-control" id="inputName" placeholder="keterangan" />
                         </div>
+                        @if(Auth::user()->level!=2)
                         <center>
-                        <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
-                                                                                            echo 'disabled';
-                                                                                        } ?>> Simpan </button>
+                            <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
+                                                                                        echo 'disabled';
+                                                                                    } ?> > Simpan </button>
                         </center>
+                        @endif
 
                     </form>
-
+                    @if(Auth::user()->level==2)
                     <center>
-                        <form action="/ajukan_batch/{{$nobatch}}">
+                        <form action="/pjt_pengolahanbatch" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$nobatch}}">
                             <button type="submit" class="btn btn-success btn-lg mt-5" <?php if ($status > 0) {
                                                                                             echo 'disabled';
                                                                                         } ?>>
-                                Ajukan
+                                Terima
                             </button>
                         </form>
                     </center>
+                    @endif
 
                 </div>
             </div>

@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('title')
-    <title>Pengambilan Sampel</title>
+    <title>Penimbangan</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Catatan Pengambilan Sampel</h1>
+            <h1 class="mt-4">Catatan Peimbangan</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -13,11 +13,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                        aria-controls="pills-profile" aria-selected="false">Produk Jadi</a>
+                        aria-controls="pills-profile" aria-selected="false">Produk Antara</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                        aria-controls="pills-contact" aria-selected="false">Kemasan</a>
+                        aria-controls="pills-contact" aria-selected="false">Ruang Timbang</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -35,7 +35,7 @@
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
                                         onclick="setdatetoday1(1)">
-                                        Tambah Sampel Bahan Baku
+                                        Tambah Penimbangan Bahan Baku
                                     </button>
 
                                     <!-- Modal -->
@@ -44,7 +44,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Sampel Bahan Baku</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Penimbangan Bahan Baku</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -54,7 +54,7 @@
                                                         <div class="card-header">Bahan Baku</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_contohbahan"
+                                                            <form role="form" method="post" action="tambah_penimbanganbahan"
                                                                 id='forminput1'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
@@ -63,11 +63,11 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kode
-                                                                        Bahan</label>
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_bahan"
+                                                                        <input type="text" name="kode_penimbangan"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Kode Bahan" />
+                                                                            placeholder="Kode Penimbangan" />
                                                                     </div>
                                                                 </div>
 
@@ -84,12 +84,21 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">No
-                                                                        Batch</label>
+                                                                        class="col-sm-3 col-form-label">No Loth</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nobatch"
+                                                                        <input type="text" name="no_loth"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="No Batch" />
+                                                                            placeholder="No Loth" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3"
+                                                                        class="col-sm-3 col-form-label">Nama Suplier</label>
+                                                                    <div class="col-sm">
+                                                                        <input type="text" name="nama_suplier"
+                                                                            class="form-control 1" id="inputEmail3"
+                                                                            placeholder="Nama Suplier" />
                                                                     </div>
                                                                 </div>
 
@@ -98,47 +107,26 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kedaluwarsa</label>
+                                                                        class="col-sm-3 col-form-label">Jumlah Bahan
+                                                                        Baku</label>
                                                                     <div class="col-sm">
-                                                                        <input type="date" name="kedaluwarsa"
+                                                                        <input type="text" name="jumlah_bahan"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="" />
+                                                                            placeholder="Jumlah Bahan Baku" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Bahan Baku dalam Box</label>
+                                                                        class="col-sm-3 col-form-label">Hasil
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jumlah_box"
+                                                                        <input type="text" name="hasil_penimbangan"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Jumlah Jumlah
-                                                                                        Bahan Baku dalam Box" />
+                                                                            placeholder="Hasil Penimbangan" />
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk Yang Diambil</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jumlah_ambil"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Jumlah Produk Yang Diambil" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jenis
-                                                                        dan Warna Kemasan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jenis_warna_kemasan"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Jenis dan Warna Kemasan" />
-                                                                    </div>
-                                                                </div>
                                                                 <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
@@ -156,14 +144,14 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Bahan Baku</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Bahan Baku</th>
-                                                <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Sampel</th>
-                                                <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah Bahan Baku Dalam Box</th>
-                                                <th scope="col">Jumlah Produk Yang Diambil</th>
-                                                <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">No Loth</th>
+                                                <th scope="col">Nama Suplier</th>
+                                                <th scope="col">Jumlah Bahan Baku</th>
+                                                <th scope="col">Hasil Penimbangan</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -173,14 +161,16 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_bahan'] }}</td>
-                                                    <td>{{ $row['nama_bahanbaku'] }}</td>
-                                                    <td>{{ $row['no_batch'] }}</td>
-                                                    <td>{{ $row['tanggal_ambil'] }}</td>
-                                                    <td>{{ $row['kedaluwarsa'] }}</td>
-                                                    <td>{{ $row['jumlah_kemasanbox'] }}</td>
-                                                    <td>{{ $row['jumlah_produk'] }}</td>
-                                                    <td>{{ $row['jenis_warnakemasan'] }}</td>
+                                                    <td>{{ $row['tanggal'] }}</td>
+                                                    <td>{{ $row['kode_timbang'] }}</td>
+                                                    <td>{{ $row['nama_bahan'] }}</td>
+                                                    <td>{{ $row['no_loth'] }}</td>
+                                                    <td>{{ $row['nama_suplier'] }}</td>
+                                                    <td>{{ $row['jumlah_bahan'] }}</td>
+                                                    <td>{{ $row['hasil_penimbangan'] }}</td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -204,14 +194,14 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Produk
+                                    Produk Antara
                                 </div>
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
                                         onclick="setdatetoday1(2)">
-                                        Tambah Sampel Produk
+                                        Tambah Penimbangan Produk Antara
                                     </button>
 
                                     <!-- Modal -->
@@ -220,18 +210,19 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Sampel Produk</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Penimbangan Produk Antara
+                                                    </h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
                                                 <div class="modal-body">
                                                     <div class="card mb-4">
                                                         <div class="card-header" id='headertgl2'></div>
-                                                        <div class="card-header">Produk</div>
+                                                        <div class="card-header">Produk Antara</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_contohproduk"
-                                                                id='forminput2'>
+                                                            <form role="form" method="post"
+                                                                action="tambah_penimbanganprodukantara" id='forminput2'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
@@ -239,18 +230,18 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kode
-                                                                        Produk</label>
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="kode_produk"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Kode Produk" />
+                                                                            placeholder="Kode Penimbangan" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Nama
-                                                                        Produk</label>
+                                                                        Produk Antara</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="nama_produk"
                                                                             class="form-control 2" id="inputEmail3"
@@ -274,44 +265,45 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kedaluwarsa</label>
+                                                                        class="col-sm-3 col-form-label">Asal Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="date" name="kedaluwarsa"
+                                                                        <input type="text" name="asal_produk"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="" />
+                                                                            placeholder="Asal Produk" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk dalam Box</label>
+                                                                        Produk Antara</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jumlah_box"
+                                                                        <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Jumlah Produk Dalam Box" />
+                                                                            placeholder="Jumlah
+                                                                                                                                                                                                                                                                                        Produk Antara" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk Yang Diambil</label>
+                                                                        class="col-sm-3 col-form-label">Hasil
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jumlah_ambil"
+                                                                        <input type="text" name="hasil_penimbangan"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Jumlah Produk Yang Diambil" />
+                                                                            placeholder="Hasil Penimbangan" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jenis
-                                                                        dan Warna Kemasan</label>
+                                                                        class="col-sm-3 col-form-label">Untuk
+                                                                        Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jenis_warna_kemasan"
+                                                                        <input type="text" name="untuk_produk"
                                                                             class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Jenis dan Warna Kemasan" />
+                                                                            placeholder="Untuk Produk" />
                                                                     </div>
                                                                 </div>
 
@@ -332,14 +324,15 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Produk</th>
-                                                <th scope="col">Nama Produk</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Kode Penimbangan</th>
+                                                <th scope="col">Nama Produk Antara</th>
                                                 <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Sampel</th>
-                                                <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah Produk dalam Box</th>
-                                                <th scope="col">Jumlah Produk Yang Diambil</th>
-                                                <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">Asal Produk</th>
+                                                <th scope="col">Jumlah Produk Antara</th>
+                                                <th scope="col">Hasil Penimbangan</th>
+                                                <th scope="col">Untuk Produk</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -349,14 +342,17 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_produk'] }}</td>
-                                                    <td>{{ $row['nama_produkjadi'] }}</td>
+                                                    <td>{{ $row['tanggal'] }}</td>
+                                                    <td>{{ $row['kode_timbang'] }}</td>
+                                                    <td>{{ $row['nama_produk_antara'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
-                                                    <td>{{ $row['tanggal_ambil'] }}</td>
-                                                    <td>{{ $row['kedaluwarsa'] }}</td>
-                                                    <td>{{ $row['jumlah_kemasanbox'] }}</td>
+                                                    <td>{{ $row['asal_produk'] }}</td>
                                                     <td>{{ $row['jumlah_produk'] }}</td>
-                                                    <td>{{ $row['jenis_warnakemasan'] }}</td>
+                                                    <td>{{ $row['hasil_penimbangan'] }}</td>
+                                                    <td>{{ $row['untuk_produk'] }}</td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />
@@ -380,14 +376,14 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Kemasan
+                                    Ruang Timbang
                                 </div>
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm6"
                                         onclick="setdatetoday1(3)">
-                                        Tambah Sampel Kemasan
+                                        Tambah Ruang Timbang
                                     </button>
 
                                     <!-- Modal -->
@@ -396,17 +392,17 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Sampel Kemasan</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Ruang Timbang</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
                                                 <div class="modal-body">
                                                     <div class="card mb-4">
                                                         <div class="card-header" id='headertgl3'></div>
-                                                        <div class="card-header">Kemasan</div>
+                                                        <div class="card-header">Ruang Timbang</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_contohkemasan"
+                                                            <form role="form" method="post" action="tambah_ruangtimbang"
                                                                 id='forminput3'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
@@ -415,33 +411,43 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Kode
-                                                                        Kemasan</label>
+                                                                        Ruang Timbang</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_kemasan"
+                                                                        <input type="text" name="kode_ruangtimbang"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Kode Kemasan" />
+                                                                            placeholder="Kode Ruang Timbang" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Nama
-                                                                        Kemasan</label>
+                                                                        Bahan Baku</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nama_kemasan"
+                                                                        <input type="text" name="nama_bahanbaku"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Nama Kemasan" />
+                                                                            placeholder="Nama Bahan Baku" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">No
-                                                                        Batch</label>
+                                                                        class="col-sm-3 col-form-label">No Loth</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nobatch"
+                                                                        <input type="text" name="no_loth"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="No Batch" />
+                                                                            placeholder="No Loth" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3"
+                                                                        class="col-sm-3 col-form-label">Jumlah Bahan
+                                                                        Baku</label>
+                                                                    <div class="col-sm">
+                                                                        <input type="text" name="jumlah_bahanbaku"
+                                                                            class="form-control 3" id="inputEmail3"
+                                                                            placeholder="Jumlah Bahan Baku" />
                                                                     </div>
                                                                 </div>
 
@@ -450,44 +456,34 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kedaluwarsa</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="date" name="kedaluwarsa"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        Kemasan dalam Box</label>
+                                                                        Permintaan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jumlah_box"
+                                                                        <input type="text" name="jumlah_permintaan"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jumlah Kemasan dalam Box" />
+                                                                            placeholder="Jumlah Permintaan" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah
-                                                                        Produk Yang Diambil</label>
+                                                                        class="col-sm-3 col-form-label">Hasil
+                                                                        Penimbangan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jumlah_ambil"
+                                                                        <input type="text" name="hasil_penimbangan"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jumlah Produk Yang Diambil" />
+                                                                            placeholder="Hasil Penimbangan" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jenis
-                                                                        dan Warna Kemasan</label>
+                                                                        class="col-sm-3 col-form-label">Untuk
+                                                                        Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="jenis_warna_kemasan"
+                                                                        <input type="text" name="untuk_produk"
                                                                             class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Jenis dan Warna Kemasan" />
+                                                                            placeholder="Untuk Produk" />
                                                                     </div>
                                                                 </div>
 
@@ -508,14 +504,15 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Bahan Baku</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Bahan Baku</th>
-                                                <th scope="col">No Batch</th>
-                                                <th scope="col">Tanggal Pengambilan Sampel</th>
-                                                <th scope="col">Kedaluwarsa</th>
-                                                <th scope="col">Jumlah Kemasan Dalam Box</th>
-                                                <th scope="col">Jumlah Produk Yang Diambil</th>
-                                                <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">No Loth</th>
+                                                <th scope="col">Jumlah Bahan Baku</th>
+                                                <th scope="col">Jumlah Permintaan</th>
+                                                <th scope="col">Hasil Penimbangan</th>
+                                                <th scope="col">Untuk Produk</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -525,14 +522,17 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_kemasan'] }}</td>
-                                                    <td>{{ $row['nama_kemasan'] }}</td>
-                                                    <td>{{ $row['no_batch'] }}</td>
-                                                    <td>{{ $row['tanggal_ambil'] }}</td>
-                                                    <td>{{ $row['kedaluwarsa'] }}</td>
-                                                    <td>{{ $row['jumlah_kemasanbox'] }}</td>
-                                                    <td>{{ $row['jumlah_produk'] }}</td>
-                                                    <td>{{ $row['jenis_warnakemasan'] }}</td>
+                                                    <td>{{ $row['tanggal'] }}</td>
+                                                    <td>{{ $row['kode_ruangtimbang'] }}</td>
+                                                    <td>{{ $row['nama_bahan_baku'] }}</td>
+                                                    <td>{{ $row['no_loth'] }}</td>
+                                                    <td>{{ $row['jumlah_bahan_baku'] }}</td>
+                                                    <td>{{ $row['jumlah_permintaan'] }}</td>
+                                                    <td>{{ $row['hasil_penimbangan'] }}</td>
+                                                    <td>{{ $row['untuk_produk'] }}</td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
+                                                    } ?></td>
                                                     <td>
                                                         <form method="post" action="detil_batch">
                                                             <input type="hidden" name="_token" value="" />

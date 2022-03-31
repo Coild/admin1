@@ -27,7 +27,7 @@ class Admin extends Controller
         $produk = isset($isiproduk) ?  'asset/aturam/' . $isiproduk['nama'] : '#';
         $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
 
-        return view('dashboard', ['struktur' => $struktur, 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+        return view('dashboard', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
     }
 
     //COA
@@ -347,9 +347,13 @@ class Admin extends Controller
     public function tampil_pengolahanbatch()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = pengolahanbatch::all()->where('pabrik', $pabrik);
-        $data2 = produk::all();
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
+        if(Auth::user()->level==2){
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik)->where('status',0);
+        }
+        else{
+        $data = pengolahanbatch::all()->where('pabrik', $pabrik);}
+
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
     public function tampil_detilbatch(Request $req)
@@ -661,9 +665,10 @@ class Admin extends Controller
         } else {
             $id = Auth::user()->id;
             $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
+
             foreach ($pabrik as $row) {
                 $nama = $row['nama'];
-                $alamat = $row['alamat'];
+                $alamat = $row['alamat'] ?? 'kosong';
                 $no_hp = $row['no_hp'];
                 $logo = $row['logo'];
             }
@@ -733,7 +738,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer= Periksaalat::insertGetId($hasil);
+        $nomer = Periksaalat::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -960,7 +965,10 @@ class Admin extends Controller
     public function tampil_penanganankeluhan()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = penanganankeluhan::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = penanganankeluhan::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else
+            $data = penanganankeluhan::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.penanganankeluhan', ['data' => $data]);
     }
     public function tambah_penarikan(Request $req)
@@ -1004,7 +1012,10 @@ class Admin extends Controller
     public function tampil_penarikanproduk()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = penarikanproduk::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = penarikanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else
+            $data = penarikanproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.penarikanproduk', ['data' => $data]);
     }
     public function tambah_distribusi(Request $req)
@@ -1046,7 +1057,10 @@ class Admin extends Controller
     public function tampil_distribusi()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = distribusiproduk::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = distribusiproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else
+            $data = distribusiproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pendistribusianproduk', ['data' => $data]);
     }
     public function tambah_operasialat(Request $req)
@@ -1068,7 +1082,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer=pengoprasianalat::insertGetId($hasil);
+        $nomer = pengoprasianalat::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -1091,7 +1105,10 @@ class Admin extends Controller
     public function tampil_pengorasianalat()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = pengoprasianalat::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = pengoprasianalat::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else
+            $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
     }
     public function tambah_pelulusan(Request $req)
@@ -1136,7 +1153,10 @@ class Admin extends Controller
     public function tampil_pelulusanproduk()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = pelulusanproduk::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = pelulusanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else
+            $data = pelulusanproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pelulusanproduk', ['data' => $data]);
     }
     public function tambah_contohbahan(Request $req)
@@ -1259,9 +1279,15 @@ class Admin extends Controller
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = contohbahanbaku::all()->where('pabrik', $pabrik);
-        $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
-        $data2 = contohkemasan::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = contohbahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = contohkemasan::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = contohbahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
+            $data2 = contohkemasan::all()->where('pabrik', $pabrik);
+        }
         return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
     public function tambah_penimbanganbahan(Request $req)
@@ -1384,9 +1410,15 @@ class Admin extends Controller
     public function tampil_penimbangan()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = timbangbahan::all()->where('pabrik', $pabrik);
-        $data1 = timbangproduk::all()->where('pabrik', $pabrik);
-        $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = timbangbahan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = timbangproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = ruangtimbang::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = timbangbahan::all()->where('pabrik', $pabrik);
+            $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+            $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+        }
         return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
     public function tambah_kartustokbahan(Request $req)
@@ -1500,9 +1532,15 @@ class Admin extends Controller
     public function tampil_kartustok()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = kartustokbahan::all()->where('pabrik', $pabrik);
-        $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
-        $data2 = kartustokprodukjadi::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = kartustokbahan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = kartustokprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = kartustokbahan::all()->where('pabrik', $pabrik);
+            $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
+            $data2 = kartustokprodukjadi::all()->where('pabrik', $pabrik);
+        }
         return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
     public function tambah_pemusnahanbahan(Request $req)
@@ -1668,10 +1706,17 @@ class Admin extends Controller
     public function tampil_pemusnahanproduk()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
-        $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
-        $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
-        $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
+            $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
+            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
+        }
         return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
     }
     public function tambah_kalibrasialat(Request $req)
@@ -1689,31 +1734,18 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'user_id' => $id,
         ];
-        $nomer = Kalibrasialat::insertGetId($hasil);
-
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-        $laporan = [
-            'laporan_nama' => 'kalibrasi alat',
-            'laporan_batch' => $req['no_batch'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
+        Kalibrasialat::insertGetId($hasil);
 
         return redirect('/kalibrasi-alat');
     }
     public function tampil_kalibrasialat()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = Kalibrasialat::all()->where('pabrik', $pabrik);
+        if (Auth::user()->level == 2) {
+            $data = Kalibrasialat::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = Kalibrasialat::all()->where('pabrik', $pabrik);
+        }
         return view('catatan.dokumen.kalibrasialat', ['data' => $data]);
     }
 }

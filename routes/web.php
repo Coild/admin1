@@ -148,6 +148,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
+    Route::post('/terimakartustokbahan',[pjt::class,'terima_kartustok_bahanbaku']);
+
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
     Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
@@ -177,8 +179,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/dashboard', [superadmin::class, 'tampil_dashboard']);
     Route::get('/pabrik', [superadmin::class, 'tampil_pabrik']);
     Route::get('/audit', [superadmin::class, 'tampil_audit']);
+    Route::get('/inspek', [superadmin::class, 'tampil_inspek']);
     Route::post('/register_pabrik', [superadmin::class, 'register']);
     Route::post('/register_audit', [superadmin::class, 'register_audit']);
+    Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
     Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
 
     // Route::get('/protap', [superadmin::class, 'tampil_protap']);
