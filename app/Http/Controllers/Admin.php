@@ -1088,7 +1088,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pengolahan batch',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => $req['no_batch'] ?? 'kosong',
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1253,8 +1253,9 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
+        
 
-        $nomer = contohkemasan::insertGetiD($hasil);
+        $nomer = contohkemasan::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -1313,7 +1314,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penimbangan bahan',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => $req['no_batch'] ?? 'kosong',
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1392,7 +1393,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'ruang timbang',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => $req['no_batch'] ?? "kosong",
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
