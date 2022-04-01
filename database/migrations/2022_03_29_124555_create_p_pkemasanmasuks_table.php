@@ -20,7 +20,8 @@ class CreatePPkemasanmasuksTable extends Migration
             $table->string("no_pob", 100);
             $table->string("no_loth", 100);
             $table->string("pemasok", 100);
-            $table->string("jumlah", 100);
+            $table->string("jumlah", 100);            
+            $table->string("no_kontrol", 100);
             $table->date('kedaluwarsa')->nullable();
             $table->integer('pabrik', false);
             $table->tinyInteger('status', 0)->unsigned();
