@@ -96,7 +96,7 @@ class AuthController extends Controller
 
     public function tampil_ganti_password()
     {
-        return view('Auth.gantipassword');
+        return view('auth.gantipassword');
     }
 
     public function ganti_password(Request $req)
