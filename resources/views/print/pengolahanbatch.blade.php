@@ -206,7 +206,7 @@
 
             </table>
 
-            <p style="text-align: left; margin-top: 15px;">2. PERALATAN</p>
+            <p style="text-align: left; margin-top: 15px;">3. PERALATAN</p>
             <table class="table">
 
                 <tr>
@@ -228,7 +228,7 @@
                 @endforeach
 
             </table>
-            <p style="text-align: left; margin-top: 15px;">2. BAHAN</p>
+            <p style="text-align: left; margin-top: 15px;">4. BAHAN</p>
             <table class="table">
 
                 <tr>

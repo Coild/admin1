@@ -27,7 +27,7 @@ class Admin extends Controller
         $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
 
         return view('dashboard', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
-        }
+    }
 
     //COA
     public function tampil_coa()
@@ -346,13 +346,14 @@ class Admin extends Controller
     public function tampil_pengolahanbatch()
     {
         $pabrik = Auth::user()->pabrik;
-        if(Auth::user()->level==2){
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik)->where('status',0);
+        if (Auth::user()->level == 2) {
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik);
         }
-        else{
-        $data = pengolahanbatch::all()->where('pabrik', $pabrik);}
+        $data2 = produk::all();
 
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
     }
 
     public function tampil_detilbatch(Request $req)
@@ -1253,7 +1254,7 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        
+
 
         $nomer = contohkemasan::insertGetId($hasil);
 
