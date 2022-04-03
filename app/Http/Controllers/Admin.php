@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
+use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -1748,5 +1748,77 @@ class Admin extends Controller
             $data = Kalibrasialat::all()->where('pabrik', $pabrik);
         }
         return view('catatan.dokumen.kalibrasialat', ['data' => $data]);
+    }
+    public function tambah_spesifikasibahan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_spesifikasi' => $req['kode_spesifikasi'],
+            'nama_bahanbaku' => $req['nama_bahanbaku'],
+            'warna' => $req['warna'],
+            'aroma' => $req['aroma'],
+            'tekstur' => $req['tekstur'],
+            'bobot' => $req['bobot'],
+            'tanggal' => $req['tanggal'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        Spesifikasibahanbaku::insert($hasil);
+        return redirect('/spesifikasi-bahan');
+    }
+    public function tambah_spesifikasibahankemas(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_spesifikasi' => $req['kode_spesifikasi'],
+            'nama_bahankemas' => $req['nama_bahankemas'],
+            'jenis_bahankemas' => $req['jenis_bahankemas'],
+            'warna' => $req['warna'],
+            'ukuran' => $req['ukuran_bahankemas'],
+            'bocorcacat' => $req['bocor_cacat'],
+            'tanggal' => $req['tanggal'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        Spesifikasibahankemas::insert($hasil);
+        return redirect('/spesifikasi-bahan');
+    }
+    public function tambah_spesifikasiprodukjadi(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_spesifikasi' => $req['kode_spesifikasi'],
+            'nama_produkjadi' => $req['nama_produkjadi'],
+            'kategori' => $req['kategori'],
+            'no_batch' => $req['no_batch'],
+            'warna' => $req['warna'],
+            'aroma' => $req['aroma'],
+            'bocorcacat' => $req['bocor_cacat'],
+            'tanggal' => $req['tanggal'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        Spesifikasiprodukjadi::insert($hasil);
+        return redirect('/spesifikasi-bahan');
+    }
+    public function tampil_spesifikasi()
+    {
+        $pabrik = Auth::user()->pabrik;
+        if (Auth::user()->level == 2) {
+            $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik);
+            $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik);
+        }
+        return view('catatan.dokumen.spesifikasibahan', ['data' => $data, 'data1' => $data1, 'data2' => $data2,]);
     }
 }

@@ -148,7 +148,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
-    Route::post('/terimakartustokbahan',[pjt::class,'terima_kartustok_bahanbaku']);
+    Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku']);
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
@@ -207,7 +207,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
     Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');
     Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan'])->name('tambah_contohkemasan');
-
     Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
     Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
     Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');
@@ -225,4 +224,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
     Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
     Route::post('tambah_kalibrasialat', [Admin::class, 'tambah_kalibrasialat'])->name('tambah_kalibrasialat');
+    Route::get('spesifikasi-bahan', [Admin::class, 'tampil_spesifikasi'])->name('tampil_spesifikasi');
+    Route::post('tambah_spesifikasibahan', [Admin::class, 'tambah_spesifikasibahan'])->name('tambah_spesifikasibahan');
+    Route::post('tambah_spesifikasibahankemas', [Admin::class, 'tambah_spesifikasibahankemas'])->name('tambah_spesifikasibahankemas');
+    Route::post('tambah_spesifikasiprodukjadi', [Admin::class, 'tambah_spesifikasiprodukjadi'])->name('tambah_spesifikasiprodukjadi');
 });
