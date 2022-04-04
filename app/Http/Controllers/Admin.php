@@ -356,19 +356,19 @@ class Admin extends Controller
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
     }
 
-    public function tampil_detilbatch(Request $req)
-    {
-        // dd($req);
-        $id = $req['nobatch'];
-        $data = pengolahanbatch::all()->where('nomor_batch', $id);
-        $kom = komposisi::all()->where('nomor_batch', $id);
-        $alat = peralatan::all()->where('nomor_batch', $id);
-        $nimbang = penimbangan::all()->where('nomor_batch', $id);
-        return view('catatan.dokumen.detailbatch', [
-            'id' => $id,
-            'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
-        ]);
-    }
+    // public function tampil_detilbatch(Request $req)
+    // {
+    //     // dd($req);
+    //     $id = $req['nobatch'];
+    //     $data = pengolahanbatch::all()->where('nomor_batch', $id);
+    //     $kom = komposisi::all()->where('nomor_batch', $id);
+    //     $alat = peralatan::all()->where('nomor_batch', $id);
+    //     $nimbang = penimbangan::all()->where('nomor_batch', $id);
+    //     return view('catatan.dokumen.detailbatch', [
+    //         'id' => $id,
+    //         'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang
+    //     ]);
+    // }
 
     public function tampil_detilbatchid($id)
     {
@@ -821,16 +821,6 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
             'status' => 0,
-        ]);
-        $data = pengolahanbatch::all()->where('status', 1);
-        return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);
-    }
-
-    public function terima_batch($id)
-    {
-        $pabrik = Auth::user()->pabrik;
-        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
-            'status' => 3,
         ]);
         $data = pengolahanbatch::all()->where('status', 1);
         return view('catatanpelaksana.dokumen.pengolahanbatch', ['data' => $data]);

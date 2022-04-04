@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{pengolahanbatch, komposisi, laporan, peralatan, penimbangan, rekonsiliasi};
+use App\Models\{contohbahanbaku, contohkemasan, pengolahanbatch, komposisi, laporan, peralatan, penimbangan, rekonsiliasi};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -37,9 +37,35 @@ class PrintController extends Controller
 
     public function cetak_ambilbahankemas($id)
     {   
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.ambilbahankemas');
+        
+        // dd($id);
+        $data = contohkemasan::all()->where('id_kemasan',$id);
+        // dd($data);
+        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh kemasan');
+        // dd($kop);
+        return view('print.ambilbahankemas',['data' => $data,'kop' => $kop]);
+    }
+
+    public function cetak_ambilbahanbaku($id)
+    {   
+        
+        // dd($id);
+        $data = contohbahanbaku::all()->where('id_bahanbaku',$id);
+        // dd($data);
+        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh bahan baku');
+        // dd($kop);
+        return view('print.ambilbahanbaku',['data' => $data,'kop' => $kop]);
+    }
+
+    public function cetak_ambilprodukjadi($id)
+    {   
+        
+        // dd($id);
+        $data = contohkemasan::all()->where('id_kemasan',$id);
+        // dd($data);
+        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh produk');
+        // dd($kop);
+        return view('print.ambilprodukjadi',['data' => $data,'kop' => $kop]);
     }
 
     public function cetak_alatutama($id)
@@ -54,7 +80,7 @@ class PrintController extends Controller
     {   
         // $id = Session::get('data');
         // echo "ini ".$id;
-        return view('print.ambilbprodukjadi');
+        return view('print.ambilprodukjadi');
     }
 
     public function cetak_ambilbahabaku($id)
@@ -158,7 +184,7 @@ class PrintController extends Controller
     public function cetak_terimakeluarbahanawal($id)
     {   
         // $id = Session::get('data');
-        // echo "ini ".$id;
+        echo "ini ".$id;
         return view('print.terimakeluarbahanawal');
     }
 }

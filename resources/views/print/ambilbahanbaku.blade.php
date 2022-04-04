@@ -7,6 +7,7 @@
         P {
             margin-bottom: 3px;
         }
+
         table {
             width: 100%;
             margin-top: -15;
@@ -77,85 +78,36 @@
 
 <body class="A4">
     <center>
-    <section class="sheet padding-10mm" style="height: auto;">
-        <!-- Kop Surat -->
+        <section class="sheet padding-10mm" style="height: auto;">
+            <!-- Kop Surat -->
 
-        <table width="100%" class="kop">
-            <tr>
-                <td style="border:none;">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
-                </td>
-                <td class="tengah" style="border:none;">
-                    <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        UD. SEMELOTO
-                    </h1>
-                    <h3 style="margin-bottom: -0px">
-                        JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
-                    </h3>
-                    <h5>
-                        DESA LENANGGUAR KABUPATEN SUMBAWA
-                    </h5>
-                </td>
-            </tr>
-        </table>
-        <center>
-            <br>
-            @foreach($kop as $row)
-            <table class="table table-bordered">
+            <table width="100%" class="kop">
                 <tr>
-                    <td rowspan="4">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height: 100px; width:auto;" ;alt="Your Picture">
+                    <td style="border:none;">
+                        <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
                     </td>
-                    <td rowspan="2" style="text-align: center;">
-                        CATATAN<br>PENGOLAHAN BATCH
-                    </td>
-                    <td colspan="3">Halaman:</td>
-                </tr>
-                <tr>
-                    <td rowspan="3" colspan="3">
-                        Nomor: <br>
-                        Tanggal Berlaku: <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td  rowspan="2" >
-                    BAGIAN
-                        
-                    </td>
-                    <!-- <td rowspan="3">
-                            Nomor: <br>
-                            Tanggal Berlaku: <br>
-                        </td> -->
-
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td rowspan="3">
-                        Disusun Oleh <br>
-                        {{$row['laporan_diajukan']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3">
-                        Disetujui Oleh <br>
-                        {{$row['laporan_diterima']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3" colspan="3">
-                        Mengganti Nomor <br>
-                        Tanggal <br>
-                        09 Oktober 2019
+                    <td class="tengah" style="border:none;">
+                        <h1 style="font-weight: bolder; margin-bottom: -15px">
+                            UD. SEMELOTO
+                        </h1>
+                        <h3 style="margin-bottom: -0px">
+                            JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                        </h3>
+                        <h5>
+                            DESA LENANGGUAR KABUPATEN SUMBAWA
+                        </h5>
                     </td>
                 </tr>
             </table>
-            @endforeach
+            <center>
+                <br>
+               <h2>CATATAN PENGAMBILAN CONTOH BAHAN BAKU</h2>
 
-            <br>
-                    <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Pengemas: </h4>
-                    <h4 style="text-align: left; margin-bottom: -17px;">No Batch: </h4>
-                    <h4 style="text-align: left; ">Tanggal Pengambilan Contoh: </h4>
-                    <table class="table isi table-bordered">
+                <br>
+                <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Pengemas: </h4>
+                <h4 style="text-align: left; margin-bottom: -17px;">No Batch: </h4>
+                <h4 style="text-align: left; ">Tanggal Pengambilan Contoh: </h4>
+                <table class="table isi table-bordered">
                     <tr>
                         <td>No</td>
                         <td>Daftar Periksa</td>
@@ -163,7 +115,7 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Nama produk jadi</td>
+                        <td>Nama bahan baku</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -178,7 +130,7 @@
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Jumlah produk jadi dalam master Box</td>
+                        <td>Jumlah bahan baku dalam master Box</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -207,14 +159,15 @@
                         <td>(TTD)</td>
                     </tr>
                 </table>
-            <!-- <p style="text-align: left; margin-top: 15px; ">1. BATCH</p> -->
+                <!-- <p style="text-align: left; margin-top: 15px; ">1. BATCH</p> -->
 
-            
 
-        </center>
-    </section>
+
+            </center>
+        </section>
 
 
 </body>
+
 
 </html>

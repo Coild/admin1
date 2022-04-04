@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\{kartustokbahan, pengolahanbatch,laporan, spesifikasi};
+use App\Models\{contohbahanbaku,contohprodukjadi, contohkemasan, kartustokbahan, pengolahanbatch,laporan, spesifikasi};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,8 +10,77 @@ class pjt extends Controller
 {
     public function tampil_pengolahanbatch() {
         $data = pengolahanbatch::all()->where('status',0);
-        return view('catatanpelaksana.dokumen.pengolahanbatch',['data'=>$data]);
+        return view('catatan.dokumen.pengolahanbatch',['data'=>$data]);
     }
+
+    public function terima_batch($id)
+    {
+        $pabrik = Auth::user()->pabrik;
+        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+            'status' => 3,
+        ]);
+        $data = pengolahanbatch::all()->where('status', 1);
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
+    }
+
+    public function terima_ambilbahankemas(Request $req)
+    { 
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        contohkemasan::all()->where("no_batch", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','penambahan contoh kemasan')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = contohkemasan::all()->where('status', 1);
+        return redirect()->route('ambilcontoh');
+    }
+
+    public function terima_ambilprodukjadi(Request $req)
+    { 
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        $user = contohprodukjadi::all()->where("no_batch", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','penambahan contoh produk')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = contohprodukjadi::all()->where('status', 1);
+        return redirect()->route('ambilcontoh');
+    }
+
+    public function terima_ambilbahanbaku(Request $req)
+    { 
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        $user = contohbahanbaku::all()->where("no_batch", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','penambahan contoh bahan baku')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = contohbahanbaku::all()->where('status', 1);
+        return redirect()->route('ambilcontoh');
+    }
+
+
 
     //sidebar
     public function tampil_bahan_baku () {

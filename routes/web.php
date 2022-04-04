@@ -33,6 +33,13 @@ Route::get('/resetpass', function () {
 //print    
 Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
 Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printambilprodukjadi/{id}', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
+Route::post('/printambilbahanbaku/{id}', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
+Route::post('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 ROute::get('/dummy', [PrintController::class, 'dummy']);
 
 Route::group(['middleware' => 'auth'], function () {
@@ -148,7 +155,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
-    Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku']);
+    Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku'])->name('terima_kartustok_bahanbaku');
+    Route::post('/terimaambilbahanbaku', [pjt::class, 'terima_ambilbahanbaku'])->name('terima_ambilbahanbaku');
+    Route::post('/terimaambilbahankemas', [pjt::class, 'terima_ambilbahankemas'])->name('terima_ambilbahankemas');
+    Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);

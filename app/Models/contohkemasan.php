@@ -10,4 +10,8 @@ class contohkemasan extends Model
     use HasFactory;
     protected $primaryKey = 'id_kemasan';
     public $timestamps = true;
+    
+    protected $fillable = [
+        'status',
+    ];
 }

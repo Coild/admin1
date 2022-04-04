@@ -81,9 +81,9 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                <?php $i = 0;?>
                     @foreach($batch as $row)
-                    <?php $i = 0;
+                   <?php
                     $i++; ?>
                     <tr>
                         <th scope="row">{{$i}}</th>
@@ -91,7 +91,17 @@
                         <td>{{$row['laporan_diajukan']}}</td>
                         <td>{{$row['laporan_diterima']}}</td>
                         <td>
-                            <form method="post" action="/printpengolahanbatch">
+                            @if($row['laporan_nama']=='pengolahan batch')
+                            <form method="post" action="/printpengolahanbatch/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penambahan contoh bahan baku')
+                            <form method="post" action="/printambilbahanbaku/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penambahan contoh produk')
+                            <form method="post" action="/printambilprodukjadi/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penambahan contoh kemasan')
+                            <form method="post" action="/printambilbahankemas/{{$row['laporan_nomor']}}">
+                            @else
+                            <form method="post" action="/printambilbahankemas">
+                            @endif
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="nobatch" value="{{ $row['laporan_batch'] }}" />
