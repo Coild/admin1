@@ -1739,7 +1739,7 @@ class Admin extends Controller
         }
         return view('catatan.dokumen.kalibrasialat', ['data' => $data]);
     }
-    public function tambah_spesifikasibahan(Request $req)
+    public function tambah_pemeriksaanbahan(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
@@ -1758,7 +1758,7 @@ class Admin extends Controller
         Spesifikasibahanbaku::insert($hasil);
         return redirect('/spesifikasi-bahan');
     }
-    public function tambah_spesifikasibahankemas(Request $req)
+    public function tambah_pemeriksaanbahankemas(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
@@ -1777,7 +1777,7 @@ class Admin extends Controller
         Spesifikasibahankemas::insert($hasil);
         return redirect('/spesifikasi-bahan');
     }
-    public function tambah_spesifikasiprodukjadi(Request $req)
+    public function tambah_pemeriksaanprodukjadi(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
@@ -1797,7 +1797,7 @@ class Admin extends Controller
         Spesifikasiprodukjadi::insert($hasil);
         return redirect('/spesifikasi-bahan');
     }
-    public function tampil_spesifikasi()
+    public function tampil_pemeriksaan()
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
@@ -1809,6 +1809,34 @@ class Admin extends Controller
             $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik);
             $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik);
         }
-        return view('catatan.dokumen.spesifikasibahan', ['data' => $data, 'data1' => $data1, 'data2' => $data2,]);
+        return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2,]);
+    }
+    public function tambah_protabpemeriksaanbahan(Request $req)
+    {
+        $file = $req->file('file');
+        $exten = $file->getClientOriginalExtension();
+        $nama = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $tujuan_upload = 'kalibrasi_alat';
+        $file->move($tujuan_upload, $nama);
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama_file' => $nama,
+            'pabrik' => $pabrik,
+            'user_id' => $id,
+        ];
+        Kalibrasialat::insertGetId($hasil);
+
+        return redirect('/prorab-pemeriksaan');
+    }
+    public function tampil_protabpemeriksaanbahan()
+    {
+        $pabrik = Auth::user()->pabrik;
+        if (Auth::user()->level == 2) {
+            $data = Kalibrasialat::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data = Kalibrasialat::all()->where('pabrik', $pabrik);
+        }
+        return view('protap.dokumen.pemeriksaanpengujian', ['data' => $data]);
     }
 }

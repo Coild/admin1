@@ -234,8 +234,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
     Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
     Route::post('tambah_kalibrasialat', [Admin::class, 'tambah_kalibrasialat'])->name('tambah_kalibrasialat');
-    Route::get('spesifikasi-bahan', [Admin::class, 'tampil_spesifikasi'])->name('tampil_spesifikasi');
-    Route::post('tambah_spesifikasibahan', [Admin::class, 'tambah_spesifikasibahan'])->name('tambah_spesifikasibahan');
-    Route::post('tambah_spesifikasibahankemas', [Admin::class, 'tambah_spesifikasibahankemas'])->name('tambah_spesifikasibahankemas');
-    Route::post('tambah_spesifikasiprodukjadi', [Admin::class, 'tambah_spesifikasiprodukjadi'])->name('tambah_spesifikasiprodukjadi');
+    Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');
+    Route::post('tambah_pemeriksaanbahan', [Admin::class, 'tambah_pemeriksaanbahan'])->name('tambah_pemeriksaanbahan');
+    Route::post('tambah_pemeriksaanbahankemas', [Admin::class, 'tambah_pemeriksaanbahankemas'])->name('tambah_pemeriksaanbahankemas');
 });

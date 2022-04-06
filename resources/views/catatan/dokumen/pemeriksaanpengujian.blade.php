@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('title')
-    <title>Spesifikasi Bahan</title>
+    <title>Pemeriksaan/Penguhian Bahan</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Spesifikasi Bahan</h1>
+            <h1>Pemeriksaan/Penguhian Bahan</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -36,7 +36,7 @@
                                     @if (Auth::user()->level != 2)
                                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
                                             onclick="setdatetoday1(1)">
-                                            Tambah Spesifikasi Bahan Baku
+                                            Tambah Pengujian Bahan Baku
                                         </button>
                                     @endif
                                     <!-- Modal -->
@@ -45,7 +45,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Spesifikasi Bahan Baku</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Pengujian Bahan Baku</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
@@ -55,7 +55,7 @@
                                                         <div class="card-header">Bahan Baku</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_spesifikasibahan"
+                                                            <form role="form" method="post" action="tambah_pemeriksaanbahan"
                                                                 id='forminput1'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
@@ -65,7 +65,7 @@
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-4 col-form-label">Kode
-                                                                            Spesifikasi</label>
+                                                                            Pengujian</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="kode_spesifikasi"
                                                                                 class="form-control 1" id="inputEmail3"
@@ -227,7 +227,7 @@
                                     @if (Auth::user()->level != 2)
                                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
                                             onclick="setdatetoday1(2)">
-                                            Tambah Spesifikasi Bahan Kemas
+                                            Tambah Pengujian Bahan Kemas
                                         </button>
                                     @endif
 
@@ -237,7 +237,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Spesifikasi Bahan Kemas
+                                                    <h4 class="modal-title" id="myModalLabel">Pengujian Bahan Kemas
                                                     </h4>
                                                 </div>
 
@@ -249,7 +249,7 @@
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
                                                             <form role="form" method="post"
-                                                                action="tambah_spesifikasibahankemas" id='forminput2'>
+                                                                action="tambah_pemeriksaanbahankemas" id='forminput2'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
@@ -258,7 +258,7 @@
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-4 col-form-label">Kode
-                                                                            Spesifikasi</label>
+                                                                            Pengujian</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="kode_spesifikasi"
                                                                                 class="form-control 2" id="inputEmail3"
@@ -341,7 +341,7 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Spesifikasi</th>
+                                                <th scope="col">Kode Pengujian</th>
                                                 <th scope="col">Nama Bahan Kemas</th>
                                                 <th scope="col">Jenis Bahan Kemas</th>
                                                 <th scope="col">Warna</th>
@@ -409,7 +409,7 @@
                                     @if (Auth::user()->level != 2)
                                         <button class="btn btn-success btn-lg" data-toggle="modal"
                                             data-target="#modalForm6" onclick="setdatetoday1(3)">
-                                            Tambah Spesifikasi Produk Jadi
+                                            Tambah Pengujian Produk Jadi
                                         </button>
                                     @endif
 
@@ -419,7 +419,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Spesifikasi Produk Jadi
+                                                    <h4 class="modal-title" id="myModalLabel">Pengujian Produk Jadi
                                                     </h4>
                                                 </div>
 
@@ -431,7 +431,7 @@
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
                                                             <form role="form" method="post"
-                                                                action="tambah_spesifikasiprodukjadi" id='forminput3'>
+                                                                action="tambah_pemeriksaanprodukjadi" id='forminput3'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
@@ -440,7 +440,7 @@
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-4 col-form-label">Kode
-                                                                            Spesifikasi</label>
+                                                                            Pengujian</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="kode_spesifikasi"
                                                                                 class="form-control 3" id="inputEmail3"
@@ -471,7 +471,7 @@
                                                                             <input type="text" name="kategori"
                                                                                 class="form-control 3" id="inputEmail3"
                                                                                 placeholder="Kategori Produk
-                                                                                                                        Jadi" />
+                                                                                                                                                    Jadi" />
                                                                         </div>
                                                                     </div>
 
@@ -536,7 +536,7 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Spesifikasi</th>
+                                                <th scope="col">Kode Pengujian</th>
                                                 <th scope="col">Nama Produk Jadi</th>
                                                 <th scope="col">Kategori Produk Jadi</th>
                                                 <th scope="col">No Batch</th>

@@ -147,6 +147,9 @@
                                             Penomoran</a>
                                         <a class="nav-link" href="{{ route('tampil', 18) }}">Ceklis & TTD Yang
                                             Sudah Dibersihkan</a>
+                                        <a class="nav-link"
+                                            href="{{ route('tampil', 24) }}">Pemeriksaan/Pengujian
+                                            Bahan</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#protappabrik2"
