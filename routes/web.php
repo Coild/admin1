@@ -31,7 +31,7 @@ Route::get('/resetpass', function () {
 });
 
 //print    
-Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
+Route::post('/printpengolahanbatch/{id}', [PrintController::class, 'cetak_pengolahanbatch']);
 Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::post('/printambilprodukjadi/{id}', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
 Route::post('/printambilbahanbaku/{id}', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
