@@ -2,34 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{audit, User,Pabrik,laporan};
+use App\Models\{audit, User, pabrik, laporan};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class auditor extends Controller
 {
-    public function list_pabrik () {
+    public function list_pabrik()
+    {
 
         $data = pabrik::all();
 
         // dd($data);
-        return view('auditor.listpabrik',['pabrik'=>$data]);
+        return view('auditor.listpabrik', ['pabrik' => $data]);
     }
 
-    public function list_dokumen (Request $req) {
-        $data = laporan::all()->where('pabrik_id',$req['pabrik'])
-        ->where('laporan_batch',$req['nobatch'])
-        ->where('laporan_nama',$req['nama']);
-        return view('auditor.listdokumen',['data'=>$data]);
+    public function list_dokumen(Request $req)
+    {
+        $data = laporan::all()->where('pabrik_id', $req['pabrik'])
+            ->where('laporan_batch', $req['nobatch'])
+            ->where('laporan_nama', $req['nama']);
+        return view('auditor.listdokumen', ['data' => $data]);
     }
 
-    public function list_batch (Request $req) {
+    public function list_batch(Request $req)
+    {
         // dd($id);
-        $data = laporan::all()->where('pabrik_id',$req['pabrik']);
-        return view('auditor.listbatch' ,  ['data' => $data]);
+        $data = laporan::all()->where('pabrik_id', $req['pabrik']);
+        return view('auditor.listbatch',  ['data' => $data]);
     }
 
-    public function tambah_request (Request $req){
+    public function tambah_request(Request $req)
+    {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
@@ -45,12 +49,14 @@ class auditor extends Controller
         return redirect('/list_audit');
     }
 
-    public function list_request () {
-        $data = audit::all()->where('nama_audit',Auth::user()->nama);
-        return view('auditor.request',['data' => $data]);
+    public function list_request()
+    {
+        $data = audit::all()->where('nama_audit', Auth::user()->nama);
+        return view('auditor.request', ['data' => $data]);
     }
 
-    public function ajukan_request () {
+    public function ajukan_request()
+    {
         return view('auditor.request');
     }
 }
