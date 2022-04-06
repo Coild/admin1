@@ -101,7 +101,7 @@ class protapController extends Controller
    {
       //  echo  $id;
       $data = protap::all()
-         ->where('protap_id', 1)->each->delete();;
+         ->where('protap_id', $id)->each->delete();;
       //  dd($data);
 
       return redirect('/tampil_protap/' . $jenis);
