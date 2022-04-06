@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('title')
-    <title>Pemeriksaan/Penguhian Bahan</title>
+    <title>Pemeriksaan/Pengujian Bahan</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Pemeriksaan/Penguhian Bahan</h1>
+            <h1>Pemeriksaan/Pengujian Bahan</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -471,7 +471,7 @@
                                                                             <input type="text" name="kategori"
                                                                                 class="form-control 3" id="inputEmail3"
                                                                                 placeholder="Kategori Produk
-                                                                                                                                                    Jadi" />
+                                                                                                                                                        Jadi" />
                                                                         </div>
                                                                     </div>
 
