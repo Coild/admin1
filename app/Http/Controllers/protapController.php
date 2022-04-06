@@ -111,7 +111,7 @@ class protapController extends Controller
    {
       $file = $req->file('upload');
       $exten = $file->getClientOriginalExtension();
-      $nama = $req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;;
+      $nama = $req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
       $tujuan_upload = 'asset/protap/';
       $file->move($tujuan_upload, $nama);
       $jenis = $req['jenis'];

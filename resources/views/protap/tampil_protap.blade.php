@@ -19,7 +19,8 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level == 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday()" data-toggle="modal"
+                                data-target="#modalForm">
                                 Tambah PROTAP
                             </button>
                         @endif
@@ -92,7 +93,8 @@
                                                     name="tgl_disetujui" />
                                             </div>
 
-
+                                            <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal"
+                                                placeholder="" />
 
                                             <div class="form-group">
                                                 <label for="inputName">Ruangan</label>
@@ -160,7 +162,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                        <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection
