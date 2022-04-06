@@ -5,7 +5,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Catatan Peimbangan</h1>
+            <h1 class="mt-4">Catatan Penimbangan</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -33,11 +33,11 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
-                                        onclick="setdatetoday1(1)">
-                                        Tambah Penimbangan Bahan Baku
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm4"
+                                            onclick="setdatetoday1(1)">
+                                            Tambah Penimbangan Bahan Baku
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->
@@ -201,11 +201,11 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
-                                        onclick="setdatetoday1(2)">
-                                        Tambah Penimbangan Produk Antara
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
+                                            onclick="setdatetoday1(2)">
+                                            Tambah Penimbangan Produk Antara
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->
@@ -285,7 +285,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                                                                        Produk Antara" />
+                                                                                                                                                                                                                                                                                            Produk Antara" />
                                                                     </div>
                                                                 </div>
 
@@ -385,11 +385,11 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm6"
-                                        onclick="setdatetoday1(3)">
-                                        Tambah Ruang Timbang
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal"
+                                            data-target="#modalForm6" onclick="setdatetoday1(3)">
+                                            Tambah Ruang Timbang
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->
