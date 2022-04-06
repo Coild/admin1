@@ -46,26 +46,27 @@
                                                 <div class="form-group">
                                                     <label for="inputName">Nama PROTAP</label>
                                                     <input type="text" class="form-control" id="inputName" name="nama" />
-                                                @else
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                            PROTAP</label>
-                                                        <div class="col-sm">
-                                                            <select style="height: 35px;" class="form-control" name="nama"
-                                                                id="inlineFormCustomSelect">
-                                                                <option selected>Choose...</option>
-                                                                <?php 
+                                                </div>
+                                            @else
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                        PROTAP</label>
+                                                    <div class="col-sm">
+                                                        <select style="height: 35px;" class="form-control" name="nama"
+                                                            id="inlineFormCustomSelect">
+                                                            <option selected>Choose...</option>
+                                                            <?php 
                                                         $panjang = count($judul);
                                                         for ($i=1; $i < $panjang; $i++) { ?>
-                                                                <option value="{{ $judul[$i] }}">
-                                                                    {{ $judul[$i] }}
-                                                                </option>
-                                                                <?php  }
+                                                            <option value="{{ $judul[$i] }}">
+                                                                {{ $judul[$i] }}
+                                                            </option>
+                                                            <?php  }
                                                         ?>
 
-                                                            </select>
-                                                        </div>
+                                                        </select>
                                                     </div>
+                                                </div>
                                             @endif
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -162,7 +163,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

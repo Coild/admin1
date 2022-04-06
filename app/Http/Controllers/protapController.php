@@ -18,17 +18,17 @@ class protapController extends Controller
          ->where('protap_jenis', $jenis);
       if ($jenis == 1) {
          $judul = ["Penerimaan Penyerahan dan
-            Penyimapanan"];
+            Penyimapanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
       }
       if ($jenis == 2) {
-         $judul = ["Pengambilan Contoh"];
+         $judul = ["Pengambilan Contoh", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
       }
       if ($jenis == 3) {
-         $judul = ["Spesifikasi Bahan"];
+         $judul = ["Spesifikasi Bahan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
       }
       if ($jenis == 4) {
          $judul =  ["Pelatihan Higiene dan Sanitasi Bagi
-             Karyawan"];
+             Karyawan", 'Pelatihan Higiene', 'Pelatihan CPKB'];
       }
       if ($jenis == 5) {
          $judul = ["Pengoperasian Peralatan Utama"];
@@ -38,7 +38,7 @@ class protapController extends Controller
             Menjabat"];
       }
       if ($jenis == 7) {
-         $judul = ["Penimbangan"];
+         $judul = ["Penimbangan", 'Bahan Baku', 'Produk Antara', 'Ruang Timbang'];
       }
       if ($jenis == 8) {
          $judul = ["Pengolahan Batch"];
@@ -79,7 +79,7 @@ class protapController extends Controller
       }
       if ($jenis == 20) {
          $judul = ["Program Pemeriksaan Kesehatan
-            Untuk Personil Prodi"];
+            Untuk Personil"];
       }
       if ($jenis == 21) {
          $judul = ["Pembersihan dan Sanitasi"];
