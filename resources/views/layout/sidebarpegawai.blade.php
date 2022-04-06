@@ -147,8 +147,8 @@
                                         <a class="nav-link" href="{{ route('tampil', 17) }}">Pembuatan PROTAP
                                             dan
                                             Penomoran</a>
-                                        <a class="nav-link" href="{{ route('tampil', 18) }}">Ceklis & TTD Yang
-                                            Sudah Dibersihkan</a>
+                                        <!-- <a class="nav-link" href="{{ route('tampil', 18) }}">Ceklis & TTD Yang
+                                            Sudah Dibersihkan</a> -->
                                         <a class="nav-link"
                                             href="{{ route('tampil', 24) }}">Pemeriksaan/Pengujian
                                             Bahan</a>
