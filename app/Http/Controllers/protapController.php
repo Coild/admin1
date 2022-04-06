@@ -17,81 +17,81 @@ class protapController extends Controller
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
          ->where('protap_jenis', $jenis);
       if ($jenis == 1) {
-         $judul = "Penerimaan Penyerahan dan
-            Penyimapanan";
+         $judul = ["Penerimaan Penyerahan dan
+            Penyimapanan"];
       }
       if ($jenis == 2) {
-         $judul = "Pengambilan Contoh";
+         $judul = ["Pengambilan Contoh"];
       }
       if ($jenis == 3) {
-         $judul = "Spesifikasi Bahan";
+         $judul = ["Spesifikasi Bahan"];
       }
       if ($jenis == 4) {
-         $judul =  "Pelatihan Higiene dan Sanitasi Bagi
-             Karyawan";
+         $judul =  ["Pelatihan Higiene dan Sanitasi Bagi
+             Karyawan"];
       }
       if ($jenis == 5) {
-         $judul = "Pengoperasian Peralatan Utama";
+         $judul = ["Pengoperasian Peralatan Utama"];
       }
       if ($jenis == 6) {
-         $judul = "Struktur Organisasi Personil yang
-            Menjabat";
+         $judul = ["Struktur Organisasi Personil yang
+            Menjabat"];
       }
       if ($jenis == 7) {
-         $judul = "Penimbangan";
+         $judul = ["Penimbangan"];
       }
       if ($jenis == 8) {
-         $judul = "Pengolahan Batch";
+         $judul = ["Pengolahan Batch"];
       }
       if ($jenis == 9) {
-         $judul = "Pengemasan Batch";
+         $judul = ["Pengemasan Batch"];
       }
       if ($jenis == 10) {
-         $judul = "Pemberian Nomor Batch";
+         $judul = ["Pemberian Nomor Batch"];
       }
       if ($jenis == 11) {
-         $judul = "Pelulusan Produk Jadi";
+         $judul = ["Pelulusan Produk Jadi"];
       }
       if ($jenis == 12) {
-         $judul = "Uji Ulang Bahan Baku";
+         $judul = ["Uji Ulang Bahan Baku"];
       }
       if ($jenis == 13) {
-         $judul = "Penanganan Keluhan";
+         $judul = ["Penanganan Keluhan"];
       }
       if ($jenis == 14) {
-         $judul = "Penarikan Produk";
+         $judul = ["Penarikan Produk"];
       }
       if ($jenis == 15) {
-         $judul = "Pemusnahan Produk";
+         $judul = ["Pemusnahan Produk"];
       }
       if ($jenis == 16) {
-         $judul = "Penanganan Contoh Tertinggal";
+         $judul = ["Penanganan Contoh Tertinggal"];
       }
       if ($jenis == 17) {
-         $judul = "Pembuatan PROTAP dan Penomoran";
+         $judul = ["Pembuatan PROTAP dan Penomoran"];
       }
       if ($jenis == 18) {
-         $judul = "Ceklis & TTD Yang Sudah Dibersihkan";
+         $judul = ["Ceklis & TTD Yang Sudah Dibersihkan"];
       }
       if ($jenis == 19) {
-         $judul = "Label Status Kebersihan
-            Peralatan Sebelum Pengguanaan";
+         $judul = ["Label Status Kebersihan
+            Peralatan Sebelum Pengguanaan"];
       }
       if ($jenis == 20) {
-         $judul = "Program Pemeriksaan Kesehatan
-            Untuk Personil Prodi";
+         $judul = ["Program Pemeriksaan Kesehatan
+            Untuk Personil Prodi"];
       }
       if ($jenis == 21) {
-         $judul = "Pembersihan dan Sanitasi";
+         $judul = ["Pembersihan dan Sanitasi"];
       }
       if ($jenis == 22) {
-         $judul = "Pembersihan dan Sanitasi Ruangan";
+         $judul = ["Pembersihan dan Sanitasi Ruangan"];
       }
       if ($jenis == 23) {
-         $judul = "Penerapan Higieni Perorangan";
+         $judul = ["Penerapan Higieni Perorangan"];
       }
       if ($jenis == 24) {
-         $judul = "Pemeriksaan/Pengujian Bahan";
+         $judul = ["Pemeriksaan/Pengujian Bahan", "Bahan Baku", "Bahan Kemas", "Produk Jadi"];
       }
 
       return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis, 'judul'  => $judul]);
@@ -110,7 +110,8 @@ class protapController extends Controller
    public function tambah_protap(Request $req)
    {
       $file = $req->file('upload');
-      $nama = $file->getClientOriginalName();
+      $exten = $file->getClientOriginalExtension();
+      $nama = $req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;;
       $tujuan_upload = 'asset/protap/';
       $file->move($tujuan_upload, $nama);
       $jenis = $req['jenis'];
@@ -122,8 +123,8 @@ class protapController extends Controller
          'protap_ruangan' => $req['ruangan'],
          'protap_diajukan' => $req['diajukan'],
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
-         'protap_diterima' => $req['diterima'],
-         'protap_tgl_diterima' => $req['tgl_diterima'],
+         'protap_diterima' => $req['diajukan'],
+         'protap_tgl_diterima' => $req['disetujui'],
          'protap_jenis' => $jenis,
          'protap_pabrik' => $pabrik,
          'user_id' => $id,

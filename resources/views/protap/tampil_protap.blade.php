@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>PROTAP - {{ $judul }}</title>
+    <title>PROTAP - {{ $judul[0] }}</title>
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@
         <div class="container-fluid px-4">
             <h1 class="mt-4">PROTAP </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">{{ $judul }}</li>
+                <li class="breadcrumb-item active">{{ $judul[0] }}</li>
             </ol>
             <div class="row">
 
@@ -41,12 +41,34 @@
                                         <form action="/input_protap/{{ $jenis }}" method="post"
                                             enctype="multipart/form-data" role="form" id='forminput'>
 
+                                            @if (count($judul) <= 1)
+                                                <div class="form-group">
+                                                    <label for="inputName">Nama PROTAP</label>
+                                                    <input type="text" class="form-control" id="inputName" name="nama" />
+                                                @else
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                            PROTAP</label>
+                                                        <div class="col-sm">
+                                                            <select style="height: 35px;" class="form-control" name="nama"
+                                                                id="inlineFormCustomSelect">
+                                                                <option selected>Choose...</option>
+                                                                <?php 
+                                                        $panjang = count($judul);
+                                                        for ($i=1; $i < $panjang; $i++) { ?>
+                                                                <option value="{{ $judul[$i] }}">
+                                                                    {{ $judul[$i] }}
+                                                                </option>
+                                                                <?php  }
+                                                        ?>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            @endif
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <div class="form-group">
-                                                <label for="inputName">Nama PROTAP</label>
-                                                <input type="text" class="form-control" id="inputName" name="nomer" />
-                                            </div>
+
 
                                             <div class="form-group">
                                                 <label for="inputName">Disusun Oleh</label>
@@ -74,7 +96,7 @@
 
                                             <div class="form-group">
                                                 <label for="inputName">Ruangan</label>
-                                                <input type="text" class="form-control" id="inputName" name="nomer" />
+                                                <input type="text" class="form-control" id="inputName" name="ruangan" />
                                             </div>
 
                                             <div class="form-group row">
@@ -90,9 +112,10 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                                <a href="#" type="submit" class="btn btn-primary submitBtn"
+                                                    onclick="salert()">
                                                     Tambah
-                                                </button>
+                                                </a>
                                             </div>
 
 
@@ -137,7 +160,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                            <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                        <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

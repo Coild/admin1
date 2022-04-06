@@ -182,6 +182,10 @@
 
                     </nav>
                 </div>
+                <a class="nav-link" href="{{ route('tampil', 24) }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Pemeriksaan/Pengujian
+                    Bahan
+                </a>
 
                 <a class="nav-link" href="assets/pdf/cttbpom.pdf" target="_blank">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
