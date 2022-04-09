@@ -99,7 +99,8 @@
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['nama'] }}</td>
                                     <td>
-                                        <a href="health_personil/{{ $row['nama_file'] }}" class="btn btn-primary">Buka</a>
+                                        <a href="asset/health_personil/{{ $row['nama_file'] }}"
+                                            class="btn btn-primary">Buka</a>
                                     </td>
                                 </tr>
                             @endforeach

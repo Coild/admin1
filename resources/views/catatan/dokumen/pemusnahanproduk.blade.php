@@ -37,11 +37,11 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
-                                        onclick="setdatetoday1(1)">
-                                        Tambah Pemusnahan Bahan Baku
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
+                                            onclick="setdatetoday1(1)">
+                                            Tambah Pemusnahan Bahan Baku
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->
@@ -206,14 +206,28 @@
                                                     <td>{{ $row['nama_petugas'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
                                                     } ?></td>
-                                                    <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
-                                                            <button type="submit" class="btn btn-primary">Buka</button>
-                                                        </form>
-                                                    </td>
+                                                    @if (Auth::user()->level != 2)
+                                                        <td>
+                                                            <form action="#">
+                                                                @csrf
+                                                                <input type="hidden" name="nobatch" value="" />
+                                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                                            </form>
+                                                        </td>
+                                                    @else
+                                                        <td>
+                                                            <form method="post" action="terimapemusnahanbahan">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $row['id_pemusnahanbahan'] }}" />
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Terima</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -235,11 +249,11 @@
                                 <div class="card-body">
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2"
-                                        onclick="setdatetoday1(2)">
-                                        Tambah Pemusnahan Bahan Kemas
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2"
+                                            onclick="setdatetoday1(2)">
+                                            Tambah Pemusnahan Bahan Kemas
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->
@@ -403,14 +417,28 @@
                                                     <td>{{ $row['nama_petugas'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
                                                     } ?></td>
-                                                    <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
-                                                            <button type="submit" class="btn btn-primary">Buka</button>
-                                                        </form>
-                                                    </td>
+                                                    @if (Auth::user()->level != 2)
+                                                        <td>
+                                                            <form action="#">
+                                                                @csrf
+                                                                <input type="hidden" name="nobatch" value="" />
+                                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                                            </form>
+                                                        </td>
+                                                    @else
+                                                        <td>
+                                                            <form method="post" action="terimapemusnahanbahankemas">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $row['id_pemusnahanbahankemas'] }}" />
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Terima</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -433,12 +461,12 @@
                                     <div class="card-body">
                                         <!-- pop up -->
                                         <!-- Button to trigger modal -->
-                                        @if(Auth::user()->level!=2)
-                                        <button class="btn btn-success btn-lg" data-toggle="modal"
-                                            data-target="#modalForm3" onclick="setdatetoday1(3)">
-                                            Tambah Pemusnahan Produk Antara
-                                        </button>
-                                        @if(Auth::user()->level!=2)
+                                        @if (Auth::user()->level != 2)
+                                            <button class="btn btn-success btn-lg" data-toggle="modal"
+                                                data-target="#modalForm3" onclick="setdatetoday1(3)">
+                                                Tambah Pemusnahan Produk Antara
+                                            </button>
+                                        @endif
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="modalForm3" role="dialog">
@@ -446,7 +474,8 @@
                                                 <div class="modal-content">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel">Pemusnahan Produk
+                                                        <h4 class="modal-title" id="myModalLabel">Pemusnahan
+                                                            Produk
                                                             Antara</h4>
                                                     </div>
 
@@ -480,7 +509,8 @@
 
                                                                         <div class="form-group row">
                                                                             <label for="inputEmail3"
-                                                                                class="col-sm-3 col-form-label">Nama Produk
+                                                                                class="col-sm-3 col-form-label">Nama
+                                                                                Produk
                                                                                 Antara</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="nama_produkantara"
@@ -502,7 +532,8 @@
 
                                                                         <div class="form-group row">
                                                                             <label for="inputEmail3"
-                                                                                class="col-sm-3 col-form-label">Asal Produk
+                                                                                class="col-sm-3 col-form-label">Asal
+                                                                                Produk
                                                                                 Antara</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="asal_produkantara"
@@ -604,14 +635,29 @@
                                                         <td>{{ $row['nama_petugas'] }}</td>
                                                         <td><?php if ($row['status'] == 0) {
                                                             echo 'Diajukan';
+                                                        } elseif ($row['status'] == 1) {
+                                                            echo 'Diterima';
                                                         } ?></td>
-                                                        <td>
-                                                            <form method="post" action="detil_batch">
-                                                                <input type="hidden" name="_token" value="" />
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Buka</button>
-                                                            </form>
-                                                        </td>
+                                                        @if (Auth::user()->level != 2)
+                                                            <td>
+                                                                <form action="#">
+                                                                    @csrf
+                                                                    <input type="hidden" name="nobatch" value="" />
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Edit</button>
+                                                                </form>
+                                                            </td>
+                                                        @else
+                                                            <td>
+                                                                <form method="post" action="terimapemusnahanprodukantara">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id"
+                                                                        value="{{ $row['id_pemusnahanprodukantara'] }}" />
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Terima</button>
+                                                                </form>
+                                                            </td>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -635,11 +681,11 @@
                                     <div class="card-body">
                                         <!-- pop up -->
                                         <!-- Button to trigger modal -->
-                                        @if(Auth::user()->level!=2)
-                                        <button class="btn btn-success btn-lg" data-toggle="modal"
-                                            data-target="#modalForm4" onclick="setdatetoday1(4)">
-                                            Tambah Pemusnahan Produk Jadi
-                                        </button>
+                                        @if (Auth::user()->level != 2)
+                                            <button class="btn btn-success btn-lg" data-toggle="modal"
+                                                data-target="#modalForm4" onclick="setdatetoday1(4)">
+                                                Tambah Pemusnahan Produk Jadi
+                                            </button>
                                         @endif
 
                                         <!-- Modal -->
@@ -806,19 +852,33 @@
                                                         <td>{{ $row['nama_petugas'] }}</td>
                                                         <td><?php if ($row['status'] == 0) {
                                                             echo 'Diajukan';
+                                                        } elseif ($row['status'] == 1) {
+                                                            echo 'Diterima';
                                                         } ?></td>
-                                                        <td>
-                                                            <form method="post" action="detil_batch">
-                                                                <input type="hidden" name="_token" value="" />
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Buka</button>
-                                                            </form>
-                                                        </td>
+                                                        @if (Auth::user()->level != 2)
+                                                            <td>
+                                                                <form action="#">
+                                                                    @csrf
+                                                                    <input type="hidden" name="nobatch" value="" />
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Edit</button>
+                                                                </form>
+                                                            </td>
+                                                        @else
+                                                            <td>
+                                                                <form method="post" action="terimapemusnahanprodukantara">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id"
+                                                                        value="{{ $row['id_pemusnahanprodukjadi'] }}" />
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Terima</button>
+                                                                </form>
+                                                            </td>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
-
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,8 @@
                                         <a class="nav-link" href="{{ route('kartu-stok') }}">Kartu Stok</a>
                                         <a class="nav-link" href="{{ route('kalibrasi-alat') }}">Kalibrasi
                                             Alat</a>
-                                        <a class="nav-link" href="pemeriksaan-bahan">Pemeriksaan/Pengujian
+                                        <a class="nav-link"
+                                            href="{{ route('pemeriksaan-bahan') }}">Pemeriksaan/Pengujian
                                             Bahan</a>
                                     </nav>
                                 </div>
