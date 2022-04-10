@@ -32,11 +32,11 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal"
-                                        data-target="#modalForm1">
-                                        Tambah Pelatihan Hiegiene dan Sanitasi
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)"
+                                            data-toggle="modal" data-target="#modalForm1">
+                                            Tambah Pelatihan Hiegiene dan Sanitasi
+                                        </button>
                                     @endif
 
 
@@ -217,11 +217,11 @@
 
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
-                                    @if(Auth::user()->level!=2)
-                                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal"
-                                        data-target="#modalForm2">
-                                        Tambah Pelatihan Hiegiene dan Sanitasi
-                                    </button>
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)"
+                                            data-toggle="modal" data-target="#modalForm2">
+                                            Tambah Pelatihan Hiegiene dan Sanitasi
+                                        </button>
                                     @endif
 
                                     <!-- Modal -->

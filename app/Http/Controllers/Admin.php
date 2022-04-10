@@ -813,7 +813,7 @@ class Admin extends Controller
         $file = $req->file('file');
         $exten = $file->getClientOriginalExtension();
         $nama = $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
-        $tujuan_upload = 'health_personil';
+        $tujuan_upload = 'asset/health_personil';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
@@ -1052,7 +1052,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penanganan keluhan',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => 'dummy',
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1547,7 +1547,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
-            'laporan_nama' => 'kartu stok bahan',
+            'laporan_nama' => 'kartu stok bahan baku',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
@@ -1567,7 +1567,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_kartustokbahankemas' => $req['kode_stok'],
+            'kode_kartu' => $req['kode_stok'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1603,7 +1603,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'id_kartustokprodukjadi' => $req['kode_stok'],
+            'kode_kartu' => $req['kode_stok'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1829,7 +1829,7 @@ class Admin extends Controller
         $file = $req->file('file');
         $exten = $file->getClientOriginalExtension();
         $nama = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
-        $tujuan_upload = 'kalibrasi_alat';
+        $tujuan_upload = 'asset/kalibrasi_alat';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
@@ -1869,8 +1869,26 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        Spesifikasibahanbaku::insert($hasil);
-        return redirect('/spesifikasi-bahan');
+        $nomer = Spesifikasibahanbaku::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'Pemeriksaan Bahan Baku',
+            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+
+        return redirect('/pemeriksaan-bahan');
     }
     public function tambah_pemeriksaanbahankemas(Request $req)
     {
@@ -1888,8 +1906,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        Spesifikasibahankemas::insert($hasil);
-        return redirect('/spesifikasi-bahan');
+        $nomer = Spesifikasibahankemas::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'Pemeriksaan Bahan Kemas',
+            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect('/pemeriksaan-bahan');
     }
     public function tambah_pemeriksaanprodukjadi(Request $req)
     {
@@ -1908,8 +1943,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        Spesifikasiprodukjadi::insert($hasil);
-        return redirect('/spesifikasi-bahan');
+        $nomer = Spesifikasiprodukjadi::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'Pemeriksaan Produk Jadi',
+            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect('/pemeriksaan-bahan');
     }
     public function tampil_pemeriksaan()
     {
@@ -1924,33 +1976,5 @@ class Admin extends Controller
             $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik);
         }
         return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2,]);
-    }
-    public function tambah_protabpemeriksaanbahan(Request $req)
-    {
-        $file = $req->file('file');
-        $exten = $file->getClientOriginalExtension();
-        $nama = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
-        $tujuan_upload = 'kalibrasi_alat';
-        $file->move($tujuan_upload, $nama);
-        $id = Auth::user()->id;
-        $pabrik = Auth::user()->pabrik;
-        $hasil = [
-            'nama_file' => $nama,
-            'pabrik' => $pabrik,
-            'user_id' => $id,
-        ];
-        Kalibrasialat::insertGetId($hasil);
-
-        return redirect('/prorab-pemeriksaan');
-    }
-    public function tampil_protabpemeriksaanbahan()
-    {
-        $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = Kalibrasialat::all()->where('pabrik', $pabrik)->where('status', 0);
-        } else {
-            $data = Kalibrasialat::all()->where('pabrik', $pabrik);
-        }
-        return view('protap.dokumen.pemeriksaanpengujian', ['data' => $data]);
     }
 }

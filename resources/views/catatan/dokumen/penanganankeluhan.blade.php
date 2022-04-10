@@ -14,11 +14,11 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        @if(Auth::user()->level!=2)
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                            onclick="setdatetoday()">
-                            Tambah Penanganan Keluhan
-                        </button>
+                        @if (Auth::user()->level != 2)
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                                onclick="setdatetoday()">
+                                Tambah Penanganan Keluhan
+                            </button>
                         @endif
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
@@ -160,14 +160,27 @@
                                     <td>{{ $row['tindak_lanjut'] }}</td>
                                     <td><?php if ($row['status'] == 0) {
                                         echo 'Diajukan';
+                                    } elseif ($row['status'] == 1) {
+                                        echo 'Diterima';
                                     } ?></td>
-                                    <td>
-                                        <form method="post" action="detil_batch">
-                                            <input type="hidden" name="_token" value="" />
-                                            <input type="hidden" name="nobatch" value="" />
-                                            <button type="submit" class="btn btn-primary">Buka</button>
-                                        </form>
-                                    </td>
+                                    @if (Auth::user()->level != 2)
+                                        <td>
+                                            <form action="#">
+                                                @csrf
+                                                <input type="hidden" name="nobatch" value="" />
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </form>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <form method="post" action="terimapenanganankeluhan">
+                                                @csrf
+                                                <input type="hidden" name="id"
+                                                    value="{{ $row['id_penanganankeluhan'] }}" />
+                                                <button type="submit" class="btn btn-primary">Terima</button>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

@@ -180,24 +180,23 @@
                                                     <td>{{ $row['bobot'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
                                                             <form action="#">
-                                                                <input type="hidden" name="_token" value="" />
+                                                                @csrf
                                                                 <input type="hidden" name="nobatch" value="" />
                                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                     @else
                                                         <td>
-                                                            <form method="post" action="terimakartustokbahan">
+                                                            <form method="post" action="terimapemeriksaanbahanbaku">
                                                                 @csrf
-                                                                <!-- <input type="hidden" name="_token" value="" /> -->
-                                                                <input type="hidden" name="_token"
-                                                                    value="{{ csrf_token() }}">
                                                                 <input type="hidden" name="id"
-                                                                    value="{{ $row['id_batch'] }}" />
+                                                                    value="{{ $row['id_spesifikasibahanbaku'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
                                                             </form>
@@ -366,20 +365,23 @@
                                                     <td>{{ $row['bocorcacat'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
                                                             <form action="#">
-                                                                <input type="hidden" name="_token" value="" />
+                                                                @csrf
                                                                 <input type="hidden" name="nobatch" value="" />
                                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                     @else
                                                         <td>
-                                                            <form method="post" action="#">
-                                                                <input type="hidden" name="_token" value="" />
-                                                                <input type="hidden" name="nobatch" value="" />
+                                                            <form method="post" action="terimapemeriksaanbahankemas">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $row['id_spesifikasibahankemas'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
                                                             </form>
@@ -471,7 +473,7 @@
                                                                             <input type="text" name="kategori"
                                                                                 class="form-control 3" id="inputEmail3"
                                                                                 placeholder="Kategori Produk
-                                                                                                                                                        Jadi" />
+                                                                                                                                                                                                        Jadi" />
                                                                         </div>
                                                                     </div>
 
@@ -563,20 +565,23 @@
                                                     <td>{{ $row['bocorcacat'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
                                                             <form action="#">
-                                                                <input type="hidden" name="_token" value="" />
+                                                                @csrf
                                                                 <input type="hidden" name="nobatch" value="" />
                                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                     @else
                                                         <td>
-                                                            <form method="post" action="#">
-                                                                <input type="hidden" name="_token" value="" />
-                                                                <input type="hidden" name="nobatch" value="" />
+                                                            <form method="post" action="terimapemeriksaanprodukjadi">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $row['id_spesifikasiprodukjadi'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
                                                             </form>
