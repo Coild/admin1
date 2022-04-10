@@ -15,8 +15,9 @@ class pjt extends Controller
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
-    public function terima_batch()
+    public function terima_batch(Request  $req)
     {
+        $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
             'status' => 3,
