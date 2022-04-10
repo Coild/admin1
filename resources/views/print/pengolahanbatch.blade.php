@@ -7,6 +7,7 @@
         P {
             margin-bottom: 3px;
         }
+
         table {
             width: 100%;
             margin-top: -15;
@@ -88,17 +89,17 @@
         <table width="100%" class="kop">
             <tr>
                 <td style="border:none;">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
+                    <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td class="tengah" style="border:none;">
                     <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        UD. SEMELOTO
+                        {{$nama}}
                     </h1>
                     <h3 style="margin-bottom: -0px">
-                        JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                        {{$alamat}}
                     </h3>
                     <h5>
-                        DESA LENANGGUAR KABUPATEN SUMBAWA
+                        {{$alamat}}
                     </h5>
                 </td>
             </tr>
@@ -109,7 +110,8 @@
             <table class="table table-bordered">
                 <tr>
                     <td rowspan="4">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height: 100px; width:auto;" ;alt="Your Picture">
+                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
+
                     </td>
                     <td rowspan="2" style="text-align: center;">
                         CATATAN<br>PENGOLAHAN BATCH
@@ -123,9 +125,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td  rowspan="2" >
-                    BAGIAN
-                        
+                    <td rowspan="2">
+                        BAGIAN
+
                     </td>
                     <!-- <td rowspan="3">
                             Nomor: <br>
@@ -159,7 +161,7 @@
 
             <p style="text-align: left; margin-top: 15px; ">1. BATCH</p>
             <table>
-            
+
                 <tr>
                     <td>Kode</td>
                     <td>Nama</td>
@@ -262,19 +264,19 @@
             </table>
 
             <p style="text-align: left; margin-top: 15px;">5. REKONSILISASI</p>
-                <table class="table isi table-bordered">
-                    <tr>
-                        <td>Rekonsiliasi Hasil</td>
-                        <td>Diperiksa Oleh</td>
-                        <td>Disetujui Oleh</td>
-                    </tr>
-                    <tr>
-                        <td>isi 1</td>
-                        <td>isi 2</td>
-                        <td>isi 3</td>
-                    </tr>
-                </table>
-            
+            <table class="table isi table-bordered">
+                <tr>
+                    <td>Rekonsiliasi Hasil</td>
+                    <td>Diperiksa Oleh</td>
+                    <td>Disetujui Oleh</td>
+                </tr>
+                <tr>
+                    <td>isi 1</td>
+                    <td>isi 2</td>
+                    <td>isi 3</td>
+                </tr>
+            </table>
+
 
         </center>
     </section>

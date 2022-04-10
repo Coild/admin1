@@ -512,9 +512,11 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik);//->where('status', 0);
+            // dd($pabrik);
         } else {
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik);
+            // $data = pengolahanbatch::all()->where('pabrik', $pabrik);
+            echo "halo";
         }
         $data2 = produk::all();
 

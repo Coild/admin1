@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, pengolahanbatch, komposisi, laporan, peralatan, penimbangan, protap, rekonsiliasi};
+use App\Models\{contohbahanbaku, contohkemasan, pengolahanbatch, komposisi, laporan, pabrik, peralatan, penimbangan, protap, rekonsiliasi};
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class PrintController extends Controller
@@ -24,6 +25,10 @@ class PrintController extends Controller
     {
         $id = $req['nobatch'];
         // dd($id);
+        $datapabrik = pabrik::all()->where('id_pabrik',Auth::user()->pabrik)->first();
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
         $kom = komposisi::all()->where('nomor_batch', $id);
         $kop = laporan::all()->where('laporan_batch', $id)->where('laporan_nama', 'pengolahan batch');
@@ -32,7 +37,7 @@ class PrintController extends Controller
         $rekon = rekonsiliasi::all()->where('id_batch', $id);
         return view('print.pengolahanbatch', [
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
-            'kop' => $kop, 'rekon' => $rekon
+            'kop' => $kop, 'rekon' => $rekon,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
 
         ]);
     }
