@@ -113,11 +113,13 @@
                             <td>{{ $row['id_batch'] }}</td>
                             <td>{{ $row['jumlah'] }}</td>
                             <td>{{ $row['nama_distributor'] }}</td>
-                            <td><?php if ($row['status'] == 0) {
+                            <td>
+                                <?php if ($row['status'] == 0) {
                                     echo 'Diajukan';
                                 } elseif ($row['status'] == 1) {
                                     echo 'Diterima';
-                                } ?></td>
+                                } ?>
+                            </td>
                             @if(Auth::user()->level==2)
                             <form method="post" action="terimadistribusiproduk">
                                 @csrf

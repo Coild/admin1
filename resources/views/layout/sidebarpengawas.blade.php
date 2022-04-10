@@ -73,10 +73,10 @@
                                 <div class="collapse" id="cttpabrik2" aria-labelledby="headingOne"
                                     data-bs-parent="#cttpabrik0">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="periksapersonil">Pemeriksaan Personil</a>
-                                        <a class="nav-link" href="periksasaniruang">Pembersihan Saniiitasi
+                                    <a class="nav-link" href="{{ route('periksapersonil') }}">Pemeriksaan Personil</a>
+                                        <a class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan Saniiitasi
                                             Ruangan</a>
-                                        <a class="nav-link" href="periksasanialat">Pembersihan Sanitasi Alat</a>
+                                        <a class="nav-link" href="{{ route('periksasanialat') }}">Pembersihan Sanitasi Alat</a>
                                     </nav>
                                 </div>
                             </nav>

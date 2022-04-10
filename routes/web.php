@@ -193,11 +193,11 @@ Route::group(['middleware' => 'auth'], function () {
     
 
     //higi dansani
-    Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);
+    Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');
     Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
-    Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat']);
+    Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat'])->name('periksasanialat');
     Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
-    Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang']);
+    Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang'])->name('periksasaniruang');
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 
 
