@@ -123,7 +123,6 @@
                                                         {{ $row['produk_kode'] }}
                                                     </option>
                                                 @endforeach
-
                                             </select>
                                         </div>
                                     </div>

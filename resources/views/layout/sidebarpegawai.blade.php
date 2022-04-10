@@ -43,7 +43,8 @@
                                         <a class="nav-link" href="{{ route('penimbangan') }}">Penimbangan</a>
                                         <a class="nav-link" href="{{ route('pengolahanbatch') }}">Pengolahan
                                             Batch</a>
-                                        <a class="nav-link" href="#">Pengemasan Batch</a>
+                                        <a class="nav-link" href="{{ route('pengemasan-batch') }}">Pengemasan
+                                            Batch</a>
                                         <!-- <a class="nav-link" href="#">Cara Pemberian Nomor Batch</a> -->
                                         <a class="nav-link" href="{{ route('pelulusan-produk') }}">Pelulusan
                                             Produk Jadi</a>
@@ -73,10 +74,13 @@
                                 <div class="collapse" id="cttpabrik2" aria-labelledby="headingOne"
                                     data-bs-parent="#cttpabrik0">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{{ route('periksapersonil') }}">Pemeriksaan Personil</a>
-                                        <a class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan Saniiitasi
+                                        <a class="nav-link" href="{{ route('periksapersonil') }}">Pemeriksaan
+                                            Personil</a>
+                                        <a class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan
+                                            Saniiitasi
                                             Ruangan</a>
-                                        <a class="nav-link" href="{{ route('periksasanialat') }}">Pembersihan Sanitasi Alat</a>
+                                        <a class="nav-link" href="{{ route('periksasanialat') }}">Pembersihan
+                                            Sanitasi Alat</a>
                                     </nav>
                                 </div>
                             </nav>
