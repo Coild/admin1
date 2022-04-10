@@ -943,7 +943,7 @@ class Admin extends Controller
     //yusril
     public function tambah_pelatihanhiginitas(Request $req)
     {
-        dd($req);
+        // dd($req);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
@@ -967,7 +967,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pelatihan higiene dan sanitasi',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1006,7 +1006,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pelatihan cpkb',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1023,8 +1023,14 @@ class Admin extends Controller
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
         $pabrik = Auth::user()->pabrik;
-        $data = programpelatihan::all()->where('pabrik', $pabrik);
-        $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
+        if(Auth::user()->level==2){
+            $data = programpelatihan::all()->where('pabrik', $pabrik)->where('status',0);
+        $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik)->where('status',0);
+        }else {
+            $data = programpelatihan::all()->where('pabrik', $pabrik);
+            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
+        }
+        
         return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data, 'data1' => $data1]);
     }
     public function tambah_keluhan(Request $req)
@@ -1192,8 +1198,8 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
-            'laporan_nama' => 'pengolahan batch',
-            'laporan_batch' => $req['no_batch'] ?? 'kosong',
+            'laporan_nama' => 'pengoperasian alat',
+            'laporan_batch' => $req['no_batch'] ?? $nomer,
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1419,7 +1425,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penimbangan bahan',
-            'laporan_batch' => $req['no_batch'] ?? 'kosong',
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",
@@ -1498,7 +1504,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'ruang timbang',
-            'laporan_batch' => $req['no_batch'] ?? "kosong",
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,
             'laporan_diterima' => "belum",

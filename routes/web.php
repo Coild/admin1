@@ -160,6 +160,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/terimaambilbahanbaku', [pjt::class, 'terima_ambilbahanbaku'])->name('terima_ambilbahanbaku');
     Route::post('/terimaambilbahankemas', [pjt::class, 'terima_ambilbahankemas'])->name('terima_ambilbahankemas');
     Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
+
+    Route::post('/terimapelatihanhigisani', [pjt::class, 'terima_pelatihanhigisani'])->name('terima_pelatihanhigisani');
+    Route::post('/terimapelatihancpkb', [pjt::class, 'terima_pelatihancpkb'])->name('terima_pelatihancpkb');
+
+    Route::post('/terimapenimbanganbahan', [pjt::class, 'terima_penimbanganbahan'])->name('terima_penimbanganbahan');
+    Route::post('/terimapenimbanganproduk', [pjt::class, 'terima_penimbanganproduk'])->name('terima_penimbanganproduk');
+    Route::post('/terimapenimbanganruang', [pjt::class, 'terima_penimbanganruang'])->name('terima_penimbanganruang');
+    Route::post('/terimapelulusanproduk', [pjt::class, 'terima_pelulusanproduk'])->name('terima_pelulusanproduk');
+
+    Route::post('/terimaoperasialat', [pjt::class, 'terima_operasialat'])->name('terima_operasialat');
+    Route::post('/terimadistribusiproduk', [pjt::class, 'terima_distribusiproduk'])->name('terima_distribusiproduk');
+
     Route::post('/terimapenanganankeluhan', [pjt::class, 'terima_penanganankeluhan'])->name('terima_penanganankeluhan');
     Route::post('/terimapenarikanproduk', [pjt::class, 'terima_penarikanproduk'])->name('terima_penarikanproduk');
     Route::post('/terimapemusnahanbahan', [pjt::class, 'terima_pemusnahanbahanbaku'])->name('terima_pemusnahanbahanbaku');

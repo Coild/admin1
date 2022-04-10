@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class pengoprasianalat extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_operasi';
+
+    protected $fillable = [
+        'status',
+    ];
 }

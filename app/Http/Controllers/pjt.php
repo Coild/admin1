@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku,contohprodukjadi, contohkemasan, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, pengolahanbatch,laporan, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi};
+use App\Models\{contohbahanbaku,contohprodukjadi, contohkemasan, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, pengolahanbatch,laporan, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -185,6 +185,147 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         return redirect()->route('penerimaanBB');
+    }
+
+    //terima pelatihan higi sani
+    public function terima_pelatihanhigisani(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd(  $req['nobatch']);
+        $user = programpelatihan::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','pelatihan higiene dan sanitasi')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+
+    public function terima_pelatihancpkb(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = Pelatihancpkb::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','pelatihan cpkb')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+
+    //pengoperasianalat
+    public function terima_operasialat(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = pengoprasianalat::all()->where("id_operasi", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','pengoperasian alat')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('pengoprasian-alat');
+    }
+
+    //distribusi produk
+    public function terima_distribusiproduk(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = distribusiproduk::all()->where("kode_distribusi", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','distribusi produk')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('pendistribusian-produk');
+    }
+
+    //penimbangan
+    public function terima_penimbanganbahan(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = timbangbahan::all()->where("no_loth", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','penimbangan bahan')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('penimbangan');
+    }
+
+    public function terima_penimbanganproduk(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = timbangproduk::all()->where("no_batch", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','penimbangan produk utama')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('penimbangan');
+    }
+
+    public function terima_penimbanganruang(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = ruangtimbang::all()->where("no_loth", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','ruang timbang')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('penimbangan');
+    }
+
+    //pelulusan produk
+    public function terima_pelulusanproduk(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        // dd($req['nobatch']);
+        $user = pelulusanproduk::all()->where("no_batch", $req['nobatch'])->first()->update([
+            'status' => 1,
+        ]);
+
+        laporan ::all()->where('laporan_batch',$req['nobatch'])
+        ->where('laporan_nama','pelulusan produk jadi')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        return redirect()->route('pelulusan-produk');
     }
 
 

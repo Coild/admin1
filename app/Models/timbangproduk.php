@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class timbangproduk extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'timbang_produk_id';
+
+    protected $fillable = [
+        'status',
+    ];
 }

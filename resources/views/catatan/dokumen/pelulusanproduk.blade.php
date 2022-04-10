@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        @if(Auth::user()->level==2)
+                        @if(Auth::user()->level!=2)
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
                             onclick="setdatetoday()">
                             Tambah Pelulusan Produk Jadi
@@ -182,11 +182,19 @@
                                         echo 'Disetujui';
                                     } ?></td>
                                     <td>
-                                        <form method="post" action="detil_batch">
-                                            <input type="hidden" name="_token" value="" />
-                                            <input type="hidden" name="nobatch" value="" />
-                                            <button type="submit" class="btn btn-primary">Buka</button>
-                                        </form>
+                                    @if(Auth::user()->level==2)
+                                                <form method="post" action="terimapelulusanproduk">
+                                                    @csrf
+                                                    <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                                    <button type="submit" class="btn btn-primary">terima</button>
+                                                </form>
+                                                @else
+                                                <form method="post" action="#">
+                                                    @csrf
+                                                    <input type="hidden" name="nobatch" value="" />
+                                                    <button type="submit" class="btn btn-primary">edit</button>
+                                                </form>
+                                                @endif
                                     </td>
                                 </tr>
                             @endforeach

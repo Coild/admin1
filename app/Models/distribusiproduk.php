@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class distribusiproduk extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_distribusi';
+
+    protected $fillable = [
+        'status',
+    ];
 }
