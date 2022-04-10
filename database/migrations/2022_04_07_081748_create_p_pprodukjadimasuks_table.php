@@ -24,7 +24,7 @@ class CreatePPprodukjadimasuksTable extends Migration
             $table->string("no_kontrol", 100);
             $table->date('kedaluwarsa')->nullable();
             $table->integer('pabrik', false);
-            $table->tinyInteger('status', 0)->unsigned();
+            $table->integer('induk', false);
             $table->integer("user_id", false);
             $table->timestamps();
         });

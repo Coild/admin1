@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporan', [Admin::class, 'tampil_laporan'])->name('laporan');
 
     Route::get('/index', function () {
-        return view('index');
+        return redirect()->route('dashboard');
     })->name("home");
 
     Route::get('/', [AuthController::class, 'showFormLogin']);
@@ -110,6 +110,11 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');
+    Route::get('/detilterimabbid/{jen}/{induk}', [Admin::class, 'tampil_detilbbid']);
+    Route::post('/detilterimabb', [Admin::class, 'tampil_detilbb'])->name('detilBB');
+    Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
+    Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
+    Route::post('/tambah_terimakemasan', [Admin::class, 'tambah_terimakemasan'])->name('tambah_terimakemasan');
     Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
     Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
     Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');

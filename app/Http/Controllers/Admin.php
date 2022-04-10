@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
-use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +61,7 @@ class Admin extends Controller
         ];
 
         coa::insert($hasil);
-        
+
         return redirect('/coa');
     }
 
@@ -97,7 +97,7 @@ class Admin extends Controller
         ];
 
         dip::insert($hasil);
-        
+
         return redirect('/dip');
     }
 
@@ -133,7 +133,7 @@ class Admin extends Controller
         ];
 
         perizinan::insert($hasil);
-        
+
         return redirect('/perizinan');
     }
 
@@ -169,7 +169,7 @@ class Admin extends Controller
         ];
 
         jabatan::insert($hasil);
-        
+
         return redirect('/jabatan');
     }
 
@@ -205,32 +205,175 @@ class Admin extends Controller
         ];
 
         pobpabrik::insert($hasil);
-        
+
         return redirect('/pobpabrik');
     }
 
     //catat bersh ruangan
 
-    public function tampil_penerimaanbb()
-    { 
+    public function tampil_detilbb(Request $req)
+    {
         $pabrik = Auth::user()->pabrik;
-        if(Auth::user()->level==2){
-            $data = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('status',0);
-            $data1 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('status',0);
-            $data2 = PPprodukjadimasuk::all()->where('pabrik', $pabrik)->where('status',0);
-            $data3 = PPprodukjadikeluar::all()->where('pabrik', $pabrik)->where('status',0);
-            $data4 = PPkemasanmasuk::all()->where('pabrik', $pabrik)->where('status',0);
-            $data5 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('status',0);
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];
+        // dd($req);
+        if ($jenis == 1) {
+            $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
+        } elseif ($jenis == 2) {
+            $data1 = PPprodukjadimasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPprodukjadikeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
         } else {
-        $data = PPbahanbakumasuk::all()->where('pabrik', $pabrik);
-        $data1 = PPbahanbakukeluar::all()->where('pabrik', $pabrik);
-        $data2 = PPprodukjadimasuk::all()->where('pabrik', $pabrik);
-        $data3 = PPprodukjadikeluar::all()->where('pabrik', $pabrik);
-        $data4 = PPkemasanmasuk::all()->where('pabrik', $pabrik);
-        $data5 = PPkemasankeluar::all()->where('pabrik', $pabrik);
+            $data1 = PPkemasanmasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
+        }
+        return view('catatan.dokumen.detailpenerimaanBB', [
+            'jenis' => $jenis, 'induk' => $induk,
+            'data1' => $data1,
+            'data2' => $data2
+        ]);
     }
-        return view('catatan.dokumen.penerimaanBB', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'data4' => $data4, 'data5' => $data5]);
+
+    public function tampil_detilbbid($jenis,$induk)
+    {
+        $pabrik = Auth::user()->pabrik;        // dd($req);
+        if ($jenis == 1) {
+            $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
+        } elseif ($jenis == 2) {
+            $data1 = PPprodukjadimasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPprodukjadikeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
+        } else {
+            $data1 = PPkemasanmasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
+            $data2 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
+        }
+        return view('catatan.dokumen.detailpenerimaanBB', [
+            'jenis' => $jenis, 'induk' => $induk,
+            'data1' => $data1,
+            'data2' => $data2
+        ]);
     }
+
+    public function tampil_penerimaanbb()
+    {
+        $pabrik = Auth::user()->pabrik;
+        if (Auth::user()->level == 2) {
+            $data1 = cp_bahan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data2 = cp_produk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data3 = cp_kemasan::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
+            $data1 = cp_bahan::all()->where('pabrik', $pabrik);
+            $data2 = cp_produk::all()->where('pabrik', $pabrik);
+            $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
+        }
+        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
+    }
+
+    public function tambah_terimabahan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'produk' => $req['produk'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'status' => 0,
+        ];
+
+        $nomer = cp_bahan::insertGetId($data);
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan bahan baku',
+            'laporan_batch' => $nomer,
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect()->route('penerimaanBB');
+    }
+
+    public function tambah_terimaproduk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'produk' => $req['produk'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'status' => 0,
+        ];
+
+        $nomer = cp_produk::insertGetId($data);
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan produk',
+            'laporan_batch' => $nomer,
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect()->route('penerimaanBB');
+    }
+
+    public function tambah_terimakemasan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'produk' => $req['produk'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'status' => 0,
+        ];
+
+        $nomer = cp_kemasan::insertGetId($data);
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan kemasan',
+            'laporan_batch' => $nomer,
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect()->route('penerimaanBB');
+    }
+
     public function tambah_penerimaanbbmasuk(Request $req)
     {
         $id = Auth::user()->id;
@@ -245,31 +388,13 @@ class Admin extends Controller
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPbahanbakumasuk::insertGetId($data);
-
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan bahan masuk',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        // dd($hasil);
-        laporan::insert($laporan);
-        
-        return redirect('penerimaanBB');
+        PPbahanbakumasuk::insert($data);
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanbbkeluar(Request $req)
     {
@@ -283,29 +408,13 @@ class Admin extends Controller
             'jumlah' => $req['jumlah'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPbahanbakukeluar::insertGetId($data);
-        
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan bahan keluar',
-            'laporan_batch' => $req['no_batch'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
-        return redirect('penerimaanBB');
+        PPbahanbakukeluar::insert($data);
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanprdukmasuk(Request $req)
     {
@@ -321,29 +430,13 @@ class Admin extends Controller
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPprodukjadimasuk::insertGetId($data);
-        
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan produk masuk',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
-        return redirect('penerimaanBB');
+        PPprodukjadimasuk::insert($data);
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanprodukkeluar(Request $req)
     {
@@ -357,29 +450,16 @@ class Admin extends Controller
             'jumlah' => $req['jumlah'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPprodukjadikeluar::insertGetId($data);
+        PPprodukjadikeluar::insert($data);
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];
 
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan produk keluar',
-            'laporan_batch' => $req['no_batch'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
-        return redirect('penerimaanBB');
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaakemasanmasuk(Request $req)
     {
@@ -395,29 +475,14 @@ class Admin extends Controller
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPkemasanmasuk::insertGetId($data);
+        PPkemasanmasuk::insert($data);
 
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan kemasan masuk',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
-        return redirect('penerimaanBB');
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaankemasankeluar(Request $req)
     {
@@ -431,29 +496,14 @@ class Admin extends Controller
             'jumlah' => $req['jumlah'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
-            'status' => 0,
+            'induk' => $req['induk'],
             'user_id' => $id,
         ];
-        $nomer = PPkemasankeluar::insertGetId($data);
+        PPkemasankeluar::insert($data);
 
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $laporan = [
-            'laporan_nama' => 'penerimaan kemasan keluar',
-            'laporan_batch' => $req['no_batch'],
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
-        ];
-
-        laporan::insert($laporan);
-        return redirect('penerimaanBB');
+        $induk = $req['induk'];
+        $jenis = $req['jenis'];        
+        return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     //tampil batch
     public function tampil_pengolahanbatch()
@@ -719,7 +769,7 @@ class Admin extends Controller
         ];
 
         produk::insert($hasil);
-        
+
         return redirect('/setting');
     }
 
@@ -732,7 +782,7 @@ class Admin extends Controller
         ];
 
         kemasan::insert($hasil);
-        
+
         return redirect('/setting');
     }
 
@@ -746,7 +796,7 @@ class Admin extends Controller
         ];
 
         bahanbaku::insert($hasil);
-        
+
         return redirect('/setting');
     }
 
@@ -1023,14 +1073,14 @@ class Admin extends Controller
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
         $pabrik = Auth::user()->pabrik;
-        if(Auth::user()->level==2){
-            $data = programpelatihan::all()->where('pabrik', $pabrik)->where('status',0);
-        $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik)->where('status',0);
-        }else {
+        if (Auth::user()->level == 2) {
+            $data = programpelatihan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik)->where('status', 0);
+        } else {
             $data = programpelatihan::all()->where('pabrik', $pabrik);
             $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
         }
-        
+
         return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data, 'data1' => $data1]);
     }
     public function tambah_keluhan(Request $req)

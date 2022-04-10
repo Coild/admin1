@@ -32,23 +32,56 @@
                                 Tambah Bahan Baku
                             </button>
                             @endif
-
-
                         </div>
 
                         <table class="table mt-5">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Kode Produk</th>
-                                    <th scope="col">Nama Produk</th>
-                                    <th scope="col">Nomor Batch</th>
+                                    <th scope="col">Kode Bahan</th>
+                                    <th scope="col">Nama Bahan</th>
+                                    <th scope="col">Untuk Produk</th>
+                                    <th scope="col">Ruangan</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
+                                <?php $i = 0; ?>
+                                @foreach($data1 as $row)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$row['kode']}}</td>
+                                    <td>{{$row['nama']}}</td>
+                                    <td>{{$row['produk']}}</td>
+                                    <td>{{$row['ruang']}}</td>
+                                    <td>
+                                        @if($row['ruang']==0)
+                                        {{'Diajukan'}}
+                                        @else
+                                        {{'Diterima'}}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(Auth::user()->level==2)
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=1 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_bahan_id']}}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                        @else
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=1 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_bahan_id']}}" />
+                                            <button type="submit" class="btn btn-primary">edit</button>
+                                        </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -75,15 +108,49 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Kode Produk</th>
-                                    <th scope="col">Nama Produk</th>
-                                    <th scope="col">Nomor Batch</th>
+                                    <th scope="col">Kode Bahan</th>
+                                    <th scope="col">Nama Bahan</th>
+                                    <th scope="col">Untuk Produk</th>
+                                    <th scope="col">Ruangan</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php $i = 0; ?>
+                                @foreach($data2 as $row)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$row['kode']}}</td>
+                                    <td>{{$row['nama']}}</td>
+                                    <td>{{$row['produk']}}</td>
+                                    <td>{{$row['ruang']}}</td>
+                                    <td>
+                                        @if($row['ruang']==0)
+                                        {{'Diajukan'}}
+                                        @else
+                                        {{'Diterima'}}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(Auth::user()->level==2)
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=2 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_produk_id']}}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                        @else
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=2 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_produk_id']}}" />
+                                            <button type="submit" class="btn btn-primary">Edit</button>
+                                        </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -111,15 +178,49 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Kode Produk</th>
-                                    <th scope="col">Nama Produk</th>
-                                    <th scope="col">Nomor Batch</th>
+                                    <th scope="col">Kode Bahan</th>
+                                    <th scope="col">Nama Bahan</th>
+                                    <th scope="col">Untuk Produk</th>
+                                    <th scope="col">Ruangan</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php $i = 0; ?>
+                                @foreach($data3 as $row)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{$row['kode']}}</td>
+                                    <td>{{$row['nama']}}</td>
+                                    <td>{{$row['produk']}}</td>
+                                    <td>{{$row['ruang']}}</td>
+                                    <td>
+                                        @if($row['ruang']==0)
+                                        {{'Diajukan'}}
+                                        @else
+                                        {{'Diterima'}}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(Auth::user()->level==2)
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=3 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_kemasan_id']}}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                        @else
+                                        <form method="post" action="detilterimabb">
+                                            @csrf
+                                            <input type="hidden" name="jenis" value=3 />
+                                            <input type="hidden" name="induk" value="{{$row['cp_kemasan_id']}}" />
+                                            <button type="submit" class="btn btn-primary">Edit</button>
+                                        </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -130,87 +231,63 @@
         </div>
     </div>
 
-    <!-- Modal Bahhan -->
+
+    <!-- Modal Bahan -->
     <div class="modal fade" id="modalBahan" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        Tamba Bahan Baku
-                    </h4>
+                    <h4 class="modal-title" id="myModalLabel">Tambah Bahan Baku</h4>
                 </div>
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <p class="statusMsg"></p>
-                    <form method="post" action="tambah_batch" id='forminput'>
-                        <div>
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Bagian Produksi
-                            </div>
-
-                            <div class="card-body">
-
+                    <div class="card mb-4">
+                        <div class="card-header" id='headertgl3'></div>
+                        <div class="card-header">Bahan Baku</div>
+                        <div class="card-body">
+                            <p class="statusMsg"></p>
+                            <form role="form" method="post" action="tambah_terimabahan" id='forminput3'>
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                        Dengan PROTAP No</label>
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan</label>
                                     <div class="col-sm">
-                                        <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor POB" />
+                                        <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="Kode Kemasan" />
                                     </div>
                                 </div>
 
-                            </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk Produk</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="produk" class="form-control" id="inputEmail3" placeholder="Nama Kemasan" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode bahan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="kode" class="form-control" id="inputEmail3" placeholder="No Batch" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="ruang" class="form-control" id="inputEmail3" placeholder="" />
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" onclick="salert1(3)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                            </form>
                         </div>
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Produk
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="Nomor Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
-                                        Sediaan</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan" type="text" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--  -->
+    <!-- pop up end -->
 
     <!-- Modal Produk -->
     <div class="modal fade" id="modalProduk" role="dialog">
@@ -218,81 +295,56 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        Tamba Produk Jadi
-                    </h4>
+                    <h4 class="modal-title" id="myModalLabel">Tambah Produk</h4>
                 </div>
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <p class="statusMsg"></p>
-                    <form method="post" action="tambah_batch" id='forminput'>
-                        <div>
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Bagian Produksi
-                            </div>
-
-                            <div class="card-body">
-
+                    <div class="card mb-4">
+                        <div class="card-header" id='headertgl3'></div>
+                        <div class="card-header">Produk</div>
+                        <div class="card-body">
+                            <p class="statusMsg"></p>
+                            <form role="form" method="post" action="tambah_terimaproduk" id='forminput2'>
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                        Dengan PROTAP No</label>
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                     <div class="col-sm">
-                                        <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor POB" />
+                                        <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="Kode Kemasan" />
                                     </div>
                                 </div>
 
-                            </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis Kemasan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="produk" class="form-control" id="inputEmail3" placeholder="Nama Kemasan" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Produk</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="kode" class="form-control" id="inputEmail3" placeholder="No Batch" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="ruang" class="form-control" id="inputEmail3" placeholder="" />
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" onclick="salert1(2)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                            </form>
                         </div>
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Produk
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="Nomor Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
-                                        Sediaan</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan" type="text" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--  -->
+    <!-- pop up end -->
 
     <!-- Modal Kemasan -->
     <div class="modal fade" id="modalKemasan" role="dialog">
@@ -300,80 +352,56 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        Tamba Kemasan
-                    </h4>
+                    <h4 class="modal-title" id="myModalLabel">Tambah Kemasan</h4>
                 </div>
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <p class="statusMsg"></p>
-                    <form method="post" action="tambah_batch" id='forminput'>
-                        <div>
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Bagian Produksi
-                            </div>
-
-                            <div class="card-body">
-
+                    <div class="card mb-4">
+                        <div class="card-header" id='headertgl3'></div>
+                        <div class="card-header">Kemasan</div>
+                        <div class="card-body">
+                            <p class="statusMsg"></p>
+                            <form role="form" method="post" action="tambah_terimakemasan" id='forminput1'>
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                        Dengan PROTAP No</label>
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
                                     <div class="col-sm">
-                                        <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor POB" />
+                                        <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="Kode Kemasan" />
                                     </div>
                                 </div>
 
-                            </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk Produk</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="produk" class="form-control" id="inputEmail3" placeholder="Nama Kemasan" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Kemasan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="kode" class="form-control" id="inputEmail3" placeholder="No Batch" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="ruang" class="form-control" id="inputEmail3" placeholder="" />
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" onclick="salert1(1)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                            </form>
                         </div>
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Produk
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="Nomor Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
-                                        Sediaan</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan" type="text" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm">
-                                        <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--  -->
+    <!-- pop up end -->
+
 </main>
 @endsection

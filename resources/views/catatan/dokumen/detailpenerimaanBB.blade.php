@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<?php $isi = 2; ?>
+<?php $isi = $jenis; ?>
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Catatan Penerimaan Penyerahan dan Penyimpanan </h1>
@@ -40,9 +40,11 @@
                                     <div class="card-header" id='headertgl1'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput1" action="tambah_penerimaanbbmasuk" method="post">
+                                    <form role="form" id="forminput1" action="{{url('tambah_penerimaanbbmasuk')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Bahan Baku</label>
@@ -114,14 +116,36 @@
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">No. Control</th>
                                 <th scope="col">Tgl. Kadaluarsa</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <?php $i = 0; ?>
-                            
+                            @foreach ($data1 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_bahan'] }}</td>
+                                <td>{{ $row['no_loth'] }}</td>
+                                <td>{{ $row['pemasok'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['no_kontrol'] }}</td>
+                                <td>{{ $row['kedaluwarsa'] }}</td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
+
                     </table>
 
                 </div>
@@ -156,9 +180,11 @@
                                     <div class="card-header" id='headertgl2'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput2" action="tambah_penerimaanbbkeluar" method="post">
+                                    <form role="form" id="forminput2" action="{{url('tambah_penerimaanbbkeluar')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Bahan Baku</label>
@@ -220,7 +246,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-                            
+
                         </tbody>
                     </table>
 
@@ -259,9 +285,11 @@
                                     <div class="card-header" id='headertgl3'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput3" action="tambah_penerimaanprdukmasuk" method="post">
+                                    <form role="form" id="forminput3" action="{{url('tambah_penerimaanprdukmasuk')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Produk Jadi</label>
@@ -339,7 +367,28 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-                           
+                            @foreach ($data1 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_bahan'] }}</td>
+                                <td>{{ $row['no_loth'] }}</td>
+                                <td>{{ $row['pemasok'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['no_kontrol'] }}</td>
+                                <td>{{ $row['kedaluwarsa'] }}</td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -375,9 +424,11 @@
                                     <div class="card-header" id='headertgl4'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput4" action="tambah_penerimaanprodukkeluar" method="post">
+                                    <form role="form" id="forminput4" action="{{url('tambah_penerimaanprodukkeluar')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Produk Jadi</label>
@@ -439,7 +490,30 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-
+                            @foreach ($data2 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_produk'] }}</td>
+                                <td>{{ $row['untuk_produk'] }}</td>
+                                <td>{{ $row['no_batch'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['sisa'] }}</td>
+                                <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -478,9 +552,11 @@
                                     <div class="card-header" id='headertgl5'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput5" action="tambah_penerimaakemasanmasuk" method="post">
+                                    <form role="form" id="forminput5" action="{{url('tambah_penerimaakemasanmasuk')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Kemasan</label>
@@ -558,7 +634,28 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-
+                            @foreach ($data1 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_bahan'] }}</td>
+                                <td>{{ $row['no_loth'] }}</td>
+                                <td>{{ $row['pemasok'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['no_kontrol'] }}</td>
+                                <td>{{ $row['kedaluwarsa'] }}</td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -594,9 +691,11 @@
                                     <div class="card-header" id='headertgl6'>
                                     </div>
                                     <p class="statusMsg"></p>
-                                    <form role="form" id="forminput6" action="tambah_penerimaankemasankeluar" method="post">
+                                    <form role="form" id="forminput6" action="{{url('tambah_penerimaankemasankeluar')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="induk" value="{{$induk}}">
+                                        <input type="hidden" name="jenis" value="{{$jenis}}">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                 Kemasan</label>
@@ -658,7 +757,30 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-
+                            @foreach ($data2 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_kemasan'] }}</td>
+                                <td>{{ $row['untuk_produk'] }}</td>
+                                <td>{{ $row['no_batch'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['sisa'] }}</td>
+                                <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -682,7 +804,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form method="post" action="tambah_batch" id='forminput'>
+                    <form method="post" action="{{''}}" id='forminput'>
                         <div>
 
                             <div class="card-header">
@@ -694,7 +816,8 @@
 
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
+                                <input type="hidden" name="induk" value="{{$induk}}">
+                                <input type="hidden" name="jenis" value="{{$jenis}}">
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan POB No</label>
