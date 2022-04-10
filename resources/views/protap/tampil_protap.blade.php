@@ -79,7 +79,7 @@
 
                                             <div class="form-group">
                                                 <label for="inputName">Tanggal Disusun</label>
-                                                <input type="text" class="form-control" id="inputName"
+                                                <input type="date" class="form-control" id="inputName"
                                                     name="tgl_diajukan" />
                                             </div>
 
@@ -90,7 +90,7 @@
 
                                             <div class="form-group">
                                                 <label for="inputName">Tanggal Disetjui</label>
-                                                <input type="text" class="form-control" id="inputName"
+                                                <input type="date" class="form-control" id="inputName"
                                                     name="tgl_disetujui" />
                                             </div>
 
@@ -148,11 +148,14 @@
                                     <tr>
                                         <th scope="row">{{ $i }}</th>
                                         <td>{{ $row['protap_nama'] }}</td>
-                                        <td><a href="/hapus_protap/{{ $row['protap_id'] }}/{{ $row['protap_jenis'] }}"
-                                                type="button" class="btn btn-danger"
-                                                onclick="return confirm('Hapus {{ $nama }}? ')">Hapus</a>
+                                        <td>
+                                            @if (Auth::user()->level == 2)
+                                                <a href="/hapus_protap/{{ $row['protap_id'] }}/{{ $row['protap_jenis'] }}"
+                                                    type="button" class="btn btn-danger"
+                                                    onclick="return confirm('Hapus {{ $nama }}? ')">Hapus</a>
+                                            @endif
                                             <a href="/asset/protap/{{ $row['protap_file'] }}" button type="button"
-                                                class="btn btn-primary">Buka</button>
+                                                class="btn btn-primary">Buka</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -163,7 +166,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

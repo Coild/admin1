@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/coba','catatan.dokumen.detailpenerimaanBB');
+Route::view('/coba', 'catatan.dokumen.detailpenerimaanBB');
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name("login");
 Route::post('/login', [AuthController::class, 'login']);
@@ -161,6 +161,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/terimaambilbahanbaku', [pjt::class, 'terima_ambilbahanbaku'])->name('terima_ambilbahanbaku');
     Route::post('/terimaambilbahankemas', [pjt::class, 'terima_ambilbahankemas'])->name('terima_ambilbahankemas');
     Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
+    Route::post('/terimaambilprodukantara', [pjt::class, 'terima_ambilprodukantara'])->name('terima_ambilprodukantara');
 
     Route::post('/terimapelatihanhigisani', [pjt::class, 'terima_pelatihanhigisani'])->name('terima_pelatihanhigisani');
     Route::post('/terimapelatihancpkb', [pjt::class, 'terima_pelatihancpkb'])->name('terima_pelatihancpkb');
@@ -191,7 +192,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/terimaprodukkeluar', [pjt::class, 'terima_produkkeluar'])->name('terima_produkkeluar');
     Route::post('/terimakemasanmasuk', [pjt::class, 'terima_kemasanmasuk'])->name('terima_kemasanmasuk');
     Route::post('/terimakemasankeluar', [pjt::class, 'terima_kemasankeluar'])->name('terima_kemasankeluar');
-    
+
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');
@@ -244,7 +245,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');
     Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
     Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan'])->name('tambah_kartustokbahan');
-    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
+    Route::post('tambah_kartustokprodukantara', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
+    Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
     Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas'])->name('tambah_kartustokbahankemas');
     Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
     Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
@@ -271,4 +273,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_pemeriksaanbahan', [Admin::class, 'tambah_pemeriksaanbahan'])->name('tambah_pemeriksaanbahan');
     Route::post('tambah_pemeriksaanbahankemas', [Admin::class, 'tambah_pemeriksaanbahankemas'])->name('tambah_pemeriksaanbahankemas');
     Route::post('tambah_pemeriksaanprodukjadi', [Admin::class, 'tambah_pemeriksaanprodukjadi'])->name('tambah_pemeriksaanprodukjadi');
+    Route::get('pengemasan-batch', [Admin::class, 'tampil_pengemasanbatch'])->name('pengemasan-batch');
+    Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tambah_pengemasanbatchproduk');
 });

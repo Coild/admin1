@@ -15,7 +15,7 @@ class protapController extends Controller
    {
       $id = Auth::user()->id;
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
-         ->where('protap_jenis', $jenis);
+         ->where('protap_jenis', $jenis)->sortByDesc('protap_id');
       if ($jenis == 1) {
          $judul = ["Penerimaan Penyerahan dan
             Penyimapanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
@@ -123,8 +123,8 @@ class protapController extends Controller
          'protap_ruangan' => $req['ruangan'],
          'protap_diajukan' => $req['diajukan'],
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
-         'protap_diterima' => $req['diajukan'],
-         'protap_tgl_diterima' => $req['disetujui'],
+         'protap_diterima' => $req['disetujui'],
+         'protap_tgl_diterima' => $req['tgl_disetujui'],
          'protap_jenis' => $jenis,
          'protap_pabrik' => $pabrik,
          'user_id' => $id,

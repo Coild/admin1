@@ -111,7 +111,8 @@ class superadmin extends Controller
         return view("admin.ubahprotap");
     }
 
-    public function input_aturan(Request $req) {
+    public function input_aturan(Request $req)
+    {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/aturan/';
@@ -125,6 +126,4 @@ class superadmin extends Controller
         // // user::deleted()
         return redirect('dashboard');
     }
-
-    
 }

@@ -131,7 +131,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Distribusi</th>
+                                                <th scope="col">Kode Bahan Baku</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -291,7 +291,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Distribusi</th>
+                                                <th scope="col">Kode Bahan Kemas</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -369,18 +369,18 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Stok Produk Jadi</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Stok Produk Antara</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
                                                 <div class="modal-body">
                                                     <div class="card mb-4">
                                                         <div class="card-header" id='headertgl3'></div>
-                                                        <div class="card-header">Produk Jadi </div>
+                                                        <div class="card-header">Produk Antara </div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
                                                             <form role="form" method="post"
-                                                                action="tambah_kartustokprodukjadi" id='forminput3'>
+                                                                action="tambah_kartustokprodukantara" id='forminput3'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
@@ -451,7 +451,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Distribusi</th>
+                                                <th scope="col">Kode Produk Antara</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -471,6 +471,177 @@
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
                                                     <td>{{ $row['nama_distributor'] }}</td>
+                                                    <td><?php if ($row['status'] == 0) {
+                                                        echo 'Diajukan';
+                                                    } elseif ($row['status'] == 1) {
+                                                        echo 'Diterima';
+                                                    } ?></td>
+                                                    @if (Auth::user()->level != 2)
+                                                        <td>
+                                                            <form action="#">
+                                                                @csrf
+                                                                <input type="hidden" name="nobatch" value="" />
+                                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                                            </form>
+                                                        </td>
+                                                    @else
+                                                        <td>
+                                                            <form method="post" action="terimakartustokprodukantara">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $row['id_kartustokprodukantara'] }}" />
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Terima</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-detail" role="tabpanel" aria-labelledby="pills-detail-tab">
+                    <div class="container-fluid px-4">
+                        <div class="row">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Produk Jadi
+                                </div>
+                                <div class="card-body">
+                                    <!-- pop up -->
+                                    <!-- Button to trigger modal -->
+                                    @if (Auth::user()->level != 2)
+                                        <button class="btn btn-success btn-lg" data-toggle="modal"
+                                            data-target="#modalForm7" onclick="setdatetoday1(4)">
+                                            Tambah Kartu Stok Produk Jadi
+                                        </button>
+                                    @endif
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalForm7" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Stok Produk Jadi</h4>
+                                                </div>
+
+                                                <!-- Modal Body -->
+                                                <div class="modal-body">
+                                                    <div class="card mb-4">
+                                                        <div class="card-header" id='headertgl4'></div>
+                                                        <div class="card-header">Produk Jadi </div>
+                                                        <div class="card-body">
+                                                            <p class="statusMsg"></p>
+                                                            <form role="form" method="post"
+                                                                action="tambah_kartustokprodukjadi" id='forminput4'>
+                                                                @csrf
+                                                                <input type="hidden" name="_token"
+                                                                    value="{{ csrf_token() }}" />
+                                                                <div class="card-body">
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-4 col-form-label">Kode
+                                                                            Kartu Stok</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="kode_stok"
+                                                                                class="form-control 4" id="inputEmail3"
+                                                                                placeholder="Kode Kartu Stok" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <input type="hidden" id='ambil_tanggal4'
+                                                                        class="form-control 4" name="tanggal"
+                                                                        placeholder="" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama Produk
+                                                                            Jadi
+                                                                        </label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="nama_produk"
+                                                                                class="form-control 4" id="inputEmail3"
+                                                                                placeholder="Nama Produk Jadi" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">No
+                                                                            Batch</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="no_batch"
+                                                                                class="form-control 4" id="inputEmail3"
+                                                                                placeholder="No Batch" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Jumlah</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="jumlah"
+                                                                                class="form-control 4" id="inputEmail3"
+                                                                                placeholder="Jumlah" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Distributor</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="nama_distributor"
+                                                                                class="form-control 4" id="inputEmail3"
+                                                                                placeholder="Nama Distributor" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <a class="btn btn-primary" onclick="salert1(4)" href="#"
+                                                                    style="float:left; width: 100px;  margin-left:25px"
+                                                                    role="button">Simpan</a>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pop up end -->
+
+                                    <table class="table mt-5">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Kode Produk Jadi</th>
+                                                <th scope="col">Nama Produk</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">No Batch</th>
+                                                <th scope="col">Jumlah Produk</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 0; ?>
+                                            @foreach ($data3 as $row)
+                                                <?php $i++; ?>
+                                                <tr>
+                                                    <td>{{ $i }}</td>
+                                                    <td>{{ $row['kode_kartu'] }}</td>
+                                                    <td>{{ $row['nama_produk'] }}</td>
+                                                    <td>{{ $row['tanggal'] }}</td>
+                                                    <td>{{ $row['id_batch'] }}</td>
+                                                    <td>{{ $row['jumlah'] }}</td>
                                                     <td><?php if ($row['status'] == 0) {
                                                         echo 'Diajukan';
                                                     } elseif ($row['status'] == 1) {
