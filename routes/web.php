@@ -153,7 +153,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //pjt
     Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
-    Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
+    Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_batch']);
 
     Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku'])->name('terima_kartustok_bahanbaku');
 
