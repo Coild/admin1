@@ -23,7 +23,7 @@ class pjt extends Controller
             'status' => 3,
         ]);
         $data = pengolahanbatch::all()->where('status', 1);
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
+        return redirect()->route('pengolahanbatch');
     }
 
     public function terima_ambilbahankemas(Request $req)
