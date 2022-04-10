@@ -18,11 +18,19 @@ class pjt extends Controller
     public function terima_batch(Request  $req)
     {
         $id = $req['id'];
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
         $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
-            'status' => 3,
+            'status' => 1,
         ]);
-        $data = pengolahanbatch::all()->where('status', 1);
+        laporan::all()->where('laporan_batch', $req['id'])
+            ->where('laporan_nama', 'pengolahan batch')->first()->update([
+                'laporan_diterima' =>  Auth::user()->nama,
+                'tgl_diterima' => $tgl
+            ]);
         return redirect()->route('pengolahanbatch');
     }
 
