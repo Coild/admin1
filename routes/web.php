@@ -156,9 +156,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/pjt_pengolahanbatch', [pjt::class, 'terima_pengolahanbatch']);
 
     Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku'])->name('terima_kartustok_bahanbaku');
+
     Route::post('/terimaambilbahanbaku', [pjt::class, 'terima_ambilbahanbaku'])->name('terima_ambilbahanbaku');
     Route::post('/terimaambilbahankemas', [pjt::class, 'terima_ambilbahankemas'])->name('terima_ambilbahankemas');
     Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
+
+    Route::post('/terimabahanmasuk', [pjt::class, 'terima_bahanmasuk'])->name('terima_bahanmasuk');
+    Route::post('/terimabahankeluar', [pjt::class, 'terima_bahankeluar'])->name('terima_bahankeluar');
+    Route::post('/terimaprodukmasuk', [pjt::class, 'terima_produkmasuk'])->name('terima_produkmasuk');
+    Route::post('/terimaprodukkeluar', [pjt::class, 'terima_produkkeluar'])->name('terima_produkkeluar');
+    Route::post('/terimakemasanmasuk', [pjt::class, 'terima_kemasanmasuk'])->name('terima_kemasanmasuk');
+    Route::post('/terimakemasankeluar', [pjt::class, 'terima_kemasankeluar'])->name('terima_kemasankeluar');
+    
 
     //higi dansani
     Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil']);

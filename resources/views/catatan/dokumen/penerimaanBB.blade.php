@@ -168,11 +168,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                    @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimabahanmasuk">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -302,11 +310,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                        @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimabahankeluar">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -465,11 +481,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                    @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimaprodukmasuk">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -599,11 +623,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                    @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimaprodukkeluar">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -762,11 +794,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                    @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimakemasanmasuk">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_loth']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -896,11 +936,19 @@
                                                         echo 'Diajukan';
                                                     } ?></td>
                                                     <td>
-                                                        <form method="post" action="detil_batch">
-                                                            <input type="hidden" name="_token" value="" />
-                                                            <input type="hidden" name="nobatch" value="" />
+                                                    @if(Auth::user()->level==2)
+                                                        <form method="post" action="terimakemasankeluar">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                                        </form>
+                                                        @else
+                                                        <form method="post" action="">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
                                                             <button type="submit" class="btn btn-primary">Buka</button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

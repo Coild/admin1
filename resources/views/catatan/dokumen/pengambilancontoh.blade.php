@@ -374,7 +374,7 @@
                                                     <div class="card-header">Kemasan</div>
                                                     <div class="card-body">
                                                         <p class="statusMsg"></p>
-                                                        <form role="form" method="post" action="tambah_contohkemas" id='forminput3'>
+                                                        <form role="form" method="post" action="tambah_contohkemasan" id='forminput3'>
                                                             @csrf
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 

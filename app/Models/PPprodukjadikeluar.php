@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PPprodukjadikeluar extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    protected $primaryKey = 'id_ppprodukjadikeluar';
+
+    protected $fillable = [
+        'status',
+    ];
 }

@@ -61,7 +61,7 @@ class Admin extends Controller
         ];
 
         coa::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/coa');
     }
 
@@ -97,7 +97,7 @@ class Admin extends Controller
         ];
 
         dip::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/dip');
     }
 
@@ -133,7 +133,7 @@ class Admin extends Controller
         ];
 
         perizinan::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/perizinan');
     }
 
@@ -169,7 +169,7 @@ class Admin extends Controller
         ];
 
         jabatan::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/jabatan');
     }
 
@@ -205,21 +205,30 @@ class Admin extends Controller
         ];
 
         pobpabrik::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/pobpabrik');
     }
 
     //catat bersh ruangan
 
     public function tampil_penerimaanbb()
-    {
+    { 
         $pabrik = Auth::user()->pabrik;
+        if(Auth::user()->level==2){
+            $data = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('status',0);
+            $data1 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('status',0);
+            $data2 = PPprodukjadimasuk::all()->where('pabrik', $pabrik)->where('status',0);
+            $data3 = PPprodukjadikeluar::all()->where('pabrik', $pabrik)->where('status',0);
+            $data4 = PPkemasanmasuk::all()->where('pabrik', $pabrik)->where('status',0);
+            $data5 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('status',0);
+        } else {
         $data = PPbahanbakumasuk::all()->where('pabrik', $pabrik);
         $data1 = PPbahanbakukeluar::all()->where('pabrik', $pabrik);
         $data2 = PPprodukjadimasuk::all()->where('pabrik', $pabrik);
         $data3 = PPprodukjadikeluar::all()->where('pabrik', $pabrik);
         $data4 = PPkemasanmasuk::all()->where('pabrik', $pabrik);
         $data5 = PPkemasankeluar::all()->where('pabrik', $pabrik);
+    }
         return view('catatan.dokumen.penerimaanBB', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'data4' => $data4, 'data5' => $data5]);
     }
     public function tambah_penerimaanbbmasuk(Request $req)
@@ -239,8 +248,27 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPbahanbakumasuk::insert($data);
-        // // user::deleted()
+        $nomer = PPbahanbakumasuk::insertGetId($data);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan bahan masuk',
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        // dd($hasil);
+        laporan::insert($laporan);
+        
         return redirect('penerimaanBB');
     }
     public function tambah_penerimaanbbkeluar(Request $req)
@@ -258,8 +286,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPbahanbakukeluar::insert($data);
-        // // user::deleted()
+        $nomer = PPbahanbakukeluar::insertGetId($data);
+        
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan bahan keluar',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('penerimaanBB');
     }
     public function tambah_penerimaanprdukmasuk(Request $req)
@@ -279,8 +324,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPprodukjadimasuk::insert($data);
-        // // user::deleted()
+        $nomer = PPprodukjadimasuk::insertGetId($data);
+        
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan produk masuk',
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('penerimaanBB');
     }
     public function tambah_penerimaanprodukkeluar(Request $req)
@@ -298,8 +360,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPprodukjadikeluar::insert($data);
-        // // user::deleted()
+        $nomer = PPprodukjadikeluar::insertGetId($data);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan produk keluar',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('penerimaanBB');
     }
     public function tambah_penerimaakemasanmasuk(Request $req)
@@ -319,8 +398,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPkemasanmasuk::insert($data);
-        // // user::deleted()
+        $nomer = PPkemasanmasuk::insertGetId($data);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan kemasan masuk',
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('penerimaanBB');
     }
     public function tambah_penerimaankemasankeluar(Request $req)
@@ -338,8 +434,25 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
-        PPkemasankeluar::insert($data);
-        // // user::deleted()
+        $nomer = PPkemasankeluar::insertGetId($data);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $laporan = [
+            'laporan_nama' => 'penerimaan kemasan keluar',
+            'laporan_batch' => $req['no_batch'],
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
         return redirect('penerimaanBB');
     }
     //tampil batch
@@ -606,7 +719,7 @@ class Admin extends Controller
         ];
 
         produk::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/setting');
     }
 
@@ -619,7 +732,7 @@ class Admin extends Controller
         ];
 
         kemasan::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/setting');
     }
 
@@ -633,7 +746,7 @@ class Admin extends Controller
         ];
 
         bahanbaku::insert($hasil);
-        // // user::deleted()
+        
         return redirect('/setting');
     }
 
@@ -830,6 +943,7 @@ class Admin extends Controller
     //yusril
     public function tambah_pelatihanhiginitas(Request $req)
     {
+        dd($req);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
