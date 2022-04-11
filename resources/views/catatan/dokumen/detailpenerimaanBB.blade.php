@@ -82,7 +82,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 1" name="no_kontrol" placeholder="Sisa" />
+                                                <input type="text" class="form-control 1" name="no_kontrol" placeholder="Nomor Kontrol" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -323,10 +323,10 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                Dengan POB
+                                                Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 3" placeholder="Nomor POB" name='pob_no'>
+                                                <input type="text" class="form-control 3" placeholder="Nomor PROTAP" name='pob_no'>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal3' class="form-control 3" placeholder="" />
@@ -351,7 +351,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 3" name="no_kontrol" placeholder="Sisa" />
+                                                <input type="text" class="form-control 3" name="no_kontrol" placeholder="Nomor Kontrol" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -590,10 +590,10 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                Dengan POB
+                                                Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 5" placeholder="Nomor POB" name='pob_no'>
+                                                <input type="text" class="form-control 5" placeholder="Nomor PROTAP" name='pob_no'>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal5' class="form-control 5" placeholder="" />
@@ -618,7 +618,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 5" name="no_kontrol" placeholder="Sisa" />
+                                                <input type="text" class="form-control 5" name="no_kontrol" placeholder="Nomor Kontrol" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -844,9 +844,9 @@
                                 <input type="hidden" name="jenis" value="{{$jenis}}">
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                        Dengan POB No</label>
+                                        Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor POB" />
+                                        <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor PROTAP" />
                                     </div>
                                 </div>
 
