@@ -37,23 +37,17 @@
                                     <td scope="col">{{ $row['nama'] }}</td>
                                     <td scope="col">
                                         <form action="terima" method="post" id='forminput'
-                                            style="float: left; margin-right:15px;">
+                                            style="float: left; margin-right:15px;" onSubmit="return confirm('Apakah anda ingin Menerima?') ">
                                             @csrf
                                             <input type="hidden" class='form-control' name="id" value="{{ $row['id'] }}">
-                                            <a href="#"
-                                                onclick="pembuatanuser({msg:'Apakah Anda Yakin?',title:'Anda Akan Menerima <?= $row['nama'] ?> Sebagai Karwayan'})"
-                                                type="submit" class="btn btn-success btn-m">
-                                                Terima
-                                            </a>
+                                            <button class="btn btn-success btn-md me-3" type="submit" ><i class="fa fa-checked"></i> Terima</button>
+                                            
                                         </form>
                                         <form action="tolak" method="post" id="forminput1">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{ $row['id'] }}">
-                                            <a href="#"
-                                                onclick="hapus({msg:'Apakah Anda Yakin?',title:'Anda Akan Menolak <?= $row['nama'] ?> Sebagai Aplicant'})"
-                                                type="submit" class="btn btn-danger btn-m">
-                                                Tolak
-                                            </a>
+                                            <input type="hidden" name="id" value="{{ $row['id'] }}" onSubmit="return confirm('Apakah anda ingin Menolak?') ">
+                                            <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-checked"></i> Tolak</button>
+                                            
                                         </form>
                                     </td>
                                 </tr>
