@@ -261,6 +261,7 @@ class pjt extends Controller
     //distribusi produk
     public function terima_distribusiproduk(Request $req)
     {
+        dd($req);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');

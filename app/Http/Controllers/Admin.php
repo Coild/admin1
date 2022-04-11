@@ -862,7 +862,7 @@ class Admin extends Controller
 
     public function tampil_periksapersonil()
     {
-        $data = Periksapersonil::all()->where('laporan_diterima', '!=', 'belum');
+        $data = Periksapersonil::all()->where('pabrik' , Auth::user()->pabrik);
         return view('catatan.higidansani.periksapersonil', ['data' => $data]);
     }
 

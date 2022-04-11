@@ -478,9 +478,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
+                                                            <form action="terimastokantara">
                                                                 @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
+                                                                <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
                                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                                             </form>
                                                         </td>

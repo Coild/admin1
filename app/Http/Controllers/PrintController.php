@@ -39,7 +39,6 @@ class PrintController extends Controller
         return view('print.pengolahanbatch', [
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
             'kop' => $kop, 'rekon' => $rekon,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
-
         ]);
     }
 
