@@ -67,7 +67,7 @@
                                                                             Bahan</label>
                                                                         <div class="col-sm">
                                                                             <select style="height: 35px;" id='kode_bahan'
-                                                                                class="form-control" name="kode_bahan">
+                                                                                class="form-control 1" name="kode_bahan">
                                                                                 <option selected>Choose...</option>
                                                                                 @foreach ($kodebahan as $row)
                                                                                     <option
