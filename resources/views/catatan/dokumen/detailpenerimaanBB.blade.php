@@ -82,7 +82,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 1" name="no_kontrol" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 1" name="no_kontrol" placeholder="Sisa" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -214,7 +214,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 2" name="sisa" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 2" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
@@ -351,7 +351,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 3" name="no_kontrol" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 3" name="no_kontrol" placeholder="Sisa" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -482,7 +482,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 4" name="sisa" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 4" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
@@ -618,7 +618,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Kontrol</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 5" name="no_kontrol" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 5" name="no_kontrol" placeholder="Sisa" />
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -749,7 +749,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 6" name="sisa" placeholder="Nomer kontrol" />
+                                                <input type="text" class="form-control 6" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
