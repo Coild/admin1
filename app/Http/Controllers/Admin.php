@@ -253,7 +253,7 @@ class Admin extends Controller
             'data1' => $data1,
             'data2' => $data2
         ]);
-    
+
     }
 
     public function tampil_penerimaanbb()
@@ -285,6 +285,7 @@ class Admin extends Controller
             'produk' => $req['produk'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
             'status' => 0,
         ];
 
@@ -320,6 +321,7 @@ class Admin extends Controller
             'produk' => $req['produk'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
             'status' => 0,
         ];
 
@@ -355,6 +357,7 @@ class Admin extends Controller
             'produk' => $req['produk'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
             'status' => 0,
         ];
 
@@ -395,7 +398,7 @@ class Admin extends Controller
         ];
         PPbahanbakumasuk::insert($data);
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanbbkeluar(Request $req)
@@ -415,7 +418,7 @@ class Admin extends Controller
         ];
         PPbahanbakukeluar::insert($data);
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanprdukmasuk(Request $req)
@@ -437,7 +440,7 @@ class Admin extends Controller
         ];
         PPprodukjadimasuk::insert($data);
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaanprodukkeluar(Request $req)
@@ -460,7 +463,7 @@ class Admin extends Controller
         $jenis = $req['jenis'];
 
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaakemasanmasuk(Request $req)
@@ -483,7 +486,7 @@ class Admin extends Controller
         PPkemasanmasuk::insert($data);
 
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     public function tambah_penerimaankemasankeluar(Request $req)
@@ -504,7 +507,7 @@ class Admin extends Controller
         PPkemasankeluar::insert($data);
 
         $induk = $req['induk'];
-        $jenis = $req['jenis'];        
+        $jenis = $req['jenis'];
         return redirect('/detilterimabbid/'.$jenis.'/'.$induk);
     }
     //tampil batch

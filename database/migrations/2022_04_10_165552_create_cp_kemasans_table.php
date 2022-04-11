@@ -19,6 +19,7 @@ class CreateCpKemasansTable extends Migration
             $table->string('ruang');
             $table->string('produk');
             $table->string('kode');
+            $table->tinyInteger('pabrik', 0)->unsigned();
             $table->tinyInteger('status', 0)->unsigned();
             $table->timestamps();
         });

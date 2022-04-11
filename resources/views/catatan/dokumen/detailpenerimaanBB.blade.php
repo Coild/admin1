@@ -246,6 +246,30 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
+                            @foreach ($data2 as $row)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['nama_produk'] }}</td>
+                                <td>{{ $row['untuk_produk'] }}</td>
+                                <td>{{ $row['no_batch'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['sisa'] }}</td>
+                                <td><?php if ($row['status'] == 0) {
+                                        echo 'Diajukan';
+                                    } ?></td>
+                                <td>
+                                    @if(Auth::user()->level!=2)
+                                    <form method="post" action="#">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{$row['no_batch']}}" />
+                                        <button type="button" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
