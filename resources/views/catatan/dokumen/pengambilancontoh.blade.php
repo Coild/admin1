@@ -509,7 +509,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Jumlah
-                                                                        Kemasan Yang Diambil</label>
+                                                                        Kemasan Yang Disampling</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="jumlah_ambil"
                                                                             class="form-control 3" id="inputEmail3"
