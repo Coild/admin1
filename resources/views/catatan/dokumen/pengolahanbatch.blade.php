@@ -184,9 +184,9 @@
                                             <select style="height: 35px;" name="kemasan" class="form-control"
                                                 id="inlineFormCustomSelect">
                                                 <option selected>Choose...</option>
-                                                <option value="1">Pot</option>
-                                                <option value="2">Pouch</option>
-                                                <option value="2">Sachet</option>
+                                                @foreach($data3 as $row)
+                                                <option value="{{$row['kemasan_nama']}}">{{$row['kemasan_nama']}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

@@ -522,8 +522,9 @@ class Admin extends Controller
             // echo "halo";
         }
         $data2 = produk::all()->where('user_id',Auth::user()->pabrik);
+        $data3 = kemasan::all()->where('user_id',Auth::user()->pabrik);
 
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
     // public function tampil_detilbatch(Request $req)
