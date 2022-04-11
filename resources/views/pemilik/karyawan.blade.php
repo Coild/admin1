@@ -106,13 +106,11 @@
                                             data-nama="<?= $row->nama ?>" data-posisi="<?= $row->level ?>">
                                             <i class="fa fa-edit "></i> Edit
                                         </button>
-                                        <form action="/hapus_karyawan" method="post" id="forminput1">
+                                        <form action="/hapus_karyawan" method="post" id="forminput1" onSubmit="return confirm('Apakah anda ingin menghapus?') ">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id'] }}">
-                                            <a class="btn btn-danger"
-                                                onclick="hapus({msg:'Apakah Anda Yakin?',title:'Anda Akan Menghapus <?= $row['nama'] ?> Sebagai Karyawan'})"
-                                                href="#" role="button"><i class="fa fa-trash"></i>
-                                                Hapus</a>
+                                            <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-trash"></i></button>
+                                            
                                         </form>
                                     </td>
                                 </tr>

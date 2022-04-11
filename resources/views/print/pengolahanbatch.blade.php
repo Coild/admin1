@@ -86,7 +86,7 @@
     <section class="sheet padding-10mm" style="height: auto;">
         <!-- Kop Surat -->
 
-        <table width="100%" class="kop">
+        <table width="100%" class="kop"> 
             <tr>
                 <td style="border:none;">
                     <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
