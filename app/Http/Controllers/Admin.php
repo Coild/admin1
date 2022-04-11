@@ -833,7 +833,7 @@ class Admin extends Controller
         if (Auth::user()->level < 0) {
             return view('tunggu');
         } else {
-            $id = Auth::user()->id;
+            $id = Auth::user()->pabrik;
             $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
 
             foreach ($pabrik as $row) {
