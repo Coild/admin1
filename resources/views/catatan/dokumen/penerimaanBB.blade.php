@@ -81,6 +81,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                <?php $i++;?>
                                 @endforeach
                             </tbody>
                         </table>
@@ -150,6 +151,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                <?php $i++;?>
                                 @endforeach
                             </tbody>
                         </table>
@@ -220,6 +222,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                <?php $i++;?>
                                 @endforeach
                             </tbody>
                         </table>
