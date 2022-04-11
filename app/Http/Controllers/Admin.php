@@ -518,8 +518,8 @@ class Admin extends Controller
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);//->where('status', 0);
             // dd($pabrik);
         } else {
-            // $data = pengolahanbatch::all()->where('pabrik', $pabrik);
-            echo "halo";
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik);
+            // echo "halo";
         }
         $data2 = produk::all();
 
