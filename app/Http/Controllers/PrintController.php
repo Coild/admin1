@@ -25,7 +25,8 @@ class PrintController extends Controller
     {
         $id = $req['nobatch'];
         // dd($id);
-        $datapabrik = pabrik::all()->where('id_pabrik',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
