@@ -521,7 +521,7 @@ class Admin extends Controller
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);
             // echo "halo";
         }
-        $data2 = produk::all();
+        $data2 = produk::all()->where('user_id',Auth::user()->pabrik);
 
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2]);
     }
@@ -768,7 +768,7 @@ class Admin extends Controller
 
     public function tambah_produk(Request $req)
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'produk_nama' => $req['nama'],
             'produk_kode' => $req['kode'],
@@ -782,7 +782,7 @@ class Admin extends Controller
 
     public function tambah_kemasan(Request $req)
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'kemasan_nama' => $req['nama'],
             'user_id' => $id,
@@ -795,7 +795,7 @@ class Admin extends Controller
 
     public function tambah_bahanbaku(Request $req)
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->pabrik;
         $hasil = [
             'bahanbaku_nama' => $req['nama'],
             'bahanbaku_kode' => $req['kode'],
