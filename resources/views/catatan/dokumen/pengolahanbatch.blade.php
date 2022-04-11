@@ -97,7 +97,7 @@
                                             Dengan PROTAP No</label>
                                         <div class="col-sm">
                                             <input type="text" name="pob" class="form-control" id="inputEmail3"
-                                                placeholder="Nomor POB" />
+                                                placeholder="Nomor PROTAP" />
                                         </div>
                                     </div>
 
