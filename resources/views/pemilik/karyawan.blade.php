@@ -109,7 +109,7 @@
                                         <form action="/hapus_karyawan" method="post" id="forminput1" onSubmit="return confirm('Apakah anda ingin menghapus?') ">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id'] }}">
-                                            <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-trash">Hapus</i></button>
+                                            <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-trash"></i> Hapus</button>
                                             
                                         </form>
                                     </td>
