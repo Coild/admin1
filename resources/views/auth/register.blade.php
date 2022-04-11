@@ -10,6 +10,7 @@
     <title>Register - SB Admin</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="js/alert.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -85,6 +86,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="g-recaptcha" data-callback="recaptcha_callback"
+                                                data-sitekey="6Lecb2YfAAAAAIR2uhydBgujcJ7VLBleTtAkDFQJ"></div>
+                                            <p id="art" class="text-danger"></p>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a href="#" onclick="register()"
                                                         class="btn btn-primary btn-block" href="/">Create

@@ -8,6 +8,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Ganti Password</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="js/recaptcha.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -27,28 +29,34 @@
                                     <h3 class="text-center font-weight-light my-4">Gantipassword</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/gantipassword" method="post">
-                                        @if(Session::has('message'))
-                                        <p class="alert alert-info">{{ Session::get('message') }}</p>
+                                    <form action="/gantipassword" method="post" id='forminput'>
+                                        @if (Session::has('message'))
+                                            <p class="alert alert-info">{{ Session::get('message') }}</p>
                                         @endif
                                         @if (session('status'))
-                                        <div class="alert alert-warning">
-                                            {{ session('status') }}
-                                        </div>
+                                            <div class="alert alert-warning">
+                                                {{ session('status') }}
+                                            </div>
                                         @endif
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">
-                                            <input name="lama" class="form-control" id="inputEmail" type="password" placeholder="name@example.com" />
+                                            <input name="lama" class="form-control" id="inputEmail" type="password"
+                                                placeholder="name@example.com" />
                                             <label for="inputEmail">Password Lama</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input name="baru" class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                            <input name="baru" class="form-control" id="inputPassword" type="password"
+                                                placeholder="Password" />
                                             <label for="inputPassword">Password Baru</label>
                                         </div>
+                                        <div class="g-recaptcha" data-callback="recaptcha_callback"
+                                            data-sitekey="6Lecb2YfAAAAAIR2uhydBgujcJ7VLBleTtAkDFQJ"></div>
+                                        <p id="art" class="text-danger"></p>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 
-                                            <button type="submit" class="btn btn-primary" href="/index">Ganti</button>
+                                            <a href="#" onclick="recaptchaCallback()" type="submit"
+                                                class="btn btn-primary" href="/index">Ganti</a>
 
 
                                         </div>
@@ -75,7 +83,8 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="js/scripts.js"></script>
 </body>
 

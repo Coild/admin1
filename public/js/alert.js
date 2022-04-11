@@ -246,7 +246,18 @@ function setdatetoday2() {
     document.getElementById("headertglx").innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;
 }
+function recaptchaCallback() {
+    if (grecaptcha.getResponse()) {
+        document.getElementById("forminput").submit();
+    } else {
+        document.getElementById("art").innerText =
+            "Please complete the CAPTCHA.";
+    }
+}
 
+function recaptcha_callback() {
+    document.getElementById("art").innerText = "";
+}
 function register() {
     const mycomp = document.getElementsByClassName("form-control");
     var valid = false;
@@ -302,7 +313,7 @@ function register() {
                     })
                     .then((result) => {
                         if (result.isConfirmed) {
-                            document.getElementById("forminput").submit();
+                            recaptchaCallback();
                         } else if (
                             /* Read more about handling dismissals below */
                             result.dismiss === Swal.DismissReason.cancel
