@@ -94,7 +94,7 @@
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                            Dengan POB No</label>
+                                            Dengan PROTAP No</label>
                                         <div class="col-sm">
                                             <input type="text" name="pob" class="form-control" id="inputEmail3"
                                                 placeholder="Nomor POB" />
