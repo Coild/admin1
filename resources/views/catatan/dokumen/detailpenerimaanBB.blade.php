@@ -54,10 +54,10 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                Dengan POB
+                                                Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 1" placeholder="Nomor POB" name='pob_no'>
+                                                <input type="text" class="form-control 1" placeholder="Nomor PROTAP" name='pob_no'>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
