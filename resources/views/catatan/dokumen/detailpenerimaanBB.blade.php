@@ -1,3 +1,4 @@
+
 @extends('layout.app')
 @section('title')
 <title>Pengolahan Batches</title>
@@ -105,10 +106,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Bahan</th>
                                 <th scope="col">No Loth</th>
@@ -230,10 +230,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable1" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Bahan</th>
                                 <th scope="col">Untuk Produk</th>
@@ -374,10 +373,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable2" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk Jadi</th>
                                 <th scope="col">No Loth</th>
@@ -498,10 +496,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable3" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Untuk Produk</th>
@@ -641,10 +638,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable4" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk Jadi</th>
                                 <th scope="col">No Loth</th>
@@ -765,10 +761,9 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table class="table">
+                    <table id="dataTable5" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Untuk Produk</th>
@@ -925,9 +920,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-
-
                             </div>
                             <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                     </form>
@@ -937,4 +929,15 @@
     </div>
     <!--  -->
 </main>
+
+<script>
+    $(document).ready(function() {
+            $('#dataTable').DataTable()
+            $('#dataTable1').DataTable()
+            $('#dataTable2').DataTable()
+            $('#dataTable3').DataTable()
+            $('#dataTable4').DataTable()
+            $('#dataTable5').DataTable()
+        })
+</script>
 @endsection
