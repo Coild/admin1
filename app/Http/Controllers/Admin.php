@@ -260,6 +260,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $bahanbaku = bahanbaku::all();
         $produk = produk::all();
+        $kemasan = kemasan::all();
         if (Auth::user()->level == 2) {
             $data1 = cp_bahan::all()->where('pabrik', $pabrik)->where('status', 0);
             $data2 = cp_produk::all()->where('pabrik', $pabrik)->where('status', 0);
@@ -269,7 +270,7 @@ class Admin extends Controller
             $data2 = cp_produk::all()->where('pabrik', $pabrik);
             $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
         }
-        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk]);
+        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan]);
     }
 
     public function tambah_terimabahan(Request $req)
@@ -1457,9 +1458,11 @@ class Admin extends Controller
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $kodebahan = produk::all();
+            $bahanbaku = bahanbaku::all();
+            $produk = produk::all();
+            $kemasan = kemasan::all();
         }
-        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'kodebahan' => $kodebahan ?? '']);
+        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? '', 'produk' => $produk ?? '', 'kemasan' => $kemasan ?? '']);
     }
     public function tambah_penimbanganbahan(Request $req)
     {

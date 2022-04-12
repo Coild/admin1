@@ -417,9 +417,26 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Kemasan</label>
                                         <div class="col-sm">
-                                            <input type="text" name="nama" class="form-control 1" id="inputEmail3"
+                                            <select style="height: 35px;" id='kodekemasan' class="form-control 1"
+                                                name="kode">
+                                                <option selected>Choose...</option>
+                                                @foreach ($kemasan as $row)
+                                                    <option value="{{ $row['kemasan_kode'] }}"
+                                                        data-nama="{{ $row['kemasan_nama'] }}">
+                                                        {{ $row['kemasan_kode'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                            Kemasan</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="nama" readonly class="form-control 1" id="namakemasan"
                                                 placeholder="Nama Kemasan" />
                                         </div>
                                     </div>
@@ -429,14 +446,6 @@
                                         <div class="col-sm">
                                             <input type="text" name="produk" class="form-control 1" id="inputEmail3"
                                                 placeholder="Untuk Produk" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Kemasan</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="kode" class="form-control 1" id="inputEmail3"
-                                                placeholder="Kode Kemasan" />
                                         </div>
                                     </div>
 
@@ -469,6 +478,11 @@
                 const $this = $(this); // Cache $(this)
                 const dataVal = $this.find(":selected").data("nama"); // Get data value
                 document.getElementById('namaproduk').value = dataVal;
+            });
+            $("#kodekemasan").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('namakemasan').value = dataVal;
             });
         </script>
     </main>

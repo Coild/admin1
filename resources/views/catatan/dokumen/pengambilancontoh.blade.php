@@ -69,11 +69,11 @@
                                                                             <select style="height: 35px;" id='kode_bahan'
                                                                                 class="form-control 1" name="kode_bahan">
                                                                                 <option selected>Choose...</option>
-                                                                                @foreach ($kodebahan as $row)
+                                                                                @foreach ($bahanbaku as $row)
                                                                                     <option
-                                                                                        value="{{ $row['produk_kode'] }}"
-                                                                                        data-nama="{{ $row['produk_nama'] }}">
-                                                                                        {{ $row['produk_kode'] }}
+                                                                                        value="{{ $row['bahanbaku_kode'] }}"
+                                                                                        data-nama="{{ $row['bahanbaku_kode'] }}">
+                                                                                        {{ $row['bahanbaku_kode'] }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
@@ -261,12 +261,18 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Produk</label>
+                                                                        class="col-sm-3 col-form-label">Kode Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Kode Produk" />
+                                                                        <select style="height: 35px;" id='kodeproduk'
+                                                                            class="form-control 2" name="kode_produk">
+                                                                            <option selected>Choose...</option>
+                                                                            @foreach ($produk as $row)
+                                                                                <option value="{{ $row['produk_kode'] }}"
+                                                                                    data-nama="{{ $row['produk_nama'] }}">
+                                                                                    {{ $row['produk_kode'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                 </div>
 
@@ -275,8 +281,8 @@
                                                                         class="col-sm-3 col-form-label">Nama
                                                                         Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nama_produk"
-                                                                            class="form-control 2" id="inputEmail3"
+                                                                        <input type="text" name="nama_produk" readonly
+                                                                            class="form-control 2" id="namaproduk"
                                                                             placeholder="Nama Produk" />
                                                                     </div>
                                                                 </div>
@@ -454,9 +460,17 @@
                                                                         class="col-sm-3 col-form-label">Kode
                                                                         Kemasan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_kemasan"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Kode Kemasan" />
+                                                                        <select style="height: 35px;" id='kodekemasan'
+                                                                            class="form-control 3" name="kode_kemasan">
+                                                                            <option selected>Choose...</option>
+                                                                            @foreach ($kemasan as $row)
+                                                                                <option
+                                                                                    value="{{ $row['kemasan_kode'] }}"
+                                                                                    data-nama="{{ $row['kemasan_nama'] }}">
+                                                                                    {{ $row['kemasan_kode'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                 </div>
 
@@ -465,8 +479,8 @@
                                                                         class="col-sm-3 col-form-label">Nama
                                                                         Kemasan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nama_kemasan"
-                                                                            class="form-control 3" id="inputEmail3"
+                                                                        <input type="text" name="nama_kemasan" readonly
+                                                                            class="form-control 3" id="namakemasan"
                                                                             placeholder="Nama Kemasan" />
                                                                     </div>
                                                                 </div>
@@ -606,6 +620,16 @@
                 const $this = $(this); // Cache $(this)
                 const dataVal = $this.find(":selected").data("nama"); // Get data value
                 document.getElementById('nama_bahan').value = dataVal;
+            });
+            $("#kodeproduk").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('namaproduk').value = dataVal;
+            });
+            $("#kodekemasan").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('namakemasan').value = dataVal;
             });
         </script>
     </main>
