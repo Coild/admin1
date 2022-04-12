@@ -83,7 +83,7 @@
 
                     </div>
 
-                    <table class="table mt-5">
+                    <table id="dataTable" class="table mt-5">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -111,4 +111,9 @@
             </div>
         </div>
     </main>
+    <script>
+         $(document).ready(function() {
+           $('#dataTable').DataTable();
+        })
+    </script>
 @endsection

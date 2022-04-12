@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, PrintController};
+use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, dataPelaksana, PrintController};
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +41,7 @@ Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilba
 Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-ROute::get('/dummy', [PrintController::class, 'dummy']);
+// Route::get('/dummy', [PrintController::class, 'dummy']);
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -280,4 +280,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tambah_pemeriksaanprodukjadi', [Admin::class, 'tambah_pemeriksaanprodukjadi'])->name('tambah_pemeriksaanprodukjadi');
     Route::get('pengemasan-batch', [Admin::class, 'tampil_pengemasanbatch'])->name('pengemasan-batch');
     Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tambah_pengemasanbatchproduk');
+
+
+    //datatables 
+    Route::get('user',[dataPelaksana::class,'user']);
+    Route::get('cp_bahan',[dataPelaksana::class,'cp_bahan']);
+    Route::get('cp_produk',[dataPelaksana::class,'cp_produk']);
+    Route::get('cp_kemasan',[dataPelaksana::class,'cp_kemasan']);
+    Route::get('dummy', [dataPelaksana::class, 'dummy']);
 });
