@@ -19,18 +19,16 @@ class superadmin extends Controller
 
     public function tampil_pabrik()
     {
-        return view("admin.tambahuser");
+        $data  = pabrik::all();
+        return view("admin.tambahuser",['data'=> $data]);
     }
 
     public function tampil_audit()
     {
-        return view("admin.tambahauditor");
+        $data = user::all()->where('level',3);
+        return view("admin.tambahauditor",['data' => $data]);
     }
 
-    public function tampil_inspek()
-    {
-        return view("admin.tambahinspek");
-    }
 
     public function register(Request $request)
     {
@@ -73,26 +71,6 @@ class superadmin extends Controller
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->level = 4;
-        $user->pabrik = 0;
-        $user->password = bcrypt($request->password);
-        $simpan = $user->save();
-
-        if ($simpan) {
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect('/audit');
-        } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect('showregister');
-        }
-    }
-
-    public function register_inspek(Request $request)
-    {
-        $user = new User;
-        $user->nama = ucwords(strtolower($request->username));
-        $user->namadepan = $request->namadepan;
-        $user->namabelakang = $request->namabelakang;
-        $user->level = 5;
         $user->pabrik = 0;
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
