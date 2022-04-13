@@ -1,6 +1,7 @@
 @extends('layout.app')
 @section('title')
-    <title>Penerimaan Penyerahan dan Penyimpanan</title>
+    <title>
+        Penerimaan Penyerahan dan Penyimpanan</title>
 @endsection
 @section('content')
     <main>
@@ -226,16 +227,16 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Produk</label>
                                         <div class="col-sm">
-                                            <select style="height: 35px;" id='kodeproduk' class="form-control 2"
-                                                name="kode">
-                                                <option selected>Choose...</option>
+                                            <input class="form-control 2" list="listkode" type="text" name='kode'
+                                                id="kodeproduk">
+                                            </input>
+                                            <datalist id='listkode'>
                                                 @foreach ($produk as $row)
-                                                    <option value="{{ $row['produk_kode'] }}"
-                                                        data-nama="{{ $row['produk_nama'] }}">
+                                                    <option value="{{ $row['produk_kode'] }}">
                                                         {{ $row['produk_kode'] }}
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </datalist>
                                         </div>
                                     </div>
 
@@ -345,152 +346,127 @@
                     </div>
                 </div>
             </div>
-            <!-- pop up end -->
+        </div>
+        <!-- pop up end -->
 
-            <script>
-                $("#kode_bahan").change(function() {
-                    const $this = $(this); // Cache $(this)
-                    const dataVal = $this.find(":selected").data("nama"); // Get data value
-                    document.getElementById('nama_bahan').value = dataVal;
-                });
-                $("#kodekemasan").change(function() {
-                    const $this = $(this); // Cache $(this)
-                    const dataVal = $this.find(":selected").data("nama"); // Get data value
-                    document.getElementById('nama_kemasan').value = dataVal;
-                });
-                $("#kodeproduk").change(function() {
-                    const $this = $(this); // Cache $(this)
-                    const dataVal = $this.find(":selected").data("nama"); // Get data value
-                    document.getElementById('namaproduk').value = dataVal;
-                });
+        <script>
+            const datas = JSON.parse('<?= json_encode($produk) ?>')
+            const produkkodes = []
+            for (var i in datas)
+                produkkodes.push(datas[i].produk_kode);
+            $("#kode_bahan").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('nama_bahan').value = dataVal;
+            });
+            $("#kodekemasan").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('nama_kemasan').value = dataVal;
+            });
+            $("#kodeproduk").change(function() {
+                var cekname = datas.find(produk => produk.produk_kode ===
+                    document.getElementById('kodeproduk').value)?.produk_nama;
+                if (cekname) {
+                    document.getElementById('namaproduk').value = datas.find(produk => produk.produk_kode ===
+                        document.getElementById('kodeproduk').value).produk_nama
+                } else {
+                    document.getElementById('namaproduk').value = ""
+                }
+            });
 
-                $(document).ready(function() {
-                    $('#tabelproduk').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: "{{ url('/cp_bahan') }}",
-                        columns: [{
-                                data: 'kode',
-                                name: 'kode'
-                            },
-                            {
-                                data: 'nama',
-                                name: 'nama'
-                            },
-                            {
-                                data: 'produk',
-                                name: 'produk'
-                            },
-                            {
-                                data: 'ruang',
-                                name: 'ruang'
-                            },
-                            {
-                                data: 'status',
-                                name: 'status'
-                            },
-                            {
-                                data: 'action',
-                                name: 'action'
-                            }
-                        ]
-                    });
-                    $('#tabelbahan').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: "{{ url('/cp_produk') }}",
-                        columns: [{
-                                data: 'kode',
-                                name: 'kode'
-                            },
-                            {
-                                data: 'nama',
-                                name: 'nama'
-                            },
-                            {
-                                data: 'produk',
-                                name: 'produk'
-                            },
-                            {
-                                data: 'ruang',
-                                name: 'ruang'
-                            },
-                            {
-                                data: 'status',
-                                name: 'status'
-                            },
-                            {
-                                data: 'action',
-                                name: 'action'
-                            }
-                        ]
-                    });
-                    $('#tabelkemasan').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: "{{ url('/cp_kemasan') }}",
-                        columns: [{
-                                data: 'kode',
-                                name: 'kode'
-                            },
-                            {
-                                data: 'nama',
-                                name: 'nama'
-                            },
-                            {
-                                data: 'produk',
-                                name: 'produk'
-                            },
-                            {
-                                data: 'ruang',
-                                name: 'ruang'
-                            },
-                            {
-                                data: 'status',
-                                name: 'status'
-                            },
-                            {
-                                data: 'action',
-                                name: 'action'
-                            }
-                        ]
-                    });
-                })
-                $(function() {
-                    const datas = JSON.parse('<?= json_encode($produk) ?>')
-                    const kodeproduk = []
-                    for (var i in datas)
-                        kodeproduk.push(datas[i].produk_kode);
-                    var availableTags = [
-                        "ActionScript",
-                        "AppleScript",
-                        "Asp",
-                        "BASIC",
-                        "C",
-                        "C++",
-                        "Clojure",
-                        "COBOL",
-                        "ColdFusion",
-                        "Erlang",
-                        "Fortran",
-                        "Groovy",
-                        "Haskell",
-                        "Java",
-                        "JavaScript",
-                        "Lisp",
-                        "Perl",
-                        "PHP",
-                        "Python",
-                        "Ruby",
-                        "Scala",
-                        "Scheme"
-                    ];
-                    console.log(kodeproduk);
-                    console.log(availableTags);
-                    $("#kodeproduk").autocomplete({
-                        source: kodeproduk
-                    });
+            $(document).ready(function() {
+                $('#tabelproduk').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ url('/cp_bahan') }}",
+                    columns: [{
+                            data: 'kode',
+                            name: 'kode'
+                        },
+                        {
+                            data: 'nama',
+                            name: 'nama'
+                        },
+                        {
+                            data: 'produk',
+                            name: 'produk'
+                        },
+                        {
+                            data: 'ruang',
+                            name: 'ruang'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action'
+                        }
+                    ]
                 });
-            </script>
+                $('#tabelbahan').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ url('/cp_produk') }}",
+                    columns: [{
+                            data: 'kode',
+                            name: 'kode'
+                        },
+                        {
+                            data: 'nama',
+                            name: 'nama'
+                        },
+                        {
+                            data: 'produk',
+                            name: 'produk'
+                        },
+                        {
+                            data: 'ruang',
+                            name: 'ruang'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action'
+                        }
+                    ]
+                });
+                $('#tabelkemasan').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ url('/cp_kemasan') }}",
+                    columns: [{
+                            data: 'kode',
+                            name: 'kode'
+                        },
+                        {
+                            data: 'nama',
+                            name: 'nama'
+                        },
+                        {
+                            data: 'produk',
+                            name: 'produk'
+                        },
+                        {
+                            data: 'ruang',
+                            name: 'ruang'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action'
+                        }
+                    ]
+                });
+            })
+        </script>
     </main>
 @endsection

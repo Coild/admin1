@@ -31,6 +31,9 @@ Route::view('/template', 'print.template');
 Route::get('/resetpass', function () {
     return view('auth.resetpass');
 });
+Route::get('/auto', function () {
+    return view('catatan.dokumen.auto');
+});
 
 //print    
 Route::post('/printpengolahanbatch/{id}', [PrintController::class, 'cetak_pengolahanbatch']);
