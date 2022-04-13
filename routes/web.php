@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(
         ['middleware' => 'admin'],
         function () {
+            
         }
     );
 

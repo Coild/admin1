@@ -100,6 +100,7 @@
 
             <!-- <a class="btn btn-primary" href="#">Edit</a>
                     <a class="btn btn-primary" href="#">Cetak</a> -->
-
+        </div>
+    </div>
 </main>
 @endsection

@@ -1,100 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
+@section('title')
+<title>Tambah Pabrik</title>
+@endsection
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<tbody>
+@section('content')
+<main>
+    <div class="row">
 
-                                    <?php $i = 0; ?>
-                                    @foreach ($data1 as $row)
-                                        <?php $i++; ?>
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $row['kode'] }}</td>
-                                            <td>{{ $row['nama'] }}</td>
-                                            <td>{{ $row['produk'] }}</td>
-                                            <td>{{ $row['ruang'] }}</td>
-                                            <td>
-                                                @if ($row['ruang'] == 0)
-                                                    {{ 'Diajukan' }}
-                                                @else
-                                                    {{ 'Diterima' }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if (Auth::user()->level == 2)
-                                                    <form method="post" action="detilterimabb">
-                                                        @csrf
-                                                        <input type="hidden" name="jenis" value=1 />
-                                                        <input type="hidden" name="induk"
-                                                            value="{{ $row['cp_bahan_id'] }}" />
-                                                        <button type="submit" class="btn btn-primary">terima</button>
-                                                    </form>
-                                                @else
-                                                    <form method="post" action="detilterimabb">
-                                                        @csrf
-                                                        <input type="hidden" name="jenis" value=1 />
-                                                        <input type="hidden" name="induk"
-                                                            value="{{ $row['cp_bahan_id'] }}" />
-                                                        <button type="submit" class="btn btn-primary">edit</button>
-                                                    </form>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <?php $i++; ?>
-                                    @endforeach
-                                </tbody>
-<body>
-    <table class="table-responsive" id="tableuser">
-        <thead>
-            <td>nama</td>
-            <td>Nama Depan</td>
-            <td>Nama Belakang</td>
-            <td>pabrik</td>
-            <td>level</td>
-        </thead>
-        <tbody></tbody>
-    </table>
+        <!--  -->
+        <div class="card mb-4">
 
-    
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#tableuser').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ url('/user') }}",
-                columns: [{
-                        data: 'nama',
-                        name: 'nama'
-                    },
-                    {
-                        data: 'namadepan',
-                        name: 'namadepan'
-                    },
-                    {
-                        data: 'namabelakang',
-                        name: 'namabelakang'
-                    },
-                    {
-                        data: 'pabrik',
-                        name: 'pabrik'
-                    },
-                    {
-                        data: 'level',
-                        name: 'level'
-                    },
-                ]
-            });
-        })
-    </script>
-</body>
+            <div class="card-body">
+                <!-- pop up -->
+                <!-- Button to trigger modal -->
+                <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                    Tambah Pabrik
+                </button>
 
-</html>
+                <!-- Modal -->
+                <div class="modal fade" id="modalForm" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Tammbah Pabrik
+                                </h4>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <p class="statusMsg"></p>
+                                <div class="container">
+                                    <form action="/register_pabrik" method="post" id='forminput'>
+                                        @csrf
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="namadepan" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                    <label for="inputFirstName">First name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" name="namabelakang" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                    <label for="inputLastName">Last name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="username" id="inputEmail" type="text" placeholder="name@example.com" />
+                                            <label for="inputEmail">Username</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="pabrik" id="inputEmail" type="text" placeholder="name@example.com" />
+                                            <label for="inputEmail">Pabrik</label>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Create a password" />
+                                                    <label for="inputPassword">Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                    <label for="inputPasswordConfirm">Confirm Password</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid justify-content-center">
+                                                <a href="#" onclick="pembuatanuser({
+                                msg: 'Apakah Anda Yakin Terima Pengguna Ini?',
+                                title: 'Apakah Data Sudah Benar?'
+                            })" style="width: 200px" class="btn btn-primary btn-block">Tambah
+                                                    Akun</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama COA</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- <a class="btn btn-primary" href="#">Edit</a>
+        <a class="btn btn-primary" href="#">Cetak</a> -->
+    </div>
+
+</main>
+@endsection
