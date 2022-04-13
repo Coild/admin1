@@ -239,7 +239,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_request', [Auditor::class, 'tambah_request']);
     });
 
-    Route::group(['middleware' => ['pjt', 'pelaksana']], function () {
+    Route::group(['middleware' => ['karyawan']], function () {
         //tampil catatan
         Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
         Route::get('/detilterimabbid/{jen}/{induk}', [Admin::class, 'tampil_detilbbid']);
