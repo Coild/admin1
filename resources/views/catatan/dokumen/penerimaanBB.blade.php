@@ -224,11 +224,18 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                     <div class="form-group row">
-                                        <label for="kodeproduk" class="col-sm-3 col-form-label">Kode Produk</label>
-                                        <div class="col-sm ui-widget">
-                                            <input type="text" style="height: 35px;" id='kodeproduk' class="form-control 2"
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Produk</label>
+                                        <div class="col-sm">
+                                            <select style="height: 35px;" id='kodeproduk' class="form-control 2"
                                                 name="kode">
-                                            </input>
+                                                <option selected>Choose...</option>
+                                                @foreach ($produk as $row)
+                                                    <option value="{{ $row['produk_kode'] }}"
+                                                        data-nama="{{ $row['produk_nama'] }}">
+                                                        {{ $row['produk_kode'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -278,267 +285,212 @@
                         <h4 class="modal-title" id="myModalLabel">Tambah Kemasan</h4>
                     </div>
 
-                    <<<<<<< HEAD <!-- Modal Body -->
-                        <div class="modal-body">
-                            <div class="card mb-4">
-                                <div class="card-header" id='headertgl1'></div>
-                                <div class="card-header">Kemasan</div>
-                                <div class="card-body">
-                                    <p class="statusMsg"></p>
-                                    <form role="form" method="post" action="tambah_terimakemasan" id='forminput1'>
-                                        @csrf
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="card mb-4">
+                            <div class="card-header" id='headertgl1'></div>
+                            <div class="card-header">Kemasan</div>
+                            <div class="card-body">
+                                <p class="statusMsg"></p>
+                                <form role="form" method="post" action="tambah_terimakemasan" id='forminput1'>
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Kemasan</label>
-                                            <div class="col-sm">
-                                                <select style="height: 35px;" id='kodekemasan' class="form-control 1"
-                                                    name="kode">
-                                                    <option selected>Choose...</option>
-                                                    @foreach ($kemasan as $row)
-                                                        <option value="{{ $row['kemasan_kode'] }}"
-                                                            data-nama="{{ $row['kemasan_nama'] }}">
-                                                            {{ $row['kemasan_kode'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            =======
-                                            <!-- Modal Body -->
-                                            <div class="modal-body">
-                                                <div class="card mb-4">
-                                                    <div class="card-header" id='headertgl1'></div>
-                                                    <div class="card-header">Kemasan</div>
-                                                    <div class="card-body">
-                                                        <p class="statusMsg"></p>
-                                                        <form role="form" method="post" action="tambah_terimakemasan"
-                                                            id='forminput1'>
-                                                            @csrf
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3"
-                                                                    class="col-sm-3 col-form-label">Nama Kemasan</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="nama" class="form-control 1"
-                                                                        id="inputEmail3" placeholder="Nama Kemasan" />
-                                                                    >>>>>>> 9f0d3b8be34099fb5bee50299f715615108339b5
-                                                                </div>
-                                                            </div>
-
-                                                            <<<<<<< HEAD <div class="form-group row">
-                                                                <label for="inputEmail3"
-                                                                    class="col-sm-3 col-form-label">Nama
-                                                                    Kemasan</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="nama" readonly
-                                                                        class="form-control 1" id="namakemasan"
-                                                                        placeholder="Nama Kemasan" />
-                                                                </div>
-                                                                =======
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Untuk
-                                                                        Produk</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="produk"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Untuk Produk" />
-                                                                        >>>>>>> 9f0d3b8be34099fb5bee50299f715615108339b5
-                                                                    </div>
-                                                                </div>
-
-                                                                <<<<<<< HEAD <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Untuk
-                                                                        Produk</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="produk"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Untuk Produk" />
-                                                                    </div>
-                                                                    =======
-                                                                    <div class="form-group row">
-                                                                        <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Kode
-                                                                            Kemasan</label>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" name="kode"
-                                                                                class="form-control 1" id="inputEmail3"
-                                                                                placeholder="Kode Kemasan" />
-                                                                            >>>>>>> 9f0d3b8be34099fb5bee50299f715615108339b5
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-                                                                        <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Ruangan</label>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" name="ruang"
-                                                                                class="form-control 1" id="inputEmail3"
-                                                                                placeholder="Ruangan" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <input type="hidden" id='ambil_tanggal1'
-                                                                        class="form-control 1" name="tanggal"
-                                                                        placeholder="" />
-                                                                    <a class="btn btn-primary" onclick="salert1(1)"
-                                                                        href="#"
-                                                                        style="float:left; width: 100px;  margin-left:25px"
-                                                                        role="button">Simpan</a>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Kemasan</label>
+                                        <div class="col-sm">
+                                            <select style="height: 35px;" id='kodekemasan' class="form-control 1"
+                                                name="kode">
+                                                <option selected>Choose...</option>
+                                                @foreach ($kemasan as $row)
+                                                    <option value="{{ $row['kemasan_kode'] }}"
+                                                        data-nama="{{ $row['kemasan_nama'] }}">
+                                                        {{ $row['kemasan_kode'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                            Kemasan</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="nama" readonly class="form-control 1"
+                                                id="nama_kemasan" placeholder="Nama Kemasan" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
+                                            Produk</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="produk" class="form-control 1" id="inputEmail3"
+                                                placeholder="Untuk Produk" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="ruang" class="form-control 1" id="inputEmail3"
+                                                placeholder="Ruangan" />
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id='ambil_tanggal1' class="form-control 1" name="tanggal"
+                                        placeholder="" />
+                                    <a class="btn btn-primary" onclick="salert1(1)" href="#"
+                                        style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                </form>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- pop up end -->
+            <!-- pop up end -->
 
-        <script>
-            $("#kode_bahan").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('nama_bahan').value = dataVal;
-            });
-
-            $(document).ready(function() {
-                $('#tabelproduk').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: "{{ url('/cp_bahan') }}",
-                    columns: [{
-                            data: 'kode',
-                            name: 'kode'
-                        },
-                        {
-                            data: 'nama',
-                            name: 'nama'
-                        },
-                        {
-                            data: 'produk',
-                            name: 'produk'
-                        },
-                        {
-                            data: 'ruang',
-                            name: 'ruang'
-                        },
-                        {
-                            data: 'status',
-                            name: 'status'
-                        },
-                        {
-                            data: 'action',
-                            name: 'action'
-                        }
-                    ]
-                });
-                $('#tabelbahan').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: "{{ url('/cp_produk') }}",
-                    columns: [{
-                            data: 'kode',
-                            name: 'kode'
-                        },
-                        {
-                            data: 'nama',
-                            name: 'nama'
-                        },
-                        {
-                            data: 'produk',
-                            name: 'produk'
-                        },
-                        {
-                            data: 'ruang',
-                            name: 'ruang'
-                        },
-                        {
-                            data: 'status',
-                            name: 'status'
-                        },
-                        {
-                            data: 'action',
-                            name: 'action'
-                        }
-                    ]
+            <script>
+                $("#kode_bahan").change(function() {
+                    const $this = $(this); // Cache $(this)
+                    const dataVal = $this.find(":selected").data("nama"); // Get data value
+                    document.getElementById('nama_bahan').value = dataVal;
                 });
                 $("#kodekemasan").change(function() {
                     const $this = $(this); // Cache $(this)
                     const dataVal = $this.find(":selected").data("nama"); // Get data value
-                    document.getElementById('namakemasan').value = dataVal;
+                    document.getElementById('nama_kemasan').value = dataVal;
                 });
-                $('#tabelkemasan').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: "{{ url('/cp_kemasan') }}",
-                    columns: [{
-                            data: 'kode',
-                            name: 'kode'
-                        },
-                        {
-                            data: 'nama',
-                            name: 'nama'
-                        },
-                        {
-                            data: 'produk',
-                            name: 'produk'
-                        },
-                        {
-                            data: 'ruang',
-                            name: 'ruang'
-                        },
-                        {
-                            data: 'status',
-                            name: 'status'
-                        },
-                        {
-                            data: 'action',
-                            name: 'action'
-                        }
-                    ]
+                $("#kodeproduk").change(function() {
+                    const $this = $(this); // Cache $(this)
+                    const dataVal = $this.find(":selected").data("nama"); // Get data value
+                    document.getElementById('namaproduk').value = dataVal;
                 });
-            })
-            $(function() {
-                const datas = JSON.parse('<?= json_encode($produk) ?>')
-                const kodeproduk = []
-                for (var i in datas)
-                    kodeproduk.push(datas[i].produk_kode);
-                var availableTags = [
-                    "ActionScript",
-                    "AppleScript",
-                    "Asp",
-                    "BASIC",
-                    "C",
-                    "C++",
-                    "Clojure",
-                    "COBOL",
-                    "ColdFusion",
-                    "Erlang",
-                    "Fortran",
-                    "Groovy",
-                    "Haskell",
-                    "Java",
-                    "JavaScript",
-                    "Lisp",
-                    "Perl",
-                    "PHP",
-                    "Python",
-                    "Ruby",
-                    "Scala",
-                    "Scheme"
-                ];
-                console.log(kodeproduk);
-                console.log(availableTags);
-                $("#kodeproduk").autocomplete({
-                    source: kodeproduk
+
+                $(document).ready(function() {
+                    $('#tabelproduk').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: "{{ url('/cp_bahan') }}",
+                        columns: [{
+                                data: 'kode',
+                                name: 'kode'
+                            },
+                            {
+                                data: 'nama',
+                                name: 'nama'
+                            },
+                            {
+                                data: 'produk',
+                                name: 'produk'
+                            },
+                            {
+                                data: 'ruang',
+                                name: 'ruang'
+                            },
+                            {
+                                data: 'status',
+                                name: 'status'
+                            },
+                            {
+                                data: 'action',
+                                name: 'action'
+                            }
+                        ]
+                    });
+                    $('#tabelbahan').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: "{{ url('/cp_produk') }}",
+                        columns: [{
+                                data: 'kode',
+                                name: 'kode'
+                            },
+                            {
+                                data: 'nama',
+                                name: 'nama'
+                            },
+                            {
+                                data: 'produk',
+                                name: 'produk'
+                            },
+                            {
+                                data: 'ruang',
+                                name: 'ruang'
+                            },
+                            {
+                                data: 'status',
+                                name: 'status'
+                            },
+                            {
+                                data: 'action',
+                                name: 'action'
+                            }
+                        ]
+                    });
+                    $('#tabelkemasan').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: "{{ url('/cp_kemasan') }}",
+                        columns: [{
+                                data: 'kode',
+                                name: 'kode'
+                            },
+                            {
+                                data: 'nama',
+                                name: 'nama'
+                            },
+                            {
+                                data: 'produk',
+                                name: 'produk'
+                            },
+                            {
+                                data: 'ruang',
+                                name: 'ruang'
+                            },
+                            {
+                                data: 'status',
+                                name: 'status'
+                            },
+                            {
+                                data: 'action',
+                                name: 'action'
+                            }
+                        ]
+                    });
+                })
+                $(function() {
+                    const datas = JSON.parse('<?= json_encode($produk) ?>')
+                    const kodeproduk = []
+                    for (var i in datas)
+                        kodeproduk.push(datas[i].produk_kode);
+                    var availableTags = [
+                        "ActionScript",
+                        "AppleScript",
+                        "Asp",
+                        "BASIC",
+                        "C",
+                        "C++",
+                        "Clojure",
+                        "COBOL",
+                        "ColdFusion",
+                        "Erlang",
+                        "Fortran",
+                        "Groovy",
+                        "Haskell",
+                        "Java",
+                        "JavaScript",
+                        "Lisp",
+                        "Perl",
+                        "PHP",
+                        "Python",
+                        "Ruby",
+                        "Scala",
+                        "Scheme"
+                    ];
+                    console.log(kodeproduk);
+                    console.log(availableTags);
+                    $("#kodeproduk").autocomplete({
+                        source: kodeproduk
+                    });
                 });
-            });
-        </script>
+            </script>
     </main>
 @endsection
