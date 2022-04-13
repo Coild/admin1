@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -782,6 +782,19 @@ class Admin extends Controller
 
         return redirect('/setting');
     }
+    public function tambah_produkantara(Request $req)
+    {
+        $id = Auth::user()->pabrik;
+        $hasil = [
+            'produkantara_nama' => $req['nama'],
+            'produkantara_kode' => $req['kode'],
+            'user_id' => $id,
+        ];
+
+        produkantara::insert($hasil);
+
+        return redirect('/setting');
+    }
 
     public function tambah_kemasan(Request $req)
     {
@@ -827,6 +840,11 @@ class Admin extends Controller
         bahanbaku::all()->where('bahanbaku_id', $id)->each->delete();
         return redirect('/setting');
     }
+    public function hapus_produkantara($id)
+    {
+        produkantara::all()->where('produkantara_id', $id)->each->delete();
+        return redirect('/setting');
+    }
 
 
 
@@ -847,11 +865,12 @@ class Admin extends Controller
             }
             $kom = company::all()->where('user_id', $id);
             $produk = produk::all()->where('user_id', $id);
+            $produkantara = produkantara::all()->where('user_id', $id);
             $kemasan = kemasan::all()->where('user_id', $id);
             $bahanbaku = bahanbaku::all()->where('user_id', $id);
             return view('setting', [
                 'alamat' => $alamat ?? "kosong", 'no_hp' => $no_hp ?? "kosong", 'nama' => $nama ?? "kosong", 'logo' => $logo ?? "kosong",
-                'list_com' => $kom, 'list_produk' => $produk, 'list_kemasan' => $kemasan, 'list_bahanbaku' => $bahanbaku
+                'list_com' => $kom, 'list_produk' => $produk, 'list_produkantara' => $produkantara, 'list_kemasan' => $kemasan, 'list_bahanbaku' => $bahanbaku
             ]);
         }
     }
@@ -1137,9 +1156,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = penanganankeluhan::all()->where('pabrik', $pabrik)->where('status', 0);
-        } else
+        } else {
             $data = penanganankeluhan::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.penanganankeluhan', ['data' => $data]);
+            $produk = produk::all()->where('user_id', $pabrik);
+        }
+        return view('catatan.dokumen.penanganankeluhan', ['data' => $data, 'produk' => $produk]);
     }
     public function tambah_penarikan(Request $req)
     {
@@ -1184,9 +1205,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = penarikanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
-        } else
+        } else {
             $data = penarikanproduk::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.penarikanproduk', ['data' => $data]);
+            $produk = produk::all()->where('user_id', $pabrik);
+        }
+        return view('catatan.dokumen.penarikanproduk', ['data' => $data, 'produk' => $produk]);
     }
     public function tambah_distribusi(Request $req)
     {
@@ -1325,9 +1348,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = pelulusanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
-        } else
+        } else {
             $data = pelulusanproduk::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.pelulusanproduk', ['data' => $data]);
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        }
+        return view('catatan.dokumen.pelulusanproduk', ['data' => $data, 'bahanbaku' => $bahanbaku]);
     }
     public function tambah_contohbahan(Request $req)
     {
@@ -1469,7 +1494,6 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_timbang' => $req['kode_penimbangan'],
             'tanggal' => $req['tanggal'],
             'nama_bahan' => $req['nama_bahan'],
             'no_loth' => $req['no_loth'],
@@ -1508,7 +1532,6 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_timbang' => $req['kode_produk'],
             'tanggal' => $req['tanggal'],
             'nama_produk_antara' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
@@ -1547,7 +1570,6 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_ruangtimbang' => $req['kode_ruangtimbang'],
             'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
             'no_loth' => $req['no_loth'],
@@ -1592,8 +1614,10 @@ class Admin extends Controller
             $data = timbangbahan::all()->where('pabrik', $pabrik);
             $data1 = timbangproduk::all()->where('pabrik', $pabrik);
             $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $produkantara = produkantara::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? '', 'produkantara' => $produkantara ?? '']);
     }
     public function tambah_kartustokbahan(Request $req)
     {
@@ -2129,7 +2153,9 @@ class Admin extends Controller
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik)->where('status', 0);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
+            $produk = produk::all()->where('user_id', Auth::user()->pabrik);
+            $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
         }
-        return view('catatan.dokumen.pengemasanbatch', ['data' => $data]);
+        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk, 'kemasan' => $kemasan]);
     }
 }

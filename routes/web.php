@@ -125,6 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
     //sidebar
     Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
     Route::post('/input_produk', [Admin::class, 'tambah_produk']);
+    Route::post('/input_produkantara', [Admin::class, 'tambah_produkantara']);
     Route::post('/input_kemasan', [Admin::class, 'tambah_kemasan']);
     Route::post('/input_bahanbaku', [Admin::class, 'tambah_bahanbaku']);
     Route::post('/input_company', [Admin::class, 'tambah_company']);
@@ -132,6 +133,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/hapus_kemasan/{id}', [Admin::class, 'hapus_kemasan']);
     Route::get('/hapus_bahanbaku/{id}', [Admin::class, 'hapus_bahanbaku']);
     Route::get('/hapus_produk/{id}', [Admin::class, 'hapus_produk']);
+    Route::get('/hapus_produkantara/{id}', [Admin::class, 'hapus_produkantara']);
 
     Route::get('/spek_bahan_baku', [pjt::class, 'tampil_bahan_baku'])->name("tampil_bahanbaku");
     Route::get('/spek_bahan_kemas', [pjt::class, 'tampil_bahan_kemas'])->name("tampil_bahankemas");
@@ -283,9 +285,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //datatables 
-    Route::get('user',[dataPelaksana::class,'user']);
-    Route::get('cp_bahan',[dataPelaksana::class,'cp_bahan']);
-    Route::get('cp_produk',[dataPelaksana::class,'cp_produk']);
-    Route::get('cp_kemasan',[dataPelaksana::class,'cp_kemasan']);
+    Route::get('user', [dataPelaksana::class, 'user']);
+    Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
+    Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
+    Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
     Route::get('dummy', [dataPelaksana::class, 'dummy']);
 });

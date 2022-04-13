@@ -109,98 +109,96 @@
                                     <i class="fas fa-table me-1"></i>
                                     Produk
                                 </div>
-                                <div class="card-body">
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                            Produk</label>
-                                        <div class="col-sm">
-                                            <select style="height: 35px;" class="form-control" name="kode_produk"
-                                                id="inlineFormCustomSelect">
-                                                <option selected>Choose...</option>
-                                                @foreach ($data2 as $row)
-                                                    <option value="{{ $row['produk_kode'] }}">
-                                                        {{ $row['produk_kode'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Produk</label>
+                                    <div class="col-sm">
+                                        <select style="height: 35px;" id='kodeproduk' class="form-control"
+                                            name="kode_produk">
+                                            <option selected>Choose...</option>
+                                            @foreach ($data2 as $row)
+                                                <option value="{{ $row['produk_kode'] }}"
+                                                    data-nama="{{ $row['produk_nama'] }}">
+                                                    {{ $row['produk_kode'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                            Produk</label>
-                                        <div class="col-sm">
-                                            <select style="height: 35px;" class="form-control" name="nama_produk"
-                                                id="inlineFormCustomSelect">
-                                                <option selected>Choose...</option>
-                                                @foreach ($data2 as $row)
-                                                    <option value="{{ $row['produk_nama'] }}">
-                                                        {{ $row['produk_nama'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
-                                            Batch</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="no_batch" class="form-control" id="inputEmail3"
-                                                placeholder="Nomor Batch" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
-                                            Batch</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="besar_batch" class="form-control" id="inputEmail3"
-                                                placeholder="Besar Batch" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
-                                            Sediaan</label>
-                                        <div class="col-sm">
-                                            <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan"
-                                                type="text" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
-                                        <div class="col-sm">
-                                            <input placeholder="Kategori" class="form-control" name="kategori"
-                                                type="text" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
-                                        <div class="col-sm">
-                                            <select style="height: 35px;" name="kemasan" class="form-control"
-                                                id="inlineFormCustomSelect">
-                                                <option selected>Choose...</option>
-                                                @foreach($data3 as $row)
-                                                <option value="{{$row['kemasan_nama']}}">{{$row['kemasan_nama']}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
                                 </div>
-                                <a class="btn btn-primary" onclick="salert()" href="#"
-                                    style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                        Produk</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="nama_produk" readonly class="form-control"
+                                            id="namaproduk" placeholder="Nama Produk" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
+                                        Batch</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="no_batch" class="form-control" id="inputEmail3"
+                                            placeholder="Nomor Batch" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
+                                        Batch</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="besar_batch" class="form-control" id="inputEmail3"
+                                            placeholder="Besar Batch" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
+                                        Sediaan</label>
+                                    <div class="col-sm">
+                                        <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan"
+                                            type="text" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
+                                    <div class="col-sm">
+                                        <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
+                                    <div class="col-sm">
+                                        <select style="height: 35px;" name="kemasan" class="form-control"
+                                            id="inlineFormCustomSelect">
+                                            <option selected>Choose...</option>
+                                            @foreach ($data3 as $row)
+                                                <option value="{{ $row['kemasan_nama'] }}">{{ $row['kemasan_nama'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <a class="btn btn-primary" onclick="salert()" href="#"
+                                style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <!--  -->
+        <script>
+            $("#kodeproduk").change(function() {
+                const $this = $(this); // Cache $(this)
+                const dataVal = $this.find(":selected").data("nama"); // Get data value
+                document.getElementById('namaproduk').value = dataVal;
+            });
+        </script>
     </main>
 @endsection

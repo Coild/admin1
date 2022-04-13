@@ -70,11 +70,18 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Produk
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                             Ditarik</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="produk_ditarik" class="form-control"
-                                                                id="inputEmail3" placeholder="Produk Ditarik" />
+                                                            <select style="height: 35px;" id='nama_bahankau'
+                                                                class="form-control 3" name="produk_ditarik">
+                                                                <option selected>Choose...</option>
+                                                                @foreach ($produk as $row)
+                                                                    <option value="{{ $row['produk_nama'] }}">
+                                                                        {{ $row['produk_nama'] }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 

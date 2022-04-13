@@ -38,107 +38,106 @@
                                             onclick="setdatetoday1(1)">
                                             Tambah Penimbangan Bahan Baku
                                         </button>
-                                    @endif
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="modalForm4" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Penimbangan Bahan Baku</h4>
-                                                </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalForm4" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel">Penimbangan Bahan Baku
+                                                        </h4>
+                                                    </div>
 
-                                                <!-- Modal Body -->
-                                                <div class="modal-body">
-                                                    <div class="card mb-4">
-                                                        <div class="card-header" id='headertgl1'></div>
-                                                        <div class="card-header">Bahan Baku</div>
-                                                        <div class="card-body">
-                                                            <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_penimbanganbahan"
-                                                                id='forminput1'>
-                                                                @csrf
-                                                                <input type="hidden" name="_token"
-                                                                    value="{{ csrf_token() }}" />
+                                                    <!-- Modal Body -->
+                                                    <div class="modal-body">
+                                                        <div class="card mb-4">
+                                                            <div class="card-header" id='headertgl1'></div>
+                                                            <div class="card-header">Bahan Baku</div>
+                                                            <div class="card-body">
+                                                                <p class="statusMsg"></p>
+                                                                <form role="form" method="post"
+                                                                    action="tambah_penimbanganbahan" id='forminput1'>
+                                                                    @csrf
+                                                                    <input type="hidden" name="_token"
+                                                                        value="{{ csrf_token() }}" />
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Penimbangan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="kode_penimbangan"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Kode Penimbangan" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama Bahan
+                                                                            Baku</label>
+                                                                        <div class="col-sm">
+                                                                            <select style="height: 35px;" id='kode_bahan'
+                                                                                class="form-control 1" name="nama_bahan">
+                                                                                <option selected>Choose...</option>
+                                                                                @foreach ($bahanbaku as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['bahanbaku_nama'] }}">
+                                                                                        {{ $row['bahanbaku_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
-                                                                        Bahan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_bahan"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Nama Bahan" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">No Loth</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="no_loth"
+                                                                                class="form-control 1" id="inputEmail3"
+                                                                                placeholder="No Loth" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">No Loth</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="no_loth"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="No Loth" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Suplier</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="nama_suplier"
+                                                                                class="form-control 1" id="inputEmail3"
+                                                                                placeholder="Nama Suplier" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama Suplier</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_suplier"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Nama Suplier" />
+                                                                    <input type="hidden" name="tanggal" id='ambil_tanggal1'
+                                                                        class="form-control 1" placeholder="" />
+
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Jumlah Bahan
+                                                                            Baku</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="jumlah_bahan"
+                                                                                class="form-control 1" id="inputEmail3"
+                                                                                placeholder="Jumlah Bahan Baku" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <input type="hidden" name="tanggal" id='ambil_tanggal1'
-                                                                    class="form-control 1" placeholder="" />
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Jumlah Bahan
-                                                                        Baku</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="jumlah_bahan"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Jumlah Bahan Baku" />
+                                                                    <div class="form-group row">
+                                                                        <label for="inputEmail3"
+                                                                            class="col-sm-3 col-form-label">Hasil
+                                                                            Penimbangan</label>
+                                                                        <div class="col-sm">
+                                                                            <input type="text" name="hasil_penimbangan"
+                                                                                class="form-control 1" id="inputEmail3"
+                                                                                placeholder="Hasil Penimbangan" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Hasil
-                                                                        Penimbangan</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="hasil_penimbangan"
-                                                                            class="form-control 1" id="inputEmail3"
-                                                                            placeholder="Hasil Penimbangan" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
-                                                                    style="float:left; width: 100px;  margin-left:25px"
-                                                                    role="button">Simpan</a>
-                                                            </form>
+                                                                    <a class="btn btn-primary" onclick="salert1(1)" href="#"
+                                                                        style="float:left; width: 100px;  margin-left:25px"
+                                                                        role="button">Simpan</a>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
+
 
                                     <!-- pop up end -->
 
@@ -147,7 +146,6 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">No Loth</th>
                                                 <th scope="col">Nama Suplier</th>
@@ -164,7 +162,6 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['kode_timbang'] }}</td>
                                                     <td>{{ $row['nama_bahan'] }}</td>
                                                     <td>{{ $row['no_loth'] }}</td>
                                                     <td>{{ $row['nama_suplier'] }}</td>
@@ -247,23 +244,19 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Penimbangan</label>
+                                                                        class="col-sm-3 col-form-label">Nama Produk
+                                                                        Antara</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Kode Penimbangan" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
-                                                                        Produk Antara</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_produk"
-                                                                            class="form-control 2" id="inputEmail3"
-                                                                            placeholder="Nama Produk" />
+                                                                        <select style="height: 35px;" id='kode_bahan'
+                                                                            class="form-control 2" name="nama_produk">
+                                                                            <option selected>Choose...</option>
+                                                                            @foreach ($produkantara as $row)
+                                                                                <option
+                                                                                    value="{{ $row['produkantara_nama'] }}">
+                                                                                    {{ $row['produkantara_nama'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                 </div>
 
@@ -299,7 +292,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                                                                                            Produk Antara" />
+                                                                                                                                                                                                                                                                                                                                                                            Produk Antara" />
                                                                     </div>
                                                                 </div>
 
@@ -343,7 +336,6 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Produk Antara</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Asal Produk</th>
@@ -361,7 +353,6 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['kode_timbang'] }}</td>
                                                     <td>{{ $row['nama_produk_antara'] }}</td>
                                                     <td>{{ $row['no_batch'] }}</td>
                                                     <td>{{ $row['asal_produk'] }}</td>
@@ -444,23 +435,19 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
-                                                                        Ruang Timbang</label>
+                                                                        class="col-sm-3 col-form-label">Nama Bahan
+                                                                        Baku</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kode_ruangtimbang"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Kode Ruang Timbang" />
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group row">
-                                                                    <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
-                                                                        Bahan Baku</label>
-                                                                    <div class="col-sm">
-                                                                        <input type="text" name="nama_bahanbaku"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Nama Bahan Baku" />
+                                                                        <select style="height: 35px;" id='nama_bahankau'
+                                                                            class="form-control 3" name="nama_bahanbaku">
+                                                                            <option selected>Choose...</option>
+                                                                            @foreach ($bahanbaku as $row)
+                                                                                <option
+                                                                                    value="{{ $row['bahanbaku_nama'] }}">
+                                                                                    {{ $row['bahanbaku_nama'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                 </div>
 
@@ -539,7 +526,6 @@
                                             <tr>
                                                 <th scope="col">No</th>
                                                 <th scope="col">Tanggal</th>
-                                                <th scope="col">Kode Penimbangan</th>
                                                 <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">No Loth</th>
                                                 <th scope="col">Jumlah Bahan Baku</th>
@@ -557,7 +543,6 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
-                                                    <td>{{ $row['kode_ruangtimbang'] }}</td>
                                                     <td>{{ $row['nama_bahan_baku'] }}</td>
                                                     <td>{{ $row['no_loth'] }}</td>
                                                     <td>{{ $row['jumlah_bahan_baku'] }}</td>
