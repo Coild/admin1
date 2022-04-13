@@ -88,9 +88,15 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                             Digunakan</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="produk_yang_digunakan"
-                                                                class="form-control" id="inputEmail3"
-                                                                placeholder="Produk Yang Digunakan" />
+                                                            <select style="height: 35px;" id='nama_bahankau'
+                                                                class="form-control 3" name="produk_yang_digunakan">
+                                                                <option selected>Choose...</option>
+                                                                @foreach ($produk as $row)
+                                                                    <option value="{{ $row['produk_nama'] }}">
+                                                                        {{ $row['produk_nama'] }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 

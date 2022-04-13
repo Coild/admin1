@@ -14,11 +14,11 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        @if(Auth::user()->level!=2)
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                            onclick="setdatetoday()">
-                            Tambah Pelulusan Produk Jadi
-                        </button>
+                        @if (Auth::user()->level != 2)
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                                onclick="setdatetoday()">
+                                Tambah Pelulusan Produk Jadi
+                            </button>
                         @endif
 
                         <!-- Modal -->
@@ -48,11 +48,18 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                            Bahan</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
+                                                            Baku</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_bahan" class="form-control"
-                                                                id="inputEmail3" placeholder="Nama Bahan" />
+                                                            <select style="height: 35px;" id='nama_bahankau'
+                                                                class="form-control 3" name="nama_bahan">
+                                                                <option selected>Choose...</option>
+                                                                @foreach ($bahanbaku as $row)
+                                                                    <option value="{{ $row['bahanbaku_nama'] }}">
+                                                                        {{ $row['bahanbaku_nama'] }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -182,19 +189,19 @@
                                         echo 'Disetujui';
                                     } ?></td>
                                     <td>
-                                    @if(Auth::user()->level==2)
-                                                <form method="post" action="terimapelulusanproduk">
-                                                    @csrf
-                                                    <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                    <button type="submit" class="btn btn-primary">terima</button>
-                                                </form>
-                                                @else
-                                                <form method="post" action="#">
-                                                    @csrf
-                                                    <input type="hidden" name="nobatch" value="" />
-                                                    <button type="submit" class="btn btn-primary">edit</button>
-                                                </form>
-                                                @endif
+                                        @if (Auth::user()->level == 2)
+                                            <form method="post" action="terimapelulusanproduk">
+                                                @csrf
+                                                <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                                <button type="submit" class="btn btn-primary">terima</button>
+                                            </form>
+                                        @else
+                                            <form method="post" action="#">
+                                                @csrf
+                                                <input type="hidden" name="nobatch" value="" />
+                                                <button type="submit" class="btn btn-primary">edit</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
