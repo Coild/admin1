@@ -25,7 +25,7 @@ class superadmin extends Controller
 
     public function tampil_audit()
     {
-        $data = user::all()->where('level',3);
+        $data = user::all()->where('level',4);
         return view("admin.tambahauditor",['data' => $data]);
     }
 
@@ -80,7 +80,7 @@ class superadmin extends Controller
             return redirect('/audit');
         } else {
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect('showregister');
+            return redirect('audit');
         }
     }
 
