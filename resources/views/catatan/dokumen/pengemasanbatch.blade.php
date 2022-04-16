@@ -47,29 +47,29 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <select style="height: 35px;" id='kodeproduk'
-                                                                class="form-control" name="kode_produk">
-                                                                <option selected>Choose...</option>
+                                                            <input class="form-control" list="listnamaproduk" type="text"
+                                                                name='nama_produk' id="namaproduk">
+                                                            </input>
+                                                            <datalist id='listnamaproduk'>
                                                                 @foreach ($produk as $row)
-                                                                    <option value="{{ $row['produk_kode'] }}"
-                                                                        data-nama="{{ $row['produk_nama'] }}">
-                                                                        {{ $row['produk_kode'] }}
+                                                                    <option value="{{ $row['produk_nama'] }}">
+                                                                        {{ $row['produk_nama'] }}
                                                                     </option>
                                                                 @endforeach
-                                                            </select>
+                                                            </datalist>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_produk" readonly
-                                                                class="form-control" id="namaproduk"
-                                                                placeholder="Nama Produk" />
+                                                            <input type="text" name="kode_produk" readonly
+                                                                class="form-control" id="kodeproduk"
+                                                                placeholder="Kode Produk" />
                                                         </div>
                                                     </div>
 
@@ -102,15 +102,17 @@
                                                         <label for="inputEmail3"
                                                             class="col-sm-3 col-form-label">Kemasan</label>
                                                         <div class="col-sm">
-                                                            <select style="height: 35px;" name="kemasan"
-                                                                class="form-control" id="inlineFormCustomSelect">
-                                                                <option selected>Choose...</option>
+                                                            <input type="text" list="kemasan" style="height: 35px;"
+                                                                name="kemasan" class="form-control"
+                                                                id="inlineFormCustomSelect">
+                                                            </input>
+                                                            <datalist id="kemasan">
                                                                 @foreach ($kemasan as $row)
                                                                     <option value="{{ $row['kemasan_nama'] }}">
                                                                         {{ $row['kemasan_nama'] }}
                                                                     </option>
                                                                 @endforeach
-                                                            </select>
+                                                            </datalist>
                                                         </div>
                                                     </div>
 
@@ -213,10 +215,16 @@
             </div>
         </div>
         <script>
-            $("#kodeproduk").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('namaproduk').value = dataVal;
+            const produks = JSON.parse('<?= json_encode($produk) ?>')
+            $("#namaproduk").change(function() {
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value)?.produk_nama;
+                if (cekname) {
+                    document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
+                        document.getElementById('namaproduk').value).produk_kode
+                } else {
+                    document.getElementById('kodeproduk').value = ""
+                }
             });
         </script>
     </main>

@@ -62,32 +62,32 @@
                                                                         value="{{ csrf_token() }}" />
 
                                                                     <div class="form-group row">
-                                                                        <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Kode
-                                                                            Bahan</label>
+                                                                        <label class="col-sm-3 col-form-label">Nama Bahan
+                                                                            Baku</label>
                                                                         <div class="col-sm">
-                                                                            <select style="height: 35px;" id='kode_bahan'
-                                                                                class="form-control 1" name="kode_bahan">
-                                                                                <option selected>Choose...</option>
+                                                                            <input class="form-control 1"
+                                                                                list="listnamabahanbaku" type="text"
+                                                                                name='nama_bahan' id="namabahanbaku">
+                                                                            </input>
+                                                                            <datalist id='listnamabahanbaku'>
                                                                                 @foreach ($bahanbaku as $row)
                                                                                     <option
-                                                                                        value="{{ $row['bahanbaku_kode'] }}"
-                                                                                        data-nama="{{ $row['bahanbaku_kode'] }}">
-                                                                                        {{ $row['bahanbaku_kode'] }}
+                                                                                        value="{{ $row['bahanbaku_nama'] }}">
+                                                                                        {{ $row['bahanbaku_nama'] }}
                                                                                     </option>
                                                                                 @endforeach
-                                                                            </select>
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Nama
-                                                                            Bahan</label>
+                                                                            class="col-sm-3 col-form-label">Kode
+                                                                            Bahan Baku</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="nama_bahan" readonly
-                                                                                class="form-control 1" id="nama_bahan"
-                                                                                placeholder="Nama Bahan" />
+                                                                            <input type="text" name="kode_bahan" readonly
+                                                                                class="form-control 1" id="kodebahanbaku"
+                                                                                placeholder="Kode Bahan Baku" />
                                                                         </div>
                                                                     </div>
 
@@ -261,29 +261,30 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode Produk</label>
+                                                                        class="col-sm-3 col-form-label">Nama Produk</label>
                                                                     <div class="col-sm">
-                                                                        <select style="height: 35px;" id='kodeproduk'
-                                                                            class="form-control 2" name="kode_produk">
-                                                                            <option selected>Choose...</option>
+                                                                        <input class="form-control 2" list="listnamaproduk"
+                                                                            type="text" name='nama_produk' id="namaproduk">
+                                                                        </input>
+                                                                        <datalist id='listnamaproduk'>
                                                                             @foreach ($produk as $row)
-                                                                                <option value="{{ $row['produk_kode'] }}"
-                                                                                    data-nama="{{ $row['produk_nama'] }}">
-                                                                                    {{ $row['produk_kode'] }}
+                                                                                <option
+                                                                                    value="{{ $row['produk_nama'] }}">
+                                                                                    {{ $row['produk_nama'] }}
                                                                                 </option>
                                                                             @endforeach
-                                                                        </select>
+                                                                        </datalist>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
+                                                                        class="col-sm-3 col-form-label">Kode
                                                                         Produk</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nama_produk" readonly
-                                                                            class="form-control 2" id="namaproduk"
-                                                                            placeholder="Nama Produk" />
+                                                                        <input type="text" name="kode_produk" readonly
+                                                                            class="form-control 2" id="kodeproduk"
+                                                                            placeholder="Kode Produk" />
                                                                     </div>
                                                                 </div>
 
@@ -457,31 +458,32 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Kode
+                                                                        class="col-sm-3 col-form-label">Nama
                                                                         Kemasan</label>
                                                                     <div class="col-sm">
-                                                                        <select style="height: 35px;" id='kodekemasan'
-                                                                            class="form-control 3" name="kode_kemasan">
-                                                                            <option selected>Choose...</option>
+                                                                        <input class="form-control 3"
+                                                                            list="listnamakemasan" type="text"
+                                                                            name='nama_kemasan' id="namakemasan">
+                                                                        </input>
+                                                                        <datalist id='listnamakemasan'>
                                                                             @foreach ($kemasan as $row)
                                                                                 <option
-                                                                                    value="{{ $row['kemasan_kode'] }}"
-                                                                                    data-nama="{{ $row['kemasan_nama'] }}">
-                                                                                    {{ $row['kemasan_kode'] }}
+                                                                                    value="{{ $row['kemasan_nama'] }}">
+                                                                                    {{ $row['kemasan_nama'] }}
                                                                                 </option>
                                                                             @endforeach
-                                                                        </select>
+                                                                        </datalist>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Nama
+                                                                        class="col-sm-3 col-form-label">Kode
                                                                         Kemasan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="nama_kemasan" readonly
-                                                                            class="form-control 3" id="namakemasan"
-                                                                            placeholder="Nama Kemasan" />
+                                                                        <input type="text" name="kode_kemasan" readonly
+                                                                            class="form-control 3" id="kodekemasan"
+                                                                            placeholder="Kode Kemasan" />
                                                                     </div>
                                                                 </div>
 
@@ -616,20 +618,39 @@
             </div>
         </div>
         <script>
-            $("#kode_bahan").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('nama_bahan').value = dataVal;
+            const produks = JSON.parse('<?= json_encode($produk) ?>')
+            const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+            $("#namabahanbaku").change(function() {
+                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                    document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
+                if (cekname) {
+                    document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
+                        .bahanbaku_nama ===
+                        document.getElementById('namabahanbaku').value).bahanbaku_kode
+                } else {
+                    document.getElementById('kodebahanbaku').value = ""
+                }
             });
-            $("#kodeproduk").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('namaproduk').value = dataVal;
+            $("#namakemasan").change(function() {
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('namakemasan').value)?.kemasan_nama;
+                if (cekname) {
+                    document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                        document.getElementById('namakemasan').value).kemasan_kode
+                } else {
+                    document.getElementById('kodekemasan').value = ""
+                }
             });
-            $("#kodekemasan").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('namakemasan').value = dataVal;
+            $("#namaproduk").change(function() {
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value)?.produk_nama;
+                if (cekname) {
+                    document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
+                        document.getElementById('namaproduk').value).produk_kode
+                } else {
+                    document.getElementById('kodeproduk').value = ""
+                }
             });
         </script>
     </main>

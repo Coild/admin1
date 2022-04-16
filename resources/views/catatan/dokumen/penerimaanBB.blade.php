@@ -152,27 +152,27 @@
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode bahan</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan Baku</label>
                                         <div class="col-sm">
-                                            <select style="height: 35px;" id='kode_bahan' class="form-control 3"
-                                                name="kode">
-                                                <option selected>Choose...</option>
+                                            <input class="form-control 3" list="listnamabahanbaku" type="text" name='nama'
+                                                id="namabahanbaku">
+                                            </input>
+                                            <datalist id='listnamabahanbaku'>
                                                 @foreach ($bahanbaku as $row)
-                                                    <option value="{{ $row['bahanbaku_kode'] }}"
-                                                        data-nama="{{ $row['bahanbaku_nama'] }}">
-                                                        {{ $row['bahanbaku_kode'] }}
+                                                    <option value="{{ $row['bahanbaku_nama'] }}">
+                                                        {{ $row['bahanbaku_nama'] }}
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </datalist>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                            Bahan</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Bahan Baku</label>
                                         <div class="col-sm">
-                                            <input type="text" name="nama" readonly class="form-control 3" id="nama_bahan"
-                                                placeholder="Nama Bahan" />
+                                            <input type="text" name="kode" readonly class="form-control 3"
+                                                id="kodebahanbaku" placeholder="Kode Bahan Baku" />
                                         </div>
                                     </div>
 
@@ -225,15 +225,15 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Produk</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                         <div class="col-sm">
-                                            <input class="form-control 2" list="listkode" type="text" name='kode'
-                                                id="kodeproduk">
+                                            <input class="form-control 2" list="listnamaproduk" type="text" name='nama'
+                                                id="namaproduk">
                                             </input>
-                                            <datalist id='listkode'>
+                                            <datalist id='listnamaproduk'>
                                                 @foreach ($produk as $row)
-                                                    <option value="{{ $row['produk_kode'] }}">
-                                                        {{ $row['produk_kode'] }}
+                                                    <option value="{{ $row['produk_nama'] }}">
+                                                        {{ $row['produk_nama'] }}
                                                     </option>
                                                 @endforeach
                                             </datalist>
@@ -241,11 +241,11 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                             Produk</label>
                                         <div class="col-sm">
-                                            <input type="text" name="nama" readonly class="form-control 2" id="namaproduk"
-                                                placeholder="Nama Produk" />
+                                            <input type="text" name="kode" readonly class="form-control 2" id="kodeproduk"
+                                                placeholder="Kode Produk" />
                                         </div>
                                     </div>
                                     <input type="hidden" id='ambil_tanggal2' class="form-control 2" name="tanggal"
@@ -298,27 +298,27 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                     <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
+                                        <div class="col-sm">
+                                            <input class="form-control 1" list="listnamakemasan" type="text" name='nama'
+                                                id="namakemasan">
+                                            </input>
+                                            <datalist id='listnamakemasan'>
+                                                @foreach ($kemasan as $row)
+                                                    <option value="{{ $row['kemasan_nama'] }}">
+                                                        {{ $row['kemasan_nama'] }}
+                                                    </option>
+                                                @endforeach
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                             Kemasan</label>
                                         <div class="col-sm">
-                                            <select style="height: 35px;" id='kodekemasan' class="form-control 1"
-                                                name="kode">
-                                                <option selected>Choose...</option>
-                                                @foreach ($kemasan as $row)
-                                                    <option value="{{ $row['kemasan_kode'] }}"
-                                                        data-nama="{{ $row['kemasan_nama'] }}">
-                                                        {{ $row['kemasan_kode'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                            Kemasan</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="nama" readonly class="form-control 1"
-                                                id="nama_kemasan" placeholder="Nama Kemasan" />
+                                            <input type="text" name="kode" readonly class="form-control 1" id="kodekemasan"
+                                                placeholder="Kode Kemasan" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -350,28 +350,38 @@
         <!-- pop up end -->
 
         <script>
-            const datas = JSON.parse('<?= json_encode($produk) ?>')
-            const produkkodes = []
-            for (var i in datas)
-                produkkodes.push(datas[i].produk_kode);
-            $("#kode_bahan").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('nama_bahan').value = dataVal;
-            });
-            $("#kodekemasan").change(function() {
-                const $this = $(this); // Cache $(this)
-                const dataVal = $this.find(":selected").data("nama"); // Get data value
-                document.getElementById('nama_kemasan').value = dataVal;
-            });
-            $("#kodeproduk").change(function() {
-                var cekname = datas.find(produk => produk.produk_kode ===
-                    document.getElementById('kodeproduk').value)?.produk_nama;
+            const produks = JSON.parse('<?= json_encode($produk) ?>')
+            const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+            $("#namabahanbaku").change(function() {
+                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                    document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
                 if (cekname) {
-                    document.getElementById('namaproduk').value = datas.find(produk => produk.produk_kode ===
-                        document.getElementById('kodeproduk').value).produk_nama
+                    document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
+                        .bahanbaku_nama ===
+                        document.getElementById('namabahanbaku').value).bahanbaku_kode
                 } else {
-                    document.getElementById('namaproduk').value = ""
+                    document.getElementById('kodebahanbaku').value = ""
+                }
+            });
+            $("#namakemasan").change(function() {
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('namakemasan').value)?.kemasan_nama;
+                if (cekname) {
+                    document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                        document.getElementById('namakemasan').value).kemasan_kode
+                } else {
+                    document.getElementById('kodekemasan').value = ""
+                }
+            });
+            $("#namaproduk").change(function() {
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value)?.produk_nama;
+                if (cekname) {
+                    document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
+                        document.getElementById('namaproduk').value).produk_kode
+                } else {
+                    document.getElementById('kodeproduk').value = ""
                 }
             });
 

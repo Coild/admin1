@@ -73,15 +73,18 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                             Ditarik</label>
                                                         <div class="col-sm">
-                                                            <select style="height: 35px;" id='nama_bahankau'
-                                                                class="form-control 3" name="produk_ditarik">
-                                                                <option selected>Choose...</option>
+                                                            <input type="text" list="listproduk" style="height: 35px;"
+                                                                id='nama_bahankau' class="form-control 3"
+                                                                name="produk_ditarik">
+                                                            <option selected>Choose...</option>
+                                                            </input>
+                                                            <datalist id="listproduk">
                                                                 @foreach ($produk as $row)
                                                                     <option value="{{ $row['produk_nama'] }}">
                                                                         {{ $row['produk_nama'] }}
                                                                     </option>
                                                                 @endforeach
-                                                            </select>
+                                                            </datalist>
                                                         </div>
                                                     </div>
 

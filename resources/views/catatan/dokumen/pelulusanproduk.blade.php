@@ -51,15 +51,16 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                                             Baku</label>
                                                         <div class="col-sm">
-                                                            <select style="height: 35px;" id='nama_bahankau'
-                                                                class="form-control 3" name="nama_bahan">
-                                                                <option selected>Choose...</option>
+                                                            <input type="text" list="listbahanbaku" style="height: 35px;"
+                                                                id='nama_bahankau' class="form-control 3" name="nama_bahan">
+                                                            </input>
+                                                            <datalist id="listbahanbaku">
                                                                 @foreach ($bahanbaku as $row)
                                                                     <option value="{{ $row['bahanbaku_nama'] }}">
                                                                         {{ $row['bahanbaku_nama'] }}
                                                                     </option>
                                                                 @endforeach
-                                                            </select>
+                                                            </datalist>
                                                         </div>
                                                     </div>
 

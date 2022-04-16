@@ -67,16 +67,18 @@
                                                                             class="col-sm-3 col-form-label">Nama Bahan
                                                                             Baku</label>
                                                                         <div class="col-sm">
-                                                                            <select style="height: 35px;" id='kode_bahan'
-                                                                                class="form-control 1" name="nama_bahan">
-                                                                                <option selected>Choose...</option>
+                                                                            <input class="form-control 1"
+                                                                                list="listnamabahanbaku" type="text"
+                                                                                name='nama_bahan' id="namabahanbaku">
+                                                                            </input>
+                                                                            <datalist id='listnamabahanbaku'>
                                                                                 @foreach ($bahanbaku as $row)
                                                                                     <option
                                                                                         value="{{ $row['bahanbaku_nama'] }}">
                                                                                         {{ $row['bahanbaku_nama'] }}
                                                                                     </option>
                                                                                 @endforeach
-                                                                            </select>
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -241,25 +243,24 @@
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
-
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">Nama Produk
                                                                         Antara</label>
                                                                     <div class="col-sm">
-                                                                        <select style="height: 35px;" id='kode_bahan'
-                                                                            class="form-control 2" name="nama_produk">
-                                                                            <option selected>Choose...</option>
+                                                                        <input class="form-control 2" list="listnamaproduk"
+                                                                            type="text" name='nama' id="namaproduk">
+                                                                        </input>
+                                                                        <datalist id='listnamaproduk'>
                                                                             @foreach ($produkantara as $row)
                                                                                 <option
                                                                                     value="{{ $row['produkantara_nama'] }}">
                                                                                     {{ $row['produkantara_nama'] }}
                                                                                 </option>
                                                                             @endforeach
-                                                                        </select>
+                                                                        </datalist>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
                                                                         class="col-sm-3 col-form-label">No
@@ -292,7 +293,7 @@
                                                                         <input type="text" name="jumlah_produk"
                                                                             class="form-control 2" id="inputEmail3"
                                                                             placeholder="Jumlah
-                                                                                                                                                                                                                                                                                                                                                                            Produk Antara" />
+                                                                                                                                                                                                                                                                                                                                                                                                                    Produk Antara" />
                                                                     </div>
                                                                 </div>
 
@@ -438,16 +439,18 @@
                                                                         class="col-sm-3 col-form-label">Nama Bahan
                                                                         Baku</label>
                                                                     <div class="col-sm">
-                                                                        <select style="height: 35px;" id='nama_bahankau'
-                                                                            class="form-control 3" name="nama_bahanbaku">
-                                                                            <option selected>Choose...</option>
+                                                                        <input class="form-control 3"
+                                                                            list="listnamabahanbaku" type="text"
+                                                                            name='nama_bahanbaku' id="namabahanbaku">
+                                                                        </input>
+                                                                        <datalist id='listnamabahanbaku'>
                                                                             @foreach ($bahanbaku as $row)
                                                                                 <option
                                                                                     value="{{ $row['bahanbaku_nama'] }}">
                                                                                     {{ $row['bahanbaku_nama'] }}
                                                                                 </option>
                                                                             @endforeach
-                                                                        </select>
+                                                                        </datalist>
                                                                     </div>
                                                                 </div>
 
