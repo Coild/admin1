@@ -294,7 +294,7 @@ class Admin extends Controller
         $nomer = cp_bahan::insertGetId($data);
 
         $laporan = [
-            'laporan_nama' => 'penerimaan bahan baku',
+            'laporan_nama' => 'penerimaan bahan',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,

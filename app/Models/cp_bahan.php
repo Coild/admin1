@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class cp_bahan extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'cp_bahan_id';
+    protected $fillable = [
+        'status',
+    ];
 }

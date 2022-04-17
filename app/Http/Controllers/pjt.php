@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -99,7 +99,7 @@ class pjt extends Controller
 
         // dd($req['nobatch']);
 
-        $user = PPbahanbakumasuk::all()->where("cp_bahan_id", $req['nobatch'])->first()->update([
+        $user = cp_bahan::all()->where("cp_bahan_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
@@ -119,7 +119,7 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
 
-        $user = PPprodukjadimasuk::all()->where("cp_produk_id", $req['nobatch'])->first()->update([
+        $user = cp_produk::all()->where("cp_produk_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
@@ -137,7 +137,7 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = PPkemasanmasuk::all()->where("cp_kemasan_id", $req['nobatch'])->first()->update([
+        $user = cp_kemasan::all()->where("cp_kemasan_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 

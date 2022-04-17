@@ -107,6 +107,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
         Route::post('/terimaambilprodukantara', [pjt::class, 'terima_ambilprodukantara'])->name('terima_ambilprodukantara');
 
+        Route::post('/terima_cpbahan', [pjt::class, 'terima_cp_bahan'])->name('terima_cp_bahan');
+        Route::post('/terima_cpproduk', [pjt::class, 'terima_cp_produk'])->name('terima_cp_produk');
+        Route::post('/terima_cpkemasan', [pjt::class, 'terima_cp_kemasan'])->name('terima_cp_kemasan');
+
         Route::post('/terimapelatihanhigisani', [pjt::class, 'terima_pelatihanhigisani'])->name('terima_pelatihanhigisani');
         Route::post('/terimapelatihancpkb', [pjt::class, 'terima_pelatihancpkb'])->name('terima_pelatihancpkb');
 
@@ -191,10 +195,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
         Route::post('/tambah_terimakemasan', [Admin::class, 'tambah_terimakemasan'])->name('tambah_terimakemasan');
-
-        Route::post('/terima_cpbahan', [Admin::class, 'terima_cp_bahan'])->name('terima_cp_bahan');
-        Route::post('/terima_cpproduk', [Admin::class, 'terima_cp_produk'])->name('terima_cp_produk');
-        Route::post('/terima_cpkemasan', [Admin::class, 'terima_cp_kemasan'])->name('terima_cp_kemasan');
         
         // Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
         // Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');

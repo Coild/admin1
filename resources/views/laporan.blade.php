@@ -99,6 +99,12 @@
                             <form method="post" action="/printambilprodukjadi/{{$row['laporan_nomor']}}">
                             @elseif($row['laporan_nama']=='penambahan contoh kemasan')
                             <form method="post" action="/printambilbahankemas/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penerimaan bahan')
+                            <form method="post" action="/printterimabahan/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penerimaan produk')
+                            <form method="post" action="/printterimaproduk/{{$row['laporan_nomor']}}">
+                            @elseif($row['laporan_nama']=='penerimaan kemasan')
+                            <form method="post" action="/printterimakemasan/{{$row['laporan_nomor']}}">
                             @else
                             <form method="post" action="/printambilbahankemas">
                             @endif

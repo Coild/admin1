@@ -41,10 +41,10 @@ class dataPelaksana extends Controller
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>';
             } else {
-                return '<form method="post" action="terima_cpbahhan">
+                return '<form method="post" action="terima_cpbahan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
             <input type="hidden" name="jenis" value=1 />
-            <input type="hidden" name="induk"
+            <input type="hidden" name="nobatch"
                 value=' . $data->cp_bahan_id . ' />
             <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
@@ -67,10 +67,10 @@ class dataPelaksana extends Controller
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>';
             } else {
-                return '<form method="post" action="terima_cpbahhan">
+                return '<form method="post" action="terima_cpproduk">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
             <input type="hidden" name="jenis" value=2 />
-            <input type="hidden" name="induk"
+            <input type="hidden" name="nobatch"
                 value=' . $data->cp_produk_id . ' />
             <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
@@ -91,10 +91,10 @@ class dataPelaksana extends Controller
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>';
             } else {
-                return '<form method="post" action="terima_cpbahhan">
+                return '<form method="post" action="terima_cpkemasan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
             <input type="hidden" name="jenis" value=1 />
-            <input type="hidden" name="induk"
+            <input type="hidden" name="nobatch"
                 value=' . $data->cp_kemasan_id . ' />
             <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
