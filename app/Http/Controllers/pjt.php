@@ -91,25 +91,7 @@ class pjt extends Controller
         return redirect()->route('ambilcontoh');
     }
 
-    public function terima_bahankeluar(Request $req)
-    {
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-        // dd($req['nobatch']);
-        $user = PPbahanbakukeluar::all()->where("no_batch", $req['nobatch'])->first()->update([
-            'status' => 1,
-        ]);
-
-        laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan bahan keluar')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
-                'tgl_diterima' => $tgl
-            ]);
-        return redirect()->route('penerimaanBB');
-    }
-
-    public function terima_bahanmasuk(Request $req)
+    public function terima_cp_bahan(Request $req)
     {
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -117,85 +99,50 @@ class pjt extends Controller
 
         // dd($req['nobatch']);
 
-        $user = PPbahanbakumasuk::all()->where("no_loth", $req['nobatch'])->first()->update([
+        $user = PPbahanbakumasuk::all()->where("cp_bahan_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan bahan masuk')->first()->update([
+            ->where('laporan_nama', 'penerimaan bahan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->nama,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penerimaanBB');
     }
 
-    public function terima_produkkeluar(Request $req)
+    
+
+    public function terima_cp_produk(Request $req)
     {
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
 
-        $user = PPprodukjadikeluar::all()->where("no_batch", $req['nobatch'])->first()->update([
+        $user = PPprodukjadimasuk::all()->where("cp_produk_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan produk keluar')->first()->update([
+            ->where('laporan_nama', 'penerimaan produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->nama,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penerimaanBB');
     }
 
-    public function terima_produkmasuk(Request $req)
-    {
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-        $user = PPprodukjadimasuk::all()->where("no_loth", $req['nobatch'])->first()->update([
-            'status' => 1,
-        ]);
-
-        laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan produk masuk')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
-                'tgl_diterima' => $tgl
-            ]);
-        return redirect()->route('penerimaanBB');
-    }
-
-    public function terima_kemasankeluar(Request $req)
-    {
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-
-
-        $user = PPkemasankeluar::all()->where("no_batch", $req['nobatch'])->first()->update([
-            'status' => 1,
-        ]);
-
-        laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan kemasan keluar')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
-                'tgl_diterima' => $tgl
-            ]);
-        return redirect()->route('penerimaanBB');
-    }
-
-    public function terima_kemasanmasuk(Request $req)
+    public function terima_cp_kemasan(Request $req)
     {
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = PPkemasanmasuk::all()->where("no_loth", $req['nobatch'])->first()->update([
+        $user = PPkemasanmasuk::all()->where("cp_kemasan_id", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', 'penerimaan kemasan masuk')->first()->update([
+            ->where('laporan_nama', 'penerimaan kemasan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->nama,
                 'tgl_diterima' => $tgl
             ]);

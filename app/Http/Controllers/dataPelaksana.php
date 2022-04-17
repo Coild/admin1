@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{cp_bahan, cp_kemasan, cp_produk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, user};
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class dataPelaksana extends Controller
 {
@@ -31,13 +32,24 @@ class dataPelaksana extends Controller
             }
         })->addColumn('action', function ($data) {
 
-            return '<form method="post" action="detilterimabb">
+            if(Auth::user()->level != 2)   {
+                return '<form method="post" action="detilterimabb">
+                ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                <input type="hidden" name="jenis" value=1 />
+                <input type="hidden" name="induk"
+                    value=' . $data->cp_bahan_id . ' />
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>';
+            } else {
+                return '<form method="post" action="terima_cpbahhan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
             <input type="hidden" name="jenis" value=1 />
             <input type="hidden" name="induk"
                 value=' . $data->cp_bahan_id . ' />
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
+            }
+            
         })->rawColumns(['action'])->make();
     }
 
@@ -46,13 +58,23 @@ class dataPelaksana extends Controller
         $data = cp_produk::all();
         return DataTables::of($data)->addColumn('action', function ($data) {
 
-            return '<form method="post" action="detilterimabb">
+            if(Auth::user()->level != 2)   {
+                return '<form method="post" action="detilterimabb">
+                ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                <input type="hidden" name="jenis" value=2 />
+                <input type="hidden" name="induk"
+                    value=' . $data->cp_produk_id . ' />
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>';
+            } else {
+                return '<form method="post" action="terima_cpbahhan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
             <input type="hidden" name="jenis" value=2 />
             <input type="hidden" name="induk"
-                value=' . $data->cp_bahan_id . ' />
-            <button type="submit" class="btn btn-primary">Edit</button>
+                value=' . $data->cp_produk_id . ' />
+            <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
+            }
         })->rawColumns(['action'])->make();
     }
 
@@ -60,14 +82,23 @@ class dataPelaksana extends Controller
     {
         $data = cp_kemasan::all();
         return DataTables::of($data)->addColumn('action', function ($data) {
-
-            return '<form method="post" action="detilterimabb">
+            if(Auth::user()->level != 2)   {
+                return '<form method="post" action="detilterimabb">
+                ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                <input type="hidden" name="jenis" value=3 />
+                <input type="hidden" name="induk"
+                    value=' . $data->cp_kemasan_id . ' />
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>';
+            } else {
+                return '<form method="post" action="terima_cpbahhan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-            <input type="hidden" name="jenis" value=3 />
+            <input type="hidden" name="jenis" value=1 />
             <input type="hidden" name="induk"
-                value=' . $data->cp_bahan_id . ' />
-            <button type="submit" class="btn btn-primary">Edit</button>
+                value=' . $data->cp_kemasan_id . ' />
+            <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
+            }
         })->rawColumns(['action'])->make();
     }
 

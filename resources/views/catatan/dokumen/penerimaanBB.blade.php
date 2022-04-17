@@ -155,7 +155,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan Baku</label>
                                         <div class="col-sm">
                                             <input class="form-control 3" list="listnamabahanbaku" type="text" name='nama'
-                                                id="namabahanbaku">
+                                                id="namabahanbaku" autocomplete="off">
                                             </input>
                                             <datalist id='listnamabahanbaku'>
                                                 @foreach ($bahanbaku as $row)
@@ -228,7 +228,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                         <div class="col-sm">
                                             <input class="form-control 2" list="listnamaproduk" type="text" name='nama'
-                                                id="namaproduk">
+                                                id="namaproduk" autocomplete="off">
                                             </input>
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produk as $row)
@@ -301,7 +301,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
                                         <div class="col-sm">
                                             <input class="form-control 1" list="listnamakemasan" type="text" name='nama'
-                                                id="namakemasan">
+                                                id="namakemasan" autocomplete="off">
                                             </input>
                                             <datalist id='listnamakemasan'>
                                                 @foreach ($kemasan as $row)
@@ -352,8 +352,11 @@
         <script>
             const produks = JSON.parse('<?= json_encode($produk) ?>')
             const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
-            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+            const bahanbakus =  JSON.parse('<?= json_encode($bahanbaku) ?>')
+            
             $("#namabahanbaku").change(function() {
+                console.log(bahanbakus)
+                console.log('produk ' +Array.isArray(bahanbakus) + " "+typeof bahanbakus)
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
                 if (cekname) {
@@ -361,7 +364,7 @@
                         .bahanbaku_nama ===
                         document.getElementById('namabahanbaku').value).bahanbaku_kode
                 } else {
-                    document.getElementById('kodebahanbaku').value = ""
+                    document.getElementById('kodebahanbaku').value = "hho"
                 }
             });
             $("#namakemasan").change(function() {

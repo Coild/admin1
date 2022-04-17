@@ -267,7 +267,7 @@
                                                                             type="text" name='nama_produk' id="namaproduk">
                                                                         </input>
                                                                         <datalist id='listnamaproduk'>
-                                                                            @foreach ($produk as $row)
+                                                                            @foreach($produk as $row)
                                                                                 <option
                                                                                     value="{{ $row['produk_nama'] }}">
                                                                                     {{ $row['produk_nama'] }}

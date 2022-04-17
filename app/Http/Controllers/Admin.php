@@ -801,8 +801,11 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'kemasan_nama' => $req['nama'],
+            'kemasan_kode' => 'kosong',
             'user_id' => $id,
         ];
+
+        // dd($hasil);
 
         kemasan::insert($hasil);
 
@@ -1483,11 +1486,12 @@ class Admin extends Controller
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all();
-            $produk = produk::all();
-            $kemasan = kemasan::all();
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $produk = produk::all()->where('user_id', $pabrik);;
+            $kemasan = kemasan::all()->where('user_id', $pabrik);;
         }
-        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? '', 'produk' => $produk ?? '', 'kemasan' => $kemasan ?? '']);
+        $x = [];
+        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 'kemasan' => $kemasan ?? $x]);
     }
     public function tambah_penimbanganbahan(Request $req)
     {
