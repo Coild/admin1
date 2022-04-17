@@ -68,12 +68,22 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-4 col-form-label">Kode
-                                                                            Kartu Stok</label>
+                                                                            class="col-sm-3 col-form-label">Nama Bahan
+                                                                            Baku</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="kode_stok"
-                                                                                class="form-control 1" id="inputEmail3"
-                                                                                placeholder="Kode Kartu Stok" />
+                                                                            <input class="form-control 1"
+                                                                                list="listnamabahanbaku" type="text"
+                                                                                name='nama' id="namabahanbaku"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamabahanbaku'>
+                                                                                @foreach ($bahanbaku as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['bahanbaku_nama'] }}">
+                                                                                        {{ $row['bahanbaku_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -131,7 +141,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Bahan Baku</th>
+                                                <th scope="col">Nama Bahan Baku</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -146,7 +156,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_kartu'] }}</td>
+                                                    <td>{{ $row['nama_bahan'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
@@ -228,12 +238,21 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-4 col-form-label">Kode
-                                                                            Kartu Stok</label>
+                                                                            class="col-sm-3 col-form-label">Nama Bahan
+                                                                            Kemas</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="kode_stok"
-                                                                                class="form-control 2" id="inputEmail3"
-                                                                                placeholder="Kode Kartu Stok" />
+                                                                            <input class="form-control 2"
+                                                                                list="listnamakemas" type="text" name='nama'
+                                                                                id="namabahanbaku" autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamakemas'>
+                                                                                @foreach ($kemasan as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['kemasan_nama'] }}">
+                                                                                        {{ $row['kemasan_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -291,7 +310,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Bahan Kemas</th>
+                                                <th scope="col">Nama Bahan Kemas</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -306,7 +325,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_kartu'] }}</td>
+                                                    <td>{{ $row['nama_bahankemas'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
@@ -388,12 +407,22 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-4 col-form-label">Kode
-                                                                            Kartu Stok</label>
+                                                                            class="col-sm-3 col-form-label">Nama Produk
+                                                                            Antara</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="kode_stok"
-                                                                                class="form-control 3" id="inputEmail3"
-                                                                                placeholder="Kode Kartu Stok" />
+                                                                            <input class="form-control 3"
+                                                                                list="listnamaprodukantara" type="text"
+                                                                                name='nama' id="namabahanbaku"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamaprodukantara'>
+                                                                                @foreach ($produkantara as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['produkantara_nama'] }}">
+                                                                                        {{ $row['produkantara_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -451,7 +480,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Produk Antara</th>
+                                                <th scope="col">Nama Produk Antara</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
@@ -466,7 +495,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_kartu'] }}</td>
+                                                    <td>{{ $row['nama_produkantara'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
@@ -480,7 +509,8 @@
                                                         <td>
                                                             <form action="terimastokantara">
                                                                 @csrf
-                                                                <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
+                                                                <input type="hidden" name="nobatch"
+                                                                    value="{{ $row['id_batch'] }}" />
                                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                                             </form>
                                                         </td>
@@ -548,29 +578,28 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-4 col-form-label">Kode
-                                                                            Kartu Stok</label>
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Produk</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="kode_stok"
-                                                                                class="form-control 4" id="inputEmail3"
-                                                                                placeholder="Kode Kartu Stok" />
+                                                                            <input class="form-control 4"
+                                                                                list="listnamaproduk" type="text"
+                                                                                name='nama' id="namaproduk"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamaproduk'>
+                                                                                @foreach ($produkjadi as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['produk_nama'] }}">
+                                                                                        {{ $row['produk_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
                                                                     <input type="hidden" id='ambil_tanggal4'
                                                                         class="form-control 4" name="tanggal"
                                                                         placeholder="" />
-                                                                    <div class="form-group row">
-                                                                        <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Nama Produk
-                                                                            Jadi
-                                                                        </label>
-                                                                        <div class="col-sm">
-                                                                            <input type="text" name="nama_produk"
-                                                                                class="form-control 4" id="inputEmail3"
-                                                                                placeholder="Nama Produk Jadi" />
-                                                                        </div>
-                                                                    </div>
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
@@ -622,7 +651,6 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kode Produk Jadi</th>
                                                 <th scope="col">Nama Produk</th>
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
@@ -637,7 +665,6 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['kode_kartu'] }}</td>
                                                     <td>{{ $row['nama_produk'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>

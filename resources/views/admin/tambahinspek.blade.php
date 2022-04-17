@@ -52,9 +52,9 @@
                 <div class="mt-4 mb-0">
                     <div class="d-grid justify-content-center">
                         <a href="#" onclick="pembuatanuser({
-                        msg: 'Apakah Anda Yakin Terima Inspektor Ini?',
-                        title: 'Apakah Data Sudah Benar?'
-                    })" style="width: 200px" class="btn btn-primary btn-block">Tambah
+                            msg: 'Apakah Anda Yakin Terima Inspektor Ini?',
+                            title: 'Apakah Data Sudah Benar?'
+                        })" style="width: 200px" class="btn btn-primary btn-block">Tambah
                             Akun</a>
                     </div>
                 </div>

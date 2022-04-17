@@ -1628,7 +1628,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_kartu' => $req['kode_stok'],
+            'nama_bahan' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1664,7 +1664,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_kartu' => $req['kode_stok'],
+            'nama_bahankemas' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1700,7 +1700,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_kartu' => $req['kode_stok'],
+            'nama_produkantara' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1736,8 +1736,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'kode_kartu' => $req['kode_stok'],
-            'nama_produk' => $req['nama_produk'],
+            'nama_produkjadi' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'],
@@ -1781,8 +1780,12 @@ class Admin extends Controller
             $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
             $data2 = kartustokprodukantara::all()->where('pabrik', $pabrik);
             $data3 = kartustokprodukjadi::all()->where('pabrik', $pabrik);
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $kemasan = kemasan::all()->where('user_id', $pabrik);
+            $produkantara = produkantara::all()->where('user_id', $pabrik);
+            $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
+        return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'produkjadi' => $produkjadi ?? '', 'produkantara' => $produkantara ?? '', 'bahanbaku' => $bahanbaku ?? '', 'kemasan' => $kemasan ?? '']);
     }
     public function tambah_pemusnahanbahan(Request $req)
     {
@@ -1911,7 +1914,7 @@ class Admin extends Controller
         $hasil = [
             'kode_pemusnahan' => $req['kode_pemusnahan'],
             'tanggal_pemusnahan' => $req['tanggal'],
-            'nama_produkjadi' => $req['nama_produkantara'],
+            'nama_produkjadi' => $req['nama'],
             'no_batch' => $req['no_batch'],
             'asal_produkjadi' => $req['asal_produkantara'],
             'jumlah_produkjadi' => $req['jumlah_produkantara'],
@@ -1957,8 +1960,13 @@ class Admin extends Controller
             $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
             $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
             $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
+            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $produkantara = produkantara::all()->where('user_id', $pabrik);
+            $kemasan = kemasan::all()->where('user_id', $pabrik);
+            $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
+        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3,  'bahanbaku' => $bahanbaku ?? '', 'produkantara' => $produkantara ?? '', 'produkjadi' => $produkjadi ?? '', 'kemasan' => $kemasan ?? '']);
     }
     public function tambah_kalibrasialat(Request $req)
     {
@@ -2110,8 +2118,11 @@ class Admin extends Controller
             $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik);
             $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik);
             $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik);
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $kemasan = kemasan::all()->where('user_id', $pabrik);
+            $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2,]);
+        return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'produkjadi' => $produkjadi ?? '', 'bahanbaku' => $bahanbaku ?? '', 'kemasan' => $kemasan ?? '']);
     }
     public function tambah_pengemasanbatchproduk(Request $req)
     {

@@ -79,12 +79,22 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Nama
-                                                                            Bahan Baku</label>
+                                                                            class="col-sm-3 col-form-label">Nama Bahan
+                                                                            Baku</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="nama_bahanbaku"
-                                                                                class="form-control 1" id="inputEmail3"
-                                                                                placeholder="Nama Bahan Baku" />
+                                                                            <input class="form-control 1"
+                                                                                list="listnamabahanbaku" type="text"
+                                                                                name='nama_bahanbaku' id="namabahanbaku"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamabahanbaku'>
+                                                                                @foreach ($bahanbaku as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['bahanbaku_nama'] }}">
+                                                                                        {{ $row['bahanbaku_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -274,9 +284,19 @@
                                                                             class="col-sm-3 col-form-label">Nama Bahan
                                                                             Kemas</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="nama_bahankemas"
-                                                                                class="form-control 2" id="inputEmail3"
-                                                                                placeholder="Nama Bahan Kemas" />
+                                                                            <input class="form-control 2"
+                                                                                list="listnamakemas" type="text"
+                                                                                name='nama_bahankemas' id="namabahanbaku"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamakemas'>
+                                                                                @foreach ($kemasan as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['kemasan_nama'] }}">
+                                                                                        {{ $row['kemasan_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -456,12 +476,22 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Nama Produk
-                                                                            Jadi</label>
+                                                                            class="col-sm-3 col-form-label">Nama
+                                                                            Produk</label>
                                                                         <div class="col-sm">
-                                                                            <input type="text" name="nama_produkjadi"
-                                                                                class="form-control 3" id="inputEmail3"
-                                                                                placeholder="Nama Produk Jadi" />
+                                                                            <input class="form-control 3"
+                                                                                list="listnamaproduk" type="text"
+                                                                                name='nama_produkjadi' id="namaproduk"
+                                                                                autocomplete="off">
+                                                                            </input>
+                                                                            <datalist id='listnamaproduk'>
+                                                                                @foreach ($produkjadi as $row)
+                                                                                    <option
+                                                                                        value="{{ $row['produk_nama'] }}">
+                                                                                        {{ $row['produk_nama'] }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </datalist>
                                                                         </div>
                                                                     </div>
 
@@ -473,7 +503,7 @@
                                                                             <input type="text" name="kategori"
                                                                                 class="form-control 3" id="inputEmail3"
                                                                                 placeholder="Kategori Produk
-                                                                                                                                                                                                        Jadi" />
+                                                                                                                                                                                                                    Jadi" />
                                                                         </div>
                                                                     </div>
 

@@ -15,7 +15,7 @@ class CreateKartustokprodukantarasTable extends Migration
     {
         Schema::create('kartustokprodukantaras', function (Blueprint $table) {
             $table->id('id_kartustokprodukantara', 20);
-            $table->string('kode_kartu', 20);
+            $table->string('nama_produkantara', 20);
             $table->date('tanggal')->nullable();
             $table->string('id_batch', 20);
             $table->string('jumlah', 30);

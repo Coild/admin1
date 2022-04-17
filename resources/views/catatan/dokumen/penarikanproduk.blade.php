@@ -76,7 +76,6 @@
                                                             <input type="text" list="listproduk" style="height: 35px;"
                                                                 id='nama_bahankau' class="form-control 3"
                                                                 name="produk_ditarik">
-                                                            <option selected>Choose...</option>
                                                             </input>
                                                             <datalist id="listproduk">
                                                                 @foreach ($produk as $row)
