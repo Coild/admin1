@@ -1537,7 +1537,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
-            'nama_produk_antara' => $req['nama_produk'],
+            'nama_produk_antara' => $req['nama'],
             'no_batch' => $req['nobatch'],
             'asal_produk' => $req['asal_produk'],
             'jumlah_produk' => $req['jumlah_produk'],
@@ -1547,6 +1547,7 @@ class Admin extends Controller
             'status' => 0,
             'user_id' => $id,
         ];
+        // dd($hasil);
 
         $nomer = timbangproduk::insertGetId($hasil);
 

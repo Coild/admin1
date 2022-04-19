@@ -51,10 +51,10 @@
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
-                                                            Sesuai POB</label>
+                                                            Sesuai PROTAP</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="pelaksanaan_pob" class="form-control"
-                                                                id="inputEmail3" placeholder="NO POB" />
+                                                                id="inputEmail3" placeholder="NO PROTAP" />
                                                         </div>
                                                     </div>
 

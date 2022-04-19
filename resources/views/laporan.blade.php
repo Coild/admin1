@@ -70,52 +70,18 @@
                 </div>
             </div>
 
-            <table class="table">
+            <table class="table" id="laporan">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
                         <th scope="col">Nama Laporan</th>
                         <th scope="col">Diajukan</th>
+                        <th scope="col">Tanggal Diajukan</th>  
                         <th scope="col">Diterima</th>
+                        <th scope="col">Tanggal Diterima</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i = 0;?>
-                    @foreach($batch as $row)
-                   <?php
-                    $i++; ?>
-                    <tr>
-                        <th scope="row">{{$i}}</th>
-                        <td>{{$row['laporan_nama']}}</td>
-                        <td>{{$row['laporan_diajukan']}}</td>
-                        <td>{{$row['laporan_diterima']}}</td>
-                        <td>
-                            @if($row['laporan_nama']=='pengolahan batch')
-                            <form method="post" action="/printpengolahanbatch/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penambahan contoh bahan baku')
-                            <form method="post" action="/printambilbahanbaku/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penambahan contoh produk')
-                            <form method="post" action="/printambilprodukjadi/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penambahan contoh kemasan')
-                            <form method="post" action="/printambilbahankemas/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penerimaan bahan')
-                            <form method="post" action="/printterimabahan/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penerimaan produk')
-                            <form method="post" action="/printterimaproduk/{{$row['laporan_nomor']}}">
-                            @elseif($row['laporan_nama']=='penerimaan kemasan')
-                            <form method="post" action="/printterimakemasan/{{$row['laporan_nomor']}}">
-                            @else
-                            <form method="post" action="/printambilbahankemas">
-                            @endif
-                                @csrf
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input type="hidden" name="nobatch" value="{{ $row['laporan_batch'] }}" />
-                                <button type="submit" class="btn btn-primary">Buka</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
                 </tbody>
             </table>
 
@@ -124,9 +90,40 @@
 
 
 
-    <!-- <div class="text-center">
-                    <img src="assets/img/lap1.jpg" class="img-fluid" alt="Responsive image" background-repeat:>
-                    </div> -->
+<script>
+    $(document).ready(function() {
+                $('#laporan').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ url('/laporandata') }}",
+                    columns: [{
+                            data: 'laporan_nama',
+                            name: 'laporan_nama'
+                        },
+                        {
+                            data: 'laporan_diajukan',
+                            name: 'laporan_diajukan'
+                        },
+                        {
+                            data: 'tgl_diajukan',
+                            name: 'tgl_diajukan'
+                        },
+                        {
+                            data: 'laporan_diterima',
+                            name: 'laporan_diterima'
+                        },
+                        {
+                            data: 'tgl_diterima',
+                            name: 'tgl_diterima'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action'
+                        }
+                    ]
+                });
+            })
+</script>
 
 
 </main>

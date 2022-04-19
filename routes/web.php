@@ -150,6 +150,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/input_produk', [Admin::class, 'tambah_produk']);
         Route::post('/input_kemasan', [Admin::class, 'tambah_kemasan']);
         Route::post('/input_bahanbaku', [Admin::class, 'tambah_bahanbaku']);
+        Route::post('/input_produkantara', [Admin::class, 'tambah_produkantara']);
         Route::post('/input_company', [Admin::class, 'tambah_company']);
 
         Route::get('/hapus_kemasan/{id}', [Admin::class, 'hapus_kemasan']);
@@ -309,5 +310,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
     Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
     Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
+    Route::get('laporandata', [dataPelaksana::class, 'laporan']);
+
     Route::get('dummy', [dataPelaksana::class, 'dummy']);
 });
