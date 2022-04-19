@@ -19,120 +19,124 @@
                                 onclick="setdatetoday()">
                                 Tambah Penanganan Keluhan
                             </button>
-                        @endif
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalForm" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Entry Penanganan Keluhan
-                                        </h4>
-                                    </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalForm" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Entry Penanganan Keluhan
+                                            </h4>
+                                        </div>
 
-                                    <!-- Modal Body -->
-                                    <div class="modal-body">
-                                        <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_keluhan" id='forminput'>
-                                            @csrf
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <div class="card mb-4">
-                                                <div class="card-header">
-                                                    <i class="fas fa-table me-1"></i>
-                                                    Penanganan Keluhan
-                                                </div>
-                                                <div class="card-header" id="headertgl">
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                            Keluhan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="kode_keluhan" class="form-control"
-                                                                id="inputEmail3" placeholder="Kode Keluhan" />
-                                                        </div>
+                                        <!-- Modal Body -->
+                                        <div class="modal-body">
+                                            <p class="statusMsg"></p>
+                                            <form method="post" action="tambah_keluhan" id='forminput'>
+                                                @csrf
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <div class="card mb-4">
+                                                    <div class="card-header">
+                                                        <i class="fas fa-table me-1"></i>
+                                                        Penanganan Keluhan
                                                     </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                            Customer</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="nama_customer" class="form-control"
-                                                                id="inputEmail3" placeholder="Nama Customer" />
-                                                        </div>
+                                                    <div class="card-header" id="headertgl">
                                                     </div>
-
-                                                    <input type="hidden" name="tanggal_keluhan" class="form-control"
-                                                        id="ambil_tanggal" placeholder="" />
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">Keluhan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="keluhan" class="form-control"
-                                                                id="inputEmail3" placeholder="Keluhan" />
+                                                    <div class="card-body">
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                                                Keluhan</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="kode_keluhan"
+                                                                    class="form-control" id="inputEmail3"
+                                                                    placeholder="Kode Keluhan" />
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Tanggal
-                                                            Tanggapi Keluhan</label>
-                                                        <div class="col-sm">
-                                                            <input type="datetime-local" name="tanggal_tanggapi_keluhan"
-                                                                class="form-control" id="inputEmail3" placeholder="" />
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                                Customer</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="nama_customer"
+                                                                    class="form-control" id="inputEmail3"
+                                                                    placeholder="Nama Customer" />
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
-                                                            Digunakan</label>
-                                                        <div class="col-sm">
-                                                            <input list="listproduk" style="height: 35px;"
-                                                                id='nama_bahankau' class="form-control 3"
-                                                                name="produk_yang_digunakan">
-                                                            </input>
-                                                            <datalist id="listproduk">
-                                                                @foreach ($produk as $row)
-                                                                    <option value="{{ $row['produk_nama'] }}">
-                                                                        {{ $row['produk_nama'] }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </datalist>
+                                                        <input type="hidden" name="tanggal_keluhan" class="form-control"
+                                                            id="ambil_tanggal" placeholder="" />
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Keluhan</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="keluhan" class="form-control"
+                                                                    id="inputEmail3" placeholder="Keluhan" />
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Penanganan
-                                                            Keluhan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="penanganan_keluhan"
-                                                                class="form-control" id="inputEmail3"
-                                                                placeholder="Penanganan Keluhan" />
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tanggal
+                                                                Tanggapi Keluhan</label>
+                                                            <div class="col-sm">
+                                                                <input type="datetime-local" name="tanggal_tanggapi_keluhan"
+                                                                    class="form-control" id="inputEmail3"
+                                                                    placeholder="" />
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Tindak
-                                                            Lanjut</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="tindak_lanjut" class="form-control"
-                                                                id="inputEmail3" placeholder="Tindak Lanjut" />
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Produk
+                                                                Yang
+                                                                Digunakan</label>
+                                                            <div class="col-sm">
+                                                                <input list="listproduk" style="height: 35px;"
+                                                                    id='nama_bahankau' class="form-control 3"
+                                                                    name="produk_yang_digunakan">
+                                                                </input>
+                                                                <datalist id="listproduk">
+                                                                    @foreach ($produk as $row)
+                                                                        <option value="{{ $row['produk_nama'] }}">
+                                                                            {{ $row['produk_nama'] }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </datalist>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
-                                                    style="float:left; width: 100px;  margin-left:25px"
-                                                    role="button">Simpan</a>
-                                        </form>
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Penanganan
+                                                                Keluhan</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="penanganan_keluhan"
+                                                                    class="form-control" id="inputEmail3"
+                                                                    placeholder="Penanganan Keluhan" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tindak
+                                                                Lanjut</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="tindak_lanjut"
+                                                                    class="form-control" id="inputEmail3"
+                                                                    placeholder="Tindak Lanjut" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <a class="btn btn-primary" onclick="salert()" href="#"
+                                                        style="float:left; width: 100px;  margin-left:25px"
+                                                        role="button">Simpan</a>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--  -->
-
-
+                            <!--  -->
+                        @endif
 
                     </div>
 

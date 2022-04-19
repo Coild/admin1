@@ -148,6 +148,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
         Route::post('/input_produk', [Admin::class, 'tambah_produk']);
+        Route::post('/input_produkantara', [Admin::class, 'tambah_produkantara']);
         Route::post('/input_kemasan', [Admin::class, 'tambah_kemasan']);
         Route::post('/input_bahanbaku', [Admin::class, 'tambah_bahanbaku']);
         Route::post('/input_company', [Admin::class, 'tambah_company']);
@@ -195,7 +196,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
         Route::post('/tambah_terimakemasan', [Admin::class, 'tambah_terimakemasan'])->name('tambah_terimakemasan');
-        
+
         // Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
         // Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
         // Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');
@@ -304,7 +305,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
 
-        //datatables 
+    //datatables 
     Route::get('user', [dataPelaksana::class, 'user']);
     Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
     Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
