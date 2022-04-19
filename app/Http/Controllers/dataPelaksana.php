@@ -170,25 +170,26 @@ class dataPelaksana extends Controller
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
             if($data->laporan_nama=='pengolahan batch')
-             $form = '<form method="post" action="/printpengolahanbatch/'.$data->laporan_nomor.'">';
+             $form = '<form method="post" action="/printpengolahanbatch">';
             elseif($data->laporan_nama=='penambahan contoh bahan baku')
-            $form = '<form method="post" action="/printambilbahanbaku/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printambilbahanbaku">';
             elseif($data->laporan_nama=='penambahan contoh produk')
-            $form = '<form method="post" action="/printambilprodukjadi/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printambilprodukjadi">';
             elseif($data->laporan_nama=='penambahan contoh kemasan')
-            $form = '<form method="post" action="/printambilbahankemas/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printambilbahankemas">';
             elseif($data->laporan_nama=='penerimaan bahan')
-            $form = '<form method="post" action="/printterimabahan/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printterimabahan">';
             elseif($data->laporan_nama=='penerimaan produk')
-            $form = '<form method="post" action="/printterimaproduk/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printterimaproduk">';
             elseif($data->laporan_nama=='penerimaan kemasan')
-            $form = '<form method="post" action="/printterimakemasan/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printterimakemasan">';
             else
-            $form = '<form method="post" action="/printterimakemasan/'.$data->laporan_nomor.'">';
+            $form = '<form method="post" action="/printterimakemasan">';
             $isi= 
             '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' .
             '
                 <input type="hidden" name="nobatch" value='.$data->laporan_batch.' />'.
+                '<input type="hidden" name="id" value='.$data->laporan_nomor.' />'.
                 '<button type="submit" class="btn btn-primary">Buka</button>
             </form>';
             return $form.$isi;

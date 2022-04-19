@@ -80,76 +80,27 @@
     <section class="sheet padding-10mm" style="height: auto;">
         <!-- Kop Surat -->
 
-        <table width="100%" class="kop">
+        <table width="100%" class="kop"> 
             <tr>
                 <td style="border:none;">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
+                    <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td class="tengah" style="border:none;">
                     <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        UD. SEMELOTO
+                        {{$nama}}
                     </h1>
                     <h3 style="margin-bottom: -0px">
-                        JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                        {{$alamat}}
                     </h3>
                     <h5>
-                        DESA LENANGGUAR KABUPATEN SUMBAWA
+                        {{$alamat}}
                     </h5>
                 </td>
             </tr>
         </table>
         <center>
             <br>
-            @foreach($kop as $row)
-            <table class="table table-bordered">
-                <tr>
-                    <td rowspan="4">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height: 100px; width:auto;" ;alt="Your Picture">
-                    </td>
-                    <td rowspan="2" style="text-align: center;">
-                        CATATAN<br>PENGOLAHAN BATCH
-                    </td>
-                    <td colspan="3">Halaman:</td>
-                </tr>
-                <tr>
-                    <td rowspan="3" colspan="3">
-                        Nomor: <br>
-                        Tanggal Berlaku: <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td  rowspan="2" >
-                    BAGIAN
-                        
-                    </td>
-                    <!-- <td rowspan="3">
-                            Nomor: <br>
-                            Tanggal Berlaku: <br>
-                        </td> -->
-
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td rowspan="3">
-                        Disusun Oleh <br>
-                        {{$row['laporan_diajukan']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3">
-                        Disetujui Oleh <br>
-                        {{$row['laporan_diterima']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3" colspan="3">
-                        Mengganti Nomor <br>
-                        Tanggal <br>
-                        09 Oktober 2019
-                    </td>
-                </tr>
-            </table>
-            @endforeach
+            
 
             <br>
                     <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Pengemas: </h4>
@@ -217,4 +168,4 @@
 
 </body>
 
-</html>
+</html> 

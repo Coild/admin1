@@ -36,15 +36,15 @@ Route::get('/auto', function () {
 });
 
 //print    
-Route::post('/printpengolahanbatch/{id}', [PrintController::class, 'cetak_pengolahanbatch']);
-Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::post('/printambilprodukjadi/{id}', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
-Route::post('/printambilbahanbaku/{id}', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
-Route::post('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas/{id}', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
+Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
+Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
+Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 // Route::get('/dummy', [PrintController::class, 'dummy']);
 
 Route::group(['middleware' => 'auth'], function () {
