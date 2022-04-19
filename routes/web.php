@@ -40,7 +40,9 @@ Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanb
 Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
 Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
-Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printlatihhigisani', [PrintController::class, 'cetak_latihhigisani'])->name('latihhigisani');
+Route::post('/printlatihcpkb', [PrintController::class, 'cetak_latihcpkb'])->name('latihcpkb');
+
 Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');

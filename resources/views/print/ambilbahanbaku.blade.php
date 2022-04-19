@@ -127,7 +127,7 @@
                     <tr>
                         <td>3</td>
                         <td>Kedaluwarsa</td>
-                        <td>{{$row['kadaluwarsa']}}</td>
+                        <td>{{$row['kedaluwarsa']}}</td>
                     </tr>
                     <tr>
                         <td>4</td>
@@ -151,14 +151,14 @@
                     </tr>
                     <tr >
                         <td></td>
-                        <td>Diperiksa Oleh,<br> Analis QC</td>
-                        <td>Disetujui Oleh,<br> Kepala Bagian Pengawasan Mutu</td>
+                        <td>Diperiksa Oleh,<br> Analis QC <br><br><br><br><br></td>
+                        <td>Disetujui Oleh,<br> Kepala Bagian Pengawasan Mutu <br><br><br><br><br></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td></td>
                         <td style="height: 100px; text-align: bottom">(TTD)</td>
                         <td style="height: 100px;">(TTD)</td>
-                    </tr>
+                    </tr> -->
                     
                 </table>
                 @endforeach

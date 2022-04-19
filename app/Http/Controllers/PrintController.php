@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, pengolahanbatch, komposisi, laporan, pabrik, peralatan, penimbangan, protap, rekonsiliasi};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, pengolahanbatch, komposisi, laporan, pabrik, peralatan, penimbangan, protap, rekonsiliasi};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -50,10 +50,10 @@ class PrintController extends Controller
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
-        $data = contohkemasan::all()->where('id_kemasan', $id);
-        // dd($data);
+        $data = contohkemasan::all()->where('id_kemasan', $id)->first();
+        // dd($nama);
         $kop = laporan::all()->where('laporan_nama', 'penambahan contoh kemasan');
-        // dd($kop);
+        // dd($data);
         return view('print.ambilbahankemas', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
@@ -83,13 +83,26 @@ class PrintController extends Controller
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
-        $data = contohkemasan::all()->where('id_kemasan', $id);
+        $data = contohprodukjadi::all()->where('id_produkjadi', $id)->first();
         // dd($data);
         $kop = laporan::all()->where('laporan_nama', 'penambahan contoh produk');
         // dd($kop);
         return view('print.ambilprodukjadi', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
+
+    public function cetak_latihhigisani()
+    {
+        
+        return view('print.pelatihanhigisani');
+    }
+
+    public function cetak_latihcpkb()
+    {
+        
+        return view('print.pelatihanhigisani');
+    }
+
 
     public function cetak_alatutama($id)
     {
@@ -132,13 +145,6 @@ class PrintController extends Controller
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.higidansani');
-    }
-
-    public function cetak_pelatihanhigidansani($id)
-    {
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.pelatihanhigidansani');
     }
 
     public function cetak_pembersihanalat($id)

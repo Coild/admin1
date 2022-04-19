@@ -166,7 +166,7 @@ class dataPelaksana extends Controller
     }
 
     public function laporan (){
-        $data = laporan::all();
+        $data = laporan::all()->where('laporan_diterima',"!=",'belum');
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
             if($data->laporan_nama=='pengolahan batch')
@@ -183,6 +183,11 @@ class dataPelaksana extends Controller
             $form = '<form method="post" action="/printterimaproduk">';
             elseif($data->laporan_nama=='penerimaan kemasan')
             $form = '<form method="post" action="/printterimakemasan">';
+            elseif($data->laporan_nama=='pelatihan higiene dan sanitasi')
+            $form = '<form method="post" action="/printlatihhigisani">';
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
+
             else
             $form = '<form method="post" action="/printterimakemasan">';
             $isi= 
