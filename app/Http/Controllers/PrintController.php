@@ -42,37 +42,53 @@ class PrintController extends Controller
         ]);
     }
 
-    public function cetak_ambilbahankemas($id)
+    public function cetak_ambilbahankemas(Request $req)
     {
-
-        // dd($id);
+        $id = $req['id'];
+         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
         $data = contohkemasan::all()->where('id_kemasan', $id);
         // dd($data);
         $kop = laporan::all()->where('laporan_nama', 'penambahan contoh kemasan');
         // dd($kop);
-        return view('print.ambilbahankemas', ['data' => $data, 'kop' => $kop]);
+        return view('print.ambilbahankemas', ['data' => $data, 'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
 
-    public function cetak_ambilbahanbaku($id)
+    public function cetak_ambilbahanbaku(Request $req)
     {
-
-        // dd($id);
+        $id = $req['id'];
+         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
         $data = contohbahanbaku::all()->where('id_bahanbaku', $id);
-        // dd($data);
+        // dd($id);
         $kop = laporan::all()->where('laporan_nama', 'penambahan contoh bahan baku');
         // dd($kop);
-        return view('print.ambilbahanbaku', ['data' => $data, 'kop' => $kop]);
+        return view('print.ambilbahanbaku', ['data' => $data, 'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
 
-    public function cetak_ambilprodukjadi($id)
+    public function cetak_ambilprodukjadi(Request $req)
     {
 
-        // dd($id);
+        $id = $req['id'];
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
         $data = contohkemasan::all()->where('id_kemasan', $id);
         // dd($data);
         $kop = laporan::all()->where('laporan_nama', 'penambahan contoh produk');
         // dd($kop);
-        return view('print.ambilprodukjadi', ['data' => $data, 'kop' => $kop]);
+        return view('print.ambilprodukjadi', ['data' => $data, 'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
 
     public function cetak_alatutama($id)

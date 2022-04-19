@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{cp_bahan, cp_kemasan, cp_produk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, user};
+use App\Models\{cp_bahan, cp_kemasan, cp_produk, laporan, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, user};
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,11 @@ class dataPelaksana extends Controller
 
     public function cp_bahan()
     {
-        $data = cp_bahan::all();
+        if(Auth::user()->level==2) {
+            $data = cp_bahan::all()->where('status',0);
+        }else {
+            $data = cp_bahan::all();
+        }
         return DataTables::of($data)->editColumn('status', function ($data_siswa) {
             if ($data_siswa->status == 0) {
                 return 'Diajukan';
@@ -55,7 +59,11 @@ class dataPelaksana extends Controller
 
     public function cp_produk()
     {
-        $data = cp_produk::all();
+        if(Auth::user()->level==2) {
+            $data = cp_produk::all()->where('status',0);
+        }else {
+            $data = cp_produk::all();
+        }
         return DataTables::of($data)->addColumn('action', function ($data) {
 
             if(Auth::user()->level != 2)   {
@@ -80,8 +88,18 @@ class dataPelaksana extends Controller
 
     public function cp_kemasan()
     {
-        $data = cp_kemasan::all();
-        return DataTables::of($data)->addColumn('action', function ($data) {
+        if(Auth::user()->level==2) {
+            $data = cp_kemasan::all()->where('status',0);
+        }else {
+            $data = cp_kemasan::all();
+        }
+        return DataTables::of($data)->editColumn('status', function ($data_siswa) {
+            if ($data_siswa->status == 0) {
+                return 'Diajukan';
+            } elseif ($data_siswa->status == 1) {
+                return 'Diterima';
+            }
+        })->addColumn('action', function ($data) {
             if(Auth::user()->level != 2)   {
                 return '<form method="post" action="detilterimabb">
                 ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -144,6 +162,37 @@ class dataPelaksana extends Controller
         $data = PPkemasankeluar::all()->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
+        })->rawColumns(['action'])->make();
+    }
+
+    public function laporan (){
+        $data = laporan::all();
+        // dd($data);
+        return DataTables::of($data)->addColumn('action', function ($data) {
+            if($data->laporan_nama=='pengolahan batch')
+             $form = '<form method="post" action="/printpengolahanbatch">';
+            elseif($data->laporan_nama=='penambahan contoh bahan baku')
+            $form = '<form method="post" action="/printambilbahanbaku">';
+            elseif($data->laporan_nama=='penambahan contoh produk')
+            $form = '<form method="post" action="/printambilprodukjadi">';
+            elseif($data->laporan_nama=='penambahan contoh kemasan')
+            $form = '<form method="post" action="/printambilbahankemas">';
+            elseif($data->laporan_nama=='penerimaan bahan')
+            $form = '<form method="post" action="/printterimabahan">';
+            elseif($data->laporan_nama=='penerimaan produk')
+            $form = '<form method="post" action="/printterimaproduk">';
+            elseif($data->laporan_nama=='penerimaan kemasan')
+            $form = '<form method="post" action="/printterimakemasan">';
+            else
+            $form = '<form method="post" action="/printterimakemasan">';
+            $isi= 
+            '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' .
+            '
+                <input type="hidden" name="nobatch" value='.$data->laporan_batch.' />'.
+                '<input type="hidden" name="id" value='.$data->laporan_nomor.' />'.
+                '<button type="submit" class="btn btn-primary">Buka</button>
+            </form>';
+            return $form.$isi;
         })->rawColumns(['action'])->make();
     }
 }

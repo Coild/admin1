@@ -84,29 +84,30 @@
             <table width="100%" class="kop">
                 <tr>
                     <td style="border:none;">
-                        <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
+                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                     </td>
                     <td class="tengah" style="border:none;">
                         <h1 style="font-weight: bolder; margin-bottom: -15px">
-                            UD. SEMELOTO
+                            {{$nama}}
                         </h1>
                         <h3 style="margin-bottom: -0px">
-                            JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                            {{$alamat}}
                         </h3>
                         <h5>
-                            DESA LENANGGUAR KABUPATEN SUMBAWA
+                            {{$alamat}}
                         </h5>
                     </td>
                 </tr>
             </table>
             <center>
                 <br>
-               <h2>CATATAN PENGAMBILAN CONTOH BAHAN BAKU</h2>
+                <h2>CATATAN PENGAMBILAN CONTOH BAHAN BAKU</h2>
 
                 <br>
-                <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Pengemas: </h4>
-                <h4 style="text-align: left; margin-bottom: -17px;">No Batch: </h4>
-                <h4 style="text-align: left; ">Tanggal Pengambilan Contoh: </h4>
+                @foreach($data as $row)
+                <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Baku: {{$row['nama_bahanbaku']}}</h4>
+                <h4 style="text-align: left; margin-bottom: -17px;">No Batch: {{$row['no_batch']}}</h4>
+                <h4 style="text-align: left; ">Tanggal Pengambilan Contoh: {{$row['tanggal_ambil']}}</h4>
                 <table class="table isi table-bordered">
                     <tr>
                         <td>No</td>
@@ -116,50 +117,51 @@
                     <tr>
                         <td>1</td>
                         <td>Nama bahan baku</td>
-                        <td></td>
+                        <td>{{$row['nama_bahanbaku']}}</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Nomor Batch</td>
-                        <td></td>
+                        <td>{{$row['no_batch']}}</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Kedaluwarsa</td>
-                        <td></td>
+                        <td>{{$row['kadaluwarsa']}}</td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Jumlah bahan baku dalam master Box</td>
-                        <td></td>
+                        <td>{{$row['jumlah_kemasanbox']}}</td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Jumlah Produk Yang Diambil</td>
-                        <td></td>
+                        <td>{{$row['jumlah_produk']}}</td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>Jenis Dan warna kemasan</td>
-                        <td></td>
+                        <td>{{$row['jenis_warnakemasan']}}</td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td>Kesimpulan</td>
                         <td>DILULUSKAN/DITOLAK</td>
                     </tr>
-                    <tr>
+                    <tr >
                         <td></td>
                         <td>Diperiksa Oleh,<br> Analis QC</td>
                         <td>Disetujui Oleh,<br> Kepala Bagian Pengawasan Mutu</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>(TTD)</td>
-                        <td>(TTD)</td>
+                        <td style="height: 100px; text-align: bottom">(TTD)</td>
+                        <td style="height: 100px;">(TTD)</td>
                     </tr>
+                    
                 </table>
-                <!-- <p style="text-align: left; margin-top: 15px; ">1. BATCH</p> -->
+                @endforeach
 
 
 

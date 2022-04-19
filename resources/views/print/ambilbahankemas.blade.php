@@ -75,25 +75,25 @@
     </style>
 </head>
 
-<body class="A4">
+<body class="A4"> 
     <center>
     <section class="sheet padding-10mm" style="height: auto;">
         <!-- Kop Surat -->
 
-        <table width="100%" class="kop">
+        <table width="100%" class="kop"> 
             <tr>
                 <td style="border:none;">
-                    <img src="{{asset('asset/logo/logo.jpg')}}" style="height:120px; width:auto;" alt="Your Picture">
+                    <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td class="tengah" style="border:none;">
                     <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        UD. SEMELOTO
+                        {{$nama}}
                     </h1>
                     <h3 style="margin-bottom: -0px">
-                        JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
+                        {{$alamat}}
                     </h3>
                     <h5>
-                        DESA LENANGGUAR KABUPATEN SUMBAWA
+                        {{$alamat}}
                     </h5>
                 </td>
             </tr>

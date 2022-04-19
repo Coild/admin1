@@ -103,6 +103,8 @@ class pjt extends Controller
             'status' => 1,
         ]);
 
+        // dd($tgl);
+
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penerimaan bahan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->nama,
