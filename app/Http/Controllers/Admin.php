@@ -1163,7 +1163,7 @@ class Admin extends Controller
             $data = penanganankeluhan::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.penanganankeluhan', ['data' => $data, 'produk' => $produk]);
+        return view('catatan.dokumen.penanganankeluhan', ['data' => $data, 'produk' => $produk ?? ""]);
     }
     public function tambah_penarikan(Request $req)
     {

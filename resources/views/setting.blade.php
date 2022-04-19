@@ -259,25 +259,24 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form action="/input_produk" method="post" enctype="multipart/form-data" role="form">
+                    <form action="/input_produk" method="post" enctype="multipart/form-data" role="form" id="forminput1">
 
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="inputName">Nama Produk</label>
-                            <input type="text" name="nama" class="form-control" id="inputName"
+                            <input type="text" name="nama" class="form-control 1" id="inputName"
                                 placeholder="Nama Produk" />
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Kode Produk</label>
-                            <input type="text" name="kode" class="form-control" id="inputName"
+                            <input type="text" name="kode" class="form-control 1" id="inputName"
                                 placeholder="Kode Produk" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary submitBtn"
-                                onclick="submitContactForm()">Tambah</button>
+                            <a href="#" type="submit" class="btn btn-primary submitBtn" onclick="salert1(1)">Tambah</a>
                         </div>
                     </form>
                 </div>
@@ -302,20 +301,19 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form action="/input_kemasan" method="post" enctype="multipart/form-data" role="form">
+                    <form action="/input_kemasan" method="post" enctype="multipart/form-data" role="form" id="forminput2">
 
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="inputName">Kemasan</label>
-                            <input type="text" name="nama" class="form-control" id="inputName"
+                            <input type="text" name="nama" class="form-control 2" id="inputName"
                                 placeholder="Nama Produk" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary submitBtn"
-                                onclick="submitContactForm()">Tambah</button>
+                            <a href="#" type="submit" class="btn btn-primary submitBtn" onclick="salert1(2)">Tambah</a>
                         </div>
                     </form>
                 </div>
@@ -340,25 +338,24 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form action="/input_bahanbaku" method="post" enctype="multipart/form-data" role="form">
+                    <form action="/input_bahanbaku" method="post" enctype="multipart/form-data" role="form" id='forminput3'>
 
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="inputName">Nama Bahan Baku</label>
-                            <input type="text" name="nama" class="form-control" id="inputName"
+                            <input type="text" name="nama" class="form-control 3" id="inputName"
                                 placeholder="Nama Bahan Baku" />
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Kode Bahan Baku</label>
-                            <input type="text" name="kode" class="form-control" id="inputName"
+                            <input type="text" name="kode" class="form-control 3" id="inputName"
                                 placeholder="Kode Bahan Baku" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary submitBtn"
-                                onclick="submitContactForm()">Tambah</button>
+                            <a href="#" type="submit" class="btn btn-primary submitBtn" onclick="salert1(3)">Tambah</a>
                         </div>
                     </form>
                 </div>
@@ -382,25 +379,25 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form action="/input_produkantara" method="post" enctype="multipart/form-data" role="form">
+                    <form action="/input_produkantara" method="post" enctype="multipart/form-data" role="form"
+                        id="forminput4">
 
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="inputName">Nama Produk Antara</label>
-                            <input type="text" name="nama" class="form-control" id="inputName"
+                            <input type="text" name="nama" class="form-control 4" id="inputName"
                                 placeholder="Nama Produk" />
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Kode Produk Antara</label>
-                            <input type="text" name="kode" class="form-control" id="inputName"
+                            <input type="text" name="kode" class="form-control 4" id="inputName"
                                 placeholder="Kode Produk" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary submitBtn"
-                                onclick="submitContactForm()">Tambah</button>
+                            <a href="#" type="submit" class="btn btn-primary submitBtn" onclick="salert1(4)">Tambah</a>
                         </div>
                     </form>
                 </div>
