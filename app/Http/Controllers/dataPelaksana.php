@@ -23,10 +23,11 @@ class dataPelaksana extends Controller
 
     public function cp_bahan()
     {
+        $id= Auth::user()->pabrik;
         if(Auth::user()->level==2) {
-            $data = cp_bahan::all()->where('status',0);
+            $data = cp_bahan::all()->where('pabrik',$id)->where('status',0);
         }else {
-            $data = cp_bahan::all();
+            $data = cp_bahan::all()->where('pabrik',$id);
         }
         return DataTables::of($data)->editColumn('status', function ($data_siswa) {
             if ($data_siswa->status == 0) {
@@ -59,10 +60,11 @@ class dataPelaksana extends Controller
 
     public function cp_produk()
     {
+        $id= Auth::user()->pabrik;
         if(Auth::user()->level==2) {
-            $data = cp_produk::all()->where('status',0);
+            $data = cp_produk::all()->where('pabrik',$id)->where('status',0);
         }else {
-            $data = cp_produk::all();
+            $data = cp_produk::all()->where('pabrik',$id);
         }
         return DataTables::of($data)->addColumn('action', function ($data) {
 
@@ -88,10 +90,11 @@ class dataPelaksana extends Controller
 
     public function cp_kemasan()
     {
+        $id= Auth::user()->pabrik;
         if(Auth::user()->level==2) {
-            $data = cp_kemasan::all()->where('status',0);
+            $data = cp_kemasan::all()->where('pabrik',$id)->where('status',0);
         }else {
-            $data = cp_kemasan::all();
+            $data = cp_kemasan::all()->where('pabrik',$id);
         }
         return DataTables::of($data)->editColumn('status', function ($data_siswa) {
             if ($data_siswa->status == 0) {
@@ -122,14 +125,16 @@ class dataPelaksana extends Controller
 
     public function cp_bahanmasuk(Request $req)
     {
-        $data = PPbahanbakumasuk::all()->where('induk', $req['induk']);
+        $id= Auth::user()->pabrik;
+        $data = PPbahanbakumasuk::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
     }
     public function cp_bahankeluar(Request $req)
     {
-        $data = PPbahanbakukeluar::all()->where('induk', $req['induk']);
+        $id= Auth::user()->pabrik;
+        $data = PPbahanbakukeluar::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
@@ -137,14 +142,16 @@ class dataPelaksana extends Controller
 
     public function cp_produkmasuk(Request $req)
     {
-        $data = PPprodukjadimasuk::all()->where('induk', $req['induk']);
+        $id= Auth::user()->pabrik;
+        $data = PPprodukjadimasuk::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
     }
     public function cp_produkkeluar(Request $req)
     {
-        $data = PPprodukjadikeluar::all()->where('induk', $req['induk']);
+        $id= Auth::user()->pabrik;
+        $data = PPprodukjadikeluar::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
@@ -152,14 +159,15 @@ class dataPelaksana extends Controller
 
     public function cp_kemasanmasuk(Request $req)
     {
-        $data = PPkemasanmasuk::all()->where('induk', $req['induk']);
+        $id= Auth::user()->pabrik;
+        $data = PPkemasanmasuk::all()->where('pabrik' ,$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
     }
     public function cp_kemasankeluar(Request $req)
     {
-        $data = PPkemasankeluar::all()->where('induk', $req['induk']);
+        $data = PPkemasankeluar::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
         })->rawColumns(['action'])->make();
