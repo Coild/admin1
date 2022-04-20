@@ -37,15 +37,20 @@ Route::get('/auto', function () {
 
 //print    
 Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
-Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
 Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');
 Route::post('/printlatihhigisani', [PrintController::class, 'cetak_latihhigisani'])->name('latihhigisani');
 Route::post('/printlatihcpkb', [PrintController::class, 'cetak_latihcpkb'])->name('latihcpkb');
 
-Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printterimabahan', [PrintController::class, 'cetak_terimabahan'])->name('terimabahan');
+Route::post('/printterimaproduk', [PrintController::class, 'cetak_terimaproduk'])->name('terimaproduk');
+Route::post('/printterimakemasan', [PrintController::class, 'cetak_terimakemasan'])->name('terimakemasan');
+
+Route::post('/printalatutama', [PrintController::class, 'cetak_alatutama'])->name('alatutama');
+Route::post('/printdistribusiproduk', [PrintController::class, 'cetak_distribusiproduk'])->name('distribusiproduk');
+Route::post('/printpenanganankeluhan', [PrintController::class, 'cetak_penanganankeluhan'])->name('penanganankeluhan');
+
 Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 // Route::get('/dummy', [PrintController::class, 'dummy']);
 
@@ -200,12 +205,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
         Route::post('/tambah_terimakemasan', [Admin::class, 'tambah_terimakemasan'])->name('tambah_terimakemasan');
 
-        // Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
-        // Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
-        // Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');
-        // Route::post('/tambah_penerimaanprodukkeluar', [Admin::class, 'tambah_penerimaanprodukkeluar'])->name('tambah_penerimaanprodukkeluar');
-        // Route::post('/tambah_penerimaakemasanmasuk', [Admin::class, 'tambah_penerimaakemasanmasuk'])->name('tambah_penerimaakemasanmasuk');
-        // Route::post('/tambah_penerimaankemasankeluar', [Admin::class, 'tambah_penerimaankemasankeluar'])->name('tambah_penerimaankemasankeluar');
+        Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
+        Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
+        Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');
+        Route::post('/tambah_penerimaanprodukkeluar', [Admin::class, 'tambah_penerimaanprodukkeluar'])->name('tambah_penerimaanprodukkeluar');
+        Route::post('/tambah_penerimaakemasanmasuk', [Admin::class, 'tambah_penerimaakemasanmasuk'])->name('tambah_penerimaakemasanmasuk');
+        Route::post('/tambah_penerimaankemasankeluar', [Admin::class, 'tambah_penerimaankemasankeluar'])->name('tambah_penerimaankemasankeluar');
 
         //higi dansani
         Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');

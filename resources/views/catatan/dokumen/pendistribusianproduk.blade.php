@@ -135,7 +135,7 @@
                                             <form method="post" action="terimadistribusiproduk">
                                                 @csrf
                                                 <input type="hidden" name="nobatch"
-                                                    value="{{ $row['kode_distribusi'] }}" />
+                                                    value="{{ $row['id_batch'] }}" />
                                                 <button type="submit" class="btn btn-primary">terima</button>
                                             </form>
                                         @else

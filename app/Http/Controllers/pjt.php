@@ -210,12 +210,12 @@ class pjt extends Controller
     //distribusi produk
     public function terima_distribusiproduk(Request $req)
     {
-        dd($req);
+        // dd($req['nobatch']);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = distribusiproduk::all()->where("kode_distribusi", $req['nobatch'])->first()->update([
+        $user = distribusiproduk::all()->where("id_batch", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 

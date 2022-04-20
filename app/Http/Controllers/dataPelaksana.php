@@ -187,7 +187,28 @@ class dataPelaksana extends Controller
             $form = '<form method="post" action="/printlatihhigisani">';
             elseif($data->laporan_nama=='pelatihan cpkb')
             $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='pengoperasian alat')
+            $form = '<form method="post" action="/printalatutama">';
 
+            elseif($data->laporan_nama=='pelulusan produk jadi')
+            $form = '<form method="post" action="/printpelulusanproduk">';
+
+            elseif($data->laporan_nama=='distribusi produk')
+            $form = '<form method="post" action="/printdistribusiproduk">';
+
+            elseif($data->laporan_nama=='penanganan keluhan')
+            $form = '<form method="post" action="/printpenanganankeluhan">';
+            
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='pelatihan cpkb')
+            $form = '<form method="post" action="/printlatihcpkb">';
             else
             $form = '<form method="post" action="/printterimakemasan">';
             $isi= 

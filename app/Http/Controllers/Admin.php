@@ -1355,7 +1355,7 @@ class Admin extends Controller
             $data = pelulusanproduk::all()->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.pelulusanproduk', ['data' => $data, 'bahanbaku' => $bahanbaku]);
+        return view('catatan.dokumen.pelulusanproduk', ['data' => $data, 'bahanbaku' => $bahanbaku ?? []]);
     }
     public function tambah_contohbahan(Request $req)
     {
@@ -1622,7 +1622,8 @@ class Admin extends Controller
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $produkantara = produkantara::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? '', 'produkantara' => $produkantara ?? '']);
+        // dd($produkantara);
+        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? [], 'produkantara' => $produkantara ?? []]);
     }
     public function tambah_kartustokbahan(Request $req)
     {
