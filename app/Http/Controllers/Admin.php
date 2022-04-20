@@ -2173,6 +2173,6 @@ class Admin extends Controller
             $produk = produk::all()->where('user_id', Auth::user()->pabrik);
             $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
         }
-        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk, 'kemasan' => $kemasan]);
+        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
 }

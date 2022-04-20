@@ -43,7 +43,7 @@
                                         <a class="nav-link" href="{{ route('penimbangan') }}">Penimbangan</a>
                                         <a class="nav-link" href="{{ route('pengolahanbatch') }}">Pengolahan
                                             Batch</a>
-                                        <a class="nav-link" href="#">Pengemasan Batch</a>
+                                        <a class="nav-link" href="{{ route('pengemasan-batch') }}">Pengemasan Batch</a>
                                         <!-- <a class="nav-link" href="#">Cara Pemberian Nomor Batch</a> -->
                                         <a class="nav-link" href="{{ route('pelulusan-produk') }}">Pelulusan
                                             Produk Jadi</a>
