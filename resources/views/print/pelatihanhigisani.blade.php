@@ -156,16 +156,14 @@
                     <td scope="col">METODE PENILAIAN</td>
                 </tr>
                 <tr>
-                    @foreach ($data as $row)
-                    <td scope="col">{{$row['materi_pelatihan']}}</td>
-                    <td scope="col">{{$row['peserta_pelatihan']}}</td>
-                    <td scope="col">{{$row['pelatih']}}</td>
-                    <td scope="col">{{$row['metode_pelatihan']}}</td>
-                    <td scope="col">{{$row['jadwal_mulai_pelatihan']}} -
-                        {{$row['jadwal_berakhir_pelatihan']}}
+                    <td scope="col">{{$data['materi_pelatihan']}}</td>
+                    <td scope="col">{{$data['peserta_pelatihan']}}</td>
+                    <td scope="col">{{$data['pelatih']}}</td>
+                    <td scope="col">{{$data['metode_pelatihan']}}</td>
+                    <td scope="col">{{$data['jadwal_mulai_pelatihan']}} -
+                        {{$data['jadwal_berakhir_pelatihan']}}
                     </td>
-                    <td scope="col">{{$row['metode_penilaian']}}</td>
-                    @endforeach
+                    <td scope="col">{{$data['metode_penilaian']}}</td>
                 </tr>
 
 
