@@ -51,7 +51,17 @@ Route::post('/printalatutama', [PrintController::class, 'cetak_alatutama'])->nam
 Route::post('/printdistribusiproduk', [PrintController::class, 'cetak_distribusiproduk'])->name('distribusiproduk');
 Route::post('/printpenanganankeluhan', [PrintController::class, 'cetak_penanganankeluhan'])->name('penanganankeluhan');
 
-Route::get('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printpenarikanproduk', [PrintController::class, 'cetak_penarikanproduk'])->name('penarikanproduk');
+
+Route::post('/printpemusnahanbahan', [PrintController::class, 'cetak_pemusnahanbahan'])->name('pemusnahanbahan');
+Route::post('/printpemusnahanbahankemas', [PrintController::class, 'cetak_pemusnahanbahankemas'])->name('pemusnahanbahankemas');
+Route::post('/printpemusnahanprodukantara', [PrintController::class, 'cetak_pemusnahanprodukantara'])->name('pemusnahanprodukantara');
+Route::post('/printpemusnahanprodukjadi', [PrintController::class, 'cetak_pemusnahanprodukjadi'])->name('pemusnahanprodukjadi');
+
+Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+
+
 // Route::get('/dummy', [PrintController::class, 'dummy']);
 
 Route::group(['middleware' => 'auth'], function () {
@@ -134,6 +144,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimapemusnahanbahan', [pjt::class, 'terima_pemusnahanbahanbaku'])->name('terima_pemusnahanbahanbaku');
         Route::post('/terimapemusnahanbahankemas', [pjt::class, 'terima_pemusnahanbahankemas'])->name('terima_pemusnahanbahankemas');
         Route::post('/terimapemusnahanprodukantara', [pjt::class, 'terima_pemusnahanprodukantara'])->name('terima_pemusnahanprodukantara');
+        Route::post('/terimapemusnahanprodukjadi', [pjt::class, 'terima_pemusnahanprodukjadi'])->name('terima_pemusnahanprodukjadi');
         Route::post('/terimakartustokbahan', [pjt::class, 'terima_stokbahanbaku'])->name('terima_stokbahanbaku');
         Route::post('/terimakartustokbahankemas', [pjt::class, 'terima_stokbahankemas'])->name('terima_stokbahankemas');
         Route::post('/terimakartustokprodukjadi', [pjt::class, 'terima_stokprodukjadi'])->name('terima_stokprodukjadi');

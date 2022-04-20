@@ -1212,7 +1212,7 @@ class Admin extends Controller
             $data = penarikanproduk::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.penarikanproduk', ['data' => $data, 'produk' => $produk]);
+        return view('catatan.dokumen.penarikanproduk', ['data' => $data, 'produk' => $produk ?? []]);
     }
     public function tambah_distribusi(Request $req)
     {
@@ -1962,13 +1962,12 @@ class Admin extends Controller
             $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
             $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
             $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
-            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $produkantara = produkantara::all()->where('user_id', $pabrik);
             $kemasan = kemasan::all()->where('user_id', $pabrik);
             $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3,  'bahanbaku' => $bahanbaku ?? '', 'produkantara' => $produkantara ?? '', 'produkjadi' => $produkjadi ?? '', 'kemasan' => $kemasan ?? '']);
+        return view('catatan.dokumen.pemusnahanproduk', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3,  'bahanbaku' => $bahanbaku ?? [], 'produkantara' => $produkantara ?? [], 'produkjadi' => $produkjadi ?? [], 'kemasan' => $kemasan ?? []]);
     }
     public function tambah_kalibrasialat(Request $req)
     {

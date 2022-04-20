@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, penanganankeluhan, pengoprasianalat, peralatan, penimbangan, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, programpelatihan, protap, rekonsiliasi};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, peralatan, penimbangan, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, programpelatihan, protap, rekonsiliasi};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -227,6 +227,83 @@ class PrintController extends Controller
         return " <h1> not found </h1>";
     }
 
+    public function cetak_penarikanproduk(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = penarikanproduk::all()->where('id_produk_penarikan', $id)->first();
+        // dd($data);
+        return view('print.penarikanproduk',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_pemusnahanprodukjadi(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nama', 'pemusnahan produk jadi');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Pemusnahanprodukjadi::all()->where('id_pemusnahanprodukjadi', $id)->first();
+        // dd($data);
+        return view('print.pemusnahanprodukjadi',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_pemusnahanprodukantara(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nama', 'pemusnahan produk antara');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Pemusnahanprodukantara::all()->where('id_pemusnahanprodukantara', $id)->first();
+        // dd($data);
+        return view('print.pemusnahanprodukantara',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_pemusnahanbahan(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nama', 'pemusnahan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = pemusnahanbahanbaku::all()->where('id_pemusnahanbahan', $id)->first();
+        // dd($data);
+        return view('print.pemusnahanbahan',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_pemusnahanbahankemas(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nama', 'pemusnahan bahan kemas');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Pemusnahanbahankemas::all()->where('id_pemusnahanbahankemas', $id)->first();
+        // dd($data);
+        return view('print.pemusnahanbahankemas',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    
+
 
     public function cetak_ambilbprodukjadi($id)
     {
@@ -277,22 +354,6 @@ class PrintController extends Controller
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.pembersihanruangan');
-    }
-
-    public function cetak_pemusnahanprodukjadi($id)
-    {
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.pemusnahanprodukjadi');
-    }
-
-   
-
-    public function cetak_penarikanproduk($id)
-    {
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.penarikanproduk');
     }
 
     public function cetak_periksabahanbaku($id)

@@ -905,7 +905,7 @@
                                                             </td>
                                                         @else
                                                             <td>
-                                                                <form method="post" action="terimapemusnahanprodukantara">
+                                                                <form method="post" action="terimapemusnahanprodukjadi">
                                                                     @csrf
                                                                     <input type="hidden" name="id"
                                                                         value="{{ $row['id_pemusnahanprodukjadi'] }}" />

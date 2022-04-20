@@ -70,7 +70,7 @@
     <!-- Set also "landscape" if you need -->
     <style>
         @page {
-            size: A4
+            size: A4 landscape
         }
     </style>
 </head>
@@ -97,28 +97,32 @@
         </table>
         <center>
             <br>
-            <h4 style="text-align: center;">CATATAN PENARIKAN PRODUK</h4>
+            <!-- Isi Surat -->
+            <h4 style="text-align: center;">CATATAN PEMUSNAHAN BAHAN BAKU</h4>
             <div class="form-group">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <br>
                     <table class="table isi table-bordered">
                         <tr>
                             <td>NO</td>
                             <td>TANGGAL</td>
-                            <td>NAMA<br> DISTRIBUTOR</td>
-                            <td>PRODUK<br> DITARIK</td>
-                            <td>JUMLAH<br> PRODUK DITARIK</td>
-                            <td>NO BATCH</td>
-                            <td>ALASAN<br> PENARIKAN PRODUK</td>
+                            <td>NAMA<br> PRODUK JADI</td>
+                            <td>NO<br> BATCH</td>
+                            <td>ASAL<br> PRODUK JADI</td>
+                            <td>JUMLAH<br> PRODUK JADI</td>
+                            <td>ALASAN<br> PEMUSNAHAN</td>
+                            <td>CARA<br> PEMUSNAHAN</td>
+                            <td>PETUGAS<br> (NAMA, PARAF)</td>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>{{$data['tanggal_penarikan']}}</td>
-                            <td>{{$data['nama_distributor']}}</td>
-                            <td>{{$data['produk_ditarik']}}</td>
-                            <td>{{$data['jumlah_produk_ditarik']}}</td>
+                            <td>{{$data['tanggal_pemusnahan']}}</td>
+                            <td>{{$data['nama_bahanbaku']}}</td>
                             <td>{{$data['no_batch']}}</td>
-                            <td>{{$data['alasan_penarikan']}}</td>
+                            <td>{{$data['asal_bahanbaku']}}</td>
+                            <td>{{$data['jumlah_bahanbaku']}}</td>
+                            <td>{{$data['alasan_pemusnahan']}}</td>
+                            <td>{{$data['cara_pemunsnahan']}}</td>
+                            <td>{{$data['nama_petugas']}}</td>
                         </tr>
                     </table>
                 </div>

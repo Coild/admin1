@@ -189,20 +189,26 @@ class dataPelaksana extends Controller
             $form = '<form method="post" action="/printlatihcpkb">';
             elseif($data->laporan_nama=='pengoperasian alat')
             $form = '<form method="post" action="/printalatutama">';
+            elseif($data->laporan_nama=='distribusi produk')
+            $form = '<form method="post" action="/printdistribusiproduk">';
+            elseif($data->laporan_nama=='penanganan keluhan')
+            $form = '<form method="post" action="/printpenanganankeluhan">';
 
             elseif($data->laporan_nama=='pelulusan produk jadi')
             $form = '<form method="post" action="/printpelulusanproduk">';
-
-            elseif($data->laporan_nama=='distribusi produk')
-            $form = '<form method="post" action="/printdistribusiproduk">';
-
-            elseif($data->laporan_nama=='penanganan keluhan')
-            $form = '<form method="post" action="/printpenanganankeluhan">';
             
-            elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
-            elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
+            elseif($data->laporan_nama=='penarikan produk')
+            $form = '<form method="post" action="/printpenarikanproduk">';
+
+            elseif($data->laporan_nama=='pemusnahan bahan')
+            $form = '<form method="post" action="/printpemusnahanbahan">';
+            elseif($data->laporan_nama=='pemusnahan bahan kemas')
+            $form = '<form method="post" action="/printpemusnahanbahankemas">';
+            elseif($data->laporan_nama=='pemusnahan produk antara')
+            $form = '<form method="post" action="/printpemusnahanprodukantara">';
+            elseif($data->laporan_nama=='pemusnahan produk jadi')
+            $form = '<form method="post" action="/printpemusnahanprodukjadi">';
+
             elseif($data->laporan_nama=='pelatihan cpkb')
             $form = '<form method="post" action="/printlatihcpkb">';
             elseif($data->laporan_nama=='pelatihan cpkb')
