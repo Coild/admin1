@@ -849,9 +849,6 @@ class Admin extends Controller
         return redirect('/setting');
     }
 
-
-
-
     public function tampil_setting()
     {
         if (Auth::user()->level < 0) {

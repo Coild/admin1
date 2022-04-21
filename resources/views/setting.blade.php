@@ -93,8 +93,11 @@
                                         <td>{{ $row['produk_nama'] }}</td>
                                         <td>{{ $row['produk_kode'] }}</td>
                                         <td>
-                                            <a href="/hapus_produk/{{ $row['produk_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            <a href="#"
+                                                onclick="hapussetting({msg: 'Apakah Anda Yakin Hapus Produk Ini?',id:{{ $row['produk_id'] }},url:'hapus_produk'})"
+                                                class="btn btn-danger">Hapus</a>
+                                            {{-- <a href="/hapus_produk/{{ $row['produk_id'] }}" type="button"
+                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a> --}}
                                         </td>
                                     </tr>
                                     <?php $i++;
@@ -137,8 +140,9 @@
                                         <th scope="row">{{ $i }}</th>
                                         <td>{{ $row['kemasan_nama'] }}</td>
                                         <td>
-                                            <a href="/hapus_kemasan/{{ $row['kemasan_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            <a href="#"
+                                                onclick="hapussetting({msg: 'Apakah Anda Yakin Hapus Kemasan Ini?',id:{{ $row['kemasan_id'] }},url:'hapus_kemasan'})"
+                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -185,8 +189,9 @@
                                         <td>{{ $row['bahanbaku_nama'] }}</td>
                                         <td>{{ $row['bahanbaku_kode'] }}</td>
                                         <td>
-                                            <a href="/hapus_bahanbaku/{{ $row['bahanbaku_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            <a href="#"
+                                                onclick="hapussetting({msg: 'Apakah Anda Yakin Hapus Bahan Baku Ini?',id:{{ $row['bahanbaku_id'] }},url:'hapus_bahanbaku'})"
+                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -225,8 +230,9 @@
                                         <td>{{ $row['produkantara_nama'] }}</td>
                                         <td>{{ $row['produkantara_kode'] }}</td>
                                         <td>
-                                            <a href="/hapus_produkantara/{{ $row['produkantara_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            <a href="#"
+                                                onclick="hapussetting({msg: 'Apakah Anda Yakin Hapus Produk Antara Ini?',id:{{ $row['produkantara_id'] }},url:'hapus_produkantara'})"
+                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php $i++;

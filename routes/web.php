@@ -172,6 +172,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hapus_kemasan/{id}', [Admin::class, 'hapus_kemasan']);
         Route::get('/hapus_bahanbaku/{id}', [Admin::class, 'hapus_bahanbaku']);
         Route::get('/hapus_produk/{id}', [Admin::class, 'hapus_produk']);
+        Route::get('/hapus_produkantara/{id}', [Admin::class, 'hapus_produkantara']);
 
         Route::get('/laporan', [Admin::class, 'tampil_laporan'])->name('laporan');
 

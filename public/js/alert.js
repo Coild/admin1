@@ -143,6 +143,20 @@ function hapus(params) {
         }
     });
 }
+function hapussetting(params) {
+    Swal.fire({
+        title: params.msg,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "/" + params.url + "/" + params.id;
+        }
+    });
+}
 
 function filecheck() {
     const fileInput = document.getElementById("fileform");
