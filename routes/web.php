@@ -159,10 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimakemasanmasuk', [pjt::class, 'terima_kemasanmasuk'])->name('terima_kemasanmasuk');
         Route::post('/terimakemasankeluar', [pjt::class, 'terima_kemasankeluar'])->name('terima_kemasankeluar');
 
-        //pprotap
-        Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
-        Route::get('/tampil_protap/{jenis}', [protapController::class, 'tampil_protap'])->name('tampil');
-        Route::get('/hapus_protap/{id}/{jenis}', [protapController::class, 'hapus_protap']);
+
 
         Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
         Route::post('/input_produk', [Admin::class, 'tambah_produk']);
@@ -296,7 +293,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');
         Route::get('pengemasan-batch', [Admin::class, 'tampil_pengemasanbatch'])->name('pengemasan-batch');
 
-
+        //pprotap
+        Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
+        Route::get('/tampil_protap/{jenis}', [protapController::class, 'tampil_protap'])->name('tampil');
+        Route::get('/hapus_protap/{id}/{jenis}', [protapController::class, 'hapus_protap']);
 
         Route::get('/ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
         Route::get('/list_ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
