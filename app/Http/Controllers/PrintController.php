@@ -52,7 +52,7 @@ class PrintController extends Controller
         $nama = $datapabrik['nama'];
         $data = contohkemasan::all()->where('id_kemasan', $id)->first();
         // dd($nama);
-        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh kemasan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nomor' ,$id)->where('laporan_nama', 'penambahan contoh kemasan');
         // dd($data);
         return view('print.ambilbahankemas', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -68,7 +68,7 @@ class PrintController extends Controller
         $nama = $datapabrik['nama'];
         $data = contohbahanbaku::all()->where('id_bahanbaku', $id);
         // dd($id);
-        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh bahan baku');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penambahan contoh bahan baku');
         // dd($kop);
         return view('print.ambilbahanbaku', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -85,7 +85,7 @@ class PrintController extends Controller
         $nama = $datapabrik['nama'];
         $data = contohprodukjadi::all()->where('id_produkjadi', $id)->first();
         // dd($data);
-        $kop = laporan::all()->where('laporan_nama', 'penambahan contoh produk');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penambahan contoh produk');
         // dd($kop);
         return view('print.ambilprodukjadi', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -94,7 +94,7 @@ class PrintController extends Controller
     public function cetak_latihhigisani(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'pelatihan higiene dan sanitasi');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -109,7 +109,7 @@ class PrintController extends Controller
     public function cetak_latihcpkb(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'pelatihan higiene dan sanitasi');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -125,7 +125,7 @@ class PrintController extends Controller
     public function cetak_terimabahan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -139,11 +139,11 @@ class PrintController extends Controller
         'keluar' => $keluar, 'masuk' => $masuk, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
-    
+
     public function cetak_terimaproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -161,7 +161,7 @@ class PrintController extends Controller
     public function cetak_terimakemasan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -180,7 +180,7 @@ class PrintController extends Controller
     public function cetak_alatutama(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -194,7 +194,7 @@ class PrintController extends Controller
     public function cetak_distribusiproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -208,7 +208,7 @@ class PrintController extends Controller
     public function cetak_penanganankeluhan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'penerimaan bahan');
         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -302,83 +302,94 @@ class PrintController extends Controller
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
     }
 
-    
 
 
-    public function cetak_ambilbprodukjadi($id)
+
+    public function cetak_ambilbprodukjadi(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.ambilprodukjadi');
     }
 
-    public function cetak_ambilbahabaku($id)
+    public function cetak_ambilbahabaku(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.ambilbahabaku');
     }
 
-    public function cetak_ceklisdanttd($id)
+    public function cetak_ceklisdanttd(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.ceklisdanttd');
     }
 
-    
 
-    public function cetak_higidansani($id)
+
+    public function cetak_higidansani(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.higidansani');
     }
 
-    public function cetak_pembersihanalat($id)
+    public function cetak_pembersihanalat(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.pembersihanalat');
     }
 
-    public function cetak_pembersihanmixer($id)
+    public function cetak_pembersihanmixer(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.pembersihanmixer');
     }
 
-    public function cetak_pembersihanruangan($id)
+    public function cetak_pembersihanruangan(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.pembersihanruangan');
     }
 
-    public function cetak_periksabahanbaku($id)
+    public function cetak_periksabahanbaku(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.periksabahanbaku');
     }
 
-    public function cetak_periksaprodukjadi($id)
+    public function cetak_periksaprodukjadi(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.periksaprodukjadi');
     }
 
-    public function cetak_periksabahankemas($id)
+    public function cetak_periksabahankemas(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.periksabahankemas');
     }
 
-    public function cetak_terimakeluarbahanawal($id)
+    public function cetak_terimakeluarbahanawal(Request $req)
     {
+        $id = $req['id'];
         // $id = Session::get('data');
         echo "ini " . $id;
         return view('print.terimakeluarbahanawal');
