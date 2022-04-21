@@ -2123,7 +2123,7 @@ class Admin extends Controller
             $kemasan = kemasan::all()->where('user_id', $pabrik);
             $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'produkjadi' => $produkjadi ?? '', 'bahanbaku' => $bahanbaku ?? '', 'kemasan' => $kemasan ?? '']);
+        return view('catatan.dokumen.pemeriksaanpengujian', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'produkjadi' => $produkjadi ?? [], 'bahanbaku' => $bahanbaku ?? [], 'kemasan' => $kemasan ?? []]);
     }
     public function tambah_pengemasanbatchproduk(Request $req)
     {
