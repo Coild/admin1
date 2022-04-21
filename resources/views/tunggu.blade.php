@@ -24,12 +24,12 @@
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Akun Anda Belum  Aktif</h3>
+                                    <h3 class="text-center font-weight-light my-4">Akun Anda Belum Aktif</h3>
                                 </div>
                                 <div class="card-footer text-left py-3">
                                     <div class="small">
-                                <a href="/" class="btn  btn-succes  ">Kembali</a>        
-                                </div>
+                                        <a href="/" class="btn  btn-succes  ">Kembali</a>
+                                    </div>
 
                                 </div>
 
@@ -43,7 +43,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div class="text-muted">Copyright &copy; BPOM</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
@@ -54,7 +54,8 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="js/scripts.js"></script>
 </body>
 
