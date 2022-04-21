@@ -364,7 +364,7 @@
                         .bahanbaku_nama ===
                         document.getElementById('namabahanbaku').value).bahanbaku_kode
                 } else {
-                    document.getElementById('kodebahanbaku').value = "hho"
+                    document.getElementById('kodebahanbaku').value = ""
                 }
             });
             $("#namakemasan").change(function() {

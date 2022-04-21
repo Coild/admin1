@@ -77,6 +77,7 @@
                                                             type="password" placeholder="Create a password" />
                                                         <label for="inputPassword">Password</label>
                                                     </div>
+                                                    <p id="message1" class="text-danger"></p>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -84,6 +85,7 @@
                                                             type="password" placeholder="Confirm password" />
                                                         <label for="inputPasswordConfirm">Confirm Password</label>
                                                     </div>
+                                                    <p id="message" class="text-danger"></p>
                                                 </div>
                                             </div>
                                             <div class="g-recaptcha" data-callback="recaptcha_callback"
@@ -125,7 +127,7 @@
     <!-- <script src="js/scripts.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
+    <script>
         var route = "{{ url('autocomplete-search') }}";
         $('#search').typeahead({
             source: function(query, process) {
@@ -136,8 +138,15 @@
                 });
             }
         });
-    </script>
-    <script>
+        $("#inputPasswordConfirm").keyup(function() {
+            if ($("#inputPassword").val() === $(this).val()) {
+                document.getElementById("message").innerText = "";
+                document.getElementById("message1").innerText = "";
+            } else {
+                document.getElementById("message").innerText = "Tidak Cocok";
+                document.getElementById("message1").innerText = "Tidak Cocok";
+            }
+        })
         const username = <?php echo $data1; ?>;
     </script>
 </body>
