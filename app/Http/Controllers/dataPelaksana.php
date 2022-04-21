@@ -167,6 +167,7 @@ class dataPelaksana extends Controller
     }
     public function cp_kemasankeluar(Request $req)
     {
+        $id= Auth::user()->pabrik;
         $data = PPkemasankeluar::all()->where('pabrik',$id)->where('induk', $req['induk']);
         return DataTables::of($data)->addColumn('action', function ($data) {
             return '<button type="submit" class="btn btn-primary">Edit</button>';
