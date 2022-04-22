@@ -35,7 +35,7 @@ Route::get('/auto', function () {
     return view('catatan.dokumen.auto');
 });
 
-//print    
+//print
 Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
 Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
@@ -58,8 +58,12 @@ Route::post('/printpemusnahanbahankemas', [PrintController::class, 'cetak_pemusn
 Route::post('/printpemusnahanprodukantara', [PrintController::class, 'cetak_pemusnahanprodukantara'])->name('pemusnahanprodukantara');
 Route::post('/printpemusnahanprodukjadi', [PrintController::class, 'cetak_pemusnahanprodukjadi'])->name('pemusnahanprodukjadi');
 
-Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+Route::post('/printpemeriksaanbahan', [PrintController::class, 'cetak_periksabahanbaku'])->name('periksabahanbaku');
+Route::post('/printpemeriksaanproduk', [PrintController::class, 'cetak_periksaprodukjadi'])->name('periksaprodukjadi');
+Route::post('/printpemeriksaankemasan', [PrintController::class, 'cetak_periksabahankemas'])->name('periksabahankemas');
+
+Route::post('/printperiksaruang', [PrintController::class, 'cetak_periksaruang'])->name('periksaruang');
+Route::post('/printperiksaalat', [PrintController::class, 'cetak_periksaalat'])->name('periksaalat');
 
 
 // Route::get('/dummy', [PrintController::class, 'dummy']);
@@ -159,7 +163,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimakemasanmasuk', [pjt::class, 'terima_kemasanmasuk'])->name('terima_kemasanmasuk');
         Route::post('/terimakemasankeluar', [pjt::class, 'terima_kemasankeluar'])->name('terima_kemasankeluar');
 
-
+        Route::post('/terimaperiksaruang', [pjt::class, 'terima_periksaruang'])->name('terima_periksaruang');
+        Route::post('/terimaperiksaalat', [pjt::class, 'terima_periksaalat'])->name('terima_periksaalat');
 
         Route::get('/setting', [Admin::class, 'tampil_setting'])->name("setting");
         Route::post('/input_produk', [Admin::class, 'tambah_produk']);
@@ -208,7 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hapus_penimbangan/{id}/{ke}', [Admin::class, 'hapus_penimbangan']);
         Route::get('/hapus_olah/{id}/{ke}', [Admin::class, 'hapus_olah']);
         Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
-        // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']); 
+        // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']);
 
         Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
@@ -222,12 +227,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_penerimaankemasankeluar', [Admin::class, 'tambah_penerimaankemasankeluar'])->name('tambah_penerimaankemasankeluar');
 
         //higi dansani
-        Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');
+
         Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
-        Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat'])->name('periksasanialat');
         Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
-        Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang'])->name('periksasaniruang');
         Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
+
 
 
         //yusril
@@ -293,6 +297,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
         Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');
         Route::get('pengemasan-batch', [Admin::class, 'tampil_pengemasanbatch'])->name('pengemasan-batch');
+        //tampil higi sani
+        Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang'])->name('periksasaniruang');
+        Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat'])->name('periksasanialat');
+        Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');
 
         //pprotap
         Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
@@ -325,7 +333,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
 
-    //datatables 
+    //datatables
     Route::get('user', [dataPelaksana::class, 'user']);
     Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
     Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);

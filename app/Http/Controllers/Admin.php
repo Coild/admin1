@@ -262,9 +262,9 @@ class Admin extends Controller
         $produk = produk::all();
         $kemasan = kemasan::all();
         if (Auth::user()->level == 2) {
-            $data1 = cp_bahan::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = cp_produk::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data3 = cp_kemasan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data1 = cp_bahan::all()->where('pabrik', $pabrik);
+            $data2 = cp_produk::all()->where('pabrik', $pabrik);
+            $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
         } else {
             $data1 = cp_bahan::all()->where('pabrik', $pabrik);
             $data2 = cp_produk::all()->where('pabrik', $pabrik);
@@ -517,7 +517,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik); //->where('status', 0);
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik); //;
             // dd($pabrik);
         } else {
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);
@@ -877,7 +877,8 @@ class Admin extends Controller
 
     public function tampil_laporan()
     {
-        $data = laporan::all()->where('laporan_diterima', '!=', 'belum');
+        $id = Auth::user()->pabrik;
+        $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
         return view('laporan', ['batch' => $data]);
     }
 
@@ -1103,8 +1104,8 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = programpelatihan::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = programpelatihan::all()->where('pabrik', $pabrik);
+            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
         } else {
             $data = programpelatihan::all()->where('pabrik', $pabrik);
             $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
@@ -1155,7 +1156,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = penanganankeluhan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = penanganankeluhan::all()->where('pabrik', $pabrik);
         } else {
             $data = penanganankeluhan::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', $pabrik);
@@ -1204,7 +1205,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = penarikanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = penarikanproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = penarikanproduk::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', $pabrik);
@@ -1251,7 +1252,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = distribusiproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = distribusiproduk::all()->where('pabrik', $pabrik);
         } else
             $data = distribusiproduk::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pendistribusianproduk', ['data' => $data]);
@@ -1299,7 +1300,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pengoprasianalat::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         } else
             $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
@@ -1347,7 +1348,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pelulusanproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = pelulusanproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = pelulusanproduk::all()->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
@@ -1476,9 +1477,9 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = contohbahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = contohkemasan::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = contohbahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
+            $data2 = contohkemasan::all()->where('pabrik', $pabrik);
         } else {
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
@@ -1609,9 +1610,9 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = timbangbahan::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = timbangproduk::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = ruangtimbang::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = timbangbahan::all()->where('pabrik', $pabrik);
+            $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+            $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
         } else {
             $data = timbangbahan::all()->where('pabrik', $pabrik);
             $data1 = timbangproduk::all()->where('pabrik', $pabrik);
@@ -1770,10 +1771,10 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = kartustokbahan::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = kartustokprodukantara::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data3 = kartustokprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = kartustokbahan::all()->where('pabrik', $pabrik);
+            $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
+            $data2 = kartustokprodukantara::all()->where('pabrik', $pabrik);
+            $data3 = kartustokprodukjadi::all()->where('pabrik', $pabrik);
         } else {
             $data = kartustokbahan::all()->where('pabrik', $pabrik);
             $data1 = kartustokbahankemas::all()->where('pabrik', $pabrik);
@@ -1950,10 +1951,10 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
+            $data2 = Pemusnahanprodukantara::all()->where('pabrik', $pabrik);
+            $data3 = Pemusnahanprodukjadi::all()->where('pabrik', $pabrik);
         } else {
             $data = pemusnahanbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = Pemusnahanbahankemas::all()->where('pabrik', $pabrik);
@@ -1989,7 +1990,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = Kalibrasialat::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = Kalibrasialat::all()->where('pabrik', $pabrik);
         } else {
             $data = Kalibrasialat::all()->where('pabrik', $pabrik);
         }
@@ -2109,9 +2110,9 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik)->where('status', 0);
-            $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik);
+            $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik);
+            $data2 = Spesifikasiprodukjadi::all()->where('pabrik', $pabrik);
         } else {
             $data = Spesifikasibahanbaku::all()->where('pabrik', $pabrik);
             $data1 = Spesifikasibahankemas::all()->where('pabrik', $pabrik);
@@ -2163,7 +2164,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik)->where('status', 0);
+            $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', Auth::user()->pabrik);

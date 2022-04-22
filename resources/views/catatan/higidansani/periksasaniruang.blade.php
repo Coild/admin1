@@ -17,6 +17,7 @@
                         <i class="fas fa-table me-1"></i>
                         Pembersihan Alat pada Ruangan
                     </div>
+                    @if (Auth::user()->level != 2)
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
@@ -170,6 +171,8 @@
                             </form>
                         </div>
                     </div>
+                    @endif
+
                     <table class="table" style="margin-top: 50px">
                         <thead>
                             <tr>
@@ -204,14 +207,24 @@
                                     <td>
                                         @if ($row['status'] == 0)
                                             Diajukan
+                                        @else
+                                            Diterima
                                         @endif
                                     </td>
                                     <td>
+                                        @if ($row['status'] == 0)
+                                        <form method="post" action="terimaperiksaruang">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $row['id_periksaruang'] }}" />
+                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                        </form>
+                                        @else
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />
                                             <input type="hidden" name="nobatch" value="" />
-                                            <button type="submit" class="btn btn-primary">Buka</button>
+                                            <button type="submit" class="btn btn-primary" disabled>Edit</button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

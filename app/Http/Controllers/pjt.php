@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,7 +113,7 @@ class pjt extends Controller
         return redirect()->route('penerimaanBB');
     }
 
-    
+
 
     public function terima_cp_produk(Request $req)
     {
@@ -524,6 +524,41 @@ class pjt extends Controller
         $data = Spesifikasiprodukjadi::all()->where('status', 1);
         return redirect()->route('pemeriksaan-bahan');
     }
+
+    //higiene dan sanitasi
+    public function terima_periksaruang(Request $req) {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        $user = periksaruang::where("id_periksaruang", $req['id'])->update([
+            'status' => 1,
+        ]);
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = periksaruang::all()->where('status', 1);
+        return redirect()->route('periksasaniruang');
+    }
+
+    public function terima_periksaalat(Request $req) {
+        // dd($req['id']);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        $user = Periksaalat::where("id_periksaalat", $req['id'])->update([
+            'status' => 1,
+        ]);
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
+            'laporan_diterima' =>  Auth::user()->nama,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = periksaalat::all()->where('status', 1);
+        return redirect()->route('periksasanialat');
+    }
+
 
 
 

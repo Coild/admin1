@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, peralatan, penimbangan, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, programpelatihan, protap, rekonsiliasi};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, programpelatihan, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -303,6 +303,79 @@ class PrintController extends Controller
     }
 
 
+    public function cetak_periksaruang(Request $req) {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'periksa sanitasi ruangan');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = periksaruang::all()->where('id_peperiksaruang', $id)->first();
+        // dd($data);
+        return view('print.penanganankeluhan',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_periksaalat(Request $req) {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'periksa sanitasi alat');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = periksaruang::all()->where('id_periksaalat', $id)->first();
+        // dd($data);
+        return view('print.penanganankeluhan',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_periksabahanbaku(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'Pemeriksaan Bahan Baku');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Spesifikasibahanbaku::all()->where('id_spesifikasibahanbaku', $id)->first();
+        // dd($data);
+        return view('print.periksabahanbaku',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_periksaprodukjadi(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'Pemeriksaan Produk Jadi');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Spesifikasiprodukjadi::all()->where('id_spesifikasiprodukjadi', $id)->first();
+        // dd($data);
+        return view('print.periksaprodukjadi',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
+    public function cetak_periksabahankemas(Request $req)
+    {
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('laporan_nama', 'Pemeriksaan Bahan Kemas');
+        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $data = Spesifikasibahankemas::all()->where('id_spesifikasiproSpesifikasibahankemas', $id)->first();
+        // dd($data);
+        return view('print.periksabahankemas',['data' => $data,'kop' => $kop
+        ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
+    }
+
 
 
     public function cetak_ambilbprodukjadi(Request $req)
@@ -361,30 +434,6 @@ class PrintController extends Controller
         // $id = Session::get('data');
         // echo "ini ".$id;
         return view('print.pembersihanruangan');
-    }
-
-    public function cetak_periksabahanbaku(Request $req)
-    {
-        $id = $req['id'];
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.periksabahanbaku');
-    }
-
-    public function cetak_periksaprodukjadi(Request $req)
-    {
-        $id = $req['id'];
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.periksaprodukjadi');
-    }
-
-    public function cetak_periksabahankemas(Request $req)
-    {
-        $id = $req['id'];
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.periksabahankemas');
     }
 
     public function cetak_terimakeluarbahanawal(Request $req)

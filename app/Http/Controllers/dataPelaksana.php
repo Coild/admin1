@@ -54,7 +54,7 @@ class dataPelaksana extends Controller
             <button type="submit" class="btn btn-primary">Terima</button>
         </form>';
             }
-            
+
         })->rawColumns(['action'])->make();
     }
 
@@ -179,54 +179,62 @@ class dataPelaksana extends Controller
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
             if($data->laporan_nama=='pengolahan batch')
-             $form = '<form method="post" action="/printpengolahanbatch">';
+             $form = '<form target="_blank" method="post" action="/printpengolahanbatch">';
             elseif($data->laporan_nama=='penambahan contoh bahan baku')
-            $form = '<form method="post" action="/printambilbahanbaku">';
+            $form = '<form target="_blank" method="post" action="/printambilbahanbaku">';
             elseif($data->laporan_nama=='penambahan contoh produk')
-            $form = '<form method="post" action="/printambilprodukjadi">';
+            $form = '<form target="_blank" method="post" action="/printambilprodukjadi">';
             elseif($data->laporan_nama=='penambahan contoh kemasan')
-            $form = '<form method="post" action="/printambilbahankemas">';
+            $form = '<form target="_blank" method="post" action="/printambilbahankemas">';
             elseif($data->laporan_nama=='penerimaan bahan')
-            $form = '<form method="post" action="/printterimabahan">';
+            $form = '<form target="_blank" method="post" action="/printterimabahan">';
             elseif($data->laporan_nama=='penerimaan produk')
-            $form = '<form method="post" action="/printterimaproduk">';
+            $form = '<form target="_blank" method="post" action="/printterimaproduk">';
             elseif($data->laporan_nama=='penerimaan kemasan')
-            $form = '<form method="post" action="/printterimakemasan">';
+            $form = '<form target="_blank" method="post" action="/printterimakemasan">';
             elseif($data->laporan_nama=='pelatihan higiene dan sanitasi')
-            $form = '<form method="post" action="/printlatihhigisani">';
+            $form = '<form target="_blank" method="post" action="/printlatihhigisani">';
             elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
+            $form = '<form target="_blank" method="post" action="/printlatihcpkb">';
             elseif($data->laporan_nama=='pengoperasian alat')
-            $form = '<form method="post" action="/printalatutama">';
+            $form = '<form target="_blank" method="post" action="/printalatutama">';
             elseif($data->laporan_nama=='distribusi produk')
-            $form = '<form method="post" action="/printdistribusiproduk">';
+            $form = '<form target="_blank" method="post" action="/printdistribusiproduk">';
             elseif($data->laporan_nama=='penanganan keluhan')
-            $form = '<form method="post" action="/printpenanganankeluhan">';
+            $form = '<form target="_blank" method="post" action="/printpenanganankeluhan">';
 
             elseif($data->laporan_nama=='pelulusan produk jadi')
-            $form = '<form method="post" action="/printpelulusanproduk">';
-            
+            $form = '<form target="_blank" method="post" action="/printpelulusanproduk">';
+
             elseif($data->laporan_nama=='penarikan produk')
-            $form = '<form method="post" action="/printpenarikanproduk">';
+            $form = '<form target="_blank" method="post" action="/printpenarikanproduk">';
 
             elseif($data->laporan_nama=='pemusnahan bahan')
-            $form = '<form method="post" action="/printpemusnahanbahan">';
+            $form = '<form target="_blank" method="post" action="/printpemusnahanbahan">';
             elseif($data->laporan_nama=='pemusnahan bahan kemas')
-            $form = '<form method="post" action="/printpemusnahanbahankemas">';
+            $form = '<form target="_blank" method="post" action="/printpemusnahanbahankemas">';
             elseif($data->laporan_nama=='pemusnahan produk antara')
-            $form = '<form method="post" action="/printpemusnahanprodukantara">';
+            $form = '<form target="_blank" method="post" action="/printpemusnahanprodukantara">';
             elseif($data->laporan_nama=='pemusnahan produk jadi')
-            $form = '<form method="post" action="/printpemusnahanprodukjadi">';
+            $form = '<form target="_blank" method="post" action="/printpemusnahanprodukjadi">';
+
+            elseif($data->laporan_nama=='periksa sanitasi ruangan')
+            $form = '<form target="_blank" method="post" action="/printperiksaruang">';
+            elseif($data->laporan_nama=='periksa sanitasi alat')
+            $form = '<form target="_blank" method="post" action="/printperiksaalat">';
+
+            elseif($data->laporan_nama=='Pemeriksaan Bahan Baku')
+            $form = '<form target="_blank" method="post" action="/printpemeriksaanbahan">';
+            elseif($data->laporan_nama=='Pemeriksaan Produk Jadi')
+            $form = '<form target="_blank" method="post" action="/printpemeriksaanproduk">';
+            elseif($data->laporan_nama=='Pemeriksaan Bahan Kemas')
+            $form = '<form target="_blank" method="post" action="/printpemeriksaankemasan">';
 
             elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
-            elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
-            elseif($data->laporan_nama=='pelatihan cpkb')
-            $form = '<form method="post" action="/printlatihcpkb">';
+            $form = '<form target="_blank" method="post" action="/printlatihcpkb">';
             else
-            $form = '<form method="post" action="/printterimakemasan">';
-            $isi= 
+            $form = '<form target="_blank" method="post" action="/printterimakemasan">';
+            $isi=
             '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' .
             '
                 <input type="hidden" name="nobatch" value='.$data->laporan_batch.' />'.
