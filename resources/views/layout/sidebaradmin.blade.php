@@ -18,7 +18,7 @@
                     TAMBAH AUDITOR
                 </a>
 
-                <a class="nav-link collapsed" href="protap">
+                <a class="nav-link collapsed" href="update-protap">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     UPDATE PROTAP
                 </a>
@@ -26,6 +26,6 @@
 
             </div>
         </div>
-       
+
     </nav>
 </div>

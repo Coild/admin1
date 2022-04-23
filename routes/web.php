@@ -315,6 +315,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/dashboard', [Admin::class, 'dashboard'])->name('dashboard');
+    Route::get('/update-protap', [Admin::class, 'tampil_updateprotap'])->name('updateprotap');
 
     Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
