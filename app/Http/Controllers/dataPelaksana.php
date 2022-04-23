@@ -38,13 +38,13 @@ class dataPelaksana extends Controller
         })->addColumn('action', function ($data) {
 
             if(Auth::user()->level != 2)   {
-                return '<form method="post" action="detilterimabb">
+                return '<form method="post" class="float-left mr-1" action="detilterimabb">
                 ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                 <input type="hidden" name="jenis" value=1 />
                 <input type="hidden" name="induk"
                     value=' . $data->cp_bahan_id . ' />
-                <button type="submit" class="btn btn-primary">Edit</button>
-            </form>';
+                <button type="submit" class="btn btn-primary">Lihat</button>
+            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpbahan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -69,13 +69,13 @@ class dataPelaksana extends Controller
         return DataTables::of($data)->addColumn('action', function ($data) {
 
             if(Auth::user()->level != 2)   {
-                return '<form method="post" action="detilterimabb">
+                return '<form method="post" class="float-left mr-1" action="detilterimabb">
                 ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                 <input type="hidden" name="jenis" value=2 />
                 <input type="hidden" name="induk"
                     value=' . $data->cp_produk_id . ' />
-                <button type="submit" class="btn btn-primary">Edit</button>
-            </form>';
+                <button type="submit" class="btn btn-primary">Lihat</button>
+            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpproduk">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -104,13 +104,13 @@ class dataPelaksana extends Controller
             }
         })->addColumn('action', function ($data) {
             if(Auth::user()->level != 2)   {
-                return '<form method="post" action="detilterimabb">
+                return '<form method="post" class="float-left mr-1" action="detilterimabb">
                 ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                 <input type="hidden" name="jenis" value=3 />
                 <input type="hidden" name="induk"
                     value=' . $data->cp_kemasan_id . ' />
-                <button type="submit" class="btn btn-primary">Edit</button>
-            </form>';
+                <button type="submit" class="btn btn-primary">Lihat</button>
+            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpkemasan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -175,7 +175,7 @@ class dataPelaksana extends Controller
     }
 
     public function laporan (){
-        $data = laporan::all()->('pabrik_id', Auth::user()->pabrik)->where('laporan_diterima',"!=",'belum');
+        $data = laporan::all()->where('pabrik_id', Auth::user()->pabrik)->where('laporan_diterima',"!=",'belum');
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
             if($data->laporan_nama=='pengolahan batch')

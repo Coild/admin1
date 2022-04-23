@@ -45,7 +45,6 @@
 
                                         <th scope="col">Kode Bahan Baku</th>
                                         <th scope="col">Nama Bahan Baku</th>
-                                        <th scope="col">Untuk Produk</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -79,7 +78,6 @@
                                     <tr>
                                         <th scope="col">Kode Produk Jadi</th>
                                         <th scope="col">Nama Produk Jadi</th>
-                                        <th scope="col">Untuk Produk</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -113,7 +111,6 @@
                                     <tr>
                                         <th scope="col">Kode Kemasan</th>
                                         <th scope="col">Nama Kemasan</th>
-                                        <th scope="col">Untuk Produk</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -353,7 +350,7 @@
             const produks = JSON.parse('<?= json_encode($produk) ?>')
             const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
             const bahanbakus =  JSON.parse('<?= json_encode($bahanbaku) ?>')
-            
+
             $("#namabahanbaku").change(function() {
                 console.log(bahanbakus)
                 console.log('produk ' +Array.isArray(bahanbakus) + " "+typeof bahanbakus)
@@ -402,10 +399,6 @@
                             name: 'nama'
                         },
                         {
-                            data: 'produk',
-                            name: 'produk'
-                        },
-                        {
                             data: 'ruang',
                             name: 'ruang'
                         },
@@ -432,10 +425,6 @@
                             name: 'nama'
                         },
                         {
-                            data: 'produk',
-                            name: 'produk'
-                        },
-                        {
                             data: 'ruang',
                             name: 'ruang'
                         },
@@ -460,10 +449,6 @@
                         {
                             data: 'nama',
                             name: 'nama'
-                        },
-                        {
-                            data: 'produk',
-                            name: 'produk'
                         },
                         {
                             data: 'ruang',
