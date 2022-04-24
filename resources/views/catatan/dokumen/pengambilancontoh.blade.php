@@ -173,6 +173,7 @@
                                                 <th scope="col">Jumlah Bahan Baku Dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -370,6 +371,7 @@
                                                 <th scope="col">Jumlah Produk dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -569,6 +571,7 @@
                                                 <th scope="col">Jumlah Kemasan Dalam Box</th>
                                                 <th scope="col">Jumlah Produk Yang Diambil</th>
                                                 <th scope="col">Jenis Dan warna kemasan</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>

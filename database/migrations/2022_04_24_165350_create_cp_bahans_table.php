@@ -17,7 +17,7 @@ class CreateCpBahansTable extends Migration
             $table->id('cp_bahan_id');
             $table->string('nama');
             $table->string('ruang');
-            $table->string('produk');
+            $table->string('jumlah');
             $table->string('kode');
             $table->tinyInteger('pabrik', 0)->unsigned();
             $table->tinyInteger('status', 0)->unsigned();
