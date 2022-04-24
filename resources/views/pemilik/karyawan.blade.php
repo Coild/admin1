@@ -110,7 +110,7 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id'] }}">
                                             <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-trash"></i> Hapus</button>
-                                            
+
                                         </form>
                                     </td>
                                 </tr>
@@ -129,7 +129,7 @@
     <!-- tos 1 OH -->
 
     <script type="text/javascript">
-        // $(document).ready(function() {
+        $(document).ready(function() {
         $(document).on('click', "#detil", function() {
             var nama = $(this).data('nama');
             var id = $(this).data('id');
@@ -141,6 +141,6 @@
             // $("#isi_p").val(p);
             $("#isi_id").val(id);
         })
-        // });
+        });
     </script>
 @endsection
