@@ -49,7 +49,7 @@
                                                                 Keluhan</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="kode_keluhan"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control" id="kode_keluhan"
                                                                     placeholder="Kode Keluhan" />
                                                             </div>
                                                         </div>
@@ -59,7 +59,7 @@
                                                                 Customer</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="nama_customer"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control" id="nama_customer"
                                                                     placeholder="Nama Customer" />
                                                             </div>
                                                         </div>
@@ -72,7 +72,7 @@
                                                                 class="col-sm-3 col-form-label">Keluhan</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="keluhan" class="form-control"
-                                                                    id="inputEmail3" placeholder="Keluhan" />
+                                                                    id="keluhan" placeholder="Keluhan" />
                                                             </div>
                                                         </div>
 
@@ -80,8 +80,8 @@
                                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Tanggal
                                                                 Tanggapi Keluhan</label>
                                                             <div class="col-sm">
-                                                                <input type="datetime-local" name="tanggal_tanggapi_keluhan"
-                                                                    class="form-control" id="inputEmail3"
+                                                                <input type="date" name="tanggal_tanggapi_keluhan"
+                                                                    class="form-control" id="tanggal_tanggapi_keluhan"
                                                                     placeholder="" />
                                                             </div>
                                                         </div>
@@ -92,7 +92,7 @@
                                                                 Digunakan</label>
                                                             <div class="col-sm">
                                                                 <input list="listproduk" style="height: 35px;"
-                                                                    id='nama_bahankau' class="form-control 3"
+                                                                    id='produk_yang_digunakan' class="form-control 3"
                                                                     name="produk_yang_digunakan">
                                                                 </input>
                                                                 <datalist id="listproduk">
@@ -111,7 +111,7 @@
                                                                 Keluhan</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="penanganan_keluhan"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control" id="penanganan_keluhan"
                                                                     placeholder="Penanganan Keluhan" />
                                                             </div>
                                                         </div>
@@ -121,7 +121,7 @@
                                                                 Lanjut</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="tindak_lanjut"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control" id="tindak_lanjut"
                                                                     placeholder="Tindak Lanjut" />
                                                             </div>
                                                         </div>
@@ -177,11 +177,8 @@
                                     } ?></td>
                                     @if (Auth::user()->level != 2)
                                         <td>
-                                            <form action="#">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="" />
-                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                            </form>
+                                            <a href="#" type="submit" data-toggle="modal" data-target="#modalForm"
+                                                class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
                                         </td>
                                     @else
                                         <td>
@@ -201,4 +198,20 @@
             </div>
         </div>
     </main>
+    <script>
+        function editdata(params) {
+            setdatetoday()
+            $("#forminput").attr("action", "edit_keluhan");
+            var inputid = '<input type="hidden" name="id" class ="form-control" value="' + params
+                .id_penanganankeluhan + '"/>'
+            $(inputid).insertAfter("#ambil_tanggal")
+            $("#kode_keluhan").val(params.kode_keluhan)
+            $("#nama_customer").val(params.nama_customer)
+            $("#keluhan").val(params.keluhan)
+            $("#tanggal_tanggapi_keluhan").val(params.tanggal_ditanggapi)
+            $("#produk_yang_digunakan").val(params.produk_yang_digunakan)
+            $("#penanganan_keluhan").val(params.penanganan_keluhan)
+            $("#tindak_lanjut").val(params.tindak_lanjut)
+        }
+    </script>
 @endsection

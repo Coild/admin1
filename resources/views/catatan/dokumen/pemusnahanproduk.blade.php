@@ -73,7 +73,7 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="kode_pemusnahan"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="kode_pemusnahan"
                                                                                 placeholder="Kode Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -109,7 +109,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="no_batch"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -120,7 +120,7 @@
                                                                             Baku</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="asal_bahanbaku"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="asal_bahanbaku"
                                                                                 placeholder="Asal Produk Jadi" />
                                                                         </div>
                                                                     </div>
@@ -131,7 +131,7 @@
                                                                             Bahan Baku</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah_bahanbaku"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="jumlah_bahanbaku"
                                                                                 placeholder="Jumlah Produk Jadi" />
                                                                         </div>
                                                                     </div>
@@ -142,7 +142,8 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="alasan_pemusnahan"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1"
+                                                                                id="alasan_pemusnahan"
                                                                                 placeholder="Alasan Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -153,7 +154,7 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="cara_pemusnahan"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="cara_pemusnahan"
                                                                                 placeholder="Cara Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -163,7 +164,7 @@
                                                                             class="col-sm-3 col-form-label">Petugas</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="petugas"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="petugas"
                                                                                 placeholder="Petugas" />
                                                                         </div>
                                                                     </div>
@@ -221,11 +222,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm1" class="btn btn-primary"
+                                                                onclick="editdata1({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -294,7 +293,7 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="kode_pemusnahan"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2" id="kode_pemusnahan1"
                                                                                 placeholder="Kode Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -310,7 +309,7 @@
                                                                         <div class="col-sm">
                                                                             <input class="form-control 2"
                                                                                 list="listnamakemas" type="text"
-                                                                                name='nama_bahankemas' id="namabahanbaku"
+                                                                                name='nama_bahankemas' id="namabahanbaku1"
                                                                                 autocomplete="off">
                                                                             </input>
                                                                             <datalist id='listnamakemas'>
@@ -330,7 +329,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2" id="no_batch1"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -341,7 +340,8 @@
                                                                             Kemas</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="asal_bahankemas"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2"
+                                                                                id="asal_bahankemas1"
                                                                                 placeholder="Asal Produk Jadi" />
                                                                         </div>
                                                                     </div>
@@ -352,7 +352,8 @@
                                                                             Kemas</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah_bahankemas"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2"
+                                                                                id="jumlah_bahankemas1"
                                                                                 placeholder="Jumlah Produk Jadi" />
                                                                         </div>
                                                                     </div>
@@ -363,7 +364,8 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="alasan_pemusnahan"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2"
+                                                                                id="alasan_pemusnahan1"
                                                                                 placeholder="Alasan Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -374,7 +376,8 @@
                                                                             Pemusnahan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="cara_pemusnahan"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2"
+                                                                                id="cara_pemusnahan1"
                                                                                 placeholder="Cara Pemusnahan" />
                                                                         </div>
                                                                     </div>
@@ -384,7 +387,7 @@
                                                                             class="col-sm-3 col-form-label">Petugas</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="petugas"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2" id="petugas1"
                                                                                 placeholder="Petugas" />
                                                                         </div>
                                                                     </div>
@@ -442,11 +445,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm2" class="btn btn-primary"
+                                                                onclick="editdata2({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -518,7 +519,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="kode_pemusnahan"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3"
+                                                                                    id="kode_pemusnahan2"
                                                                                     placeholder="Kode Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -535,7 +537,7 @@
                                                                                 <input class="form-control 3"
                                                                                     list="listnamaprodukantara" type="text"
                                                                                     name='nama_produkantara'
-                                                                                    id="namabahanbaku" autocomplete="off">
+                                                                                    id="namabahanbaku2" autocomplete="off">
                                                                                 </input>
                                                                                 <datalist id='listnamaprodukantara'>
                                                                                     @foreach ($produkantara as $row)
@@ -554,7 +556,7 @@
                                                                                 Batch</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="no_batch"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3" id="no_batch2"
                                                                                     placeholder="No Batch" />
                                                                             </div>
                                                                         </div>
@@ -566,7 +568,8 @@
                                                                                 Antara</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="asal_produkantara"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3"
+                                                                                    id="asal_produkantara2"
                                                                                     placeholder="Asal Produk Antara" />
                                                                             </div>
                                                                         </div>
@@ -578,7 +581,8 @@
                                                                             <div class="col-sm">
                                                                                 <input type="text"
                                                                                     name="jumlah_produkantara"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3"
+                                                                                    id="jumlah_produkantara2"
                                                                                     placeholder="Jumlah Produk Antara" />
                                                                             </div>
                                                                         </div>
@@ -589,7 +593,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="alasan_pemusnahan"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3"
+                                                                                    id="alasan_pemusnahan2"
                                                                                     placeholder="Alasan Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -600,7 +605,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="cara_pemusnahan"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3"
+                                                                                    id="cara_pemusnahan2"
                                                                                     placeholder="Cara Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -610,7 +616,7 @@
                                                                                 class="col-sm-3 col-form-label">Petugas</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="petugas"
-                                                                                    class="form-control 3" id="inputEmail3"
+                                                                                    class="form-control 3" id="petugas2"
                                                                                     placeholder="Petugas" />
                                                                             </div>
                                                                         </div>
@@ -669,12 +675,9 @@
                                                         } ?></td>
                                                         @if (Auth::user()->level != 2)
                                                             <td>
-                                                                <form action="#">
-                                                                    @csrf
-                                                                    <input type="hidden" name="nobatch" value="" />
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Edit</button>
-                                                                </form>
+                                                                <a href="#" type="submit" data-toggle="modal"
+                                                                    data-target="#modalForm3" class="btn btn-primary"
+                                                                    onclick="editdata3({{ $row }})">Edit</a>
                                                             </td>
                                                         @else
                                                             <td>
@@ -746,7 +749,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="kode_pemusnahan"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4"
+                                                                                    id="kode_pemusnahan3"
                                                                                     placeholder="Kode Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -762,8 +766,8 @@
                                                                             <div class="col-sm">
                                                                                 <input class="form-control 4"
                                                                                     list="listnamaproduk" type="text"
-                                                                                    name='nama' id="namaproduk"
-                                                                                    autocomplete="off">
+                                                                                    id="namabahanbaku3" name='nama'
+                                                                                    id="namaproduk" autocomplete="off">
                                                                                 </input>
                                                                                 <datalist id='listnamaproduk'>
                                                                                     @foreach ($produkjadi as $row)
@@ -782,7 +786,7 @@
                                                                                 Batch</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="no_batch"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4" id="no_batch3"
                                                                                     placeholder="No Batch" />
                                                                             </div>
                                                                         </div>
@@ -793,7 +797,8 @@
                                                                                 Jadi</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="asal_produkantara"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4"
+                                                                                    id="asal_produkantara3"
                                                                                     placeholder="Asal Produk Jadi" />
                                                                             </div>
                                                                         </div>
@@ -805,7 +810,8 @@
                                                                             <div class="col-sm">
                                                                                 <input type="text"
                                                                                     name="jumlah_produkantara"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4"
+                                                                                    id="jumlah_produkantara3"
                                                                                     placeholder="Jumlah Produk Jadi" />
                                                                             </div>
                                                                         </div>
@@ -816,7 +822,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="alasan_pemusnahan"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4"
+                                                                                    id="alasan_pemusnahan3"
                                                                                     placeholder="Alasan Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -827,7 +834,8 @@
                                                                                 Pemusnahan</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="cara_pemusnahan"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4"
+                                                                                    id="cara_pemusnahan3"
                                                                                     placeholder="Cara Pemusnahan" />
                                                                             </div>
                                                                         </div>
@@ -837,7 +845,7 @@
                                                                                 class="col-sm-3 col-form-label">Petugas</label>
                                                                             <div class="col-sm">
                                                                                 <input type="text" name="petugas"
-                                                                                    class="form-control 4" id="inputEmail3"
+                                                                                    class="form-control 4" id="petugas3"
                                                                                     placeholder="Petugas" />
                                                                             </div>
                                                                         </div>
@@ -896,12 +904,9 @@
                                                         } ?></td>
                                                         @if (Auth::user()->level != 2)
                                                             <td>
-                                                                <form action="#">
-                                                                    @csrf
-                                                                    <input type="hidden" name="nobatch" value="" />
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Edit</button>
-                                                                </form>
+                                                                <a href="#" type="submit" data-toggle="modal"
+                                                                    data-target="#modalForm4" class="btn btn-primary"
+                                                                    onclick="editdata4({{ $row }})">Edit</a>
                                                             </td>
                                                         @else
                                                             <td>
@@ -926,5 +931,70 @@
                 </div>
             </div>
         </div>
+        <script>
+            function editdata1(params) {
+                setdatetoday1(1)
+                $("#forminput1").attr("action", "edit_pemusnahanbahan");
+                var inputid = '<input type="hidden" name="id" class ="form-control 1" value="' + params
+                    .id_pemusnahanbahan + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal1")
+                $("#kode_pemusnahan").val(params.kode_pemusnahan)
+                $("#namabahanbaku").val(params.nama_bahanbaku)
+                $("#no_batch").val(params.no_batch)
+                $("#asal_bahanbaku").val(params.asal_bahanbaku)
+                $("#jumlah_bahanbaku").val(params.jumlah_bahanbaku)
+                $("#alasan_pemusnahan").val(params.alasan_pemusnahan)
+                $("#cara_pemusnahan").val(params.cara_pemunsnahan)
+                $("#petugas").val(params.nama_petugas)
+            }
+
+            function editdata2(params) {
+                setdatetoday1(2)
+                $("#forminput2").attr("action", "edit_pemusnahanbahankemas");
+                var inputid = '<input type="hidden" name="id" class ="form-control 2" value="' + params
+                    .id_pemusnahanbahankemas + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal2")
+                $("#kode_pemusnahan1").val(params.kode_pemusnahan)
+                $("#namabahanbaku1").val(params.nama_bahan_kemas)
+                $("#no_batch1").val(params.no_batch)
+                $("#asal_bahankemas1").val(params.asal_bahankemas)
+                $("#jumlah_bahankemas1").val(params.jumlah_bahankemas)
+                $("#alasan_pemusnahan1").val(params.alasan_pemusnahan)
+                $("#cara_pemusnahan1").val(params.cara_pemunsnahan)
+                $("#petugas1").val(params.nama_petugas)
+            }
+
+            function editdata3(params) {
+                setdatetoday1(3)
+                $("#forminput3").attr("action", "edit_pemusnahanprodukantara");
+                var inputid = '<input type="hidden" name="id" class ="form-control 3" value="' + params
+                    .id_pemusnahanprodukantara + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal3")
+                $("#kode_pemusnahan2").val(params.kode_pemusnahan)
+                $("#namabahanbaku2").val(params.nama_produkantara)
+                $("#no_batch2").val(params.no_batch)
+                $("#asal_produkantara2").val(params.asal_produkantara)
+                $("#jumlah_produkantara2").val(params.jumlah_produkantara)
+                $("#alasan_pemusnahan2").val(params.alasan_pemusnahan)
+                $("#cara_pemusnahan2").val(params.cara_pemunsnahan)
+                $("#petugas2").val(params.nama_petugas)
+            }
+
+            function editdata4(params) {
+                setdatetoday1(4)
+                $("#forminput4").attr("action", "edit_pemusnahanprodukjadi");
+                var inputid = '<input type="hidden" name="id" class ="form-control 4" value="' + params
+                    .id_pemusnahanprodukjadi + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal4")
+                $("#kode_pemusnahan3").val(params.kode_pemusnahan)
+                $("#namabahanbaku3").val(params.nama_produkjadi)
+                $("#no_batch3").val(params.no_batch)
+                $("#asal_produkantara3").val(params.asal_produkjadi)
+                $("#jumlah_produkantara3").val(params.jumlah_produkjadi)
+                $("#alasan_pemusnahan3").val(params.alasan_pemusnahan)
+                $("#cara_pemusnahan3").val(params.cara_pemunsnahan)
+                $("#petugas3").val(params.nama_petugas)
+            }
+        </script>
     </main>
 @endsection

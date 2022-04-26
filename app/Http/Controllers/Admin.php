@@ -1166,6 +1166,30 @@ class Admin extends Controller
 
         return redirect('/penanganan-keluhan');
     }
+    public function edit_penanganankeluhan(Request $req)
+    {
+        penanganankeluhan::where('id_penanganankeluhan', $req['id'])
+            ->update([
+                'kode_keluhan' => $req['kode_keluhan'],
+                'nama_customer' => $req['nama_customer'],
+                'tanggal_keluhan' => $req['tanggal_keluhan'],
+                'keluhan' => $req['keluhan'],
+                'tanggal_ditanggapi' => $req['tanggal_tanggapi_keluhan'],
+                'produk_yang_digunakan' => $req['produk_yang_digunakan'],
+                'penanganan_keluhan' => $req['penanganan_keluhan'],
+                'tindak_lanjut' => $req['tindak_lanjut'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penanganan keluhan")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/penanganan-keluhan');
+    }
     public function tampil_penanganankeluhan()
     {
         $pabrik = Auth::user()->pabrik;
@@ -1213,6 +1237,29 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/penarikan-produk');
+    }
+    public function edit_penarikanproduk(Request $req)
+    {
+        penarikanproduk::where('id_produk_penarikan', $req['id'])
+            ->update([
+                'kode_penarikan' => $req['kode_penarikan'],
+                'tanggal_penarikan' => $req['tanggal'],
+                'nama_distributor' => $req['nama_distributor'],
+                'produk_ditarik' => $req['produk_ditarik'],
+                'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'],
+                'no_batch' => $req['no_batch'],
+                'alasan_penarikan' => $req['alasan_penarikan'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penarikan produk")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/penarikan-produk');
     }
     public function tampil_penarikanproduk()
@@ -1673,6 +1720,27 @@ class Admin extends Controller
 
         return redirect('/kartu-stok');
     }
+    public function edit_kartustockbahan(Request $req)
+    {
+        kartustokbahan::where('id_kartustokbahan', $req['id'])
+            ->update([
+                'nama_bahan' => $req['nama'],
+                'tanggal' => $req['tanggal'],
+                'id_batch' => $req['no_batch'],
+                'jumlah' => $req['jumlah'],
+                'nama_distributor' => $req['nama_distributor'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan baku")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/kartu-stok');
+    }
     public function tambah_kartustokbahankemas(Request $req)
     {
         $id = Auth::user()->id;
@@ -1709,6 +1777,27 @@ class Admin extends Controller
 
         return redirect('/kartu-stok');
     }
+    public function edit_kartustockbahankemas(Request $req)
+    {
+        kartustokbahankemas::where('id_kartustokbahankemas', $req['id'])
+            ->update([
+                'nama_bahankemas' => $req['nama'],
+                'tanggal' => $req['tanggal'],
+                'id_batch' => $req['no_batch'],
+                'jumlah' => $req['jumlah'],
+                'nama_distributor' => $req['nama_distributor'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan kemas")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/kartu-stok');
+    }
     public function tambah_kartustokprodukantara(Request $req)
     {
         $id = Auth::user()->id;
@@ -1743,6 +1832,27 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/kartu-stok');
+    }
+    public function edit_kartustockprodukantara(Request $req)
+    {
+        kartustokprodukantara::where('id_kartustokprodukantara', $req['id'])
+            ->update([
+                'nama_produkantara' => $req['nama'],
+                'tanggal' => $req['tanggal'],
+                'id_batch' => $req['no_batch'],
+                'jumlah' => $req['jumlah'],
+                'nama_distributor' => $req['nama_distributor'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk antara")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/kartu-stok');
     }
     public function tambah_kartustokprodukjadi(Request $req)
@@ -1841,6 +1951,31 @@ class Admin extends Controller
 
         return redirect('/pemusnahan-produk');
     }
+    public function edit_pemusnahanbahan(Request $req)
+    {
+        pemusnahanbahanbaku::where('id_pemusnahanbahan', $req['id'])
+            ->update([
+                'kode_pemusnahan' => $req['kode_pemusnahan'],
+                'tanggal_pemusnahan' => $req['tanggal'],
+                'nama_bahanbaku' => $req['nama_bahanbaku'],
+                'no_batch' => $req['no_batch'],
+                'asal_bahanbaku' => $req['asal_bahanbaku'],
+                'jumlah_bahanbaku' => $req['jumlah_bahanbaku'],
+                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+                'cara_pemunsnahan' => $req['cara_pemusnahan'],
+                'nama_petugas' => $req['petugas'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/pemusnahan-produk');
+    }
     public function tambah_pemusnahanbahankemas(Request $req)
     {
         $id = Auth::user()->id;
@@ -1879,6 +2014,31 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/pemusnahan-produk');
+    }
+    public function edit_pemusnahanbahankemas(Request $req)
+    {
+        Pemusnahanbahankemas::where('id_pemusnahanbahankemas', $req['id'])
+            ->update([
+                'kode_pemusnahan' => $req['kode_pemusnahan'],
+                'tanggal_pemusnahan' => $req['tanggal'],
+                'nama_bahan_kemas' => $req['nama_bahankemas'],
+                'no_batch' => $req['no_batch'],
+                'asal_bahankemas' => $req['asal_bahankemas'],
+                'jumlah_bahankemas' => $req['jumlah_bahankemas'],
+                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+                'cara_pemunsnahan' => $req['cara_pemusnahan'],
+                'nama_petugas' => $req['petugas'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan kemas")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/pemusnahan-produk');
     }
     public function tambah_pemusnahanprodukantara(Request $req)
@@ -1921,6 +2081,31 @@ class Admin extends Controller
 
         return redirect('/pemusnahan-produk');
     }
+    public function edit_pemusnahanprodukantara(Request $req)
+    {
+        Pemusnahanprodukantara::where('id_pemusnahanprodukantara', $req['id'])
+            ->update([
+                'kode_pemusnahan' => $req['kode_pemusnahan'],
+                'tanggal_pemusnahan' => $req['tanggal'],
+                'nama_produkantara' => $req['nama_produkantara'],
+                'no_batch' => $req['no_batch'],
+                'asal_produkantara' => $req['asal_produkantara'],
+                'jumlah_produkantara' => $req['jumlah_produkantara'],
+                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+                'cara_pemunsnahan' => $req['cara_pemusnahan'],
+                'nama_petugas' => $req['petugas'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk antara")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/pemusnahan-produk');
+    }
     public function tambah_pemusnahanprodukjadi(Request $req)
     {
         $id = Auth::user()->id;
@@ -1959,6 +2144,31 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/pemusnahan-produk');
+    }
+    public function edit_pemusnahanprodukjadi(Request $req)
+    {
+        Pemusnahanprodukjadi::where('id_pemusnahanprodukjadi', $req['id'])
+            ->update([
+                'kode_pemusnahan' => $req['kode_pemusnahan'],
+                'tanggal_pemusnahan' => $req['tanggal'],
+                'nama_produkjadi' => $req['nama'],
+                'no_batch' => $req['no_batch'],
+                'asal_produkjadi' => $req['asal_produkantara'],
+                'jumlah_produkjadi' => $req['jumlah_produkantara'],
+                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
+                'cara_pemunsnahan' => $req['cara_pemusnahan'],
+                'nama_petugas' => $req['petugas'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk jadi")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/pemusnahan-produk');
     }
     public function tampil_pemusnahanproduk()
