@@ -45,6 +45,7 @@
 
                                         <th scope="col">Kode Bahan Baku</th>
                                         <th scope="col">Nama Bahan Baku</th>
+                                        <th scope="col">Jumlah</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -78,6 +79,7 @@
                                     <tr>
                                         <th scope="col">Kode Produk Jadi</th>
                                         <th scope="col">Nama Produk Jadi</th>
+                                        <th scope="col">Jumlah</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -111,6 +113,7 @@
                                     <tr>
                                         <th scope="col">Kode Kemasan</th>
                                         <th scope="col">Nama Kemasan</th>
+                                        <th scope="col">Jumlah</th>
                                         <th scope="col">Ruangan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -176,8 +179,8 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk Produk</label>
                                         <div class="col-sm">
-                                            <input type="text" name="produk" class="form-control 3" id="inputEmail3"
-                                                placeholder="Untuk Produk" />
+                                            <input type="text" name="jumlah" class="form-control 3" id="inputEmail3"
+                                                placeholder="Jumlah" />
                                         </div>
                                     </div>
                                     <input type="hidden" id='ambil_tanggal3' class="form-control 3" name="tanggal"
@@ -251,8 +254,8 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis Kemasan</label>
                                         <div class="col-sm">
-                                            <input type="text" name="produk" class="form-control 2" id="inputEmail3"
-                                                placeholder="Jenis Kemasan" />
+                                            <input type="text" name="jumlah" class="form-control 2" id="inputEmail3"
+                                                placeholder="Jumlah" />
                                         </div>
                                     </div>
 
@@ -322,8 +325,8 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                             Produk</label>
                                         <div class="col-sm">
-                                            <input type="text" name="produk" class="form-control 1" id="inputEmail3"
-                                                placeholder="Untuk Produk" />
+                                            <input type="text" name="jumlah" class="form-control 1" id="inputEmail3"
+                                                placeholder="Jumlah" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -346,14 +349,231 @@
         </div>
         <!-- pop up end -->
 
+        <!-- Modal Bahan -->
+        <div class="modal fade" id="modaleditbahan" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Edit Bahan Baku</h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="card mb-4">
+                            <div class="card-header" id='headertgl3'></div>
+                            <div class="card-header">Bahan Baku</div>
+                            <div class="card-body">
+                                <p class="statusMsg"></p>
+                                <form role="form" method="post" action="edit_terimabahan" id='forminput3'>
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan Baku</label>
+                                        <div class="col-sm">
+                                            <input class="form-control 4" list="listnamabahanbaku" type="text" name='nama'
+                                                id="bahannama" autocomplete="off">
+                                            </input>
+                                            <datalist id='listnamabahanbaku'>
+                                                @foreach ($bahanbaku as $row)
+                                                    <option value="{{ $row['bahanbaku_nama'] }}">
+                                                        {{ $row['bahanbaku_nama'] }}
+                                                    </option>
+                                                @endforeach
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Bahan Baku</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="kode" readonly class="form-control 4"
+                                                id="bahankode" placeholder="Kode Bahan Baku" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="bahanjumlah" name="jumlah" class="form-control 4" id="jumlah"
+                                                placeholder="Jumlah" />
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id='ambil_tanggal3' class="form-control 4" name="tanggal"
+                                        placeholder="" />
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="bahanruang" name="ruang" class="form-control 4" id="ruangan"
+                                                placeholder="Ruangan" />
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary" onclick="salert1(4)" href="#"
+                                        style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pop up end -->
+
+        <!-- Modal Produk -->
+        <div class="modal fade" id="modaleditproduk" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Edit Produk</h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="card mb-4">
+                            <div class="card-header" id='headertgl2'></div>
+                            <div class="card-header">Produk</div>
+                            <div class="card-body">
+                                <p class="statusMsg"></p>
+                                <form role="form" method="post" action="edit_terimaproduk" id='forminput2'>
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
+                                        <div class="col-sm">
+                                            <input class="form-control 5" list="listnamaproduk" type="text" name='nama'
+                                                id="produknama" autocomplete="off">
+                                            </input>
+                                            <datalist id='listnamaproduk'>
+                                                @foreach ($produk as $row)
+                                                    <option value="{{ $row['produk_nama'] }}">
+                                                        {{ $row['produk_nama'] }}
+                                                    </option>
+                                                @endforeach
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Produk</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="kode" readonly class="form-control 5" id="produkkode"
+                                                placeholder="Kode Produk" />
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id='ambil_tanggal2' class="form-control 5" name="tanggal"
+                                        placeholder="" />
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="produkjumlah" name="jumlah" class="form-control 5" id="Jumlah"
+                                                placeholder="Jumlah" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="produkruang" name="ruang" class="form-control 5" id="ruangan"
+                                                placeholder="Ruangan" />
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary" onclick="salert1(5)" href="#"
+                                        style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pop up end -->
+
+        <!-- Modal Kemasan -->
+        <div class="modal fade" id="modaleditkemasan" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Edit Kemasan</h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="card mb-4">
+                            <div class="card-header" id='headertgl1'></div>
+                            <div class="card-header">Kemasan</div>
+                            <div class="card-body">
+                                <p class="statusMsg"></p>
+                                <form role="form" method="post" action="edit_terimakemasan" id='forminput1'>
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
+                                        <div class="col-sm">
+                                            <input class="form-control 6" list="listnamakemasan" type="text" name='nama'
+                                                id="kemasannama" autocomplete="off">
+                                            </input>
+                                            <datalist id='listnamakemasan'>
+                                                @foreach ($kemasan as $row)
+                                                    <option value="{{ $row['kemasan_nama'] }}">
+                                                        {{ $row['kemasan_nama'] }}
+                                                    </option>
+                                                @endforeach
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Kemasan</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="kode" readonly class="form-control 6" id="kemasankode"
+                                                 />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
+                                            Produk</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah"
+                                                placeholder="Jumlah" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
+                                        <div class="col-sm">
+                                            <input type="text" id="kemasanruang" name="ruang" class="form-control 6" id="ruangan"
+                                                placeholder="Ruangan" />
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id='ambil_tanggal1' class="form-control 6" name="tanggal"
+                                        placeholder="" />
+                                    <a class="btn btn-primary" onclick="salert1(6)" href="#"
+                                        style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pop up end -->
+
         <script>
             const produks = JSON.parse('<?= json_encode($produk) ?>')
             const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
-            const bahanbakus =  JSON.parse('<?= json_encode($bahanbaku) ?>')
+            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
 
             $("#namabahanbaku").change(function() {
                 console.log(bahanbakus)
-                console.log('produk ' +Array.isArray(bahanbakus) + " "+typeof bahanbakus)
+                console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
                 if (cekname) {
@@ -385,6 +605,80 @@
                 }
             });
 
+            $("#bahannama").change(function() {
+                console.log(bahanbakus)
+                console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
+                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                    document.getElementById('bahannama').value)?.bahanbaku_nama;
+                if (cekname) {
+                    document.getElementById('bahankode').value = bahanbakus.find(bahanbaku => bahanbaku
+                        .bahanbaku_nama ===
+                        document.getElementById('bahannama').value).bahanbaku_kode
+                } else {
+                    document.getElementById('bahankode').value = ""
+                }
+            });
+            $("#kemasannama").change(function() {
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('kemasannama').value)?.kemasan_nama;
+                if (cekname) {
+                    document.getElementById('kemasankode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                        document.getElementById('kemasannama').value).kemasan_kode
+                } else {
+                    document.getElementById('kemasankode').value = ""
+                }
+            });
+            $("#produknama").change(function() {
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('produknama').value)?.produk_nama;
+                if (cekname) {
+                    document.getElementById('produkkode').value = produks.find(produk => produk.produk_nama ===
+                        document.getElementById('produknama').value).produk_kode
+                } else {
+                    document.getElementById('produkkode').value = ""
+                }
+            });
+
+            $(document).on('click', "#editbahan", function() {
+                var nama = $(this).data('nama');
+                var ruangan = $(this).data('ruangan');
+                var jumlah = $(this).data('jumlah');
+                var kode = $(this).data('kode');
+
+                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                $("#bahannama").val(nama);
+                $("#bahanjumlah").val(jumlah);
+                $("#bahanruang").val(ruangan);
+                document.getElementById('bahankode').value = kode;
+            })
+
+            $(document).on('click', "#editproduk", function() {
+                var nama = $(this).data('nama');
+                var ruangan = $(this).data('ruangan');
+                var jumlah = $(this).data('jumlah');
+                var kode = $(this).data('kode');
+
+                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                $("#produknama").val(nama);
+                $("#produkjumlah").val(jumlah);
+                $("#produkruang").val(ruangan);
+                document.getElementById('produkkode').value = kode;
+            })
+
+            $(document).on('click', "#editkemasan", function() {
+                var nama = $(this).data('nama');
+                var ruangan = $(this).data('ruangan');
+                var jumlah = $(this).data('jumlah');
+                var kode = $(this).data('kode');
+
+
+                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                $("#kemasannama").val(nama);
+                $("#kemasanjumlah").val(jumlah);
+                $("#kemasanruang").val(ruangan);
+                document.getElementById('kemasankode').value = kode;
+            })
+
             $(document).ready(function() {
                 $('#tabelproduk').DataTable({
                     processing: true,
@@ -397,6 +691,10 @@
                         {
                             data: 'nama',
                             name: 'nama'
+                        },
+                        {
+                            data: 'jumlah',
+                            name: 'jumlah'
                         },
                         {
                             data: 'ruang',
@@ -425,6 +723,10 @@
                             name: 'nama'
                         },
                         {
+                            data: 'jumlah',
+                            name: 'jumlah'
+                        },
+                        {
                             data: 'ruang',
                             name: 'ruang'
                         },
@@ -449,6 +751,10 @@
                         {
                             data: 'nama',
                             name: 'nama'
+                        },
+                        {
+                            data: 'jumlah',
+                            name: 'jumlah'
                         },
                         {
                             data: 'ruang',

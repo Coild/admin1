@@ -44,7 +44,8 @@ class dataPelaksana extends Controller
                 <input type="hidden" name="induk"
                     value=' . $data->cp_bahan_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
-            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
+            </form>'.'<button type="button" id="editbahan" class="btn btn-success" data-toggle="modal" data-target="#modaleditbahan"
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpbahan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -75,7 +76,8 @@ class dataPelaksana extends Controller
                 <input type="hidden" name="induk"
                     value=' . $data->cp_produk_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
-            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
+            </form>'.'<button type="button" id="editproduk" class="btn btn-success" data-toggle="modal" data-target="#modaleditproduk"
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpproduk">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -110,7 +112,8 @@ class dataPelaksana extends Controller
                 <input type="hidden" name="induk"
                     value=' . $data->cp_kemasan_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
-            </form>'.'<button type="button" class="btn btn-success">Edit</button>';
+            </form>'.'<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpkemasan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '

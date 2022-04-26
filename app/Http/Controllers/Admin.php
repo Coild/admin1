@@ -298,7 +298,7 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'produk' => $req['produk'],
+            'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -334,7 +334,7 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'produk' => $req['produk'],
+            'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -370,7 +370,7 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'produk' => $req['produk'],
+            'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -1545,7 +1545,7 @@ class Admin extends Controller
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+            $bahanbaku = bahanbaku::all();
             $produk = produk::all()->where('user_id', $pabrik);;
             $kemasan = kemasan::all()->where('user_id', $pabrik);;
         }
