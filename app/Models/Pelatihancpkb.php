@@ -11,6 +11,14 @@ class Pelatihancpkb extends Model
     protected $primaryKey = 'id_pelatihancpkb';
 
     protected $fillable = [
+        'kode_pelatihan',
+        'materi_pelatihan',
+        'peserta_pelatihan',
+        'pelatih',
+        'metode_pelatihan',
+        'jadwal_mulai_pelatihan',
+        'jadwal_selesai_pelatihan',
+        'metode_pelatihan',
         'status',
     ];
 }

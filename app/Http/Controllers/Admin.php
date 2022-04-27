@@ -1282,6 +1282,50 @@ class Admin extends Controller
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
+
+    public function edit_pelatihanhiginitas(Request $req)
+    {
+        // dd($req);
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pelatihan' => $req['kode_pelatihan'],
+            'materi_pelatihan' => $req['materi_pelatihan'],
+            'peserta_pelatihan' => $req['peserta_pelatihan'],
+            'pelatih' => $req['pelatih'],
+            'metode_pelatihan' => $req['metode_pelatihan'],
+            'jadwal_mulai_pelatihan' => $req['mulai'],
+            'jadwal_berakhir_pelatihan' => $req['berakhir'],
+            'metode_penilaian' => $req['metode_penilaian'],
+        ];
+
+        $nomer = programpelatihan::all()->where('id_programpelatihan',$id)->first()->update($hasil);
+
+        return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+    public function edit_pelatihancpkb(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pelatihan' => $req['kode_pelatihan'],
+            'materi_pelatihan' => $req['materi_pelatihan'],
+            'peserta_pelatihan' => $req['peserta_pelatihan'],
+            'pelatih' => $req['pelatih'],
+            'metode_pelatihan' => $req['metode_pelatihan'],
+            'jadwal_mulai_pelatihan' => $req['mulai'],
+            'jadwal_berakhir_pelatihan' => $req['berakhir'],
+            'metode_penilaian' => $req['metode_penilaian'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb',$id)->first()->update($hasil);
+
+        return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
         $pabrik = Auth::user()->pabrik;
