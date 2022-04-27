@@ -17,8 +17,8 @@ class programpelatihan extends Model
         'pelatih',
         'metode_pelatihan',
         'jadwal_mulai_pelatihan',
-        'jadwal_selesai_pelatihan',
-        'metode_pelatihan',
+        'jadwal_berakhir_pelatihan',
+        'metode_penilaian',
         'status',
     ];
 }

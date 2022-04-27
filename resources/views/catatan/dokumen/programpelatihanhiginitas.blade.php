@@ -445,7 +445,7 @@
                         <div class="card-header" id='headertgl1'>
                         </div>
                         <p class="statusMsg"></p>
-                        <form role="form" id="forminput1" action="edit_pelatihanhiginitas" method="post">
+                        <form role="form" id="forminput3" action="edit_pelatihanhiginitas" method="post">
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" id='ambil_tanggal1'>
@@ -550,7 +550,7 @@
                         <div class="card-header" id='headertgl2'>
                         </div>
                         <p class="statusMsg"></p>
-                        <form role="form" id="forminput2" action="edit_pelatihancpkb" method="post">
+                        <form role="form" id="forminput4" action="edit_pelatihancpkb" method="post">
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" id='ambil_tanggal2'>

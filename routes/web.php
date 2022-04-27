@@ -248,6 +248,9 @@ Route::group(['middleware' => 'auth'], function () {
         //yusril
         Route::post('tambah_pelatihanhiginitas', [Admin::class, 'tambah_pelatihanhiginitas'])->name('tambah_pelatihanhiginitas');
         Route::post('tambah_pelatihancpkb', [Admin::class, 'tambah_pelatihancpkb'])->name('tambah_pelatihancpkb');
+        Route::post('edit_pelatihanhiginitas', [Admin::class, 'edit_pelatihanhiginitas'])->name('edit_pelatihanhiginitas');
+        Route::post('edit_pelatihancpkb', [Admin::class, 'edit_pelatihancpkb'])->name('edit_pelatihancpkb');
+
         Route::post('tambah_kartustokbahan', [Admin::class, 'tambah_kartustokbahan'])->name('tambah_kartustokbahan');
         Route::post('tambah_kartustokprodukantara', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
         Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
@@ -315,6 +318,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk'])->name('penarikan-produk');
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
         Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
+        Route::post('detil-alat', [Admin::class, 'tampil_detilalat'])->name('detilalat');
         Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk'])->name('pelulusan-produk');
         Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
         Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');

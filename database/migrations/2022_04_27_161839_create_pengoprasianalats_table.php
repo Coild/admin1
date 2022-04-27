@@ -16,10 +16,6 @@ class CreatePengoprasianalatsTable extends Migration
 			$table->string('nama_alat', 200);
 			$table->string('tipe_merek', 200);
 			$table->string('ruang', 200);
-			$table->date('mulai')->nullable();
-			$table->date('selesai')->nullable();
-			$table->string('oleh', 200);
-			$table->string('ket', 200);
 			$table->integer('pabrik', false);
 			$table->tinyInteger('status', 0)->unsigned();
 			$table->integer("user_id", false);
