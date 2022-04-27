@@ -937,12 +937,15 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/logo/';
-        $file->move($tujuan_upload, $nama);
+        $ext = pathinfo($nama, PATHINFO_EXTENSION);
+        $file->move($tujuan_upload, session('pabrik').'.'.$ext);
         $id = Auth::user()->pabrik;
+
+
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'alamat' => $req['alamat'],
             'no_hp' => $req['telp'],
-            'logo' => $nama,
+            'logo' =>  session('pabrik').'.'.$ext,
         ]);
 
         return redirect('/setting');
