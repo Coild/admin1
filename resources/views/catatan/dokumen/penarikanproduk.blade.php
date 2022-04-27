@@ -52,7 +52,7 @@
                                                             Penarikan</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="kode_penarikan" class="form-control"
-                                                                id="inputEmail3" placeholder="Kode Penarikan" />
+                                                                id="kode_penarikan" placeholder="Kode Penarikan" />
                                                         </div>
                                                     </div>
 
@@ -64,7 +64,7 @@
                                                             Distributor</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="nama_distributor"
-                                                                class="form-control" id="inputEmail3"
+                                                                class="form-control" id="nama_distributor"
                                                                 placeholder="Nama Distributor" />
                                                         </div>
                                                     </div>
@@ -74,7 +74,7 @@
                                                             Ditarik</label>
                                                         <div class="col-sm">
                                                             <input type="text" list="listproduk" style="height: 35px;"
-                                                                id='nama_bahankau' class="form-control 3"
+                                                                id='produkditarik' class="form-control 3"
                                                                 name="produk_ditarik">
                                                             </input>
                                                             <datalist id="listproduk">
@@ -92,7 +92,7 @@
                                                             Produk Ditarik</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="jumlah_produk_ditarik"
-                                                                class="form-control" id="inputEmail3"
+                                                                class="form-control" id="jumlah_produk_ditarik"
                                                                 placeholder="Jumlah Produk Ditarik" />
                                                         </div>
                                                     </div>
@@ -102,7 +102,7 @@
                                                             Batch</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="no_batch" class="form-control"
-                                                                id="inputEmail3" placeholder="No Batch" />
+                                                                id="no_batch" placeholder="No Batch" />
                                                         </div>
                                                     </div>
 
@@ -111,7 +111,7 @@
                                                             Penarikan</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="alasan_penarikan"
-                                                                class="form-control" id="inputEmail3"
+                                                                class="form-control" id="alasan_penarikan"
                                                                 placeholder="Alasan Penarikan" />
                                                         </div>
                                                     </div>
@@ -167,11 +167,8 @@
                                     } ?></td>
                                     @if (Auth::user()->level != 2)
                                         <td>
-                                            <form action="#">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="" />
-                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                            </form>
+                                            <a href="#" type="submit" data-toggle="modal" data-target="#modalForm"
+                                                class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
                                         </td>
                                     @else
                                         <td>
@@ -190,5 +187,20 @@
                 </div>
             </div>
         </div>
+        <script>
+            function editdata(params) {
+                setdatetoday()
+                $("#forminput").attr("action", "edit_penarikan");
+                var inputid = '<input type="hidden" name="id" class ="form-control" value="' + params
+                    .id_produk_penarikan + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal")
+                $("#kode_penarikan").val(params.kode_penarikan)
+                $("#nama_distributor").val(params.nama_distributor)
+                $("#produkditarik").val(params.produk_ditarik)
+                $("#jumlah_produk_ditarik").val(params.jumlah_produk_ditarik)
+                $("#no_batch").val(params.no_batch)
+                $("#alasan_penarikan").val(params.alasan_penarikan)
+            }
+        </script>
     </main>
 @endsection

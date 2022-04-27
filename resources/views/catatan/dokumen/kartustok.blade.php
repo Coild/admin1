@@ -97,7 +97,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="no_batch"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -107,7 +107,7 @@
                                                                             class="col-sm-3 col-form-label">Jumlah</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="jumlah"
                                                                                 placeholder="Jumlah" />
                                                                         </div>
                                                                     </div>
@@ -118,7 +118,7 @@
                                                                             Distributor</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
-                                                                                class="form-control 1" id="inputEmail3"
+                                                                                class="form-control 1" id="nama_distributor"
                                                                                 placeholder="Nama Distributor" />
                                                                         </div>
                                                                     </div>
@@ -168,11 +168,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm4" class="btn btn-primary"
+                                                                onclick="editdata1({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -243,7 +241,7 @@
                                                                         <div class="col-sm">
                                                                             <input class="form-control 2"
                                                                                 list="listnamakemas" type="text" name='nama'
-                                                                                id="namabahanbaku" autocomplete="off">
+                                                                                id="namabahanbaku1" autocomplete="off">
                                                                             </input>
                                                                             <datalist id='listnamakemas'>
                                                                                 @foreach ($kemasan as $row)
@@ -266,7 +264,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2" id="no_batch1"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -276,7 +274,7 @@
                                                                             class="col-sm-3 col-form-label">Jumlah</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2" id="jumlah1"
                                                                                 placeholder="Jumlah" />
                                                                         </div>
                                                                     </div>
@@ -287,7 +285,8 @@
                                                                             Distributor</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
-                                                                                class="form-control 2" id="inputEmail3"
+                                                                                class="form-control 2"
+                                                                                id="nama_distributor1"
                                                                                 placeholder="Nama Distributor" />
                                                                         </div>
                                                                     </div>
@@ -337,11 +336,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm5" class="btn btn-primary"
+                                                                onclick="editdata2({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -412,7 +409,7 @@
                                                                         <div class="col-sm">
                                                                             <input class="form-control 3"
                                                                                 list="listnamaprodukantara" type="text"
-                                                                                name='nama' id="namabahanbaku"
+                                                                                name='nama' id="namabahanbaku2"
                                                                                 autocomplete="off">
                                                                             </input>
                                                                             <datalist id='listnamaprodukantara'>
@@ -436,7 +433,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 3" id="inputEmail3"
+                                                                                class="form-control 3" id="no_batch2"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -446,7 +443,7 @@
                                                                             class="col-sm-3 col-form-label">Jumlah</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah"
-                                                                                class="form-control 3" id="inputEmail3"
+                                                                                class="form-control 3" id="jumlah2"
                                                                                 placeholder="Jumlah" />
                                                                         </div>
                                                                     </div>
@@ -457,7 +454,8 @@
                                                                             Distributor</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
-                                                                                class="form-control 3" id="inputEmail3"
+                                                                                class="form-control 3"
+                                                                                id="nama_distributor2"
                                                                                 placeholder="Nama Distributor" />
                                                                         </div>
                                                                     </div>
@@ -507,12 +505,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="terimastokantara">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch"
-                                                                    value="{{ $row['id_batch'] }}" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm3" class="btn btn-primary"
+                                                                onclick="editdata3({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -705,5 +700,42 @@
                 </div>
             </div>
         </div>
+        <script>
+            function editdata1(params) {
+                setdatetoday1(1)
+                $("#forminput1").attr("action", "edit_kartustockbahan");
+                var inputid = '<input type="hidden" name="id" class ="form-control 1" value="' + params
+                    .id_kartustokbahan + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal1")
+                $("#namabahanbaku").val(params.nama_bahan)
+                $("#no_batch").val(params.id_batch)
+                $("#jumlah").val(params.jumlah)
+                $("#nama_distributor").val(params.nama_distributor)
+            }
+
+            function editdata2(params) {
+                setdatetoday1(2)
+                $("#forminput2").attr("action", "edit_kartustockbahankemas");
+                var inputid = '<input type="hidden" name="id" class ="form-control 2" value="' + params
+                    .id_kartustokbahankemas + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal2")
+                $("#namabahanbaku1").val(params.nama_bahankemas)
+                $("#no_batch1").val(params.id_batch)
+                $("#jumlah1").val(params.jumlah)
+                $("#nama_distributor1").val(params.nama_distributor)
+            }
+
+            function editdata3(params) {
+                setdatetoday1(3)
+                $("#forminput3").attr("action", "edit_kartustockprodukantara");
+                var inputid = '<input type="hidden" name="id" class ="form-control 3" value="' + params
+                    .id_kartustokprodukantara + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal3")
+                $("#namabahanbaku2").val(params.nama_produkantara)
+                $("#no_batch2").val(params.id_batch)
+                $("#jumlah2").val(params.jumlah)
+                $("#nama_distributor2").val(params.nama_distributor)
+            }
+        </script>
     </main>
 @endsection
