@@ -127,6 +127,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Jenis Kemasan</th>
+                                    <th scope="col">Kode Kemasan</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -139,6 +140,7 @@
                                     <tr>
                                         <th scope="row">{{ $i }}</th>
                                         <td>{{ $row['kemasan_nama'] }}</td>
+                                        <td>{{ $row['kemasan_kode'] }}</td>
                                         <td>
                                             <a href="#"
                                                 onclick="hapussetting({msg: 'Apakah Anda Yakin Hapus Kemasan Ini?',id:{{ $row['kemasan_id'] }},url:'hapus_kemasan'})"
@@ -182,7 +184,7 @@
                                 <?php $i = 0; ?>
                                 @foreach ($list_bahanbaku as $row)
                                     <?php $i++;
-                                    
+
                                     ?>
                                     <tr>
                                         <th scope="row">{{ $i }}</th>
@@ -314,7 +316,12 @@
                         <div class="form-group">
                             <label for="inputName">Kemasan</label>
                             <input type="text" name="nama" class="form-control 2" id="inputName"
-                                placeholder="Nama Produk" />
+                                placeholder="Nama kemasan" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Kemasan</label>
+                            <input type="text" name="kode" class="form-control 2" id="inputName"
+                                placeholder="Kode Kemasan" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">

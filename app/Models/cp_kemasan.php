@@ -11,5 +11,9 @@ class cp_kemasan extends Model
     protected $primaryKey = 'cp_kemasan_id';
     protected $fillable = [
         'status',
+        'jumlah',
+        'ruang',
+        'nama',
+        'kode'
     ];
 }

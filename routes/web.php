@@ -219,12 +219,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
         Route::post('/tambah_terimakemasan', [Admin::class, 'tambah_terimakemasan'])->name('tambah_terimakemasan');
 
+        Route::post('/edit_terimabahan', [Admin::class, 'edit_terimabahan'])->name('edit_terimabahan');
+        Route::post('/edit_terimaproduk', [Admin::class, 'edit_terimaproduk'])->name('edit_terimaproduk');
+        Route::post('/edit_terimakemasan', [Admin::class, 'edit_terimakemasan'])->name('edit_terimakemasan');
+
         Route::post('/tambah_penerimaanbbmasuk', [Admin::class, 'tambah_penerimaanbbmasuk'])->name('tambah_penerimaanBBmasuk');
         Route::post('/tambah_penerimaanbbkeluar', [Admin::class, 'tambah_penerimaanbbkeluar'])->name('tambah_penerimaanbbkeluar');
         Route::post('/tambah_penerimaanprdukmasuk', [Admin::class, 'tambah_penerimaanprdukmasuk'])->name('tambah_penerimaanprdukmasuk');
         Route::post('/tambah_penerimaanprodukkeluar', [Admin::class, 'tambah_penerimaanprodukkeluar'])->name('tambah_penerimaanprodukkeluar');
         Route::post('/tambah_penerimaakemasanmasuk', [Admin::class, 'tambah_penerimaakemasanmasuk'])->name('tambah_penerimaakemasanmasuk');
         Route::post('/tambah_penerimaankemasankeluar', [Admin::class, 'tambah_penerimaankemasankeluar'])->name('tambah_penerimaankemasankeluar');
+
+        Route::post('/edit_penerimaanbbmasuk', [Admin::class, 'edit_penerimaanbbmasuk'])->name('edit_penerimaanBBmasuk');
+        Route::post('/edit_penerimaanbbkeluar', [Admin::class, 'edit_penerimaanbbkeluar'])->name('edit_penerimaanbbkeluar');
+        Route::post('/edit_penerimaanprdukmasuk', [Admin::class, 'edit_penerimaanprdukmasuk'])->name('edit_penerimaanprdukmasuk');
+        Route::post('/edit_penerimaanprodukkeluar', [Admin::class, 'edit_penerimaanprodukkeluar'])->name('edit_penerimaanprodukkeluar');
+        Route::post('/edit_penerimaakemasanmasuk', [Admin::class, 'edit_penerimaakemasanmasuk'])->name('edit_penerimaakemasanmasuk');
+        Route::post('/edit_penerimaankemasankeluar', [Admin::class, 'edit_penerimaankemasankeluar'])->name('edit_penerimaankemasankeluar');
 
         //higi dansani
 
@@ -244,9 +255,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
         Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
         Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang'])->name('tambah_ruangtimbang');
+
         Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
         Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');
         Route::post('tambah_contohkemasan', [Admin::class, 'tambah_contohkemasan'])->name('tambah_contohkemasan');
+
+        Route::post('edit_contohbahan', [Admin::class, 'edit_contohbahan'])->name('edit_contohbahan');
+        Route::post('edit_contohproduk', [Admin::class, 'edit_contohproduk'])->name('edit_contohproduk');
+        Route::post('edit_contohkemasan', [Admin::class, 'edit_contohkemasan'])->name('edit_contohkemasan');
+
         Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
         Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
         Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
@@ -279,7 +296,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['karyawan']], function () {
         //tampil catatan
         Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
-        Route::get('/detilterimabbid/{jen}/{induk}', [Admin::class, 'tampil_detilbbid']);
+        Route::get('/detilterimabbid', [Admin::class, 'tampil_detilbbid']);
         Route::post('/detilterimabb', [Admin::class, 'tampil_detilbb'])->name('detilBB');
         Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid'])->name('detil_batch');
         Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');

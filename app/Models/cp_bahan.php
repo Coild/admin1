@@ -11,5 +11,9 @@ class cp_bahan extends Model
     protected $primaryKey = 'cp_bahan_id';
     protected $fillable = [
         'status',
+        'jumlah',
+        'ruang',
+        'nama',
+        'kode'
     ];
 }

@@ -29,10 +29,16 @@ class dataPelaksana extends Controller
         }else {
             $data = cp_bahan::all()->where('pabrik',$id);
         }
-        return DataTables::of($data)->editColumn('status', function ($data_siswa) {
-            if ($data_siswa->status == 0) {
+        return DataTables::of($data)->editColumn('status', function ($data) {
+            if ($data->status == 0) {
                 return 'Diajukan';
-            } elseif ($data_siswa->status == 1) {
+            } elseif ($data->status == 1) {
+                return 'Diterima';
+            }
+        })->editColumn('status', function ($data) {
+            if ($data->status == 0) {
+                return 'Diajukan';
+            } elseif ($data->status == 1) {
                 return 'Diterima';
             }
         })->addColumn('action', function ($data) {
@@ -45,7 +51,7 @@ class dataPelaksana extends Controller
                     value=' . $data->cp_bahan_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
             </form>'.'<button type="button" id="editbahan" class="btn btn-success" data-toggle="modal" data-target="#modaleditbahan"
-            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.' data-cpid='.$data->cp_bahan_id.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpbahan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -67,7 +73,13 @@ class dataPelaksana extends Controller
         }else {
             $data = cp_produk::all()->where('pabrik',$id);
         }
-        return DataTables::of($data)->addColumn('action', function ($data) {
+        return DataTables::of($data)->editColumn('status', function ($data) {
+            if ($data->status == 0) {
+                return 'Diajukan';
+            } elseif ($data->status == 1) {
+                return 'Diterima';
+            }
+        })->addColumn('action', function ($data) {
 
             if(Auth::user()->level != 2)   {
                 return '<form method="post" class="float-left mr-1" action="detilterimabb">
@@ -77,7 +89,7 @@ class dataPelaksana extends Controller
                     value=' . $data->cp_produk_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
             </form>'.'<button type="button" id="editproduk" class="btn btn-success" data-toggle="modal" data-target="#modaleditproduk"
-            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.' data-cpid='.$data->cp_produk_id.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpproduk">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -98,10 +110,10 @@ class dataPelaksana extends Controller
         }else {
             $data = cp_kemasan::all()->where('pabrik',$id);
         }
-        return DataTables::of($data)->editColumn('status', function ($data_siswa) {
-            if ($data_siswa->status == 0) {
+        return DataTables::of($data)->editColumn('status', function ($data) {
+            if ($data->status == 0) {
                 return 'Diajukan';
-            } elseif ($data_siswa->status == 1) {
+            } elseif ($data->status == 1) {
                 return 'Diterima';
             }
         })->addColumn('action', function ($data) {
@@ -113,7 +125,7 @@ class dataPelaksana extends Controller
                     value=' . $data->cp_kemasan_id . ' />
                 <button type="submit" class="btn btn-primary">Lihat</button>
             </form>'.'<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
-            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'>Edit</button>';
+            data-nama="'.$data->nama.'" data-ruangan='.$data->ruang.' data-jumlah='.$data->jumlah.' data-kode='.$data->kode.'data-cpid='.$data->cp_kemasan_id.'>Edit</button>';
             } else {
                 return '<form method="post" action="terima_cpkemasan">
             ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
