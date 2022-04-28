@@ -1,7 +1,9 @@
 function salert() {
     const mycomp = document.getElementsByClassName("form-control");
     var valid = false;
+    console.log(mycomp[mycomp.length-1]);
     for (i = 0; i < mycomp.length; i++) {
+        console.log(mycomp[i].value);
         if (mycomp[i].value == "") {
             valid = true;
             break;
@@ -240,6 +242,7 @@ function salert1(params) {
 function setdatetoday() {
     const d = new Date();
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
+    console.log(today);
     document.getElementById("ambil_tanggal").value = today;
     document.getElementById("headertgl").innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;

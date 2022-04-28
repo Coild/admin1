@@ -1541,10 +1541,6 @@ class Admin extends Controller
             'nama_alat' => $req['nama_alat'],
             'tipe_merek' => $req['tipemerek'],
             'ruang' => $req['ruang'],
-            'mulai' => $req['mulai'],
-            'selesai' => $req['selesai'],
-            'oleh' => $req['oleh'],
-            'ket' => $req['ket'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -1580,12 +1576,12 @@ class Admin extends Controller
             'selesai' => $req['selesai'],
             'oleh' => $req['oleh'],
             'ket' => $req['ket'],
-            'induk' => $induk,
+            'induk' => session()->get('idoperasi'),
         ];
 
         $nomer = detilalat::insertGetId($hasil);
 
-        return redirect('/detilalat');
+        return redirect('/detil-alat');
     }
     public function tampil_pengorasianalat()
     {
@@ -1596,11 +1592,19 @@ class Admin extends Controller
             $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
     }
-    public function tampil_detilalat()
+    public function tampil_detilalat(Request $req)
     {
         $pabrik = Auth::user()->pabrik;
-        
-        return view('catatan.dokumen.detilalat');
+        session(['idoperasi' => $req['induk']]);
+        $data = detilalat::all()->where('induk', $req['induk']);
+        return view('catatan.dokumen.detilalat',['data' => $data]);
+    }
+
+    public function tampil_detilalatid()
+    {
+        $pabrik = Auth::user()->pabrik;
+        $data = detilalat::all()->where('induk', session()->get('idoperasi'));
+        return view('catatan.dokumen.detilalat',['data' => $data]);
     }
 
     public function tambah_pelulusan(Request $req)
@@ -2687,9 +2691,10 @@ class Admin extends Controller
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-            $produk = produk::all()->where('user_id', Auth::user()->pabrik);
-            $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
+            $produk = produk::all();//->where('user_id', Auth::user()->pabrik);
+            $kemasan = kemasan::all();//->where('user_id', Auth::user()->pabrik);
         }
+        // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
 }

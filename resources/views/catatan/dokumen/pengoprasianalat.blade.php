@@ -34,7 +34,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form method="post" action="tambah_operasialat" id='forminput'>
+                                    <form method="post" action="tambah_operasialat" id='forminput2'>
                                         <div class="card mb-4">
                                             <div class="card-header" id="headertgl">
 
@@ -52,37 +52,37 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
                                                         Sesuai PROTAP</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="pelaksanaan_pob" class="form-control" id="inputEmail3" placeholder="NO PROTAP" />
+                                                        <input type="text" name="pelaksanaan_pob" class="form-control 2" id="inputEmail3" placeholder="NO PROTAP" />
                                                     </div>
                                                 </div>
 
-                                                <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
+                                                <input type="hidden" id='ambil_tanggal' class="form-control 2" name="tanggal" placeholder="" />
 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                         Alat</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="nama_alat" class="form-control" id="inputEmail3" placeholder="Nama Alat" />
+                                                        <input type="text" name="nama_alat" class="form-control 2" id="inputEmail3" placeholder="Nama Alat" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Tipe/Merek</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="tipemerek" class="form-control" id="inputEmail3" placeholder="Tipe/Merek" />
+                                                        <input type="text" name="tipemerek" class="form-control 2" id="inputEmail3" placeholder="Tipe/Merek" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Ruang</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="ruang" class="form-control" id="inputEmail3" placeholder="Ruang" />
+                                                        <input type="text" name="ruang" class="form-control 2" id="inputEmail3" placeholder="Ruang" />
                                                     </div>
                                                 </div>
 
                                             </div>
 
-                                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                            <a class="btn btn-primary" onclick="salert1(2)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                     </form>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 @else
                                 <form method="post" action="detil-alat" class="float-left mr-2">
                                     @csrf
-                                    <input type="hidden" name="nobatch" value="" />
+                                    <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
                                     <button type="submit" class="btn btn-primary">lihat</button>
                                 </form>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat">edit</button>
@@ -161,7 +161,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form method="post" action="tambah_operasialat" id='forminput'>
+                <form method="post" action="tambah_operasialat" id='forminput1'>
                     <div class="card mb-4">
                         <div class="card-header" id='headertgl'></div>
                         <div class="card-header">
@@ -176,37 +176,37 @@
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
                                     Sesuai PROTAP</label>
                                 <div class="col-sm">
-                                    <input type="text" name="pelaksanaan_pob" class="form-control" id="inputEmail3" placeholder="NO PROTAP" />
+                                    <input type="text" name="pelaksanaan_pob" class="form-control 1" id="inputEmail3" placeholder="NO PROTAP" />
                                 </div>
                             </div>
 
-                            <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
+                            {{-- <input type="hidden" id='ambil_tanggal' class="form-control 1" name="tanggal" placeholder="" /> --}}
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                     Alat</label>
                                 <div class="col-sm">
-                                    <input type="text" name="nama_alat" class="form-control" id="inputEmail3" placeholder="Nama Alat" />
+                                    <input type="text" name="nama_alat" class="form-control 1" id="inputEmail3" placeholder="Nama Alat" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Tipe/Merek</label>
                                 <div class="col-sm">
-                                    <input type="text" name="tipemerek" class="form-control" id="inputEmail3" placeholder="Tipe/Merek" />
+                                    <input type="text" name="tipemerek" class="form-control 1" id="inputEmail3" placeholder="Tipe/Merek" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Ruang</label>
                                 <div class="col-sm">
-                                    <input type="text" name="ruang" class="form-control" id="inputEmail3" placeholder="Ruang" />
+                                    <input type="text" name="ruang" class="form-control 1" id="inputEmail3" placeholder="Ruang" />
                                 </div>
                             </div>
 
                         </div>
 
-                        <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                        <a class="btn btn-primary" onclick="salert1(1)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                 </form>
             </div>
         </div>

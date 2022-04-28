@@ -128,6 +128,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimaambilprodukjadi', [pjt::class, 'terima_ambilprodukjadi'])->name('terima_ambilprodukjadi');
         Route::post('/terimaambilprodukantara', [pjt::class, 'terima_ambilprodukantara'])->name('terima_ambilprodukantara');
 
+        Route::post('/terima_kemasbatch', [pjt::class, 'terima_kemasbatch'])->name('terima_kemasbatch');
+
         Route::post('/terima_cpbahan', [pjt::class, 'terima_cp_bahan'])->name('terima_cp_bahan');
         Route::post('/terima_cpproduk', [pjt::class, 'terima_cp_produk'])->name('terima_cp_produk');
         Route::post('/terima_cpkemasan', [pjt::class, 'terima_cp_kemasan'])->name('terima_cp_kemasan');
@@ -269,6 +271,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
         Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
+        Route::post('tambah_detilalat', [Admin::class, 'tambah_detilalat'])->name('tambah_detilalat');
         Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
         Route::post('edit_pemusnahanbahan', [Admin::class, 'edit_pemusnahanbahan'])->name('edit_pemusnahanbahan');
         Route::post('tambah_pemusnahanbahankemas', [Admin::class, 'tambah_pemusnahanbahankemas'])->name('tambah_pemusnahanbahankemas');
@@ -319,6 +322,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
         Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
         Route::post('detil-alat', [Admin::class, 'tampil_detilalat'])->name('detilalat');
+        Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');
         Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk'])->name('pelulusan-produk');
         Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
         Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');

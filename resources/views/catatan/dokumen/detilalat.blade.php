@@ -3,7 +3,6 @@
     <title>Detail  Pengoprasian Alat Utama</title>
 @endsection
 @section('content')
-<?php $data =[];  ?>
     <main>
         <div class="container-fluid px-4">
             <h1>Catatan Pengoprasian Alat Utama</h1>
@@ -36,7 +35,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_operasialat" id='forminput'>
+                                        <form method="post" action="tambah_detilalat" id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
@@ -52,7 +51,7 @@
                                                                 class="col-sm-3 col-form-label">Mulai</label>
                                                             <div class="col-sm">
                                                                 <input type="datetime-local" name="mulai"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control 1" id="inputEmail3"
                                                                     placeholder="Tipe/Merek" />
                                                             </div>
                                                         </div>
@@ -62,7 +61,7 @@
                                                                 class="col-sm-3 col-form-label">selesai</label>
                                                             <div class="col-sm">
                                                                 <input type="datetime-local" name="selesai"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control 1" id="inputEmail3"
                                                                     placeholder="Tipe/Merek" />
                                                             </div>
                                                         </div>
@@ -71,7 +70,7 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Oleh</label>
                                                             <div class="col-sm">
-                                                                <input type="text" name="oleh" class="form-control"
+                                                                <input type="text" name="oleh" class="form-control 1"
                                                                     id="inputEmail3" placeholder="Oleh" />
                                                             </div>
                                                         </div>
@@ -80,14 +79,14 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Keterangan</label>
                                                             <div class="col-sm">
-                                                                <input type="text" name="ket" class="form-control"
+                                                                <input type="text" name="ket" class="form-control 1"
                                                                     id="inputEmail3" placeholder="Keterangan" />
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
@@ -106,7 +105,9 @@
                                 <th scope="col">Selesai</th>
                                 <th scope="col">Oleh</th>
                                 <th scope="col">Keterangan</th>
+                                @if(Auth::user()->level == 3)
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -118,23 +119,11 @@
                                     <td>{{ $row['selesai'] }}</td>
                                     <td>{{ $row['oleh'] }}</td>
                                     <td>{{ $row['ket'] }}</td>
+                                    @if(Auth::user()->level == 3)
                                     <td>
-
-                                        @if (Auth::user()->level == 2)
-                                            <form method="post" action="terimaoperasialat" >
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                                <button type="submit" class="btn btn-primary">terima</button>
-                                            </form>
-                                        @else
-                                            <form method="post" action="#" class="float-left mr-2">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="" />
-                                                <button type="submit" class="btn btn-primary">lihat</button>
-                                            </form>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" >edit</button>
-                                        @endif
+                                        <button class="btn btn-primary">Edit</button>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -158,7 +147,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_operasialat" id='forminput'>
+                                        <form method="post" action="tambah_detilalat" id='forminput2'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id="headertgl">
 
@@ -166,7 +155,7 @@
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                
+
                                                 <div class="card mb-4">
                                                     <div class="card-header">
                                                         <i class="fas fa-table me-1"></i>
@@ -178,7 +167,7 @@
                                                                 class="col-sm-3 col-form-label">Mulai</label>
                                                             <div class="col-sm">
                                                                 <input type="datetime-local" name="mulai"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control 2" id="inputEmail3"
                                                                     placeholder="Tipe/Merek" />
                                                             </div>
                                                         </div>
@@ -188,7 +177,7 @@
                                                                 class="col-sm-3 col-form-label">selesai</label>
                                                             <div class="col-sm">
                                                                 <input type="datetime-local" name="selesai"
-                                                                    class="form-control" id="inputEmail3"
+                                                                    class="form-control 2" id="inputEmail3"
                                                                     placeholder="Tipe/Merek" />
                                                             </div>
                                                         </div>
@@ -197,7 +186,7 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Oleh</label>
                                                             <div class="col-sm">
-                                                                <input type="text" name="oleh" class="form-control"
+                                                                <input type="text" name="oleh" class="form-control 2"
                                                                     id="inputEmail3" placeholder="Oleh" />
                                                             </div>
                                                         </div>
@@ -206,14 +195,14 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Keterangan</label>
                                                             <div class="col-sm">
-                                                                <input type="text" name="ket" class="form-control"
+                                                                <input type="text" name="ket" class="form-control 2"
                                                                     id="inputEmail3" placeholder="Keterangan" />
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <a class="btn btn-primary" onclick="salert1(2)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
