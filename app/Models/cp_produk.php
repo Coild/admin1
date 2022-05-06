@@ -11,5 +11,9 @@ class cp_produk extends Model
     protected $primaryKey = 'cp_produk_id';
     protected $fillable = [
         'status',
+        'jumlah',
+        'ruang',
+        'nama',
+        'kode'
     ];
 }

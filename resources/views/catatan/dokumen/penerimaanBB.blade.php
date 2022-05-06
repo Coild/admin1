@@ -365,9 +365,10 @@
                             <div class="card-header">Bahan Baku</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_terimabahan" id='forminput3'>
+                                <form role="form" method="post" action="edit_terimabahan" id='forminput4'>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <input type="hidden" name="cpid" id="cpbahan" />
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan Baku</label>
                                         <div class="col-sm">
@@ -400,7 +401,7 @@
                                                 placeholder="Jumlah" />
                                         </div>
                                     </div>
-                                    <input type="hidden" id='ambil_tanggal3' class="form-control 4" name="tanggal"
+                                    <input type="hidden" id='ambil_tanggal3' class="tanggal" name="tanggal"
                                         placeholder="" />
 
                                     <div class="form-group row">
@@ -437,10 +438,10 @@
                             <div class="card-header">Produk</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_terimaproduk" id='forminput2'>
+                                <form role="form" method="post" action="edit_terimaproduk" id='forminput5'>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
+                                    <input type="hidden" name="cpid" id="cpproduk" />
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                         <div class="col-sm">
@@ -465,7 +466,7 @@
                                                 placeholder="Kode Produk" />
                                         </div>
                                     </div>
-                                    <input type="hidden" id='ambil_tanggal2' class="form-control 5" name="tanggal"
+                                    <input type="hidden" id='ambil_tanggal' class="tanggal" name="tanggal"
                                         placeholder="" />
 
                                     <div class="form-group row">
@@ -510,9 +511,10 @@
                             <div class="card-header">Kemasan</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_terimakemasan" id='forminput1'>
+                                <form role="form" method="post" action="edit_terimakemasan" id='forminput6  '>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <input type="hidden" name="cpid" id="cpkemasan" />
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
@@ -553,7 +555,7 @@
                                                 placeholder="Ruangan" />
                                         </div>
                                     </div>
-                                    <input type="hidden" id='ambil_tanggal1' class="form-control 6" name="tanggal"
+                                    <input type="hidden" id='ambil_tanggal1' class="tanggal" name="tanggal"
                                         placeholder="" />
                                     <a class="btn btn-primary" onclick="salert1(6)" href="#"
                                         style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
@@ -644,12 +646,14 @@
                 var ruangan = $(this).data('ruangan');
                 var jumlah = $(this).data('jumlah');
                 var kode = $(this).data('kode');
+                var cpid = $(this).data('cpid');
 
                 console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
                 $("#bahannama").val(nama);
                 $("#bahanjumlah").val(jumlah);
                 $("#bahanruang").val(ruangan);
                 document.getElementById('bahankode').value = kode;
+                document.getElementById('cpbahan').value = cpid;
             })
 
             $(document).on('click', "#editproduk", function() {
@@ -657,12 +661,14 @@
                 var ruangan = $(this).data('ruangan');
                 var jumlah = $(this).data('jumlah');
                 var kode = $(this).data('kode');
+                var cpid = $(this).data('cpid');
 
                 console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
                 $("#produknama").val(nama);
                 $("#produkjumlah").val(jumlah);
                 $("#produkruang").val(ruangan);
                 document.getElementById('produkkode').value = kode;
+                document.getElementById('cpproduk').value = cpid;
             })
 
             $(document).on('click', "#editkemasan", function() {
@@ -670,6 +676,7 @@
                 var ruangan = $(this).data('ruangan');
                 var jumlah = $(this).data('jumlah');
                 var kode = $(this).data('kode');
+                var cpid = $(this).data('cpid');
 
 
                 console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
@@ -677,6 +684,7 @@
                 $("#kemasanjumlah").val(jumlah);
                 $("#kemasanruang").val(ruangan);
                 document.getElementById('kemasankode').value = kode;
+                document.getElementById('cpkemasan').value = cpid;
             })
 
             $(document).ready(function() {

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
+$a = 0;
+$b = 0;
 class Admin extends Controller
 {
     public function dashboard()
@@ -233,7 +235,8 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $induk = $req['induk'];
         $jenis = $req['jenis'];
-        // dd($req);
+        session(['induk' => $induk]);
+        session(['jenis' => $jenis]);
         if ($jenis == 1) {
             $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
             $data2 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
@@ -251,8 +254,11 @@ class Admin extends Controller
         ]);
     }
 
-    public function tampil_detilbbid($jenis, $induk)
+    public function tampil_detilbbid()
     {
+        // global $a,$b;
+        $jenis = session()->get('jenis');
+        $induk =  session()->get('induk');
         $pabrik = Auth::user()->pabrik;        // dd($req);
         if ($jenis == 1) {
             $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
@@ -397,6 +403,85 @@ class Admin extends Controller
         return redirect()->route('penerimaanBB');
     }
 
+    public function edit_terimabahan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $cpid=$req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'jumlah' => $req['jumlah'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+        ];
+        // dd($data);
+
+        cp_bahan::all()->where('cp_bahan_id',$cpid)->first()->update([
+            'nama' => $req['nama'],
+            'jumlah' => $req['jumlah'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+        ]);
+        return redirect()->route('penerimaanBB');
+    }
+
+    public function edit_terimaproduk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $cpid=$req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'jumlah' => $req['jumlah'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+        ];
+
+        $nomer = cp_produk::insertGetId($data);
+
+        cp_produk::all()->where('cp_produk_id',$cpid)->first()->update($data);
+        return redirect()->route('penerimaanBB');
+    }
+
+    public function edit_terimakemasan(Request $req)
+    {
+        $id = Auth::user()->id;
+        $cpid=$req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        $data = [
+            'nama' => $req['nama'],
+            'jumlah' => $req['jumlah'],
+            'kode' => $req['kode'],
+            'ruang' => $req['ruang'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+        ];
+
+        cp_kemasan::all()->where('cp_kemasan_id',$cpid)->first()->update($data);
+        return redirect()->route('penerimaanBB');
+    }
+
     public function tambah_penerimaanbbmasuk(Request $req)
     {
         $id = Auth::user()->id;
@@ -415,9 +500,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPbahanbakumasuk::insert($data);
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+       return redirect('/detilterimabbid');
     }
     public function tambah_penerimaanbbkeluar(Request $req)
     {
@@ -435,9 +518,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPbahanbakukeluar::insert($data);
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+        return redirect('/detilterimabbid');
     }
     public function tambah_penerimaanprdukmasuk(Request $req)
     {
@@ -457,9 +538,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPprodukjadimasuk::insert($data);
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+        return redirect('/detilterimabbid');
     }
     public function tambah_penerimaanprodukkeluar(Request $req)
     {
@@ -477,12 +556,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPprodukjadikeluar::insert($data);
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+        return redirect('/detilterimabbid');
     }
     public function tambah_penerimaakemasanmasuk(Request $req)
     {
@@ -502,10 +576,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPkemasanmasuk::insert($data);
-
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+        return redirect('/detilterimabbid');
     }
     public function tambah_penerimaankemasankeluar(Request $req)
     {
@@ -523,10 +594,104 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPkemasankeluar::insert($data);
+        return redirect('/detilterimabbid');
+    }
 
+    public function edit_penerimaanbbmasuk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'nama_bahan' => $req['nama_bahanbaku'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+        ];
+        PPbahanbakumasuk::all()->where('id_ppbahanbaku', $id)->first()->update($data);
+        return redirect('/detilterimabbid');
+    }
+    public function edit_penerimaanbbkeluar(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'nama_bahan' => $req['nama_bahanbaku'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+        ];
+        PPbahanbakukeluar::all()->where('id_ppbahanbakukeluar', $id)->first()->update($data);
+        return redirect('/detilterimabbid');
+    }
+    public function edit_penerimaanprdukmasuk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        // dd($id);
+        $data = [
+            'nama_produkjadi' => $req['nama_produkjadi'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+        ];
+        PPprodukjadimasuk::all()->where('id_produkjadimasuk', $id)->first()->update($data);
+        return redirect('/detilterimabbid');
+    }
+    public function edit_penerimaanprodukkeluar(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'nama_produk' => $req['nama_produk'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+            'pabrik' => $pabrik,
+            'induk' => $req['induk'],
+            'user_id' => $id,
+        ];
+        PPprodukjadikeluar::all()->where('id_pprodukjadikeluar', $id)->first()->update($data);
         $induk = $req['induk'];
         $jenis = $req['jenis'];
-        return redirect('/detilterimabbid/' . $jenis . '/' . $induk);
+        return redirect('/detilterimabbid');
+    }
+    public function edit_penerimaakemasanmasuk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'nama_kemasan' => $req['nama_kemasan'],
+            'no_pob' => $req['pob_no'],
+            'no_loth' => $req['no_loth'],
+            'pemasok' => $req['pemasok'],
+            'jumlah' => $req['jumlah'],
+            'no_kontrol' => $req['no_kontrol'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+        ];
+        PPkemasanmasuk::all()->where('id_kemasanmasuk', $id)->first()->update($data);
+        return redirect('/detilterimabbid');
+    }
+    public function edit_penerimaankemasankeluar(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'nama_kemasan' => $req['nama_kemasan'],
+            'untuk_produk' => $req['untuk_produk'],
+            'no_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'sisa' => $req['sisa'],
+        ];
+        PPkemasankeluar::all()->where('id_ppkemasankeluar', $id)->first()->update($data);
+        return redirect('/detilterimabbid');
     }
     //tampil batch
     public function tampil_pengolahanbatch()
@@ -774,12 +939,15 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/logo/';
-        $file->move($tujuan_upload, $nama);
+        $ext = pathinfo($nama, PATHINFO_EXTENSION);
+        $file->move($tujuan_upload, session('pabrik').'.'.$ext);
         $id = Auth::user()->pabrik;
+
+
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'alamat' => $req['alamat'],
             'no_hp' => $req['telp'],
-            'logo' => $nama,
+            'logo' =>  session('pabrik').'.'.$ext,
         ]);
 
         return redirect('/setting');
@@ -817,7 +985,7 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'kemasan_nama' => $req['nama'],
-            'kemasan_kode' => 'kosong',
+            'kemasan_kode' => $req['kode'],
             'user_id' => $id,
         ];
 
@@ -1182,6 +1350,51 @@ class Admin extends Controller
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
+
+    public function edit_pelatihanhiginitas(Request $req)
+    {
+        // dd($req);
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pelatihan' => $req['kode_pelatihan'],
+            'materi_pelatihan' => $req['materi_pelatihan'],
+            'peserta_pelatihan' => $req['peserta_pelatihan'],
+            'pelatih' => $req['pelatih'],
+            'metode_pelatihan' => $req['metode_pelatihan'],
+            'jadwal_mulai_pelatihan' => $req['mulai'],
+            'jadwal_berakhir_pelatihan' => $req['berakhir'],
+            'metode_penilaian' => $req['metode_penilaian'],
+        ];
+        // dd($hasil);
+
+        $nomer = programpelatihan::all()->where('id_programpelatihan',$id)->first()->update($hasil);
+
+        return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+    public function edit_pelatihancpkb(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_pelatihan' => $req['kode_pelatihan'],
+            'materi_pelatihan' => $req['materi_pelatihan'],
+            'peserta_pelatihan' => $req['peserta_pelatihan'],
+            'pelatih' => $req['pelatih'],
+            'metode_pelatihan' => $req['metode_pelatihan'],
+            'jadwal_mulai_pelatihan' => $req['mulai'],
+            'jadwal_berakhir_pelatihan' => $req['berakhir'],
+            'metode_penilaian' => $req['metode_penilaian'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb',$id)->first()->update($hasil);
+
+        return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
+    }
+
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
         $pabrik = Auth::user()->pabrik;
@@ -1396,10 +1609,6 @@ class Admin extends Controller
             'nama_alat' => $req['nama_alat'],
             'tipe_merek' => $req['tipemerek'],
             'ruang' => $req['ruang'],
-            'mulai' => $req['mulai'],
-            'selesai' => $req['selesai'],
-            'oleh' => $req['oleh'],
-            'ket' => $req['ket'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -1425,6 +1634,23 @@ class Admin extends Controller
         laporan::insert($laporan);
         return redirect('/pengoprasian-alat');
     }
+    public function tambah_detilalat(Request $req)
+    {
+        $id = Auth::user()->id;
+        $induk =  $req['induk'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'mulai' => $req['mulai'],
+            'selesai' => $req['selesai'],
+            'oleh' => $req['oleh'],
+            'ket' => $req['ket'],
+            'induk' => session()->get('idoperasi'),
+        ];
+
+        $nomer = detilalat::insertGetId($hasil);
+
+        return redirect('/detil-alat');
+    }
     public function tampil_pengorasianalat()
     {
         $pabrik = Auth::user()->pabrik;
@@ -1434,6 +1660,21 @@ class Admin extends Controller
             $data = pengoprasianalat::all()->where('pabrik', $pabrik);
         return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
     }
+    public function tampil_detilalat(Request $req)
+    {
+        $pabrik = Auth::user()->pabrik;
+        session(['idoperasi' => $req['induk']]);
+        $data = detilalat::all()->where('induk', $req['induk']);
+        return view('catatan.dokumen.detilalat',['data' => $data]);
+    }
+
+    public function tampil_detilalatid()
+    {
+        $pabrik = Auth::user()->pabrik;
+        $data = detilalat::all()->where('induk', session()->get('idoperasi'));
+        return view('catatan.dokumen.detilalat',['data' => $data]);
+    }
+
     public function tambah_pelulusan(Request $req)
     {
         $pabrik = Auth::user()->pabrik;
@@ -1602,6 +1843,65 @@ class Admin extends Controller
 
         return redirect('/ambilcontoh#pills-contact');
     }
+
+    public function edit_contohbahan(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_bahan' => $req['kode_bahan'],
+            'nama_bahanbaku' => $req['nama_bahan'],
+            'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+        ];
+
+        contohbahanbaku::all()->where('id_bahanbaku',$id)->first()->update($hasil);
+
+        return redirect('/ambilcontoh#pills-home');
+    }
+    public function edit_contohproduk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_produk' => $req['kode_produk'],
+            'nama_produkjadi' => $req['nama_produk'],
+            'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+        ];
+
+        $nomer = contohprodukjadi::all()->where('id_produkjadi',$id)->first()->update($hasil);
+
+        return redirect('/ambilcontoh#pills-profile');
+    }
+    public function edit_contohkemasan(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_kemasan' => $req['kode_kemasan'],
+            'nama_kemasan' => $req['nama_kemasan'],
+            'no_batch' => $req['nobatch'],
+            'tanggal_ambil' => $req['tanggal'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'jumlah_kemasanbox' => $req['jumlah_box'],
+            'jumlah_produk' => $req['jumlah_ambil'],
+            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+        ];
+
+
+        $nomer = contohkemasan::all()->where('id_kemasan',$id)->first()->update($hasil);
+
+        return redirect('/ambilcontoh#pills-contact');
+    }
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
@@ -1614,8 +1914,8 @@ class Admin extends Controller
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all();
-            $produk = produk::all()->where('user_id', $pabrik);;
-            $kemasan = kemasan::all()->where('user_id', $pabrik);;
+            $produk = produk::all();
+            $kemasan = kemasan::all();
         }
         $x = [];
         return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 'kemasan' => $kemasan ?? $x]);
@@ -2595,9 +2895,10 @@ class Admin extends Controller
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-            $produk = produk::all()->where('user_id', Auth::user()->pabrik);
-            $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
+            $produk = produk::all();//->where('user_id', Auth::user()->pabrik);
+            $kemasan = kemasan::all();//->where('user_id', Auth::user()->pabrik);
         }
+        // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
 }

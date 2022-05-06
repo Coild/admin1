@@ -11,6 +11,14 @@ class programpelatihan extends Model
     protected $primaryKey = 'id_programpelatihan';
 
     protected $fillable = [
+        'kode_pelatihan',
+        'materi_pelatihan',
+        'peserta_pelatihan',
+        'pelatih',
+        'metode_pelatihan',
+        'jadwal_mulai_pelatihan',
+        'jadwal_berakhir_pelatihan',
+        'metode_penilaian',
         'status',
     ];
 }

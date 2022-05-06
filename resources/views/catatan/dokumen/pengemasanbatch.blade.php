@@ -192,19 +192,19 @@
                                         } ?>
                                     </td>
                                     <td>
-
                                         @if (Auth::user()->level == 2)
-                                            <form method="post" action="terimaoperasialat">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                                <button type="submit" class="btn btn-primary">terima</button>
-                                            </form>
+                                        <form method="post" action="terima_kemasbatch">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
                                         @else
-                                            <form method="post" action="detil_batch">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="" />
-                                                <button type="submit" class="btn btn-primary">edit</button>
-                                            </form>
+                                        <form method="post" action="detil-kemasbatch" class="float-left mr-2">
+                                            @csrf
+                                            <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                            <button type="submit" class="btn btn-primary">lihat</button>
+                                        </form>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat">edit</button>
                                         @endif
                                     </td>
                                 </tr>
