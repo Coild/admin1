@@ -578,7 +578,7 @@
                                                                         <div class="col-sm">
                                                                             <input class="form-control 4"
                                                                                 list="listnamaproduk" type="text"
-                                                                                name='nama' id="namaproduk"
+                                                                                name='nama' id="namaproduk3"
                                                                                 autocomplete="off">
                                                                             </input>
                                                                             <datalist id='listnamaproduk'>
@@ -602,7 +602,7 @@
                                                                             Batch</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
-                                                                                class="form-control 4" id="inputEmail3"
+                                                                                class="form-control 4" id="no_batch3"
                                                                                 placeholder="No Batch" />
                                                                         </div>
                                                                     </div>
@@ -612,7 +612,7 @@
                                                                             class="col-sm-3 col-form-label">Jumlah</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah"
-                                                                                class="form-control 4" id="inputEmail3"
+                                                                                class="form-control 4" id="jumlah3"
                                                                                 placeholder="Jumlah" />
                                                                         </div>
                                                                     </div>
@@ -623,7 +623,8 @@
                                                                             Distributor</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
-                                                                                class="form-control 4" id="inputEmail3"
+                                                                                class="form-control 4"
+                                                                                id="nama_distributor3"
                                                                                 placeholder="Nama Distributor" />
                                                                         </div>
                                                                     </div>
@@ -660,7 +661,7 @@
                                                 <?php $i++; ?>
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $row['nama_produk'] }}</td>
+                                                    <td>{{ $row['nama_produkjadi'] }}</td>
                                                     <td>{{ $row['tanggal'] }}</td>
                                                     <td>{{ $row['id_batch'] }}</td>
                                                     <td>{{ $row['jumlah'] }}</td>
@@ -671,11 +672,9 @@
                                                     } ?></td>
                                                     @if (Auth::user()->level != 2)
                                                         <td>
-                                                            <form action="#">
-                                                                @csrf
-                                                                <input type="hidden" name="nobatch" value="" />
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
+                                                            <a href="#" type="submit" data-toggle="modal"
+                                                                data-target="#modalForm7" class="btn btn-primary"
+                                                                onclick="editdata4({{ $row }})">Edit</a>
                                                         </td>
                                                     @else
                                                         <td>
@@ -735,6 +734,19 @@
                 $("#no_batch2").val(params.id_batch)
                 $("#jumlah2").val(params.jumlah)
                 $("#nama_distributor2").val(params.nama_distributor)
+            }
+
+            function editdata4(params) {
+                setdatetoday1(4)
+                $("#forminput4").attr("action", "edit_kartustockprodukjadi");
+                var inputid = '<input type="hidden" name="id" class ="form-control 4" value="' + params
+                    .id_kartustokprodukjadi + '"/>'
+                $(inputid).insertAfter("#ambil_tanggal4")
+                $("#namaproduk3").val(params.nama_produkjadi)
+                $("#no_batch3").val(params.id_batch)
+                $("#jumlah3").val(params.jumlah)
+                $("#nama_distributor3").val(params.nama_distributor)
+                console.log(params);
             }
         </script>
     </main>

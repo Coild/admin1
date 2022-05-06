@@ -8,6 +8,8 @@ use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanb
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class Admin extends Controller
 {
@@ -917,7 +919,50 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'user_id' => $id,
         ];
-        Periksapersonil::insert($hasil);
+        $nomer = Periksapersonil::insertGetId($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'Periksa Personil',
+            'laporan_batch' => 'dummy',
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        return redirect('/periksapersonil');
+    }
+    public function edit_periksapersonil(Request $req)
+    {
+        $tujuan_upload = 'asset/health_personil';
+        $nama = $req['filename'];
+        $file = $req->file('file');
+        $exten = $file->getClientOriginalExtension();
+        $filedelete = $tujuan_upload . "/" . $nama;
+        File::delete(public_path("/" . $filedelete));
+        $file = $req->file('file');
+        $namasimpan = $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $file->move($tujuan_upload, $namasimpan);
+        Periksapersonil::where('personil_id', $req['id'])
+            ->update([
+                'nama' => $req['nama_personil'],
+                'nama_file' => $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten,
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Periksa Personil")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/periksapersonil');
     }
 
@@ -964,6 +1009,29 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/periksasanialat');
+    }
+    public function edit_periksaalat(Request $req)
+    {
+        Periksaalat::where('id_periksaalat', $req['id'])
+            ->update([
+                'tanggal' => $req['tanggal'],
+                'nama_ruangan' => $req['nama_ruangan'],
+                'nama_alat' => $req['nama_alat'],
+                'bagian_alat' => $req['bagian_alat'],
+                'cara_pembersihan' => $req['cara_pembersihan'],
+                'pelaksana' => $req['pelaksana'],
+                'keterangan' => $req['keterangan'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "periksa sanitasi alat")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/periksasanialat');
     }
     public function tampil_periksasaniruang()
@@ -1891,6 +1959,27 @@ class Admin extends Controller
 
         return redirect('/kartu-stok');
     }
+    public function edit_kartustockprodukjadi(Request $req)
+    {
+        kartustokprodukjadi::where('id_kartustokprodukjadi', $req['id'])
+            ->update([
+                'nama_produkjadi' => $req['nama'],
+                'tanggal' => $req['tanggal'],
+                'id_batch' => $req['no_batch'],
+                'jumlah' => $req['jumlah'],
+                'nama_distributor' => $req['nama_distributor'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk jadi")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/kartu-stok');
+    }
     public function tampil_kartustok()
     {
         $pabrik = Auth::user()->pabrik;
@@ -2206,8 +2295,51 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'user_id' => $id,
         ];
-        Kalibrasialat::insertGetId($hasil);
+        $nomer = Kalibrasialat::insertGetId($hasil);
 
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'Kalibrasi Alat',
+            'laporan_batch' => "dummy",
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+
+        return redirect('/kalibrasi-alat');
+    }
+    public function edit_kalibrasialat(Request $req)
+    {
+        $tujuan_upload = 'asset/kalibrasi_alat';
+        $nama = $req['filename'];
+        $file = $req->file('file');
+        $exten = $file->getClientOriginalExtension();
+        $filedelete = $tujuan_upload . "/" . $nama;
+        Storage::delete($filedelete);
+        $file = $req->file('file');
+        $namasimpan = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $file->move($tujuan_upload, $namasimpan);
+        Kalibrasialat::where('kalibrasi_id', $req['id'])
+            ->update([
+                'nama_alat' => $req['nama_alat'],
+                'nama_file' => $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten,
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Kalibrasi Alat")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/kalibrasi-alat');
     }
     public function tampil_kalibrasialat()
@@ -2227,6 +2359,7 @@ class Admin extends Controller
         $hasil = [
             'kode_spesifikasi' => $req['kode_spesifikasi'],
             'nama_bahanbaku' => $req['nama_bahanbaku'],
+            'jenis_sediaan' => $req['jenis_sediaan'],
             'warna' => $req['warna'],
             'aroma' => $req['aroma'],
             'tekstur' => $req['tekstur'],
@@ -2255,6 +2388,30 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/pemeriksaan-bahan');
+    }
+    public function edit_pemeriksaanbahan(Request $req)
+    {
+        Spesifikasibahanbaku::where('id_spesifikasibahanbaku', $req['id'])
+            ->update([
+                'kode_spesifikasi' => $req['kode_spesifikasi'],
+                'nama_bahanbaku' => $req['nama_bahanbaku'],
+                'jenis_sediaan' => $req['jenis_sediaan'],
+                'warna' => $req['warna'],
+                'aroma' => $req['aroma'],
+                'tekstur' => $req['tekstur'],
+                'bobot' => $req['bobot'],
+                'tanggal' => $req['tanggal'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Baku")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/pemeriksaan-bahan');
     }
     public function tambah_pemeriksaanbahankemas(Request $req)
@@ -2293,6 +2450,29 @@ class Admin extends Controller
         laporan::insert($laporan);
         return redirect('/pemeriksaan-bahan');
     }
+    public function edit_pemeriksaanbahankemas(Request $req)
+    {
+        Spesifikasibahankemas::where('id_spesifikasibahankemas', $req['id'])
+            ->update([
+                'kode_spesifikasi' => $req['kode_spesifikasi'],
+                'nama_bahankemas' => $req['nama_bahankemas'],
+                'jenis_bahankemas' => $req['jenis_bahankemas'],
+                'warna' => $req['warna'],
+                'ukuran' => $req['ukuran_bahankemas'],
+                'bocorcacat' => $req['bocor_cacat'],
+                'tanggal' => $req['tanggal'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Kemas")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
+        return redirect('/pemeriksaan-bahan');
+    }
     public function tambah_pemeriksaanprodukjadi(Request $req)
     {
         $id = Auth::user()->id;
@@ -2328,6 +2508,30 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
+        return redirect('/pemeriksaan-bahan');
+    }
+    public function edit_pemeriksaanprodukjadi(Request $req)
+    {
+        Spesifikasiprodukjadi::where('id_spesifikasiprodukjadi', $req['id'])
+            ->update([
+                'kode_spesifikasi' => $req['kode_spesifikasi'],
+                'nama_produkjadi' => $req['nama_produkjadi'],
+                'kategori' => $req['kategori'],
+                'no_batch' => $req['no_batch'],
+                'warna' => $req['warna'],
+                'aroma' => $req['aroma'],
+                'bocorcacat' => $req['bocor_cacat'],
+                'tanggal' => $req['tanggal'],
+                'status' => 0
+            ]);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Produk Jadi")->update([
+            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+        ]);
         return redirect('/pemeriksaan-bahan');
     }
     public function tampil_pemeriksaan()

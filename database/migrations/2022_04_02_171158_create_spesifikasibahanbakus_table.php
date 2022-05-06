@@ -17,6 +17,7 @@ class CreateSpesifikasibahanbakusTable extends Migration
             $table->id('id_spesifikasibahanbaku', 20);
             $table->string('kode_spesifikasi', 20);
             $table->string('nama_bahanbaku', 200);
+            $table->string('jenis_sediaan', 200);
             $table->string('warna', 200);
             $table->string('aroma', 200);
             $table->string('tekstur', 200);

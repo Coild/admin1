@@ -57,7 +57,7 @@
                                                             Alat</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="nama_alat" class="form-control"
-                                                                id="inputEmail3" placeholder="Nama Alat" />
+                                                                id="nama_alat" placeholder="Nama Alat" />
                                                         </div>
                                                     </div>
 
@@ -102,6 +102,8 @@
                                     <td>
                                         <a href="asset/kalibrasi_alat/{{ $row['nama_file'] }}"
                                             class="btn btn-primary">Buka</a>
+                                        <a href="#" type="submit" data-toggle="modal" data-target="#modalForm"
+                                            class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -112,8 +114,25 @@
         </div>
     </main>
     <script>
-         $(document).ready(function() {
-           $('#dataTable').DataTable();
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
         })
+
+        function editdata(params) {
+            setdatetoday()
+            $("#forminput").attr("action", "edit_kalibrasialat");
+            var inputid = '<input type="hidden" id="id" name="id" class ="form-control" value="' + params
+                .kalibrasi_id + '"/>'
+            var filename = '<input type="hidden" id="filename" name="filename" class ="form-control" value="' + params
+                .nama_file + '"/>'
+            $(inputid).insertAfter("#ambil_tanggal")
+            $(filename).insertAfter("#ambil_tanggal")
+            $("#nama_alat").val(params.nama_alat)
+            var source = '<p>' + params.nama_file + ' <i class="fas fa-download"></i> <a href="asset/kalibrasi_alat/' +
+                params
+                .nama_file +
+                '" >Buka</a></p> '
+            $(source).insertBefore("#fileform")
+        }
     </script>
 @endsection
