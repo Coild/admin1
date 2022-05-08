@@ -1049,7 +1049,7 @@ class Admin extends Controller
         $file->move($tujuan_upload, session('pabrik').'.'.$ext);
         $id = Auth::user()->pabrik;
 
-
+dd($req);
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'alamat' => $req['alamat'],
             'no_hp' => $req['telp'],
