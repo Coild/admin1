@@ -12,5 +12,9 @@ class pengoprasianalat extends Model
 
     protected $fillable = [
         'status',
+        'mulai',
+        'selesai',
+        'oleh',
+        'ket'
     ];
 }

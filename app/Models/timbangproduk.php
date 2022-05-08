@@ -12,5 +12,12 @@ class timbangproduk extends Model
 
     protected $fillable = [
         'status',
+        'tanggal',
+        'nama_produk_antara',
+        'no_batch',
+        'asal_produk',
+        'jumlah_produk',
+        'hasil_penimbangan',
+        'untuk_produk'
     ];
 }

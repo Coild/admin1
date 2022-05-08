@@ -99,4 +99,14 @@ class pemilik extends Controller
             ]);
         return redirect('bos_audit');
     }
+
+    public function hapus_request(Request $req)
+    {
+        // dd($req);
+        $user = audit::all()->where("audit_pabrik", $req->pabrik)
+            ->where("nobatch", $req->nobatch)
+            ->where("audit_laporan", $req->laporan)->each->delete();
+        // dd($req);
+        return redirect('bos_audit');
+    }
 }

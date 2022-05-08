@@ -49,19 +49,19 @@
                                         <input type="hidden" name="nobatch" value="{{$row['nobatch']}}">
                                         <input type="hidden" name="laporan" value="{{$row['audit_laporan']}}">
                                         <input type="hidden" name="pabrik" value="{{$row['audit_pabrik']}}">
-                                        <button type="submit" href="/audit_request" type="submit" class="btn btn-success">
+                                        <button type="submit" type="submit" class="btn btn-success">
                                             Terima
                                         </button>
                                     </form>
                                 </th>
                                 @else
                                 <th scope="col">
-                                    <form action="#" method="post">
+                                    <form action="hapus_request" method="post">
                                         @csrf
-                                        <input type="hidden" name="nobatch" value="{{$row['laporan_batch']}}">
-                                        <input type="hidden" name="nama" value="{{$row['laporan_nama']}}">
-                                        <input type="hidden" name="pabrik" value="{{$row['pabrik_id']}}">
-                                        <button type="submit" href="/audit_request" type="submit" class="btn btn-success">
+                                        <input type="hidden" name="nobatch" value="{{$row['nobatch']}}">
+                                        <input type="hidden" name="laporan" value="{{$row['audit_laporan']}}">
+                                        <input type="hidden" name="pabrik" value="{{$row['audit_pabrik']}}">
+                                        <button type="submit" type="submit" class="btn btn-success">
                                             Hapus
                                         </button>
                                     </form>

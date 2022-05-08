@@ -1,8 +1,8 @@
-@extends('layout.app')
-@section('title')
+    @extends('layout.app')
+    @section('title')
     <title>Pengemasan Batch</title>
-@endsection
-@section('content')
+    @endsection
+    @section('content')
     <main>
         <div class="container-fluid px-4">
             <h1>Catatan Pengemasan Batch</h1>
@@ -16,10 +16,9 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                                onclick="setdatetoday()">
-                                Tambah Pengemasan Batch
-                            </button>
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" onclick="setdatetoday()">
+                            Tambah Pengemasan Batch
+                        </button>
                         @endif
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
@@ -50,14 +49,13 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input class="form-control" list="listnamaproduk" type="text"
-                                                                name='nama_produk' id="namaproduk">
+                                                            <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk">
                                                             </input>
                                                             <datalist id='listnamaproduk'>
                                                                 @foreach ($produk as $row)
-                                                                    <option value="{{ $row['produk_nama'] }}">
-                                                                        {{ $row['produk_nama'] }}
-                                                                    </option>
+                                                                <option value="{{ $row['produk_nama'] }}">
+                                                                    {{ $row['produk_nama'] }}
+                                                                </option>
                                                                 @endforeach
                                                             </datalist>
                                                         </div>
@@ -67,9 +65,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="kode_produk" readonly
-                                                                class="form-control" id="kodeproduk"
-                                                                placeholder="Kode Produk" />
+                                                            <input type="text" name="kode_produk" readonly class="form-control" id="kodeproduk" placeholder="Kode Produk" />
                                                         </div>
                                                     </div>
 
@@ -77,8 +73,14 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                             Batch</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="no_batch" class="form-control"
-                                                                id="inputEmail3" placeholder="No Batch" />
+                                                            <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="No Batch" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai PROTAP</label>
+                                                        <div class="col-sm">
+                                                            <input type="text" name="protap" class="form-control" id="inputEmail3" placeholder="No Batch" />
                                                         </div>
                                                     </div>
 
@@ -86,31 +88,26 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
                                                             Batch</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="besar_batch" class="form-control"
-                                                                id="inputEmail3" placeholder="Besar Batch" />
+                                                            <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
                                                             Sediaan</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="bentuk_sediaan" class="form-control"
-                                                                id="inputEmail3" placeholder="Bentuk Sediaan" />
+                                                            <input type="text" name="bentuk_sediaan" class="form-control" id="inputEmail3" placeholder="Bentuk Sediaan" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">Kemasan</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                                         <div class="col-sm">
-                                                            <input type="text" list="kemasan" style="height: 35px;"
-                                                                name="kemasan" class="form-control"
-                                                                id="inlineFormCustomSelect">
+                                                            <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control" id="inlineFormCustomSelect">
                                                             </input>
                                                             <datalist id="kemasan">
                                                                 @foreach ($kemasan as $row)
-                                                                    <option value="{{ $row['kemasan_nama'] }}">
-                                                                        {{ $row['kemasan_nama'] }}
-                                                                    </option>
+                                                                <option value="{{ $row['kemasan_nama'] }}">
+                                                                    {{ $row['kemasan_nama'] }}
+                                                                </option>
                                                                 @endforeach
                                                             </datalist>
                                                         </div>
@@ -122,27 +119,21 @@
 
                                                 <div class="card-body">
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">Mulai</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Mulai</label>
                                                         <div class="col-sm">
-                                                            <input type="datetime-local" name="mulai" class="form-control"
-                                                                id="inputEmail3" placeholder="Tipe/Merek" />
+                                                            <input type="datetime-local" name="mulai" class="form-control" id="inputEmail3" placeholder="Tipe/Merek" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">selesai</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">selesai</label>
                                                         <div class="col-sm">
-                                                            <input type="datetime-local" name="selesai"
-                                                                class="form-control" id="inputEmail3"
-                                                                placeholder="Tipe/Merek" />
+                                                            <input type="datetime-local" name="selesai" class="form-control" id="inputEmail3" placeholder="Tipe/Merek" />
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
-                                                    style="float:left; width: 100px;  margin-left:25px" role="button">
+                                                <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">
                                                     Simpan</a>
                                             </div>
                                         </form>
@@ -150,82 +141,88 @@
                                 </div>
                             </div>
                         </div>
-                        <!--  -->
-
                     </div>
+                    <!--  -->
 
-                    <table class="table mt-5">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Kode Produk</th>
-                                <th scope="col">Nama Produk</th>
-                                <th scope="col">No Batch</th>
-                                <th scope="col">Besar Batch</th>
-                                <th scope="col">Bentuk Sediaan</th>
-                                <th scope="col">Kemasan</th>
-                                <th scope="col">Tanggal Pengolahan</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $row)
-                                <?php $i = 0;
-                                $i++; ?>
-                                <tr>
-                                    <td>{{ $i }}</td>
-                                    <td>{{ $row['kode_produk'] }}</td>
-                                    <td>{{ $row['nama_produk'] }}</td>
-                                    <td>{{ $row['no_batch'] }}</td>
-                                    <td>{{ $row['besar_batch'] }}</td>
-                                    <td>{{ $row['bentuksediaan'] }}</td>
-                                    <td>{{ $row['kemasan'] }}</td>
-                                    <td>{{ $row['mulai'] }} sampai
-                                        {{ $row['selesai'] }}
-                                    </td>
-                                    <td>
-                                        <?php if ($row['status'] == 0) {
-                                            echo 'Diajukan';
-                                        } elseif ($row['status'] == 1) {
-                                            echo 'Diterima';
-                                        } ?>
-                                    </td>
-                                    <td>
-                                        @if (Auth::user()->level == 2)
-                                        <form method="post" action="terima_kemasbatch">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                            <button type="submit" class="btn btn-primary">terima</button>
-                                        </form>
-                                        @else
-                                        <form method="post" action="detil-kemasbatch" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
-                                            <button type="submit" class="btn btn-primary">lihat</button>
-                                        </form>
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat">edit</button>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
                 </div>
+
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Sesuai PROTAP</th>
+                            <th scope="col">Kode Produk</th>
+                            <th scope="col">Nama Produk</th>
+                            <th scope="col">No Batch</th>
+                            <th scope="col">Besar Batch</th>
+                            <th scope="col">Bentuk Sediaan</th>
+                            <th scope="col">Kemasan</th>
+                            <th scope="col">Tanggal Pengolahan</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $row)
+                        <?php $i = 0;
+                        $i++; ?>
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $row['protap'] }}</td>
+                            <td>{{ $row['kode_produk'] }}</td>
+                            <td>{{ $row['nama_produk'] }}</td>
+                            <td>{{ $row['no_batch'] }}</td>
+                            <td>{{ $row['besar_batch'] }}</td>
+                            <td>{{ $row['bentuksediaan'] }}</td>
+                            <td>{{ $row['kemasan'] }}</td>
+                            <td>{{ $row['mulai'] }} sampai
+                                {{ $row['selesai'] }}
+                            </td>
+                            <td>
+                                <?php if ($row['status'] == 0) {
+                                    echo 'Diajukan';
+                                } elseif ($row['status'] == 1) {
+                                    echo 'Diterima';
+                                } ?>
+                            </td>
+                            <td>
+                                @if (Auth::user()->level == 2)
+                                <form method="post" action="terima_kemasbatch">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                    <button type="submit" class="btn btn-primary">terima</button>
+                                </form>
+                                @else
+                            <form method="post" action="detilkemasbatch" class="float-left mr-2">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                    <button type="submit" class="btn btn-primary">lihat</button>
+                                </form>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat">edit</button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-        <script>
-            const produks = JSON.parse('<?= json_encode($produk) ?>')
-            $("#namaproduk").change(function() {
-                var cekname = produks.find(produk => produk.produk_nama ===
-                    document.getElementById('namaproduk').value)?.produk_nama;
-                if (cekname) {
-                    document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
-                        document.getElementById('namaproduk').value).produk_kode
-                } else {
-                    document.getElementById('kodeproduk').value = ""
-                }
-            });
-        </script>
+
+
     </main>
-@endsection
+    <script>
+        const produks = JSON.parse('<?= json_encode($produk) ?>')
+        $("#namaproduk").change(function() {
+            console.log('halo');
+            var cekname = produks.find(produk => produk.produk_nama ===
+                document.getElementById('namaproduk').value)?.produk_nama;
+            if (cekname) {
+                document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value).produk_kode
+            } else {
+                document.getElementById('kodeproduk').value = ""
+            }
+        });
+    </script>
+    @endsection

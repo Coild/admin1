@@ -25,7 +25,7 @@ class PrintController extends Controller
     {
         $id = $req['nobatch'];
         // dd($id);
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -45,14 +45,14 @@ class PrintController extends Controller
     public function cetak_ambilbahankemas(Request $req)
     {
         $id = $req['id'];
-         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+         $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $data = contohkemasan::all()->where('id_kemasan', $id)->first();
         // dd($nama);
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh kemasan');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh kemasan');
         // dd($data);
         return view('print.ambilbahankemas', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -61,14 +61,14 @@ class PrintController extends Controller
     public function cetak_ambilbahanbaku(Request $req)
     {
         $id = $req['id'];
-         $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+         $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $data = contohbahanbaku::all()->where('id_bahanbaku', $id);
         // dd($id);
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh bahan baku');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh bahan baku');
         // dd($kop);
         return view('print.ambilbahanbaku', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -78,14 +78,14 @@ class PrintController extends Controller
     {
 
         $id = $req['id'];
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $data = contohprodukjadi::all()->where('id_produkjadi', $id)->first();
         // dd($data);
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh produk');
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh produk');
         // dd($kop);
         return view('print.ambilprodukjadi', ['data' => $data, 'kop' => $kop
         ,'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama]);
@@ -94,8 +94,8 @@ class PrintController extends Controller
     public function cetak_latihhigisani(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -109,8 +109,8 @@ class PrintController extends Controller
     public function cetak_latihcpkb(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'pelatihan higiene dan sanitasi');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -125,8 +125,8 @@ class PrintController extends Controller
     public function cetak_terimabahan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -143,8 +143,8 @@ class PrintController extends Controller
     public function cetak_terimaproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -161,8 +161,8 @@ class PrintController extends Controller
     public function cetak_terimakemasan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -180,8 +180,8 @@ class PrintController extends Controller
     public function cetak_alatutama(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -194,8 +194,8 @@ class PrintController extends Controller
     public function cetak_distribusiproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -208,8 +208,8 @@ class PrintController extends Controller
     public function cetak_penanganankeluhan(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -231,7 +231,7 @@ class PrintController extends Controller
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nama', 'penerimaan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -246,7 +246,7 @@ class PrintController extends Controller
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nama', 'pemusnahan produk jadi');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -261,7 +261,7 @@ class PrintController extends Controller
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nama', 'pemusnahan produk antara');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -276,7 +276,7 @@ class PrintController extends Controller
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nama', 'pemusnahan bahan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -291,7 +291,7 @@ class PrintController extends Controller
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nama', 'pemusnahan bahan kemas');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -305,8 +305,8 @@ class PrintController extends Controller
 
     public function cetak_periksaruang(Request $req) {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi ruangan');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi ruangan');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -319,8 +319,8 @@ class PrintController extends Controller
 
     public function cetak_periksaalat(Request $req) {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi alat');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi alat');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -334,8 +334,8 @@ class PrintController extends Controller
     public function cetak_periksabahanbaku(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Bahan Baku');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Bahan Baku');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -349,8 +349,8 @@ class PrintController extends Controller
     public function cetak_periksaprodukjadi(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Produk Jadi');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Produk Jadi');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];
@@ -364,8 +364,8 @@ class PrintController extends Controller
     public function cetak_periksabahankemas(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Bahan Kemas');
-        $datapabrik = pabrik::all()->where('pabrik_id',Auth::user()->pabrik)->first();
+        $kop = laporan::all()->where('laporan_nomor' ,$id)->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'Pemeriksaan Bahan Kemas');
+        $datapabrik = pabrik::all()->where('pabrik_id',$id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
         $alamat = $datapabrik['alamat'];

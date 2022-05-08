@@ -30,7 +30,7 @@
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['nama']}}</th>
                                 <th scope="col">
-                                    <form action="/audit_batch" method="post">
+                                    <form action="/audit_dokumen" method="post">
                                     @csrf
                                     <input type="hidden" name="pabrik" value="{{$row['pabrik_id']}}">
                                           <button type="submit" class="btn btn-success">

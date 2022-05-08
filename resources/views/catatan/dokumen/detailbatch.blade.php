@@ -182,7 +182,7 @@
                                         <td>{{ $row['kompisisi_nama'] }}</td>
                                         <td>{{ $row['komposisi_persen'] }}</td>
                                         <td>
-                                            <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}/{{ $id }}"
+                                            <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}"
                                                 type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')"
                                                 <?php if ($status > 0) {
                                                     echo 'disabled';
@@ -496,7 +496,7 @@
                                         <th scope="row">{{ $i }}</th>
                                         <td>{{ $row['isi'] }}</td>
                                         <td>
-                                            <a href="/hapus_olah/{{ $row['produksi_id'] }}/{{ $id }}"
+                                            <a href="/hapus_olah/{{ $row['produksi_id'] }}"
                                                 type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')"
                                                 <?php if ($status > 0) {
                                                     echo 'disabled';

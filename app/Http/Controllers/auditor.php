@@ -19,9 +19,7 @@ class auditor extends Controller
 
     public function list_dokumen(Request $req)
     {
-        $data = laporan::all()->where('pabrik_id', $req['pabrik'])
-            ->where('laporan_batch', $req['nobatch'])
-            ->where('laporan_nama', $req['nama']);
+        $data = laporan::all()->where('pabrik_id', $req['pabrik']);
         return view('auditor.listdokumen', ['data' => $data]);
     }
 

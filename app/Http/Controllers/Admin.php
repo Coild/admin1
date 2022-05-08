@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -691,6 +691,87 @@ class Admin extends Controller
         PPkemasankeluar::all()->where('id_ppkemasankeluar', $id)->first()->update($data);
         return redirect('/detilterimabbid');
     }
+
+    //tampil kemas batch
+    public function tampil_kemasbatch()
+    {
+        $pabrik = Auth::user()->pabrik;
+        if (Auth::user()->level == 2) {
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik); //;
+            // dd($pabrik);
+        } else {
+            $data = pengolahanbatch::all()->where('pabrik', $pabrik);
+            // echo "halo";
+        }
+        $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
+        $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
+
+        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 
+        'data2' => $data2, 'data3' => $data3]);
+    }
+
+    public function tampil_detilkemasbatch(Request $req)
+    {
+        // dd($req);
+        
+        $id = $req['nobatch'] ??  session()->get('detilbatch');
+        session(['detilbatch' => $req['nobatch'] ??  $id]);
+        $data = Pengemasanbatchproduk::all()->where('no_batch', $id);
+        // dd($data);
+        $kemasan = kemasan::all();
+        $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
+       $proisi = prosedur_isi::all()->where('id_kemas', $id);
+       $protanda  = prosedur_tanda::all()->where('id_kemas', $id);
+        // dd($kemasan);
+        return view('catatan.dokumen.detilkemasbatch', [
+            'id' => $id,
+            'data' => $data, 'kemasan' => $kemasan, 'prkemas' => $prkemas,
+            'proisi' => $proisi, 'protanda' => $protanda
+        ]);
+    }
+
+    public function tambah_protanda (Request $req) {
+        $id = session()->get('detilbatch');
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'isi' => $req['isi'],
+            'id_kemas' => $id,
+        ];
+        prosedur_tanda::insert($data);
+        return redirect('/detilkemasbatch');
+    }
+
+    public function tambah_proisi (Request $req) {
+        $id = session()->get('detilbatch');
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'isi' => $req['isi'],
+            'id_kemas' => $id,
+        ];
+        prosedur_isi::insert($data);
+        return redirect('/detilkemasbatch');
+    }
+
+    public function tambah_prkemas (Request $req) {
+        $id = session()->get('detilbatch');
+        $pabrik = Auth::user()->pabrik;
+        $data = [
+            'kode_kemas' => $req['kode'],
+            'nama_kemas' => $req['nama'],
+            'j_butuh' => $req['jbutuh'],
+            'j_tolak' => $req['jtolak'],
+            'no_qc' => $req['noqc'],
+            'j_pakai' => $req['jpakai'],
+            'j_kembali' => $req['jkembali'],
+            'id_kemasbatch' => $id,
+        ];
+        // dd($data);
+        pr_bahankemas::insert($data);
+        return redirect('/detilkemasbatch');
+    }
+
+
+
     //tampil batch
     public function tampil_pengolahanbatch()
     {
@@ -708,6 +789,8 @@ class Admin extends Controller
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
+    
+
     // public function tampil_detilbatch(Request $req)
     // {
     //     // dd($req);
@@ -722,11 +805,14 @@ class Admin extends Controller
     //     ]);
     // }
 
-    public function tampil_detilbatchid($id)
+    public function tampil_detilbatch(Request $req)
     {
         // dd($req);
-        // $id = $req['nobatch'];
+        
+        $id = $req['nobatch'] ??  session()->get('detilbatch');
+        session(['detilbatch' => $req['nobatch'] ??  $id]);
         $data = pengolahanbatch::all()->where('nomor_batch', $id);
+        // dd($id);
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
@@ -814,7 +900,7 @@ class Admin extends Controller
         komposisi::insert($hasil);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
     //peralatan
@@ -832,7 +918,7 @@ class Admin extends Controller
         peralatan::insert($hasil);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
     //catat penimbangan
@@ -855,7 +941,7 @@ class Admin extends Controller
         penimbangan::insert($hasil);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
     //olah
@@ -872,7 +958,7 @@ class Admin extends Controller
         produksi::insert($hasil);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
     public function tambah_rekonsiliasi(Request $req)
@@ -889,47 +975,47 @@ class Admin extends Controller
         rekonsiliasi::insert($hasil);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
-    public function hapus_komposisi($id, $to)
+    public function hapus_komposisi($id)
     {
 
         $data = komposisi::all()->where('komposisi_id', $id);
         $post = komposisi::all()->where('komposisi_id', $id)->each->delete();
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
-    public function hapus_peralatan($id, $to)
+    public function hapus_peralatan($id)
     {
         $data = peralatan::all()->where('peralatan_id', $id);
         $post = peralatan::all()->where('peralatan_id', $id)->each->delete();
 
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
-    public function hapus_penimbangan($id, $to)
+    public function hapus_penimbangan($id)
     {
         $data = penimbangan::all()->where('penimbangan_id', $id);
         $post = penimbangan::all()->where('penimbangan_id', $id)->each->delete();
 
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
-    public function hapus_olah($id, $to)
+    public function hapus_olah($id)
     {
         $data = produksi::all()->where('produksi_id', $id);
         $post = produksi::all()->where('produksi_id', $id)->each->delete();
 
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
-    public function hapus_rekonsiliasi($id, $to)
+    public function hapus_rekonsiliasi($id)
     {
         $data = rekonsiliasi::all()->where('rekonsiliasi_id', $id);
         $post = rekonsiliasi::all()->where('rekonsiliasi_id', $id)->each->delete();
 
-        return redirect('/detil_batch/' . $to);
+        return redirect('/detil_batch/');
     }
 
     public function tambah_company(Request $req)
@@ -1566,6 +1652,22 @@ class Admin extends Controller
         laporan::insert($laporan);
         return redirect('/pengoprasian-alat');
     }
+
+    public function edit_operasialat(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'pob' => $req['pelaksanaan_pob'],
+            'nama_alat' => $req['nama_alat'],
+            'tipe_merek' => $req['tipemerek'],
+            'ruang' => $req['ruang'],
+        ];
+        // dd($req);
+        $nomer = pengoprasianalat::where('id_operasi', $req['id'])->update($hasil);
+
+        return redirect('/pengoprasian-alat');
+    }
     public function tambah_detilalat(Request $req)
     {
         $id = Auth::user()->id;
@@ -1580,6 +1682,22 @@ class Admin extends Controller
         ];
 
         $nomer = detilalat::insertGetId($hasil);
+
+        return redirect('/detil-alat');
+    }
+    public function edit_detilalat(Request $req)
+    {
+        $id = Auth::user()->id;
+        $induk =  $req['induk'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'mulai' => $req['mulai'],
+            'selesai' => $req['selesai'],
+            'oleh' => $req['oleh'],
+            'ket' => $req['ket'],
+        ];
+        // dd($req);
+        $nomer = detilalat::where('id_detilalat',$req['id'])->update($hasil);
 
         return redirect('/detil-alat');
     }
@@ -1965,6 +2083,56 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function edit_penimbanganbahan(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama_bahan' => $req['nama_bahan'],
+            'no_loth' => $req['no_loth'],
+            'nama_suplier' => $req['nama_suplier'],
+            'jumlah_bahan' => $req['jumlah_bahan'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+        ];
+
+        $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
+        return redirect('/penimbangan#pills-contact');
+    }
+
+    public function edit_penimbanganprodukantara(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama_produk_antara' => $req['nama'],
+            'no_batch' => $req['nobatch'],
+            'asal_produk' => $req['asal_produk'],
+            'jumlah_produk' => $req['jumlah_produk'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'untuk_produk' => $req['untuk_produk'],
+        ];
+        // dd($hasil);
+
+        $nomer = timbangproduk::where('timbang_produk_id', $id)->update($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function edit_ruangtimbang(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'nama_bahan_baku' => $req['nama_bahanbaku'],
+            'no_loth' => $req['no_loth'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'jumlah_permintaan' => $req['jumlah_permintaan'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'untuk_produk' => $req['untuk_produk'],
+        ];
+        $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
         return redirect('/penimbangan#pills-contact');
     }
     public function tampil_penimbangan()
@@ -2655,6 +2823,7 @@ class Admin extends Controller
             'kode_produk' => $req['kode_produk'],
             'nama_produk' => $req['nama_produk'],
             'no_batch' => $req['no_batch'],
+            'protap' => $req['protap'],
             'besar_batch' => $req['besar_batch'],
             'bentuksediaan' => $req['bentuk_sediaan'],
             'kemasan' => $req['kemasan'],

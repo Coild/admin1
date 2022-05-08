@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/hapus_karyawan', [pemilik::class, 'hapus_karyawan']);
         Route::get('/bos_audit', [pemilik::class, 'list_request']);
         Route::post('/terima_request', [pemilik::class, 'terima_request']);
+        Route::post('/hapus_request', [pemilik::class, 'hapus_request']);
         Route::post('/ganti_struktur', [pemilik::class, 'ganti_struktur']);
     });
 
@@ -210,12 +211,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/input_rekonsiliasi', [Admin::class, 'tambah_rekonsiliasi']);
 
 
-        Route::get('/hapus_komposisi/{id}/{ke}', [Admin::class, 'hapus_komposisi']);
-        Route::get('/hapus_peralatan/{id}/{ke}', [Admin::class, 'hapus_peralatan']);
-        Route::get('/hapus_penimbangan/{id}/{ke}', [Admin::class, 'hapus_penimbangan']);
-        Route::get('/hapus_olah/{id}/{ke}', [Admin::class, 'hapus_olah']);
+        Route::get('/hapus_komposisi/{id}', [Admin::class, 'hapus_komposisi']);
+        Route::get('/hapus_peralatan/{id}', [Admin::class, 'hapus_peralatan']);
+        Route::get('/hapus_penimbangan/{id}', [Admin::class, 'hapus_penimbangan']);
+        Route::get('/hapus_olah/{id}', [Admin::class, 'hapus_olah']);
         Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
         // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']);
+
+        Route::post('/tambah_prkemas', [Admin::class, 'tambah_prkemas']);
+        Route::post('/tambah_proisi', [Admin::class, 'tambah_proisi']);
+        Route::post('/tambah_protanda', [Admin::class, 'tambah_protanda']);
 
         Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');
@@ -257,9 +262,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_kartustokprodukantara', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
         Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukantara'])->name('tambah_kartustokprodukantara');
         Route::post('tambah_kartustokbahankemas', [Admin::class, 'tambah_kartustokbahankemas'])->name('tambah_kartustokbahankemas');
+
         Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
         Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
         Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang'])->name('tambah_ruangtimbang');
+        Route::post('edit_penimbanganbahan', [Admin::class, 'edit_penimbanganbahan'])->name('edit_penimbanganbahan');
+        Route::post('edit_penimbanganprodukantara', [Admin::class, 'edit_penimbanganprodukantara'])->name('edit_penimbanganprodukantara');
+        Route::post('edit_ruangtimbang', [Admin::class, 'edit_ruangtimbang'])->name('edit_ruangtimbang');
 
         Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
         Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');
@@ -271,7 +280,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('tambah_pelulusan', [Admin::class, 'tambah_pelulusan'])->name('tambah_pelulusan');
         Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
+        Route::post('edit_operasialat', [Admin::class, 'edit_operasialat'])->name('edit_operasialat');
         Route::post('tambah_detilalat', [Admin::class, 'tambah_detilalat'])->name('tambah_detilalat');
+        Route::post('edit_detilalat', [Admin::class, 'edit_detilalat'])->name('edit_detilalat');
         Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
         Route::post('edit_pemusnahanbahan', [Admin::class, 'edit_pemusnahanbahan'])->name('edit_pemusnahanbahan');
         Route::post('tambah_pemusnahanbahankemas', [Admin::class, 'tambah_pemusnahanbahankemas'])->name('tambah_pemusnahanbahankemas');
@@ -295,7 +306,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_pemeriksaanbahan', [Admin::class, 'tambah_pemeriksaanbahan'])->name('tambah_pemeriksaanbahan');
         Route::post('tambah_pemeriksaanbahankemas', [Admin::class, 'tambah_pemeriksaanbahankemas'])->name('tambah_pemeriksaanbahankemas');
         Route::post('tambah_pemeriksaanprodukjadi', [Admin::class, 'tambah_pemeriksaanprodukjadi'])->name('tambah_pemeriksaanprodukjadi');
-        Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tambah_pengemasanbatchproduk');
+        Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tamba h_pengemasanbatchproduk');
     });
 
     //auuditor
@@ -313,7 +324,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
         Route::get('/detilterimabbid', [Admin::class, 'tampil_detilbbid']);
         Route::post('/detilterimabb', [Admin::class, 'tampil_detilbb'])->name('detilBB');
-        Route::get('/detil_batch/{id}', [Admin::class, 'tampil_detilbatchid'])->name('detil_batch');
+        Route::post('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
+        Route::get('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
+        Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
+        Route::get( '/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
         Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');
         Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi'])->name('program-dan-pelatihan-higiene-dan-sanitasi');
         Route::get('pemusnahan-produk', [Admin::class, 'tampil_pemusnahanproduk'])->name('pemusnahan-produk');

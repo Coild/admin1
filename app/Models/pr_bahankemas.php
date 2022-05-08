@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class komposisi extends Model
+class pr_bahankemas extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'komposisi_id';
+    protected $primaryKey = 'id_pr_bahankemas';
 
-    // protected $fillable = [
-    //     'laporan_diterima',
-    // ];
+    protected $fillable = [
+        
+    ];
 }
