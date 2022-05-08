@@ -81,23 +81,25 @@
             <!-- Kop Surat -->
 
             <table width="100%" class="kop">
-                <tr>
-                    <td style="border:none;">
-                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
-                    </td>
-                    <td class="tengah" style="border:none;">
-                        <h1 style="font-weight: bolder; margin-bottom: -15px">
-                            {{$nama}}
-                        </h1>
-                        <h3 style="margin-bottom: -0px">
-                            {{$alamat}}
-                        </h3>
-                        <h5>
-                            {{$alamat}}
-                        </h5>
-                    </td>
-                </tr>
-            </table>
+            <tr>
+                <td style="border:none;"  width="30%">
+                    <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
+                </td>
+                <td width="70%" class="tengah" style="border:none;">
+                <center>
+                    <h1 style="font-weight: bolder; margin-bottom: -15px">
+                        {{ $nama }}
+                    </h1>
+                    <p style="margin-bottom: -5px; font-size: 28px; ">
+                        {{ $alamat }}
+                    </p>
+                    <p style="margin-bottom: -5px; font-size: 16px;">
+                        No Handphone : {{ $nohp }}
+                    </p>
+                    </center>
+                </td>
+            </tr>
+        </table>
             <center>
                 <br>
                 @foreach($kop as $row)

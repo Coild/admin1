@@ -2,41 +2,18 @@
 <html lang="en">
 
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
-        P {
-            margin-bottom: 3px;
-        }
-
-        table {
-            width: 100%;
-            margin-top: -15;
-            border-collapse: collapse;
-
-        }
-
-        td {
-            border: 1px solid black;
-            padding: 5px 3px;
-        }
-
-        tr {
-            text-align: center;
-        }
-
-        h3 {
-            float: left;
-            font-size: 12;
-            font-weight: lighter;
-            /* margin-bottom: auto; */
-        }
-
-        /* @page {
+        @page {
             size: auto;
             margin: 5mm;
-        } */
-
-        @media print{@page {size: landscape margin:0cm}}
+        }
 
         /* Kop Surat */
         .kop {
@@ -58,44 +35,48 @@
         .isi {
             text-align: center;
         }
-
     </style>
+    <script>
+        $(document).ready(function() {
+            $('#btnPrint').click(function() {
+                $('#btnPrint').hide();
+                var css = '@page { size: a4; }',
+                    head = document.head || document.getElementsByTagName('head')[0],
+                    style = document.createElement('style');
+                style.type = 'text/css';
+                style.media = 'print';
+                if (style.styleSheet) {
+                    style.styleSheet.cssText = css;
+                } else {
+                    style.appendChild(document.createTextNode(css));
+                }
+                head.appendChild(style);
+                window.print();
+            });
+        })
+    </script>
 
-    <title>print</title>
-
-    <!-- Normalize or reset CSS with your favorite library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-
-    <!-- Load paper.css for happy printing -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
-
-    <!-- Set page size here: A5, A4 or A3 -->
-    <!-- Set also "landscape" if you need -->
-    <style>
-        @page {
-            size: A4 landscape
-        }
-
-    </style>
 </head>
 
 <body class="A4 landscape">
     <section class="sheet padding-10mm" style="height: auto;">
         <table width="100%" class="kop">
             <tr>
-                <td style="border:none;">
+                <td style="border:none;"  width="30%">
                     <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
-                <td class="tengah" style="border:none;">
+                <td width="70%" class="tengah" style="border:none;">
+                <center>
                     <h1 style="font-weight: bolder; margin-bottom: -15px">
                         {{ $nama }}
                     </h1>
-                    <h3 style="margin-bottom: -0px">
+                    <p style="margin-bottom: -5px; font-size: 28px; ">
                         {{ $alamat }}
-                    </h3>
-                    <h5>
-                        {{ $alamat }}
-                    </h5>
+                    </p>
+                    <p style="margin-bottom: -5px; font-size: 16px;">
+                        No Handphone : {{ $nohp }}
+                    </p>
+                    </center>
                 </td>
             </tr>
         </table>
