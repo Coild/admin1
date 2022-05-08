@@ -51,7 +51,7 @@
                                                             Ruangan</label>
                                                         <div class="col-sm">
                                                             <select style="height: 35px;" class="form-control"
-                                                                name="nama_ruangan" id="inlineFormCustomSelect">
+                                                                name="nama_ruangan" id="nama_ruangan">
                                                                 <option value="">Choose...
                                                                 </option>
                                                                 @foreach ($data1 as $row)
@@ -67,7 +67,7 @@
                                                             Alat</label>
                                                         <div class="col-sm">
                                                             <input placeholder="Nama Alat" class="form-control"
-                                                                name="nama_alat" type="text" />
+                                                                name="nama_alat" type="text" id="nama_alat" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -75,7 +75,7 @@
                                                             Alat</label>
                                                         <div class="col-sm">
                                                             <input placeholder="Bagian Alat" class="form-control"
-                                                                name="bagian_alat" type="text" />
+                                                                name="bagian_alat" id="bagian_alat" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -83,7 +83,7 @@
                                                             Pembersihan</label>
                                                         <div class="col-sm">
                                                             <input placeholder="Cara Pembersihan" class="form-control"
-                                                                name="cara_pembersihan" type="text" />
+                                                                name="cara_pembersihan" id="cara_pembersihan" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -91,7 +91,7 @@
                                                             class="col-sm-3 col-form-label">Pelaksana</label>
                                                         <div class="col-sm">
                                                             <input placeholder="Pelaksana" class="form-control"
-                                                                name="pelaksana" type="text" />
+                                                                name="pelaksana" id="pelaksana" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -99,7 +99,7 @@
                                                             class="col-sm-3 col-form-label">Keterangan</label>
                                                         <div class="col-sm">
                                                             <input placeholder="Keterangan" class="form-control"
-                                                                name="keterangan" type="text" />
+                                                                name="keterangan" id="keterangan" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 d-flex justify-content-center">
@@ -151,22 +151,22 @@
                                                     Diterima
                                                 @endif
                                             </td>
-                                            <td>
-                                                @if ($row['status'] == 0)
-                                                    <form method="post" action="terimaperiksaalat">
+                                            @if (Auth::user()->level != 2)
+                                                <td>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm"
+                                                        class="btn btn-primary"
+                                                        onclick="editdata({{ $row }})">Edit</a>
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <form method="post" action="terimapemusnahanprodukjadi">
                                                         @csrf
                                                         <input type="hidden" name="id"
                                                             value="{{ $row['id_periksaalat'] }}" />
                                                         <button type="submit" class="btn btn-primary">Terima</button>
                                                     </form>
-                                                @else
-                                                    <form method="post" action="#">
-                                                        <input type="hidden" name="_token" value="" />
-                                                        <input type="hidden" name="nobatch" value="" />
-                                                        <button type="submit" class="btn btn-primary" disabled>Edit</button>
-                                                    </form>
-                                                @endif
-                                            </td>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -175,6 +175,20 @@
                         </div>
                     </div>
                 </div>
-
+                <script>
+                    function editdata(params) {
+                        $("#forminput").attr("action", "edit_periksaalat");
+                        var inputid = '<input type="hidden" name="id" class ="form-control " value="' + params
+                            .id_periksaalat + '"/>'
+                        $(inputid).insertAfter("#ambil_tanggalx")
+                        console.log(params);
+                        $("#nama_ruangan").val(params.nama_ruangan)
+                        $("#nama_alat").val(params.nama_alat)
+                        $("#bagian_alat").val(params.bagian_alat)
+                        $("#cara_pembersihan").val(params.cara_pembersihan)
+                        $("#pelaksana").val(params.pelaksana)
+                        $("#keterangan").val(params.keterangan)
+                    }
+                </script>
     </main>
 @endsection

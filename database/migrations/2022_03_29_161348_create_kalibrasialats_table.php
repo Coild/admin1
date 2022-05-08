@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriksapersonilsTable extends Migration
+class CreateKalibrasialatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePeriksapersonilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('periksapersonils', function (Blueprint $table) {
-            $table->id('personil_id');
-            $table->string('nama', 25);
-            $table->string('nama_file', 25);
+        Schema::create('kalibrasialats', function (Blueprint $table) {
+            $table->id('kalibrasi_id');
+            $table->string('nama_alat', 50);
+            $table->string('nama_file', 200);
             $table->integer('pabrik', false);
             $table->integer('user_id', 0)->unsigned();
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreatePeriksapersonilsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periksapersonils');
+        Schema::dropIfExists('kalibrasialats');
     }
 }

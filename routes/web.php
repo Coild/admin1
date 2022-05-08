@@ -302,11 +302,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('edit_kartustockbahankemas', [Admin::class, 'edit_kartustockbahankemas'])->name('edit_kartustockbahankemas');
         Route::post('tambah_kartustokprodukjadi', [Admin::class, 'tambah_kartustokprodukjadi'])->name('tambah_kartustokprodukjadi');
         Route::post('edit_kartustockprodukantara', [Admin::class, 'edit_kartustockprodukantara'])->name('edit_kartustockprodukantara');
+        Route::post('edit_kartustockprodukjadi', [Admin::class, 'edit_kartustockprodukjadi'])->name('edit_kartustockprodukjadi');
         Route::post('tambah_kalibrasialat', [Admin::class, 'tambah_kalibrasialat'])->name('tambah_kalibrasialat');
         Route::post('tambah_pemeriksaanbahan', [Admin::class, 'tambah_pemeriksaanbahan'])->name('tambah_pemeriksaanbahan');
+        Route::post('edit_pemeriksaanbahan', [Admin::class, 'edit_pemeriksaanbahan'])->name('edit_pemeriksaanbahan');
         Route::post('tambah_pemeriksaanbahankemas', [Admin::class, 'tambah_pemeriksaanbahankemas'])->name('tambah_pemeriksaanbahankemas');
         Route::post('tambah_pemeriksaanprodukjadi', [Admin::class, 'tambah_pemeriksaanprodukjadi'])->name('tambah_pemeriksaanprodukjadi');
         Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tamba h_pengemasanbatchproduk');
+        Route::post('edit_pemeriksaanbahan', [Admin::class, 'edit_pemeriksaanbahan'])->name('edit_pemeriksaanbahan');
+        Route::post('edit_pemeriksaanbahankemas', [Admin::class, 'edit_pemeriksaanbahankemas'])->name('edit_pemeriksaanbahankemas');
+        Route::post('edit_pemeriksaanprodukjadi', [Admin::class, 'edit_pemeriksaanprodukjadi'])->name('edit_pemeriksaanprodukjadi');
+        Route::post('tambah_pengemasanbatchproduk', [Admin::class, 'tambah_pengemasanbatchproduk'])->name('tambah_pengemasanbatchproduk');
     });
 
     //auuditor
@@ -343,12 +349,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
+        Route::post('edit_kalibrasialat', [Admin::class, 'edit_kalibrasialat'])->name('edit_kalibrasialat');
         Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');
         Route::get('pengemasan-batch', [Admin::class, 'tampil_pengemasanbatch'])->name('pengemasan-batch');
         //tampil higi sani
         Route::get('/periksasaniruang', [Admin::class, 'tampil_periksasaniruang'])->name('periksasaniruang');
         Route::get('/periksasanialat', [Admin::class, 'tampil_periksasanialat'])->name('periksasanialat');
         Route::get('/periksapersonil', [Admin::class, 'tampil_periksapersonil'])->name('periksapersonil');
+        Route::post('/edit_periksapersonil', [Admin::class, 'edit_periksapersonil'])->name('edit_periksapersonil');
+        Route::post('/edit_periksaalat', [Admin::class, 'edit_periksaalat'])->name('edit_periksaalat');
 
         //pprotap
         Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);

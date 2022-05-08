@@ -56,7 +56,7 @@
                                                             Personil</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="nama_personil" class="form-control"
-                                                                id="inputEmail3" placeholder="Nama Personil" />
+                                                                id="nama_personil" placeholder="Nama Personil" />
                                                         </div>
                                                     </div>
 
@@ -99,8 +99,18 @@
                                     <td>{{ $i }}</td>
                                     <td>{{ $row['nama'] }}</td>
                                     <td>
-                                        <a href="asset/health_personil/{{ $row['nama_file'] }}"
-                                            class="btn btn-primary">Buka</a>
+                                        @if (Auth::user()->level == 2)
+                                            <form method="post" action="terimapenimbanganproduk">
+                                                @csrf
+                                                <input type="hidden" name="nobatch" value="{{ $row['personil_id'] }}" />
+                                                <button type="submit" class="btn btn-primary">Terima</button>
+                                            </form>
+                                        @else
+                                            <a href="asset/health_personil/{{ $row['nama_file'] }}"
+                                                class="btn btn-primary">Buka</a>
+                                            <a href="#" type="submit" data-toggle="modal" data-target="#modalForm"
+                                                class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -110,4 +120,23 @@
             </div>
         </div>
     </main>
+    <script>
+        function editdata(params) {
+            setdatetoday()
+            $("#forminput").attr("action", "edit_periksapersonil");
+            var inputid = '<input type="hidden" id="id" name="id" class ="form-control" value="' + params
+                .personil_id + '"/>'
+            var filename = '<input type="hidden" id="filename" name="filename" class ="form-control" value="' + params
+                .nama_file + '"/>'
+            $(inputid).insertAfter("#ambil_tanggal")
+            $(filename).insertAfter("#ambil_tanggal")
+            $("#nama_personil").val(params.nama)
+            var source = '<p>' + params.nama_file +
+                ' <i class="fas fa-download"></i> <a href="asset/health_personil/' +
+                params
+                .nama_file +
+                '" >Buka</a></p> '
+            $(source).insertBefore("#fileform")
+        }
+    </script>
 @endsection

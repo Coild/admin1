@@ -1,5 +1,5 @@
 function salert() {
-    const mycomp = document.getElementsByClassName("form-control");
+    const mycomp = document.getElementsByClassName("#forminput .form-control");
     var valid = false;
     console.log(mycomp[mycomp.length-1]);
     for (i = 0; i < mycomp.length; i++) {
