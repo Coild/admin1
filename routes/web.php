@@ -37,6 +37,7 @@ Route::get('/auto', function () {
 
 //print
 Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
+Route::post('/printpengemasanbatch', [PrintController::class, 'cetak_pengemasanbatch']);
 Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
 Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
 Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahankemas');

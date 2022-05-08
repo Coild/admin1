@@ -3098,7 +3098,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
-            'laporan_nama' => 'Pengemasan Batch Produk',
+            'laporan_nama' => 'pengemasan batch produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->nama,

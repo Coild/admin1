@@ -195,6 +195,8 @@ class dataPelaksana extends Controller
         return DataTables::of($data)->addColumn('action', function ($data) {
             if ($data->laporan_nama == 'pengolahan batch')
                 $form = '<form target="_blank" method="post" action="/printpengolahanbatch">';
+            elseif ($data->laporan_nama == 'pengemasan batch produk')
+                $form = '<form target="_blank" method="post" action="/printpengemasanbatch">';
             elseif ($data->laporan_nama == 'penambahan contoh bahan baku')
                 $form = '<form target="_blank" method="post" action="/printambilbahanbaku">';
             elseif ($data->laporan_nama == 'penambahan contoh produk')

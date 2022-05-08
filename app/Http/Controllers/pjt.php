@@ -37,15 +37,15 @@ class pjt extends Controller
     public function terima_kemasbatch(Request  $req)
     {
         $id = $req['id'];
-        // dd($req);
+        // dd($id);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        $user = Pengemasanbatchproduk::all()->where("nomor_batch", $id)->first()->update([
+        $user = Pengemasanbatchproduk::all()->where("id_pengemasanbatchproduk", $id)->first()->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_batch', $req['id'])
+        laporan::all()->where('laporan_nomor', $req['id'])
             ->where('laporan_nama', 'Pengemasan Batch Produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->nama,
                 'tgl_diterima' => $tgl
@@ -213,8 +213,8 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        // dd($req['nobatch']);
-        $user = pengoprasianalat::all()->where("id_operasi", $req['nobatch'])->first()->update([
+        dd($req['nobatch']);
+        $user = pengoprasianalat::where("id_operasi", $req['nobatch'])->update([
             'status' => 1,
         ]);
 

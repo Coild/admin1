@@ -210,8 +210,10 @@
                                         @if (Auth::user()->level == 2)
                                             <form method="post" action="terima_kemasbatch">
                                                 @csrf
-                                                <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                <button type="submit" class="btn btn-primary">terima</button>
+                                                <input type="hidden" name="id" value="{{ $row['id_pengemasanbatchproduk'] }}" />
+                                                <button type="submit" class="btn btn-primary"
+                                                @if($row['status']==1) disabled @endif
+                                                >terima</button>
                                             </form>
                                         @else
                                             <form method="post" action="detilkemasbatch" class="float-left mr-2">

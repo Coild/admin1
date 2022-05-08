@@ -15,8 +15,8 @@ class CreateDetilalatsTable extends Migration
     {
         Schema::create('detilalats', function (Blueprint $table) {
             $table->id('id_detilalat', 20);
-			$table->date('mulai')->nullable();
-			$table->date('selesai')->nullable();
+			$table->dateTime('mulai')->nullable();
+			$table->dateTime('selesai')->nullable();
 			$table->string('oleh', 200);
 			$table->string('ket', 200);
             $table->integer('induk',0)->unsigned();

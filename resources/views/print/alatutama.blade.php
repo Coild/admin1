@@ -56,6 +56,7 @@
         .isi {
             text-align: center;
         }
+
     </style>
 
     <title>print</title>
@@ -72,6 +73,7 @@
         @page {
             size: A4
         }
+
     </style>
 </head>
 
@@ -85,65 +87,66 @@
                 </td>
                 <td class="tengah" style="border:none;">
                     <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        {{$nama}}
+                        {{ $nama }}
                     </h1>
                     <h3 style="margin-bottom: -0px">
-                        {{$alamat}}
+                        {{ $alamat }}
                     </h3>
                     <h5>
-                        {{$alamat}}
+                        {{ $alamat }}
                     </h5>
                 </td>
             </tr>
         </table>
         <center>
             <br>
-            @foreach($kop as $row)
-            <table class="table table-bordered">
-                <tr>
-                    <td rowspan="4">
-                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
+            @foreach ($kop as $row)
+                <table class="table table-bordered">
+                    <tr>
+                        <td rowspan="4">
+                            <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;"
+                                alt="Your Picture">
 
-                    </td>
-                    <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PENGGUNA ALAT UTAMA
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="3" colspan="3">
-                        Nomor: <br>
-                        Tanggal Berlaku: <br>
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2" colspan="2">
-                        BAGIAN
+                        </td>
+                        <td rowspan="2" colspan="2" style="text-align: center;">
+                            CATATAN<br>PENGGUNA ALAT UTAMA
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" colspan="3">
+                            Nomor: <br>
+                            Tanggal Berlaku: <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" colspan="2">
+                            BAGIAN
 
-                    </td>
+                        </td>
 
 
-                </tr>
-                <tr> </tr>
-                <tr>
-                    <td rowspan="3">
-                        Disusun Oleh <br>
-                        {{$row['laporan_diajukan']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3" colspan="4">
-                        Disetujui Oleh <br>
-                        {{$row['laporan_diterima']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3">
-                        Mengganti Nomor <br>
-                        Tanggal <br>
-                        09 Oktober 2019
-                    </td>
-                </tr>
-            </table>
+                    </tr>
+                    <tr> </tr>
+                    <tr>
+                        <td rowspan="3">
+                            Disusun Oleh <br>
+                            {{ $row['laporan_diajukan'] }} <br>
+                            Tanggal <br>
+                            {{ $row['tgl_diajukan'] }}
+                        </td>
+                        <td rowspan="3" colspan="4">
+                            Disetujui Oleh <br>
+                            {{ $row['laporan_diterima'] }} <br>
+                            Tanggal <br>
+                            {{ $row['tgl_diajukan'] }}
+                        </td>
+                        <td rowspan="3">
+                            Mengganti Nomor <br>
+                            Tanggal <br>
+                            09 Oktober 2019
+                        </td>
+                    </tr>
+                </table>
             @endforeach
             <br>
             <br>
@@ -163,9 +166,9 @@
                 </tr>
                 <tr>
                     <td colspan="7">
-                        NAMA ALAT: {{$data['nama_alat']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        TIPE/MEREK: {{$data['tipe_merek']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        RUANG: {{$data['ruang']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        NAMA ALAT: {{ $data['nama_alat'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        TIPE/MEREK: {{ $data['tipe_merek'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        RUANG: {{ $data['ruang'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -184,15 +187,29 @@
                     <td>Tgl</td>
                     <td>Jam</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>{{$data['mulai']}}</td>
-                    <td>03.00</td>
-                    <td>{{$data['mulai']}}</td>
-                    <td>05.00</td>
-                    <td>{{$data['oleh']}}</td>
-                    <td>{{$data['ket']}}</td>
-                </tr>
+                <?php $i = 1; ?>
+                @foreach ($isi as $baris)
+                    <tr>
+                        <?php $i++;
+                        // "{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}"
+                        // $mulai = DateTime::createFromFormat('Y-m-d', strtotime($baris['mulai']));
+                        // $selesai = DateTime::createFromFormat('Y-m-d', strtotime($baris['selesai']));
+                        $mulai = $baris['mulai'];
+                        $mulai = strtotime($mulai);
+                        $selesai = $baris['selesai'];
+                        $selesai = strtotime($selesai);
+                         ?>
+
+
+                        <td>1</td>
+                        <td>{{ date('d-m-Y',$mulai) }}</td>
+                        <td>{{ date('H:i',$mulai) }}</td>
+                        <td>{{ date('d-m-Y',$selesai) }}</td>
+                        <td>{{ date('H:i',$selesai) }}</td>
+                        <td>{{ $baris['oleh'] }}</td>
+                        <td>{{ $baris['ket'] }}</td>
+                    </tr>
+                @endforeach
             </table>
 
         </center>
