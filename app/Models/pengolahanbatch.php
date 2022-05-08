@@ -11,7 +11,14 @@ class pengolahanbatch extends Model
     protected $primaryKey = 'batch';
 
     protected $fillable = [
-        'status',
-        'batch'
+        'pob',
+        'kode_produk',
+        'nama_produk',
+        'nomor_batch',
+        'besar_batch',
+        'bentuk_sedia',
+        'kategori',
+        'kemasan',
+        'status'
     ];
 }

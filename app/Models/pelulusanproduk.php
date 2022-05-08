@@ -13,6 +13,14 @@ class pelulusanproduk extends Model
 
     protected $fillable = [
         'status',
+        'nama_bahan',
+        'no_batch',
+        'kedaluwarsa',
+        'nama_pemasok',
+        'warna',
+        'bau',
+        'ph',
+        'berat_jenis',
+        'id_pelulusan',
     ];
-    
 }

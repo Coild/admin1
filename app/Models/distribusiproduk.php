@@ -12,5 +12,10 @@ class distribusiproduk extends Model
 
     protected $fillable = [
         'status',
+        'kode_distribusi',
+        'tanggal',
+        'id_batch',
+        'jumlah',
+        'nama_distributor',
     ];
 }

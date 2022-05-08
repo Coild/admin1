@@ -139,11 +139,11 @@
                                                 <button type="submit" class="btn btn-primary">terima</button>
                                             </form>
                                         @else
-                                            <form method="post" action="detil_batch">
-                                                @csrf
-                                                <input type="hidden" name="nobatch" value="" />
-                                                <button type="submit" class="btn btn-primary">edit</button>
-                                            </form>
+
+                                                <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi"
+                                                data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}"
+                                                data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}"
+                                                data-id="{{ $row['id_distribusi'] }}">edit</button>
                                         @endif
                                     </td>
                                 </tr>
@@ -153,5 +153,95 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="edit_distribusi" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Entry Pendistribusian Produk
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <p class="statusMsg"></p>
+                        <form method="post" action="edit_distribusi" id='forminput1'>
+                            <input type="hidden" name="id" id="isi_id">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Distribusi
+                                </div>
+                                <div class="card-header" id='headertgl'></div>
+                                @csrf
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                <div class="card-body">
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
+                                            Pendistribusian</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="kode_distribusi" class="form-control 1"
+                                                id="isi_kode" placeholder="Kode Pendistribusian" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">No
+                                            Batch</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="no_batch" class="form-control 1"
+                                                id="isi_nobatch" placeholder="No Batch" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3"
+                                            class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="jumlah" class="form-control 1"
+                                                id="isi_jumlah" placeholder="Jumlah" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                            Distributor</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="nama_distributor"
+                                                class="form-control 1" id="isi_nama"
+                                                placeholder="Nama Distributor" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
+                                    style="float:left; width: 100px;  margin-left:25px"
+                                    role="button">Simpan</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
     </main>
+    <script>
+        $(document).on('click', "#klikdis", function() {
+                var nama = $(this).data('nama');
+                var kode = $(this).data('kode');
+                var nobatch = $(this).data('nobatch');
+                var jumlah = $(this).data('jumlah');
+                var id = $(this).data('id');
+
+                console.log("ini " + nama + " ruangan " + id);
+                $("#isi_nobatch").val(nobatch);
+                $("#isi_jumlah").val(jumlah);
+                $("#isi_kode").val(kode);
+                $("#isi_nama").val(nama);
+                $("#isi_id").val(id);
+                // document.getElementById('cpbahan').value = cpid;
+            })
+    </script>
 @endsection

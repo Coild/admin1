@@ -485,6 +485,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Pengolahan</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -708,14 +708,14 @@ class Admin extends Controller
         $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
         $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
 
-        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 
+        return view('catatan.dokumen.pengemasanbatch', ['data' => $data,
         'data2' => $data2, 'data3' => $data3]);
     }
 
     public function tampil_detilkemasbatch(Request $req)
     {
         // dd($req);
-        
+
         $id = $req['nobatch'] ??  session()->get('detilbatch');
         session(['detilbatch' => $req['nobatch'] ??  $id]);
         $data = Pengemasanbatchproduk::all()->where('no_batch', $id);
@@ -791,7 +791,7 @@ class Admin extends Controller
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
-    
+
 
     // public function tampil_detilbatch(Request $req)
     // {
@@ -810,10 +810,11 @@ class Admin extends Controller
     public function tampil_detilbatch(Request $req)
     {
         // dd($req);
-        
+
         $id = $req['nobatch'] ??  session()->get('detilbatch');
         session(['detilbatch' => $req['nobatch'] ??  $id]);
-        $data = pengolahanbatch::all()->where('nomor_batch', $id);
+        $data = pengolahanbatch::all()->where('nomor_batch', $id)->first();
+        $data= [$data];
         // dd($id);
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
@@ -883,6 +884,25 @@ class Admin extends Controller
 
         // dd($hasil);
         laporan::insert($laporan);
+        return redirect('/pengolahanbatch');
+    }
+
+    public function edit_batch(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'pob' => $req['pob'],
+            'kode_produk' => $req['kode_produk'],
+            'nama_produk' => $req['nama_produk'],
+            'nomor_batch' => $req['no_batch'],
+            'besar_batch' => $req['besar_batch'],
+            'bentuk_sedia' => $req['bentuk_sediaan'],
+            'kategori' => $req['kategori'],
+            'kemasan' => $req['kemasan'],
+        ];
+
+        $nomer = pengolahanbatch::where('batch',$id)->update($hasil);
         return redirect('/pengolahanbatch');
     }
 
@@ -1676,6 +1696,21 @@ class Admin extends Controller
 
         return redirect('/pendistribusian-produk');
     }
+    public function edit_distribusi(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_distribusi' => $req['kode_distribusi'],
+            'tanggal' => $req['tanggal'],
+            'id_batch' => $req['no_batch'],
+            'jumlah' => $req['jumlah'],
+            'nama_distributor' => $req['nama_distributor'],
+        ];
+
+        $nomer = distribusiproduk::where('id_distribusi',$id)->update($hasil);
+        return redirect('/pendistribusian-produk');
+    }
     public function tampil_distribusi()
     {
         $pabrik = Auth::user()->pabrik;
@@ -1829,6 +1864,26 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
+
+        return redirect('/pelulusan-produk');
+    }
+
+    public function edit_pelulusan(Request $req)
+    {
+        $id = $req['id'];
+
+        $hasil = [
+            'nama_bahan' => $req['nama_bahan'],
+            'no_batch' => $req['nobatch'],
+            'kedaluwarsa' => $req['kedaluwarsa'],
+            'nama_pemasok' => $req['nama_pemasok'],
+            'tanggal' => $req['tanggal'],
+            'warna' => $req['warna'],
+            'bau' => $req['bau'],
+            'ph' => $req['ph'],
+            'berat_jenis' => $req['berat_jenis'],
+        ];
+        $nomer = pelulusanproduk::where('id_pelulusan', $id)->update($hasil);
 
         return redirect('/pelulusan-produk');
     }
@@ -3055,6 +3110,24 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
+        return redirect('/pengemasan-batch');
+    }
+    public function edit_pengemasanbatchproduk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'kode_produk' => $req['kode_produk'],
+            'nama_produk' => $req['nama_produk'],
+            'no_batch' => $req['no_batch'],
+            'protap' => $req['protap'],
+            'besar_batch' => $req['besar_batch'],
+            'bentuksediaan' => $req['bentuk_sediaan'],
+            'kemasan' => $req['kemasan'],
+            'mulai' => $req['mulai'],
+            'selesai' => $req['selesai'],
+        ];
+        $nomer = Pengemasanbatchproduk::where('id_pengemasanbatchproduk', $id)->update($hasil);
         return redirect('/pengemasan-batch');
     }
     public function tampil_pengemasanbatch()
