@@ -235,8 +235,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $induk = $req['induk'];
         $jenis = $req['jenis'];
+        $nama = $req['nama'];
         session(['induk' => $induk]);
         session(['jenis' => $jenis]);
+        session(['nama' => $nama]);
         if ($jenis == 1) {
             $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
             $data2 = PPbahanbakukeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
@@ -248,7 +250,7 @@ class Admin extends Controller
             $data2 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
         }
         return view('catatan.dokumen.detailpenerimaanBB', [
-            'jenis' => $jenis, 'induk' => $induk,
+            'jenis' => $jenis, 'induk' => $induk, 'nama' => $nama,
             'data1' => $data1,
             'data2' => $data2
         ]);
@@ -259,6 +261,7 @@ class Admin extends Controller
         // global $a,$b;
         $jenis = session()->get('jenis');
         $induk =  session()->get('induk');
+        $nama  =  session()->get('nama');
         $pabrik = Auth::user()->pabrik;        // dd($req);
         if ($jenis == 1) {
             $data1 = PPbahanbakumasuk::all()->where('pabrik', $pabrik)->where('induk', $induk);
@@ -271,7 +274,7 @@ class Admin extends Controller
             $data2 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
         }
         return view('catatan.dokumen.detailpenerimaanBB', [
-            'jenis' => $jenis, 'induk' => $induk,
+            'jenis' => $jenis, 'induk' => $induk, 'nama' => $nama,
             'data1' => $data1,
             'data2' => $data2,
         ]);

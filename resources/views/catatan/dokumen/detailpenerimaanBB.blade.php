@@ -8,6 +8,7 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Catatan Penerimaan Penyerahan dan Penyimpanan </h1>
+            <h3 style="text-align: center;"> {{$namaper}} </h3>
             @if ($isi == 1)
                 <div class="row">
                     <div class="card mb-4">
