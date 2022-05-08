@@ -319,7 +319,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan bahan',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -355,7 +355,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan produk',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -391,7 +391,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan kemasan',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -874,7 +874,7 @@ class Admin extends Controller
             'laporan_nama' => 'pengolahan batch',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1202,7 +1202,7 @@ dd($req);
             'laporan_nama' => 'Periksa Personil',
             'laporan_batch' => 'dummy',
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1233,7 +1233,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Periksa Personil")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1273,7 +1273,7 @@ dd($req);
             'laporan_nama' => 'periksa sanitasi alat',
             'laporan_batch' => $req['no_batch'] ?? 0,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1302,7 +1302,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "periksa sanitasi alat")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1342,7 +1342,7 @@ dd($req);
             'laporan_nama' => 'periksa sanitasi ruangan',
             'laporan_batch' => $req['no_batch'] ?? 0,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1405,7 +1405,7 @@ dd($req);
             'laporan_nama' => 'pelatihan higiene dan sanitasi',
             'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1444,7 +1444,7 @@ dd($req);
             'laporan_nama' => 'pelatihan cpkb',
             'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1541,7 +1541,7 @@ dd($req);
             'laporan_nama' => 'penanganan keluhan',
             'laporan_batch' => 'dummy',
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1571,7 +1571,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penanganan keluhan")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1614,7 +1614,7 @@ dd($req);
             'laporan_nama' => 'penarikan produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1643,7 +1643,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penarikan produk")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1684,7 +1684,7 @@ dd($req);
             'laporan_nama' => 'distribusi produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1744,7 +1744,7 @@ dd($req);
             'laporan_nama' => 'pengoperasian alat',
             'laporan_batch' => $req['no_batch'] ?? $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1855,7 +1855,7 @@ dd($req);
             'laporan_nama' => 'pelulusan produk jadi',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1925,7 +1925,7 @@ dd($req);
             'laporan_nama' => 'penambahan contoh bahan baku',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1964,7 +1964,7 @@ dd($req);
             'laporan_nama' => 'penambahan contoh produk',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2004,7 +2004,7 @@ dd($req);
             'laporan_nama' => 'penambahan contoh kemasan',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2118,7 +2118,7 @@ dd($req);
             'laporan_nama' => 'penimbangan bahan',
             'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2158,7 +2158,7 @@ dd($req);
             'laporan_nama' => 'penimbangan produk utama',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2196,7 +2196,7 @@ dd($req);
             'laporan_nama' => 'ruang timbang',
             'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2247,7 +2247,6 @@ dd($req);
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
             'no_loth' => $req['no_loth'],
             'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
@@ -2299,7 +2298,7 @@ dd($req);
             'laporan_nama' => 'kartu stok bahan baku',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2326,7 +2325,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan baku")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2356,7 +2355,7 @@ dd($req);
             'laporan_nama' => 'kartu stok bahan kemas',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2383,7 +2382,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan kemas")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2413,7 +2412,7 @@ dd($req);
             'laporan_nama' => 'kartu stok produk antara',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2440,7 +2439,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk antara")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2470,7 +2469,7 @@ dd($req);
             'laporan_nama' => 'kartu stok produk jadi',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2497,7 +2496,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk jadi")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2551,7 +2550,7 @@ dd($req);
             'laporan_nama' => 'pemusnahan bahan',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2582,7 +2581,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2616,7 +2615,7 @@ dd($req);
             'laporan_nama' => 'pemusnahan bahan kemas',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2647,7 +2646,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan kemas")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2681,7 +2680,7 @@ dd($req);
             'laporan_nama' => 'pemusnahan produk antara',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2712,7 +2711,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk antara")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2746,7 +2745,7 @@ dd($req);
             'laporan_nama' => 'pemusnahan produk jadi',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2777,7 +2776,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk jadi")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2827,7 +2826,7 @@ dd($req);
             'laporan_nama' => 'Kalibrasi Alat',
             'laporan_batch' => "dummy",
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2859,7 +2858,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Kalibrasi Alat")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2901,7 +2900,7 @@ dd($req);
             'laporan_nama' => 'Pemeriksaan Bahan Baku',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2931,7 +2930,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Baku")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2962,7 +2961,7 @@ dd($req);
             'laporan_nama' => 'Pemeriksaan Bahan Kemas',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2990,7 +2989,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Kemas")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -3022,7 +3021,7 @@ dd($req);
             'laporan_nama' => 'Pemeriksaan Produk Jadi',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -3051,7 +3050,7 @@ dd($req);
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Produk Jadi")->update([
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -3101,7 +3100,7 @@ dd($req);
             'laporan_nama' => 'pengemasan batch produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->nama,
+            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,

@@ -28,7 +28,7 @@ class pjt extends Controller
         ]);
         laporan::all()->where('laporan_batch', $req['id'])
             ->where('laporan_nama', 'pengolahan batch')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('pengolahanbatch');
@@ -47,7 +47,7 @@ class pjt extends Controller
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])
             ->where('laporan_nama', 'Pengemasan Batch Produk')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('pengemasan-batch');
@@ -65,7 +65,7 @@ class pjt extends Controller
         ]);
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penambahan contoh kemasan')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         $data = contohkemasan::all()->where('status', 1);
@@ -84,7 +84,7 @@ class pjt extends Controller
         ]);
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penambahan contoh produk')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         $data = contohprodukjadi::all()->where('status', 1);
@@ -104,7 +104,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penambahan contoh bahan baku')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('ambilcontoh');
@@ -126,7 +126,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penerimaan bahan')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penerimaanBB');
@@ -146,7 +146,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penerimaan produk')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penerimaanBB');
@@ -164,7 +164,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penerimaan kemasan')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penerimaanBB');
@@ -183,7 +183,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'pelatihan higiene dan sanitasi')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
@@ -201,7 +201,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'pelatihan cpkb')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
@@ -220,7 +220,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'pengoperasian alat')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('pengoprasian-alat');
@@ -240,7 +240,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'distribusi produk')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('pendistribusian-produk');
@@ -259,7 +259,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penimbangan bahan')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penimbangan');
@@ -277,7 +277,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penimbangan produk utama')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penimbangan');
@@ -295,7 +295,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'ruang timbang')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('penimbangan');
@@ -314,7 +314,7 @@ class pjt extends Controller
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'pelulusan produk jadi')->first()->update([
-                'laporan_diterima' =>  Auth::user()->nama,
+                'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
         return redirect()->route('pelulusan-produk');
@@ -333,7 +333,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'penanganan keluhan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = penanganankeluhan::all()->where('status', 1);
@@ -350,7 +350,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'penarikan produk')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = penarikanproduk::all()->where('status', 1);
@@ -367,7 +367,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan bahan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = pemusnahanbahanbaku::all()->where('status', 1);
@@ -384,7 +384,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan bahan kemas')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanbahankemas::all()->where('status', 1);
@@ -401,7 +401,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan produk antara')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanprodukantara::all()->where('status', 1);
@@ -418,7 +418,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan produk jadi')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanprodukjadi::all()->where('status', 1);
@@ -435,7 +435,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'kartu stok bahan baku')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokbahan::all()->where('status', 1);
@@ -452,7 +452,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'kartu stok bahan kemas')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokbahankemas::all()->where('status', 1);
@@ -469,7 +469,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'kartu stok produk jadi')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokprodukjadi::all()->where('status', 1);
@@ -486,7 +486,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'kartu stok produk antara')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokprodukantara::all()->where('status', 1);
@@ -503,7 +503,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Pemeriksaan Bahan Baku')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasibahanbaku::all()->where('status', 1);
@@ -520,7 +520,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Pemeriksaan Bahan Kemas')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasibahankemas::all()->where('status', 1);
@@ -537,7 +537,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Pemeriksaan Produk Jadi')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasiprodukjadi::all()->where('status', 1);
@@ -554,7 +554,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = periksaruang::all()->where('status', 1);
@@ -571,7 +571,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->nama,
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = periksaalat::all()->where('status', 1);
