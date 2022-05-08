@@ -113,6 +113,30 @@ class AuthController extends Controller
         return redirect('/'); //->with('status', 'Kata sandi lama anda salah!');
     }
 
+    public function reset_pass(Request $req)
+    {
+        
+            $id = $req['id'];
+            $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
+            // dd($ganti);
+            $user = User::all()->where("id", $ganti['id'])->first()->update([
+                'password' => Hash::make($req['baru']),
+            ]);
+
+        return redirect('/karyawan'); //->with('status', 'Kata sandi lama anda salah!');
+    }
+
+    public function reset_passu(Request $req)
+    {
+            $id = $req['id'];
+            
+            $user = User::all()->where("id", $id)->first()->update([
+                'password' => Hash::make($req['baru']),
+            ]);
+
+        return redirect('/pabrik'); //->with('status', 'Kata sandi lama anda salah!');
+    }
+
     public function autocompleteSearch(Request $request)
     {
         $query = $request->get('query');

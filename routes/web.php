@@ -26,6 +26,9 @@ Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
+Route::post('/reset_password',[AuthController::class, 'reset_pass']);
+Route::post('/reset_passwordu',[AuthController::class, 'reset_passu']);
+
 Route::view('/template', 'print.template');
 
 Route::get('/resetpass', function () {
