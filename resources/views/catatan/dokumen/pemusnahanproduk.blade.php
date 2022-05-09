@@ -121,7 +121,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="asal_bahanbaku"
                                                                                 class="form-control 1" id="asal_bahanbaku"
-                                                                                placeholder="Asal Produk Jadi" />
+                                                                                placeholder="Asal Bahan Baku" />
                                                                         </div>
                                                                     </div>
 
@@ -132,7 +132,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="jumlah_bahanbaku"
                                                                                 class="form-control 1" id="jumlah_bahanbaku"
-                                                                                placeholder="Jumlah Produk Jadi" />
+                                                                                placeholder="Jumlah Bahan Baku" />
                                                                         </div>
                                                                     </div>
 
@@ -342,7 +342,7 @@
                                                                             <input type="text" name="asal_bahankemas"
                                                                                 class="form-control 2"
                                                                                 id="asal_bahankemas1"
-                                                                                placeholder="Asal Produk Jadi" />
+                                                                                placeholder="Asal Bahan Kemas" />
                                                                         </div>
                                                                     </div>
 
@@ -354,7 +354,7 @@
                                                                             <input type="text" name="jumlah_bahankemas"
                                                                                 class="form-control 2"
                                                                                 id="jumlah_bahankemas1"
-                                                                                placeholder="Jumlah Produk Jadi" />
+                                                                                placeholder="Jumlah Bahan Kemas" />
                                                                         </div>
                                                                     </div>
 
