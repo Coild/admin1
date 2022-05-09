@@ -711,8 +711,8 @@ class Admin extends Controller
     {
         // dd($req);
 
-        $id = $req['nobatch'] ??  session()->get('detilbatch');
-        session(['detilbatch' => $req['nobatch'] ??  $id]);
+        $id = $req['nobatch'] ??  session()->get('detilkemasbatch');
+        session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
         $data = Pengemasanbatchproduk::all()->where('no_batch', $id);
         // dd($data);
         $kemasan = kemasan::all();
