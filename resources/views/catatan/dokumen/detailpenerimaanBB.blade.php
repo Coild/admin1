@@ -215,9 +215,9 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                                        Produk</label>
+                                                        Distributor</label>
                                                     <div class="col-sm">
-                                                        <input type="text" class="form-control 2" placeholder="Untuk Produk"
+                                                        <input type="text" class="form-control 2" placeholder="Untuk Distributor"
                                                             name="untuk_produk">
                                                     </div>
                                                 </div>
@@ -262,7 +262,7 @@
                                     <tr>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Nama Bahan</th>
-                                        <th scope="col">Untuk Produk</th>
+                                        <th scope="col">Untuk Distributor</th>
                                         <th scope="col">No Batch</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">Sisa</th>
@@ -510,10 +510,10 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                                        Produk</label>
+                                                        Distributor</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 4"
-                                                            placeholder="Untuk Produk" name="untuk_produk">
+                                                            placeholder="Untuk Distributor" name="untuk_produk">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="tanggal" id='ambil_tanggal4'
@@ -558,7 +558,7 @@
                                     <tr>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Nama Produk</th>
-                                        <th scope="col">Untuk Produk</th>
+                                        <th scope="col">Untuk Distributor</th>
                                         <th scope="col">No Batch</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">Sisa</th>
@@ -809,10 +809,10 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                                        Produk</label>
+                                                        Distributor</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 6"
-                                                            placeholder="Untuk Produk" name="untuk_produk">
+                                                            placeholder="Untuk Distributor" name="untuk_produk">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="tanggal" id='ambil_tanggal6'
@@ -857,7 +857,7 @@
                                     <tr>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Nama Produk</th>
-                                        <th scope="col">Untuk Produk</th>
+                                        <th scope="col">Untuk Distributor</th>
                                         <th scope="col">No Batch</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">Sisa</th>
@@ -1019,10 +1019,10 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                    Produk</label>
+                                    Distributor</label>
                                 <div class="col-sm">
                                     <input type="text" id="bahankeluar_produk" class="form-control 8"
-                                        placeholder="Untuk Produk" name="untuk_produk">
+                                        placeholder="Untuk Distributor" name="untuk_produk">
                                 </div>
                             </div>
                             <input type="hidden" name="tanggal" id='ambil_tanggal2' class="tanggal"
@@ -1177,9 +1177,9 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                    Produk</label>
+                                    Distributor</label>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control 10" placeholder="Untuk Produk"
+                                    <input type="text" class="form-control 10" placeholder="Untuk Distributor"
                                         name="untuk_produk" id="produkkeluar_produk">
                                 </div>
                             </div>
@@ -1335,9 +1335,9 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                    Produk</label>
+                                    Distributor</label>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control 12" placeholder="Untuk Produk"
+                                    <input type="text" class="form-control 12" placeholder="Untuk Distributor"
                                         name="untuk_produk" id="kemasankeluar_produk">
                                 </div>
                             </div>
