@@ -76,7 +76,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 1" name="pemasok"
                                                             placeholder="Pemasok" />
@@ -122,7 +122,7 @@
                                         <th scope="col">PROTAP</th>
                                         <th scope="col">Nama Bahan</th>
                                         <th scope="col">No Loth</th>
-                                        <th scope="col">Pemasok</th>
+                                        <th scope="col">Asal Produk Jadi</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">No. Control</th>
                                         <th scope="col">Tgl. Kadaluarsa</th>
@@ -371,7 +371,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 3" name="pemasok"
                                                             placeholder="Pemasok" />
@@ -419,7 +419,7 @@
                                         <th scope="col">PROTAP</th>
                                         <th scope="col">Nama Produk Jadi</th>
                                         <th scope="col">No Loth</th>
-                                        <th scope="col">Pemasok</th>
+                                        <th scope="col">Asal Produk Jadi</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">No. Control</th>
                                         <th scope="col">Tgl. Kadaluarsa</th>
@@ -669,7 +669,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                                    <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 5" name="pemasok"
                                                             placeholder="Pemasok" />
@@ -717,7 +717,7 @@
                                         <th scope="col">PROTAP</th>
                                         <th scope="col">Nama Produk Jadi</th>
                                         <th scope="col">No Loth</th>
-                                        <th scope="col">Pemasok</th>
+                                        <th scope="col">Asal Produk Jadi</th>
                                         <th scope="col">Jumlah</th>
                                         <th scope="col">No. Control</th>
                                         <th scope="col">Tgl. Kadaluarsa</th>
@@ -951,7 +951,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                 <div class="col-sm">
                                     <input type="text" id="bahanmasuk_pemasok" class="form-control 7" name="pemasok"
                                         placeholder="Pemasok" />
@@ -1108,7 +1108,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                 <div class="col-sm">
                                     <input type="text" id="produkmasuk_pemasok" class="form-control 9" name="pemasok"
                                         placeholder="Pemasok" />
@@ -1266,7 +1266,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-3 col-form-label">Pemasok</label>
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 11" name="pemasok" placeholder="Pemasok"
                                         id="kemasanmasuk_pemasok" />
