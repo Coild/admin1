@@ -15,10 +15,11 @@ class CreateDetiltimbanghasilsTable extends Migration
     {
         Schema::create('detiltimbanghasils', function (Blueprint $table) {
             $table->id("id_detiltimbanghasil");
-            $table->string("nama_bahan_baku", 100);
-            $table->string("jumlah_bahan_baku", 100);
+            $table->date("tanggal");
+            $table->string("no_loth", 20);
             $table->string("jumlah_permintaan", 20);
             $table->string("hasil_penimbangan", 20);
+            $table->string("sisa_bahan", 20);
             $table->string("untuk_produk", 100);
             $table->integer("induk",0);
             $table->timestamps();

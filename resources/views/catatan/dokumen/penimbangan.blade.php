@@ -54,54 +54,11 @@
                                                         <p class="statusMsg"></p>
                                                         <form role="form" method="post" action="tambah_penimbanganbahan" id='forminput1'>
                                                             @csrf
-                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
-                                                                    Baku</label>
-                                                                <div class="col-sm">
-                                                                    <input class="form-control 1" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan">
-                                                                    </input>
-                                                                    <datalist id='listnamabahanbaku'>
-                                                                        @foreach ($bahanbaku as $row)
-                                                                        <option value="{{ $row['bahanbaku_nama'] }}">
-                                                                            {{ $row['bahanbaku_nama'] }}
-                                                                        </option>
-                                                                        @endforeach
-                                                                    </datalist>
-                                                                </div>
-                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No Loth</label>
                                                                 <div class="col-sm">
                                                                     <input type="text" name="no_loth" class="form-control 1" id="inputEmail3" placeholder="No Loth" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                                    Suplier</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="nama_suplier" class="form-control 1" id="inputEmail3" placeholder="Nama Suplier" />
-                                                                </div>
-                                                            </div>
-
-                                                            <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah Bahan
-                                                                    Baku</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="jumlah_bahan" class="form-control 1" id="inputEmail3" placeholder="Jumlah Bahan Baku" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
-                                                                    Penimbangan</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="hasil_penimbangan" class="form-control 1" id="inputEmail3" placeholder="Hasil Penimbangan" />
                                                                 </div>
                                                             </div>
 
@@ -116,19 +73,12 @@
                                 <!-- pop up end -->
                                 @endif
 
-
-
-
                                 <table class="table mt-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Tanggal</th>
-                                            <th scope="col">Nama Bahan Baku</th>
                                             <th scope="col">No Loth</th>
-                                            <th scope="col">Nama Suplier</th>
-                                            <th scope="col">Jumlah Bahan Baku</th>
-                                            <th scope="col">Hasil Penimbangan</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -140,11 +90,7 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
-                                            <td>{{ $row['nama_bahan'] }}</td>
                                             <td>{{ $row['no_loth'] }}</td>
-                                            <td>{{ $row['nama_suplier'] }}</td>
-                                            <td>{{ $row['jumlah_bahan'] }}</td>
-                                            <td>{{ $row['hasil_penimbangan'] }}</td>
                                             <td>
                                                 <?php if ($row['status'] == 0) {
                                                     echo 'Diajukan';
@@ -791,7 +737,7 @@
         // document.getElementById('cpbahan').value = cpid;
     })
     $(document).on('click', "#klikruang", function() {
-       
+
         var nama = $(this).data('nama');
         // var tanggal = $(this).data('tanggal');
         var noloth = $(this).data('noloth');
