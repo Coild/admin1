@@ -450,13 +450,12 @@
 
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Nama
-                                                                            Distributor</label>
+                                                                            class="col-sm-3 col-form-label">Asal Ruangan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
                                                                                 class="form-control 3"
                                                                                 id="nama_distributor2"
-                                                                                placeholder="Nama Distributor" />
+                                                                                placeholder="Asal Ruangan" />
                                                                         </div>
                                                                     </div>
 
@@ -482,7 +481,7 @@
                                                 <th scope="col">Tanggal</th>
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Jumlah Produk</th>
-                                                <th scope="col">Nama Distributor</th>
+                                                <th scope="col">Asal Ruangan</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>

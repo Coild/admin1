@@ -368,7 +368,7 @@
                                                 <th scope="col">Jenis Bahan Kemas</th>
                                                 <th scope="col">Warna</th>
                                                 <th scope="col">Ukuran Bahan Kemas</th>
-                                                <th scope="col">Bocot / Cacat</th>
+                                                <th scope="col">r / Cacat</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -468,7 +468,7 @@
                                                                             <input type="text" name="kode_spesifikasi"
                                                                                 class="form-control 3"
                                                                                 id="kode_spesifikasi2"
-                                                                                placeholder="Kode Spesifikasi" />
+                                                                                placeholder="Kode Pengujian" />
                                                                         </div>
                                                                     </div>
 
@@ -576,7 +576,7 @@
                                                 <th scope="col">No Batch</th>
                                                 <th scope="col">Warna</th>
                                                 <th scope="col">Aroma</th>
-                                                <th scope="col">Bocot / Cacat</th>
+                                                <th scope="col">Bocor / Cacat</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>

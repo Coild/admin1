@@ -213,7 +213,7 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        dd($req['nobatch']);
+        // dd($req['nobatch']);
         $user = pengoprasianalat::where("id_operasi", $req['nobatch'])->update([
             'status' => 1,
         ]);

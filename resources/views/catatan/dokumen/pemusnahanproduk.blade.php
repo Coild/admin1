@@ -90,7 +90,7 @@
                                                                             <input class="form-control 1"
                                                                                 list="listnamabahanbaku" type="text"
                                                                                 name='nama_bahanbaku' id="namabahanbaku"
-                                                                                autocomplete="off">
+                                                                                autocomplete="off" placeholder="Nama Bahan Baku">
                                                                             </input>
                                                                             <datalist id='listnamabahanbaku'>
                                                                                 @foreach ($bahanbaku as $row)
@@ -310,7 +310,7 @@
                                                                             <input class="form-control 2"
                                                                                 list="listnamakemas" type="text"
                                                                                 name='nama_bahankemas' id="namabahanbaku1"
-                                                                                autocomplete="off">
+                                                                                autocomplete="off" placeholder="Nama Bahan Kemas">
                                                                             </input>
                                                                             <datalist id='listnamakemas'>
                                                                                 @foreach ($kemasan as $row)
@@ -537,7 +537,8 @@
                                                                                 <input class="form-control 3"
                                                                                     list="listnamaprodukantara" type="text"
                                                                                     name='nama_produkantara'
-                                                                                    id="namabahanbaku2" autocomplete="off">
+                                                                                    id="namabahanbaku2" autocomplete="off"
+                                                                                    placeholder="Nama Produkk Antara">
                                                                                 </input>
                                                                                 <datalist id='listnamaprodukantara'>
                                                                                     @foreach ($produkantara as $row)
@@ -767,7 +768,7 @@
                                                                                 <input class="form-control 4"
                                                                                     list="listnamaproduk" type="text"
                                                                                     id="namabahanbaku3" name='nama'
-                                                                                    id="namaproduk" autocomplete="off">
+                                                                                    id="namaproduk" autocomplete="off" placeholder="Nama Produk">
                                                                                 </input>
                                                                                 <datalist id='listnamaproduk'>
                                                                                     @foreach ($produkjadi as $row)

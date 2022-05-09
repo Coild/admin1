@@ -141,11 +141,11 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/reset_password" method="post" id='forminput'>
+                        <form action="/reset_password" method="post" id='input1'>
                             @csrf
                             <input type="hidden" name="id" id="isi_id">
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
+                                <input class="form1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
                                 <label for="inputEmail">Password Baru</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -172,15 +172,15 @@
                     <p class="statusMsg"></p>
                     <div class="container">
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="username" id="isi_nama" type="text" placeholder="name@example.com" />
+                            <input class="form2" name="username" id="isi_nama" type="text" placeholder="name@example.com" />
                             <label for="inputEmail">Nama</label>
                         </div>
                         <div class="form-floating mb-3">
-                                <input class="form-control" name="username" id="isi_alamat" type="text" placeholder="name@example.com" />
+                                <input class="form2" name="username" id="isi_alamat" type="text" placeholder="name@example.com" />
                                 <label for="inputEmail">Alamat</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="username" id="isi_nohp" type="text" placeholder="name@example.com" />
+                                <input class="form2" name="username" id="isi_nohp" type="text" placeholder="name@example.com" />
                                 <label for="inputEmail">No HP</label>
                             </div>
                     </div>
