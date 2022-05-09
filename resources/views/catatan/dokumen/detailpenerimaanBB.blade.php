@@ -8,7 +8,7 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Catatan Penerimaan Penyerahan dan Penyimpanan </h1>
-            <h3 style="text-align: center;"> {{$namaper}} </h3>
+            <h3 style="text-align: center;"> {{$nama}} </h3>
             @if ($isi == 1)
                 <div class="row">
                     <div class="card mb-4">
@@ -53,7 +53,7 @@
                                                         Bahan Baku</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 1"
-                                                            placeholder="Nama Bahan Baku" name="nama_bahanbaku">
+                                                            placeholder="Nama Bahan Baku" name="nama_bahanbaku" value="{{$nama}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -210,7 +210,7 @@
                                                         Bahan Baku</label>
                                                     <div class="col-sm">
                                                         <input type="text" class="form-control 2"
-                                                            placeholder="Nama Bahan Baku" name="nama_bahanbaku">
+                                                            placeholder="Nama Bahan Baku" name="nama_bahanbaku" value="{{$nama}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -352,7 +352,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label" value="{{$nama}}" readonly>Sesuai
                                                         Dengan PROTAP
                                                         No</label>
                                                     <div class="col-sm">
@@ -928,7 +928,7 @@
                                     Bahan Baku</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 7" placeholder="Nama Bahan Baku"
-                                        name="nama_bahanbaku" id="bahanmasuk_nama">
+                                        name="nama_bahanbaku" id="bahanmasuk_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1014,7 +1014,7 @@
                                     Bahan Baku</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 8" placeholder="Nama Bahan Baku"
-                                        name="nama_bahanbaku" id="bahankeluar_nama">
+                                        name="nama_bahanbaku" id="bahankeluar_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1085,7 +1085,7 @@
                                     Produk Jadi</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 9" placeholder="Nama Produk Jadi"
-                                        name="nama_produkjadi" id="produkmasuk_nama">
+                                        name="nama_produkjadi" id="produkmasuk_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1172,7 +1172,7 @@
                                     Produk Jadi</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 10" placeholder="Nama Produk Jadi"
-                                        name="nama_produk" id="produkkeluar_nama">
+                                        name="nama_produk" id="produkkeluar_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1243,7 +1243,7 @@
                                     Kemasan</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 11" placeholder="Nama Produk Jadi"
-                                        name="nama_kemasan" id="kemasanmasuk_nama">
+                                        name="nama_kemasan" id="kemasanmasuk_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1330,7 +1330,7 @@
                                     Kemasan</label>
                                 <div class="col-sm">
                                     <input type="text" class="form-control 12" placeholder="Nama Kemasan"
-                                        name="nama_kemasan" id="kemasankeluar_nama">
+                                        name="nama_kemasan" id="kemasankeluar_nama" value="{{$nama}}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
