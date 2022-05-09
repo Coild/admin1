@@ -12,7 +12,7 @@
         </ol>
         <div class="row">
             @foreach ($data as $row)
-            <?php $nobatch = $row['nomor_batch'];
+            <?php $nobatch = $row['id_pengemasanbatchproduk'];
             $status = $row['status'];
             $awal = 0;
             $akhir = 0; ?>

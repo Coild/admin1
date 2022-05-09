@@ -87,7 +87,7 @@
                                                                 PROTAP</label>
                                                             <div class="col-sm">
                                                                 <input type="text" name="protap" class="form-control"
-                                                                    id="inputEmail3" placeholder="No Batch" />
+                                                                    id="inputEmail3" placeholder="Sesuai PROTAP" />
                                                             </div>
                                                         </div>
 
@@ -307,7 +307,7 @@
                                     PROTAP</label>
                                 <div class="col-sm">
                                     <input type="text" name="protap" class="form-control 1"
-                                        id="isi_protap" placeholder="No Batch" />
+                                        id="isi_protap" placeholder="Sesuai PROTAP" />
                                 </div>
                             </div>
 
