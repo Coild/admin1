@@ -237,7 +237,7 @@
                                     @if (Auth::user()->level != 2)
                                         <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)"
                                             data-toggle="modal" data-target="#modalForm2">
-                                            Tambah Pelatihan Hiegiene dan Sanitasi
+                                            Tambah Pelatihan CPKB
                                         </button>
                                     @endif
 
@@ -247,8 +247,7 @@
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Pelatihan Higiene dan
-                                                        Sanitasi</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Pelatihan CPKB</h4>
                                                 </div>
 
                                                 <!-- Modal Body -->
