@@ -86,9 +86,26 @@ class superadmin extends Controller
 
     public function tampil_protap()
     {
-        return view("admin.ubahprotap");
+        $Baru = aturan::all()->where('kategori', 'Aturan Baru');
+        $Produk = aturan::all()->where('kategori', 'Aturan Produk');
+        $Pabrik = aturan::all()->where('kategori', 'Aturan Pabrik');
+        $Iklan = aturan::all()->where('kategori', 'Aturan Iklan');
+        return view("admin.protap", compact("Baru","Produk", "Pabrik", "Iklan"));
     }
+    public function tampil_updateprotap()
+    {
+        $isibaru = aturan::all()->where('kategori', 'Aturan Baru')->sortByDesc('tgl_upload')->first();
+        $isiproduk = aturan::all()->where('kategori', 'Aturan Produk')->sortByDesc('tgl_upload')->first();
+        $isipabrik = aturan::all()->where('kategori', 'Aturan Pabrik')->sortByDesc('tgl_upload')->first();
+        $isiiklan = aturan::all()->where('kategori', 'Aturan Iklan')->sortByDesc('tgl_upload')->first();
 
+        $baru = isset($isibaru) ? 'asset/aturam/' . $isibaru['nama'] : '#';
+        $pabrik = isset($isipabrik['nama']) ?  'asset/aturam/' . $isipabrik['nama'] : '#';
+        $produk = isset($isiproduk) ?  'asset/aturam/' . $isiproduk['nama'] : '#';
+        $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
+
+        return view('admin.protap', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+    }
     public function input_aturan(Request $req)
     {
         $file = $req->file('upload');

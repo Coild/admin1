@@ -14,7 +14,12 @@ class CreateDetiltimbangbahansTable extends Migration
     public function up()
     {
         Schema::create('detiltimbangbahans', function (Blueprint $table) {
-            $table->id();
+            $table->id("id_detiltimbangbahan");
+            $table->string("nama_bahan", 100);
+            $table->string("nama_suplier", 100);
+            $table->string("jumlah_bahan", 20);
+            $table->string("hasil_penimbangan", 20);
+            $table->integer("induk",0);
             $table->timestamps();
         });
     }

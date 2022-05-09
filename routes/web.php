@@ -85,6 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/register_audit', [superadmin::class, 'register_audit']);
             Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
             Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
+            Route::get('/update-protap', [superadmin::class, 'tampil_protap'])->name('updateprotap');
         }
     );
 
@@ -380,7 +381,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/dashboard', [Admin::class, 'dashboard'])->name('dashboard');
-    Route::get('/update-protap', [Admin::class, 'tampil_updateprotap'])->name('updateprotap');
 
     Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);

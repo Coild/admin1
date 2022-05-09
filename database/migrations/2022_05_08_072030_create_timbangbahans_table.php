@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRuangtimbangsTable extends Migration
+class CreateTimbangbahansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateRuangtimbangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ruangtimbangs', function (Blueprint $table) {
-            $table->id("id_ruangtimbang", 10);
+        Schema::create('timbangbahans', function (Blueprint $table) {
+            $table->id("timbang_bahan_id", 10);
             $table->date('tanggal')->nullable();
-            $table->string("nama_bahan_baku", 100);
             $table->string("no_loth", 20);
-            $table->string("jumlah_bahan_baku", 100);
-            $table->string("jumlah_permintaan", 20);
-            $table->string("hasil_penimbangan", 20);
-            $table->string("untuk_produk", 100);
             $table->integer('status', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->integer("user_id", false);
@@ -36,6 +31,6 @@ class CreateRuangtimbangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruangtimbangs');
+        Schema::dropIfExists('timbangbahans');
     }
 }

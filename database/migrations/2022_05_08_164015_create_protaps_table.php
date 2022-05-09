@@ -16,6 +16,7 @@ class CreateProtapsTable extends Migration
         Schema::create('protaps', function (Blueprint $table) {
             $table->id('protap_id',5);
             $table->string('protap_nama', 255);
+            $table->string('protap_nomor', 255);
             $table->string('protap_diajukan', 255);
             $table->string('protap_tgl_diajukan', 255);
             $table->string('protap_diterima', 255);
