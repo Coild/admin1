@@ -218,7 +218,7 @@
                                         @else
                                             <form method="post" action="detilkemasbatch" class="float-left mr-2">
                                                 @csrf
-                                                <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                                <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
                                                 <button type="submit" class="btn btn-primary">lihat</button>
                                             </form>
                                             <button id="klik_kemas" type="button" class="btn btn-success" data-toggle="modal" data-target="#editkemasbatch"

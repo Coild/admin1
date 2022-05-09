@@ -714,7 +714,7 @@ class Admin extends Controller
         $id = $req['nobatch'] ??  session()->get('detilkemasbatch');
         session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
         $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id);
-        // dd($data);
+        dd($id);
         $kemasan = kemasan::all();
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
        $proisi = prosedur_isi::all()->where('id_kemas', $id);
