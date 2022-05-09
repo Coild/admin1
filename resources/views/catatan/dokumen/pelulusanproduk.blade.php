@@ -77,7 +77,7 @@
                                                         <label for="inputEmail3"
                                                             class="col-sm-3 col-form-label">Kedaluwarsa</label>
                                                         <div class="col-sm">
-                                                            <input type="datetime-local" name="kedaluwarsa"
+                                                            <input type="date" name="kedaluwarsa"
                                                                 class="form-control" id="inputEmail3" placeholder="" />
                                                         </div>
                                                     </div>
@@ -272,7 +272,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
                                     <div class="col-sm">
-                                        <input type="datetime-local" name="kedaluwarsa" class="form-control 2"
+                                        <input type="date" name="kedaluwarsa" class="form-control 2"
                                             id="kadaluarsa" placeholder="" />
                                     </div>
                                 </div>
