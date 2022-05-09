@@ -48,8 +48,7 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
-                                                            Baku</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                                         <div class="col-sm">
                                                             <input type="text" list="listbahanbaku" style="height: 35px;"
                                                                 id='nama_bahankau' class="form-control 3" name="nama_bahan">
@@ -157,7 +156,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Nama Bahan</th>
+                                <th scope="col">Nama Produk</th>
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Kedaluwarsa</th>
                                 <th scope="col">Nama Pemasok</th>
@@ -244,8 +243,7 @@
                             <div class="card-body">
 
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
-                                        Baku</label>
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                     <div class="col-sm">
                                         <input type="text" list="listbahanbaku" style="height: 35px;" id='isi_nama'
                                             class="form-control 2" name="nama_bahan">
