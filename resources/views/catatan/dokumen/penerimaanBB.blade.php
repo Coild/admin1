@@ -252,7 +252,7 @@
                                         placeholder="" />
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis Kemasan</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
                                             <input type="text" name="jumlah" class="form-control 2" id="inputEmail3"
                                                 placeholder="Jumlah" />
