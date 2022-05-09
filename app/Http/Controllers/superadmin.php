@@ -110,10 +110,12 @@ class superadmin extends Controller
     {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
+        $filename = md5(date('Y-m-d H:i:s:u'));
         $tujuan_upload = 'asset/aturan/';
-        $file->move($tujuan_upload, $nama);
+        $file->move($tujuan_upload, $filename.'.pdf');
+        // dd($filename.$nama);
         $data = [
-            'nama' => $nama,
+            'nama' => $filename = md5(date('Y-m-d H:i:s:u')).'.pdf',
             'kategori' => $req['kategori'],
             'tgl_upload' => $req['tgl'],
         ];

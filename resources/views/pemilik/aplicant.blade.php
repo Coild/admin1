@@ -41,13 +41,13 @@
                                             @csrf
                                             <input type="hidden" class='form-control' name="id" value="{{ $row['id'] }}">
                                             <button class="btn btn-success btn-md me-3" type="submit" ><i class="fa fa-checked"></i> Terima</button>
-                                            
+
                                         </form>
                                         <form action="tolak" method="post" id="forminput1">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id'] }}" onSubmit="return confirm('Apakah anda ingin Menolak?') ">
                                             <button class="btn btn-danger btn-md me-3" type="submit" ><i class="fa fa-checked"></i> Tolak</button>
-                                            
+
                                         </form>
                                     </td>
                                 </tr>
@@ -58,6 +58,6 @@
             </div>
 
         </div>
-        </div>
+
     </main>
 @endsection

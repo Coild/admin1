@@ -57,8 +57,9 @@ class Admin extends Controller
     {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
+        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
         $tujuan_upload = 'asset/coa/';
-        $file->move($tujuan_upload, $nama);
+        $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
             'coa_file' => $nama,
@@ -93,8 +94,9 @@ class Admin extends Controller
     {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
+        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
         $tujuan_upload = 'asset/dip/';
-        $file->move($tujuan_upload, $nama);
+        $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
             'dip_file' => $nama,
@@ -130,7 +132,8 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/perizinan/';
-        $file->move($tujuan_upload, $nama);
+        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
             'perizinan_file' => $nama,
@@ -166,7 +169,8 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/dip/';
-        $file->move($tujuan_upload, $nama);
+        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
             'jabatan_file' => $nama,
@@ -202,10 +206,11 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/pobpabrik/';
-        $file->move($tujuan_upload, $nama);
+        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $file->move($tujuan_upload, $filename);
         $id = Auth::user()->id;
         $hasil = [
-            'pobpabrik_file' => $nama,
+            'pobpabrik_file' => $filename,
             'pobpabrik_nama' => $req['nama'],
             'user_id' => $id,
         ];
@@ -1039,7 +1044,7 @@ class Admin extends Controller
         $file->move($tujuan_upload, session('pabrik').'.'.$ext);
         $id = Auth::user()->pabrik;
 
-dd($req);
+// dd($req);
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'alamat' => $req['alamat'],
             'no_hp' => $req['telp'],

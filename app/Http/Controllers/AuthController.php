@@ -56,7 +56,7 @@ class AuthController extends Controller
             //Login Fail
 
 
-            return redirect('/login')->with('message', 'Email atau password salah');
+            return redirect('/login')->with('message', 'Username atau password salah');
         }
     }
 
@@ -115,7 +115,7 @@ class AuthController extends Controller
 
     public function reset_pass(Request $req)
     {
-        
+
             $id = $req['id'];
             $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
             // dd($ganti);
@@ -129,7 +129,7 @@ class AuthController extends Controller
     public function reset_passu(Request $req)
     {
             $id = $req['id'];
-            
+
             $user = User::all()->where("id", $id)->first()->update([
                 'password' => Hash::make($req['baru']),
             ]);
