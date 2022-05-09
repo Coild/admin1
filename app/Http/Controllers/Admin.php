@@ -713,7 +713,7 @@ class Admin extends Controller
 
         $id = $req['nobatch'] ??  session()->get('detilkemasbatch');
         session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
-        $data = Pengemasanbatchproduk::all()->where('no_batch', $id);
+        $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id);
         // dd($data);
         $kemasan = kemasan::all();
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
@@ -728,7 +728,7 @@ class Admin extends Controller
     }
 
     public function tambah_protanda (Request $req) {
-        $id = session()->get('detilbatch');
+        $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
             'isi' => $req['isi'],
@@ -739,7 +739,7 @@ class Admin extends Controller
     }
 
     public function tambah_proisi (Request $req) {
-        $id = session()->get('detilbatch');
+        $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
             'isi' => $req['isi'],
@@ -750,7 +750,7 @@ class Admin extends Controller
     }
 
     public function tambah_prkemas (Request $req) {
-        $id = session()->get('detilbatch');
+        $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
             'kode_kemas' => $req['kode'],
