@@ -177,7 +177,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk Produk</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
                                             <input type="text" name="jumlah" class="form-control 3" id="inputEmail3"
                                                 placeholder="Jumlah" />
@@ -322,8 +322,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                            Produk</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
                                             <input type="text" name="jumlah" class="form-control 1" id="inputEmail3"
                                                 placeholder="Jumlah" />
@@ -541,8 +540,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                            Produk</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
                                             <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah"
                                                 placeholder="Jumlah" />
