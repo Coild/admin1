@@ -327,7 +327,7 @@
                         </thead>
                         <tbody>
                             <?php $i=1;?>
-                            @foreach($protanda as $row) 
+                            @foreach($proisi as $row) 
                             <tr>
                                 <td>
                                     {{$i}}
