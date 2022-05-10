@@ -61,6 +61,8 @@
                                                                     <input type="text" name="no_loth" class="form-control 1" id="inputEmail3" placeholder="No Loth" />
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
+
 
                                                             <a class="btn btn-primary" onclick="salert1(1)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                                         </form>
@@ -159,21 +161,6 @@
                                                             @csrf
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                             <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk
-                                                                    Antara</label>
-                                                                <div class="col-sm">
-                                                                    <input class="form-control 2" list="listnamaproduk" type="text" name='nama' id="namaproduk">
-                                                                    </input>
-                                                                    <datalist id='listnamaproduk'>
-                                                                        @foreach ($produkantara as $row)
-                                                                        <option value="{{ $row['produkantara_nama'] }}">
-                                                                            {{ $row['produkantara_nama'] }}
-                                                                        </option>
-                                                                        @endforeach
-                                                                    </datalist>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                                     Batch</label>
                                                                 <div class="col-sm">
@@ -182,38 +169,6 @@
                                                             </div>
 
                                                             <input type="hidden" name="tanggal" id='ambil_tanggal2' class="form-control 2" placeholder="" />
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Asal Produk</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="asal_produk" class="form-control 2" id="inputEmail3" placeholder="Asal Produk" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
-                                                                    Produk Antara</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="jumlah_produk" class="form-control 2" id="inputEmail3" placeholder="Jumlah
-                                                                                                                                                                                                                                                                                                                                                                                                                    Produk Antara" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
-                                                                    Penimbangan</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="hasil_penimbangan" class="form-control 2" id="inputEmail3" placeholder="Hasil Penimbangan" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                                                    Produk</label>
-                                                                <div class="col-sm">
-                                                                    <input type="text" name="untuk_produk" class="form-control 2" id="inputEmail3" placeholder="Untuk Produk" />
-                                                                </div>
-                                                            </div>
 
                                                             <a class="btn btn-primary" onclick="salert1(2)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                                         </form>
@@ -230,12 +185,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Tanggal</th>
-                                            <th scope="col">Nama Produk Antara</th>
                                             <th scope="col">No Batch</th>
-                                            <th scope="col">Asal Produk</th>
-                                            <th scope="col">Jumlah Produk Antara</th>
-                                            <th scope="col">Hasil Penimbangan</th>
-                                            <th scope="col">Untuk Produk</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -247,12 +197,7 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
-                                            <td>{{ $row['nama_produk_antara'] }}</td>
                                             <td>{{ $row['no_batch'] }}</td>
-                                            <td>{{ $row['asal_produk'] }}</td>
-                                            <td>{{ $row['jumlah_produk'] }}</td>
-                                            <td>{{ $row['hasil_penimbangan'] }}</td>
-                                            <td>{{ $row['untuk_produk'] }}</td>
                                             <td>
                                                 <?php if ($row['status'] == 0) {
                                                     echo 'Diajukan';
@@ -460,7 +405,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <div class="card mb-4">
-                    <div class="card-header" id='headertgl1'></div>
+                    <div class="card-header" id='headertgl10'></div>
                     <div class="card-header">Bahan Baku</div>
                     <div class="card-body">
                         <p class="statusMsg"></p>

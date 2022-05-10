@@ -242,7 +242,7 @@ function salert1(params) {
 function setdatetoday() {
     const d = new Date();
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
-    console.log(today);
+    // console.log(today);
     document.getElementById("ambil_tanggal").value = today;
     document.getElementById("headertgl").innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;
@@ -251,6 +251,7 @@ function setdatetoday() {
 function setdatetoday1(params) {
     const d = new Date();
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");
+    // console.log(today);
     document.getElementById("ambil_tanggal" + params).value = today;
     document.getElementById("headertgl" + params).innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;

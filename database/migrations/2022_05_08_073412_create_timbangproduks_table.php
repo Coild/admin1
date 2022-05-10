@@ -16,7 +16,6 @@ class CreateTimbangproduksTable extends Migration
         Schema::create('timbangproduks', function (Blueprint $table) {
             $table->id("timbang_produk_id", 10);
             $table->date('tanggal')->nullable();
-            $table->string("nama_produk_antara", 100);
             $table->string("no_batch", 20);
             $table->integer('status', 0)->unsigned();
             $table->integer('pabrik', false);

@@ -2094,11 +2094,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
-            'nama_bahan' => $req['nama_bahan'],
             'no_loth' => $req['no_loth'],
-            'nama_suplier' => $req['nama_suplier'],
-            'jumlah_bahan' => $req['jumlah_bahan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -2132,12 +2128,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
-            'nama_produk_antara' => $req['nama'],
             'no_batch' => $req['nobatch'],
-            'asal_produk' => $req['asal_produk'],
-            'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'untuk_produk' => $req['untuk_produk'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
