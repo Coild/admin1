@@ -166,7 +166,6 @@
                         Detil Pabrik
                     </h4>
                 </div>
-
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>

@@ -104,7 +104,6 @@
                         <!--  -->
 
                     </div>
-
                     <table class="table mt-5">
                         <thead>
                             <tr>
@@ -125,29 +124,12 @@
                                 <td>{{ $i }}</td>
                                 <td>{{ $row['tanggal'] }}</td>
                                 <td>{{ $row['nama_produk_antara'] }}</td>
-                                <td>{{ $row['no_batch'] }}</td>
                                 <td>{{ $row['asal_produk'] }}</td>
                                 <td>{{ $row['jumlah_produk'] }}</td>
                                 <td>{{ $row['hasil_penimbangan'] }}</td>
                                 <td>{{ $row['untuk_produk'] }}</td>
                                 <td>
-                                    <?php if ($row['status'] == 0) {
-                                        echo 'Diajukan';
-                                    } elseif ($row['status'] == 1) {
-                                        echo 'Diterima';
-                                    } ?>
-                                </td>
-                                <td>
-                                    @if (Auth::user()->level == 2)
-                                    <form method="post" action="terimapenimbanganproduk">
-                                        @csrf
-                                        <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                        <button type="submit" class="btn btn-primary">terima</button>
-                                    </form>
-                                    @else
-
                                     <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id']}}">edit</button>
-                                    @endif
                                 </td>
                             </tr>
                             @endforeach

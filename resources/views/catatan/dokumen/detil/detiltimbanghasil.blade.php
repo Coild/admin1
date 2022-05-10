@@ -34,7 +34,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_periksapersonil" enctype="multipart/form-data"
+                                        <form method="post" action="tambah_detiltimbangbahan" 
                                             id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
@@ -45,7 +45,6 @@
                                                 </div>
                                                 @csrf
                                                 <div class="card-body">
-
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3"

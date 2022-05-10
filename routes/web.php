@@ -275,6 +275,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('edit_penimbanganbahan', [Admin::class, 'edit_penimbanganbahan'])->name('edit_penimbanganbahan');
         Route::post('edit_penimbanganprodukantara', [Admin::class, 'edit_penimbanganprodukantara'])->name('edit_penimbanganprodukantara');
         Route::post('edit_ruangtimbang', [Admin::class, 'edit_ruangtimbang'])->name('edit_ruangtimbang');
+        Route::post('tambah_detiltimbangbahan', [Admin::class, 'tambah_detiltimbangbahan'])->name('tambah_detiltimbangbahan');
+        Route::post('tambah_detiltimbangproduk', [Admin::class, 'tambah_detiltimbangproduk'])->name('tambah_detiltimbangproduk');
+        Route::post('tambah_detiltimbanghasil', [Admin::class, 'tambah_detiltimbanghasil'])->name('tambah_detiltimbanghasil');
+        Route::post('edit_detiltimbangbahan', [Admin::class, 'edit_detiltimbangbahan'])->name('edit_detiltimbangbahan');
+        Route::post('edit_detiltimbangproduk', [Admin::class, 'edit_detiltimbangproduk'])->name('edit_detiltimbangproduk');
+        Route::post('edit_detiltimbanghasil', [Admin::class, 'edit_detiltimbanghasil'])->name('edit_detiltimbanghasil');
+
 
         Route::post('tambah_contohbahan', [Admin::class, 'tambah_contohbahan'])->name('tambah_contohbahan');
         Route::post('tambah_contohproduk', [Admin::class, 'tambah_contohproduk'])->name('tambah_contohproduk');

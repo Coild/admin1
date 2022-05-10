@@ -2208,7 +2208,6 @@ class Admin extends Controller
         $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
         return redirect('/penimbangan#pills-contact');
     }
-
     public function edit_penimbanganprodukantara(Request $req)
     {
         $id = $req['id'];
@@ -2257,9 +2256,9 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         // dd($req);
-        $induk = $req['induk'] ?? session()->get['induk1'];
-        $status = $req['status'] ?? session()->get['status1'];
-        $noloth = $req['noloth'] ?? session()->get['noloth'];
+        $induk = $req['induk'] ?? session()->get('induk1');
+        $status = $req['status'] ?? session()->get('status1');
+        $noloth = $req['noloth'] ?? session()->get('noloth');
         session([
             'induk1' => $induk,
             'status1' => $status,
@@ -2277,9 +2276,9 @@ class Admin extends Controller
     public function tampil_detiltimbangproduk(Request $req)
     {
         $pabrik = Auth::user()->pabrik;
-        $induk = $req['induk'] ?? session()->get['induk2'];
-        $status = $req['status'] ?? session()->get['status2'];
-        $noloth = $req['nobatch'] ?? session()->get['nobatch'];
+        $induk = $req['induk'] ?? session()->get('induk2');
+        $status = $req['status'] ?? session()->get('status2');
+        $noloth = $req['nobatch'] ?? session()->get('nobatch');
         session([
             'induk2' => $induk,
             'status2' => $status,
@@ -2299,9 +2298,9 @@ class Admin extends Controller
     public function tampil_detiltimbangruang(Request $req)
     {
         $pabrik = Auth::user()->pabrik;
-        $induk = $req['induk'] ?? session()->get['induk3'];
-        $status = $req['status'] ?? session()->get['status3'];
-        $bahan = $req['bahan'] ?? session()->get['bahan'];
+        $induk = $req['induk'] ?? session()->get('induk3');
+        $status = $req['status'] ?? session()->get('status3');
+        $bahan = $req['bahan'] ?? session()->get('bahan');
         session([
             'induk3' => $induk,
             'status3' => $status,
@@ -2316,6 +2315,95 @@ class Admin extends Controller
         // $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
         return view('catatan.dokumen.detil.detiltimbangruang', ['data' => $data]);
+    }
+
+    public function tambah_detiltimbangbahan(Request $req)
+    { 
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'nama_bahan' => $req['nama_bahan'] ,
+            'nama_suplier' => $req['nama_suplier'] ,
+            'jumlah_bahan' => $req['jumlah_bahan'] ,
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'induk'  => session()->get('induk1'),
+        ];
+
+        $nomer = detiltimbangbahan::insertGetId($hasil);
+        return redirect('/detilltimbangbahan');
+    }
+
+    public function tambah_detiltimbangprodukk(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'no_batch' => $req['nobatch'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+        // dd($hasil);
+
+        $nomer = timbangproduk::insertGetId($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function tambah_detiltimbanghasil(Request $req)
+    {
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'tanggal' => $req['tanggal'],
+            'nama_bahan_baku' => $req['nama_bahanbaku'],
+
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'hasil_timbang' => $req['hasil_penimbangan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        $nomer = ruangtimbang::insertGetId($hasil);
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function edit_detiltimbangbahan(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'no_loth' => $req['no_loth'],
+        ];
+
+        $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function edit_detiltimbangprodukk(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'no_batch' => $req['nobatch'],
+        ];
+        // dd($hasil);
+
+        $nomer = timbangproduk::where('timbang_produk_id', $id)->update($hasil);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+    public function edit_detiltimbanghasil(Request $req)
+    {
+        $id = $req['id'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nama_bahan_baku' => $req['nama_bahanbaku'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'hasil_timbang' => $req['hasil_penimbangan'],
+        ];
+        $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
+        return redirect('/penimbangan#pills-contact');
     }
     //enddetilpenimbangan
 
