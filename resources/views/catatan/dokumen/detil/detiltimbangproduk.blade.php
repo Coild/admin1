@@ -119,7 +119,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-                            @foreach ($data1 as $row)
+                            @foreach ($data as $row)
                             <?php $i++; ?>
                             <tr>
                                 <td>{{ $i }}</td>

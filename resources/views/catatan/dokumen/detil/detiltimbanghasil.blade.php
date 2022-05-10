@@ -130,7 +130,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-                            @foreach ($data2 as $row)
+                            @foreach ($data as $row)
                             <?php $i++; ?>
                             <tr>
                                 <td>{{ $i }}</td>

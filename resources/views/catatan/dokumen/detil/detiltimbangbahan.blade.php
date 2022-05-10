@@ -6,7 +6,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Detil TImbang Bahan </h1>
+            <h1 class="mt-4">Detil Timbang Bahan </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Nama Bahan</li>
             </ol>
@@ -132,7 +132,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i =1; ?>
 
+                            @foreach ($data as $row )
+                            <td scope="col">{{$i}}</td>
+                            <td scope="col">{{$row['tanggal']}}</td>
+                            <td scope="col">{{$row['nama_bahan']}}</td>
+                            <td scope="col">{{$row['nama_suplier']}}</td>
+                            <td scope="col">{{$row['jumlah_bahan']}}</td>
+                            <td scope="col">{{$row['hasil_penimbangan']}}</td>
+                            <td scope="col">Action</td>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -354,7 +354,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');
         Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk'])->name('pelulusan-produk');
         Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
+
         Route::get('penimbangan', [Admin::class, 'tampil_penimbangan'])->name('penimbangan');
+        Route::post('detiltimbangbahan', [Admin::class, 'tampil_detiltimbangbahan'])->name('detiltimbangbahan');
+        Route::post('detiltimbangproduk', [Admin::class, 'tampil_detiltimbangproduk'])->name('detiltimbangproduk');
+        Route::post('detiltimbangruang', [Admin::class, 'tampil_detiltimbangruang'])->name('detiltimbangruang');
+        Route::get('detiltimbangbahan', [Admin::class, 'tampil_detiltimbangbahan'])->name('detiltimbangbahan');
+        Route::get('detiltimbangproduk', [Admin::class, 'tampil_detiltimbangproduk'])->name('detiltimbangproduk');
+        Route::get('detiltimbangruang', [Admin::class, 'tampil_detiltimbangruang'])->name('detiltimbangruang');
+
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');

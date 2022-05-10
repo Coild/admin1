@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +57,7 @@ class Admin extends Controller
     {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
-        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf';
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
@@ -94,7 +94,7 @@ class Admin extends Controller
     {
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
-        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf';
         $tujuan_upload = 'asset/dip/';
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
@@ -132,7 +132,7 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/perizinan/';
-        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf';
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
@@ -169,7 +169,7 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/dip/';
-        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf';
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
@@ -206,7 +206,7 @@ class Admin extends Controller
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/pobpabrik/';
-        $filename = md5(date('Y-m-d H:i:s:u')).'.pdf';
+        $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf';
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->id;
         $hasil = [
@@ -314,7 +314,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan bahan',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -350,7 +350,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan produk',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -386,7 +386,7 @@ class Admin extends Controller
             'laporan_nama' => 'penerimaan kemasan',
             'laporan_batch' => $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -401,7 +401,7 @@ class Admin extends Controller
     public function edit_terimabahan(Request $req)
     {
         $id = Auth::user()->id;
-        $cpid=$req['cpid'];
+        $cpid = $req['cpid'];
         $pabrik = Auth::user()->pabrik;
         // dd($req);
         date_default_timezone_set("Asia/Jakarta");
@@ -418,7 +418,7 @@ class Admin extends Controller
         ];
         // dd($data);
 
-        cp_bahan::all()->where('cp_bahan_id',$cpid)->first()->update([
+        cp_bahan::all()->where('cp_bahan_id', $cpid)->first()->update([
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
@@ -432,7 +432,7 @@ class Admin extends Controller
     public function edit_terimaproduk(Request $req)
     {
         $id = Auth::user()->id;
-        $cpid=$req['cpid'];
+        $cpid = $req['cpid'];
         $pabrik = Auth::user()->pabrik;
 
         date_default_timezone_set("Asia/Jakarta");
@@ -450,14 +450,14 @@ class Admin extends Controller
 
         $nomer = cp_produk::insertGetId($data);
 
-        cp_produk::all()->where('cp_produk_id',$cpid)->first()->update($data);
+        cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
         return redirect()->route('penerimaanBB');
     }
 
     public function edit_terimakemasan(Request $req)
     {
         $id = Auth::user()->id;
-        $cpid=$req['cpid'];
+        $cpid = $req['cpid'];
         $pabrik = Auth::user()->pabrik;
 
         date_default_timezone_set("Asia/Jakarta");
@@ -473,7 +473,7 @@ class Admin extends Controller
             'status' => 0,
         ];
 
-        cp_kemasan::all()->where('cp_kemasan_id',$cpid)->first()->update($data);
+        cp_kemasan::all()->where('cp_kemasan_id', $cpid)->first()->update($data);
         return redirect()->route('penerimaanBB');
     }
 
@@ -495,7 +495,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
         PPbahanbakumasuk::insert($data);
-       return redirect('/detilterimabbid');
+        return redirect('/detilterimabbid');
     }
     public function tambah_penerimaanbbkeluar(Request $req)
     {
@@ -703,8 +703,10 @@ class Admin extends Controller
         $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
         $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
 
-        return view('catatan.dokumen.pengemasanbatch', ['data' => $data,
-        'data2' => $data2, 'data3' => $data3]);
+        return view('catatan.dokumen.pengemasanbatch', [
+            'data' => $data,
+            'data2' => $data2, 'data3' => $data3
+        ]);
     }
 
     public function tampil_detilkemasbatch(Request $req)
@@ -717,8 +719,8 @@ class Admin extends Controller
         // dd($id);
         $kemasan = kemasan::all();
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
-       $proisi = prosedur_isi::all()->where('id_kemas', $id);
-       $protanda  = prosedur_tanda::all()->where('id_kemas', $id);
+        $proisi = prosedur_isi::all()->where('id_kemas', $id);
+        $protanda  = prosedur_tanda::all()->where('id_kemas', $id);
         // dd($kemasan);
         return view('catatan.dokumen.detilkemasbatch', [
             'id' => $id,
@@ -727,7 +729,8 @@ class Admin extends Controller
         ]);
     }
 
-    public function tambah_protanda (Request $req) {
+    public function tambah_protanda(Request $req)
+    {
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
@@ -738,7 +741,8 @@ class Admin extends Controller
         return redirect('/detilkemasbatch');
     }
 
-    public function tambah_proisi (Request $req) {
+    public function tambah_proisi(Request $req)
+    {
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
@@ -749,7 +753,8 @@ class Admin extends Controller
         return redirect('/detilkemasbatch');
     }
 
-    public function tambah_prkemas (Request $req) {
+    public function tambah_prkemas(Request $req)
+    {
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
@@ -809,7 +814,7 @@ class Admin extends Controller
         $id = $req['nobatch'] ??  session()->get('detilbatch');
         session(['detilbatch' => $req['nobatch'] ??  $id]);
         $data = pengolahanbatch::all()->where('nomor_batch', $id)->first();
-        $data= [$data];
+        $data = [$data];
         // dd($id);
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
@@ -869,7 +874,7 @@ class Admin extends Controller
             'laporan_nama' => 'pengolahan batch',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -897,7 +902,7 @@ class Admin extends Controller
             'kemasan' => $req['kemasan'],
         ];
 
-        $nomer = pengolahanbatch::where('batch',$id)->update($hasil);
+        $nomer = pengolahanbatch::where('batch', $id)->update($hasil);
         return redirect('/pengolahanbatch');
     }
 
@@ -1041,14 +1046,14 @@ class Admin extends Controller
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/logo/';
         $ext = pathinfo($nama, PATHINFO_EXTENSION);
-        $file->move($tujuan_upload, session('pabrik').'.'.$ext);
+        $file->move($tujuan_upload, session('pabrik') . '.' . $ext);
         $id = Auth::user()->pabrik;
 
-// dd($req);
+        // dd($req);
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'alamat' => $req['alamat'],
             'no_hp' => $req['telp'],
-            'logo' =>  session('pabrik').'.'.$ext,
+            'logo' =>  session('pabrik') . '.' . $ext,
         ]);
 
         return redirect('/setting');
@@ -1197,7 +1202,7 @@ class Admin extends Controller
             'laporan_nama' => 'Periksa Personil',
             'laporan_batch' => 'dummy',
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1228,7 +1233,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Periksa Personil")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1268,7 +1273,7 @@ class Admin extends Controller
             'laporan_nama' => 'periksa sanitasi alat',
             'laporan_batch' => $req['no_batch'] ?? 0,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1297,7 +1302,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "periksa sanitasi alat")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1337,7 +1342,7 @@ class Admin extends Controller
             'laporan_nama' => 'periksa sanitasi ruangan',
             'laporan_batch' => $req['no_batch'] ?? 0,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1400,7 +1405,7 @@ class Admin extends Controller
             'laporan_nama' => 'pelatihan higiene dan sanitasi',
             'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1439,7 +1444,7 @@ class Admin extends Controller
             'laporan_nama' => 'pelatihan cpkb',
             'laporan_batch' => $req['kode_pelatihan'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1469,7 +1474,7 @@ class Admin extends Controller
         ];
         // dd($hasil);
 
-        $nomer = programpelatihan::all()->where('id_programpelatihan',$id)->first()->update($hasil);
+        $nomer = programpelatihan::all()->where('id_programpelatihan', $id)->first()->update($hasil);
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
@@ -1491,7 +1496,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb',$id)->first()->update($hasil);
+        $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb', $id)->first()->update($hasil);
 
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
@@ -1536,7 +1541,7 @@ class Admin extends Controller
             'laporan_nama' => 'penanganan keluhan',
             'laporan_batch' => 'dummy',
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1566,7 +1571,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penanganan keluhan")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1609,7 +1614,7 @@ class Admin extends Controller
             'laporan_nama' => 'penarikan produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1638,7 +1643,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "penarikan produk")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -1679,7 +1684,7 @@ class Admin extends Controller
             'laporan_nama' => 'distribusi produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1703,7 +1708,7 @@ class Admin extends Controller
             'nama_distributor' => $req['nama_distributor'],
         ];
 
-        $nomer = distribusiproduk::where('id_distribusi',$id)->update($hasil);
+        $nomer = distribusiproduk::where('id_distribusi', $id)->update($hasil);
         return redirect('/pendistribusian-produk');
     }
     public function tampil_distribusi()
@@ -1739,7 +1744,7 @@ class Admin extends Controller
             'laporan_nama' => 'pengoperasian alat',
             'laporan_batch' => $req['no_batch'] ?? $nomer,
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1795,7 +1800,7 @@ class Admin extends Controller
             'ket' => $req['ket'],
         ];
         // dd($req);
-        $nomer = detilalat::where('id_detilalat',$req['id'])->update($hasil);
+        $nomer = detilalat::where('id_detilalat', $req['id'])->update($hasil);
 
         return redirect('/detil-alat');
     }
@@ -1813,14 +1818,14 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         session(['idoperasi' => $req['induk']]);
         $data = detilalat::all()->where('induk', $req['induk']);
-        return view('catatan.dokumen.detilalat',['data' => $data]);
+        return view('catatan.dokumen.detilalat', ['data' => $data]);
     }
 
     public function tampil_detilalatid()
     {
         $pabrik = Auth::user()->pabrik;
         $data = detilalat::all()->where('induk', session()->get('idoperasi'));
-        return view('catatan.dokumen.detilalat',['data' => $data]);
+        return view('catatan.dokumen.detilalat', ['data' => $data]);
     }
 
     public function tambah_pelulusan(Request $req)
@@ -1850,7 +1855,7 @@ class Admin extends Controller
             'laporan_nama' => 'pelulusan produk jadi',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1920,7 +1925,7 @@ class Admin extends Controller
             'laporan_nama' => 'penambahan contoh bahan baku',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1959,7 +1964,7 @@ class Admin extends Controller
             'laporan_nama' => 'penambahan contoh produk',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -1999,7 +2004,7 @@ class Admin extends Controller
             'laporan_nama' => 'penambahan contoh kemasan',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2027,7 +2032,7 @@ class Admin extends Controller
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
         ];
 
-        contohbahanbaku::all()->where('id_bahanbaku',$id)->first()->update($hasil);
+        contohbahanbaku::all()->where('id_bahanbaku', $id)->first()->update($hasil);
 
         return redirect('/ambilcontoh#pills-home');
     }
@@ -2046,7 +2051,7 @@ class Admin extends Controller
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
         ];
 
-        $nomer = contohprodukjadi::all()->where('id_produkjadi',$id)->first()->update($hasil);
+        $nomer = contohprodukjadi::all()->where('id_produkjadi', $id)->first()->update($hasil);
 
         return redirect('/ambilcontoh#pills-profile');
     }
@@ -2066,7 +2071,7 @@ class Admin extends Controller
         ];
 
 
-        $nomer = contohkemasan::all()->where('id_kemasan',$id)->first()->update($hasil);
+        $nomer = contohkemasan::all()->where('id_kemasan', $id)->first()->update($hasil);
 
         return redirect('/ambilcontoh#pills-contact');
     }
@@ -2109,7 +2114,7 @@ class Admin extends Controller
             'laporan_nama' => 'penimbangan bahan',
             'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2144,7 +2149,7 @@ class Admin extends Controller
             'laporan_nama' => 'penimbangan produk utama',
             'laporan_batch' => $req['nobatch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2163,11 +2168,9 @@ class Admin extends Controller
         $hasil = [
             'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
-            'no_loth' => $req['no_loth'],
+
             'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
-            'jumlah_permintaan' => $req['jumlah_permintaan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'untuk_produk' => $req['untuk_produk'],
+            'hasil_timbang' => $req['hasil_penimbangan'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -2180,9 +2183,9 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'ruang timbang',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'] ?? '-',
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2199,11 +2202,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'nama_bahan' => $req['nama_bahan'],
             'no_loth' => $req['no_loth'],
-            'nama_suplier' => $req['nama_suplier'],
-            'jumlah_bahan' => $req['jumlah_bahan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
         ];
 
         $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
@@ -2215,12 +2214,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'nama_produk_antara' => $req['nama'],
             'no_batch' => $req['nobatch'],
-            'asal_produk' => $req['asal_produk'],
-            'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'untuk_produk' => $req['untuk_produk'],
         ];
         // dd($hasil);
 
@@ -2234,11 +2228,8 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'nama_bahan_baku' => $req['nama_bahanbaku'],
-            'no_loth' => $req['no_loth'],
             'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
-            'jumlah_permintaan' => $req['jumlah_permintaan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'untuk_produk' => $req['untuk_produk'],
+            'hasil_timbang' => $req['hasil_penimbangan'],
         ];
         $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
         return redirect('/penimbangan#pills-contact');
@@ -2260,6 +2251,74 @@ class Admin extends Controller
         // dd($produkantara);
         return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? [], 'produkantara' => $produkantara ?? []]);
     }
+
+    //detil penimbangan
+    public function tampil_detiltimbangbahan(Request $req)
+    {
+        $pabrik = Auth::user()->pabrik;
+        // dd($req);
+        $induk = $req['induk'] ?? session()->get['induk1'];
+        $status = $req['status'] ?? session()->get['status1'];
+        $noloth = $req['noloth'] ?? session()->get['noloth'];
+        session([
+            'induk1' => $induk,
+            'status1' => $status,
+            'noloth' => $noloth,
+        ]);
+        $data = detiltimbangbahan::all()->where('induk', $pabrik);
+        // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+        // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+        $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        // $produkantara = produkantara::all()->where('user_id', $pabrik);
+        // dd($produkantara);
+        return view('catatan.dokumen.detil.detiltimbangbahan', ['data' => $data, 'bahanbaku' => $bahanbaku]);
+    }
+
+    public function tampil_detiltimbangproduk(Request $req)
+    {
+        $pabrik = Auth::user()->pabrik;
+        $induk = $req['induk'] ?? session()->get['induk2'];
+        $status = $req['status'] ?? session()->get['status2'];
+        $noloth = $req['nobatch'] ?? session()->get['nobatch'];
+        session([
+            'induk2' => $induk,
+            'status2' => $status,
+            'nobatch' => $noloth,
+        ]);
+
+        $data = detiltimbangproduk::all()->where('induk', $pabrik);
+        // dd($data);
+        // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+        // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+        // $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        $produkantara = produkantara::all()->where('user_id', $pabrik);
+        // dd($produkantara);
+        return view('catatan.dokumen.detil.detiltimbangproduk', ['data' => $data, 'produkantara' => $produkantara]);
+    }
+
+    public function tampil_detiltimbangruang(Request $req)
+    {
+        $pabrik = Auth::user()->pabrik;
+        $induk = $req['induk'] ?? session()->get['induk3'];
+        $status = $req['status'] ?? session()->get['status3'];
+        $bahan = $req['bahan'] ?? session()->get['bahan'];
+        session([
+            'induk3' => $induk,
+            'status3' => $status,
+            'bahan' => $bahan,
+        ]);
+
+        $data = detiltimbanghasil::all()->where('induk', $pabrik);
+        dd($data);
+        // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
+        // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
+        // $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        // $produkantara = produkantara::all()->where('user_id', $pabrik);
+        // dd($produkantara);
+        return view('catatan.dokumen.detil.detiltimbangruang', ['data' => $data]);
+    }
+    //enddetilpenimbangan
+
     public function tambah_kartustokbahan(Request $req)
     {
         $id = Auth::user()->id;
@@ -2284,7 +2343,7 @@ class Admin extends Controller
             'laporan_nama' => 'kartu stok bahan baku',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2311,7 +2370,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan baku")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2341,7 +2400,7 @@ class Admin extends Controller
             'laporan_nama' => 'kartu stok bahan kemas',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2368,7 +2427,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok bahan kemas")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2398,7 +2457,7 @@ class Admin extends Controller
             'laporan_nama' => 'kartu stok produk antara',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2425,7 +2484,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk antara")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2455,7 +2514,7 @@ class Admin extends Controller
             'laporan_nama' => 'kartu stok produk jadi',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2482,7 +2541,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "kartu stok produk jadi")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2536,7 +2595,7 @@ class Admin extends Controller
             'laporan_nama' => 'pemusnahan bahan',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2567,7 +2626,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2601,7 +2660,7 @@ class Admin extends Controller
             'laporan_nama' => 'pemusnahan bahan kemas',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2632,7 +2691,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan bahan kemas")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2666,7 +2725,7 @@ class Admin extends Controller
             'laporan_nama' => 'pemusnahan produk antara',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2697,7 +2756,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk antara")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2731,7 +2790,7 @@ class Admin extends Controller
             'laporan_nama' => 'pemusnahan produk jadi',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2762,7 +2821,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "pemusnahan produk jadi")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2812,7 +2871,7 @@ class Admin extends Controller
             'laporan_nama' => 'Kalibrasi Alat',
             'laporan_batch' => "dummy",
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2844,7 +2903,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Kalibrasi Alat")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2886,7 +2945,7 @@ class Admin extends Controller
             'laporan_nama' => 'Pemeriksaan Bahan Baku',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2916,7 +2975,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Baku")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -2947,7 +3006,7 @@ class Admin extends Controller
             'laporan_nama' => 'Pemeriksaan Bahan Kemas',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -2975,7 +3034,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Bahan Kemas")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -3007,7 +3066,7 @@ class Admin extends Controller
             'laporan_nama' => 'Pemeriksaan Produk Jadi',
             'laporan_batch' => $req['kode_spesifikasi'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -3036,7 +3095,7 @@ class Admin extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         laporan::where('laporan_nomor', $req['id'])->where('laporan_nama', "Pemeriksaan Produk Jadi")->update([
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
@@ -3086,7 +3145,7 @@ class Admin extends Controller
             'laporan_nama' => 'pengemasan batch produk',
             'laporan_batch' => $req['no_batch'],
             'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
             'tgl_diterima' => $tgl,
@@ -3122,8 +3181,8 @@ class Admin extends Controller
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-            $produk = produk::all();//->where('user_id', Auth::user()->pabrik);
-            $kemasan = kemasan::all();//->where('user_id', Auth::user()->pabrik);
+            $produk = produk::all(); //->where('user_id', Auth::user()->pabrik);
+            $kemasan = kemasan::all(); //->where('user_id', Auth::user()->pabrik);
         }
         // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
