@@ -107,7 +107,7 @@
 
                     </td>
                     <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PELATIHAN HIGIENE DAN SANITASI
+                        CATATAN<br>PENANGANAN KELUHAN
                     </td>
                 </tr>
                 <tr>
@@ -146,12 +146,12 @@
                 </tr>
             </table>
             @endforeach
-           
+
 
             <h4 style="text-align: center;">CATATAN PENANGANAN KELUHAN</h4>
             <div class="form-group">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                
+
                     <table class="table isi table-bordered">
                         <tr>
                             <td>No</td>

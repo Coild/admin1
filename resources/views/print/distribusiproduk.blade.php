@@ -106,7 +106,7 @@
 
                     </td>
                     <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PELATIHAN HIGIENE DAN SANITASI
+                        CATATAN<br>PENDISTRIBUSIAN PRODUK
                     </td>
                 </tr>
                 <tr>

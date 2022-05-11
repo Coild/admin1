@@ -162,7 +162,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;" colspan="7">Dilaksanakan sesuai POB Nomor:<br>
+                    <td style="text-align: left;" colspan="7">Dilaksanakan sesuai PROTAP Nomor:<br>
                         Tanggal:
                     </td>
                 </tr>
