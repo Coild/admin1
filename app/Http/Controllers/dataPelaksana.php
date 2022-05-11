@@ -196,7 +196,7 @@ class dataPelaksana extends Controller
 
     public function laporan()
     {
-        $data = laporan::all()->where('pabrik_id', Auth::user()->pabrik)->where('laporan_diterima', "!=", 'belum')->orderBy('laporan_diterima', 'desc');
+        $data = laporan::all()->where('pabrik_id', Auth::user()->pabrik)->where('laporan_diterima', "!=", 'belum')->sortByDesc('tgl_diterima');
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
             if ($data->laporan_nama == 'pengolahan batch')

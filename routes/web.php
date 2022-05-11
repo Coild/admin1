@@ -26,8 +26,8 @@ Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
-Route::post('/reset_password',[AuthController::class, 'reset_pass']);
-Route::post('/reset_passwordu',[AuthController::class, 'reset_passu']);
+Route::post('/reset_password', [AuthController::class, 'reset_pass']);
+Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
 
 Route::view('/template', 'print.template');
 
@@ -204,6 +204,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hapus_bahan_kemas/{id}', [pjt::class, 'hapus_bahankemas'])->name("hapus_bahankemas");
         Route::get('/hapus_produk_antara/{id}', [pjt::class, 'hapus_produkantara'])->name("hapus_produkantara");
         Route::get('/hapus_produk_jadi/{id}', [pjt::class, 'hapus_produkjadi'])->name("hapus_produkjadi");
+
+        //datatables
+        Route::get('user', [dataPelaksana::class, 'user']);
+        Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
+        Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
+        Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
+        Route::get('laporandata', [dataPelaksana::class, 'laporan']);
+
+        Route::get('dummy', [dataPelaksana::class, 'dummy']);
     });
 
 
@@ -349,7 +358,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
         Route::get('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
         Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
-        Route::get( '/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
+        Route::get('/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
         Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');
         Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi'])->name('program-dan-pelatihan-higiene-dan-sanitasi');
         Route::get('pemusnahan-produk', [Admin::class, 'tampil_pemusnahanproduk'])->name('pemusnahan-produk');
@@ -413,13 +422,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembersihanruangan', function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
-
-    //datatables
-    Route::get('user', [dataPelaksana::class, 'user']);
-    Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
-    Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
-    Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
-    Route::get('laporandata', [dataPelaksana::class, 'laporan']);
-
-    Route::get('dummy', [dataPelaksana::class, 'dummy']);
 });
