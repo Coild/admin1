@@ -275,9 +275,10 @@ class Admin extends Controller
     public function tampil_penerimaanbb()
     {
         $pabrik = Auth::user()->pabrik;
-        $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);;
-        $produk = produk::all()->where('user_id', $pabrik);;
-        $kemasan = kemasan::all()->where('user_id', $pabrik);;
+        $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        $produk = produk::all()->where('user_id', $pabrik);
+        $kemasan = kemasan::all()->where('user_id', $pabrik);
+        // dd($bahanbaku);
         if (Auth::user()->level == 2) {
             $data1 = cp_bahan::all()->where('pabrik', $pabrik);
             $data2 = cp_produk::all()->where('pabrik', $pabrik);
