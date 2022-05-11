@@ -34,7 +34,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_periksapersonil" enctype="multipart/form-data"
+                                        <form method="post" action="tambah_detiltimbangproduk" enctype="multipart/form-data"
                                             id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
@@ -53,6 +53,14 @@
                                                         <div class="col-sm">
                                                             <input type="date" name="tanggal" class="form-control 1"
                                                                 id="tanggal" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk Antara</label>
+                                                        <div class="col-sm">
+                                                            <input type="text" name="nama_produk_antara" class="form-control 1"
+                                                                id="nama_produk_antara" placeholder="Nama Produk Antara" />
                                                         </div>
                                                     </div>
 
@@ -87,7 +95,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="sisa_bahan" class="form-control 1"
+                                                            <input type="text" name="untuk_produk" class="form-control 1"
                                                                 id="untuk_produk" placeholder="Untuk Produk" />
                                                         </div>
                                                     </div>
@@ -109,6 +117,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Tanggal</th>
+                                <th scope="col">Nama Produk Antara</th>
                                 <th scope="col">Asal Produk</th>
                                 <th scope="col">Jumlah Produk</th>
                                 <th scope="col">Hasil Penimbangan</th>
@@ -175,15 +184,6 @@
                                             </datalist>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">No
-                                            Batch</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="nobatch" class="form-control 5" id="isi_nobatch"
-                                                placeholder="No Batch" />
-                                        </div>
-                                    </div>
-
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Asal Produk</label>
                                         <div class="col-sm">

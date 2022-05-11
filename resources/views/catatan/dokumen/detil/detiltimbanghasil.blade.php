@@ -6,9 +6,9 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Detil TImbang Bahan </h1>
+            <h1 class="mt-4">Detil Timbang Bahan </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Nama Bahan</li>
+                <li class="breadcrumb-item active">{{session()->get('bahan')}}</li>
             </ol>
             <div class="row">
 
@@ -34,7 +34,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detiltimbangbahan" 
+                                        <form method="post" action="tambah_detiltimbanghasil"
                                             id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
@@ -59,8 +59,8 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
                                                             Loth</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_bahan" class="form-control 1"
-                                                                id="nama_bahan" placeholder="Nama Bahan" />
+                                                            <input type="text" name="no_loth" class="form-control 1"
+                                                                id="nama_bahan" placeholder="No Loth" />
                                                         </div>
                                                     </div>
 
@@ -96,7 +96,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="sisa_bahan" class="form-control 1"
+                                                            <input type="text" name="untuk_produk" class="form-control 1"
                                                                 id="untuk_produk" placeholder="Untuk Produk" />
                                                         </div>
                                                     </div>
@@ -134,19 +134,11 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $row['tanggal'] }}</td>
-                                <td>{{ $row['nama_bahan_baku'] }}</td>
                                 <td>{{ $row['no_loth'] }}</td>
-                                <td>{{ $row['jumlah_bahan_baku'] }}</td>
                                 <td>{{ $row['jumlah_permintaan'] }}</td>
                                 <td>{{ $row['hasil_penimbangan'] }}</td>
+                                <td>{{ $row['sisa_bahan'] }}</td>
                                 <td>{{ $row['untuk_produk'] }}</td>
-                                <td>
-                                    <?php if ($row['status'] == 0) {
-                                        echo 'Diajukan';
-                                    } elseif ($row['status'] == 1) {
-                                        echo 'Diterima';
-                                    } ?>
-                                </td>
                                 <td>
                                     @if (Auth::user()->level == 2)
                                     <form method="post" action="terimapenimbanganruang">
@@ -173,7 +165,7 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Ruang Timbang</h4>
+                        <h4 class="modal-title" id="myModalLabel">Hasil Timbang</h4>
                     </div>
 
                     <!-- Modal Body -->
@@ -187,22 +179,7 @@
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="id" id="isi_ruangid">
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
-                                            Baku</label>
-                                        <div class="col-sm">
-                                            <input class="form-control 6" list="listnamabahanbaku" type="text"
-                                                name='nama_bahanbaku' id="isi_namaruang">
-                                            </input>
-                                            <datalist id='listnamabahanbaku'>
-                                                @foreach ($bahanbaku as $row)
-                                                    <option value="{{ $row['bahanbaku_nama'] }}">
-                                                        {{ $row['bahanbaku_nama'] }}
-                                                    </option>
-                                                @endforeach
-                                            </datalist>
-                                        </div>
-                                    </div>
+
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">No Loth</label>
@@ -212,14 +189,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah Bahan
-                                            Baku</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="jumlah_bahanbaku" class="form-control 6"
-                                                id="isi_jruang" placeholder="Jumlah Bahan Baku" />
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
@@ -270,7 +239,7 @@
                 var produk = $(this).data('produk');
                 var id = $(this).data('id');
 
-                console.log("ini " + nama + " ruangan " + id);
+                console.log("ini " + nama + " ruangan " + noloth);
                 $("#isi_namaruang").val(nama);
                 // $("#isi_tanggal").val(tanggal);
                 $("#isi_nolothruang").val(noloth);
