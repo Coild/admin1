@@ -46,7 +46,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
         laporan::all()->where('laporan_nomor', $req['id'])
-            ->where('laporan_nama', 'Pengemasan Batch Produk')->first()->update([
+            ->where('laporan_nama', 'pengemasan batch produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
