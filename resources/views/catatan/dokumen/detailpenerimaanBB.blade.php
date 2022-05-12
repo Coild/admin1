@@ -380,7 +380,8 @@
                                                 <div class="form-group row">
                                                     <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
                                                     <div class="col-sm"><input type="text" class="form-control 3"
-                                                            name="jumlah" placeholder="Jumlah" /></div>
+                                                            name="jumlah" placeholder="Jumlah" />
+                                                        <p style="font-size: 10px">contoh : 10 Kg</p></div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail" class="col-sm-3 col-form-label">Nomer

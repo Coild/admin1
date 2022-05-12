@@ -205,12 +205,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hapus_produk_antara/{id}', [pjt::class, 'hapus_produkantara'])->name("hapus_produkantara");
         Route::get('/hapus_produk_jadi/{id}', [pjt::class, 'hapus_produkjadi'])->name("hapus_produkjadi");
 
-        //datatables
-        Route::get('user', [dataPelaksana::class, 'user']);
-        Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
-        Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
-        Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
-        Route::get('laporandata', [dataPelaksana::class, 'laporan']);
 
         Route::get('dummy', [dataPelaksana::class, 'dummy']);
     });
@@ -422,4 +416,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembersihanruangan', function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
+
+    //datatables
+    Route::get('user', [dataPelaksana::class, 'user']);
+    Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
+    Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
+    Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
+    Route::get('laporandata', [dataPelaksana::class, 'laporan']);
+
 });
