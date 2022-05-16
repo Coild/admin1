@@ -131,7 +131,7 @@
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="myModalLabel">
-                                    PENERIMAAN DAN REKONSILIASI BAHAN PENGEMAS
+                                        PENERIMAAN DAN REKONSILIASI BAHAN PENGEMAS
                                     </h4>
                                 </div>
 
@@ -142,70 +142,70 @@
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                <div class="card-body">
+                                        <div class="card-body">
 
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                            Kemasan</label>
-                                                        <div class="col-sm">
-                                                            <input placeholder="Nama Kemasan" class="form-control" list="listnamaproduk" type="text" name='nama' id="namaproduk">
-                                                            </input>
-                                                            <datalist id='listnamaproduk'>
-                                                                @foreach ($kemasan as $row)
-                                                                <option value="{{ $row['kemasan_nama'] }}">
-                                                                    {{ $row['kemasan_nama'] }}
-                                                                </option>
-                                                                @endforeach
-                                                            </datalist>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                            kemasan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="kode" readonly class="form-control" id="kodeproduk" placeholder="Kode Kemasan" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="butuh" class="col-sm-3 col-form-label">Jumlah Dibutuhkan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="jbutuh" class="form-control" id="butuh" placeholder="Jumlah Dibutuhkan" />
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                    <label for="tolak" class="col-sm-3 col-form-label">Jumlah Ditolak</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="jtolak" class="form-control" id="tolak" placeholder="Jumlah Ditolak" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                    <label for="tolak" class="col-sm-3 col-form-label">No QC</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="noqc" class="form-control" id="tolak" placeholder="No QC" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="butuh" class="col-sm-3 col-form-label">Jumlah Dipakai</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="jpakai" class="form-control" id="butuh" placeholder="Jumlah Dipakai" />
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                    <label for="tolak" class="col-sm-3 col-form-label">Jumlah Dikembalikan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="jkembali" class="form-control" id="tolak" placeholder="Jumlah Dikembalikan" />
-                                                        </div>
-                                                    </div>
-
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                    Kemasan</label>
+                                                <div class="col-sm">
+                                                    <input placeholder="Nama Kemasan" class="form-control" list="listnamaproduk" type="text" name='nama' id="namaproduk">
+                                                    </input>
+                                                    <datalist id='listnamaproduk'>
+                                                        @foreach ($kemasan as $row)
+                                                        <option value="{{ $row['kemasan_nama'] }}">
+                                                            {{ $row['kemasan_nama'] }}
+                                                        </option>
+                                                        @endforeach
+                                                    </datalist>
                                                 </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                                    kemasan</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="kode" readonly class="form-control" id="kodeproduk" placeholder="Kode Kemasan" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="butuh" class="col-sm-3 col-form-label">Jumlah Dibutuhkan</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="jbutuh" class="form-control" id="butuh" placeholder="Jumlah Dibutuhkan" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="tolak" class="col-sm-3 col-form-label">Jumlah Ditolak</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="jtolak" class="form-control" id="tolak" placeholder="Jumlah Ditolak" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="tolak" class="col-sm-3 col-form-label">No QC</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="noqc" class="form-control" id="tolak" placeholder="No QC" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="butuh" class="col-sm-3 col-form-label">Jumlah Dipakai</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="jpakai" class="form-control" id="butuh" placeholder="Jumlah Dipakai" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="tolak" class="col-sm-3 col-form-label">Jumlah Dikembalikan</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="jkembali" class="form-control" id="tolak" placeholder="Jumlah Dikembalikan" />
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -233,7 +233,7 @@
                                 <th scope="col" colspan="2" style="text-align: center;">Jumlah</th>
                                 <th scope="col" rowspan="2">No QC</th>
                                 <th scope="col" colspan="2" style="text-align: center;">Jumlah</th>
-                                
+
                             </tr>
                             <tr>
                                 <th scope="col">Dibutuhkan</th>
@@ -297,7 +297,7 @@
                                             <label for="inputName">Isi</label>
                                             <input name="isi" type="text" class="form-control" id="inputName" placeholder="Keterangan" />
                                         </div>
-                                        
+
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -326,8 +326,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1;?>
-                            @foreach($proisi as $row) 
+                            <?php $i = 1; ?>
+                            @foreach($proisi as $row)
                             <tr>
                                 <td>
                                     {{$i}}
@@ -383,7 +383,7 @@
                                             <label for="inputName">Isi</label>
                                             <input type="text" name="isi" class="form-control" id="inputName" placeholder="Keterangan" />
                                         </div>
-                                        
+
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -412,8 +412,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1;?>
-                            @foreach($protanda as $row) 
+                            <?php $i = 1; ?>
+                            @foreach($protanda as $row)
                             <tr>
                                 <td>
                                     {{$i}}
@@ -436,18 +436,28 @@
     </div>
 </main>
 <script>
-        const kemasan = JSON.parse('<?= json_encode($kemasan) ?>')
-        $("#namaproduk").change(function() {
-            
-            var cekname = kemasan.find(kemasan => kemasan.kemasan_nama ===
-                document.getElementById('namaproduk').value)?.kemasan_nama;
-                console.log('halo '+cekname);
-            if (cekname) {
-                document.getElementById('kodeproduk').value = kemasan.find(kemasan => kemasan.kemasan_nama ===
-                    document.getElementById('namaproduk').value).kemasan_kode
-            } else {
-                document.getElementById('kodeproduk').value = ""
-            }
-        });
-    </script>
+    const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+    $("#namaproduk").change(function() {
+
+        var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+            document.getElementById('namaproduk').value)?.kemasan_nama;
+        console.log('halo ' + cekname);
+        if (typeof kemasans === 'object') {
+            console.log("object kemasans")
+            Object.keys(kemasans).forEach(function(key) {
+                console.log(kemasans[key]);
+                tmp.push(kemasans[key]);
+            })
+        }
+        // console.log("tmp bahanbakus", tmp)
+        kemasans = tmp;
+
+        if (cekname) {
+            document.getElementById('kodeproduk').value = kemasan.find(kemasan => kemasan.kemasan_nama ===
+                document.getElementById('namaproduk').value).kemasan_kode
+        } else {
+            document.getElementById('kodeproduk').value = ""
+        }
+    });
+</script>
 @endsection
