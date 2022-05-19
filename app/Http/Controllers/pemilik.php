@@ -69,8 +69,8 @@ class pemilik extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
-            return redirect('/karyawan');
-        // return view("pemilik.karyawan", ['data' => $data]);
+            // dd($data);
+        return view("pemilik.karyawan", ['data' => $data]);
     }
 
     public function ganti_struktur(Request $req)
