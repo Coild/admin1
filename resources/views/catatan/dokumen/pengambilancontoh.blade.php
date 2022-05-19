@@ -986,9 +986,9 @@
 
 
         <script>
-            const produks = JSON.parse('<?= json_encode($produk) ?>')
-            const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
-            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+            var produks = JSON.parse('<?= json_encode($produk) ?>')
+            var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+            var bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
             $("#namabahanbaku").change(function() {
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
@@ -1000,7 +1000,7 @@
                         tmp.push(bahanbakus[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
+                console.log("tmp bahanbakus", tmp)
                 bahanbakus = tmp
                 if (cekname) {
                     document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
