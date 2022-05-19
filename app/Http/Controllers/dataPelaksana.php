@@ -61,13 +61,7 @@ class dataPelaksana extends Controller
             <input type="hidden" name="nobatch"
                 value=' . $data->cp_bahan_id . ' />
             <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
-        </form>'.'<form method="post" action="tolak_cpbahan">
-        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-        <input type="hidden" name="jenis" value=1 />
-        <input type="hidden" name="nobatch"
-            value=' . $data->cp_bahan_id . ' />
-        <button type="submit" class="btn btn-danger">Tolak</button>
-    </form>';
+        </form>';
             }
         })->rawColumns(['action'])->make();
     }
@@ -106,13 +100,7 @@ class dataPelaksana extends Controller
             <input type="hidden" name="nobatch"
                 value=' . $data->cp_produk_id . ' />
             <button type="submit" class="btn btn-primary">Terima</button>
-        </form>'.'<form method="post" action="tolak_cpproduk">
-        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-        <input type="hidden" name="jenis" value=2 />
-        <input type="hidden" name="nobatch"
-            value=' . $data->cp_produk_id . ' />
-        <button type="submit" class="btn btn-primary">Tolak</button>
-    </form>';
+        </form>';
             }
         })->rawColumns(['action'])->make();
     }
@@ -150,13 +138,7 @@ class dataPelaksana extends Controller
             <input type="hidden" name="nobatch"
                 value=' . $data->cp_kemasan_id . ' />
             <button type="submit" class="btn btn-primary">Terima</button>
-        </form>'.'<form method="post" action="tolak_cpkemasan">
-        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-        <input type="hidden" name="jenis" value=1 />
-        <input type="hidden" name="nobatch"
-            value=' . $data->cp_kemasan_id . ' />
-        <button type="submit" class="btn btn-danger">Tolak</button>
-    </form>';
+        </form>';
             }
         })->rawColumns(['action'])->make();
     }

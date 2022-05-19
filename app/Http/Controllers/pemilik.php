@@ -65,6 +65,7 @@ class pemilik extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
+            // dd($data);
         return view("pemilik.karyawan", ['data' => $data]);
     }
 

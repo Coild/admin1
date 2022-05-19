@@ -32,9 +32,9 @@
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
                                         <div class="container">
-                                            <form action="/reset_passwordu" method="post" id='forminput'>
+                                            <form action="/reset_password" method="post" id='forminput1'>
                                                 @csrf
-                                                <input type="hidden" name="id" id="isi_id">
+                                                <input type="hidden" name="id" id="isi_idpass">
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" name="baru" id="user" type="text"
                                                         placeholder="masukan password" autocomplete="off" />
@@ -109,6 +109,58 @@
             </div>
 
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalForm1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Edit Posisi
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <p class="statusMsg"></p>
+                        <form action="/update_posisi" method="post" role="form" id='forminput'>
+                            @csrf
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <input type="hidden" name="id" id="isi_id" />
+                            <label for="inputName">Nama</label>
+                            <input name="nama" type="text" class="form-control" id="inputName"
+                                placeholder="Nama Alat" />
+                            <div class="form-group">
+                                <label for="inputEmail">Posisi</label>
+                                <select style="height: 35px;" class="form-control" name="posisi"
+                                    id="input_posisi">
+                                    <option value="">Pilih posisi</option>
+                                    <option value="2">Penanggung Jawab</option>
+                                    <option value="3">Pelaksana</option>
+                                </select>
+                            </div>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <a type="submit"  style="text-decoration: none;" class="btn btn-primary"
+                            onclick="salert()">
+                            Simpan
+                    </a>
+                    </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    <!-- pop up end -->
+
         <script type="text/javascript">
             $(document).on('click', "#reset", function() {
                 var id = $(this).data('id');
@@ -124,7 +176,7 @@
 
                     // console.log("ini " + nama + " posisi "+posisi);
                     $("#inputName").val(nama);
-                    // $("#isi_p").val(p);
+                    $("#input_posisi").val(posisi);
                     $("#isi_id").val(id);
                 })
             });
