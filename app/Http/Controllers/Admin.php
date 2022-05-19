@@ -712,12 +712,12 @@ class Admin extends Controller
     public function tampil_detilkemasbatch(Request $req)
     {
         // dd($req);
-
+        $pabrik = Auth::user()->pabrik;
         $id = $req['nobatch'] ??  session()->get('detilkemasbatch');
         session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
         $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id);
         // dd($id);
-        $kemasan = kemasan::all();
+        $kemasan = kemasan::all()->where('user_id',$pabrik);
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
         $proisi = prosedur_isi::all()->where('id_kemas', $id);
         $protanda  = prosedur_tanda::all()->where('id_kemas', $id);
@@ -2086,9 +2086,9 @@ class Admin extends Controller
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all();
-            $produk = produk::all();
-            $kemasan = kemasan::all();
+            $bahanbaku = bahanbaku::all()->where('pabrik', $pabrik);;
+            $produk = produk::all()->where('pabrik', $pabrik);;
+            $kemasan = kemasan::all()->where('pabrik', $pabrik);;
         }
         $x = [];
         return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 'kemasan' => $kemasan ?? $x]);
@@ -3269,8 +3269,8 @@ class Admin extends Controller
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         } else {
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-            $produk = produk::all(); //->where('user_id', Auth::user()->pabrik);
-            $kemasan = kemasan::all(); //->where('user_id', Auth::user()->pabrik);
+            $produk = produk::all()->where('user_id', Auth::user()->pabrik);
+            $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
         }
         // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);

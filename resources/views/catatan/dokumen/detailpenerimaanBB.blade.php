@@ -1149,7 +1149,7 @@
             </div>
         </div>
     </div>
-    </div>
+    
     <!-- Modal Kemasan Keluar-->
     <div class="modal fade" id="editkemasankeluar" role="dialog">
         <div class="modal-dialog">
