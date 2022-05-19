@@ -2087,9 +2087,9 @@ class Admin extends Controller
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
             $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all()->where('pabrik', $pabrik);;
-            $produk = produk::all()->where('pabrik', $pabrik);;
-            $kemasan = kemasan::all()->where('pabrik', $pabrik);;
+            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);;
+            $produk = produk::all()->where('user_id', $pabrik);;
+            $kemasan = kemasan::all()->where('user_id', $pabrik);;
         }
         $x = [];
         return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 'kemasan' => $kemasan ?? $x]);

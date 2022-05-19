@@ -52,8 +52,10 @@
                     </div>
 
                     <!-- pop up end -->
-
-                    <table class="table">
+                    <button style="float:left; max-width:250px;" onclick="TambahKaryawanModal()" class="btn btn-primary btn-md mb-3">
+                        <i class="fa fa-plus "></i> Tambah Karyawan
+                    </button>
+                    <table class="table" id="tabelKaryawan">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -109,7 +111,78 @@
             </div>
 
         </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalTambahKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Karawan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="card-body">
+                <form action="/register" method="post" id='formModalTambahKaryawan'>
+                    @csrf
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3 mb-md-0">
+                                <input class="form-control" name="namadepan" id="inputFirstName"
+                                    type="text" placeholder="Enter your first name" required />
+                                <label for="inputFirstName">First name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input class="form-control" name="namabelakang" id="inputLastName"
+                                    type="text" placeholder="Enter your last name" required />
+                                <label for="inputLastName">Last name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="username" id="username" type="text"
+                            placeholder="name@example.com" required/>
+                        <label for="inputEmail">Username</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="search" id="inputPabrik" type="hidden"
+                            placeholder="" readonly value="{{ Auth::user()->pabrik }}"/>
+                            <input class="form-control" id="inputPabrik" type="text"
+                            placeholder="" readonly value="{{ session()->get('pabrik') }}"/>
+                            <label for="inputPabrik">Pabrik</label>
+                    </div>
+                    
+                        <div class="form-floating">
+                            <input class="form-control" name="password" id="inputPassword"
+                                type="password" placeholder="Create a password" required />
+                            <label for="inputPassword">Password</label>
+                        </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary" onclick="buttonFormTambahKaryawan()">Tambah</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
         <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#tabelKaryawan').DataTable();
+        });
+
             $(document).on('click', "#reset", function() {
                 var id = $(this).data('id');
                 console.log("hai " + id);
@@ -128,6 +201,64 @@
                     $("#isi_id").val(id);
                 })
             });
+
+            function TambahKaryawanModal() {
+                // alert('ini');
+                $('#ModalTambahKaryawan').modal('show');
+            }
+            
+            function buttonFormTambahKaryawan() {
+                // alert('itu');
+                
+                if ($('#inputFirstName').val() == '' || $('#inputLastName').val() == '' || $('#username').val() == ''|| $('#inputPassword').val() == '') 
+                {
+                swal({
+                    title: 'Opppss!',
+                    text: 'Harap isi semua form!',
+                    icon: 'warning',
+                    buttons: {                  
+                        confirm: {
+                            className : 'btn btn-focus'
+                        }
+                    },
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Simpan Data Karyawan?',
+                        icon: 'warning',
+                        buttons:{
+                        confirm: {
+                            text : 'Simpan',
+                            className : 'btn btn-success'
+                        },
+                        cancel: {
+                            text : 'Tidak',
+                            visible: true,
+                            className: 'btn btn-focus'
+                        }
+                        }
+                    }).then((Simpan) => {
+                        if (Simpan) {
+                            document.getElementById("formModalTambahKaryawan").submit();
+                        } else {
+                            swal.close();
+                        }
+                    });
+                }
+            }
+
         </script>
+        
+        @if(session()->has('success'))
+            <script>
+                alert("{{ session('success') }}");
+            </script>
+        @endif
+        @if(session()->has('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+        @endif
     </main>
 @endsection

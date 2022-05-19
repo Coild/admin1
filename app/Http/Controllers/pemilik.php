@@ -44,7 +44,10 @@ class pemilik extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
-        return view("pemilik.karyawan", ['data' => $data]);
+        //YANG DIUBAH
+        // return view("pemilik.karyawan", ['data' => $data ]);
+        return view("pemilik.karyawan", ['data' => $data, 'data1' => pabrik::all() ]);
+        //END
     }
 
     public function hapus_karyawan(Request $req)
@@ -54,7 +57,8 @@ class pemilik extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
-        return view("pemilik.karyawan", ['data' => $data]);
+        return redirect('/karyawan');
+        // return view("pemilik.karyawan", ['data' => $data]);
     }
 
     public function update_posisi(Request $req)
@@ -65,7 +69,8 @@ class pemilik extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
-        return view("pemilik.karyawan", ['data' => $data]);
+            return redirect('/karyawan');
+        // return view("pemilik.karyawan", ['data' => $data]);
     }
 
     public function ganti_struktur(Request $req)

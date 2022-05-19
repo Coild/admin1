@@ -70,22 +70,31 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
+        // dd($request);
         $user = new User;
         $user->nama = ucwords(strtolower($request->username));
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->pabrik = $request->search;
-        $user->level = -1;
+        $user->level = 2;
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
 
+        //YANG DIUBAH
+        // if ($simpan) {
+        //     Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
+        //     return redirect('/login');
+        // } else {
+        //     Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
+        //     return redirect('showregister');
+        // }
+
         if ($simpan) {
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect('/login');
+            return redirect('/karyawan')->with('success', 'Data Karyawan Berhasil Disimpan');
         } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect('showregister');
+            return redirect('/karyawan')->with('error', 'Data Karyawan Gagal Disimpan');
         }
+        //END
     }
 
     public function logout()
