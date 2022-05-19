@@ -388,16 +388,16 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                             Bahan Baku</label>
                                         <div class="col-sm">
-                                            <input type="text" name="kode" readonly class="form-control 4"
-                                                id="bahankode" placeholder="Kode Bahan Baku" />
+                                            <input type="text" name="kode" readonly class="form-control 4" id="bahankode"
+                                                placeholder="Kode Bahan Baku" />
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
-                                            <input type="text" id="bahanjumlah" name="jumlah" class="form-control 4" id="jumlah"
-                                                placeholder="Jumlah" />
+                                            <input type="text" id="bahanjumlah" name="jumlah" class="form-control 4"
+                                                id="jumlah" placeholder="Jumlah" />
                                         </div>
                                     </div>
                                     <input type="hidden" id='ambil_tanggal3' class="tanggal" name="tanggal"
@@ -406,8 +406,8 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                         <div class="col-sm">
-                                            <input type="text" id="bahanruang" name="ruang" class="form-control 4" id="ruangan"
-                                                placeholder="Ruangan" />
+                                            <input type="text" id="bahanruang" name="ruang" class="form-control 4"
+                                                id="ruangan" placeholder="Ruangan" />
                                         </div>
                                     </div>
                                     <a class="btn btn-primary" onclick="salert1(4)" href="#"
@@ -471,16 +471,16 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
-                                            <input type="text" id="produkjumlah" name="jumlah" class="form-control 5" id="Jumlah"
-                                                placeholder="Jumlah" />
+                                            <input type="text" id="produkjumlah" name="jumlah" class="form-control 5"
+                                                id="Jumlah" placeholder="Jumlah" />
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                         <div class="col-sm">
-                                            <input type="text" id="produkruang" name="ruang" class="form-control 5" id="ruangan"
-                                                placeholder="Ruangan" />
+                                            <input type="text" id="produkruang" name="ruang" class="form-control 5"
+                                                id="ruangan" placeholder="Ruangan" />
                                         </div>
                                     </div>
                                     <a class="btn btn-primary" onclick="salert1(5)" href="#"
@@ -535,22 +535,22 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                             Kemasan</label>
                                         <div class="col-sm">
-                                            <input type="text" name="kode" readonly class="form-control 6" id="kemasankode"
-                                                 />
+                                            <input type="text" name="kode" readonly class="form-control 6"
+                                                id="kemasankode" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
-                                            <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah"
-                                                placeholder="Jumlah" />
+                                            <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6"
+                                                id="jumlah" placeholder="Jumlah" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                         <div class="col-sm">
-                                            <input type="text" id="kemasanruang" name="ruang" class="form-control 6" id="ruangan"
-                                                placeholder="Ruangan" />
+                                            <input type="text" id="kemasanruang" name="ruang" class="form-control 6"
+                                                id="ruangan" placeholder="Ruangan" />
                                         </div>
                                     </div>
                                     <input type="hidden" id='ambil_tanggal1' class="tanggal" name="tanggal"
@@ -570,24 +570,23 @@
             var produks = JSON.parse('<?= json_encode($produk) ?>')
             var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
             var bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
-            var tmpbahanbakus = []
-            console.log(bahanbakus);
-            $("#namabahanbaku").change(function() {
-                console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
-                console.log( Array.isArray(bahanbakus));
-                if(!Array.isArray(bahanbakus)){
-                    Object.keys(bahanbakus).forEach(
-                        function(key) {
-                            tmpbahanbakus.push(bahanbakus[key])
-                            // console.log(key, bahanbakus[key])
-                        }
-                    )
-                    bahanbakus = tmpbahanbakus
-console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
-                }
 
+            $("#namabahanbaku").change(function() {
+                console.log(bahanbakus)
+                // console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
+                var tmp = []
+                if (typeof bahanbakus === 'object') {
+                    console.log("object bahanbakus")
+                    Object.keys(bahanbakus).forEach(function(key) {
+                        console.log(bahanbakus[key]);
+                        tmp.push(bahanbakus[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                bahanbakus = tmp
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
-                document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
+                    document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
+
 
                 if (cekname) {
                     document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
@@ -600,6 +599,16 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
             $("#namakemasan").change(function() {
                 var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('namakemasan').value)?.kemasan_nama;
+                var tmp = []
+                if (typeof kemasans === 'object') {
+                    console.log("object kemasans")
+                    Object.keys(kemasans).forEach(function(key) {
+                        console.log(kemasans[key]);
+                        tmp.push(kemasans[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                kemasans = tmp
                 if (cekname) {
                     document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                         document.getElementById('namakemasan').value).kemasan_kode
@@ -610,6 +619,25 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
             $("#namaproduk").change(function() {
                 var cekname = produks.find(produk => produk.produk_nama ===
                     document.getElementById('namaproduk').value)?.produk_nama;
+                var tmp = []
+                if (typeof produks === 'object') {
+                    console.log("object produks")
+                    Object.keys(produks).forEach(function(key) {
+                        console.log(produks[key]);
+                        tmp.push(produks[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                produks = tmp
+                if (typeof kemasans === 'object') {
+                    console.log("object kemasans")
+                    Object.keys(kemasans).forEach(function(key) {
+                        console.log(kemasans[key]);
+                        tmp.push(kemasans[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                kemasans = tmp
                 if (cekname) {
                     document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
                         document.getElementById('namaproduk').value).produk_kode
@@ -619,10 +647,19 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
             });
 
             $("#bahannama").change(function() {
-                console.log(bahanbakus)
-                console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
+                // console.log(bahanbakus)
+                // console.log('produk ' + Array.isArray(bahanbakus) + " " + typeof bahanbakus)
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('bahannama').value)?.bahanbaku_nama;
+                if (typeof bahanbakus === 'object') {
+                    console.log("object bahanbakus")
+                    Object.keys(bahanbakus).forEach(function(key) {
+                        console.log(bahanbakus[key]);
+                        tmp.push(bahanbakus[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                bahanbakus = tmp
                 if (cekname) {
                     document.getElementById('bahankode').value = bahanbakus.find(bahanbaku => bahanbaku
                         .bahanbaku_nama ===
@@ -634,6 +671,15 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
             $("#kemasannama").change(function() {
                 var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('kemasannama').value)?.kemasan_nama;
+                if (typeof kemasans === 'object') {
+                    console.log("object kemasans")
+                    Object.keys(kemasans).forEach(function(key) {
+                        console.log(kemasans[key]);
+                        tmp.push(kemasans[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                kemasans = tmp
                 if (cekname) {
                     document.getElementById('kemasankode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                         document.getElementById('kemasannama').value).kemasan_kode
@@ -644,6 +690,15 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
             $("#produknama").change(function() {
                 var cekname = produks.find(produk => produk.produk_nama ===
                     document.getElementById('produknama').value)?.produk_nama;
+                if (typeof produks === 'object') {
+                    console.log("object produks")
+                    Object.keys(produks).forEach(function(key) {
+                        console.log(produks[key]);
+                        tmp.push(produks[key]);
+                    })
+                }
+                // console.log("tmp bahanbakus", tmp)
+                produks = tmp
                 if (cekname) {
                     document.getElementById('produkkode').value = produks.find(produk => produk.produk_nama ===
                         document.getElementById('produknama').value).produk_kode
@@ -659,7 +714,7 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
                 var kode = $(this).data('kode');
                 var cpid = $(this).data('cpid');
 
-                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                console.log("ini " + nama + " jumlah " + jumlah + " ruangan " + ruangan + " kode " + kode);
                 $("#bahannama").val(nama);
                 $("#bahanjumlah").val(jumlah);
                 $("#bahanruang").val(ruangan);
@@ -674,7 +729,7 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
                 var kode = $(this).data('kode');
                 var cpid = $(this).data('cpid');
 
-                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                console.log("ini " + nama + " jumlah " + jumlah + " ruangan " + ruangan + " kode " + kode);
                 $("#produknama").val(nama);
                 $("#produkjumlah").val(jumlah);
                 $("#produkruang").val(ruangan);
@@ -690,7 +745,7 @@ console.log(tmpbahanbakus, bahanbakus, "naninikokoe")
                 var cpid = $(this).data('cpid');
 
 
-                console.log("ini " + nama + " jumlah "+jumlah + " ruangan "+ruangan+ " kode "+kode);
+                console.log("ini " + nama + " jumlah " + jumlah + " ruangan " + ruangan + " kode " + kode);
                 $("#kemasannama").val(nama);
                 $("#kemasanjumlah").val(jumlah);
                 $("#kemasanruang").val(ruangan);

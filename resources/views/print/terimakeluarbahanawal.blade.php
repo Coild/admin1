@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <style>
-        @page {
-            size: auto;
-            margin: 5mm;
-        }
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Load paper.css for happy printing -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+        <style>
+            @page {
+                size: auto;
+                margin: 5mm;
+            }
 
-        /* Kop Surat */
-        .kop {
-            border-bottom: 5px solid black;
-        }
+            /* Kop Surat */
+            .kop {
+                border-bottom: 5px solid black;
+            }
 
-        .rangkasurat {
-            width: 980px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-        }
+            .rangkasurat {
+                width: 980px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 20px;
+            }
 
-        .tengah {
-            text-align: center;
-        }
+            .tengah {
+                text-align: center;
+            }
 
-        /* isi */
-        .isi {
-            text-align: center;
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            $('#btnPrint').click(function() {
-                $('#btnPrint').hide();
-                var css = '@page { size: a4; }',
-                    head = document.head || document.getElementsByTagName('head')[0],
-                    style = document.createElement('style');
-                style.type = 'text/css';
-                style.media = 'print';
-                if (style.styleSheet) {
-                    style.styleSheet.cssText = css;
-                } else {
-                    style.appendChild(document.createTextNode(css));
-                }
-                head.appendChild(style);
-                window.print();
-            });
-        })
-    </script>
-
-</head>
+            /* isi */
+            .isi {
+                text-align: center;
+            }
+        </style>
+    </head>
 
 <body class="A4 landscape">
     <section class="sheet padding-10mm" style="height: auto;">
