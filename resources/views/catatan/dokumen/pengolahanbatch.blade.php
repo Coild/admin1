@@ -90,7 +90,7 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <p class="statusMsg"></p>
-                                <form method="post" action="tambah_batch" id='forminput'>
+                                <form method="post" action="tambah_batch" id='forminput11'>
                                     <div>
                                         <div class="card-header">
                                             <i class="fas fa-table me-1"></i>
@@ -107,7 +107,7 @@
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
                                                     <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor PROTAP" required />
-                                                    <p class="text-danger"></p>
+                                                    <div id="error-box" style="color: red"></div>
                                                 </div>
                                             </div>
 
@@ -123,7 +123,7 @@
                                                         </option>
                                                         @endforeach
                                                     </datalist>
-                                                    <p class="text-danger"></p>
+                                                    <div id="error-box" style="color: red"></div>
                                                 </div>
                                             </div>
 

@@ -16,9 +16,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" onclick="setdatetoday()">
-                        Tambah Pengoprasian Alat Utama
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" onclick="setdatetoday()">
+                            Tambah Pengoprasian Alat Utama
+                        </button>
+                        @else
+                            <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm" onclick="setdatetoday()">
+                            Tambah Pengoprasian Alat Utama
+                        </button>
+                        @endif
+                    
                     @endif
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm" role="dialog">
@@ -108,7 +115,12 @@
                             <td>{{ $row['ket'] }}</td>
                             @if(Auth::user()->level == 3)
                             <td>
-                                <button id="editdata" class="btn btn-primary" data-toggle="modal" data-target="#editalat" data-mulai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['mulai']))}}" data-selesai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['selesai']))}}" data-oleh="{{ $row['oleh'] }}" data-ket="{{ $row['ket'] }}" data-id="{{ $row['id_detilalat'] }}">Edit</button>
+                                @if ($status == 0)
+                                    <button id="editdata" class="btn btn-primary" data-toggle="modal" data-target="#editalat" data-mulai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['mulai']))}}" data-selesai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['selesai']))}}" data-oleh="{{ $row['oleh'] }}" data-ket="{{ $row['ket'] }}" data-id="{{ $row['id_detilalat'] }}">Edit</button>    
+                                @else
+                                    <button id="editdata" class="btn btn-danger disabled" data-toggle="modal" data-target="#editalat" data-mulai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['mulai']))}}" data-selesai="{{$newDate = date('Y-m-d\TH:i', strtotime($row['selesai']))}}" data-oleh="{{ $row['oleh'] }}" data-ket="{{ $row['ket'] }}" data-id="{{ $row['id_detilalat'] }}">Edit</button>    
+                                @endif
+                                
                             </td>
                             @endif
                         </tr>

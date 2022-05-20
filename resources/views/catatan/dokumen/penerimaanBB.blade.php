@@ -156,7 +156,6 @@
                                         <div class="col-sm">
                                             <input class="form-control 3" list="listnamabahanbaku" type="text" name='nama'
                                                 id="namabahanbaku" autocomplete="off">
-                                            </input>
                                             <datalist id='listnamabahanbaku'>
                                                 @foreach ($bahanbaku as $row)
                                                     <option value="{{ $row['bahanbaku_nama'] }}">
