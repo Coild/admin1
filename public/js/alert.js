@@ -195,8 +195,11 @@ function filecheck() {
 
 function salert1(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
+
     var valid = false;
+
     for (i = 0; i < mycomp.length; i++) {
+        console.log(i +" - " +mycomp[i].value);
         if (mycomp[i].value == "") {
             valid = true;
         }

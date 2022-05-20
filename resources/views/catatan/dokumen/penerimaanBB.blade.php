@@ -157,6 +157,7 @@
                                             <input class="form-control 3" list="listnamabahanbaku" type="text" name='nama'
                                                 id="namabahanbaku" autocomplete="off">
                                             </input>
+                                            <p id="info-kosong3"> </p>
                                             <datalist id='listnamabahanbaku'>
                                                 @foreach ($bahanbaku as $row)
                                                     <option value="{{ $row['bahanbaku_nama'] }}">
@@ -173,6 +174,7 @@
                                         <div class="col-sm">
                                             <input type="text" name="kode" readonly class="form-control 3"
                                                 id="kodebahanbaku" placeholder="Kode Bahan Baku" />
+                                                <p id="info-kosong3"> </p>
                                         </div>
                                     </div>
 
@@ -181,6 +183,7 @@
                                         <div class="col-sm">
                                             <input type="text" name="jumlah" class="form-control 3" id="inputEmail3"
                                                 placeholder="Jumlah" />
+                                                <p id="info-kosong3"> </p>
                                         </div>
                                     </div>
                                     <input type="hidden" id='ambil_tanggal3' class="form-control 3" name="tanggal"
@@ -191,6 +194,7 @@
                                         <div class="col-sm">
                                             <input type="text" name="ruang" class="form-control 3" id="inputEmail3"
                                                 placeholder="Ruangan" />
+                                                <p id="info-kosong3"> Hol </p>
                                         </div>
                                     </div>
                                     <a class="btn btn-primary" onclick="salert1(3)" href="#"

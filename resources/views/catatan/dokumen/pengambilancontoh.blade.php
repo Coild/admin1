@@ -255,7 +255,7 @@
                                                                 </form>
                                                             </td>
                                                         <?php } ?>
-                                                        
+
                                                     @endif
                                                 </tr>
                                             @endforeach
@@ -479,7 +479,7 @@
                                                                 </form>
                                                             <?php } ?>
 
-                                                            
+
                                                         </td>
                                                     @else
                                                     <td>
@@ -724,7 +724,7 @@
                                                                         class="btn btn-danger disabled">Edit</button>
                                                                 </form>
                                                             <?php } ?>
-                                                            
+
                                                         </td>
                                                     @else
                                                         <td>
@@ -743,7 +743,7 @@
                                                                     <button type="submit" class="btn btn-danger disabled">Terima</button>
                                                                 </form>
                                                             <?php } ?>
-                                                            
+
                                                         </td>
                                                     @endif
                                                 </tr>
@@ -1040,8 +1040,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
-                                            Kemasan Yang Disampling</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah kemasan yang disampel</label>
                                         <div class="col-sm">
                                             <input type="text" name="jumlah_ambil" class="form-control 9"
                                                 placeholder="Jumlah Kemasan Yang Diambil" id="kemasan_jumlahambil" />
