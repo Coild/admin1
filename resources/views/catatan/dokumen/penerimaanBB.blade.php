@@ -388,8 +388,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                             Bahan Baku</label>
                                         <div class="col-sm">
-                                            <input type="text" name="kode" readonly class="form-control 4" id="bahankode"
-                                                placeholder="Kode Bahan Baku" />
+                                            <input type="text" name="kode" readonly class="form-control 4" id="bahankode" placeholder="Kode Bahan Baku" />
                                         </div>
                                     </div>
 
@@ -518,9 +517,7 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kemasan</label>
                                         <div class="col-sm">
-                                            <input class="form-control 6" list="listnamakemasan" type="text" name='nama'
-                                                id="kemasannama" autocomplete="off">
-                                            </input>
+                                            <input class="form-control 6" list="listnamakemasan" type="text" name='nama' id="kemasannama" autocomplete="off">
                                             <datalist id='listnamakemasan'>
                                                 @foreach ($kemasan as $row)
                                                     <option value="{{ $row['kemasan_nama'] }}">
@@ -536,7 +533,7 @@
                                             Kemasan</label>
                                         <div class="col-sm">
                                             <input type="text" name="kode" readonly class="form-control 6"
-                                                id="kemasankode" />
+                                                id="kemasankode">
                                         </div>
                                     </div>
                                     <div class="form-group row">

@@ -106,7 +106,8 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor PROTAP" />
+                                                    <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor PROTAP" required />
+                                                    <p class="text-danger"></p>
                                                 </div>
                                             </div>
 
@@ -114,8 +115,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                     Produk</label>
                                                 <div class="col-sm">
-                                                    <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk">
-                                                    </input>
+                                                    <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required>
                                                     <datalist id='listnamaproduk'>
                                                         @foreach ($data2 as $row)
                                                         <option value="{{ $row['produk_nama'] }}">
@@ -123,6 +123,7 @@
                                                         </option>
                                                         @endforeach
                                                     </datalist>
+                                                    <p class="text-danger"></p>
                                                 </div>
                                             </div>
 
@@ -131,6 +132,7 @@
                                                     Produk</label>
                                                 <div class="col-sm">
                                                     <input type="text" name="kode_produk" readonly class="form-control" id="kodeproduk" placeholder="Kode Produk" />
+                                                    <p class="text-danger"></p>
                                                 </div>
                                             </div>
 
@@ -140,6 +142,7 @@
                                                 <div class="col-sm">
                                                     <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="Nomor Batch" />
                                                 </div>
+                                                <p class="text-danger"></p>
                                             </div>
 
                                             <div class="form-group row">
@@ -148,6 +151,7 @@
                                                 <div class="col-sm">
                                                     <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
                                                 </div>
+                                                <p class="text-danger"></p>
                                             </div>
 
                                             <div class="form-group row">
@@ -156,6 +160,7 @@
                                                 <div class="col-sm">
                                                     <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan" type="text" />
                                                 </div>
+                                                <p class="text-danger"></p>
                                             </div>
 
                                             <div class="form-group row">
@@ -163,6 +168,7 @@
                                                 <div class="col-sm">
                                                     <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
                                                 </div>
+                                                <p class="text-danger"></p>
                                             </div>
 
                                             <div class="form-group row">
@@ -177,6 +183,7 @@
                                                         </option>
                                                         @endforeach
                                                     </datalist>
+                                                    <p class="text-danger"></p>
                                                 </div>
                                             </div>
                                         </div>

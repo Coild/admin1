@@ -1,13 +1,21 @@
 
 
+
 function salert() {
-    const mycomp = document.getElementsByClassName("#forminput .form-control");
+    $("#forminput").validate();
+    const mycomp = document.getElementsByClassName("form-control");
+    const text_gagal = document.getElementsByClassName("text-danger");
     var valid = false;
+
     console.log(mycomp[mycomp.length-1]);
     for (i = 0; i < mycomp.length; i++) {
+        // var x = text_gagal[i].value = 'coba';
         console.log(mycomp[i].value);
         if (mycomp[i].value == "") {
             valid = true;
+            // console.log('ini : '+x);
+            // text_gagal[i].innerText = 'coba';
+            // text_gagal[i].value('kolom harap diisi!');
             break;
         }
     }

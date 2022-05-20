@@ -462,7 +462,7 @@
                                     </div>
                                     <!-- pop up end -->
 
-                                    <table class="table mt-5" id="tabel3">
+                                    <table class="table mt-5" id="tabelbeda1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
