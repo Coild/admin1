@@ -695,7 +695,6 @@
             $("#no_batch3").val(params.id_batch)
             $("#jumlah3").val(params.jumlah)
             $("#nama_distributor3").val(params.nama_distributor)
-            console.log(params);
         }
     </script>
 </main>

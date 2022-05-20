@@ -14,6 +14,10 @@ class protapController extends Controller
    public function tampil_protap($jenis)
    {
       $id = Auth::user()->id;
+      $ajukan = user::all()->where('pabrik', Auth::user()->pabrik)->
+      where('level',2)->first();
+      $pemilik = user::all()->where('pabrik', Auth::user()->pabrik)->
+      where('level',1)->first();
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
          ->where('protap_jenis', $jenis)->sortByDesc('protap_id');
       if ($jenis == 1) {
@@ -94,7 +98,8 @@ class protapController extends Controller
          $judul = ["Pemeriksaan/Pengujian Bahan", "Bahan Baku", "Bahan Kemas", "Produk Jadi"];
       }
 
-      return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis, 'judul'  => $judul]);
+      return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis,
+       'judul'  => $judul, 'ajukan' => $ajukan, 'pemilik' => $pemilik]);
    }
 
    public function hapus_protap($id, $jenis)
@@ -115,17 +120,20 @@ class protapController extends Controller
       $tujuan_upload = 'asset/protap/';
       $file->move($tujuan_upload, $nama);
       $jenis = $req['jenis'];
+      $detil = $req['detil'];
       $id = Auth::user()->id;
       $pabrik = Auth::user()->pabrik;
       $hasil = [
          'protap_file' => $nama,
          'protap_nama' => $req['nama'],
+         'protap_nomor' => $req['nomor'],
          'protap_ruangan' => $req['ruangan'],
          'protap_diajukan' => $req['diajukan'],
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
          'protap_diterima' => $req['disetujui'],
          'protap_tgl_diterima' => $req['tgl_disetujui'],
          'protap_jenis' => $jenis,
+         'protap_detil' => $detil ?? 1,
          'protap_pabrik' => $pabrik,
          'user_id' => $id,
       ];

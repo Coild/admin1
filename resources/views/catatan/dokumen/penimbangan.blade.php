@@ -754,11 +754,10 @@
             var hasil = $(this).data('hasil');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " ruangan " + id);
-            $("#isi_namaruang").val(nama);
-            $("#isi_jruang").val(jruang);
-            $("#isi_hasilruang").val(hasil);
-            $("#isi_ruangid").val(id);
-        })
-    </script>
+        $("#isi_namaruang").val(nama);
+        $("#isi_jruang").val(jruang);
+        $("#isi_hasilruang").val(hasil);
+        $("#isi_ruangid").val(id);
+    })
+</script>
 @endsection

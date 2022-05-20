@@ -576,7 +576,6 @@
         var nilai = $(this).data('nilai');
         var id = $(this).data('id');
 
-        console.log("ini " + mulai + " metode " + selesai);
         $("#higi_kode").val(kode);
         $("#higi_materi").val(materi);
         $("#higi_peserta").val(peserta);
@@ -602,7 +601,6 @@
         var nilai = $(this).data('nilai');
         var id = $(this).data('id');
 
-        console.log("ini " + materi + " metode " + metode);
         $("#cpkb_kode").val(kode);
         $("#cpkb_materi").val(materi);
         $("#cpkb_peserta").val(peserta);

@@ -1070,21 +1070,18 @@
 
 
         <script>
-            const produks = JSON.parse('<?= json_encode($produk) ?>')
-            const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
-            const bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+            var produks = JSON.parse('<?= json_encode($produk) ?>')
+            var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+            var bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
             $("#namabahanbaku").change(function() {
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
                 var tmp = []
                 if (typeof bahanbakus === 'object') {
-                    console.log("object bahanbakus", bahanbakus)
                     Object.keys(bahanbakus).forEach(function(key) {
-                        console.log(bahanbakus[key]);
                         tmp.push(bahanbakus[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 bahanbakus = tmp
                 if (cekname) {
                     document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
@@ -1099,13 +1096,10 @@
                     document.getElementById('namakemasan').value)?.kemasan_nama;
                 var tmp = []
                 if (typeof kemasans === 'object') {
-                    console.log("object kemasans")
                     Object.keys(kemasans).forEach(function(key) {
-                        console.log(kemasans[key]);
                         tmp.push(kemasans[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 kemasans = tmp
                 if (cekname) {
                     document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
@@ -1119,13 +1113,10 @@
                     document.getElementById('namaproduk').value)?.produk_nama;
                 var tmp = []
                 if (typeof produks === 'object') {
-                    console.log("object produks")
                     Object.keys(produks).forEach(function(key) {
-                        console.log(produks[key]);
                         tmp.push(produks[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 produks = tmp
                 if (cekname) {
                     document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
@@ -1140,13 +1131,10 @@
                     document.getElementById('bahan_nama').value)?.bahanbaku_nama;
                 var tmp = []
                 if (typeof bahanbakus === 'object') {
-                    console.log("object bahanbakus")
                     Object.keys(bahanbakus).forEach(function(key) {
-                        console.log(bahanbakus[key]);
                         tmp.push(bahanbakus[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 bahanbakus = tmp
                 if (cekname) {
                     document.getElementById('bahan_kode').value = bahanbakus.find(bahanbaku => bahanbaku
@@ -1161,13 +1149,10 @@
                     document.getElementById('kemasan_nama').value)?.kemasan_nama;
                 var tmp = []
                 if (typeof kemasans === 'object') {
-                    console.log("object kemasans")
                     Object.keys(kemasans).forEach(function(key) {
-                        console.log(kemasans[key]);
                         tmp.push(kemasans[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 kemasans = tmp
                 if (cekname) {
                     document.getElementById('kemasan_kode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
@@ -1181,13 +1166,10 @@
                     document.getElementById('produk_nama').value)?.produk_nama;
                 var tmp = []
                 if (typeof produks === 'object') {
-                    console.log("object produks")
                     Object.keys(produks).forEach(function(key) {
-                        console.log(produks[key]);
                         tmp.push(produks[key]);
                     })
                 }
-                // console.log("tmp bahanbakus", tmp)
                 produks = tmp
                 if (cekname) {
                     document.getElementById('produk_kode').value = produks.find(produk => produk.produk_nama ===
@@ -1209,7 +1191,6 @@
                 var jeniswarna = $(this).data('jeniswarna');
                 var id = $(this).data('id');
 
-                console.log("ini " + nama);
                 $("#bahan_nama").val(nama);
                 $("#bahan_kode").val(kode);
                 $("#bahan_tglambil").val(tglambil);
@@ -1232,7 +1213,6 @@
                 var jeniswarna = $(this).data('jeniswarna');
                 var id = $(this).data('id');
 
-                console.log("ini " + nobatch);
                 $("#produk_nama").val(nama);
                 $("#produk_kode").val(kode);
                 $("#produk_tglambil").val(tglambil);
@@ -1255,7 +1235,6 @@
                 var jeniswarna = $(this).data('jeniswarna');
                 var id = $(this).data('id');
 
-                console.log("ini " + nama);
                 $("#kemasan_nama").val(nama);
                 $("#kemasan_kode").val(kode);
                 $("#kemasan_tglambil").val(tglambil);

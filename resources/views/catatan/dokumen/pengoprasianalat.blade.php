@@ -244,7 +244,6 @@
         var tanggal = $(this).data('tanggal');
         var id = $(this).data('id');
 
-        console.log("ini " + nama + " ruangan " + ruangan);
         $("#isi_nama").val(nama);
         $("#isi_tipe").val(merek);
         $("#isi_ruang").val(ruangan);

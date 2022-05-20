@@ -436,20 +436,17 @@
     </div>
 </main>
 <script>
-    const kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
+    var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
     $("#namaproduk").change(function() {
 
         var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
             document.getElementById('namaproduk').value)?.kemasan_nama;
-        console.log('halo ' + cekname);
+        var tmp =[]
         if (typeof kemasans === 'object') {
-            console.log("object kemasans")
             Object.keys(kemasans).forEach(function(key) {
-                console.log(kemasans[key]);
                 tmp.push(kemasans[key]);
             })
         }
-        // console.log("tmp bahanbakus", tmp)
         kemasans = tmp;
 
         if (cekname) {

@@ -336,18 +336,16 @@
             // document.getElementById('cpbahan').value = cpid;
         })
 
-        const produks = JSON.parse('<?= json_encode($data2) ?>')
+        var produks = JSON.parse('<?= json_encode($data2) ?>')
         $("#namaproduk").change(function() {
             var cekname = produks.find(produk => produk.produk_nama ===
                 document.getElementById('namaproduk').value)?.produk_nama;
+                var tmp = []
             if (typeof produks === 'object') {
-                console.log("object produks")
                 Object.keys(produks).forEach(function(key) {
-                    console.log(produks[key]);
                     tmp.push(produks[key]);
                 })
             }
-            // console.log("tmp bahanbakus", tmp)
             produks = tmp
             if (cekname) {
                 document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
@@ -360,13 +358,10 @@
             var cekname = produks.find(produk => produk.produk_nama ===
                 document.getElementById('editnamaproduk').value)?.produk_nama;
             if (typeof produks === 'object') {
-                console.log("object produks")
                 Object.keys(produks).forEach(function(key) {
-                    console.log(produks[key]);
                     tmp.push(produks[key]);
                 })
             }
-            // console.log("tmp bahanbakus", tmp)
             produks = tmp
             if (cekname) {
                 document.getElementById('editkodeproduk').value = produks.find(produk => produk.produk_nama ===

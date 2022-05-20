@@ -331,7 +331,6 @@
         var berat = $(this).data('berat');
         var id = $(this).data('id');
 
-        console.log("ini " + nama + " ruangan " + id);
         $("#isi_nama").val(nama);
         $("#nobatch").val(nobatch);
         $("#kadaluarsa").val(kadaluarsa);

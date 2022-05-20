@@ -1149,7 +1149,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Kemasan Keluar-->
     <div class="modal fade" id="editkemasankeluar" role="dialog">
         <div class="modal-dialog">
@@ -1228,7 +1228,6 @@
             var kadaluarsa = $(this).data('kadaluarsa');
             var id = $(this).data('id');
 
-            console.log("ini " + protap + " jumlah " + jumlah + " kadaluarsa " + tanggal + " noloth " + noloth);
             $("#bahanmasuk_nama").val(nama);
             $("#bahanmasuk_jumlah").val(jumlah);
             $("#bahanmasuk_tanggal").val(tanggal);
@@ -1252,7 +1251,6 @@
             var kadaluarsa = $(this).data('kadaluarsa');
             var id = $(this).data('id');
 
-            console.log("ini " + protap + " jumlah " + jumlah + " tanggal " + tanggal + " noloth " + noloth);
             $("#produkmasuk_nama").val(nama);
             $("#produkmasuk_jumlah").val(jumlah);
             $("#produkmasuk_tanggal").val(tanggal);
@@ -1275,7 +1273,6 @@
             var kadaluarsa = $(this).data('kadaluarsa');
             var id = $(this).data('id');
 
-            console.log("ini " + protap + " jumlah " + jumlah + " tanggal " + tanggal + " noloth " + noloth);
             $("#kemasanmasuk_nama").val(nama);
             $("#kemasanmasuk_jumlah").val(jumlah);
             $("#kemasanmasuk_tanggal").val(tanggal);
@@ -1296,7 +1293,6 @@
             var produk = $(this).data('produk');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " jumlah " + jumlah + " tanggal " + tanggal + " nobatch " + nobatch);
             $("#bahankeluar_nama").val(nama);
             $("#bahankeluar_jumlah").val(jumlah);
             $("#bahankeluar_tanggal").val(tanggal);
@@ -1315,7 +1311,6 @@
             var produk = $(this).data('produk');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " jumlah " + jumlah + " tanggal " + tanggal + " nobatch " + nobatch);
             $("#produkkeluar_nama").val(nama);
             $("#produkkeluar_jumlah").val(jumlah);
             $("#produkkeluar_tanggal").val(tanggal);
@@ -1333,7 +1328,6 @@
             var produk = $(this).data('produk');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " jumlah " + jumlah + " tanggal " + tanggal + " nobatch " + nobatch);
             $("#kemasankeluar_nama").val(nama);
             $("#kemasankeluar_jumlah").val(jumlah);
             $("#kemasankeluar_tanggal").val(tanggal);

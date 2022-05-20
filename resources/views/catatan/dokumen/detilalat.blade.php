@@ -199,7 +199,6 @@
         var ket = $(this).data('ket');
         var id = $(this).data('id');
 
-        console.log("ini " + mulai + " ruangan " + selesai);
         $("#isi_mulai").val(mulai);
         $("#isi_selesai").val(selesai);
         $("#isi_oleh").val(oleh);

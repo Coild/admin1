@@ -47,18 +47,22 @@
                                                     <label for="inputName">Nama PROTAP</label>
                                                     <input type="text" class="form-control" id="inputName" name="nama" />
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="inputName">Nama PROTAP</label>
+                                                    <input type="text" class="form-control" id="inputNo" name="nomor" />
+                                                </div>
                                             @else
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis
                                                         PROTAP</label>
                                                     <div class="col-sm">
-                                                        <select style="height: 35px;" class="form-control" name="nama"
+                                                        <select style="height: 35px;" class="form-control" name="detil"
                                                             id="inlineFormCustomSelect">
-                                                            <option selected>Choose...</option>
-                                                            <?php 
+                                                            <option selected>Pilih...</option>
+                                                            <?php
                                                         $panjang = count($judul);
                                                         for ($i=1; $i < $panjang; $i++) { ?>
-                                                            <option value="{{ $judul[$i] }}">
+                                                            <option value="{{ $i }}">
                                                                 {{ $judul[$i] }}
                                                             </option>
                                                             <?php  }
@@ -66,6 +70,14 @@
 
                                                         </select>
                                                     </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputName">Nama PROTAP</label>
+                                                    <input type="text" class="form-control" id="inputName" name="nama" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputName">Nama PROTAP</label>
+                                                    <input type="text" class="form-control" id="inputNo" name="nomor" />
                                                 </div>
                                             @endif
                                             @csrf
