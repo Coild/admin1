@@ -1,9 +1,9 @@
 <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion" style="background-color: #00FFFF;" id="sidenavAccordion">
+    <nav class="sb-sidenav accordion bg-def" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                <a   class="nav-link collapsed" style="background-color: #00FFFF" href="/dashboard">
+                <a   class="nav-link collapsed" href="/dashboard">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DASHBOARD
                 </a>

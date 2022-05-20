@@ -20,7 +20,7 @@
                     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
                         Tambah Pabrik
                     </button>
-                    <table class="table">
+                    <table class="table" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -170,18 +170,24 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
+
                         <div class="form-floating mb-3">
-                            <input class="form2" name="username" id="isi_nama" type="text" placeholder="name@example.com" />
-                            <label for="inputEmail">Nama</label>
+                            <input class="form-control" name="username" id="isi_nama" type="text"
+                                placeholder="name@example.com" readonly/>
+                            <label for="inputEmail">Username</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="username" id="isi_alamat" type="text"
+                                placeholder="name@example.com" readonly/>
+                            <label for="isi_alamat">Alamat</label>
                         </div>
                         <div class="form-floating mb-3">
-                                <input class="form2" name="username" id="isi_alamat" type="text" placeholder="name@example.com" />
-                                <label for="inputEmail">Alamat</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form2" name="username" id="isi_nohp" type="text" placeholder="name@example.com" />
-                                <label for="inputEmail">No HP</label>
-                            </div>
+                            <input class="form-control" name="username" id="isi_nohp" type="text"
+                                placeholder="name@example.com" readonly/>
+                            <label for="isi_nohp">No HP</label>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion" style="background-color: #00FFFF;" id="sidenavAccordion">
+    <nav class="sb-sidenav accordion bg-def" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
 

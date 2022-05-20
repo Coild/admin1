@@ -41,7 +41,7 @@
                                             style="max-width: 300px">Tambah Aturan</button>
                                     @endif
 
-                                    <table class="table mt-2">
+                                    <table class="table mt-2" id="tabel1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -93,7 +93,7 @@
                                             data-target="#modalForm2">Tambah Aturan Produk</button>
                                     @endif
 
-                                    <table class="table mt-2">
+                                    <table class="table mt-2" id="tabelbeda1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -144,7 +144,7 @@
                                             data-target="#modalForm3">Tambah Aturan Pabrik</button>
                                     @endif
 
-                                    <table class="table mt-2">
+                                    <table class="table mt-2" id="tabelbeda2">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -196,7 +196,7 @@
                                             data-target="#modalForm4">Tambah Aturan Iklan</button>
                                     @endif
 
-                                    <table class="table mt-2">
+                                    <table class="table mt-2" id="tabelbeda3">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>

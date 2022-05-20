@@ -390,3 +390,16 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $('#tabelbeda2').DataTable({
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabelbeda3').DataTable({
+        responsive: true,
+        "bAutoWidth": false
+    });
+});

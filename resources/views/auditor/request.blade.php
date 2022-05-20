@@ -15,7 +15,7 @@
             <div class="card mb-4">
 
                 <div class="card-body">
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
