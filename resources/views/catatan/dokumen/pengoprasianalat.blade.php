@@ -144,6 +144,7 @@
                                     <form method="post" action="detil-alat" class="float-left mr-2">
                                         @csrf
                                         <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <input type="hidden" name="status_induk" value="0" />
                                         <button type="submit" class="btn btn-primary">lihat</button>
                                     </form>
                                     <button id="editdata" type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
@@ -151,6 +152,7 @@
                                     <form method="post" action="detil-alat" class="float-left mr-2">
                                         @csrf
                                         <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <input type="hidden" name="status_induk" value="1" />
                                         <button type="submit" class="btn btn-primary">lihat</button>
                                     </form>
                                     <button id="editdata" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>

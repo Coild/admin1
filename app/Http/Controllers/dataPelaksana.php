@@ -53,6 +53,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_bahan_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editbahan" class="btn btn-success" data-toggle="modal" data-target="#modaleditbahan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
@@ -64,6 +66,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_bahan_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editbahan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditbahan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
@@ -115,6 +119,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_produk_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editproduk" class="btn btn-success" data-toggle="modal" data-target="#modaleditproduk"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
@@ -126,6 +132,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_produk_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editproduk" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditproduk"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
@@ -177,6 +185,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_kemasan_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . 'data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
@@ -188,6 +198,8 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_kemasan_id . ' />
                             <input type="hidden" name="nama"
                             value=' . $data->nama . ' />
+                            <input type="hidden" name="status_induk"
+                            value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditkemasan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . 'data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';

@@ -1,24 +1,44 @@
 
-
+function buttonHapusKaryawan(p){
+    // console.log(p);
+    var link = "formHapusKaryawan"+p;
+    Swal.fire({
+        title: "Hapus?",
+        text: "Yakin Ingin Dihapus?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
 
 function salert() {
-    $("#forminput").validate();
-    const mycomp = document.getElementsByClassName("form-control");
-    const text_gagal = document.getElementsByClassName("text-danger");
+    var inputs = document.forms['forminput11'].getElementsByTagName('input').length;
+
+  for (i = 0; i <= inputs; i++) {
+    if (document.forms['forminput11'][i].value == "") {
+        document.getElementById("error-box").innerHTML="Please fill " + document.forms['forminput11'][i].name;
+    }
+  }
+    
+//   const mycomp = document.getElementsByClassName("form-control");
+//     // const text_gagal = document.getElementsByClassName("text-danger");
     var valid = false;
 
-    console.log(mycomp[mycomp.length-1]);
-    for (i = 0; i < mycomp.length; i++) {
-        // var x = text_gagal[i].value = 'coba';
-        console.log(mycomp[i].value);
-        if (mycomp[i].value == "") {
-            valid = true;
-            // console.log('ini : '+x);
-            // text_gagal[i].innerText = 'coba';
-            // text_gagal[i].value('kolom harap diisi!');
-            break;
-        }
-    }
+//     // console.log(mycomp[mycomp.length-1]);
+//     for (i = 0; i < mycomp.length; i++) {
+//         // var x = text_gagal[i].value = 'coba';
+//         console.log(mycomp[i].value);
+//         if (mycomp[i].value == "") {
+//             valid = true;
+//             break;
+//         }
+//     }
     if (valid) {
         valid = false;
         Swal.fire({
@@ -388,6 +408,22 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#tabel4').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabel5').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabel6').DataTable({
         scrollX: true,
         responsive: true,
         "bAutoWidth": false

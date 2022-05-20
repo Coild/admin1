@@ -87,12 +87,11 @@
                                                 data-posisi="<?= $row->level ?>">
                                                 <i class="fa fa-edit "></i> Edit
                                             </button>
-                                            <form action="/hapus_karyawan" method="post" id="forminput1"
-                                                onSubmit="return confirm('Apakah anda ingin menghapus?') ">
+                                            <form action="/hapus_karyawan" method="post" id="formHapusKaryawan{{ $row['id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['id'] }}">
-                                                <button class="btn btn-danger btn-md me-3" type="submit"><i
-                                                        class="fa fa-trash"></i> Hapus</button>
+                                                <button class="btn btn-danger btn-md me-3" onclick="buttonHapusKaryawan({{ $row['id'] }})" type="button"><i
+                                                    class="fa fa-trash" ></i> Hapus</button>
 
                                             </form>
                                             <button style="float:left; max-width:100px;" class="btn btn-warning btn-md me-3"
@@ -296,15 +295,6 @@
 
         </script>
         
-        @if(session()->has('success'))
-            <script>
-                alert("{{ session('success') }}");
-            </script>
-        @endif
-        @if(session()->has('error'))
-        <script>
-            alert("{{ session('error') }}");
-        </script>
-        @endif
+        
     </main>
 @endsection

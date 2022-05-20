@@ -21,9 +21,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
-                        Tambah Barang Masuk
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
+                                Tambah Barang Masuk
+                            </button>
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
+                                Tambah Barang Masuk
+                            </button>
+                        @endif
+                    
                     @endif
 
                     <!-- Modal barang masuk-->
@@ -105,7 +112,7 @@
                         </div>
                     </div>
                     <!-- pop up end -->
-                    <table id="dataTable" class="table">
+                    <table id="tabel1" class="table" >
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -137,7 +144,12 @@
                                 <td>{{ $row['kedaluwarsa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
-                                    <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
+                                    @if ($status == 0)
+                                        <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
+                                    
                                 </td>
                                 @endif
                             </tr>
@@ -159,9 +171,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
-                        Tambah Barang Keluar
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
+                                Tambah Barang Keluar
+                            </button>
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
+                                Tambah Barang Keluar
+                            </button>
+                        @endif
+                    
                     @endif
 
                     <!-- Modal bahan keluar -->
@@ -228,7 +247,7 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table id="dataTable1" class="table">
+                    <table id="tabel2" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -255,7 +274,12 @@
                                 <td>{{ $row['sisa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
-                                    <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-primary">Edit</button>
+                                    @if ($status == 0)
+                                        <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
+                                    
                                 </td>
                                 @endif
                             </tr>
@@ -279,9 +303,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
-                        Produk Jadi Masuk
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
+                                Produk Jadi Masuk
+                            </button>                        
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
+                                Produk Jadi Masuk
+                        </button>
+                        @endif
+                    
                     @endif
 
                     <!-- Modal Produk masuk -->
@@ -366,7 +397,7 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table id="dataTable2" class="table">
+                    <table id="tabel3" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -397,7 +428,12 @@
                                 <td>{{ $row['kedaluwarsa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
-                                    <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
+                                    @if ($status == 0)
+                                        <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
+                                    
                                 </td>
                                 @endif
                             </tr>
@@ -418,9 +454,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
-                        Tambah Produk Keluar
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
+                            Tambah Produk Keluar
+                        </button>            
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
+                            Tambah Produk Keluar
+                        </button>
+                        @endif
+                    
                     @endif
 
                     <!-- Modal produk keluar-->
@@ -487,7 +530,7 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table id="dataTable3" class="table">
+                    <table id="tabel4" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -514,9 +557,11 @@
                                 <td>{{ $row['sisa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
-
-                                    <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-primary">Edit</button>
-
+                                    @if ($status == 0)
+                                        <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
                                 </td>
                                 @endif
                             </tr>
@@ -539,9 +584,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
-                        Tambah Kemasan Masuk
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
+                            Tambah Kemasan Masuk
+                        </button>
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
+                            Tambah Kemasan Masuk
+                        </button>
+                        @endif
+                    
                     @endif
 
                     <!-- Modal kemasan masuk -->
@@ -624,7 +676,7 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table id="dataTable4" class="table">
+                    <table id="tabel5" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -655,7 +707,12 @@
                                 <td>{{ $row['kedaluwarsa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
-                                    <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
+                                    @if ($status == 0)
+                                        <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
+                                    
 
                                 </td>
                                 @endif
@@ -677,9 +734,16 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
-                        Kemasan Keluar
-                    </button>
+                        @if ($status == 0)
+                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
+                            Kemasan Keluar
+                        </button>
+                        @else
+                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
+                            Kemasan Keluar
+                        </button>
+                        @endif
+                        
                     @endif
 
                     <!-- Modal Kemasan Keluar-->
@@ -746,7 +810,7 @@
                     </div>
 
                     <!-- pop up end -->
-                    <table id="dataTable5" class="table">
+                    <table id="tabel6" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -773,6 +837,12 @@
                                 <td>{{ $row['sisa'] }}</td>
                                 @if (Auth::user()->level != 2)
                                 <td>
+                                    @if ($status == 0)
+                                        <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-primary">Edit</button>
+                                    @else
+                                        <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    @endif
+
                                     <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-primary">Edit</button>
                                 </td>
                                 @endif

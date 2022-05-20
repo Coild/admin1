@@ -52,12 +52,18 @@ class pemilik extends Controller
 
     public function hapus_karyawan(Request $req)
     {
-        // dd($req);
+        // dd($req->id);
         $post = user::all()->where('id',  $req->id)->each->delete();
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);
-        return redirect('/karyawan');
+        if ($post) {
+            return redirect('/karyawan')->with('success', 'Berhasil dihapus!');
+        } else {
+            return redirect('/karyawan')->with('error', 'Gagal dihapus!');
+        }
+        
+        
         // return view("pemilik.karyawan", ['data' => $data]);
     }
 

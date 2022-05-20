@@ -228,6 +228,7 @@ class Admin extends Controller
         $induk = $req['induk'];
         $jenis = $req['jenis'];
         $nama = $req['nama'];
+        $status = $req['status_induk'];
         session(['induk' => $induk]);
         session(['jenis' => $jenis]);
         session(['nama' => $nama]);
@@ -242,7 +243,7 @@ class Admin extends Controller
             $data2 = PPkemasankeluar::all()->where('pabrik', $pabrik)->where('induk', $induk);
         }
         return view('catatan.dokumen.detailpenerimaanBB', [
-            'jenis' => $jenis, 'induk' => $induk, 'nama' => $nama,
+            'jenis' => $jenis, 'induk' => $induk, 'nama' => $nama, 'status' => $status,
             'data1' => $data1,
             'data2' => $data2
         ]);
@@ -1819,7 +1820,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         session(['idoperasi' => $req['induk']]);
         $data = detilalat::all()->where('induk', $req['induk']);
-        return view('catatan.dokumen.detilalat', ['data' => $data]);
+        return view('catatan.dokumen.detilalat', ['data' => $data,'status' => $req->status_induk ]);
     }
 
     public function tampil_detilalatid()
