@@ -134,7 +134,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -268,7 +268,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel2">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -427,7 +427,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel3">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -561,7 +561,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel4">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -720,7 +720,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel5">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -854,7 +854,7 @@
                                     </div>
 
                                     <!-- pop up end -->
-                                    <table class="table">
+                                    <table class="table" id="tabel6">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>

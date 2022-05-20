@@ -2654,7 +2654,7 @@ class Admin extends Controller
             $produkantara = produkantara::all()->where('user_id', $pabrik);
             $produkjadi = produk::all()->where('user_id', $pabrik);
         }
-        return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'produkjadi' => $produkjadi ?? '', 'produkantara' => $produkantara ?? '', 'bahanbaku' => $bahanbaku ?? '', 'kemasan' => $kemasan ?? '']);
+        return view('catatan.dokumen.kartustok', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'produkjadi' => $produkjadi ?? [], 'produkantara' => $produkantara ?? [], 'bahanbaku' => $bahanbaku ?? [], 'kemasan' => $kemasan ?? []]);
     }
     public function tambah_pemusnahanbahan(Request $req)
     {

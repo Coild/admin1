@@ -89,7 +89,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -122,14 +122,27 @@
                             </td>
                             <td>
                                 @if (Auth::user()->level == 2)
-                                <form method="post" action="terimadistribusiproduk">
-                                    @csrf
-                                    <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
-                                    <button type="submit" class="btn btn-primary">terima</button>
-                                </form>
+                                    <?php if ($row['status'] == 0) { ?>
+                                        <form method="post" action="terimadistribusiproduk">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                    <?php } elseif ($row['status'] == 1) { ?>
+                                        <form method="post" action="terimadistribusiproduk">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
+                                            <button type="submit" class="btn btn-danger disabled">terima</button>
+                                        </form>
+                                    <?php } ?>
+                                
                                 @else
-
-                                <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                    <?php if ($row['status'] == 0) { ?>
+                                        <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                    <?php } elseif ($row['status'] == 1) { ?>
+                                        <button id="klikdis" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                    <?php } ?>
+                                
                                 @endif
                             </td>
                         </tr>

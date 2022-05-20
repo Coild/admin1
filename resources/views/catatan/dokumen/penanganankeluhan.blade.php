@@ -121,7 +121,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -156,19 +156,30 @@
                                 } elseif ($row['status'] == 1) {
                                     echo 'Diterima';
                                 } ?></td>
+                            <td>
                             @if (Auth::user()->level != 2)
-                            <td>
-                                <a href="#" type="submit" data-toggle="modal" data-target="#modalForm" class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
-                            </td>
+                                <?php if ($row['status'] == 0) { ?>
+                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm" class="btn btn-primary" onclick="editdata({{ $row }})">Edit</a>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm" class="btn btn-danger disabled" onclick="editdata({{ $row }})">Edit</a>
+                                <?php } ?>
+                                
                             @else
-                            <td>
-                                <form method="post" action="terimapenanganankeluhan">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $row['id_penanganankeluhan'] }}" />
-                                    <button type="submit" class="btn btn-primary">Terima</button>
-                                </form>
-                            </td>
+                                <?php if ($row['status'] == 0) { ?>
+                                    <form method="post" action="terimapenanganankeluhan">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $row['id_penanganankeluhan'] }}" />
+                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                    </form>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <form method="post" action="terimapenanganankeluhan">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $row['id_penanganankeluhan'] }}" />
+                                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                                    </form>
+                                <?php } ?>
                             @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

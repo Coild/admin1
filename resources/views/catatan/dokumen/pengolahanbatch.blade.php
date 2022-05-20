@@ -26,7 +26,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -54,12 +54,23 @@
                                 @endif
                             </td>
                             <td>
-                                <form action="/detil_batch" method="post" class="float-left mr-2">
-                                    @csrf
-                                    <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                    <button type="submit" class="btn btn-primary"> Buka</button>
-                                </form>
-                                <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
+                                <?php if ($row['status'] == 0) { ?>
+                                    <form action="/detil_batch" method="post" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                        <button type="submit" class="btn btn-primary"> Buka</button>
+                                    </form>
+                                    <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <form action="/detil_batch" method="post" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                        <button type="submit" class="btn btn-primary"> Buka</button>
+                                    </form>
+                                    <button class="btn btn-danger disabled" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
+                                <?php } ?>
+
+                                
                             </td>
                         </tr>
                         @endforeach

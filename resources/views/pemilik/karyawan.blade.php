@@ -55,7 +55,7 @@
                     <button style="float:left; max-width:250px;" onclick="TambahKaryawanModal()" class="btn btn-primary btn-md mb-3">
                         <i class="fa fa-plus "></i> Tambah Karyawan
                     </button>
-                    <table class="table" id="tabelKaryawan">
+                    <table class="table" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -229,11 +229,6 @@
     <!-- pop up end -->
 
         <script type="text/javascript">
-
-        $(document).ready(function () {
-            $('#tabelKaryawan').DataTable();
-        });
-
             $(document).on('click', "#reset", function() {
                 var id = $(this).data('id');
                 console.log("hai " + id);

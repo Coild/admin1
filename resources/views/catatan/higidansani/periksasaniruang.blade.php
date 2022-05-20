@@ -173,7 +173,7 @@
                     </div>
                     @endif
 
-                    <table class="table" style="margin-top: 50px">
+                    <table class="table" style="margin-top: 50px" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -222,7 +222,7 @@
                                         <form method="post" action="detil_batch">
                                             <input type="hidden" name="_token" value="" />
                                             <input type="hidden" name="nobatch" value="" />
-                                            <button type="submit" class="btn btn-primary" disabled>Edit</button>
+                                            <button type="submit" class="btn btn-danger" disabled>Edit</button>
                                         </form>
                                         @endif
                                     </td>

@@ -21,6 +21,7 @@ class dataPelaksana extends Controller
         return DataTables::of($user)->make();
     }
 
+
     public function cp_bahan()
     {
         $id = Auth::user()->pabrik;
@@ -68,13 +69,23 @@ class dataPelaksana extends Controller
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
                 }
             } else {
-                return '<form method="post" action="terima_cpbahan">
-            ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-            <input type="hidden" name="jenis" value=1 />
-            <input type="hidden" name="nobatch"
-                value=' . $data->cp_bahan_id . ' />
-            <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
-        </form>';
+                if ($data->status == 0){
+                    return '<form method="post" action="terima_cpbahan">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=1 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_bahan_id . ' />
+                        <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
+                    </form>';
+                }else {
+                    return '<form method="post" action="terima_cpbahan">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=1 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_bahan_id . ' />
+                        <button type="submit" class="btn btn-danger disabled float-left mr-2">Terima</button>
+                    </form>';
+                }
             }
         })->rawColumns(['action'])->make();
     }
@@ -120,13 +131,23 @@ class dataPelaksana extends Controller
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
                 }
             } else {
-                return '<form method="post" action="terima_cpproduk">
-            ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-            <input type="hidden" name="jenis" value=2 />
-            <input type="hidden" name="nobatch"
-                value=' . $data->cp_produk_id . ' />
-            <button type="submit" class="btn btn-primary">Terima</button>
-        </form>';
+                if ($data->status == 0){
+                    return '<form method="post" action="terima_cpproduk">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=2 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_produk_id . ' />
+                        <button type="submit" class="btn btn-primary">Terima</button>
+                    </form>';
+                }else{
+                    return '<form method="post" action="terima_cpproduk">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=2 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_produk_id . ' />
+                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                    </form>';
+                }
             }
         })->rawColumns(['action'])->make();
     }
@@ -172,13 +193,23 @@ class dataPelaksana extends Controller
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . 'data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 }
             } else {
-                return '<form method="post" action="terima_cpkemasan">
-            ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-            <input type="hidden" name="jenis" value=1 />
-            <input type="hidden" name="nobatch"
-                value=' . $data->cp_kemasan_id . ' />
-            <button type="submit" class="btn btn-primary">Terima</button>
-        </form>';
+                if ($data->status == 0){
+                    return '<form method="post" action="terima_cpkemasan">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=1 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_kemasan_id . ' />
+                        <button type="submit" class="btn btn-primary">Terima</button>
+                    </form>';
+                }else{
+                    return '<form method="post" action="terima_cpkemasan">
+                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                        <input type="hidden" name="jenis" value=1 />
+                        <input type="hidden" name="nobatch"
+                            value=' . $data->cp_kemasan_id . ' />
+                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                    </form>';
+                }
             }
 
         })->rawColumns(['action'])->make();

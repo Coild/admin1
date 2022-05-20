@@ -160,7 +160,7 @@
 
                                     <!-- pop up end -->
 
-                                    <table id="dataTable1" class="table mt-5">
+                                    <table id="tabel1" class="table mt-5">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -375,7 +375,7 @@
 
                                     <!-- pop up end -->
 
-                                    <table id="dataTable2" class="table mt-5">
+                                    <table id="tabel2" class="table mt-5">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -593,7 +593,7 @@
 
                                     <!-- pop up end -->
 
-                                    <table id="dataTable3" class="table mt-5">
+                                    <table id="tabel3" class="table mt-5">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -1183,11 +1183,11 @@
                 $("#id_kemasan").val(id);
             })
 
-            $(document).ready(function() {
-                $('#dataTable1').DataTable()
-                $('#dataTable2').DataTable()
-                $('#dataTable3').DataTable()
-            })
+            // $(document).ready(function() {
+            //     $('#dataTable1').DataTable()
+            //     $('#dataTable2').DataTable()
+            //     $('#dataTable3').DataTable()
+            // })
         </script>
     </main>
 @endsection

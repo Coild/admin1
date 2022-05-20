@@ -133,7 +133,7 @@
                                     <!-- pop up end -->
 
                                 </div>
-                                <table id="dataTable2" class="table mt-5">
+                                <table id="tabel1" class="table mt-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -301,7 +301,7 @@
                                     <!-- pop up end -->
 
                                 </div>
-                                <table id="dataTable1" class="table mt-5">
+                                <table id="tabel2" class="table mt-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -616,9 +616,9 @@
         // document.getElementById('bahankode').value = kode;
         // document.getElementById('cpbahan').value = cpid;
     })
-    $(document).ready(function() {
-        $('#dataTable1').DataTable()
-        $('#dataTable2').DataTable()
-    })
+    // $(document).ready(function() {
+    //     $('#dataTable1').DataTable()
+    //     $('#dataTable2').DataTable()
+    // })
 </script>
 @endsection

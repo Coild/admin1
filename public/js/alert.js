@@ -1,3 +1,5 @@
+
+
 function salert() {
     const mycomp = document.getElementsByClassName("#forminput .form-control");
     var valid = false;
@@ -348,3 +350,43 @@ function register() {
     }
 }
 let usern = false;
+
+$(document).ready(function () {
+    $('#tabel1').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabel2').DataTable({
+        responsive: true,
+        "bAutoWidth": false,
+        scrollX: true
+    });
+});
+
+$(document).ready(function () {
+    $('#tabel3').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabel4').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+
+$(document).ready(function () {
+    $('#tabelbeda1').DataTable({
+        responsive: true,
+        "bAutoWidth": false
+    });
+});
+

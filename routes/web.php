@@ -381,7 +381,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('detiltimbangruang', [Admin::class, 'tampil_detiltimbangruang'])->name('detiltimbangruang');
 
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
-        Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
+        // Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
         Route::post('edit_kalibrasialat', [Admin::class, 'edit_kalibrasialat'])->name('edit_kalibrasialat');
         Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');

@@ -92,7 +92,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -126,18 +126,37 @@
                             <td>
 
                                 @if (Auth::user()->level == 2)
-                                <form method="post" action="terimaoperasialat">
-                                    @csrf
-                                    <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                    <button @if ($row['status']=='1' ) {{'disabled'}} @endif type="submit" class="btn btn-primary">terima</button>
-                                </form>
+                                    <?php if ($row['status'] == 0) { ?>
+                                        <form method="post" action="terimaoperasialat">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
+                                            <button @if ($row['status']=='1' ) @endif type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                    <?php } elseif ($row['status'] == 1) { ?>
+                                        <form method="post" action="terimaoperasialat">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
+                                            <button @if ($row['status']=='1' ) {{'disabled'}} @endif type="submit" class="btn btn-danger">terima</button>
+                                        </form>
+                                    <?php } ?>
                                 @else
-                                <form method="post" action="detil-alat" class="float-left mr-2">
-                                    @csrf
-                                    <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
-                                    <button type="submit" class="btn btn-primary">lihat</button>
-                                </form>
-                                <button id="editdata" type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
+                                <?php if ($row['status'] == 0) { ?>
+                                    <form method="post" action="detil-alat" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <button type="submit" class="btn btn-primary">lihat</button>
+                                    </form>
+                                    <button id="editdata" type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <form method="post" action="detil-alat" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <button type="submit" class="btn btn-primary">lihat</button>
+                                    </form>
+                                    <button id="editdata" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
+                                <?php } ?>
+
+                                
                                 @endif
                             </td>
                         </tr>

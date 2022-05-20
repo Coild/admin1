@@ -127,7 +127,7 @@
 
                                 <!-- pop up end -->
 
-                                <table class="table mt-5">
+                                <table class="table mt-5" id="tabel1">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -164,15 +164,29 @@
                                                 } ?></td>
                                             @if (Auth::user()->level != 2)
                                             <td>
-                                                <a href="#" type="submit" data-toggle="modal" data-target="#modalForm4" class="btn btn-primary" onclick="editdata1({{ $row }})">Edit</a>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm4" class="btn btn-primary" onclick="editdata1({{ $row }})">Edit</a>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm4" class="btn btn-danger disabled" onclick="editdata1({{ $row }})">Edit</a>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @else
                                             <td>
-                                                <form method="post" action="terimapemeriksaanbahanbaku">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $row['id_spesifikasibahanbaku'] }}" />
-                                                    <button type="submit" class="btn btn-primary">Terima</button>
-                                                </form>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <form method="post" action="terimapemeriksaanbahanbaku">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahanbaku'] }}" />
+                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                    </form>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <form method="post" action="terimapemeriksaanbahanbaku">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahanbaku'] }}" />
+                                                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                                                    </form>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @endif
                                         </tr>
@@ -291,7 +305,7 @@
 
                                 <!-- pop up end -->
 
-                                <table class="table mt-5">
+                                <table class="table mt-5" id="tabel2">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -326,15 +340,29 @@
                                                 } ?></td>
                                             @if (Auth::user()->level != 2)
                                             <td>
-                                                <a href="#" type="submit" data-toggle="modal" data-target="#modalForm5" class="btn btn-primary" onclick="editdata2({{ $row }})">Edit</a>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm5" class="btn btn-primary" onclick="editdata2({{ $row }})">Edit</a>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm5" class="btn btn-danger disabled" onclick="editdata2({{ $row }})">Edit</a>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @else
                                             <td>
-                                                <form method="post" action="terimapemeriksaanbahankemas">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $row['id_spesifikasibahankemas'] }}" />
-                                                    <button type="submit" class="btn btn-primary">Terima</button>
-                                                </form>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <form method="post" action="terimapemeriksaanbahankemas">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahankemas'] }}" />
+                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                    </form>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <form method="post" action="terimapemeriksaanbahankemas">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahankemas'] }}" />
+                                                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                                                    </form>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @endif
                                         </tr>
@@ -463,7 +491,7 @@
 
                                 <!-- pop up end -->
 
-                                <table class="table mt-5">
+                                <table class="table mt-5" id="tabel3">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -500,15 +528,29 @@
                                                 } ?></td>
                                             @if (Auth::user()->level != 2)
                                             <td>
-                                                <a href="#" type="submit" data-toggle="modal" data-target="#modalForm6" class="btn btn-primary" onclick="editdata3({{ $row }})">Edit</a>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm6" class="btn btn-primary" onclick="editdata3({{ $row }})">Edit</a>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <a href="#" type="submit" data-toggle="modal" data-target="#modalForm6" class="btn btn-danger disabled" onclick="editdata3({{ $row }})">Edit</a>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @else
                                             <td>
-                                                <form method="post" action="terimapemeriksaanprodukjadi">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $row['id_spesifikasiprodukjadi'] }}" />
-                                                    <button type="submit" class="btn btn-primary">Terima</button>
-                                                </form>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <form method="post" action="terimapemeriksaanprodukjadi">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasiprodukjadi'] }}" />
+                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                    </form>
+                                                <?php } elseif ($row['status'] == 1) { ?>
+                                                    <form method="post" action="terimapemeriksaanprodukjadi">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasiprodukjadi'] }}" />
+                                                        <button type="submit" class="btn btn-danger disabled">Terima</button>
+                                                    </form>
+                                                <?php } ?>
+                                                
                                             </td>
                                             @endif
                                         </tr>

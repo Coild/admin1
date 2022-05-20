@@ -135,7 +135,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -167,20 +167,36 @@
                             <td>{{ $row['bau'] }}</td>
                             <td>{{ $row['ph'] }}</td>
                             <td>{{ $row['berat_jenis'] }}</td>
-                            <td><?php if ($row['status'] == 0) {
-                                    echo 'Diajukan';
-                                } else {
-                                    echo 'Disetujui';
-                                } ?></td>
+                            <td>
+                                <?php if ($row['status'] == 0) { ?>
+                                    Diajukan
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    Diterima
+                                <?php } ?>
+                            </td>
                             <td>
                                 @if (Auth::user()->level == 2)
-                                <form method="post" action="terimapelulusanproduk">
-                                    @csrf
-                                    <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                    <button type="submit" class="btn btn-primary">terima</button>
-                                </form>
+                                    <?php if ($row['status'] == 0) { ?>
+                                        <form method="post" action="terimapelulusanproduk">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                            <button type="submit" class="btn btn-primary">terima</button>
+                                        </form>
+                                    <?php } elseif ($row['status'] == 1) { ?>
+                                        <form method="post" action="terimapelulusanproduk">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                            <button type="submit" class="btn btn-danger disabled">terima</button>
+                                        </form>
+                                    <?php } ?>
+                                
                                 @else
-                                <button id="klik_lulus" class="btn btn-primary" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
+                                    <?php if ($row['status'] == 0) { ?>
+                                        <button id="klik_lulus" class="btn btn-primary" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
+                                    <?php } elseif ($row['status'] == 1) { ?>
+                                        <button id="klik_lulus" class="btn btn-danger disabled" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
+                                    <?php } ?>
+                                
                                 @endif
                             </td>
                         </tr>
