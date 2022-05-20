@@ -239,7 +239,6 @@
                 var produk = $(this).data('produk');
                 var id = $(this).data('id');
 
-                console.log("ini " + nama + " ruangan " + noloth);
                 $("#isi_namaruang").val(nama);
                 // $("#isi_tanggal").val(tanggal);
                 $("#isi_nolothruang").val(noloth);

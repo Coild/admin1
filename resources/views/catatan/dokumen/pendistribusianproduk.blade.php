@@ -213,7 +213,6 @@
         var jumlah = $(this).data('jumlah');
         var id = $(this).data('id');
 
-        console.log("ini " + nama + " ruangan " + id);
         $("#isi_nobatch").val(nobatch);
         $("#isi_jumlah").val(jumlah);
         $("#isi_kode").val(kode);

@@ -299,7 +299,6 @@
             var hasil = $(this).data('hasil');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " ruangan " + tanggal);
             $("#bahanbahan").val(nama);
             // $("#isi_tanggal").val(tanggal);
             $("#isi_nolothbahan").val(noloth);
