@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{pengolahanbatch, protap};
+use App\Models\{pengolahanbatch, protap, User};
 
 
 use Illuminate\Support\Facades\Auth;
