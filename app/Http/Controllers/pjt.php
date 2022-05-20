@@ -613,7 +613,7 @@ class pjt extends Controller
         $id = Auth::user()->pabrik;
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 3);
-        return view('spesifikasi.produkantara', ['list' => $data]);
+        return view('spesifikasi.produkjadi', ['list' => $data]);
     }
 
     public function tambah_bahan_baku(Request $req)
