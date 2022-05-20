@@ -23,6 +23,7 @@ class CreateProtapsTable extends Migration
             $table->string('protap_tgl_diterima', 255);
             $table->string('protap_ruangan', 255);
             $table->string('protap_file', 255);
+            $table->string('protap_detil', 255);
             $table->string('protap_pabrik', 255);
             $table->string('protap_jenis', 255);
             $table->integer("user_id",false);
