@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->id("log_id");
             $table->string("log_isi", 255);
             $table->string("log_pabrik", 255);
-            $table->timestamps("log_waktu", 255);
+            $table->dateTime("log_waktu");
             $table->integer('id_pabrik')->unsigned();
             $table->timestamps();
         });

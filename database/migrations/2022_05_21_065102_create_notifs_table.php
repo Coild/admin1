@@ -14,10 +14,10 @@ class CreateNotifsTable extends Migration
     public function up()
     {
         Schema::create('notifs', function (Blueprint $table) {
-            $table->id("notif_id");
-            $table->string("notif_isi", 255);
-            $table->string("notif_link", 255);
-            $table->timestamps("notif_waktu");
+            $table->id('notif_id');
+            $table->string('notif_isi', 255);
+            $table->string('notif_link', 255);
+            $table->dateTime('notif_waktu');
             $table->integer('status')->unsigned();
             $table->integer('id_pabrik')->unsigned();
             $table->timestamps();
