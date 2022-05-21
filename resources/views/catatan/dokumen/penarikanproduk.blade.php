@@ -84,7 +84,21 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                                         Produk Ditarik</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="jumlah_produk_ditarik" class="form-control" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="jumlah_produk_ditarik" class="form-control" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <select class="form-select"
+                                                                    name="satuan" id="">
+                                                                    <option value="gr"> gr</option>
+                                                                    <option value="kg"> kg</option>
+                                                                    <option value="ml"> ml</option>
+                                                                    <option value="L"> L</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
 
