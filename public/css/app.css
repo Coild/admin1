@@ -3,6 +3,11 @@
     opacity: 0.9;
 }
 
+#bg-dashcard {
+    background-color: #184680;
+    max-width: 22rem;
+}
+
 a.nav-link {
     color: white;
 }

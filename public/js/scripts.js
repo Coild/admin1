@@ -7,6 +7,44 @@
 // Scripts
 // 
 
+
+
+function buttonGantiPass(){
+    // console.log(p);
+    var link = "formGantiPass";
+    
+    if (grecaptcha.getResponse()) {
+        // console.log(link);
+        if (document.getElementById('inputEmail').value == '' || document.getElementById('inputPassword').value == '') {
+            Swal.fire({
+                title: "Oppss!",
+                text: "Harap Isi Semua Form!",
+                icon: "warning"
+            });
+        } else {
+            Swal.fire({
+                title: "Ganti Password?",
+                text: "Yakin Ingin Mengganti Password?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ganti",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(link).submit();
+                }
+            });    
+        }
+        
+    } else {
+        document.getElementById("art").innerText =
+            "Please complete the CAPTCHA.";
+    }
+
+}
+
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
@@ -24,3 +62,4 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+

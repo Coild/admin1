@@ -13,7 +13,7 @@
         </ol>
 
         <div class="row d-flex justify-content-between">
-            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white bg-dark ml-4 mb-3" style="max-width: 22rem;">
+            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Baru BPOM</div>
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white bg-dark ml-4 mb-3" style="max-width: 22rem;">
+            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3"id="bg-dashcard">
                 <div class="card-header text-white">Aturan Produk</div>
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white bg-dark ml-4 mb-3" style="max-width: 22rem;">
+            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Pabrik</div>
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white bg-dark ml-4 mb-3" style="max-width: 22rem;">
+            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Iklan</div>
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>

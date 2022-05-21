@@ -200,7 +200,7 @@
                                         <div class="col-sm">
                                             <input type="text" name="ruang" class="form-control 3" id="inputEmail3"
                                                 placeholder="Ruangan" />
-                                                <p id="info-kosong3"> Hol </p>
+                                                <p id="info-kosong3"> </p>
                                         </div>
                                     </div>
                                     <a class="btn btn-primary" onclick="salert1(3)" href="#"

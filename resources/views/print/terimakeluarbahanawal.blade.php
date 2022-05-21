@@ -74,7 +74,7 @@
 
                         </td>
                         <td rowspan="2" colspan="2" style="text-align: center;">
-                            CATATAN<br>PELATIHAN PENERIMAAN BAHAN
+                            CATATAN<br>PENERIMAAN BAHAN
                         </td>
                     </tr>
                     <tr>

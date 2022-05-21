@@ -49,7 +49,7 @@
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                                     <div class="col-sm">
-                                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='nama_bahankau' class="form-control 3" name="nama_bahan">
+                                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='nama_bahankau' class="form-control 3" name="nama_bahan" autocomplete="off">
                                                         </input>
                                                         <datalist id="listbahanbaku">
                                                             @foreach ($bahanbaku as $row)
@@ -236,7 +236,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                     <div class="col-sm">
-                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='isi_nama' class="form-control 2" name="nama_bahan">
+                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='isi_nama' class="form-control 2" name="nama_bahan" autocomplete="off">
                                         </input>
                                         <datalist id="listbahanbaku">
                                             @foreach ($bahanbaku as $row)

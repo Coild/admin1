@@ -1,4 +1,46 @@
 
+
+
+function buttonHapusBB(p){
+    // console.log(p);
+    var link = "hapusBB"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Hapus?",
+        text: "Yakin Ingin Dihapus?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+
+function buttonHapusRequest(p){
+    // console.log(p);
+    var link = "hapusRequest"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Hapus?",
+        text: "Yakin Ingin Dihapus?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+
 function buttonHapusKaryawan(p){
     // console.log(p);
     var link = "formHapusKaryawan"+p;
@@ -17,20 +59,11 @@ function buttonHapusKaryawan(p){
     });
 }
 
-function salert() {
-    // var inputs = document.forms['forminput11'].getElementsByTagName('input').length;
-
-//   for (i = 0; i <= inputs; i++) {
-//     if (document.forms['forminput11'][i].value == "") {
-//         document.getElementById("error-box").innerHTML="Please fill " + document.forms['forminput11'][i].name;
-//     }
-//   }
+function salert(params) {
     
-  const mycomp = document.getElementsByClassName("form-control");
-//     // const text_gagal = document.getElementsByClassName("text-danger");
+  const mycomp = document.getElementsByClassName("form-control "+params);
     var valid = false;
 
-//     // console.log(mycomp[mycomp.length-1]);
     for (i = 0; i < mycomp.length; i++) {
         // var x = text_gagal[i].value = 'coba';
         console.log(mycomp[i].value);
@@ -67,7 +100,7 @@ function salert() {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById("forminput").submit();
+                    document.getElementById("formSpesifikasi").submit();
                     swalWithBootstrapButtons.fire(
                         "Tersimpan!",
                         "Data berhasil disimpan.",
@@ -297,6 +330,8 @@ function setdatetoday2() {
     document.getElementById("headertglx").innerHTML =
         '<i class="fas fa-calendar me-1"></i> ' + today;
 }
+
+
 function recaptchaCallback() {
     if (grecaptcha.getResponse()) {
         document.getElementById("forminput").submit();

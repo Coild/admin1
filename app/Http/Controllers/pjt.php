@@ -6,6 +6,7 @@ use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_k
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class pjt extends Controller
 {
@@ -617,14 +618,15 @@ class pjt extends Controller
     {
         $id = Auth::user()->pabrik;
         $data = spesifikasi::all()->where('pabrik_id', $id)
-            ->where('kategori', 3);
+            ->where('kategori', 4);
         return view('spesifikasi.produkjadi', ['list' => $data]);
     }
 
     public function tambah_bahan_baku(Request $req)
     {
         $file = $req->file('upload');
-        $nama = $file->getClientOriginalName();
+        $exten = $file->getClientOriginalExtension();
+        $nama = Str::random(10).$req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->pabrik;
@@ -637,13 +639,14 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
-        return redirect('/spek_bahan_baku');
+        return redirect('/spek_bahan_baku')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     public function tambah_bahan_kemas(Request $req)
     {
         $file = $req->file('upload');
-        $nama = $file->getClientOriginalName();
+        $exten = $file->getClientOriginalExtension();
+        $nama = Str::random(10).$req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->pabrik;
@@ -656,13 +659,14 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
-        return redirect('/spek_bahan_kemas');
+        return redirect('/spek_bahan_kemas')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     public function tambah_produk_antara(Request $req)
     {
         $file = $req->file('upload');
-        $nama = $file->getClientOriginalName();
+        $exten = $file->getClientOriginalExtension();
+        $nama = Str::random(10).$req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->pabrik;
@@ -675,13 +679,14 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
-        return redirect('/spek_produk_antara');
+        return redirect('/spek_produk_antara')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     public function tambah_produk_jadi(Request $req)
     {
         $file = $req->file('upload');
-        $nama = $file->getClientOriginalName();
+        $exten = $file->getClientOriginalExtension();
+        $nama = Str::random(10).$req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $tujuan_upload = 'asset/coa/';
         $file->move($tujuan_upload, $nama);
         $id = Auth::user()->pabrik;
@@ -694,46 +699,48 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
-        return redirect('/spek_produk_jadi');
+        return redirect('/spek_produk_jadi')->with('success', 'Data Berhasil Ditambahkan!');;
     }
 
-    public function hapus_bahanbaku($id)
+    public function hapus_bahanbaku(Request $req)
     {
-        $data = spesifikasi::all()->where('spesifikasi_id', $id);
+        $data = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->first();
         // dd($data);
-        unlink("asset/coa/" . $data[0]['file']);
-        $post = spesifikasi::all()->where('spesifikasi_id', $id)->each->delete();
+        unlink("asset/coa/" . $data->file);
+        
+        
+        $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
 
-        return redirect('/spek_bahan_baku');
+        return redirect('/spek_bahan_baku')->with('success', 'Data Berhasil Dihapus!');
     }
 
-    public function hapus_bahankemas($id)
+    public function hapus_bahankemas(Request $req)
     {
-        $data = spesifikasi::all()->where('spesifikasi_id', $id);
+        $data = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->first();
         // dd($data);
-        unlink("asset/coa/" . $data[0]['file']);
-        $post = spesifikasi::all()->where('spesifikasi_id', $id)->each->delete();
+        unlink("asset/coa/" . $data->file);
+        $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
 
-        return redirect('/spek_bahan_kemas');
+        return redirect('/spek_bahan_kemas')->with('success', 'Data Berhasil Dihapus!');
     }
 
-    public function hapus_produkjadi($id)
+    public function hapus_produkjadi(Request $req)
     {
-        $data = spesifikasi::all()->where('spesifikasi_id', $id);
+        $data = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->first();
         // dd($data);
-        unlink("asset/coa/" . $data[0]['file']);
-        $post = spesifikasi::all()->where('spesifikasi_id', $id)->each->delete();
+        unlink("asset/coa/" . $data->file);
+        $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
 
-        return redirect('/spek_produk_antara');
+        return redirect('/spek_produk_jadi')->with('success', 'Data Berhasil Dihapus!');
     }
 
-    public function hapus_produkantara($id)
+    public function hapus_produkantara(Request $req)
     {
-        $data = spesifikasi::all()->where('spesifikasi_id', $id);
+        $data = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->first();
         // dd($data);
-        unlink("asset/coa/" . $data[0]['file']);
-        $post = spesifikasi::all()->where('spesifikasi_id', $id)->each->delete();
+        unlink("asset/coa/" . $data->file);
+        $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
 
-        return redirect('/spek_produk_jadi');
+        return redirect('/spek_produk_antara')->with('success', 'Data Berhasil Dihapus!');;
     }
 }

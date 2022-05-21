@@ -30,7 +30,7 @@
                             <?php $i = 0;
                             $i++; ?>
                             <tr>
-                                <th scope="col">{{$i}}</th>
+                                <th scope="col">{{$loop->iteration}}</th>
                                 <th scope="col">{{$row['nobatch']}}</th>
                                 <th scope="col">{{$row['audit_laporan']}}</th>
                                 <th scope="col">
@@ -56,12 +56,13 @@
                                 </th>
                                 @else
                                 <th scope="col">
-                                    <form action="hapus_request" method="post">
+                                    <form action="hapus_request" method="post" id="hapusRequest{{$row['audit_id']}}">
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{$row['nobatch']}}">
+                                        <input type="hidden" name="auditId" value="{{$row['audit_id']}}">
                                         <input type="hidden" name="laporan" value="{{$row['audit_laporan']}}">
                                         <input type="hidden" name="pabrik" value="{{$row['audit_pabrik']}}">
-                                        <button type="submit" type="submit" class="btn btn-success">
+                                        <button type="button" onclick="buttonHapusRequest({{ $row['audit_id'] }})" class="btn btn-danger">
                                             Hapus
                                         </button>
                                     </form>

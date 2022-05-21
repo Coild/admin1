@@ -201,12 +201,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_bahan_baku', [pjt::class, 'tambah_bahan_baku'])->name("tambah_bahanbaku");
         Route::post('/tambah_bahan_kemas', [pjt::class, 'tambah_bahan_kemas'])->name("tambah_bahankemas");
         Route::post('/tambah_produk_antara', [pjt::class, 'tambah_produk_antara'])->name("tambah_produkantara");
-        Route::post('/tambah_produk_jadi', [pjt::class, 'tambah_produk_jadi'])->name("tambah_produkjadi");
+        Route::post('/tambah_produk_jadi', [pjt::class, 'tambah_produk_jadi'])->name("tambah_produk_jadi");
 
         Route::get('/hapus_bahan_baku/{id}', [pjt::class, 'hapus_bahanbaku'])->name("hapus_bahanbaku");
-        Route::get('/hapus_bahan_kemas/{id}', [pjt::class, 'hapus_bahankemas'])->name("hapus_bahankemas");
-        Route::get('/hapus_produk_antara/{id}', [pjt::class, 'hapus_produkantara'])->name("hapus_produkantara");
-        Route::get('/hapus_produk_jadi/{id}', [pjt::class, 'hapus_produkjadi'])->name("hapus_produkjadi");
+        Route::post('/hapusBB', [pjt::class, 'hapus_bahanbaku'])->name("hapusBB");
+        Route::post('/hapus_bahan_kemas', [pjt::class, 'hapus_bahankemas'])->name("hapus_bahan_kemas");
+        Route::post('/hapus_produk_antara', [pjt::class, 'hapus_produkantara'])->name("hapus_produk_antara");
+        Route::post('/hapus_produk_jadi', [pjt::class, 'hapus_produkjadi'])->name("hapus_produk_jadi");
 
 
     });

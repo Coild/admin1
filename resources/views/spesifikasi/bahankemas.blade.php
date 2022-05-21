@@ -36,25 +36,25 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/tambah_bahan_kemas" method="post" enctype="multipart/form-data" role="form">
+                                    <form action="/tambah_bahan_kemas" method="post" enctype="multipart/form-data" role="form" id="formSpesifikasi">
 
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-group">
                                             <label for="inputName">Keterangan</label>
-                                            <input type="text" class="form-control" id="inputName" name="nama" />
+                                            <input type="text" class="form-control 1" id="inputName" name="nama" />
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Pilih File</label>
-                                            <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1" onchange="return filecheck()">
+                                            <input type="file" name="upload" class="form-control 1" id="fileform" onchange="return filecheck()">
                                         </div>
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert(1)">
                                                 Tambah
                                             </button>
                                         </div>
@@ -86,7 +86,13 @@
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$row['keterangan']}}</td>
                                 <td>
-                                <a href="/hapus_bahan_kemas/{{$row['spesifikasi_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus ? ')">Hapus</a>
+                                    <form action="/hapus_bahan_kemas" method="post" id="hapusBB{{$row['spesifikasi_id']}}">
+                                        @csrf
+                                        <input type="hidden" name="idBB" value="{{$row['spesifikasi_id']}}">
+                                            <button
+                                            type="button" class="btn btn-danger"
+                                            onclick="buttonHapusBB({{$row['spesifikasi_id']}})">Hapus</button>
+                                        </form>
                                     <a href="/asset/coa/{{$row['file']}}" button type="button" class="btn btn-primary">Buka</button>
                                 </td>
                             </tr>

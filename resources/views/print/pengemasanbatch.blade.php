@@ -119,7 +119,7 @@
 
                         </td>
                         <td rowspan="2" style="text-align: center;">
-                            CATATAN<br>PENGOLAHAN BATCH
+                            CATATAN<br>PENGEMASAN BATCH
                         </td>
                         <td colspan="3">Halaman:</td>
                     </tr>
