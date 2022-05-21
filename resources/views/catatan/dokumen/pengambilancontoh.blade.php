@@ -341,7 +341,7 @@
                                                                         class="col-sm-3 col-form-label">Nama Produk</label>
                                                                     <div class="col-sm">
                                                                         <input class="form-control 2" list="listnamaproduk"
-                                                                            type="text" name='nama_produk' id="namaproduk">
+                                                                            type="text" name='nama_produk' id="namaproduk" autocomplete="off">
                                                                         </input>
                                                                         <datalist id='listnamaproduk'>
                                                                             @foreach ($produk as $row)
@@ -617,7 +617,7 @@
                                                                     <div class="col-sm">
                                                                         <input class="form-control 3"
                                                                             list="listnamakemasan" type="text"
-                                                                            name='nama_kemasan' id="namakemasan">
+                                                                            name='nama_kemasan' id="namakemasan" autocomplete="off">
                                                                         </input>
                                                                         <datalist id='listnamakemasan'>
                                                                             @foreach ($kemasan as $row)
@@ -874,8 +874,7 @@
                                         <label class="col-sm-3 col-form-label">Nama Bahan
                                             Baku</label>
                                         <div class="col-sm">
-                                            <input class="form-control 7" list="listnamabahanbaku" type="text"
-                                                name='nama_bahan' id="bahan_nama">
+                                            <input class="form-control 7" list="listnamabahanbaku" type="text" name='nama_bahan' id="bahan_nama" autocomplete="off">
                                             </input>
                                             <datalist id='listnamabahanbaku'>
                                                 @foreach ($bahanbaku as $row)
@@ -1004,7 +1003,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                         <div class="col-sm">
                                             <input class="form-control 8" list="listnamaproduk" type="text"
-                                                name='nama_produk' id="produk_nama">
+                                                name='nama_produk' id="produk_nama" autocomplete="off">
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produk as $row)
                                                     <option value="{{ $row['produk_nama'] }}">
@@ -1135,7 +1134,7 @@
                                             Kemasan</label>
                                         <div class="col-sm">
                                             <input class="form-control 9" list="listnamakemasan" type="text"
-                                                name='nama_kemasan' id="kemasan_nama">
+                                                name='nama_kemasan' id="kemasan_nama" autocomplete="off">
                                             <datalist id='listnamakemasan'>
                                                 @foreach ($kemasan as $row)
                                                     <option value="{{ $row['kemasan_nama'] }}">

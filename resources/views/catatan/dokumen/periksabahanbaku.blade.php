@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Bahan Baku</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Bahan Baku">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Bahan Baku" autocomplete="off">
                             </div>
                         </div>
 

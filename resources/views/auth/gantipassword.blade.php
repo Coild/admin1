@@ -12,6 +12,8 @@
     <script src="js/recaptcha.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 </head>
 
 <body class="bg-primary1">
@@ -29,7 +31,7 @@
                                     <h3 class="text-center font-weight-light my-4">Gantipassword</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/gantipassword" method="post" id='forminput'>
+                                    <form action="/gantipassword" method="post" id='formGantiPass'>
                                         @if (Session::has('message'))
                                             <p class="alert alert-info">{{ Session::get('message') }}</p>
                                         @endif
@@ -42,12 +44,12 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">
                                             <input name="lama" class="form-control" id="inputEmail" type="password"
-                                                placeholder="name@example.com" />
+                                                placeholder="name@example.com" required/>
                                             <label for="inputEmail">Password Lama</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input name="baru" class="form-control" id="inputPassword" type="password"
-                                                placeholder="Password" />
+                                                placeholder="Password" required/>
                                             <label for="inputPassword">Password Baru</label>
                                         </div>
                                         <div class="g-recaptcha" data-callback="recaptcha_callback"
@@ -55,10 +57,8 @@
                                         <p id="art" class="text-danger"></p>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 
-                                            <a href="#" onclick="recaptchaCallback()" type="submit"
-                                                class="btn btn-primary" href="/index">Ganti</a>
-
-
+                                            <button onclick="buttonGantiPass()" type="button"
+                                                class="btn btn-primary">Ganti</button>
                                         </div>
                                     </form>
                                 </div>

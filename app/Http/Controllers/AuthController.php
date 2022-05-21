@@ -119,7 +119,7 @@ class AuthController extends Controller
             return redirect('/gantipassword')->with('status', 'Kata sandi lama anda salah!');
         }
 
-        return redirect('/'); //->with('status', 'Kata sandi lama anda salah!');
+        return redirect('/dashboard')->with('success', 'Password berhasil diganti!');
     }
 
     public function reset_pass(Request $req)

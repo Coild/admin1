@@ -4,6 +4,15 @@
 <head>
     <meta charset="utf-8">
     <style>
+        .tabelttd {
+            /* border-style: dotted; */
+            /* box-shadow: none;  */
+            /* border: 0;
+            border-width: 0; */
+            /* border: none;
+            border-style: none; */
+            /* -webkit-backface-visibility: hidden; */
+        }
         P {
             margin-bottom: 3px;
         }
@@ -276,6 +285,40 @@
                     <td>isi 1</td>
                     <td>isi 2</td>
                     <td>isi 3</td>
+                </tr>
+            </table>
+
+            
+            <table class="tabelttd" style="margin-top:10px;">
+                <tr>
+                    <td style="border-right: 0px solid">
+                        Pemeriksa <br>
+                        Proses pengolahan
+                        <br><br><br><br>
+                    </td>
+                    <td style="border-left: 0px solid; border-right: 0px solid"></td>
+                    <td style="border-left: 0px solid">
+                        peninjau <br>
+                        catatan pengolahan batch
+                        <br><br><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        Pemeriksaan pengelohan
+                        <br>
+                        Tanggal<br><br><br>
+                    </td>
+                    <td>
+                        Kepala Bagian Produksi
+                        <br>
+                        Tanggal<br><br><br>
+                    </td>
+                    <td>
+                        Kepala Bagian Pengawasan Mutu
+                        <br>
+                        Tanggal<br><br><br>
+                    </td>
                 </tr>
             </table>
 

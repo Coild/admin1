@@ -114,10 +114,11 @@ class pemilik extends Controller
     public function hapus_request(Request $req)
     {
         // dd($req);
-        $user = audit::all()->where("audit_pabrik", $req->pabrik)
-            ->where("nobatch", $req->nobatch)
-            ->where("audit_laporan", $req->laporan)->each->delete();
+        // $user = audit::all()->where("audit_pabrik", $req->pabrik)
+        //     ->where("nobatch", $req->nobatch)
+        //     ->where("audit_laporan", $req->laporan)->each->delete();
         // dd($req);
-        return redirect('bos_audit');
+        $user = audit::all()->where("audit_id", $req->auditId)->each->delete();
+        return redirect('bos_audit')->with('success', 'Data Berhasil Dihapus!');
     }
 }

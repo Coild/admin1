@@ -237,7 +237,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
                                     <div class="col-sm">
-                                        <input class="form-control 1" list="listnamaproduk" type="text" name='nama_produk' id="editnamaproduk">
+                                        <input class="form-control 1" list="listnamaproduk" type="text" name='nama_produk' id="editnamaproduk" autocomplete="off">
                                         </input>
                                         <datalist id='listnamaproduk'>
                                             @foreach ($data2 as $row)

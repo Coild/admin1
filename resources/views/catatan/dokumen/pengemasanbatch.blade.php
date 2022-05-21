@@ -49,7 +49,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk">
+                                                            <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" autocomplete="off">
                                                             </input>
                                                             <datalist id='listnamaproduk'>
                                                                 @foreach ($produk as $row)

@@ -68,7 +68,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                         Ditarik</label>
                                                     <div class="col-sm">
-                                                        <input type="text" list="listproduk" style="height: 35px;" id='produkditarik' class="form-control 3" name="produk_ditarik">
+                                                        <input type="text" list="listproduk" style="height: 35px;" id='produkditarik' class="form-control 3" name="produk_ditarik" autocomplete="off">
                                                         </input>
                                                         <datalist id="listproduk">
                                                             @foreach ($produk as $row)
