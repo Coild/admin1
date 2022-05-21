@@ -58,6 +58,7 @@
                                     <form action="/detil_batch" method="post" class="float-left mr-2">
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                        <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
                                         <button type="submit" class="btn btn-primary"> Buka</button>
                                     </form>
                                     <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
@@ -90,7 +91,7 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <p class="statusMsg"></p>
-                                <form method="post" action="tambah_batch" id='forminput11'>
+                                <form method="post" action="tambah_batch" id='forminput17'>
                                     <div>
                                         <div class="card-header">
                                             <i class="fas fa-table me-1"></i>
@@ -106,7 +107,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="pob" class="form-control" id="inputEmail3" placeholder="Nomor PROTAP" required />
+                                                    <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required />
                                                     <div id="error-box" style="color: red"></div>
                                                 </div>
                                             </div>
@@ -115,7 +116,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                     Produk</label>
                                                 <div class="col-sm">
-                                                    <input class="form-control" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required>
+                                                    <input class="form-control 17" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required>
                                                     <datalist id='listnamaproduk'>
                                                         @foreach ($data2 as $row)
                                                         <option value="{{ $row['produk_nama'] }}">
@@ -131,7 +132,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                     Produk</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="kode_produk" readonly class="form-control" id="kodeproduk" placeholder="Kode Produk" />
+                                                    <input type="text" name="kode_produk" readonly class="form-control 17" id="kodeproduk" placeholder="Kode Produk" />
                                                     <p class="text-danger"></p>
                                                 </div>
                                             </div>
@@ -140,7 +141,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
                                                     Batch</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="no_batch" class="form-control" id="inputEmail3" placeholder="Nomor Batch" />
+                                                    <input type="text" name="no_batch" class="form-control 17" id="inputEmail3" placeholder="Nomor Batch" />
                                                 </div>
                                                 <p class="text-danger"></p>
                                             </div>
@@ -149,7 +150,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Besar
                                                     Batch</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="besar_batch" class="form-control" id="inputEmail3" placeholder="Besar Batch" />
+                                                    <input type="text" name="besar_batch" class="form-control 17" id="inputEmail3" placeholder="Besar Batch" />
                                                 </div>
                                                 <p class="text-danger"></p>
                                             </div>
@@ -158,7 +159,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Bentuk
                                                     Sediaan</label>
                                                 <div class="col-sm">
-                                                    <input placeholder="Bentuk Sediaan" class="form-control" name="bentuk sediaan" type="text" />
+                                                    <input placeholder="Bentuk Sediaan" class="form-control 17" name="bentuk sediaan" type="text" />
                                                 </div>
                                                 <p class="text-danger"></p>
                                             </div>
@@ -166,7 +167,7 @@
                                             <div class="form-group row">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori</label>
                                                 <div class="col-sm">
-                                                    <input placeholder="Kategori" class="form-control" name="kategori" type="text" />
+                                                    <input placeholder="Kategori" class="form-control 17" name="kategori" type="text" />
                                                 </div>
                                                 <p class="text-danger"></p>
                                             </div>
@@ -174,7 +175,7 @@
                                             <div class="form-group row">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                                 <div class="col-sm">
-                                                    <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control" id="inlineFormCustomSelect">
+                                                    <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 17" id="inlineFormCustomSelect">
                                                     </input>
                                                     <datalist id="kemasan">
                                                         @foreach ($data3 as $row)
@@ -188,7 +189,7 @@
                                             </div>
                                         </div>
 
-                                        <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                        <a class="btn btn-primary" onclick="salert1(17)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                 </form>
                             </div>
                         </div>

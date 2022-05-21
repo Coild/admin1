@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{audit, User, pabrik, laporan};
+use App\Models\{audit, User, pabrik, laporan, notif};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +44,17 @@ class auditor extends Controller
 
         // dd($hasil);
         audit::insert($hasil);
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan." meminta audit laporan ".$req['nama'],
+            'notif_link' => 'list_audit',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => $req['asal'],
+            'notif_2' => Auth::user()->level,
+            'notif_level' => 2,
+            'status' => 0,
+            'id_pabrik'=> $req['pabrik'],
+        ];
+        notif::insert($notif);
         return redirect('/list_audit');
     }
 

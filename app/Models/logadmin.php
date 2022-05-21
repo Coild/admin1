@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class notif extends Model
+class logadmin extends Model
 {
     use HasFactory;
-    protected $primaryKey = "notif_id";
-
-    protected $fillable = [
-        'status',
-    ];
 }
