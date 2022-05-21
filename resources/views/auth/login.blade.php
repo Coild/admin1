@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="card-footer text-left py-3">
                                     <div class="small">
-                                        <a class="small" href="/resetpass">Lupa Kata sandi?</a>
+                                        {{-- <a class="small" href="/resetpass">Lupa Kata sandi?</a> --}}
                                         {{-- <a class="small" style="float:right" href="/showregister">Buat Akun</a> --}}
                                     </div>
 
