@@ -284,6 +284,7 @@
                                                             </form>
                                                         </td>
                                                         <?php } ?>
+
                                                     @endif
                                                 </tr>
                                             @endforeach
@@ -1198,8 +1199,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
-                                            Kemasan Yang Disampling</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah kemasan yang disampel</label>
                                         <div class="col-sm">
                                             
                                                 <div class="row">

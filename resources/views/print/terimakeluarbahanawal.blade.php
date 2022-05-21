@@ -49,15 +49,16 @@
                 </td>
                 <td width="70%" class="tengah" style="border:none;">
                 <center>
-                    <h1 style="font-weight: bolder; margin-bottom: -15px">
+                    <h1 style="font-weight: bolder; margin-bottom: 0px; ">
                         {{ $nama }}
                     </h1>
-                    <p style="margin-bottom: -5px; font-size: 28px; ">
+                    <p style="margin-bottom: -5px; font-size: 28px; margin-bottom 10px;">
                         {{ $alamat }}
                     </p>
-                    <p style="margin-bottom: -5px; font-size: 16px;">
+                    <p style="margin-bottom: -5px; font-size: 16px; margin-bottom 50px;">
                         No Handphone : {{ $nohp }}
                     </p>
+                    <br>
                     </center>
                 </td>
             </tr>
@@ -73,7 +74,7 @@
 
                         </td>
                         <td rowspan="2" colspan="2" style="text-align: center;">
-                            CATATAN<br>PELATIHAN HIGIENE DAN SANITASI
+                            CATATAN<br>PELATIHAN PENERIMAAN BAHAN
                         </td>
                     </tr>
                     <tr>

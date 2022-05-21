@@ -40,23 +40,23 @@
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
                                         <form action="/input_protap/{{ $jenis }}" method="post"
-                                            enctype="multipart/form-data" role="form" id='forminput'>
+                                            enctype="multipart/form-data" role="form" id='forminput1'>
 
                                             @if (count($judul) <= 1)
                                                 <div class="form-group">
                                                     <label for="inputName">Nama PROTAP</label>
-                                                    <input type="text" class="form-control" id="inputName" name="nama" />
+                                                    <input type="text" class="form-control 1" id="inputName" name="nama" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputName">Nama PROTAP</label>
-                                                    <input type="text" class="form-control" id="inputNo" name="nomor" />
+                                                    <label for="inputName">Nomor PROTAP</label>
+                                                    <input type="text" class="form-control 1" id="inputNo" name="nomor" />
                                                 </div>
                                             @else
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis
                                                         PROTAP</label>
                                                     <div class="col-sm">
-                                                        <select style="height: 35px;" class="form-control" name="detil"
+                                                        <select style="height: 35px;" class="form-control 1" name="detil"
                                                             id="inlineFormCustomSelect">
                                                             <option selected>Pilih...</option>
                                                             <?php
@@ -73,11 +73,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputName">Nama PROTAP</label>
-                                                    <input type="text" class="form-control" id="inputName" name="nama" />
+                                                    <input type="text" class="form-control 1" id="inputName" name="nama" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputName">Nama PROTAP</label>
-                                                    <input type="text" class="form-control" id="inputNo" name="nomor" />
+                                                    <label for="inputName">Nomer PROTAP</label>
+                                                    <input type="text" class="form-control 1" id="inputNo" name="nomor" />
                                                 </div>
                                             @endif
                                             @csrf
@@ -86,39 +86,39 @@
 
                                             <div class="form-group">
                                                 <label for="inputName">Disusun Oleh</label>
-                                                <input type="text" class="form-control" id="inputName" name="diajukan" />
+                                                <input type="text" class="form-control 1" id="inputName" name="diajukan" />
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputName">Tanggal Disusun</label>
-                                                <input type="date" class="form-control" id="inputName"
+                                                <input type="date" class="form-control 1" id="inputName"
                                                     name="tgl_diajukan" />
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputName">Disetjui Oleh</label>
-                                                <input type="text" class="form-control" id="inputName" name="disetujui" />
+                                                <input type="text" class="form-control 1" id="inputName" name="disetujui" />
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputName">Tanggal Disetjui</label>
-                                                <input type="date" class="form-control" id="inputName"
+                                                <input type="date" class="form-control 1" id="inputName"
                                                     name="tgl_disetujui" />
                                             </div>
 
-                                            <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal"
+                                            <input type="hidden" id='ambil_tanggal'  name="tanggal"
                                                 placeholder="" />
 
                                             <div class="form-group">
                                                 <label for="inputName">Ruangan</label>
-                                                <input type="text" class="form-control" id="inputName" name="ruangan" />
+                                                <input type="text" class="form-control 1" id="inputName" name="ruangan" />
                                             </div>
 
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label" for="exampleFormControlFile1">Pilih
                                                     File Protap</label>
                                                 <div class="col-sm">
-                                                    <input type="file" name="upload" class="form-control" id="fileform"
+                                                    <input type="file" name="upload" class="form-control 1" id="fileform"
                                                         onchange="return filecheck()">
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@
                                                     Close
                                                 </button>
                                                 <a href="#" type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="salert()">
+                                                    onclick="salert1(1)">
                                                     Tambah
                                                 </a>
                                             </div>

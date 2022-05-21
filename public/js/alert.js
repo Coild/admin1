@@ -18,27 +18,27 @@ function buttonHapusKaryawan(p){
 }
 
 function salert() {
-    var inputs = document.forms['forminput11'].getElementsByTagName('input').length;
+    // var inputs = document.forms['forminput11'].getElementsByTagName('input').length;
 
-  for (i = 0; i <= inputs; i++) {
-    if (document.forms['forminput11'][i].value == "") {
-        document.getElementById("error-box").innerHTML="Please fill " + document.forms['forminput11'][i].name;
-    }
-  }
+//   for (i = 0; i <= inputs; i++) {
+//     if (document.forms['forminput11'][i].value == "") {
+//         document.getElementById("error-box").innerHTML="Please fill " + document.forms['forminput11'][i].name;
+//     }
+//   }
     
-//   const mycomp = document.getElementsByClassName("form-control");
+  const mycomp = document.getElementsByClassName("form-control");
 //     // const text_gagal = document.getElementsByClassName("text-danger");
     var valid = false;
 
 //     // console.log(mycomp[mycomp.length-1]);
-//     for (i = 0; i < mycomp.length; i++) {
-//         // var x = text_gagal[i].value = 'coba';
-//         console.log(mycomp[i].value);
-//         if (mycomp[i].value == "") {
-//             valid = true;
-//             break;
-//         }
-//     }
+    for (i = 0; i < mycomp.length; i++) {
+        // var x = text_gagal[i].value = 'coba';
+        console.log(mycomp[i].value);
+        if (mycomp[i].value == "") {
+            valid = true;
+            break;
+        }
+    }
     if (valid) {
         valid = false;
         Swal.fire({
@@ -215,8 +215,11 @@ function filecheck() {
 
 function salert1(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
+
     var valid = false;
+
     for (i = 0; i < mycomp.length; i++) {
+        console.log(i +" - " +mycomp[i].value);
         if (mycomp[i].value == "") {
             valid = true;
         }
