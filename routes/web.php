@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/coba', 'catatan.dokumen.detailpenerimaanBB');
+Route::get('notif', [Admin::class, 'notif']);
+Route::get('log', [Admin::class, 'log']);
+
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name("login");
 Route::post('/login', [AuthController::class, 'login']);
@@ -424,11 +427,17 @@ Route::group(['middleware' => 'auth'], function () {
         return view('catatan.dokumen.pembersihanruangan');
     });
 
+
+
     //datatables
     Route::get('user', [dataPelaksana::class, 'user']);
     Route::get('cp_bahan', [dataPelaksana::class, 'cp_bahan']);
     Route::get('cp_produk', [dataPelaksana::class, 'cp_produk']);
     Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
     Route::get('laporandata', [dataPelaksana::class, 'laporan']);
+
+
+
+
 
 });

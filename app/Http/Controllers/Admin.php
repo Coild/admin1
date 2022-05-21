@@ -3277,4 +3277,12 @@ class Admin extends Controller
         // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
+
+    public function log () {
+        return view('layout.log');
+    }
+
+    public function notif () {
+        return view('layout.notif');
+    }
 }
