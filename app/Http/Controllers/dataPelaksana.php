@@ -189,7 +189,7 @@ class dataPelaksana extends Controller
                             value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . 'data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode .' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 } elseif ($data->status == 1) {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -202,7 +202,7 @@ class dataPelaksana extends Controller
                             value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditkemasan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . 'data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode .' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 }
             } else {
                 if ($data->status == 0){

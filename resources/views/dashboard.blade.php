@@ -19,7 +19,7 @@
                     <h5>Tanggal : 27 Maret 2019 </h5>
                     <br>
                     @if(Auth::user()->level==0)
-                    <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm1">Ganti</button>
+                    {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm1">Ganti</button> --}}
                     @endif
                     <a href="{{$baru}}" class="btn btn-light  float-right btn-sm">unduh</a>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
                     <br> @if(Auth::user()->level==0)
-                    <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm2">Ganti</button>
+                    {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm2">Ganti</button> --}}
                     @endif <a href="{{$produk}}" class="btn btn-light  float-right btn-sm">unduh</a>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
                     <br> @if(Auth::user()->level==0)
-                    <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm3">Ganti</button>
+                    {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm3">Ganti</button> --}}
                     @endif <a href="{{$pabrik}}" class="btn btn-light  float-right btn-sm">unduh</a>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="card-body">
                     <h5>Tanggal : 27 Maret 2019 </h5>
                     <br> @if(Auth::user()->level==0)
-                    <button class="btn btn-light float-right btn-sm" data-toggle="modal" data-target="#modalForm4">Ganti</button>
+                    {{-- <button class="btn btn-light float-right btn-sm" data-toggle="modal" data-target="#modalForm4">Ganti</button> --}}
                     @endif <a href="{{$iklan}}" class="btn btn-light  float-right btn-sm">unduh</a>
                 </div>
             </div>

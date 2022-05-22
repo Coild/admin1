@@ -489,7 +489,6 @@
                                         <div class="col-sm">
                                             <input class="form-control 5" list="listnamaproduk" type="text" name='nama'
                                                 id="produknama" autocomplete="off">
-                                            </input>
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produk as $row)
                                                     <option value="{{ $row['produk_nama'] }}">
@@ -564,7 +563,7 @@
                             <div class="card-header">Kemasan</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_terimakemasan" id='forminput6  '>
+                                <form role="form" method="post" action="edit_terimakemasan" id='forminput6'>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="cpid" id="cpkemasan" />
@@ -588,7 +587,7 @@
                                             Kemasan</label>
                                         <div class="col-sm">
                                             <input type="text" name="kode" readonly class="form-control 6"
-                                                id="kemasankode">
+                                                id="kemasankode"/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
