@@ -1787,8 +1787,13 @@ class Admin extends Controller
         ];
 
         $nomer = detilalat::insertGetId($hasil);
-
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
+            'log_pabrik' => $pabrik, 
+            'log_pabrik' => $pabrik
+        ];
         return redirect('/detil-alat');
+
     }
     public function edit_detilalat(Request $req)
     {
