@@ -24,9 +24,12 @@
                                 <i class="fas fa-table me-1"></i>
                                 Pembersihan Alat
                             </div>
-                            <button class="btn btn-success btn-lg mt-3" data-toggle="modal" data-target="#modalForm">
-                                Tambah Pembersihan Alat
-                            </button>
+                            @if (Auth::user()->level != 2)
+                                <button class="btn btn-success btn-lg mt-3" data-toggle="modal" data-target="#modalForm">
+                                    Tambah Pembersihan Alat
+                                </button>
+                            @endif
+                            
                             <!-- Modal -->
                             <div class="modal fade" id="modalForm" role="dialog">
                                 <div class="modal-dialog">

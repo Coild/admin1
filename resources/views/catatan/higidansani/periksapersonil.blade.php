@@ -16,10 +16,13 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                            onclick="setdatetoday()">
-                            Tambah Pemeriksaan Personil
-                        </button>
+                        @if (Auth::user()->level != 2)
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                                onclick="setdatetoday()">
+                                Tambah Pemeriksaan Personil
+                            </button>
+                        @endif
+                        
 
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">

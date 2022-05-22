@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{pengolahanbatch, protap, User};
 
-
+use App\Models\log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -20,6 +20,8 @@ class protapController extends Controller
       where('level',1)->first();
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
          ->where('protap_jenis', $jenis)->sortByDesc('protap_id');
+
+     
       if ($jenis == 1) {
          $judul = ["Penerimaan Penyerahan dan
             Penyimapanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
@@ -102,13 +104,96 @@ class protapController extends Controller
        'judul'  => $judul, 'ajukan' => $ajukan, 'pemilik' => $pemilik]);
    }
 
+
+   
    public function hapus_protap($id, $jenis)
    {
       //  echo  $id;
-      $data = protap::all()
-         ->where('protap_id', $id)->each->delete();;
-      //  dd($data);
+      // $detil = protap::all()->where('protap_id', $id)->first();
 
+      $data = protap::all()->where('protap_id', $id)->each->delete();
+      //  dd($data);
+      $log = [
+         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+         'log_waktu' => date('Y-m-d H:i:s'),
+         'id_pabrik' => Auth::user()->pabrik
+      ];
+
+      if ($jenis == 1) {
+         $judul = "Penerimaan Penyerahan dan Penyimapanan" ;
+      }
+      if ($jenis == 2) {
+         $judul =  "Pengambilan Contoh" ;
+      }
+      if ($jenis == 3) {
+         $judul =  "Spesifikasi Bahan" ;
+      }
+      if ($jenis == 4) {
+         $judul =   "Pelatihan Higiene dan Sanitasi Bagi Karyawan" ;
+      }
+      if ($jenis == 5) {
+         $judul =  "Pengoperasian Peralatan Utama" ;
+      }
+      if ($jenis == 6) {
+         $judul =  "Struktur Organisasi Personil yang Menjabat" ;
+      }
+      if ($jenis == 7) {
+         $judul =  "Penimbangan" ;
+      }
+      if ($jenis == 8) {
+         $judul =  "Pengolahan Batch" ;
+      }
+      if ($jenis == 9) {
+         $judul =  "Pengemasan Batch" ;
+      }
+      if ($jenis == 10) {
+         $judul =  "Pemberian Nomor Batch" ;
+      }
+      if ($jenis == 11) {
+         $judul =  "Pelulusan Produk Jadi" ;
+      }
+      if ($jenis == 12) {
+         $judul =  "Uji Ulang Bahan Baku" ;
+      }
+      if ($jenis == 13) {
+         $judul =  "Penanganan Keluhan" ;
+      }
+      if ($jenis == 14) {
+         $judul =  "Penarikan Produk" ;
+      }
+      if ($jenis == 15) {
+         $judul =  "Pemusnahan Produk" ;
+      }
+      if ($jenis == 16) {
+         $judul =  "Penanganan Contoh Tertinggal" ;
+      }
+      if ($jenis == 17) {
+         $judul =  "Pembuatan PROTAP dan Penomoran" ;
+      }
+      if ($jenis == 18) {
+         $judul =  "Ceklis & TTD Yang Sudah Dibersihkan" ;
+      }
+      if ($jenis == 19) {
+         $judul =  "Label Status Kebersihan Peralatan Sebelum Pengguanaan" ;
+      }
+      if ($jenis == 20) {
+         $judul =  "Program Pemeriksaan Kesehatan Untuk Personil" ;
+      }
+      if ($jenis == 21) {
+         $judul =  "Pembersihan dan Sanitasi" ;
+      }
+      if ($jenis == 22) {
+         $judul =  "Pembersihan dan Sanitasi Ruangan" ;
+      }
+      if ($jenis == 23) {
+         $judul =  "Penerapan Higieni Perorangan" ;
+      }
+      if ($jenis == 24) {
+         $judul =  "Pemeriksaan/Pengujian Bahan" ;
+      }
+
+      $log['log_isi'] = Auth::user()->namadepan.' menghapus protap ' . $judul;
+      log::insert($log);
       return redirect('/tampil_protap/' . $jenis);
    }
 
@@ -138,6 +223,97 @@ class protapController extends Controller
          'user_id' => $id,
       ];
 
+
+      $log = [
+         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+         'log_waktu' => date('Y-m-d H:i:s'),
+         'id_pabrik' => Auth::user()->pabrik
+      ];
+
+      if ($jenis == 1) {
+         $judul = "Penerimaan Penyerahan dan Penyimapanan" ;
+      }
+      if ($jenis == 2) {
+         $judul =  "Pengambilan Contoh" ;
+      }
+      if ($jenis == 3) {
+         $judul =  "Spesifikasi Bahan" ;
+      }
+      if ($jenis == 4) {
+         $judul =   "Pelatihan Higiene dan Sanitasi Bagi Karyawan" ;
+      }
+      if ($jenis == 5) {
+         $judul =  "Pengoperasian Peralatan Utama" ;
+      }
+      if ($jenis == 6) {
+         $judul =  "Struktur Organisasi Personil yang Menjabat" ;
+      }
+      if ($jenis == 7) {
+         $judul =  "Penimbangan" ;
+      }
+      if ($jenis == 8) {
+         $judul =  "Pengolahan Batch" ;
+      }
+      if ($jenis == 9) {
+         $judul =  "Pengemasan Batch" ;
+      }
+      if ($jenis == 10) {
+         $judul =  "Pemberian Nomor Batch" ;
+      }
+      if ($jenis == 11) {
+         $judul =  "Pelulusan Produk Jadi" ;
+      }
+      if ($jenis == 12) {
+         $judul =  "Uji Ulang Bahan Baku" ;
+      }
+      if ($jenis == 13) {
+         $judul =  "Penanganan Keluhan" ;
+      }
+      if ($jenis == 14) {
+         $judul =  "Penarikan Produk" ;
+      }
+      if ($jenis == 15) {
+         $judul =  "Pemusnahan Produk" ;
+      }
+      if ($jenis == 16) {
+         $judul =  "Penanganan Contoh Tertinggal" ;
+      }
+      if ($jenis == 17) {
+         $judul =  "Pembuatan PROTAP dan Penomoran" ;
+      }
+      if ($jenis == 18) {
+         $judul =  "Ceklis & TTD Yang Sudah Dibersihkan" ;
+      }
+      if ($jenis == 19) {
+         $judul =  "Label Status Kebersihan Peralatan Sebelum Pengguanaan" ;
+      }
+      if ($jenis == 20) {
+         $judul =  "Program Pemeriksaan Kesehatan Untuk Personil" ;
+      }
+      if ($jenis == 21) {
+         $judul =  "Pembersihan dan Sanitasi" ;
+      }
+      if ($jenis == 22) {
+         $judul =  "Pembersihan dan Sanitasi Ruangan" ;
+      }
+      if ($jenis == 23) {
+         $judul =  "Penerapan Higieni Perorangan" ;
+      }
+      if ($jenis == 24) {
+         $judul =  "Pemeriksaan/Pengujian Bahan" ;
+      }
+
+      if ($detil == 1) {
+         $log['log_isi'] = Auth::user()->namadepan.' menambah protap bahan baku pada ' . $judul;
+      } elseif ($detil == 2) {
+         $log['log_isi'] = Auth::user()->namadepan.' menambah protap produk jadi ' . $judul;
+      } elseif ($detil == 3) {
+         $log['log_isi'] = Auth::user()->namadepan.' menambah protap kemasan ' . $judul;
+      }else {
+         $log['log_isi'] = Auth::user()->namadepan.' menambah protap ' . $judul;
+      }
+
+      log::insert($log);
       protap::insert($hasil);
       // // user::deleted()
       return redirect('/tampil_protap/' . $jenis);
