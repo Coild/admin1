@@ -1031,6 +1031,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pengolahan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/pengolahanbatch');
     }
 
@@ -1063,6 +1071,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pengolahan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pengolahanbatch');
     }
 
@@ -1371,6 +1386,15 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan periksa personil',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/periksapersonil');
     }
     public function edit_periksapersonil(Request $req)
@@ -1397,6 +1421,16 @@ class Admin extends Controller
             'laporan_diterima' => "belum",
             'tgl_diajukan' => $tgl,
         ]);
+
+        
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan periksa personil',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/periksapersonil');
     }
 
@@ -1455,6 +1489,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan sanitasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/periksasanialat');
     }
     public function edit_periksaalat(Request $req)
@@ -1491,6 +1533,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan sanitasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/periksasanialat');
     }
     public function tampil_periksasaniruang()
@@ -1550,6 +1600,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan sanitasi ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/periksasaniruang');
     }
 
@@ -1840,6 +1897,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan penangganan keluhan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penanganan-keluhan');
     }
     public function edit_penanganankeluhan(Request $req)
@@ -1877,6 +1941,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penangganan keluhan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/penanganan-keluhan');
     }
@@ -1939,6 +2010,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan penarikan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penarikan-produk');
     }
     public function edit_penarikanproduk(Request $req)
@@ -1975,6 +2053,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penarikan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penarikan-produk');
     }
     public function tampil_penarikanproduk()
@@ -2035,6 +2120,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan distribusi produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pendistribusian-produk');
     }
     public function edit_distribusi(Request $req)
@@ -2063,6 +2155,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan distribusi produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pendistribusian-produk');
     }
     public function tampil_distribusi()
@@ -2277,6 +2376,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pelulusan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/pelulusan-produk');
     }
 
@@ -2309,6 +2416,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pelulusan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/pelulusan-produk');
     }
@@ -2680,6 +2794,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan penimbangan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -2728,6 +2849,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan penimbangan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -2777,6 +2905,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan ruang penimbangan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/penimbangan#pills-contact');
     }
@@ -2802,6 +2937,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penimbangan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penimbangan#pills-contact');
     }
     public function edit_penimbanganprodukantara(Request $req)
@@ -2827,6 +2969,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penimbangan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penimbangan#pills-contact');
     }
     public function edit_ruangtimbang(Request $req)
@@ -2852,6 +3001,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan ruang timbang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/penimbangan#pills-contact');
     }
     public function tampil_penimbangan()
@@ -3074,6 +3230,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/kartu-stok');
     }
@@ -3109,6 +3272,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan kartu stok bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kartu-stok');
     }
     public function tambah_kartustokbahankemas(Request $req)
@@ -3157,6 +3327,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kartu-stok');
     }
     public function edit_kartustockbahankemas(Request $req)
@@ -3189,6 +3366,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menggubah laporan kartu stok bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kartu-stok');
     }
     public function tambah_kartustokprodukantara(Request $req)
@@ -3237,6 +3421,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/kartu-stok');
     }
     public function edit_kartustockprodukantara(Request $req)
@@ -3269,6 +3461,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menggubah laporan kartu stok antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/kartu-stok');
     }
     public function tambah_kartustokprodukjadi(Request $req)
@@ -3317,6 +3517,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/kartu-stok');
     }
     public function edit_kartustockprodukjadi(Request $req)
@@ -3351,6 +3559,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan kartu stok produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kartu-stok');
     }
     public function tampil_kartustok()
@@ -3423,6 +3638,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function edit_pemusnahanbahan(Request $req)
@@ -3461,6 +3683,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function tambah_pemusnahanbahankemas(Request $req)
@@ -3513,6 +3742,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function edit_pemusnahanbahankemas(Request $req)
@@ -3549,6 +3785,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menggubah laporan pemusnahan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function tambah_pemusnahanprodukantara(Request $req)
@@ -3601,6 +3844,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function edit_pemusnahanprodukantara(Request $req)
@@ -3639,6 +3889,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function tambah_pemusnahanprodukjadi(Request $req)
@@ -3691,6 +3948,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function edit_pemusnahanprodukjadi(Request $req)
@@ -3729,6 +3993,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemusnahan-produk');
     }
     public function tampil_pemusnahanproduk()
@@ -3797,6 +4068,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan kalibrasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kalibrasi-alat');
     }
     public function edit_kalibrasialat(Request $req)
@@ -3836,8 +4114,16 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan kalibrasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/kalibrasi-alat');
     }
+
     public function tampil_kalibrasialat()
     {
         $pabrik = Auth::user()->pabrik;
@@ -3885,7 +4171,7 @@ class Admin extends Controller
         laporan::insert($laporan);
         $notif = [
             'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemeriksaan bahan  baku",
+            'notif_laporan'=> "pemeriksaan bahan baku",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3896,6 +4182,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function edit_pemeriksaanbahan(Request $req)
@@ -3922,7 +4215,7 @@ class Admin extends Controller
         ]);
         $notif = [
             'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
-            'notif_laporan' => "pemeriksaan bahan  baku",
+            'notif_laporan' => "pemeriksaan bahan baku",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3933,6 +4226,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function tambah_pemeriksaanbahankemas(Request $req)
@@ -3982,6 +4282,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function edit_pemeriksaanbahankemas(Request $req)
@@ -4018,6 +4325,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function tambah_pemeriksaanprodukjadi(Request $req)
@@ -4068,6 +4382,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function edit_pemeriksaanprodukjadi(Request $req)
@@ -4105,6 +4426,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pemeriksaan-bahan');
     }
     public function tampil_pemeriksaan()
@@ -4173,6 +4501,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' menambah laporan pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pengemasan-batch');
     }
     public function edit_pengemasanbatchproduk(Request $req)
@@ -4192,8 +4527,7 @@ class Admin extends Controller
         ];
         $nomer = Pengemasanbatchproduk::where('id_pengemasanbatchproduk', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan",
             'notif_laporan' => "pengemasan batch",
             'notif_link' => 'pengemasan-batch',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4206,6 +4540,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pengemasan-batch');
     }
     public function tampil_pengemasanbatch()
