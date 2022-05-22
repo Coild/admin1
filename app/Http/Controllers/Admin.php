@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
+use App\Models\log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 $a = 0;
 $b = 0;
 
@@ -70,6 +70,7 @@ class Admin extends Controller
         ];
 
         coa::insert($hasil);
+        
 
         return redirect('/coa');
     }
@@ -341,6 +342,15 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -390,6 +400,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -439,6 +457,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -482,6 +508,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect()->route('penerimaanBB');
     }
 
@@ -518,6 +552,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -552,6 +594,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -2064,8 +2114,9 @@ class Admin extends Controller
         $nomer = detilalat::insertGetId($hasil);
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
-            'log_pabrik' => $pabrik, 
-            'log_pabrik' => $pabrik
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
         ];
         return redirect('/detil-alat');
 

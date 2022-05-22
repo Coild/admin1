@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\pabrik;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,14 @@ class AuthController extends Controller
                 Auth::logout();
                 return  view('tunggu');
             } else {
+                $log = [
+                    'log_isi' => Auth::user()->namadepan.' Login ke dalam sistem',
+                    'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+                    'log_waktu' => date('Y-m-d H:i:s'),
+                    'id_pabrik' => Auth::user()->pabrik
+                ];
+                DB::table('logs')->insert($log);
+                
                 $data = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
                 foreach ($data as $row) {
                     session(['pabrik' => $row['nama']]);
@@ -56,8 +65,6 @@ class AuthController extends Controller
         } else { // false
 
             //Login Fail
-
-
             return redirect('/login')->with('message', 'Username atau password salah');
         }
     }
@@ -101,6 +108,14 @@ class AuthController extends Controller
 
     public function logout()
     {
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Logout sistem',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        DB::table('logs')->insert($log);
+
         Auth::logout(); // menghapus session yang aktif
         return redirect('login');
     }
@@ -120,6 +135,13 @@ class AuthController extends Controller
         } else {
             return redirect('/gantipassword')->with('status', 'Kata sandi lama anda salah!');
         }
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengganti password akun',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        DB::table('logs')->insert($log);
 
         return redirect('/dashboard')->with('success', 'Password berhasil diganti!');
     }
@@ -133,7 +155,7 @@ class AuthController extends Controller
             $user = User::all()->where("id", $ganti['id'])->first()->update([
                 'password' => Hash::make($req['baru']),
             ]);
-
+        
         return redirect('/karyawan'); //->with('status', 'Kata sandi lama anda salah!');
     }
 

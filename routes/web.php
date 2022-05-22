@@ -364,7 +364,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
         Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']);
         Route::get('/detil_batch', [Admin::class, 'tampil_detilbatch'])->name('detil_batch');
-        Route::get('/penerimaanBB', [Admin::class, 'tampil_penerimaanbb'])->name('penerimaanBB');
+        Route::get('/penerimaanBB', [Admin::class, 'tambah_terimabahan'])->name('penerimaanBB');
         Route::get('program-dan-pelatihan-higiene-dan-sanitasi', [Admin::class, 'tampil_programpelatihanhigienitasdansanitasi'])->name('program-dan-pelatihan-higiene-dan-sanitasi');
         Route::get('pemusnahan-produk', [Admin::class, 'tampil_pemusnahanproduk'])->name('pemusnahan-produk');
         Route::get('penanganan-keluhan', [Admin::class, 'tampil_penanganankeluhan'])->name('penanganan-keluhan');
