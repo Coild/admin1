@@ -430,7 +430,7 @@
                                                                         class="col-sm-3 col-form-label">Jumlah Bahan
                                                                         Baku</label>
                                                                     <div class="col-sm">
-                                                                       
+
                                                                             <div class="row">
                                                                                 <div class="col-sm-8">
                                                                                     <input type="text" name="jumlah_bahanbaku"
@@ -511,7 +511,7 @@
                                                             <form method="post" action="terimapenimbanganruang">
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
-                                                                    value="{{ $row['no_loth'] }}" />
+                                                                    value="{{ $row['id_ruangtimbang'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">terima</button>
                                                             </form>
@@ -519,7 +519,7 @@
                                                             <form method="post" action="terimapenimbanganruang">
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
-                                                                    value="{{ $row['no_loth'] }}" />
+                                                                    value="{{ $row['id_ruangtimbang'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-danger disabled">terima</button>
                                                             </form>
@@ -713,7 +713,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah Bahan
                                         Baku</label>
                                     <div class="col-sm">
-                                        
+
                                             <div class="row">
                                                 <div class="col-sm-8">
                                                     <input type="text" name="jumlah_bahanbaku" class="form-control 6" id="isi_jruang"

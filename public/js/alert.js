@@ -60,7 +60,7 @@ function buttonHapusKaryawan(p){
 }
 
 function salert(params) {
-    
+
   const mycomp = document.getElementsByClassName("form-control "+params);
     var valid = false;
 
@@ -100,7 +100,7 @@ function salert(params) {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById("formSpesifikasi").submit();
+                    document.getElementById("forminput").submit();
                     swalWithBootstrapButtons.fire(
                         "Tersimpan!",
                         "Data berhasil disimpan.",

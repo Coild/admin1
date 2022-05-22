@@ -295,11 +295,11 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = ruangtimbang::all()->where("no_loth", $req['nobatch'])->first()->update([
+        $user = ruangtimbang::all()->where("id_ruangtimbang", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['nobatch'])
             ->where('laporan_nama', 'ruang timbang')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -707,8 +707,8 @@ class pjt extends Controller
         $data = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->first();
         // dd($data);
         unlink("asset/coa/" . $data->file);
-        
-        
+
+
         $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
 
         return redirect('/spek_bahan_baku')->with('success', 'Data Berhasil Dihapus!');
