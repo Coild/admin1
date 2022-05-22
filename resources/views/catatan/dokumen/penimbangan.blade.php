@@ -430,23 +430,23 @@
                                                                         class="col-sm-3 col-form-label">Jumlah Bahan
                                                                         Baku</label>
                                                                     <div class="col-sm">
-                                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah_bahanbaku"
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" name="jumlah_bahanbaku"
                                                                                     class="form-control 3" id="inputEmail3"
                                                                                     placeholder="Jumlah Bahan Baku" />
-                                                                                </div>
-                                                                                <div class="col-sm-4">
-                                                                                    <select class="form-select"
-                                                                                        name="satuan" id="">
-                                                                                        <option value="gr"> gr</option>
-                                                                                        <option value="kg"> kg</option>
-                                                                                        <option value="ml"> ml</option>
-                                                                                        <option value="L"> L</option>
-                                                                                    </select>
-                                                                                </div>
                                                                             </div>
+                                                                            <div class="col-sm-4">
+                                                                                <select class="form-select"
+                                                                                    name="satuan" id="">
+                                                                                    <option value="gr"> gr</option>
+                                                                                    <option value="kg"> kg</option>
+                                                                                    <option value="ml"> ml</option>
+                                                                                    <option value="L"> L</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
 
@@ -476,7 +476,7 @@
                                     </div>
                                     <!-- pop up end -->
 
-                                    <table class="table mt-5" id="tabelbeda1">
+                                    <table id="tabelbeda2" class="table mt-5">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -713,22 +713,21 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah Bahan
                                         Baku</label>
                                     <div class="col-sm">
-                                        
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="jumlah_bahanbaku" class="form-control 6" id="isi_jruang"
-                                            placeholder="Jumlah Bahan Baku" />
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <select class="form-select"
-                                                        name="satuan" id="">
-                                                        <option value="gr"> gr</option>
-                                                        <option value="kg"> kg</option>
-                                                        <option value="ml"> ml</option>
-                                                        <option value="L"> L</option>
-                                                    </select>
-                                                </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <input type="text" name="jumlah_bahanbaku" class="form-control 6"
+                                                    id="isi_jruang" placeholder="Jumlah Bahan Baku" />
                                             </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-select" name="satuan" id="">
+                                                    <option value="gr"> gr</option>
+                                                    <option value="kg"> kg</option>
+                                                    <option value="ml"> ml</option>
+                                                    <option value="L"> L</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -782,10 +781,10 @@
             var hasil = $(this).data('hasil');
             var id = $(this).data('id');
 
-        $("#isi_namaruang").val(nama);
-        $("#isi_jruang").val(jruang);
-        $("#isi_hasilruang").val(hasil);
-        $("#isi_ruangid").val(id);
-    })
-</script>
+            $("#isi_namaruang").val(nama);
+            $("#isi_jruang").val(jruang);
+            $("#isi_hasilruang").val(hasil);
+            $("#isi_ruangid").val(id);
+        })
+    </script>
 @endsection

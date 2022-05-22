@@ -540,7 +540,7 @@ class Admin extends Controller
             'status' => 0,
         ];
 
-        $nomer = cp_produk::insertGetId($data);
+        // $nomer = cp_produk::insertGetId($data);
 
         cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
         $notif = [
@@ -1625,6 +1625,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
     public function tambah_pelatihancpkb(Request $req)
@@ -1676,6 +1684,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan pelatihan cpkb',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
 
@@ -1710,8 +1726,16 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
+
     public function edit_pelatihancpkb(Request $req)
     {
         $id = $req['id'];
@@ -1744,6 +1768,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/program-dan-pelatihan-higiene-dan-sanitasi');
     }
 
@@ -2089,6 +2120,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan pengoperasian alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/pengoprasian-alat');
     }
 
@@ -2117,7 +2156,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
-
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pengoperasian alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/pengoprasian-alat');
     }
     public function tambah_detilalat(Request $req)
@@ -2134,12 +2179,12 @@ class Admin extends Controller
         ];
 
         $nomer = detilalat::insertGetId($hasil);
-        $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
-            'log_waktu' => date('Y-m-d H:i:s'),
-            'id_pabrik' => Auth::user()->pabrik
-        ];
+        // $log = [
+        //     'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
+        //     'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+        //     'log_waktu' => date('Y-m-d H:i:s'),
+        //     'id_pabrik' => Auth::user()->pabrik
+        // ];
         return redirect('/detil-alat');
 
     }
@@ -2327,6 +2372,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah contoh bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/ambilcontoh#pills-home');
     }
@@ -2379,6 +2431,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah contoh produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/ambilcontoh#pills-profile');
     }
     public function tambah_contohkemasan(Request $req)
@@ -2431,6 +2490,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah contoh kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/ambilcontoh#pills-contact');
     }
 
@@ -2463,7 +2530,14 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
-
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        
         return redirect('/ambilcontoh#pills-home');
     }
     public function edit_contohproduk(Request $req)
@@ -2495,6 +2569,13 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/ambilcontoh#pills-profile');
     }
     public function edit_contohkemasan(Request $req)
@@ -2527,8 +2608,16 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengubah laporan kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
         return redirect('/ambilcontoh#pills-contact');
     }
+    
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
