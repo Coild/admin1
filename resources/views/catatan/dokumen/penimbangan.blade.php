@@ -431,9 +431,9 @@
                                                                         Baku</label>
                                                                     <div class="col-sm">
 
-                                                                        <div class="row">
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="jumlah_bahanbaku"
+                                                                            <div class="row">
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" name="jumlah_bahanbaku"
                                                                                     class="form-control 3" id="inputEmail3"
                                                                                     placeholder="Jumlah Bahan Baku" />
                                                                             </div>
@@ -511,7 +511,7 @@
                                                             <form method="post" action="terimapenimbanganruang">
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
-                                                                    value="{{ $row['no_loth'] }}" />
+                                                                    value="{{ $row['id_ruangtimbang'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">terima</button>
                                                             </form>
@@ -519,7 +519,7 @@
                                                             <form method="post" action="terimapenimbanganruang">
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
-                                                                    value="{{ $row['no_loth'] }}" />
+                                                                    value="{{ $row['id_ruangtimbang'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-danger disabled">terima</button>
                                                             </form>
@@ -714,10 +714,20 @@
                                         Baku</label>
                                     <div class="col-sm">
 
-                                        <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_bahanbaku" class="form-control 6"
-                                                    id="isi_jruang" placeholder="Jumlah Bahan Baku" />
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="jumlah_bahanbaku" class="form-control 6" id="isi_jruang"
+                                            placeholder="Jumlah Bahan Baku" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-select"
+                                                        name="satuan" id="">
+                                                        <option value="gr"> gr</option>
+                                                        <option value="kg"> kg</option>
+                                                        <option value="ml"> ml</option>
+                                                        <option value="L"> L</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="">

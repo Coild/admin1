@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item active">Admin</li>
             </ol>
             <div class="row">
-                <!--  -->
+
                 <div class="card mb-4">
 
                     <div class="card-body">
@@ -39,10 +39,11 @@
                                             {{ $i }}
                                         </td>
                                         <td>
-                                            {{ $row['nama'] }}
+                                            {{ $row['namadepan']." ".$row['namabelakang'] }}
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm">Lihat</button>
+                                            <button class="btn btn-primary btn-sm" id="detil" data-toggle="modal" data-target="#lihat"
+                                    data-nama="{{ $row['nama'] }}" data-alamat="{{ $row['alamat'] }}" data-nohp="{{ $row['no_hp'] }}">Lihat</button>
                                         </td>
                                     </tr>
 
@@ -133,7 +134,53 @@
         </div>
         <!--  -->
     </main>
+    <!-- Modal -->
+    <div class="modal fade" id="lihat" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Detil Pabrik
+                    </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p class="statusMsg"></p>
+                    <div class="container">
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name="username" id="isi_nama" type="text"
+                                placeholder="name@example.com" readonly/>
+                            <label for="inputEmail">Username</label>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
     <script>
+        $(document).on('click', "#klik", function() {
+            var id = $(this).data('id');
+            console.log("hai " + id);
+            $("#isi_id").val(id);
+        })
+
+        $(document).on('click', "#detil", function() {
+            var nama = $(this).data('nama');
+            var alamat = $(this).data('alamat');
+            var nohp = $(this).data('nohp');
+
+            console.log("hai " + nama);
+            $("#isi_nama").val(nama);
+            // $("#isi_alamat").val(alamat);
+            // $("#isi_nohp").val(nohp);
+        })
+
         $("#inputPasswordConfirm").keyup(function() {
             if ($("#inputPassword").val() === $(this).val()) {
                 document.getElementById("message").innerText = "";
