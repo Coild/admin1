@@ -17,8 +17,13 @@ class CreateNotifsTable extends Migration
             $table->id('notif_id');
             $table->string('notif_isi', 255);
             $table->string('notif_link', 255);
+            $table->string('notif_laporan', 255);
             $table->dateTime('notif_waktu');
             $table->integer('status')->unsigned();
+            $table->integer('notif_1')->unsigned();
+            $table->integer('notif_2')->unsigned();
+            $table->integer('notif_3')->unsigned();
+            $table->integer('notif_level')->unsigned();
             $table->integer('id_pabrik')->unsigned();
             $table->timestamps();
         });

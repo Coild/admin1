@@ -27,30 +27,12 @@
                             aria-expanded="false"><i class="fa fa-bell"></i>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">
-                                99+
+                                {{session()->get('jumlah')}}
                                 <span class="visually-hidden">unread messages</span>
                             </span>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item border-radius-md"  href="#">
-                                    <div class="d-flex">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">New message</span> from Laur
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1"></i>
-                                                13 minutes ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
                             <li>
                                 <a class="dropdown-item border-radius-md"  href="#">
                                     <div class="d-flex">

@@ -192,7 +192,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id='ambil_tanggal3' class="form-control 3" name="tanggal"
+                                    <input type="hidden" id='ambil_tanggal3' name="tanggal"
                                         placeholder="" />
 
                                     <div class="form-group row">
@@ -267,7 +267,7 @@
                                         <div class="col-sm">
                                             <div class="row">
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="jumlah" class="form-control 3" id="inputEmail3" placeholder="Jumlah" />
+                                                    <input type="text" name="jumlah" class="form-control 2" id="inputEmail3" placeholder="Jumlah" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <select class="form-select" name="satuan" id="">
@@ -348,7 +348,7 @@
                                         <div class="col-sm">
                                         <div class="row">
                                             <div class="col-sm-8">
-                                                <input type="text" name="jumlah" class="form-control 3" id="inputEmail3" placeholder="Jumlah" />
+                                                <input type="text" name="jumlah" class="form-control 1" id="inputEmail3" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="">

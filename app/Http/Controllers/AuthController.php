@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\User;
+use App\Models\notif;
 use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AuthController extends Controller
@@ -49,6 +50,7 @@ class AuthController extends Controller
                 foreach ($data as $row) {
                     session(['pabrik' => $row['nama']]);
                 }
+                session(['notif' => notif::all(), 'jumlah' => notif::all()->count()]);
                 return redirect('/dashboard');
             }
         } else { // false
