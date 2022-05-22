@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 $a = 0;
 $b = 0;
+
 class Admin extends Controller
 {
+
     public function dashboard()
     {
         $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
@@ -1778,7 +1780,7 @@ class Admin extends Controller
             'id_pabrik'=> Auth::user()->pabrik,
         ];
         notif::insert($notif);
-        
+
         return redirect('/penanganan-keluhan');
     }
     public function tampil_penanganankeluhan()
