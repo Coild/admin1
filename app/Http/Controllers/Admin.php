@@ -498,11 +498,13 @@ class Admin extends Controller
         ]);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penerimaan bahan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penerimaan bahan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -542,11 +544,13 @@ class Admin extends Controller
 
         cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penerimaan produk",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penerimaan produk",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -584,11 +588,13 @@ class Admin extends Controller
 
         cp_kemasan::all()->where('cp_kemasan_id', $cpid)->first()->update($data);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penerimaan kemasan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penerimaan kemasan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1045,11 +1051,13 @@ class Admin extends Controller
 
         $nomer = pengolahanbatch::where('batch', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pengolahan batch",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pengolahan batch",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1471,11 +1479,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penmeriksaan sanitasi alat",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penmeriksaan sanitasi alat",
             'notif_link' => 'periksasanialat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1688,11 +1698,13 @@ class Admin extends Controller
 
         $nomer = programpelatihan::all()->where('id_programpelatihan', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pelatihan higiene dan sanitasi",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pelatihan higiene dan sanitasi",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1720,11 +1732,13 @@ class Admin extends Controller
 
         $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pelatihan cpkb",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pelatihan cpkb",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1820,11 +1834,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penangganan keluhan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penangganan keluhan",
             'notif_link' => 'penanganan-keluhan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -1916,11 +1932,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penarikan produk",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penarikan produk",
             'notif_link' => 'penarikan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2002,11 +2020,13 @@ class Admin extends Controller
 
         $nomer = distribusiproduk::where('id_distribusi', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan distribusi produk",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "distribusi produk",
             'notif_link' => 'pendistribusian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2085,11 +2105,13 @@ class Admin extends Controller
         // dd($req);
         $nomer = pengoprasianalat::where('id_operasi', $req['id'])->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pengoperasian alat",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pengoperasian alat",
             'notif_link' => 'pengoperasian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2230,11 +2252,13 @@ class Admin extends Controller
         ];
         $nomer = pelulusanproduk::where('id_pelulusan', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pelulusan produk",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pelulusan produk",
             'notif_link' => 'pelulusan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2427,11 +2451,13 @@ class Admin extends Controller
 
         contohbahanbaku::all()->where('id_bahanbaku', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penambahan contoh bahan baku",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penambahan contoh bahan baku",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2457,11 +2483,13 @@ class Admin extends Controller
 
         $nomer = contohprodukjadi::all()->where('id_produkjadi', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penambahan contoh produk",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penambahan contoh produk",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2487,11 +2515,13 @@ class Admin extends Controller
 
         $nomer = contohkemasan::all()->where('id_kemasan', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penambahan contoh kemasan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penambahan contoh kemasan",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2671,11 +2701,13 @@ class Admin extends Controller
 
         $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penimbangan bahan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penimbangan bahan",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2694,11 +2726,13 @@ class Admin extends Controller
 
         $nomer = timbangproduk::where('timbang_produk_id', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan penimbangan produk antara",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "penimbangan produk antara",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2717,11 +2751,13 @@ class Admin extends Controller
         ];
         $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ruang timbang",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "ruang timbang",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -2972,11 +3008,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan kartu stok bahan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "kartu stok bahan",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3212,11 +3250,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan kartu stok produk jadi",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "kartu stok produk jadi",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3320,11 +3360,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemusnahan bahan",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemusnahan bahan",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3496,11 +3538,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemusnahan produk antara",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemusnahan produk antara",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3584,11 +3628,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemusnahan produk jadi",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemusnahan produk jadi",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3689,11 +3735,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan kalibrasi alat",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "kalibrasi alat",
             'notif_link' => 'kalibrasi-alat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3784,11 +3832,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemeriksaan bahan  baku",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemeriksaan bahan  baku",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3867,11 +3917,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemeriksaan bahan kemas",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemeriksaan bahan kemas",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
@@ -3952,11 +4004,13 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan pemeriksaan produk jadi",
+            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_laporan' => "pemeriksaan produk jadi",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
+            'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
             'id_pabrik'=> Auth::user()->pabrik,
