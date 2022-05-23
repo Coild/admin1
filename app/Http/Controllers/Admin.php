@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+
 $a = 0;
 $b = 0;
 
@@ -64,13 +65,13 @@ class Admin extends Controller
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
-            'coa_file' => $nama,
+            'coa_file' => $filename,
             'coa_nama' => $req['nama'],
             'user_id' => $id,
         ];
 
         coa::insert($hasil);
-        
+
 
         return redirect('/coa');
     }
@@ -330,8 +331,8 @@ class Admin extends Controller
         laporan::insert($laporan);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penerimaan bahan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penerimaan bahan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -339,13 +340,13 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah bahan baku',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -388,8 +389,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penerimaan produk",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penerimaan produk",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -397,12 +398,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -445,8 +446,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penerimaan kemasan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penerimaan kemasan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -454,12 +455,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah kemasan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -498,7 +499,7 @@ class Admin extends Controller
         ]);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penerimaan bahan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -507,13 +508,13 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penerimaan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -544,7 +545,7 @@ class Admin extends Controller
 
         cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penerimaan produk",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -553,12 +554,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penerimaan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -588,7 +589,7 @@ class Admin extends Controller
 
         cp_kemasan::all()->where('cp_kemasan_id', $cpid)->first()->update($data);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penerimaan kemasan",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -597,12 +598,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penerimaan kemasan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penerimaan kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -851,7 +852,7 @@ class Admin extends Controller
         session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
         $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id);
         // dd($id);
-        $kemasan = kemasan::all()->where('user_id',$pabrik);
+        $kemasan = kemasan::all()->where('user_id', $pabrik);
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
         $proisi = prosedur_isi::all()->where('id_kemas', $id);
         $protanda  = prosedur_tanda::all()->where('id_kemas', $id);
@@ -956,7 +957,7 @@ class Admin extends Controller
         $olah = produksi::all()->where('id_batch', $id);
         $rekon = rekonsiliasi::all()->where('id_batch', $id);
         return view('catatan.dokumen.detailbatch', [
-            'id' => $id,'no' => $req['nomor'],
+            'id' => $id, 'no' => $req['nomor'],
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
             'list_olah' => $olah, 'rekon' => $rekon
         ]);
@@ -1019,8 +1020,8 @@ class Admin extends Controller
         // dd($hasil);
         // laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pengolahan batch",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pengolahan batch",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1028,12 +1029,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pengolahan batch',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pengolahan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1059,7 +1060,7 @@ class Admin extends Controller
 
         $nomer = pengolahanbatch::where('batch', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pengolahan batch",
             'notif_link' => 'penerimaanBB',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -1068,12 +1069,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pengolahan batch',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pengolahan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1388,8 +1389,8 @@ class Admin extends Controller
         laporan::insert($laporan);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan periksa personil',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan periksa personil',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1422,10 +1423,10 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
 
-        
+
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan periksa personil',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan periksa personil',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1477,8 +1478,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemeriksaan sanitasi alat",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemeriksaan sanitasi alat",
             'notif_link' => 'periksasanialat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1486,12 +1487,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan sanitasi alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemeriksaan sanitasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1521,7 +1522,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penmeriksaan sanitasi alat",
             'notif_link' => 'periksasanialat',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -1530,12 +1531,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan sanitasi alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemeriksaan sanitasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1588,8 +1589,8 @@ class Admin extends Controller
         laporan::insert($laporan);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penmeriksaan sanitasi ruang",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penmeriksaan sanitasi ruang",
             'notif_link' => 'periksasaniruang',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1597,12 +1598,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan sanitasi ruang',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemeriksaan sanitasi ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1670,8 +1671,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pelatihan higiene dan sanitasi",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pelatihan higiene dan sanitasi",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1679,12 +1680,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan pelatihan higiene dan sanitasi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1729,8 +1730,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pelatihan cpkb",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pelatihan cpkb",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1738,12 +1739,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan pelatihan cpkb',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan pelatihan cpkb',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1771,7 +1772,7 @@ class Admin extends Controller
 
         $nomer = programpelatihan::all()->where('id_programpelatihan', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pelatihan higiene dan sanitasi",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -1780,12 +1781,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pelatihan higiene dan sanitasi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1813,7 +1814,7 @@ class Admin extends Controller
 
         $nomer = Pelatihancpkb::all()->where('id_pelatihancpkb', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pelatihan cpkb",
             'notif_link' => 'program-dan-pelatihan-higiene-dan-sanitasi',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -1822,12 +1823,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pelatihan higiene dan sanitasi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan pelatihan higiene dan sanitasi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1885,8 +1886,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penangganan keluhan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penangganan keluhan",
             'notif_link' => 'penanganan-keluhan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -1894,12 +1895,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan penangganan keluhan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan penangganan keluhan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1929,7 +1930,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penangganan keluhan",
             'notif_link' => 'penanganan-keluhan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -1938,12 +1939,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penangganan keluhan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penangganan keluhan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -1998,8 +1999,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penarikan produk",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penarikan produk",
             'notif_link' => 'penarikan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2007,12 +2008,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan penarikan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan penarikan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2041,7 +2042,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penarikan produk",
             'notif_link' => 'penarikan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2050,12 +2051,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penarikan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penarikan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2108,8 +2109,8 @@ class Admin extends Controller
         laporan::insert($laporan);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "distribusi produk",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "distribusi produk",
             'notif_link' => 'pendistribusian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2117,12 +2118,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan distribusi produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan distribusi produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2143,7 +2144,7 @@ class Admin extends Controller
 
         $nomer = distribusiproduk::where('id_distribusi', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "distribusi produk",
             'notif_link' => 'pendistribusian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2152,12 +2153,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan distribusi produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan distribusi produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2207,8 +2208,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pengoperasian alat",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pengoperasian alat",
             'notif_link' => 'pengoperasian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2216,12 +2217,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan pengoperasian alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan pengoperasian alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2243,7 +2244,7 @@ class Admin extends Controller
         // dd($req);
         $nomer = pengoprasianalat::where('id_operasi', $req['id'])->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pengoperasian alat",
             'notif_link' => 'pengoperasian-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2252,12 +2253,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan pengoperasian alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan pengoperasian alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2285,7 +2286,6 @@ class Admin extends Controller
         //     'id_pabrik' => Auth::user()->pabrik
         // ];
         return redirect('/detil-alat');
-
     }
     public function edit_detilalat(Request $req)
     {
@@ -2317,7 +2317,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         session(['idoperasi' => $req['induk']]);
         $data = detilalat::all()->where('induk', $req['induk']);
-        return view('catatan.dokumen.detilalat', ['data' => $data,'status' => $req->status_induk ]);
+        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status_induk]);
     }
 
     public function tampil_detilalatid()
@@ -2364,8 +2364,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pelulusan produk",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pelulusan produk",
             'notif_link' => 'pelulusann-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2373,12 +2373,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pelulusan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pelulusan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2404,7 +2404,7 @@ class Admin extends Controller
         ];
         $nomer = pelulusanproduk::where('id_pelulusan', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pelulusan produk",
             'notif_link' => 'pelulusan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2413,12 +2413,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pelulusan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pelulusan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2474,8 +2474,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penambahan contoh bahan baku",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penambahan contoh bahan baku",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2483,12 +2483,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah contoh bahan baku',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah contoh bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2533,8 +2533,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penambahan contoh produk",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penambahan contoh produk",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2542,12 +2542,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah contoh produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah contoh produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2592,8 +2592,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penambahan contoh kemasan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penambahan contoh kemasan",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2601,12 +2601,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah contoh kemasan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah contoh kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2632,7 +2632,7 @@ class Admin extends Controller
 
         contohbahanbaku::all()->where('id_bahanbaku', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penambahan contoh bahan baku",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2641,17 +2641,17 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan bahan baku',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        
+
         return redirect('/ambilcontoh#pills-home');
     }
     public function edit_contohproduk(Request $req)
@@ -2671,7 +2671,7 @@ class Admin extends Controller
 
         $nomer = contohprodukjadi::all()->where('id_produkjadi', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penambahan contoh produk",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2680,12 +2680,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan produk',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan produk',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2710,7 +2710,7 @@ class Admin extends Controller
 
         $nomer = contohkemasan::all()->where('id_kemasan', $id)->first()->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penambahan contoh kemasan",
             'notif_link' => 'ambilcontoh#pills-profile',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2719,19 +2719,19 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengubah laporan kemasan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan kemasan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
         return redirect('/ambilcontoh#pills-contact');
     }
-    
+
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
@@ -2782,8 +2782,8 @@ class Admin extends Controller
         laporan::insert($laporan);
 
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penimbangan bahan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penimbangan bahan",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2791,12 +2791,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan penimbangan bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penimbangan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2837,8 +2837,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "penimbangan produk antara",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "penimbangan produk antara",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2846,12 +2846,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan penimbangan produk antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penimbangan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2893,8 +2893,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "ruang penimbangan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "ruang penimbangan",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -2902,12 +2902,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan ruang penimbangan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan ruang penimbangan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2925,7 +2925,7 @@ class Admin extends Controller
 
         $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penimbangan bahan",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2934,12 +2934,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penimbangan bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penimbangan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2957,7 +2957,7 @@ class Admin extends Controller
 
         $nomer = timbangproduk::where('timbang_produk_id', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "penimbangan produk antara",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2966,12 +2966,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan penimbangan produk antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan penimbangan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2989,7 +2989,7 @@ class Admin extends Controller
         ];
         $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "ruang timbang",
             'notif_link' => 'penimbangan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -2998,12 +2998,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan ruang timbang',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan ruang timbang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3090,7 +3090,7 @@ class Admin extends Controller
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         // $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
-        return view('catatan.dokumen.detil.detiltimbanghasil', compact('data','bahanbaku'));
+        return view('catatan.dokumen.detil.detiltimbanghasil', compact('data', 'bahanbaku'));
     }
 
     public function tambah_detiltimbangbahan(Request $req)
@@ -3099,9 +3099,9 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
-            'nama_bahan' => $req['nama_bahan'] ,
-            'nama_suplier' => $req['nama_suplier'] ,
-            'jumlah_bahan' => $req['jumlah_bahan'] ,
+            'nama_bahan' => $req['nama_bahan'],
+            'nama_suplier' => $req['nama_suplier'],
+            'jumlah_bahan' => $req['jumlah_bahan'],
             'hasil_penimbangan' => $req['hasil_penimbangan'],
             'induk'  => session()->get('induk1'),
         ];
@@ -3116,9 +3116,9 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
-            'asal_produk' => $req['asal_produk'] ,
-            'nama_produk_antara' => $req['nama_produk_antara'] ,
-            'jumlah_produk' => $req['jumlah_produk'] ,
+            'asal_produk' => $req['asal_produk'],
+            'nama_produk_antara' => $req['nama_produk_antara'],
+            'jumlah_produk' => $req['jumlah_produk'],
             'hasil_penimbangan' => $req['hasil_timbang'],
             'untuk_produk' => $req['untuk_produk'],
             'induk'  => session()->get('induk2'),
@@ -3218,8 +3218,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "kartu stok bahan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "kartu stok bahan",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3227,12 +3227,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3260,7 +3260,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "kartu stok bahan",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -3269,12 +3269,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan kartu stok bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan kartu stok bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3315,8 +3315,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "kartu stok bahan kemas",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "kartu stok bahan kemas",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3324,12 +3324,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3356,19 +3356,19 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menggubah laporan kartu stok bahan kemas",
+            'notif_isi' => Auth::user()->namadepan . " menggubah laporan kartu stok bahan kemas",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menggubah laporan kartu stok bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menggubah laporan kartu stok bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3409,8 +3409,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "kartu stok produk antara",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "kartu stok produk antara",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3418,12 +3418,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3451,19 +3451,19 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menggubah laporan kartu stok produk antara",
+            'notif_isi' => Auth::user()->namadepan . " menggubah laporan kartu stok produk antara",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menggubah laporan kartu stok antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menggubah laporan kartu stok antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3505,8 +3505,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "kartu stok produk jadi",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "kartu stok produk jadi",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3514,12 +3514,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan kartu stok produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3547,7 +3547,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "kartu stok produk jadi",
             'notif_link' => 'kartu-stok',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -3556,12 +3556,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan kartu stok produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan kartu stok produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3626,8 +3626,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemusnahan bahan",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemusnahan bahan",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3635,12 +3635,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemusnahan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3671,7 +3671,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemusnahan bahan",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -3680,12 +3680,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan bahan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemusnahan bahan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3730,8 +3730,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemusnahan bahan kemas",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemusnahan bahan kemas",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3739,12 +3739,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemusnahan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3775,19 +3775,19 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menggubah laporan pemusnahan bahan kemas",
+            'notif_isi' => Auth::user()->namadepan . " menggubah laporan pemusnahan bahan kemas",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menggubah laporan pemusnahan bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menggubah laporan pemusnahan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3832,8 +3832,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemusnahan produk antara",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemusnahan produk antara",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3841,12 +3841,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan produk antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemusnahan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3877,7 +3877,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemusnahan produk antara",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -3886,12 +3886,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan produk antara',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemusnahan produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3936,8 +3936,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemusnahan produk jadi",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemusnahan produk jadi",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3945,12 +3945,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemusnahan produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemusnahan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -3981,7 +3981,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemusnahan produk jadi",
             'notif_link' => 'pemusnahan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -3990,12 +3990,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemusnahan produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemusnahan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4056,8 +4056,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "kalibrasi alat",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "kalibrasi alat",
             'notif_link' => 'kalibrasi-alat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -4065,12 +4065,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan kalibrasi alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan kalibrasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4102,7 +4102,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "kalibrasi alat",
             'notif_link' => 'kalibrasi-alat',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4111,12 +4111,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan kalibrasi alat',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan kalibrasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4170,8 +4170,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemeriksaan bahan baku",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemeriksaan bahan baku",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -4179,12 +4179,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan bahan baku',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemeriksaan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4214,7 +4214,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemeriksaan bahan baku",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4223,12 +4223,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan bahan baku',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemeriksaan bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4270,8 +4270,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemeriksaan bahan  kemas",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemeriksaan bahan  kemas",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -4279,12 +4279,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemeriksaan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4313,7 +4313,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemeriksaan bahan kemas",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4322,12 +4322,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan bahan kemas',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemeriksaan bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4370,8 +4370,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pemeriksaan produk jadi",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pemeriksaan produk jadi",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -4379,12 +4379,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pemeriksaan produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pemeriksaan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4414,7 +4414,7 @@ class Admin extends Controller
             'tgl_diajukan' => $tgl,
         ]);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan ",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pemeriksaan produk jadi",
             'notif_link' => 'pemeriksaan-bahan',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4423,12 +4423,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pemeriksaan produk jadi',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pemeriksaan produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4489,8 +4489,8 @@ class Admin extends Controller
 
         laporan::insert($laporan);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." menambah laporan",
-            'notif_laporan'=> "pengemasan batch",
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "pengemasan batch",
             'notif_link' => 'pengemasan-batch',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -4498,12 +4498,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' menambah laporan pengemasan batch',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' menambah laporan pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4527,7 +4527,7 @@ class Admin extends Controller
         ];
         $nomer = Pengemasanbatchproduk::where('id_pengemasanbatchproduk', $id)->update($hasil);
         $notif = [
-            'notif_isi' => Auth::user()->namadepan." mengubah laporan",
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan",
             'notif_laporan' => "pengemasan batch",
             'notif_link' => 'pengemasan-batch',
             'notif_waktu' => date('Y-m-d H:i:s'),
@@ -4537,12 +4537,12 @@ class Admin extends Controller
             'notif_3' => 0,
             'notif_level' => 1,
             'status' => 0,
-            'id_pabrik'=> Auth::user()->pabrik,
+            'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' mengubah laporan pengemasan batch',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -4563,11 +4563,25 @@ class Admin extends Controller
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
 
-    public function log () {
+    public function log()
+    {
         return view('layout.log');
     }
 
-    public function notif () {
-        return view('layout.notif');
+    public function notif()
+    {
+        if (Auth::user()->level ==  2) {
+            notif::where('id_pabrik', Auth::user()->pabrik)
+                ->where('status', 0)->update(['status' => 1]);
+            $data = notif::all()->where('id_pabrik', Auth::user()->pabrik);
+        }
+        if (Auth::user()->level ==  3) {
+            notif::where('id_pabrik',Auth::user()->pabrik)->where('notif_3',1)
+            ->update(['notif_3' => 2]);
+            $data = notif::all()->where('id_pabrik', Auth::user()->pabrik)
+                ->where('notif_3', '!=', 0);
+        }
+
+        return view('layout.notif', compact('data'));
     }
 }

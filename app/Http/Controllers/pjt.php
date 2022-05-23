@@ -35,7 +35,7 @@ class pjt extends Controller
 
             notif::all()->where('notif_laporan', 'pengolahan batch')
             ->where('notif_2',$req['no'])->first()->update([
-                'status'  => 3
+                'notif_3'  => 1
             ]);
         return redirect()->route('pengolahanbatch');
     }
@@ -56,6 +56,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pengemasan batch')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pengemasan-batch');
     }
 
@@ -75,6 +80,11 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
         $data = contohkemasan::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penammbahan contoh kemas')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('ambilcontoh');
     }
 
@@ -94,6 +104,11 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
         $data = contohprodukjadi::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penambahan contoh produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('ambilcontoh');
     }
 
@@ -112,6 +127,11 @@ class pjt extends Controller
             ->where('laporan_nama', 'penambahan contoh bahan baku')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
+            ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penambahan bahan baku')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
             ]);
         return redirect()->route('ambilcontoh');
     }
@@ -135,6 +155,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penerimaan bahan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('penerimaanBB');
     }
 
@@ -155,6 +180,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penerrimaan produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('penerimaanBB');
     }
 
@@ -172,6 +202,11 @@ class pjt extends Controller
             ->where('laporan_nama', 'penerimaan kemasan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
+            ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penerimaan kemasan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
             ]);
         return redirect()->route('penerimaanBB');
     }
@@ -192,6 +227,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pelatihan higiene dan sanitasi')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
     }
 
@@ -209,6 +249,11 @@ class pjt extends Controller
             ->where('laporan_nama', 'pelatihan cpkb')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
+            ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pelatihan cpkb')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
             ]);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
     }
@@ -228,6 +273,11 @@ class pjt extends Controller
             ->where('laporan_nama', 'pengoperasian alat')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
+            ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pengoperasiian alat')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
             ]);
         return redirect()->route('pengoprasian-alat');
     }
@@ -249,6 +299,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'distribusi produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pendistribusian-produk');
     }
 
@@ -268,6 +323,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penimbangan bahan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('penimbangan');
     }
 
@@ -286,6 +346,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penimbangan produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('penimbangan');
     }
 
@@ -303,6 +368,11 @@ class pjt extends Controller
             ->where('laporan_nama', 'ruang timbang')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
+            ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'ruang timbang')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
             ]);
         return redirect()->route('penimbangan');
     }
@@ -323,6 +393,11 @@ class pjt extends Controller
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
+            notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pelulusan produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pelulusan-produk');
     }
 
@@ -342,6 +417,11 @@ class pjt extends Controller
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penanganan keluhan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         $data = penanganankeluhan::all()->where('status', 1);
         return redirect()->route('penanganan-keluhan');
     }
@@ -360,6 +440,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = penarikanproduk::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'penarikan produk')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('penarikan-produk');
     }
     public function terima_pemusnahanbahanbaku(Request $req)
@@ -377,6 +462,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = pemusnahanbahanbaku::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pemusnahan bahan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanbahankemas(Request $req)
@@ -394,6 +484,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanbahankemas::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pemusnahan bahan kemas')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanprodukantara(Request $req)
@@ -411,6 +506,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanprodukantara::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pemusnahan produk antara')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanprodukjadi(Request $req)
@@ -428,6 +528,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Pemusnahanprodukjadi::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pemusnahan produk jadi')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_stokbahanbaku(Request $req)
@@ -445,6 +550,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokbahan::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'kartu stok bahan baku')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('kartu-stok');
     }
     public function terima_stokbahankemas(Request $req)
@@ -461,6 +571,11 @@ class pjt extends Controller
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'kartu stok bahan kemas')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         $data = kartustokbahankemas::all()->where('status', 1);
         return redirect()->route('kartu-stok');
     }
@@ -479,6 +594,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokprodukjadi::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'kartu stok produk jadi')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('kartu-stok');
     }
     public function terima_stokprodukantara(Request $req)
@@ -496,6 +616,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokprodukantara::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'kartu stok produk antara')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('kartu-stok');
     }
     public function terima_pemeriksaanbahanbaku(Request $req)
@@ -513,6 +638,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasibahanbaku::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'Pemeriksaan Bahan Baku')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemeriksaan-bahan');
     }
     public function terima_pemeriksaanbahankemas(Request $req)
@@ -530,6 +660,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasibahankemas::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'Pemeriksaan Bahan Kemas')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemeriksaan-bahan');
     }
     public function terima_pemeriksaanprodukjadi(Request $req)
@@ -547,6 +682,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = Spesifikasiprodukjadi::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'Pemeriksaan Produk Jadi')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('pemeriksaan-bahan');
     }
 
@@ -581,6 +721,11 @@ class pjt extends Controller
             'tgl_diterima' => $tgl
         ]);
         $data = periksaalat::all()->where('status', 1);
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'periksa sanitasi ruangan')
+            ->where('notif_2',$req['no'])->first()->update([
+                'notif_3'  => 1
+            ]);
         return redirect()->route('periksasanialat');
     }
 
