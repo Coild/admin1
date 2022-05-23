@@ -90,6 +90,10 @@
                                             <form action="/hapus_karyawan" method="post" id="formHapusKaryawan{{ $row['id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['id'] }}">
+                                                <input type="hidden" name="namadepan" id="" value="{{ $row['namadepan'] }}">
+                                                <input type="hidden" name="namabelakang" id="" value="{{ $row['namabelakang'] }}">
+                                                <input type="hidden" name="level" id="" value="{{ $row['level'] }}">
+                                                
                                                 <button class="btn btn-danger btn-md me-3" onclick="buttonHapusKaryawan({{ $row['id'] }})" type="button"><i
                                                     class="fa fa-trash" ></i> Hapus</button>
 

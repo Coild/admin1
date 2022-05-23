@@ -23,6 +23,10 @@
                     UPDATE PROTAP
                 </a>
 
+                <a   class="nav-link collapsed" href="logPemilik">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    LOG
+                </a>
 
             </div>
         </div>

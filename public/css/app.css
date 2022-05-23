@@ -12,6 +12,24 @@ a.nav-link {
     color: white;
 }
 
+
+a.nav-link:focus, a.nav-link:hover {
+    color: #918e8c;
+}
+
+a#pills-profile-tab, a#pills-home-tab, a#pills-contact-tab {
+    color: black;
+}
+
+a#pills-home-tab.active,a#pills-profile-tab.active,a#pills-contact-tab.active {
+    color: white;
+}
+
+
+a#pills-tab:focus, a#pills-tab:hover {
+    color: black;
+}
+
 .sb-topnav1{
     /* overflow: hidden; */
     position: fixed;

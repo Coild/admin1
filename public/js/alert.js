@@ -1,5 +1,24 @@
 
 
+function buttonHapuspjt(p){
+    // console.log(p);
+    var link = "hapupjt"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Hapus?",
+        text: "Yakin Ingin Dihapus?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
 
 function buttonHapusBB(p){
     // console.log(p);

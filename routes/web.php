@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/coba', 'catatan.dokumen.detailpenerimaanBB');
 Route::get('notif', [Admin::class, 'notif']);
-Route::get('log', [Admin::class, 'log']);
+Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
+Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
+
 
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name("login");
@@ -116,15 +118,15 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/input_coa', [Admin::class, 'tambah_coa']);
         Route::get('/coa', [Admin::class, 'tampil_coa'])->name('coa');
-        Route::get('/hapus_coa/{id}', [Admin::class, 'hapus_coa']);
+        Route::get('/hapus_coa', [Admin::class, 'hapus_coa']);
 
         Route::post('/input_dip', [Admin::class, 'tambah_dip']);
         Route::get('/dip', [Admin::class, 'tampil_dip'])->name('dip');
-        Route::get('/hapus_dip/{id}', [Admin::class, 'hapus_dip']);
+        Route::get('/hapus_dip', [Admin::class, 'hapus_dip']);
 
         Route::post('/input_perizinan', [Admin::class, 'tambah_perizinan']);
         Route::get('perizinan', [Admin::class, 'tampil_perizinan'])->name('perizinan');
-        Route::get('/hapus_perizinan/{id}', [Admin::class, 'hapus_perizinan']);
+        Route::get('/hapus_perizinan', [Admin::class, 'hapus_perizinan']);
 
         Route::post('/input_jabatan', [Admin::class, 'tambah_jabatan']);
         Route::get('/jabatan', [Admin::class, 'tampil_jabatan'])->name('jabatan');

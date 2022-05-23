@@ -117,7 +117,7 @@
                                                     Produk</label>
                                                 <div class="col-sm">
                                                     <input class="form-control 17" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required>
-                                                    <datalist id='listnamaproduk'>
+                                                    <datalist id='listnamaproduk' autocomplete="off">
                                                         @foreach ($data2 as $row)
                                                         <option value="{{ $row['produk_nama'] }}">
                                                             {{ $row['produk_nama'] }}

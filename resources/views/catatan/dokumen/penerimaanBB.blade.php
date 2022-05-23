@@ -7,7 +7,7 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Catatan Penerimaan Penyerahan dan Penyimpanan</h1>
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                         aria-controls="pills-home" aria-selected="true">Bahan Baku</a>
