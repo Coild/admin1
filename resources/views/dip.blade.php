@@ -86,8 +86,17 @@
                             <tr>
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$row['dip_nama']}}</td>
-                                <td><a href="/hapus_dip/{{$row['dip_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus {{$nama}}? ')">Hapus</a>
-                                    <a href="/asset/dip/{{$row['dip_file']}}" button type="button" class="btn btn-primary">Buka</button>
+                                <td>
+                                   
+
+                                    <a href="/asset/dip/{{$row['dip_file']}}" button type="button" class="btn btn-primary float-left mr-1">Buka</a>
+
+                                    <form action="/hapus_dip" method="get"
+                                        id="hapupjt{{ $row['dip_id'] }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $row['dip_id'] }}">
+                                        <button type="button" class="btn btn-danger" onclick="buttonHapuspjt({{ $row['dip_id'] }})"> Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
 

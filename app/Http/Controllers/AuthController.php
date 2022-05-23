@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\logadmin;
 use App\Models\pabrik;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -97,8 +98,16 @@ class AuthController extends Controller
         //     Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
         //     return redirect('showregister');
         // }
-
+        
         if ($simpan) {
+            $log = [
+                'log_isi' => session()->get('pabrik').' <b> Menambah '. $request->namadepan . ' ' .  $request->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',
+                'log_pabrik' => session()->get('pabrik'), 
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            logadmin::insert($log);
+
             return redirect('/karyawan')->with('success', 'Data Karyawan Berhasil Disimpan');
         } else {
             return redirect('/karyawan')->with('error', 'Data Karyawan Gagal Disimpan');

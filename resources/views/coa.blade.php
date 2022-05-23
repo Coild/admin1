@@ -86,8 +86,16 @@
                             <tr>
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$row['coa_nama']}}</td>
-                                <td><a href="/hapus_coa/{{$row['coa_id']}}" type="button" class="btn btn-danger" onclick="return confirm('Hapus {{$nama}}? ')">Hapus</a>
-                                    <a href="/asset/coa/{{$row['coa_file']}}" button type="button" class="btn btn-primary">Buka</button>
+                                <td>
+                                    <a href="/asset/coa/{{$row['coa_file']}}" button type="button" class="btn btn-primary float-left mr-1">Buka</button>
+                                    
+                                        <form action="/hapus_coa" method="get"
+                                                id="hapupjt{{ $row['coa_id'] }}">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $row['coa_id'] }}">
+                                                <button type="button" class="btn btn-danger" onclick="buttonHapuspjt({{ $row['coa_id'] }})"> Hapus</button>
+                                            </form>
+                                            
                                 </td>
                             </tr>
         

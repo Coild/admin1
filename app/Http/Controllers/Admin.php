@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
@@ -46,14 +47,22 @@ class Admin extends Controller
         return view('/coa', ['list_coa' => $data]);
     }
 
-    public function hapus_coa($id)
+    public function hapus_coa(Request $req)
     {
-        $data = coa::all()->where('coa_id', $id);
+        $id = $req->id;
+        $data = coa::all()->where('coa_id', $id)->first();
         // dd($data);
-        unlink("asset/coa/" . $data[0]['coa_file']);
+        unlink("asset/coa/" . $data['coa_file']);
         $post = coa::all()->where('coa_id', $id)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menghapus laporan COA',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
-        return redirect('/coa');
+        return redirect('/coa')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_coa(Request $req)
@@ -71,7 +80,17 @@ class Admin extends Controller
         ];
 
         coa::insert($hasil);
+<<<<<<< HEAD
 
+=======
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan COA',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+>>>>>>> 95b5534fb115d113fd348453f50a66dbf962ecfd
 
         return redirect('/coa');
     }
@@ -84,14 +103,22 @@ class Admin extends Controller
         return view('/dip', ['list_dip' => $data]);
     }
 
-    public function hapus_dip($id)
+    public function hapus_dip(Request $req)
     {
-        $data = dip::all()->where('dip_id', $id);
+        $id = $req->id;
+        $data = dip::all()->where('dip_id', $id)->first();
         // dd($data);
-        unlink("asset/dip/" . $data[0]['dip_file']);
+        unlink("asset/dip/" . $data['dip_file']);
         $post = dip::all()->where('dip_id', $id)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menghapus laporan DIP',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
-        return redirect('/dip');
+        return redirect('/dip')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_dip(Request $req)
@@ -103,12 +130,19 @@ class Admin extends Controller
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
-            'dip_file' => $nama,
+            'dip_file' => $filename,
             'dip_nama' => $req['nama'],
             'user_id' => $id,
         ];
 
         dip::insert($hasil);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan DIP',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/dip');
     }
@@ -121,14 +155,22 @@ class Admin extends Controller
         return view('/perizinan', ['list_perizinan' => $data]);
     }
 
-    public function hapus_perizinan($id)
+    public function hapus_perizinan(Request $req)
     {
-        $data = perizinan::all()->where('perizinan_id', $id);
+        $id = $req->id;
+        $data = perizinan::all()->where('perizinan_id', $id)->first();
         // dd($data);
-        unlink("asset/perizinan/" . $data[0]['perizinan_file']);
+        unlink("asset/perizinan/" . $data['perizinan_file']);
         $post = perizinan::all()->where('perizinan_id', $id)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Mengahapus laporan perizinan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
-        return redirect('/perizinan');
+        return redirect('/perizinan')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_perizinan(Request $req)
@@ -140,12 +182,20 @@ class Admin extends Controller
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
-            'perizinan_file' => $nama,
+            'perizinan_file' => $filename,
             'perizinan_nama' => $req['nama'],
             'user_id' => $id,
         ];
 
         perizinan::insert($hasil);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan perizinan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/perizinan');
     }
@@ -164,6 +214,13 @@ class Admin extends Controller
         // dd($data);
         unlink("asset/dip/" . $data[0]['jabatan_file']);
         $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menghapus laporan jabatan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/jabatan');
     }
@@ -183,6 +240,13 @@ class Admin extends Controller
         ];
 
         jabatan::insert($hasil);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan jabatan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/jabatan');
     }
@@ -201,6 +265,13 @@ class Admin extends Controller
         // dd($data);
         unlink("asset/pobpabrik/" . $data[0]['pobpabrik_file']);
         $post = pobpabrik::all()->where('pobpabrik_id', $id)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menghapus laporan protap pabrik',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/pobpabrik');
     }
@@ -220,6 +291,13 @@ class Admin extends Controller
         ];
 
         pobpabrik::insert($hasil);
+        $log = [
+            'log_isi' => Auth::user()->namadepan.' Menambah laporan protap pabrik',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/pobpabrik');
     }
@@ -4563,9 +4641,11 @@ class Admin extends Controller
         return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
     }
 
-    public function log()
-    {
-        return view('layout.log');
+    public function log () {
+        // Posts::orderBy('created_at', 'desc')->get();
+        // return view('layout.log', ['dataLog' => DB::select('select * from logs')]);
+        return view('layout.log', ['dataLog' => Log::orderBy('log_id', 'desc')->get()]);
+        
     }
 
     public function notif()

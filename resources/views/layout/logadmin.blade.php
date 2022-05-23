@@ -22,7 +22,7 @@
                             <tr>
                                 <th >No</th>
                                 <th >Waktu</th>
-                                <th >User</th>
+                                <th >Pabrik</th>
                                 <th >Aktifitas</th>
                             </tr>
                         </thead>
@@ -31,8 +31,8 @@
                             <tr>
                                 <td class="p-2" > {{ $loop->iteration}}</td>
                                 <td > {{ $row->log_waktu}}</td>
-                                <td >{{ $row->log_user}}</td>
-                                <td >{{ $row->log_isi}}</td>
+                                <td > {{ $row->log_pabrik}}</td>
+                                <td >{!! $row->log_isi !!}</td>
                             </tr>
                             @endforeach
                         </tbody>

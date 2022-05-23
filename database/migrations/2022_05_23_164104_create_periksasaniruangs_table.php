@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogadminsTable extends Migration
+class CreatePeriksasaniruangsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateLogadminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logadmins', function (Blueprint $table) {
-            $table->id("logadmin_id");
-            $table->integer('id_pabrik')->unsigned();
-            $table->string("log_pabrik", 255);
-            $table->string("log_isi", 255);
+        Schema::create('periksasaniruangs', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateLogadminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logadmins');
+        Schema::dropIfExists('periksasaniruangs');
     }
 }
