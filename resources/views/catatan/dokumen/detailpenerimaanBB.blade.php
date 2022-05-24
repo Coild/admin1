@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-<title>Pengolahan Batches</title>
+<title>Detil Penerimaan Pengolohan Bahan Baku</title>
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
                                 Tambah Barang Masuk
                             </button>
                         @endif
-                    
+
                     @endif
 
                     <!-- Modal barang masuk-->
@@ -65,7 +65,13 @@
                                                 Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 1" placeholder="Nomor PROTAP" name='pob_no'>
+                                                {{-- <input type="text" class="form-control 1" placeholder="Nomor PROTAP" name='pob_no'> --}}
+                                                <select name="pob_no" class="form-control 1" >
+                                                    @foreach ($protap_bahan as $bahan))
+                                                    <option value="{{$bahan['protap_id']}}">{{$bahan['protap_nama']}}</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
@@ -149,7 +155,7 @@
                                     @else
                                         <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
-                                    
+
                                 </td>
                                 @endif
                             </tr>
@@ -180,7 +186,7 @@
                                 Tambah Barang Keluar
                             </button>
                         @endif
-                    
+
                     @endif
 
                     <!-- Modal bahan keluar -->
@@ -279,7 +285,7 @@
                                     @else
                                         <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
-                                    
+
                                 </td>
                                 @endif
                             </tr>
@@ -306,13 +312,13 @@
                         @if ($status == 0)
                             <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
                                 Produk Jadi Masuk
-                            </button>                        
+                            </button>
                         @else
                             <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
                                 Produk Jadi Masuk
                         </button>
                         @endif
-                    
+
                     @endif
 
                     <!-- Modal Produk masuk -->
@@ -347,7 +353,13 @@
                                                 Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 3" placeholder="Nomor PROTAP" name='pob_no'>
+                                                {{-- <input type="text" class="form-control 3" placeholder="Nomor PROTAP" name='pob_no'> --}}
+                                                <select name="pob_no" class="form-control 1" >
+                                                    @foreach ($protap_produk as $produk))
+                                                    <option value="{{$produk['protap_id']}}">{{$produk['protap_nama']}}</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal3' class="form-control 3" placeholder="" />
@@ -433,7 +445,7 @@
                                     @else
                                         <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
-                                    
+
                                 </td>
                                 @endif
                             </tr>
@@ -457,13 +469,13 @@
                         @if ($status == 0)
                             <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
                             Tambah Produk Keluar
-                        </button>            
+                        </button>
                         @else
                             <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
                             Tambah Produk Keluar
                         </button>
                         @endif
-                    
+
                     @endif
 
                     <!-- Modal produk keluar-->
@@ -593,7 +605,7 @@
                             Tambah Kemasan Masuk
                         </button>
                         @endif
-                    
+
                     @endif
 
                     <!-- Modal kemasan masuk -->
@@ -628,7 +640,13 @@
                                                 Dengan PROTAP
                                                 No</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 5" placeholder="Nomor PROTAP" name='pob_no'>
+                                                {{-- <input type="text" class="form-control 5" placeholder="Nomor PROTAP" name='pob_no'> --}}
+                                                <select name="pob_no" class="form-control 1" >
+                                                    @foreach ($protap_kemasan as $kemasan)
+                                                    <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal5' class="form-control 5" placeholder="" />
@@ -712,7 +730,7 @@
                                     @else
                                         <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
-                                    
+
 
                                 </td>
                                 @endif
@@ -743,7 +761,7 @@
                             Kemasan Keluar
                         </button>
                         @endif
-                        
+
                     @endif
 
                     <!-- Modal Kemasan Keluar-->

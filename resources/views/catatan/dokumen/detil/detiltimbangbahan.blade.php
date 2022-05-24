@@ -27,7 +27,7 @@
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="myModalLabel">
-                                        Entry Periksa Personil
+                                        Data Penimbangan Bahan
                                     </h4>
                                 </div>
 

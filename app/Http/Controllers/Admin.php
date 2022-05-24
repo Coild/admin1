@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 
 $a = 0;
 $b = 0;
@@ -306,6 +306,9 @@ class Admin extends Controller
         $induk = $req['induk'];
         $jenis = $req['jenis'];
         $nama = $req['nama'];
+        $protap_bahan = protap::all()->where('protap_jenis',1)->where('protap_detil',1);
+        $protap_produk = protap::all()->where('protap_jenis',1)->where('protap_detil',2);
+        $protap_kemasan = protap::all()->where('protap_jenis',1)->where('protap_detil',3);
         $status = $req['status_induk'];
         session(['induk' => $induk]);
         session(['jenis' => $jenis]);
@@ -322,8 +325,8 @@ class Admin extends Controller
         }
         return view('catatan.dokumen.detailpenerimaanBB', [
             'jenis' => $jenis, 'induk' => $induk, 'nama' => $nama, 'status' => $status,
-            'data1' => $data1,
-            'data2' => $data2
+            'data1' => $data1, 'data2' => $data2, 'protap_bahan' => $protap_bahan,
+            'protap_produk' => $protap_produk, 'protap_kemasan' => $protap_kemasan,
         ]);
     }
 
@@ -988,7 +991,8 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik); //;
+            $data = pengolahanbatch::join('protaps', 'pengolahanbatchs.pob', '=', 'protaps.protap_id')
+            ->get(['pengolahanbatchs.*', 'protaps.protap_nama']);; //;
             // dd($pabrik);
         } else {
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);
@@ -996,8 +1000,10 @@ class Admin extends Controller
         }
         $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
         $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
+        $protap = protap::all()->where('user_id',Auth::user()->pabrik)->where('protap_jenis', 8);
+        dd(Auth::user()->pabrik);
 
-        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
+        return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3, 'protap' => $protap]);
     }
 
 
@@ -2380,11 +2386,14 @@ class Admin extends Controller
     public function tampil_pengorasianalat()
     {
         $pabrik = Auth::user()->pabrik;
+        $protap = protap::all('protap_nama','protap_id')->where('protap_jenis',5);
         if (Auth::user()->level == 2) {
-            $data = pengoprasianalat::all()->where('pabrik', $pabrik);
+            $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
+            ->get(['pengoprasianalats.*', 'protaps.protap_nama']);//all()->where('pabrik', $pabrik);
         } else
-            $data = pengoprasianalat::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.pengoprasianalat', ['data' => $data]);
+        $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
+        ->get(['pengoprasianalats.*', 'protaps.protap_nama']);
+        return view('catatan.dokumen.pengoprasianalat', compact('data', 'protap'));
     }
     public function tampil_detilalat(Request $req)
     {

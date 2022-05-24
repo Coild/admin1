@@ -25,7 +25,7 @@
                     <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">
                             <?php
-                            
+
                             $jum = \App\Models\notif::all()->where('id_pabrik',\Illuminate\Support\Facades\Auth::user()->pabrik)
                             ->where('notif_3', 1)->count();
                             $notif = \App\Models\notif::where('id_pabrik',\Illuminate\Support\Facades\Auth::user()->pabrik)
@@ -39,7 +39,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         @foreach($notif as $isi)
                         <li>
-                            <a class="dropdown-item border-radius-md" href="{{$isi['notif_link']}}">
+                            <a class="dropdown-item border-radius-md" href="{{route($isi['notif_link'])}}">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -50,7 +50,7 @@
                                             <i class="fa fa-clock me-1"></i>
                                             {{\Carbon\Carbon::parse(date("Y-m-d H:i:s", strtotime($isi['updated_at'])))->locale('id')->diffForHumans();
                                                 }}
-                                                
+
                                         </p>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         @foreach($notif as $isi)
                         <li>
-                            <a class="dropdown-item border-radius-md" href="{{$isi['notif_link']}}">
+                            <a class="dropdown-item border-radius-md" href="{{route($isi['notif_link'])}}">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -103,7 +103,7 @@
                                             <i class="fa fa-clock me-1"></i>
                                             {{\Carbon\Carbon::parse(date("Y-m-d H:i:s", strtotime($isi['notif_waktu'])))->locale('id')->diffForHumans();
                                                 }}
-                                                
+
                                         </p>
                                     </div>
                                 </div>

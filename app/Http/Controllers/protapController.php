@@ -21,7 +21,7 @@ class protapController extends Controller
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
          ->where('protap_jenis', $jenis)->sortByDesc('protap_id');
 
-     
+
       if ($jenis == 1) {
          $judul = ["Penerimaan Penyerahan dan
             Penyimapanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
@@ -105,7 +105,7 @@ class protapController extends Controller
    }
 
 
-   
+
    public function hapus_protap($id, $jenis)
    {
       //  echo  $id;
@@ -114,7 +114,7 @@ class protapController extends Controller
       $data = protap::all()->where('protap_id', $id)->each->delete();
       //  dd($data);
       $log = [
-         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
          'log_waktu' => date('Y-m-d H:i:s'),
          'id_pabrik' => Auth::user()->pabrik
       ];
@@ -206,7 +206,7 @@ class protapController extends Controller
       $file->move($tujuan_upload, $nama);
       $jenis = $req['jenis'];
       $detil = $req['detil'];
-      $id = Auth::user()->id;
+      $id = Auth::user()->pabrik;
       $pabrik = Auth::user()->pabrik;
       $hasil = [
          'protap_file' => $nama,
@@ -225,7 +225,7 @@ class protapController extends Controller
 
 
       $log = [
-         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+         'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
          'log_waktu' => date('Y-m-d H:i:s'),
          'id_pabrik' => Auth::user()->pabrik
       ];

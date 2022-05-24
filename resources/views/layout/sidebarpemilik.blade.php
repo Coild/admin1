@@ -8,6 +8,11 @@
                     DASHBOARD
                 </a>
 
+                <a class="nav-link" href="{{ route('laporan') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Laporan
+                </a>
+
                 <a    class="nav-link collapsed" href="karyawan">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     KELOLA USER
