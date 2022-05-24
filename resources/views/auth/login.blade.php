@@ -14,7 +14,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-center">
     <div class="container-fluid">
         <div class="row d-flex align-self-center">
             <div class="col-lg-8 col-md-8 d-none d-md-block image-container"></div>
