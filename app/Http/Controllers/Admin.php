@@ -56,7 +56,7 @@ class Admin extends Controller
         $post = coa::all()->where('coa_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menghapus laporan COA',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -80,17 +80,13 @@ class Admin extends Controller
         ];
 
         coa::insert($hasil);
-<<<<<<< HEAD
-
-=======
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah laporan COA',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
->>>>>>> 95b5534fb115d113fd348453f50a66dbf962ecfd
 
         return redirect('/coa');
     }
@@ -112,7 +108,7 @@ class Admin extends Controller
         $post = dip::all()->where('dip_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menghapus laporan DIP',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -138,7 +134,7 @@ class Admin extends Controller
         dip::insert($hasil);
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah laporan DIP',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -164,7 +160,7 @@ class Admin extends Controller
         $post = perizinan::all()->where('perizinan_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan.' Mengahapus laporan perizinan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -191,7 +187,7 @@ class Admin extends Controller
 
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah laporan perizinan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -216,7 +212,7 @@ class Admin extends Controller
         $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menghapus laporan jabatan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -242,7 +238,7 @@ class Admin extends Controller
         jabatan::insert($hasil);
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah laporan jabatan',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -267,7 +263,7 @@ class Admin extends Controller
         $post = pobpabrik::all()->where('pobpabrik_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menghapus laporan protap pabrik',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -293,7 +289,7 @@ class Admin extends Controller
         pobpabrik::insert($hasil);
         $log = [
             'log_isi' => Auth::user()->namadepan.' Menambah laporan protap pabrik',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -2359,7 +2355,7 @@ class Admin extends Controller
         $nomer = detilalat::insertGetId($hasil);
         // $log = [
         //     'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
-        //     'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+        //     'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
         //     'log_waktu' => date('Y-m-d H:i:s'),
         //     'id_pabrik' => Auth::user()->pabrik
         // ];
@@ -4645,7 +4641,7 @@ class Admin extends Controller
         // Posts::orderBy('created_at', 'desc')->get();
         // return view('layout.log', ['dataLog' => DB::select('select * from logs')]);
         return view('layout.log', ['dataLog' => Log::orderBy('log_id', 'desc')->get()]);
-        
+
     }
 
     public function notif()
