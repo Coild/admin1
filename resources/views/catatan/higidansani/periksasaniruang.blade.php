@@ -47,6 +47,14 @@
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <div class="card-body">
                                                     <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nomer
+                                                            Prosedur</label>
+                                                        <div class="col-sm">
+                                                            <input type="text" name="nomer_prosedur" class="form-control" id="nomer_prosedur"
+                                                                placeholder="Nomer prosedur" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Ruangan</label>
                                                         <div class="col-sm">
@@ -70,12 +78,29 @@
                     <!--  -->
                 </div>
 
-                <table class="table" id="tabel1" >
+                <table class="table" style="text-align: center;" id="tabel1" >
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Ruangan</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" rowspan="3">No</th>
+                            <th scope="col" rowspan="3" >Nama Ruangan</th>
+                            <th scope="col" colspan="8">Bagian yang dibersihkan</th>
+                            <th scope="col" rowspan="3">Action</th>
+                        </tr>
+                        <tr>                            
+                            <th scope="col" colspan="2">Lantai</th>    
+                            <th scope="col" colspan="2">Meja</th>    
+                            <th scope="col" colspan="2">Jendela</th>    
+                            <th scope="col" colspan="2">Langit-langit</th>    
+                        </tr>
+                        <tr>
+                            <th scope="col">Tgl</th>
+                            <th scope="col">Jam</th>
+                            <th scope="col">Tgl</th>
+                            <th scope="col">Jam</th>
+                            <th scope="col">Tgl</th>
+                            <th scope="col">Jam</th>
+                            <th scope="col">Tgl</th>
+                            <th scope="col">Jam</th>    
                         </tr>
                     </thead>
                     <tbody>
@@ -85,6 +110,14 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row['nama_ruangan'] }}</td>
+                                <td scope="col">Tgl</td>
+                                <td scope="col">Jam</td>
+                                <td scope="col">Tgl</td>
+                                <td scope="col">Jam</td>
+                                <td scope="col">Tgl</td>
+                                <td scope="col">Jam</td>
+                                <td scope="col">Tgl</td>
+                                <td scope="col">Jam</td>
                                 <td>
                                     <form method="post" action="detilruangan" class="float-left mr-2">
                                         @csrf

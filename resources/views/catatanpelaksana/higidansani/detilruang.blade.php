@@ -157,56 +157,44 @@
 
                     </div>
 
-                    <table class="table mt-5" id="tabel1">
+                    <table class="table mt-5" style="text-align: center;" id="tabel2">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col">Item Yang Dibersihkan</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" rowspan="3">No</th>
+                                <th scope="col" rowspan="3" >Nama Ruangan</th>
+                                <th scope="col" colspan="8">Bagian yang dibersihkan</th>
+                                <th scope="col" rowspan="3">Pelaksana</th>
+                                <th scope="col" rowspan="3">Diperiksa oleh</th>
+                                <th scope="col" rowspan="3">Keterangan</th>
+                                <th scope="col" rowspan="3">Action</th>
+                            </tr>
+                            <tr>                            
+                                <th scope="col" colspan="2">Lantai</th>    
+                                <th scope="col" colspan="2">Meja</th>    
+                                <th scope="col" colspan="2">Jendela</th>    
+                                <th scope="col" colspan="2">Langit-langit</th>    
+                            </tr>
+                            <tr>
+                                <th scope="col">Tgl</th>
+                                <th scope="col">Jam</th>
+                                <th scope="col">Tgl</th>
+                                <th scope="col">Jam</th>
+                                <th scope="col">Tgl</th>
+                                <th scope="col">Jam</th>
+                                <th scope="col">Tgl</th>
+                                <th scope="col">Jam</th>    
                             </tr>
                         </thead>
                         <tbody>
-
-                            {{-- @foreach ($data1 as $row)
-                                <?php $i++; ?>
+{{-- 
+                            @foreach ($data as $row)
                                 <tr>
-                                    <td>{{ $i }}</td>
-                                    <td>{{ $row['tanggal'] }}</td>
-                                    <td>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Lantai: {{ $row['lantai'] }}</li>
-                                            <li class="list-group-item">Dinding: {{ $row['dinding'] }}</li>
-                                            <li class="list-group-item">Meja: {{ $row['meja'] }}</li>
-                                            <li class="list-group-item">Jendela: {{ $row['jendela'] }}</li>
-                                            <li class="list-group-item">Plafon: {{ $row['langit'] }}</li>
-                                            <li class="list-group-item">Kontainer: {{ $row['kontainer'] }}</li>
-                                        </ul>
-                                    </td>
-                                    <td><?php if ($row['status'] == 0) {
-                                        echo 'Diajukan';
-                                    } elseif ($row['status'] == 1) {
-                                        echo 'Diterima';
-                                    } ?></td>
-                                    <td>
-                                        @if (Auth::user()->level == 3)
-                                            <button id="editdata" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#editalat"
-                                                data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])) }}"
-                                                data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])) }}"
-                                                data-oleh="{{ $row['oleh'] }}" data-ket="{{ $row['ket'] }}"
-                                                data-id="{{ $row['id_detilalat'] }}">Edit</button>
-                                        @elseif (Auth::user()->level == 2)
-                                            <form method="post" action="terimaperiksaruang">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{ $row['id_periksaruang'] }}" />
-                                                <button type="submit" class="btn btn-primary">Terima</button>
-                                            </form>
-                                        @endif
-                                    </td>
+                                    <td > {{$loop->iteration}} </td>
+                                    <td > nama ruanga </td>
+                                    <td > nama ruanga </td>
                                 </tr>
                             @endforeach --}}
+
                         </tbody>
                     </table>
                 </div>
