@@ -2479,7 +2479,6 @@ class Admin extends Controller
             'no_batch' => $req['nobatch'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'nama_pemasok' => $req['nama_pemasok'],
-            'tanggal' => $req['tanggal'],
             'warna' => $req['warna'],
             'bau' => $req['bau'],
             'ph' => $req['ph'],
@@ -4635,15 +4634,13 @@ class Admin extends Controller
     public function tampil_pengemasanbatch()
     {
         $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-        } else {
+
             $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', Auth::user()->pabrik);
             $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
-        }
+            $protap = protap::all()->where('user_id', Auth::user()->pabrik);
         // dd($produk);
-        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? []]);
+        return view('catatan.dokumen.pengemasanbatch', ['data' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? [], 'protap' => $protap]);
     }
 
     public function log () {
