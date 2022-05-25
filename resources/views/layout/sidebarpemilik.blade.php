@@ -3,17 +3,18 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                <a   class="nav-link collapsed"  href="/dashboard">
+                <a @if(Request::is('dashboard')) id='side_aktif' @endif  class="nav-link collapsed"  href="/dashboard">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DASHBOARD
                 </a>
 
-                <a class="nav-link" href="{{ route('laporan') }}">
+                <a @if(Request::is('laporan')) id='side_aktif' @endif
+                class="nav-link" href="{{ route('laporan') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Laporan
                 </a>
 
-                <a    class="nav-link collapsed" href="karyawan">
+                <a @if(Request::is('karyawan')) id='side_aktif' @endif class="nav-link collapsed" href="karyawan">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     KELOLA USER
                 </a>
@@ -23,12 +24,12 @@
                     DAFTAR APLIKAN
                 </a> --}}
 
-                <a    class="nav-link collapsed" href="bos_audit">
+                <a @if(Request::is('bos_audit')) id='side_aktif' @endif class="nav-link collapsed" href="bos_audit">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DAFTAR AUDIT
                 </a>
 
-                <a   class="nav-link collapsed" href="logAdmin">
+                <a @if(Request::is('logAdmin')) id='side_aktif' @endif  class="nav-link collapsed" href="logAdmin">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     LOG
                 </a>

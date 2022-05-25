@@ -143,7 +143,7 @@
                     <div class="container">
                         <form action="/reset_password" method="post" id='input1'>
                             @csrf
-                            <input type="hidden" name="id" id="isi_id">
+                            <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
                                 <input class="form1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
                                 <label for="inputEmail">Password Baru</label>
@@ -198,8 +198,9 @@
 <script>
     $(document).on('click', "#klik", function() {
         var id = $(this).data('id');
-        console.log("hai " + id);
-        $("#isi_id").val(id);
+        // console.log("hai " + id);
+        $("#isi_idpass").val(id);
+        console.log("in "+$("#isi_idpass").val());
     })
 
     $(document).on('click', "#detil", function() {

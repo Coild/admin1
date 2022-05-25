@@ -12,6 +12,9 @@ a.nav-link {
     color: white;
 }
 
+a#side_aktif {
+    color: #918e8c;
+}
 
 a.nav-link:focus, a.nav-link:hover {
     color: #918e8c;

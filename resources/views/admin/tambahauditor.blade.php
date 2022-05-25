@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>Tambah Pabrik</title>
+    <title>Tambah Auditor</title>
 @endsection
 
 @section('content')
