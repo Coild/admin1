@@ -20,18 +20,21 @@
                     <table class="table" id="tabel1">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Notifikasi</th>
                                 <th scope="col">Waktu</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                                <td scope="col">1</td>
-                                <td scope="col">Tim A Menambah Barang</td>
-                                <td scope="col"> 27-05-2021, 07:29:21</td>
-                                <td scope="col"><Button type="button" class="btn btn-primary">Lihat</Button></td>
-                        </tbody>
+                        @foreach($data as $row)    
+                        <tr>
+                                <td scope="col">{{$row['notif_isi'].' '.$row['notif_laporan']}}</td>
+                                <td scope="col">{{$row['notif_waktu']}}</td>
+                                <td scope="col"><Button type="button" class="btn btn-primary">
+                                    <a href="{{$row['notif_link']}}" class="btn btn-primary btn-sm"> Lihat </a></td>
+                            </tr>
+                            </tbody>
+                            @endforeach
                     </table>
 
                 </div>

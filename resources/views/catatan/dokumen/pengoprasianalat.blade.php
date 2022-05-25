@@ -52,7 +52,13 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
                                                         Sesuai PROTAP</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="pelaksanaan_pob" class="form-control 2" id="inputEmail3" placeholder="NO PROTAP" />
+                                                        {{-- <input type="text" name="pelaksanaan_pob" class="form-control 2" id="inputEmail3" placeholder="NO PROTAP" /> --}}
+                                                        <select name="pob_no" class="form-control 1" >
+                                                            @foreach ($protap as $kemasan))
+                                                            <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
+                                                            @endforeach
+
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -96,7 +102,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">No POB</th>
+                            <th scope="col">Nama PROTAP</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Nama Alat</th>
                             <th scope="col">Tipe/Merek</th>
@@ -111,7 +117,7 @@
                         $i++; ?>
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $row['pob'] }}</td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['tanggal'] }}</td>
                             <td>{{ $row['nama_alat'] }}</td>
                             <td>{{ $row['tipe_merek'] }}</td>
@@ -158,7 +164,7 @@
                                     <button id="editdata" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
                                 <?php } ?>
 
-                                
+
                                 @endif
                             </td>
                         </tr>

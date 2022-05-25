@@ -8,6 +8,12 @@
                     DASHBOARD
                 </a>
 
+                <a @if(Request::is('laporan')) id='side_aktif' @endif
+                class="nav-link" href="{{ route('laporan') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Laporan
+                </a>
+
                 <a @if(Request::is('karyawan')) id='side_aktif' @endif class="nav-link collapsed" href="karyawan">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     KELOLA USER

@@ -12,5 +12,6 @@ class notif extends Model
 
     protected $fillable = [
         'status',
+        'notif_3',
     ];
 }

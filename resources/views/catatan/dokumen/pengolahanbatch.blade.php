@@ -71,7 +71,7 @@
                                     <button class="btn btn-danger disabled" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
                                 <?php } ?>
 
-                                
+
                             </td>
                         </tr>
                         @endforeach
@@ -107,7 +107,13 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required />
+                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                    <select name="pob_no" class="form-control 1" >
+                                                        @foreach ($protap as $kemasan)
+                                                        <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
+                                                        @endforeach
+
+                                                    </select>
                                                     <div id="error-box" style="color: red"></div>
                                                 </div>
                                             </div>
