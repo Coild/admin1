@@ -111,6 +111,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+
+
     //pjt
     Route::group(['middleware' => 'pjt'], function () {
         Route::get('/pjt_pengolahanbatch', [pjt::class, 'tampil_pengolahanbatch'])->name('pjt_pengolahanbatch');
@@ -415,6 +417,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/gantipassword', [AuthController::class, 'tampil_ganti_password']);
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
+
+    Route::post('/detilruangan', [Admin::class, 'tampil_detilruangan']);
 
     // Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
 

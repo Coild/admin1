@@ -238,6 +238,7 @@
                 $("#isi_idpass").val(id);
                 // console.log(''+$("#isi_idpass").val());
             })
+            
             $(document).ready(function() {
                 $(document).on('click', "#detil", function() {
                     var nama = $(this).data('nama');

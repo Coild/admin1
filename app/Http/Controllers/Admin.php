@@ -298,6 +298,13 @@ class Admin extends Controller
         return redirect('/pobpabrik');
     }
 
+
+    public function tampil_detilruangan(Request $req)
+    {
+        // dd(' ini '.$req->id_ruangan);
+        return view('catatan.higidansani.detilruang');
+    }
+
     //catat bersh ruangan
 
     public function tampil_detilbb(Request $req)

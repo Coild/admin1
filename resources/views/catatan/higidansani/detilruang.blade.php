@@ -5,8 +5,8 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Detail Pemeriksaan Ruang {{ $data[0]['nama_ruangan'] }}</h1>
-            <ol class="breadcrumb mb-4">Pemeriksaan Ruang {{ $data[0]['nama_ruangan'] }}</li>
+            <h1>Detail Pemeriksaan Ruang</h1>
+            <ol class="breadcrumb mb-4">Pemeriksaan Ruang</li>
             </ol>
             <div class="row">
 
@@ -50,7 +50,7 @@
                                                         <input type="hidden" name="tanggal" id='ambil_tanggal'
                                                             class="form-control" placeholder="" />
                                                         <input type="hidden" name="id_ruangan" id='id_ruangan'
-                                                            class="form-control" value="{{ $data[0]['id_ruangan'] }}"
+                                                            class="form-control" value=""
                                                             placeholder="" />
                                                         <div class="form-group row">
                                                             <label for="inputEmail3"
@@ -58,7 +58,7 @@
                                                             <div class="col-sm">
                                                                 <input class="form-control" type='text' readonly
                                                                     placeholder="Ruangan" style="height: 35px;"
-                                                                    value="{{ $data[0]['nama_ruangan'] }}"
+                                                                    value="
                                                                     name="nama_ruangan" id="inlineFormCustomSelect">
                                                                 </input>
                                                             </div>
@@ -157,7 +157,7 @@
 
                     </div>
 
-                    <table class="table mt-5">
+                    <table class="table mt-5" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -168,8 +168,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
-                            @foreach ($data1 as $row)
+
+                            {{-- @foreach ($data1 as $row)
                                 <?php $i++; ?>
                                 <tr>
                                     <td>{{ $i }}</td>
@@ -206,7 +206,7 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>

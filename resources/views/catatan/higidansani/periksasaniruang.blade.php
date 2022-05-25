@@ -70,7 +70,7 @@
                     <!--  -->
                 </div>
 
-                <table class="table mt-1">
+                <table class="table" id="tabel1" >
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -83,13 +83,13 @@
                         @foreach ($data as $row)
                             <?php $i++; ?>
                             <tr>
-                                <td>{{ $i }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row['nama_ruangan'] }}</td>
                                 <td>
                                     <form method="post" action="detilruangan" class="float-left mr-2">
                                         @csrf
-                                        <input type="hidden" name="id_ruangan" value="{{ $row['id_ruangan'] }}" />
-                                        <button type="submit" class="btn btn-primary">Lihat</button>
+                        <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                        <button type="submit" class="btn btn-primary"> Lihat</button>
                                     </form>
                                     @if (Auth::user()->level == 2)
                                     @else
@@ -103,5 +103,6 @@
                 </table>
             </div>
         </div>
+
     </main>
 @endsection
