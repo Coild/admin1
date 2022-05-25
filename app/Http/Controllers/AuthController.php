@@ -86,7 +86,7 @@ class AuthController extends Controller
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->pabrik = $request->search;
-        $user->level = 2;
+        $user->level = 3;
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
 
@@ -159,9 +159,10 @@ class AuthController extends Controller
     {
 
             $id = $req['id'];
-            $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
+            // dd($id);
+            // $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
             // dd($ganti);
-            $user = User::all()->where("id", $ganti['id'])->first()->update([
+            $user = User::all()->where("id", $id)->first()->update([
                 'password' => Hash::make($req['baru']),
             ]);
         

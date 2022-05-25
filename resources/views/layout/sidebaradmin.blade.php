@@ -3,27 +3,27 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                <a   class="nav-link collapsed" href="/dashboard">
+                <a @if(Request::is('dashboard')) id='side_aktif' @endif class="nav-link collapsed" href="/dashboard">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     DASHBOARD
                 </a>
 
-                <a   class="nav-link collapsed" href="pabrik">
+                <a @if(Request::is('pabrik')) id='side_aktif' @endif  class="nav-link collapsed" href="pabrik">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     TAMBAH PABRIK
                 </a>
 
-                <a   class="nav-link collapsed" href="audit">
+                <a @if(Request::is('audit')) id='side_aktif' @endif class="nav-link collapsed" href="audit">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     TAMBAH AUDITOR
                 </a>
 
-                <a   class="nav-link collapsed" href="update-protap">
+                <a @if(Request::is('update-protap')) id='side_aktif' @endif  class="nav-link collapsed" href="update-protap">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     UPDATE PROTAP
                 </a>
 
-                <a   class="nav-link collapsed" href="logPemilik">
+                <a @if(Request::is('logPemilik')) id='side_aktif' @endif class="nav-link collapsed" href="logPemilik">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     LOG
                 </a>

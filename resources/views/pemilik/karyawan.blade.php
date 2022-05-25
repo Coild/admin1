@@ -235,7 +235,8 @@
             $(document).on('click', "#reset", function() {
                 var id = $(this).data('id');
                 console.log("hai " + id);
-                $("#isi_id").val(id);
+                $("#isi_idpass").val(id);
+                // console.log(''+$("#isi_idpass").val());
             })
             $(document).ready(function() {
                 $(document).on('click', "#detil", function() {
