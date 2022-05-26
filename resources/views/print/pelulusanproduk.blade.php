@@ -103,13 +103,12 @@
             </table>
             <center>
                 <br>
-                <h2>CATATAN PENGAMBILAN CONTOH BAHAN BAKU</h2>
+                <h2>CATATAN PELULUSAN PRODUK</h2>
 
                 <br>
-                @foreach($data as $row)
-                <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Bahan Baku: {{$row['nama_bahanbaku']}}</h4>
-                <h4 style="text-align: left; margin-bottom: -17px;">No Batch: {{$row['no_batch']}}</h4>
-                <h4 style="text-align: left; ">Tanggal Pengambilan Contoh: {{$row['tanggal_ambil']}}</h4>
+                <h4 style="text-align: left; margin-bottom: -17px; margin-top:-10px;">Nama Produk: {{$data['nama_bahan']}}</h4>
+                <h4 style="text-align: left; margin-bottom: -17px;">No Batch: {{$data['no_batch']}}</h4>
+                <h4 style="text-align: left; ">Tanggal Pelulusan: {{$data['tanggal']}}</h4>
                 <table class="table isi table-bordered">
                     <tr>
                         <td>No</td>
@@ -118,33 +117,48 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Nama bahan baku</td>
-                        <td>{{$row['nama_bahanbaku']}}</td>
+                        <td>Nama produk</td>
+                        <td>{{$data['nama_bahan']}}</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Nomor Batch</td>
-                        <td>{{$row['no_batch']}}</td>
+                        <td>{{$data['no_batch']}}</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Kedaluwarsa</td>
-                        <td>{{$row['kedaluwarsa']}}</td>
+                        <td>{{$data['kedaluwarsa']}}</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Jumlah bahan baku dalam master Box</td>
-                        <td>{{$row['jumlah_kemasanbox']}}</td>
+                        <td>Nama Distributor</td>
+                        <td>{{$data['nama_pemasok']}}</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Jumlah Produk Yang Diambil</td>
-                        <td>{{$row['jumlah_produk']}}</td>
+                        <td>Tanggal</td>
+                        <td>{{$data['tanggal']}}</td>
                     </tr>
                     <tr>
-                        <td>6</td>
-                        <td>Jenis Dan warna kemasan</td>
-                        <td>{{$row['jenis_warnakemasan']}}</td>
+                        <td>7</td>
+                        <td>Warna</td>
+                        <td>{{$data['warna']}}</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Bau</td>
+                        <td>{{$data['bau']}}</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Ph</td>
+                        <td>{{$data['ph']}}</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Berat Jenis</td>
+                        <td>{{$data['berat_jenis']}}</td>
                     </tr>
                     <tr>
                         <td>7</td>
@@ -163,10 +177,9 @@
                     </tr> -->
 
                 </table>
-                @endforeach
             </center>
         </section>
 </body>
 
 
-</html> 
+</html>

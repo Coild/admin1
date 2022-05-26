@@ -288,7 +288,7 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = pelulusanproduk::all()->where('id_penanganankeluhan', $id)->first();
+        $data = pelulusanproduk::all()->where('id_pelulusan', $id)->first();
         // dd($data);
         return view('print.pelulusanproduk', [
             'data' => $data, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
