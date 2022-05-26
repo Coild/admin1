@@ -305,7 +305,7 @@ class Admin extends Controller
         // dd(' ini '.$req->id_ruangan);
         $data = Detilruangan::all()->where('id_induk', $req->id_ruangan);
 
-        
+
         // $data = Detilruangan::all()->where('id', $req->id_ruangan);
 
         return view('catatanpelaksana.higidansani.detilruang', [
@@ -580,7 +580,7 @@ class Admin extends Controller
         //     'status' => 0,
         // ];
         // dd($data);
-        
+
         $isi = periksaruang::all()->where('id_periksaruang', $req->id_periksaruang)->first()->update([
             'status' => 1
         ]);
@@ -2528,7 +2528,7 @@ class Admin extends Controller
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
             'notif_laporan' => "pelulusan produk",
-            'notif_link' => 'pelulusann-produk',
+            'notif_link' => 'pelulusan-produk',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => $nomer,
