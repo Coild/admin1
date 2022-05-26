@@ -98,7 +98,6 @@
         </table>
         <center>
             <br>
-            @foreach($kop as $row)
             <table class="table table-bordered">
                 <tr>
                     <td rowspan="4">
@@ -127,15 +126,15 @@
                 <tr>
                     <td rowspan="3">
                         Disusun Oleh <br>
-                        {{$row['laporan_diajukan']}} <br>
+                        {{$kop['laporan_diajukan']}} <br>
                         Tanggal <br>
-                        {{$row['tgl_diajukan']}}
+                        {{$kop['tgl_diajukan']}}
                     </td>
                     <td rowspan="3" colspan="4">
                         Disetujui Oleh <br>
-                        {{$row['laporan_diterima']}} <br>
+                        {{$kop['laporan_diterima']}} <br>
                         Tanggal <br>
-                        {{$row['tgl_diajukan']}}
+                        {{$kop['tgl_diajukan']}}
                     </td>
                     <td rowspan="3">
                         Mengganti Nomor <br>
@@ -144,7 +143,6 @@
                     </td>
                 </tr>
             </table>
-            @endforeach
             <br>
             <h4 style="text-align: center;">PENDISTRIBUSIAN PRODUK</h4>
             <div class="form-group">

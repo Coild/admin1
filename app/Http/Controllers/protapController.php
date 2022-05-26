@@ -15,7 +15,7 @@ class protapController extends Controller
    {
       $id = Auth::user()->id;
       $ajukan = user::all()->where('pabrik', Auth::user()->pabrik)->
-      where('level',2)->first();
+      where('level',2);
       $pemilik = user::all()->where('pabrik', Auth::user()->pabrik)->
       where('level',1)->first();
       $data = protap::all()->where('protap_pabrik', auth::user()->pabrik)
@@ -99,7 +99,7 @@ class protapController extends Controller
       if ($jenis == 24) {
          $judul = ["Pemeriksaan/Pengujian Bahan", "Bahan Baku", "Bahan Kemas", "Produk Jadi"];
       }
-
+      // dd($ajukan);
       return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis,
        'judul'  => $judul, 'ajukan' => $ajukan, 'pemilik' => $pemilik]);
    }

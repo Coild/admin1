@@ -227,7 +227,7 @@ class PrintController extends Controller
     public function cetak_alatutama(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan')->first();
         $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -246,7 +246,7 @@ class PrintController extends Controller
     public function cetak_distribusiproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan')->first();
         $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
