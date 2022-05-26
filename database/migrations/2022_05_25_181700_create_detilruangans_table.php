@@ -15,9 +15,13 @@ class CreateDetilruangansTable extends Migration
     {
         Schema::create('detilruangans', function (Blueprint $table) {
             $table->id();
-            $table->integer('nomer_prosedur');
-            $table->dateTime('tanggal_prosedur');
-            $table->string('ruangan_prosedur');
+            $table->integer('id_induk');
+            $table->string('lantai', 5)->nullable();
+            $table->string('meja', 5)->nullable();
+            $table->string('jendela', 5)->nullable();
+            $table->string('langit', 5)->nullable();
+            $table->string('diperiksa_oleh')->nullable();
+            $table->string('keterangan')->nullable(); 
             $table->timestamps();
         });
     }

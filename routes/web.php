@@ -282,6 +282,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_penimbanganbahan', [Admin::class, 'tambah_penimbanganbahan'])->name('tambah_penimbanganbahan');
         Route::post('tambah_penimbanganprodukantara', [Admin::class, 'tambah_penimbanganprodukantara'])->name('tambah_penimbanganprodukantara');
         Route::post('tambah_ruangtimbang', [Admin::class, 'tambah_ruangtimbang'])->name('tambah_ruangtimbang');
+        Route::post('tambah_ruang', [Admin::class, 'tambah_ruang'])->name('tambah_ruang');
         Route::post('edit_penimbanganbahan', [Admin::class, 'edit_penimbanganbahan'])->name('edit_penimbanganbahan');
         Route::post('edit_penimbanganprodukantara', [Admin::class, 'edit_penimbanganprodukantara'])->name('edit_penimbanganprodukantara');
         Route::post('edit_ruangtimbang', [Admin::class, 'edit_ruangtimbang'])->name('edit_ruangtimbang');
@@ -420,7 +421,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/detilruangan', [Admin::class, 'tampil_detilruangan']);
 
-    // Route::post('/input_catatbersih', [Admin::class, 'tambah_catatbersih']);
+    Route::post('/terimaperiksaruang', [Admin::class, 'terimaperiksaruang']);
 
     // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
 

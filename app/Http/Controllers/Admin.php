@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, Detilruangan, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 
 $a = 0;
 $b = 0;
@@ -301,8 +301,16 @@ class Admin extends Controller
 
     public function tampil_detilruangan(Request $req)
     {
+        $pabrik = Auth::user()->pabrik;
         // dd(' ini '.$req->id_ruangan);
-        return view('catatan.higidansani.detilruang');
+        $data = Detilruangan::all()->where('id_induk', $req->id_ruangan);
+
+        
+        // $data = Detilruangan::all()->where('id', $req->id_ruangan);
+
+        return view('catatanpelaksana.higidansani.detilruang', [
+            'data' => $data
+        ]);
     }
 
     //catat bersh ruangan
@@ -551,6 +559,60 @@ class Admin extends Controller
         log::insert($log);
 
         return redirect()->route('penerimaanBB');
+    }
+
+    public function terimaperiksaruang(Request $req)
+    {
+        $id = Auth::user()->id;
+        // $cpid = $req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
+        // $data = [
+        //     'nama' => $req['nama'],
+        //     'jumlah' => $req['jumlah'],
+        //     'kode' => $req['kode'],
+        //     'ruang' => $req['ruang'],
+        //     'pabrik' => $pabrik,
+        //     'status' => 0,
+        // ];
+        // dd($data);
+        
+        $isi = periksaruang::all()->where('id_periksaruang', $req->id_periksaruang)->first()->update([
+            'status' => 1
+        ]);
+
+        // dd($isi);
+        Detilruangan::all()->where('id', $req->id_periksaruang)->first()->update([
+            'diperiksa_oleh' => $req['diperiksaoleh'],
+            'keterangan' => $req['keterangan']
+        ]);
+
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan . " menerima laporan ",
+            'notif_laporan' => "Periksa ruang",
+            'notif_link' => 'periksaruang',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => 0,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' menerima laporan periksa sani ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        return redirect()->route('periksasaniruang');
     }
 
     public function edit_terimabahan(Request $req)
@@ -1635,45 +1697,55 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         $data = periksaruang::all()->where('pabrik', $pabrik);
-        return view('catatan.higidansani.periksasaniruang', ['data' => $data]);
+        return view('catatanpelaksana.higidansani.periksasaniruang', ['data' => $data]);
     }
+
     public function tambah_periksaruang(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'tanggal' => $req['tanggal'],
-            'waktu' => $req['waktu'],
+            'tanggal_prosedur' => $req['tanggal'],
+            'nomer_prosedur' => $req['nomer_prosedur'],
             'nama_ruangan' => $req['nama_ruangan'],
-            'lantai' => $req['lantai'],
-            'dinding' => $req['dinding'],
-            'meja' => $req['meja'],
-            'jendela' => $req['jendela'],
-            'kontainer' => $req['kontainer'],
-            'langit' => $req['langit'],
-            'pabrik' => $pabrik,
-            'status' => 0,
             'user_id' => $id,
+            'pabrik' => $pabrik,
+            'status' => 0
         ];
 
         $nomer = periksaruang::insertGetId($hasil);
-
+        // dd($nomer);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
-            'laporan_nama' => 'periksa sanitasi ruangan',
-            'laporan_batch' => $req['no_batch'] ?? 0,
-            'laporan_nomor' => $nomer,
-            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
-            'laporan_diterima' => "belum",
-            'tgl_diajukan' => $tgl,
-            'tgl_diterima' => $tgl,
-            'pabrik_id'  =>  $pabrik,
-            "user_id" => $id,
+            'id_induk' => $nomer,
+            'lantai' => $req['lantai'],
+            'meja' => $req['meja'],
+            'jendela' => $req['jendela'],
+            'langit' => $req['langit'],
+            'keterangan' => '',
+            'diperiksa_oleh' => ''
         ];
 
-        laporan::insert($laporan);
+        Detilruangan::insert($laporan);
+
+        // date_default_timezone_set("Asia/Jakarta");
+        // $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        // $tgl = $tgl->format('Y-m-d');
+
+        // $inilaporan = [
+        //     'laporan_nama' => 'periksa sanitasi ruangan',
+        //     'laporan_batch' => $req['no_batch'],
+        //     'laporan_nomor' => $nomer,
+        //     'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
+        //     'laporan_diterima' => "belum",
+        //     'tgl_diajukan' => $tgl,
+        //     'tgl_diterima' => $tgl,
+        //     'pabrik_id'  =>  $pabrik,
+        //     "user_id" => $id,
+        // ];
+        // laporan::insert($inilaporan);
 
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
@@ -3004,6 +3076,64 @@ class Admin extends Controller
 
         return redirect('/penimbangan#pills-contact');
     }
+
+    public function tambah_ruang(Request $req)
+    {
+        // dd($req);
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'nomer_prosedur' => $req['tanggal'],
+            'tanggal_prosedur' => $req['nama'],
+            'nama_ruangan' => $req['jumlah_bahanbaku'],
+            'hasil_timbang' => $req['hasil_penimbangan'],
+            'pabrik' => $pabrik,
+            'status' => 0,
+            'user_id' => $id,
+        ];
+
+        $nomer = periksaruang::insert($hasil);
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $laporan = [
+            'laporan_nama' => 'ruang timbang',
+            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'] ?? '-',
+            'laporan_nomor' => $nomer,
+            'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
+            'laporan_diterima' => "belum",
+            'tgl_diajukan' => $tgl,
+            'tgl_diterima' => $tgl,
+            'pabrik_id'  =>  $pabrik,
+            "user_id" => $id,
+        ];
+
+        laporan::insert($laporan);
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan . " menambah catatan periksa ruangan",
+            'notif_laporan' => "ruang penimbangan",
+            'notif_link' => 'penimbangan',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => $nomer,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah catatan periksa ruangan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+        return redirect('/penimbangan#pills-contact');
+    }
+
     public function edit_penimbanganbahan(Request $req)
     {
         $id = $req['id'];

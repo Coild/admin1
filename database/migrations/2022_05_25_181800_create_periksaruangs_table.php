@@ -15,17 +15,11 @@ class CreatePeriksaruangsTable extends Migration
     {
         Schema::create('periksaruangs', function (Blueprint $table) {
             $table->id('id_periksaruang');
-            $table->date('tanggal')->nullable();
-            $table->string('waktu', 100);
-            $table->string('nama_ruangan', 200);
-            $table->string('lantai', 5)->nullable();
-            $table->string('dinding', 5)->nullable();
-            $table->string('meja', 5)->nullable();
-            $table->string('jendela', 5)->nullable();
-            $table->string('kontainer', 5)->nullable();
-            $table->string('langit', 5)->nullable();
-            $table->integer('pabrik', false);
-            $table->tinyInteger('status', 0)->unsigned();
+            $table->string('nomer_prosedur');
+            $table->dateTime('tanggal_prosedur')->nullable();
+            $table->string('nama_ruangan');
+            $table->integer('pabrik');
+            $table->integer('status')->nullable();
             $table->integer('user_id', 0)->unsigned();
             $table->timestamps();
         });

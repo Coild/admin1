@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>COA</title>
+    <title>Periksa Ruang</title>
 @endsection
 
 @section('content')
@@ -44,7 +44,7 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="tanggal" id='ambil_tanggalx' class="form-control"
                                             placeholder="" />
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu Pembersihan</label>
+                                        {{-- <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu Pembersihan</label>
                                         <div class="col-sm-3">
                                             <select style="height: 35px;" class="form-control" name="waktu"
                                                 id="inlineFormCustomSelect">
@@ -52,14 +52,15 @@
                                                 <option value="Pagi">Pagi</option>
                                                 <option value="Sore">Sore</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <table class="table">
                                         <thead>
 
                                             <tr>
                                                 <th scope="col" style="width:5%" class="text-center">No</th>
-                                                <th scope="col" style="width:47%">Nama Ruangan</th>
+                                                <th scope="col" >Nama Ruangan</th>
+                                                <th scope="col" >No Prosedur</th>
                                                 <th scope="col" style="width:47%;padding-left:5%;">Item yang
                                                     Dibersihkan
                                                 </th>
@@ -74,14 +75,23 @@
                                                         <input class="form-control" type='text' placeholder="Ruangan"
                                                             style="height: 35px;" name="nama_ruangan"
                                                             id="inlineFormCustomSelect">
-                                                        </input>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td scope="col" class="text-center">
+                                                <div class="form-group row">
+                                                    <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu</label> -->
+                                                    <div class="col-sm">
+                                                        <input class="form-control" type='text' placeholder="No. Prosedur"
+                                                            style="height: 35px;" name="nomer_prosedur"
+                                                            id="inlineFormCustomSelect">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td scope="col">
 
                                                 <div style="padding-left:10%;" class="form-group row">
-                                                    <div class="col-sm-6">Lantai</div>
+                                                    <div class="col-sm-6">Lantai/Dinding</div>
                                                     <div class="col-sm-6">
                                                         <div class="custom-control custom-switch">
                                                             <input type="hidden" name='lantai' value="Belum">
@@ -93,7 +103,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div style="padding-left:10%;" class="form-group row">
+                                                {{-- <div style="padding-left:10%;" class="form-group row">
                                                     <div class="col-sm-6">Dinding</div>
                                                     <div class="col-sm-6">
                                                         <div class="custom-control custom-switch">
@@ -105,7 +115,7 @@
                                                                 for="customSwitch2">Sudah</label>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div style="padding-left:10%;" class="form-group row">
                                                     <div class="col-sm-6">Meja</div>
                                                     <div class="col-sm-5">
@@ -132,7 +142,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="padding-left:10%;" class="form-group row">
-                                                    <div class="col-sm-6">Langit-langit/ Plafon</div>
+                                                    <div class="col-sm-6">Langit-langit</div>
                                                     <div class="col-sm-6">
                                                         <div class="custom-control custom-switch">
                                                             <input type="hidden" name='langit' value="Belum">
@@ -144,19 +154,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div style="padding-left:10%;" class="form-group row">
-                                                    <div class="col-sm-6">Kontainer</div>
-                                                    <div class="col-sm-6">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="hidden" name='kontainer' value="Belum">
-                                                            <input type="checkbox" name="kontainer"
-                                                                class="custom-control-input" value="Sudah"
-                                                                id="customSwitch6">
-                                                            <label class="custom-control-label"
-                                                                for="customSwitch6">Sudah</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
 
                                             </td>
@@ -165,19 +162,17 @@
                                     </table>
                                     <div class="col-lg-12 d-flex justify-content-center">
                                         <a class="btn btn-primary" onclick="salert()" href="#"
-                                            style="float:left;  margin-left:25px" role="button">Tambah Catatan
-                                            Kebersihan Ruangan</a>
+                                            style="float:left;  margin-left:25px" role="button">Tambah Catatan Kebersihan Ruangan</a>
                             </form>
                         </div>
                     </div>
-                    <table class="table" style="margin-top: 50px">
+                    <table class="table" style="margin-top: 50px" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">No. Prosedur</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Waktu</th>
                                 <th scope="col">Nama Ruangan</th>
-                                <th scope="col">Item Yang Dibersihkan</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -187,11 +182,11 @@
                             @foreach ($data as $row)
                                 <?php $i++; ?>
                                 <tr>
-                                    <td>{{ $i }}</td>
-                                    <td>{{ $row['tanggal'] }}</td>
-                                    <td>{{ $row['waktu'] }}</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $row['nomer_prosedur'] }}</td>
+                                    <td>{{ $row['tanggal_prosedur'] }}</td>
                                     <td>{{ $row['nama_ruangan'] }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">Lantai: {{ $row['lantai'] }}</li>
                                             <li class="list-group-item">Dinding: {{ $row['dinding'] }}</li>
@@ -200,18 +195,51 @@
                                             <li class="list-group-item">Plafon: {{ $row['langit'] }}</li>
                                             <li class="list-group-item">Kontainer: {{ $row['kontainer'] }}</li>
                                         </ul>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @if ($row['status'] == 0)
                                             Diajukan
+                                        @else
+                                            Diterima
                                         @endif
                                     </td>
                                     <td>
-                                        <form method="post" action="detil_batch">
-                                            <input type="hidden" name="_token" value="" />
-                                            <input type="hidden" name="nobatch" value="" />
-                                            <button type="submit" class="btn btn-primary">Buka</button>
-                                        </form>
+                                        
+                                        
+                                        @if (Auth::user()->level == 2)
+                                            @if ($row['status'] == 0)
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="submit" class="btn btn-primary"> Lihat</button>
+                                                </form>
+                                            @else
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="submit" class="btn btn-danger disabled"> Terima</button>
+                                                </form>
+                                            @endif
+                                        @else
+                                            @if ($row['status'] == 0)
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="submit" class="btn btn-success"> Lihat</button>
+                                                </form>
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="button" class="btn btn-primary" onclick="buttonModalTerima({{ $row['id_periksaruang'] }})"> Terima</button>
+                                                </form>
+                                            @else
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"  value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="submit" class="btn btn-danger disabled"> Terima</button>
+                                                </form>
+                                            @endif
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -222,5 +250,56 @@
             </div>
         </div>
 
+
+        <!-- Modal -->
+<div class="modal fade" id="ModalTambahKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Terima Laporan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="card-body">
+                <form action="/terimaperiksaruang" method="post" id='formModalTambahKaryawan'>
+                    @csrf
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <input type="hidden" id="id_periksaruangmodal" name="id_periksaruang">
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="diperiksaoleh" id="username" type="text"
+                            placeholder="Diperiksa oleh" required/>
+                        <label for="inputEmail">Diperiksa oleh</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="keterangan" id="username" type="text"
+                            placeholder="keterangan" required/>
+                        <label for="inputEmail">Keterangan</label>
+                    </div>
+                
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary">Terima</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+        function buttonModalTerima(p) {
+            // alert('ini'+p);
+            // console.log(p);
+
+            $('#ModalTambahKaryawan').modal('show');
+            $("#id_periksaruangmodal").val(p);
+        }
+  </script>
     </main>
 @endsection
