@@ -290,18 +290,18 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = distribusiproduk::all()->where("id_batch", $req['nobatch'])->first()->update([
+        $user = distribusiproduk::all()->where("id_distribusi", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['nobatch'])
             ->where('laporan_nama', 'distribusi produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'distribusi produk')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
         return redirect()->route('pendistribusian-produk');

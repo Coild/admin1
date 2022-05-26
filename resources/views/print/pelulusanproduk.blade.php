@@ -164,14 +164,9 @@
 
                 </table>
                 @endforeach
-
-
-
             </center>
         </section>
-
-
 </body>
 
 
-</html>
+</html> 
