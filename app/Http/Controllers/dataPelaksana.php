@@ -325,10 +325,10 @@ class dataPelaksana extends Controller
             elseif ($data->laporan_nama == 'pemusnahan produk jadi')
                 $form = '<form target="_blank" method="post" action="/printpemusnahanprodukjadi">';
 
-            elseif ($data->laporan_nama == 'periksa sanitasi ruangan')
-                $form = '<form target="_blank" method="post" action="/printperiksaruang">';
-            elseif ($data->laporan_nama == 'periksa sanitasi alat')
-                $form = '<form target="_blank" method="post" action="/printperiksaalat">';
+            // elseif ($data->laporan_nama == 'periksa sanitasi ruangan')
+            //     $form = '<form target="_blank" method="post" action="/printperiksaruang">';
+            // elseif ($data->laporan_nama == 'periksa sanitasi alat')
+            //     $form = '<form target="_blank" method="post" action="/printperiksaalat">';
 
             elseif ($data->laporan_nama == 'Pemeriksaan Bahan Baku')
                 $form = '<form target="_blank" method="post" action="/printpemeriksaanbahan">';
@@ -339,6 +339,11 @@ class dataPelaksana extends Controller
 
             elseif ($data->laporan_nama == 'pelatihan cpkb')
                 $form = '<form target="_blank" method="post" action="/printlatihcpkb">';
+                //higi sani pengoperasian alat
+                elseif ($data->laporan_nama == 'periksa sanitasi ruangan')
+                $form = '<form target="_blank" method="post" action="/printpembersihanruangan">';
+                elseif ($data->laporan_nama == 'pelatihan cpkb')
+                $form = '<form target="_blank" method="post" action="/printpembersihanalat">';
             else
                 $form = '<form target="_blank" method="post" action="/printterimakemasan">';
             $isi =

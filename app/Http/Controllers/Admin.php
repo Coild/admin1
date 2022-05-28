@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\DB;
 // use App\Models\{aturan, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 use Carbon\Carbon;
 use App\Models\log;
+use App\Models\Detilperiksaalat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, Detilruangan, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, Detilruangan, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, Periksasaniruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 
 $a = 0;
 $b = 0;
@@ -302,14 +303,23 @@ class Admin extends Controller
     public function tampil_detilruangan(Request $req)
     {
         $pabrik = Auth::user()->pabrik;
+        // $pelaksana = \App\Models\User::all()->where('id', $req->pelaksana)->first();
+        // dd($pelaksana);
         // dd(' ini '.$req->id_ruangan);
-        $data = Detilruangan::all()->where('id_induk', $req->id_ruangan);
+        $id = $req->id_ruangan ?? session()->get('induk_ruang');
+        session(['induk_ruang' => $id]);
+        $data = Detilruangan::all()->where('id_induk', $id);
 
+        // dd($req);
         
         // $data = Detilruangan::all()->where('id', $req->id_ruangan);
 
         return view('catatanpelaksana.higidansani.detilruang', [
-            'data' => $data
+            'data' => $data,
+            'nama_ruangan' => $req->nama_ruangan,
+            'status' => $req->status,
+            'pelaksana' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'id_ruangan' => $req->id_ruangan
         ]);
     }
 
@@ -586,10 +596,6 @@ class Admin extends Controller
         ]);
 
         // dd($isi);
-        Detilruangan::all()->where('id', $req->id_periksaruang)->first()->update([
-            'diperiksa_oleh' => $req['diperiksaoleh'],
-            'keterangan' => $req['keterangan']
-        ]);
 
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menerima laporan ",
@@ -614,6 +620,157 @@ class Admin extends Controller
         log::insert($log);
         return redirect()->route('periksasaniruang');
     }
+
+    public function edit_detilperiksaruang(Request $req)
+    {
+        // dd($req);
+        $dataAwal = Detilruangan::all()->where('id', $req->id_ruangan)->first();
+        // dd($dataAwal);
+        $id = Auth::user()->id;
+        // $cpid = $req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        // $tgl = $tgl->format('Y-m-d');
+
+        if ($req['lantai'] == 'Sudah') {
+            if ($dataAwal['lantai'] != null) {
+                $tglLamalantai = new \DateTime(Carbon::create($dataAwal['lantai'])->toDateTimeString());
+                $lantai = $tglLamalantai;
+            } else {
+                $lantai = $tgl;
+            }  
+        } else {
+            $lantai = null;
+        } 
+    
+
+        if ($req['meja'] == 'Sudah') {
+            if ($dataAwal['meja'] != null) {
+                $tglLamameja = new \DateTime(Carbon::create($dataAwal['meja'])->toDateTimeString());
+                $meja = $tglLamameja;
+            } else {
+                $meja = $tgl;
+            }  
+        } else{
+            $meja = null;
+        } 
+        
+        if ($req['jendela'] == 'Sudah') {
+            if ($dataAwal['jendela'] != null) {
+                $tglLamajendela = new \DateTime(Carbon::create($dataAwal['jendela'])->toDateTimeString());
+                $jendela = $tglLamajendela;
+            } else {
+                $jendela = $tgl;
+            }
+        }else {
+            $jendela = null;
+        } 
+        
+        if ($req['langit'] == 'Sudah') {
+            if ($dataAwal['langit'] != null) {
+                $tglLamalangit = new \DateTime(Carbon::create($dataAwal['langit'])->toDateTimeString());
+                $langit = $tglLamalangit;
+                // dd($langit);
+            } else {
+                $langit = $tgl;
+            }
+        }  else {
+            $langit = null;
+        }
+    
+
+        // dd($lantai. ' ' .$meja. ' ' .$jendela. ' ' .$langit);
+        // $ini = Detilruangan::all()->where('id', $req->id_ruangan)->first();
+        // dd($ini); 
+        Detilruangan::all()->where('id', $req->id_ruangan)->first()->update([
+            'lantai' => $lantai,
+            'meja' => $meja,
+            'jendela' => $jendela,
+            'langit' => $langit,
+            'pelaksana' => $req->pelaksana,
+            'diperiksa_oleh' => $req->diperiksa_oleh,
+            'keterangan' => $req->keterangan,
+        ]);
+
+        // dd($dataygdiubah);
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
+            'notif_laporan' => "Periksa ruang",
+            'notif_link' => 'periksasaniruang',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => 0,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan periksa sani ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        return redirect()->route('detilruangan');
+    }
+
+
+    public function edit_periksaruang(Request $req)
+    {
+        // dd($req);
+
+        $id = Auth::user()->id;
+        // $cpid = $req['cpid'];
+        $pabrik = Auth::user()->pabrik;
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        // $tgl = $tgl->format('Y-m-d');
+
+        // dd($lantai. ' ' .$meja. ' ' .$jendela. ' ' .$langit);
+        // $ini = Detilruangan::all()->where('id', $req->id_ruangan)->first();
+        // dd($ini); 
+        $time = strtotime($req->tanggal_prosedur);
+
+        $newformat = date('Y-m-d',$time);
+
+        Periksaruang::all()->where('id_periksaruang', $req->id_ruangan)->first()->update([
+            'nomer_prosedur' => $req->nomer_prosedur,
+            'tanggal_prosedur' => $newformat,
+            'nama_ruangan' => $req->nama_ruangan,
+            'cara_pembersihan' => $req->cara_pembersihan
+        ]);
+
+        // dd($dataygdiubah);
+        // $notif = [
+        //     'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
+        //     'notif_laporan' => "Periksa ruang",
+        //     'notif_link' => 'periksasaniruang',
+        //     'notif_waktu' => date('Y-m-d H:i:s'),
+        //     'notif_1' => Auth::user()->level,
+        //     'notif_2' => 0,
+        //     'notif_3' => 0,
+        //     'notif_level' => 1,
+        //     'status' => 0,
+        //     'id_pabrik' => Auth::user()->pabrik,
+        // ];
+        // notif::insert($notif);
+
+        // $log = [
+        //     'log_isi' => Auth::user()->namadepan . ' mengubah laporan periksa sani ruang',
+        //     'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+        //     'log_waktu' => date('Y-m-d H:i:s'),
+        //     'id_pabrik' => Auth::user()->pabrik
+        // ];
+        // log::insert($log);
+        return redirect()->route('periksasaniruang');
+    }
+
 
     public function edit_terimabahan(Request $req)
     {
@@ -1588,21 +1745,27 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         $data1 = periksaruang::all();
+        $data2 = protap::all();
         $data = Periksaalat::all()->where('pabrik', $pabrik);
-        return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1]);
+        return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
+
+
+
     public function tambah_periksaalat(Request $req)
     {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'tanggal' => $req['tanggal'],
+            'tanggal' => $tgl,
+            'pob_nomor' => $req['pob_nomor'],
             'nama_ruangan' => $req['nama_ruangan'],
             'nama_alat' => $req['nama_alat'],
-            'bagian_alat' => $req['bagian_alat'],
-            'cara_pembersihan' => $req['cara_pembersihan'],
-            'pelaksana' => $req['pelaksana'],
-            'keterangan' => $req['keterangan'],
+            'type_merk' => $req['type_merk'],
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -1610,9 +1773,7 @@ class Admin extends Controller
 
         $nomer = Periksaalat::insertGetId($hasil);
 
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
+        
         $laporan = [
             'laporan_nama' => 'periksa sanitasi alat',
             'laporan_batch' => $req['no_batch'] ?? 0,
@@ -1626,6 +1787,7 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
+        
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
             'notif_laporan' => "pemeriksaan sanitasi alat",
@@ -1649,6 +1811,9 @@ class Admin extends Controller
 
         return redirect('/periksasanialat');
     }
+
+
+
     public function edit_periksaalat(Request $req)
     {
         Periksaalat::where('id_periksaalat', $req['id'])
@@ -1708,6 +1873,7 @@ class Admin extends Controller
             'tanggal_prosedur' => $req['tanggal'],
             'nomer_prosedur' => $req['nomer_prosedur'],
             'nama_ruangan' => $req['nama_ruangan'],
+            'cara_pembersihan' => $req['cara_pembersihan'],
             'user_id' => $id,
             'pabrik' => $pabrik,
             'status' => 0
@@ -1717,18 +1883,42 @@ class Admin extends Controller
         // dd($nomer);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-        $laporan = [
-            'id_induk' => $nomer,
-            'lantai' => $req['lantai'],
-            'meja' => $req['meja'],
-            'jendela' => $req['jendela'],
-            'langit' => $req['langit'],
-            'keterangan' => '',
-            'diperiksa_oleh' => ''
-        ];
+        // $tgl = $tgl->format('Y-m-d');
+        // if ($req['lantai'] == 'Sudah') {
+        //     $lantai = $tgl;
+        // } else {
+        //     $lantai = null;
+        // } 
+        
+        // if ($req['meja'] == 'Sudah') {
+        //     $meja = $tgl;
+        // } else{
+        //     $meja = null;
+        // } 
+        
+        // if ($req['jendela'] == 'Sudah') {
+        //     $jendela = $tgl;
+        // }else {
+        //     $jendela = null;
+        // } 
+        
+        // if ($req['langit'] == 'Sudah') {
+        //     $langit = $tgl;
+        // }  else {
+        //     $langit = null;
+        // }
+        
+        // $laporan = [
+        //     'id_induk' => $nomer,
+        //     'lantai' => $lantai,
+        //     'meja' => $meja,
+        //     'jendela' => $jendela,
+        //     'langit' => $langit,
+        //     'keterangan' => '',
+        //     'diperiksa_oleh' => ''
+        // ];
 
-        Detilruangan::insert($laporan);
+        // Detilruangan::insert($laporan);
 
         // date_default_timezone_set("Asia/Jakarta");
         // $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -1768,6 +1958,90 @@ class Admin extends Controller
         ];
         log::insert($log);
         return redirect('/periksasaniruang');
+    }
+
+    public function tambah_detilperiksaruang(Request $req)
+    {
+        // dd($req);
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        // $tgl = $tgl->format('Y-m-d');
+        if ($req['lantai'] == 'Sudah') {
+            $lantai = $tgl;
+        } else {
+            $lantai = null;
+        } 
+        
+        if ($req['meja'] == 'Sudah') {
+            $meja = $tgl;
+        } else{
+            $meja = null;
+        } 
+        
+        if ($req['jendela'] == 'Sudah') {
+            $jendela = $tgl;
+        }else {
+            $jendela = null;
+        } 
+        
+        if ($req['langit'] == 'Sudah') {
+            $langit = $tgl;
+        }  else {
+            $langit = null;
+        }
+
+        
+        $laporan = [
+            'id_induk' => $req->id_induk,
+            'lantai' => $lantai,
+            'meja' => $meja,
+            'jendela' => $jendela,
+            'langit' => $langit,
+            'keterangan' => $req->keterangan,
+            'pelaksana' => $req->pelaksana,
+            'diperiksa_oleh' => $req->diperiksa_oleh
+        ];
+
+        Detilruangan::insert($laporan);
+
+        // date_default_timezone_set("Asia/Jakarta");
+        // $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        // $tgl = $tgl->format('Y-m-d');
+
+        // $inilaporan = [
+        //     'laporan_nama' => 'periksa sanitasi ruangan',
+        //     'laporan_batch' => $req['no_batch'],
+        //     'laporan_nomor' => $nomer,
+        //     'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
+        //     'laporan_diterima' => "belum",
+        //     'tgl_diajukan' => $tgl,
+        //     'tgl_diterima' => $tgl,
+        //     'pabrik_id'  =>  $pabrik,
+        //     "user_id" => $id,
+        // ];
+        // laporan::insert($inilaporan);
+
+        // $notif = [
+        //     'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+        //     'notif_laporan' => "penmeriksaan sanitasi ruang",
+        //     'notif_link' => 'periksasaniruang',
+        //     'notif_waktu' => date('Y-m-d H:i:s'),
+        //     'notif_1' => Auth::user()->level,
+        //     'notif_2' => $nomer,
+        //     'notif_3' => 0,
+        //     'notif_level' => 1,
+        //     'status' => 0,
+        //     'id_pabrik' => Auth::user()->pabrik,
+        // ];
+        // notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' menambah detil laporan pemeriksaan sanitasi ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        return redirect('/detilruangan');
     }
 
 
@@ -2426,42 +2700,58 @@ class Admin extends Controller
     }
     public function tambah_detilalat(Request $req)
     {
+
+        // dd(Detilperiksaalat::all());
         $id = Auth::user()->id;
-        $induk =  $req['induk'];
+        $induk =  $req['id_alat'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'mulai' => $req['mulai'],
-            'selesai' => $req['selesai'],
-            'oleh' => $req['oleh'],
-            'ket' => $req['ket'],
-            'induk' => session()->get('idoperasi'),
+            'id_induk' => $req['id_alat'],
+            'mulai_pemakaian' => $req['mulai_pemakaian'],
+            'selesai_pemakaian' => $req['selesai_pemakaian'],
+            'produksi' => $req['produksi'],
+            'no_batch' => $req['no_batch'],
+            'diperiksa_oleh' => $req['diperiksa_oleh'],
+            'mulai_pembersihan' => $req['mulai_pembersihan'],
+            'selesai_pembersihan' => $req['selesai_pembersihan'],
+            'keterangan' => $req['keterangan']
         ];
 
-        $nomer = detilalat::insertGetId($hasil);
+        // $nomer = detilalat::insertGetId($hasil);
+        Detilperiksaalat::insert($hasil);
         // $log = [
         //     'log_isi' => Auth::user()->namadepan.' Menambah data detail alat',
         //     'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
         //     'log_waktu' => date('Y-m-d H:i:s'),
         //     'id_pabrik' => Auth::user()->pabrik
         // ];
-        return redirect('/detil-alat');
+        return redirect('/periksasanialat');
+
     }
+
+
     public function edit_detilalat(Request $req)
     {
+        // dd($req);
         $id = Auth::user()->id;
-        $induk =  $req['induk'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'mulai' => $req['mulai'],
-            'selesai' => $req['selesai'],
-            'oleh' => $req['oleh'],
-            'ket' => $req['ket'],
+            'mulai_pemakaian' => $req['mulai_pemakaian'],
+            'selesai_pemakaian' => $req['selesai_pemakaian'],
+            'produksi' => $req['produksi'],
+            'no_batch' => $req['no_batch'],
+            'mulai_pembersihan' => $req['mulai_pembersihan'],
+            'selesai_pembersihan' => $req['selesai_pembersihan'],
+            'diperiksa_oleh' => $req['diperiksa_oleh'],
+            'keterangan' => $req['keterangan'],
         ];
         // dd($req);
-        $nomer = detilalat::where('id_detilalat', $req['id'])->update($hasil);
+        $nomer = Detilperiksaalat::where('id_detilalat', $req['Modalid_detilalat'])->update($hasil);
 
-        return redirect('/detil-alat');
+        return redirect('/periksasanialat');
     }
+
+
     public function tampil_pengorasianalat()
     {
         $pabrik = Auth::user()->pabrik;
@@ -2476,18 +2766,19 @@ class Admin extends Controller
     }
     public function tampil_detilalat(Request $req)
     {
+        // dd($req);
         $pabrik = Auth::user()->pabrik;
-        session(['idoperasi' => $req['induk']]);
-        $data = detilalat::all()->where('induk', $req['induk']);
-        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status_induk]);
+        // session(['idoperasi' => $req['induk']]);
+        $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
+        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat ]);
     }
 
-    public function tampil_detilalatid()
-    {
-        $pabrik = Auth::user()->pabrik;
-        $data = detilalat::all()->where('induk', session()->get('idoperasi'));
-        return view('catatan.dokumen.detilalat', ['data' => $data]);
-    }
+    // public function tampil_detilalatid()
+    // {
+    //     $pabrik = Auth::user()->pabrik;
+    //     $data = Detilperiksaalat::all()->where('id_induk', session()->get('idoperasi'));
+    //     return view('catatan.dokumen.detilalat', ['data' => $data]);
+    // }
 
     public function tambah_pelulusan(Request $req)
     {

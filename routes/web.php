@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/coba', 'catatan.dokumen.detailpenerimaanBB');
+Route::view('/coba', 'print.pembersihanalat');
 Route::get('notif', [Admin::class, 'notif']);
 Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
 Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
@@ -71,8 +71,8 @@ Route::post('/printpemeriksaanbahan', [PrintController::class, 'cetak_periksabah
 Route::post('/printpemeriksaanproduk', [PrintController::class, 'cetak_periksaprodukjadi'])->name('periksaprodukjadi');
 Route::post('/printpemeriksaankemasan', [PrintController::class, 'cetak_periksabahankemas'])->name('periksabahankemas');
 
-Route::post('/printperiksaruang', [PrintController::class, 'cetak_periksaruang'])->name('periksaruang');
-Route::post('/printperiksaalat', [PrintController::class, 'cetak_periksaalat'])->name('periksaalat');
+Route::post('/printpembersihanruangan', [PrintController::class, 'cetak_pembersihanruangan'])->name('periksaruang');
+Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihanalat'])->name('pembersihanalat');
 
 
 // Route::get('/dummy', [PrintController::class, 'dummy']);
@@ -264,7 +264,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
         Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
-        Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
+        Route::post('/tambah_detilperiksaruang', [Admin::class, 'tambah_detilperiksaruang']);
+        
 
 
 
@@ -376,7 +377,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk'])->name('penarikan-produk');
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
         Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
-        Route::post('detil-alat', [Admin::class, 'tampil_detilalat'])->name('detilalat');
+        Route::post('detilalat', [Admin::class, 'tampil_detilalat'])->name('detilalat');
         Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');
         Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk'])->name('pelulusan-produk');
         Route::get('ambilcontoh', [Admin::class, 'tampil_pengambilancontoh'])->name('ambilcontoh');
@@ -420,8 +421,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/gantipassword', [AuthController::class, 'ganti_password']);
 
     Route::post('/detilruangan', [Admin::class, 'tampil_detilruangan']);
+    Route::get('/detilruangan', [Admin::class, 'tampil_detilruangan'])->name('detilruangan');
 
     Route::post('/terimaperiksaruang', [Admin::class, 'terimaperiksaruang']);
+    Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 
     // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
 
@@ -445,6 +448,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('laporandata', [dataPelaksana::class, 'laporan']);
 
 
+    Route::post('/edit_detilperiksaruang', [Admin::class, 'edit_detilperiksaruang']);
+    Route::post('/edit_periksaruang', [Admin::class, 'edit_periksaruang']);
 
 
 

@@ -56,6 +56,7 @@
         .isi {
             text-align: center;
         }
+
     </style>
 
     <title>print</title>
@@ -72,27 +73,28 @@
         @page {
             size: A4
         }
+
     </style>
 </head>
 
 <body class="A4">
     <section class="sheet padding-10mm" style="height: auto;">
-    <table width="100%" class="kop">
+        <table width="100%" class="kop">
             <tr>
-                <td style="border:none;"  width="30%">
+                <td style="border:none;" width="30%">
                     <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td width="70%" class="tengah" style="border:none;">
-                <center>
-                    <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        {{ $nama }}
-                    </h1>
-                    <p style="margin-bottom: -5px; font-size: 28px; ">
-                        {{ $alamat }}
-                    </p>
-                    <p style="margin-bottom: -5px; font-size: 16px;">
-                        No Handphone : {{ $nohp }}
-                    </p>
+                    <center>
+                        <h1 style="font-weight: bolder; margin-bottom: -15px">
+                            {{ $nama }}
+                        </h1>
+                        <p style="margin-bottom: -5px; font-size: 28px; ">
+                            {{ $alamat }}
+                        </p>
+                        <p style="margin-bottom: -5px; font-size: 16px;">
+                            No Handphone : {{ $nohp }}
+                        </p>
                     </center>
                 </td>
             </tr>

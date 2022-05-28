@@ -18,6 +18,7 @@ class CreatePeriksaruangsTable extends Migration
             $table->string('nomer_prosedur');
             $table->dateTime('tanggal_prosedur')->nullable();
             $table->string('nama_ruangan');
+            $table->string('cara_pembersihan');
             $table->integer('pabrik');
             $table->integer('status')->nullable();
             $table->integer('user_id', 0)->unsigned();

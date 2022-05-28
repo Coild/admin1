@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, Detilruangan, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -521,9 +521,21 @@ class PrintController extends Controller
     public function cetak_pembersihanruangan(Request $req)
     {
         $id = $req['id'];
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return view('print.pembersihanruangan');
+        // dd($id);
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi ruangan');
+        $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $nohp = $datapabrik['no_hp'];
+        $data = periksaruang::all()->where('id_periksaruang', $id)->first();
+        $dataDetail = Detilruangan::all()->where('id_induk', $id);
+        // dd($dataDetail);
+        return view('print.pembersihanruangan', [
+            'data' => $data, 'dataDetail' => $dataDetail, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
+            'nohp' => $nohp
+        ]);
     }
 
     public function cetak_terimakeluarbahanawal(Request $req)

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Detilruangan extends Model
 {
     use HasFactory;
-    protected $fillable = ['diperiksa_oleh', 'keterangan'];
+    protected $fillable = ['diperiksa_oleh', 'keterangan', 'lantai', 'meja', 'jendela', 'langit', 'pelaksana'];
 
 }

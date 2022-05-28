@@ -713,19 +713,19 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        $user = Periksaalat::where("id_periksaalat", $req['id'])->update([
+        $user = Periksaalat::where("id_periksaalat", $req['id_periksaalat'])->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
-            'tgl_diterima' => $tgl
-        ]);
-        $data = periksaalat::all()->where('status', 1);
-        notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'periksa sanitasi ruangan')
-            ->where('notif_2',$req['no'])->first()->update([
-                'notif_3'  => 1
-            ]);
+        // laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
+        //     'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+        //     'tgl_diterima' => $tgl
+        // ]);
+        // $data = periksaalat::all()->where('status', 1);
+        // notif::all()->where('id_pabrik', Auth::user()->pabrik)
+        //     ->where('notif_laporan', 'periksa sanitasi ruangan')
+        //     ->where('notif_2',$req['no'])->first()->update([
+        //         'notif_3'  => 1
+        //     ]);
         return redirect()->route('periksasanialat');
     }
 

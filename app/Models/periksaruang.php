@@ -10,5 +10,5 @@ class periksaruang extends Model
     use HasFactory;
 
     protected $primaryKey = 'id_periksaruang';
-    protected $fillable = ['status'];
+    protected $guarded = ['id_periksaruang'];
 }

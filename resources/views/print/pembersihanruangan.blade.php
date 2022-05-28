@@ -2,86 +2,104 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <style>
+        P {
+            margin-bottom: 3px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: -15;
+            border-collapse: collapse;
+
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px 3px;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        h3 {
+            float: left;
+            font-size: 12;
+            font-weight: lighter;
+            /* margin-bottom: auto; */
+        }
+
         @page {
             size: auto;
             margin: 5mm;
         }
+
         /* Kop Surat */
-.kop{
-  border-bottom: 5px solid black;
-}
+        .kop {
+            border-bottom: 5px solid black;
+        }
 
-.rangkasurat{
-  width: 980px;
-  margin: 0 auto;
-  background-color:white;
-  padding: 20px;
-}
+        .rangkasurat {
+            width: 980px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+        }
 
-.tengah{
-  text-align: center;
-}    
+        .tengah {
+            text-align: center;
+        }
 
-/* isi */
-.isi{
-    text-align: center;
-}
+        /* isi */
+        .isi {
+            text-align: center;
+        }
+
     </style>
-    <script>
-        $(document).ready(function() {
-            $('#btnPrint').click(function() {
-                $('#btnPrint').hide();
-                var css = '@page { size: a4; }',
-                    head = document.head || document.getElementsByTagName('head')[0],
-                    style = document.createElement('style');
-                style.type = 'text/css';
-                style.media = 'print';
-                if (style.styleSheet) {
-                    style.styleSheet.cssText = css;
-                } else {
-                    style.appendChild(document.createTextNode(css));
-                }
-                head.appendChild(style);
-                window.print();
-            });
-        })
-    </script>
 
+    <title>print</title>
+
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+
+    <!-- Set page size here: A5, A4 or A3 -->
+    <!-- Set also "landscape" if you need -->
+    <style>
+        @page {
+            size: A4
+        }
+
+    </style>
 </head>
 
-<body>
-<center>
-    <div class="container">
-        <!-- Kop Surat -->
-        <div class="rangkasurat">
-            <table width="100%" class="kop">
-                <tr>
-                    <td>
-                        <img src="logo.jpg" style= "height: 150px;" alt="Your Picture">
-                    </td>
-                    <td class="tengah">
-                        <h1 style="font-weight: bolder;">
-                            UD. SEMELOTO
+<body class="A4">
+    <section class="sheet padding-10mm" style="height: auto;">
+        <table width="100%" class="kop">
+            <tr>
+                <td style="border:none;" width="30%">
+                    <img src={{ asset('asset/logo/logo.png') }} style="height:120px; width:auto;" alt="Your Picture">
+                </td>
+                <td width="70%" class="tengah" style="border:none;">
+                    <center>
+                        <h1 style="font-weight: bolder; margin-bottom: -15px">
+                            {{ $alamat }}
                         </h1>
-                        <h3>
-                            JL. KEMERDEKAAN RT.019/RW.010 DUSUN PEMANGONG
-                        </h3>
-                        <h3>
-                            DESA LENANGGUAR KABUPATEN SUMBAWA
-                        </h3>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
+                        <p style="margin-bottom: -5px; font-size: 28px; ">
+                            {{ $nama }}
+                        </p>
+                        <p style="margin-bottom: -5px; font-size: 16px;">
+                            No Handphone : {{ $nohp }}
+                        </p>
+                    </center>
+                </td>
+            </tr>
+        </table>
+        <br>
         <!-- Isi Surat -->
         <!-- <h2 style="text-align: center;">Pengolahan Batch</h2> -->
         <div class="form-group">
@@ -89,7 +107,7 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>
-                            <img src="logo.jpg" style= "height: 250px;" alt="Your Picture">
+                            <img src="logo.jpg" style="height: 250px;" alt="Your Picture">
                         </td>
                         <td style="text-align: center;">
                             CATATAN PEMBERSIHAN RUANGAN
@@ -100,7 +118,7 @@
                             Dilaksanakan Sesuai Prosedur Nomor
                         </td>
                         <td>
-                            : 
+                            : {{ $data['nomer_prosedur'] }}
                         </td>
                     </tr>
                     <tr>
@@ -108,7 +126,7 @@
                             Tanggal
                         </td>
                         <td>
-                            : 
+                            : {{ $data['tanggal_prosedur']}}
                         </td>
                     </tr>
                     <tr>
@@ -116,7 +134,7 @@
                             Ruangan
                         </td>
                         <td>
-                            : 
+                            : {{ $data['nama_ruangan']}}
                         </td>
                     </tr>
                     <tr>
@@ -124,7 +142,7 @@
                             Cara Pembersihan
                         </td>
                         <td>
-                            : 
+                            : {{ $data['cara_pembersihan']}}
                         </td>
                     </tr>
                 </table>
@@ -155,31 +173,80 @@
                         <td>Tgl</td>
                         <td>Jam</td>
                     </tr>
-                    <tr>
-                        <td>isi 1</td>
-                        <td>isi 2</td>
-                        <td>isi 3</td>
-                        <td>isi 4</td>
-                        <td>isi 5</td>
-                        <td>isi 6</td>
-                        <td>isi 7</td>
-                        <td>isi 8</td>
-                        <td>isi 9</td>
-                        <td>isi 10</td>
-                        <td>isi 11</td>
-                        <td>isi 12</td>
-                    </tr>
+                    
+                        @foreach ($dataDetail as $row)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>
+                                @if ($row['lantai'] != null)
+                                    {{ \Carbon\Carbon::parse($row['lantai'])->format('j F, Y') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['lantai'] != null)
+                                    {{ \Carbon\Carbon::parse($row['lantai'])->format('h:i:s A') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['meja'] != null)
+                                    {{ \Carbon\Carbon::parse($row['meja'])->format('j F, Y') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['meja'] != null)
+                                    {{ \Carbon\Carbon::parse($row['meja'])->format('h:i:s A') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['jendela'] != null)
+                                    {{ \Carbon\Carbon::parse($row['jendela'])->format('j F, Y') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['jendela'] != null)
+                                    {{ \Carbon\Carbon::parse($row['jendela'])->format('h:i:s A') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['langit'] != null)
+                                    {{ \Carbon\Carbon::parse($row['langit'])->format('j F, Y') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($row['langit'] != null)
+                                    {{ \Carbon\Carbon::parse($row['langit'])->format('h:i:s A') }}
+                                @else
+                                    <div class="badge badge-danger"> belum</div>
+                                @endif
+                            </td>
+                            <td> {{ $row['pelaksana'] }}</td>
+                            <td>{{ $row['diperiksa_oleh'] }}</td>
+                            <td>{{ $row['keterangan'] }}</td>
+                        </tr>
+                        @endforeach
+                    
                 </table>
             </div>
         </div>
-    </center>
-
-    </div>
-
-
-    <section>
-        <button type="button" id="btnPrint" class="btn btn-primary pull-right">Print</button>
     </section>
+
+
+
+
 
 </body>
 

@@ -16,11 +16,12 @@ class CreateDetilruangansTable extends Migration
         Schema::create('detilruangans', function (Blueprint $table) {
             $table->id();
             $table->integer('id_induk');
-            $table->string('lantai', 5)->nullable();
-            $table->string('meja', 5)->nullable();
-            $table->string('jendela', 5)->nullable();
-            $table->string('langit', 5)->nullable();
+            $table->dateTime('lantai')->nullable();
+            $table->dateTime('meja')->nullable();
+            $table->dateTime('jendela')->nullable();
+            $table->dateTime('langit')->nullable();
             $table->string('diperiksa_oleh')->nullable();
+            $table->string('pelaksana')->nullable();
             $table->string('keterangan')->nullable(); 
             $table->timestamps();
         });

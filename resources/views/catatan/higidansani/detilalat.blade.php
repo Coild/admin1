@@ -54,7 +54,7 @@
                                                             class="form-control" value="" placeholder="" />
                                                         <div class="form-group row">
                                                             <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Ruangan </label>
+                                                                class="col-sm-3 col-form-label">Ruangan</label>
                                                             <div class="col-sm">
                                                                 <input class="form-control" type='text' readonly
                                                                     placeholder="Ruangan" style="height: 35px;"
@@ -77,6 +77,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        {{-- <div style="padding-left:10%;" class="form-group row">
+                                                            <div class="col-sm-6">Dinding</div>
+                                                            <div class="col-sm-6">
+                                                                <div class="custom-control custom-switch">
+                                                                    <input type="hidden" name='dinding' value="Belum">
+                                                                    <input type="checkbox" name="dinding"
+                                                                        class="custom-control-input" value="Sudah"
+                                                                        id="customSwitch2">
+                                                                    <label class="custom-control-label"
+                                                                        for="customSwitch2">Sudah</label>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
                                                         <div style="padding-left:10%;" class="form-group row">
                                                             <div class="col-sm-6">Meja</div>
                                                             <div class="col-sm-5">
@@ -117,16 +130,20 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="form-group row">
-                                                            <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Pelaksana</label>
-                                                            <div class="col-sm">
-                                                                <input class="form-control" type='text'
-                                                                    placeholder="Pelaksana" style="height: 35px;"
-                                                                    id="inlineFormCustomSelect" name="pelaksana">
+                                                        {{-- <div style="padding-left:10%;" class="form-group row">
+                                                            <div class="col-sm-6">Kontainer</div>
+                                                            <div class="col-sm-6">
+                                                                <div class="custom-control custom-switch">
+                                                                    <input type="hidden" name='kontainer' value="Belum">
+                                                                    <input type="checkbox" name="kontainer"
+                                                                        class="custom-control-input" value="Sudah"
+                                                                        id="customSwitch6">
+                                                                    <label class="custom-control-label"
+                                                                        for="customSwitch6">Sudah</label>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
+
 
                                                         <div class="form-group row">
                                                             <label for="inputEmail3"
@@ -143,7 +160,7 @@
                                                                 class="col-sm-3 col-form-label">Keterangan</label>
                                                             <div class="col-sm">
                                                                 <input class="form-control" type='text'
-                                                                    placeholder="Keterangan" style="height: 35px;"
+                                                                    placeholder="Ruangan" style="height: 35px;"
                                                                     name="keterangan" id="inlineFormCustomSelect">
                                                             </div>
                                                         </div>
@@ -254,7 +271,7 @@
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
-                                    <td> {{ $row['pelaksana'] }} </td>
+                                    <td> {{ $pelaksana }} </td>
                                     <td> {{ $row['diperiksa_oleh'] }} </td>
                                     <td> {{ $row['keterangan'] }} </td>
                                     <td>
@@ -272,8 +289,6 @@
                                                         name="diperiksa_oleh">
                                                     <input type="hidden" value="{{ $row['keterangan'] }}"
                                                         name="keterangan">
-                                                    <input type="hidden" value="{{ $row['pelaksana'] }}"
-                                                        name="pelaksana">
 
                                                     <button type="button"
                                                         onclick="buttonModalFormDetil({{ $row['id'] }})"
@@ -286,7 +301,33 @@
                                                 </form>
                                             @endif
                                         @else
-                                            -
+                                            @if ($status == 0)
+                                                <form method="post" action="detilruangan" class="float-left mr-2"
+                                                    id="detilruangan{{ $row['id'] }}">
+                                                    @csrf
+                                                    <input type="hidden" name="status" value="0" />
+                                                    <input type="hidden" value="{{ $row['lantai'] }}" name="lantai">
+                                                    <input type="hidden" value="{{ $row['meja'] }}" name="meja">
+                                                    <input type="hidden" value="{{ $row['jendela'] }}" name="jendela">
+                                                    <input type="hidden" value="{{ $row['langit'] }}" name="langit">
+                                                    <input type="hidden" value="{{ $row['id'] }}" name="id_ruangan">
+                                                    <input type="hidden" value="{{ $row['diperiksa_oleh'] }}"
+                                                        name="diperiksa_oleh">
+                                                    <input type="hidden" value="{{ $row['keterangan'] }}"
+                                                        name="keterangan">
+
+                                                    <button type="button"
+                                                        onclick="buttonModalFormDetil({{ $row['id'] }})"
+                                                        class="btn btn-primary disabled"> Edit</button>
+                                                </form>
+                                            @else
+                                                <form method="post" action="detilruangan" class="float-left mr-2">
+                                                    @csrf
+                                                    <input type="hidden" name="id_ruangan"
+                                                        value="{{ $row['id_periksaruang'] }}" />
+                                                    <button type="submit" class="btn btn-danger disabled"> Edit</button>
+                                                </form>
+                                            @endif
                                         @endif
                                     </td>
 
@@ -323,6 +364,19 @@
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" id="id_periksaruangmodal" name="id_periksaruang">
+
+                                {{-- <div class="form-floating mb-3">
+                                <input class="form-control" name="diperiksaoleh" id="username" type="text"
+                                    placeholder="Diperiksa oleh" required/>
+                                <label for="inputEmail">Diperiksa oleh</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="keterangan" id="username" type="text"
+                                    placeholder="keterangan" required/>
+                                <label for="inputEmail">Keterangan</label>
+                            </div> --}}
+
                         </div>
 
 
@@ -422,13 +476,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksana</label>
-                                            <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="pelaksana"
-                                                    style="height: 35px;" id="pelaksanaEditModal" name="pelaksana">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Diperiksa Oleh</label>
                                             <div class="col-sm">
                                                 <input class="form-control" type='text' placeholder="diperiksa oleh"
@@ -458,6 +505,9 @@
 
         <script>
             function buttonModalTerima(p) {
+                // alert('ini'+p);
+                console.log(p);
+
                 $('#ModalTambahKaryawan').modal('show');
                 $("#id_periksaruangmodal").val(p);
             }
@@ -477,12 +527,10 @@
                 var langit = $('#' + $idform + '').find('input[name="langit"]').val();
                 var diperiksa_oleh = $('#' + $idform + '').find('input[name="diperiksa_oleh"]').val();
                 var keterangan = $('#' + $idform + '').find('input[name="keterangan"]').val();
-                var pelaksana = $('#' + $idform + '').find('input[name="pelaksana"]').val();
 
                 $('#idRuanganEditModal').val(id);
                 $('#diperiksaEditModal').val(diperiksa_oleh);
                 $('#keteranganEditModal').val(keterangan);
-                $('#pelaksanaEditModal').val(pelaksana);
 
                 if (lantai != '') {
                     // console.log('isi');
