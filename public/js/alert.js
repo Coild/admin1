@@ -239,9 +239,9 @@ function hapusprotap(params) {
         confirmButtonText: "Hapus",
     }).then((result) => {
         console.log(result);
-        // if (result.isConfirmed) {
-        //     document.getElementById("forminput1").submit();
-        // }
+        if (result.isConfirmed) {
+            location.href = "/" + params.url ;
+        }
     });
 }
 function hapussetting(params) {

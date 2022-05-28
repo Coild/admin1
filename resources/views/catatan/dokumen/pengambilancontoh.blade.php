@@ -269,6 +269,8 @@
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
                                                                     value="{{ $row['no_batch'] }}" />
+                                                                    
+                                            <input type="hidden" name="no" value="{{ $row['id_bahanbaku'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
                                                             </form>
@@ -544,6 +546,8 @@
                                                             <?php if ($row['status'] == 0) { ?>
                                                             <form method="post" action="terimaambilprodukjadi">
                                                                 @csrf
+                                                                
+                                            <input type="hidden" name="no" value="{{ $row['id_produkjadi'] }}" />
                                                                 <input type="hidden" name="nobatch"
                                                                     value="{{ $row['no_batch'] }}" />
                                                                 <button type="submit"
@@ -821,6 +825,8 @@
                                                                 @csrf
                                                                 <input type="hidden" name="nobatch"
                                                                     value="{{ $row['no_batch'] }}" />
+                                                                    
+                                            <input type="hidden" name="no" value="{{ $row['id_kemasan'] }}" />
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Terima</button>
                                                             </form>

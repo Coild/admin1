@@ -21,15 +21,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
-                                Tambah Barang Masuk
-                            </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
-                                Tambah Barang Masuk
-                            </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
+                        Tambah Barang Masuk
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(1)" data-toggle="modal" data-target="#modalForm1">
+                        Tambah Barang Masuk
+                    </button>
+                    @endif
 
                     @endif
 
@@ -66,7 +66,7 @@
                                                 No</label>
                                             <div class="col-sm">
                                                 {{-- <input type="text" class="form-control 1" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1" >
+                                                <select name="pob_no" class="form-control 1">
                                                     @foreach ($protap_bahan as $bahan))
                                                     <option value="{{$bahan['protap_id']}}">{{$bahan['protap_nama']}}</option>
                                                     @endforeach
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <!-- pop up end -->
-                    <table id="tabel1" class="table" >
+                    <table id="tabel1" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
@@ -151,9 +151,9 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
+                                    <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
 
                                 </td>
@@ -177,15 +177,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
-                                Tambah Barang Keluar
-                            </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
-                                Tambah Barang Keluar
-                            </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
+                        Tambah Barang Keluar
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(2)" data-toggle="modal" data-target="#modalForm2">
+                        Tambah Barang Keluar
+                    </button>
+                    @endif
 
                     @endif
 
@@ -281,9 +281,9 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button type="button" id="klikbahankeluar" data-toggle="modal" data-target="#editbahankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppbahanbakukeluar'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
 
                                 </td>
@@ -309,15 +309,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
-                                Produk Jadi Masuk
-                            </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
-                                Produk Jadi Masuk
-                        </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
+                        Produk Jadi Masuk
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(3)" data-toggle="modal" data-target="#modalForm3">
+                        Produk Jadi Masuk
+                    </button>
+                    @endif
 
                     @endif
 
@@ -354,7 +354,7 @@
                                                 No</label>
                                             <div class="col-sm">
                                                 {{-- <input type="text" class="form-control 3" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1" >
+                                                <select name="pob_no" class="form-control 1">
                                                     @foreach ($protap_produk as $produk))
                                                     <option value="{{$produk['protap_id']}}">{{$produk['protap_nama']}}</option>
                                                     @endforeach
@@ -441,9 +441,9 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
 
                                 </td>
@@ -466,15 +466,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
-                            Tambah Produk Keluar
-                        </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
-                            Tambah Produk Keluar
-                        </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
+                        Tambah Produk Keluar
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(4)" data-toggle="modal" data-target="#modalForm4">
+                        Tambah Produk Keluar
+                    </button>
+                    @endif
 
                     @endif
 
@@ -570,9 +570,9 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-primary">Edit</button>
+                                    <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button type="submit" id="klikprodukkeluar" data-toggle="modal" data-target="#editprodukkeluar" data-tanggal={{ $row['tanggal'] }} data-nama="{{ $row['nama_produk'] }}" data-produk="{{ $row['untuk_produk'] }}" data-nobatch={{ $row['no_batch'] }} data-jumlah="{{ $row['jumlah'] }}" data-sisa="{{ $row['sisa'] }}" data-id={{ $row['id_ppprodukjadikeluar'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
                                 </td>
                                 @endif
@@ -596,15 +596,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
-                            Tambah Kemasan Masuk
-                        </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
-                            Tambah Kemasan Masuk
-                        </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
+                        Tambah Kemasan Masuk
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(5)" data-toggle="modal" data-target="#modalForm5">
+                        Tambah Kemasan Masuk
+                    </button>
+                    @endif
 
                     @endif
 
@@ -641,7 +641,7 @@
                                                 No</label>
                                             <div class="col-sm">
                                                 {{-- <input type="text" class="form-control 5" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1" >
+                                                <select name="pob_no" class="form-control 1">
                                                     @foreach ($protap_kemasan as $kemasan)
                                                     <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                                     @endforeach
@@ -726,9 +726,9 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
 
 
@@ -752,15 +752,15 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        @if ($status == 0)
-                            <button class="btn btn-success btn-lg" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
-                            Kemasan Keluar
-                        </button>
-                        @else
-                            <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
-                            Kemasan Keluar
-                        </button>
-                        @endif
+                    @if ($status == 0)
+                    <button class="btn btn-success btn-lg" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
+                        Kemasan Keluar
+                    </button>
+                    @else
+                    <button class="btn btn-success btn-lg disabled" onclick="setdatetoday1(6)" data-toggle="modal" data-target="#modalForm6">
+                        Kemasan Keluar
+                    </button>
+                    @endif
 
                     @endif
 
@@ -856,12 +856,10 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                        <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_kemasan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-primary">Edit</button>
                                     @else
-                                        <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-danger disabled">Edit</button>
+                                    <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_kemasan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
-
-                                    <button type="button" id="klikkemasankeluar" data-toggle="modal" data-target="#editkemasankeluar" data-tanggal={{ $row['tanggal'] }} data-nama={{ $row['nama_bahan'] }} data-produk={{ $row['untuk_produk'] }} data-nobatch={{ $row['no_batch'] }} data-jumlah={{ $row['jumlah'] }} data-sisa={{ $row['sisa'] }} data-id={{ $row['id_ppkemasankeluar'] }} class="btn btn-primary">Edit</button>
                                 </td>
                                 @endif
                             </tr>
@@ -1179,115 +1177,52 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="hidden" name="induk" value="{{ $induk }}">
                         <input type="hidden" name="jenis" value="{{ $jenis }}">
-                        <input type="hidden" name="id" id="id_kemasanmasuk>
-                            <div class=" form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                            Kemasan</label>
-                        <div class="col-sm">
-                            <input type="text" class="form-control 11" placeholder="Nama Produk Jadi" name="nama_kemasan" id="kemasanmasuk_nama" value="{{$nama}}" readonly>
-                        </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                        Dengan PROTAP
-                        No</label>
-                    <div class="col-sm">
-                        <input type="text" class="form-control 11" placeholder="Nomor PROTAP" name='pob_no' id="kemasanmasuk_protap">
-                    </div>
-                </div>
-                <input type="hidden" name="tanggal" id='ambil_tanggal5' class="tanggal" placeholder="" />
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
-                        Loth</label>
-                    <div class="col-sm">
-                        <input type="text" class="form-control 11" name="no_loth" placeholder="Nomor Loth" id="kemasanmasuk_noloth" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
-                    <div class="col-sm">
-                        <input type="text" class="form-control 11" name="pemasok" placeholder="Pemasok" id="kemasanmasuk_pemasok" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                    <div class="col-sm"><input type="text" class="form-control 11" name="jumlah" placeholder="Jumlah" id="kemasanmasuk_jumlah" /></div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
-                        Kontrol</label>
-                    <div class="col-sm">
-                        <input type="text" class="form-control 11" name="no_kontrol" placeholder="Nomor Kontrol" id="kemasanmasuk_nokontrol" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="inputEmail3" id="kemasanmasuk_kadaluarsa">Tanggal
-                        Kadaluarsa</label>
-                    <div class="col-sm">
-                        <input type="date" id="kemasanmasuk_kadaluarsa" name="kedaluwarsa" class="form-control 11" />
-                    </div>
-                </div>
-                </form>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(11)">Tambah</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Kemasan Keluar-->
-    <div class="modal fade" id="editkemasankeluar" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Edit Kemasan Keluar</h4>
-                </div>
-
-                <!-- Modal Body-->
-                <div class="modal-body">
-                    <div class="card-header" id='headertgl6'>
-                    </div>
-                    <p class="statusMsg"></p>
-                    <form role="form" id="forminput12" action="{{ url('edit_penerimaankemasankeluar') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="hidden" name="induk" value="{{ $induk }}">
-                        <input type="hidden" name="jenis" value="{{ $jenis }}">
-                        <input type="hidden" name="id" id="id_kemasankeluar">
+                        <input type="hidden" name="id" id="id_kemasanmasuk">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                 Kemasan</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 12" placeholder="Nama Kemasan" name="nama_kemasan" id="kemasankeluar_nama" value="{{$nama}}" readonly>
+                                <input type="text" class="form-control 11" placeholder="Nama Produk Jadi" name="nama_kemasan" id="kemasanmasuk_nama" value="{{$nama}}" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                Distributor</label>
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                Dengan PROTAP
+                                No</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 12" placeholder="Untuk Distributor" name="untuk_produk" id="kemasankeluar_produk">
+                                <input type="text" class="form-control 11" placeholder="Nomor PROTAP" name='pob_no' id="kemasanmasuk_protap">
                             </div>
                         </div>
-                        <input type="hidden" name="tanggal" id='ambil_tanggal6' class="tanggal" placeholder="" />
+                        <input type="hidden" name="tanggal" id='ambil_tanggal5' class="tanggal" placeholder="" />
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
-                                Batch</label>
+                                Loth</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 12" name="no_batch" placeholder="Nomor Batch" id="kemasankeluar_nobatch" />
+                                <input type="text" class="form-control 11" name="no_loth" placeholder="Nomor Loth" id="kemasanmasuk_noloth" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-3 col-form-label">Asal Produk Jadi</label>
+                            <div class="col-sm">
+                                <input type="text" class="form-control 11" name="pemasok" placeholder="Pemasok" id="kemasanmasuk_pemasok" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" class="form-control 12" name="jumlah" placeholder="Jumlah" id="kemasankeluar_jumlah" /></div>
+                            <div class="col-sm"><input type="text" class="form-control 11" name="jumlah" placeholder="Jumlah" id="kemasanmasuk_jumlah" /></div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
+                            <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
+                                Kontrol</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 12" name="sisa" placeholder="Sisa" id="kemasankeluar_sisa" />
+                                <input type="text" class="form-control 11" name="no_kontrol" placeholder="Nomor Kontrol" id="kemasanmasuk_nokontrol" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="inputEmail3" id="kemasanmasuk_kadaluarsa">Tanggal
+                                Kadaluarsa</label>
+                            <div class="col-sm">
+                                <input type="date" id="kemasanmasuk_kadaluarsa" name="kedaluwarsa" class="form-control 11" />
                             </div>
                         </div>
                     </form>
@@ -1296,146 +1231,212 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(12)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(11)">Tambah</button>
                 </div>
             </div>
         </div>
     </div>
-    {{-- end modal --}}
 
-    <script>
-        $(document).on('click', "#klikbahanmasuk", function() {
+    <!-- Modal Kemasan Keluar-->
+    <div class="modal fade" id="editkemasankeluar" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Edit Kemasan Keluar</h4>
+                    </div>
 
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var protap = $(this).data('protap');
-            var noloth = $(this).data('noloth');
-            var nokontrol = $(this).data('nokontrol');
-            var pemasok = $(this).data('pemasok');
-            var kadaluarsa = $(this).data('kadaluarsa');
-            var id = $(this).data('id');
+                    <!-- Modal Body-->
+                    <div class="modal-body">
+                        <div class="card-header" id='headertgl6'>
+                        </div>
+                        <p class="statusMsg"></p>
+                        <form role="form" id="forminput12" action="{{ url('edit_penerimaankemasankeluar') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <input type="hidden" name="induk" value="{{ $induk }}">
+                            <input type="hidden" name="jenis" value="{{ $jenis }}">
+                            <input type="hidden" name="id" id="id_kemasankeluar">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                    Kemasan</label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control 12" placeholder="Nama Kemasan" name="nama_kemasan" id="kemasankeluar_nama" value="{{$nama}}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
+                                    Distributor</label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control 12" placeholder="Untuk Distributor" name="untuk_produk" id="kemasankeluar_produk">
+                                </div>
+                            </div>
+                            <input type="hidden" name="tanggal" id='ambil_tanggal6' class="tanggal" placeholder="" />
+                            <div class="form-group row">
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
+                                    Batch</label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control 12" name="no_batch" placeholder="Nomor Batch" id="kemasankeluar_nobatch" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
+                                <div class="col-sm"><input type="text" class="form-control 12" name="jumlah" placeholder="Jumlah" id="kemasankeluar_jumlah" /></div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control 12" name="sisa" placeholder="Sisa" id="kemasankeluar_sisa" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-            $("#bahanmasuk_nama").val(nama);
-            $("#bahanmasuk_jumlah").val(jumlah);
-            $("#bahanmasuk_tanggal").val(tanggal);
-            $("#bahanmasuk_protap").val(protap);
-            $("#bahanmasuk_noloth").val(noloth);
-            $("#bahanmasuk_nokontrol").val(nokontrol);
-            $("#bahanmasuk_pemasok").val(pemasok);
-            $("#id_bahanmasuk").val(id);
-            document.getElementById('bahanmasuk_kadaluarsa').value = kadaluarsa;
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(12)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        })
-        $(document).on('click', "#klikprodukmasuk", function() {
+        
+        {{-- end modal --}}
 
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var protap = $(this).data('protap');
-            var noloth = $(this).data('noloth');
-            var nokontrol = $(this).data('nokontrol');
-            var pemasok = $(this).data('pemasok');
-            var kadaluarsa = $(this).data('kadaluarsa');
-            var id = $(this).data('id');
+        <script>
+            $(document).on('click', "#klikbahanmasuk", function() {
 
-            $("#produkmasuk_nama").val(nama);
-            $("#produkmasuk_jumlah").val(jumlah);
-            $("#produkmasuk_tanggal").val(tanggal);
-            $("#produkmasuk_protap").val(protap);
-            $("#produkmasuk_noloth").val(noloth);
-            $("#produkmasuk_nokontrol").val(nokontrol);
-            $("#produkmasuk_pemasok").val(pemasok);
-            $("#id_produkmasuk").val(id);
-            document.getElementById('produkmasuk_kadaluarsa').value = kadaluarsa;
-        })
-        $(document).on('click', "#klikkemasanmasuk", function() {
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var protap = $(this).data('protap');
+                var noloth = $(this).data('noloth');
+                var nokontrol = $(this).data('nokontrol');
+                var pemasok = $(this).data('pemasok');
+                var kadaluarsa = $(this).data('kadaluarsa');
+                var id = $(this).data('id');
 
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var protap = $(this).data('protap');
-            var noloth = $(this).data('noloth');
-            var nokontrol = $(this).data('nokontrol');
-            var pemasok = $(this).data('pemasok');
-            var kadaluarsa = $(this).data('kadaluarsa');
-            var id = $(this).data('id');
+                $("#bahanmasuk_nama").val(nama);
+                $("#bahanmasuk_jumlah").val(jumlah);
+                $("#bahanmasuk_tanggal").val(tanggal);
+                $("#bahanmasuk_protap").val(protap);
+                $("#bahanmasuk_noloth").val(noloth);
+                $("#bahanmasuk_nokontrol").val(nokontrol);
+                $("#bahanmasuk_pemasok").val(pemasok);
+                $("#id_bahanmasuk").val(id);
+                document.getElementById('bahanmasuk_kadaluarsa').value = kadaluarsa;
 
-            $("#kemasanmasuk_nama").val(nama);
-            $("#kemasanmasuk_jumlah").val(jumlah);
-            $("#kemasanmasuk_tanggal").val(tanggal);
-            $("#kemasanmasuk_protap").val(protap);
-            $("#kemasanmasuk_noloth").val(noloth);
-            $("#kemasanmasuk_nokontrol").val(nokontrol);
-            $("#kemasanmasuk_pemasok").val(pemasok);
-            $("#id_kemasanmasuk").val(id);
-            document.getElementById('kemasanmasuk_kadaluarsa').value = kadaluarsa;
-        })
+            })
+            $(document).on('click', "#klikprodukmasuk", function() {
 
-        $(document).on('click', "#klikbahankeluar", function() {
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var nobatch = $(this).data('nobatch');
-            var sisa = $(this).data('sisa');
-            var produk = $(this).data('produk');
-            var id = $(this).data('id');
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var protap = $(this).data('protap');
+                var noloth = $(this).data('noloth');
+                var nokontrol = $(this).data('nokontrol');
+                var pemasok = $(this).data('pemasok');
+                var kadaluarsa = $(this).data('kadaluarsa');
+                var id = $(this).data('id');
 
-            $("#bahankeluar_nama").val(nama);
-            $("#bahankeluar_jumlah").val(jumlah);
-            $("#bahankeluar_tanggal").val(tanggal);
-            $("#bahankeluar_nobatch").val(nobatch);
-            $("#bahankeluar_sisa").val(sisa);
-            $("#bahankeluar_produk").val(produk);
-            $("#id_bahankeluar").val(id);
-        })
-        $(document).on('click', "#klikprodukkeluar", function() {
+                $("#produkmasuk_nama").val(nama);
+                $("#produkmasuk_jumlah").val(jumlah);
+                $("#produkmasuk_tanggal").val(tanggal);
+                $("#produkmasuk_protap").val(protap);
+                $("#produkmasuk_noloth").val(noloth);
+                $("#produkmasuk_nokontrol").val(nokontrol);
+                $("#produkmasuk_pemasok").val(pemasok);
+                $("#id_produkmasuk").val(id);
+                document.getElementById('produkmasuk_kadaluarsa').value = kadaluarsa;
+            })
+            $(document).on('click', "#klikkemasanmasuk", function() {
 
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var nobatch = $(this).data('nobatch');
-            var sisa = $(this).data('sisa');
-            var produk = $(this).data('produk');
-            var id = $(this).data('id');
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var protap = $(this).data('protap');
+                var noloth = $(this).data('noloth');
+                var nokontrol = $(this).data('nokontrol');
+                var pemasok = $(this).data('pemasok');
+                var kadaluarsa = $(this).data('kadaluarsa');
+                var id = $(this).data('id');
 
-            $("#produkkeluar_nama").val(nama);
-            $("#produkkeluar_jumlah").val(jumlah);
-            $("#produkkeluar_tanggal").val(tanggal);
-            $("#produkkeluar_nobatch").val(nobatch);
-            $("#produkkeluar_sisa").val(sisa);
-            $("#produkkeluar_produk").val(produk);
-            $("#id_produkmasuk").val(id);
-        })
-        $(document).on('click', "#klikkemasankeluar", function() {
-            var nama = $(this).data('nama');
-            var tanggal = $(this).data('tanggal');
-            var jumlah = $(this).data('jumlah');
-            var nobatch = $(this).data('nobatch');
-            var sisa = $(this).data('sisa');
-            var produk = $(this).data('produk');
-            var id = $(this).data('id');
+                $("#kemasanmasuk_nama").val(nama);
+                $("#kemasanmasuk_jumlah").val(jumlah);
+                $("#kemasanmasuk_tanggal").val(tanggal);
+                $("#kemasanmasuk_protap").val(protap);
+                $("#kemasanmasuk_noloth").val(noloth);
+                $("#kemasanmasuk_nokontrol").val(nokontrol);
+                $("#kemasanmasuk_pemasok").val(pemasok);
+                $("#id_kemasanmasuk").val(id);
+                document.getElementById('kemasanmasuk_kadaluarsa').value = kadaluarsa;
+            })
 
-            $("#kemasankeluar_nama").val(nama);
-            $("#kemasankeluar_jumlah").val(jumlah);
-            $("#kemasankeluar_tanggal").val(tanggal);
-            $("#kemasankeluar_nobatch").val(nobatch);
-            $("#kemasankeluar_sisa").val(sisa);
-            $("#kemasankeluar_produk").val(produk);
-            $("#id_kemasankeluar").val(id);
-        })
+            $(document).on('click', "#klikbahankeluar", function() {
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var nobatch = $(this).data('nobatch');
+                var sisa = $(this).data('sisa');
+                var produk = $(this).data('produk');
+                var id = $(this).data('id');
+
+                $("#bahankeluar_nama").val(nama);
+                $("#bahankeluar_jumlah").val(jumlah);
+                $("#bahankeluar_tanggal").val(tanggal);
+                $("#bahankeluar_nobatch").val(nobatch);
+                $("#bahankeluar_sisa").val(sisa);
+                $("#bahankeluar_produk").val(produk);
+                $("#id_bahankeluar").val(id);
+            })
+            $(document).on('click', "#klikprodukkeluar", function() {
+
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var nobatch = $(this).data('nobatch');
+                var sisa = $(this).data('sisa');
+                var produk = $(this).data('produk');
+                var id = $(this).data('id');
+
+                $("#produkkeluar_nama").val(nama);
+                $("#produkkeluar_jumlah").val(jumlah);
+                $("#produkkeluar_tanggal").val(tanggal);
+                $("#produkkeluar_nobatch").val(nobatch);
+                $("#produkkeluar_sisa").val(sisa);
+                $("#produkkeluar_produk").val(produk);
+                $("#id_produkmasuk").val(id);
+            })
+            $(document).on('click', "#klikkemasankeluar", function() {
+                var nama = $(this).data('nama');
+                var tanggal = $(this).data('tanggal');
+                var jumlah = $(this).data('jumlah');
+                var nobatch = $(this).data('nobatch');
+                var sisa = $(this).data('sisa');
+                var produk = $(this).data('produk');
+                var id = $(this).data('id');
+
+                $("#kemasankeluar_nama").val(nama);
+                $("#kemasankeluar_jumlah").val(jumlah);
+                $("#kemasankeluar_tanggal").val(tanggal);
+                $("#kemasankeluar_nobatch").val(nobatch);
+                $("#kemasankeluar_sisa").val(sisa);
+                $("#kemasankeluar_produk").val(produk);
+                $("#id_kemasankeluar").val(id);
+            })
 
 
 
-        $(document).ready(function() {
-            $('#dataTable').DataTable()
-            $('#dataTable1').DataTable()
-            $('#dataTable2').DataTable()
-            $('#dataTable3').DataTable()
-            $('#dataTable4').DataTable()
-            $('#dataTable5').DataTable()
-        })
-    </script>
+            $(document).ready(function() {
+                $('#dataTable').DataTable()
+                $('#dataTable1').DataTable()
+                $('#dataTable2').DataTable()
+                $('#dataTable3').DataTable()
+                $('#dataTable4').DataTable()
+                $('#dataTable5').DataTable()
+            })
+        </script>
 </main>
 
 

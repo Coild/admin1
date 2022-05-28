@@ -108,7 +108,7 @@
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
                                                     {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                    <select name="pob_no" class="form-control 1" >
+                                                    <select name="pob" class="form-control 1" >
                                                         @foreach ($protap as $kemasan)
                                                         <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                                         @endforeach
@@ -122,7 +122,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                     Produk</label>
                                                 <div class="col-sm">
-                                                    <input class="form-control 17" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required>
+                                                    <input class="form-control 17" list="listnamaproduk" type="text" name='nama_produk' id="namaproduk" required autocomplete="off">
                                                     <datalist id='listnamaproduk' autocomplete="off">
                                                         @foreach ($data2 as $row)
                                                         <option value="{{ $row['produk_nama'] }}">
@@ -181,7 +181,7 @@
                                             <div class="form-group row">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                                 <div class="col-sm">
-                                                    <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 17" id="inlineFormCustomSelect">
+                                                    <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 17" id="inlineFormCustomSelect" autocomplete="off">
                                                     </input>
                                                     <datalist id="kemasan">
                                                         @foreach ($data3 as $row)
@@ -298,7 +298,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                     <div class="col-sm">
-                                        <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 1" id="isi_kemasan">
+                                        <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 1" id="isi_kemasan" autocomplete="off">
                                         </input>
                                         <datalist id="kemasan">
                                             @foreach ($data3 as $row)
@@ -330,9 +330,9 @@
             var protap = $(this).data('protap');
             var id = $(this).data('id');
 
-            console.log("ini " + nama + " ruangan " + id);
+            // console.log("ini " + nama + " ruangan " + id);
             $("#editnamaproduk").val(nama);
-            $("#editkodeproduk").val(nobatch);
+            $("#editkodeproduk").val(kode);
             $("#isi_nobatch").val(nobatch);
             $("#isi_besar").val(besar);
             $("#isi_bentuk").val(bentuk);

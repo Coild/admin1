@@ -82,7 +82,7 @@
                                                             PROTAP</label>
                                                         <div class="col-sm">
                                                             <select name="protap" class="form-control 75" id="inputEmail3">
-                                                                @foreach ($protap as $data )
+                                                                @foreach ($protaps as $data )
                                                                     <option value="{{ $data['protap_id']}}">
                                                                         {{$data['protap_nama']}}
                                                                     </option>
@@ -172,11 +172,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $row)
-                        <?php $i = 0;
+                        @foreach ($kemasbatch as $row)
+                        <?php  $i = 0;
                         $i++; ?>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $row['protap'] }}</td>
                             <td>{{ $row['kode_produk'] }}</td>
                             <td>{{ $row['nama_produk'] }}</td>
@@ -298,7 +298,7 @@
                                             PROTAP</label>
                                         <div class="col-sm">
                                             <select name="protap" class="form-control" id="inputEmail3">
-                                                @foreach ($protap as $data )
+                                                @foreach ($protaps as $data )
                                                     <option value="{{ $data['protap_id']}}">
                                                         {{$data['protap_nama']}}
                                                     </option>

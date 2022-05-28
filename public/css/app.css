@@ -20,11 +20,11 @@ a.nav-link:focus, a.nav-link:hover {
     color: #918e8c;
 }
 
-a#pills-profile-tab, a#pills-home-tab, a#pills-contact-tab {
+a#pills-profile-tab, a#pills-home-tab, a#pills-contact-tab, a#pills-detail-tab {
     color: black;
 }
 
-a#pills-home-tab.active,a#pills-profile-tab.active,a#pills-contact-tab.active {
+a#pills-home-tab.active,a#pills-profile-tab.active,a#pills-contact-tab.active,a#pills-detail-tab.active {
     color: white;
 }
 

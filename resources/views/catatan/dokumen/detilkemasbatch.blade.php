@@ -450,7 +450,7 @@
         kemasans = tmp;
 
         if (cekname) {
-            document.getElementById('kodeproduk').value = kemasan.find(kemasan => kemasan.kemasan_nama ===
+            document.getElementById('kodeproduk').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                 document.getElementById('namaproduk').value).kemasan_kode
         } else {
             document.getElementById('kodeproduk').value = ""

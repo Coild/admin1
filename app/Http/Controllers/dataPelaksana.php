@@ -36,12 +36,6 @@ class dataPelaksana extends Controller
             } elseif ($data->status == 1) {
                 return 'Diterima';
             }
-        })->editColumn('status', function ($data) {
-            if ($data->status == 0) {
-                return 'Diajukan';
-            } elseif ($data->status == 1) {
-                return 'Diterima';
-            }
         })->addColumn('action', function ($data) {
 
             if (Auth::user()->level != 2) {

@@ -301,7 +301,7 @@
                                     <!-- pop up end -->
 
                                 </div>
-                                <table id="tabel2" class="table mt-5">
+                                <table id="dataTable1" class="table mt-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -449,7 +449,7 @@
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">Tambah</button>
+                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -545,7 +545,7 @@
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">Tambah</button>
+                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -614,9 +614,9 @@
         // document.getElementById('bahankode').value = kode;
         // document.getElementById('cpbahan').value = cpid;
     })
-    // $(document).ready(function() {
-    //     $('#dataTable1').DataTable()
-    //     $('#dataTable2').DataTable()
-    // })
+     $(document).ready(function() {
+        $('#dataTable1').DataTable()
+        // $('#dataTable2').DataTable()
+    })
 </script>
 @endsection
