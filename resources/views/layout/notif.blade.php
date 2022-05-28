@@ -17,7 +17,7 @@
 
                 <div class="card-body">
 
-                    <table class="table" id="tabel1">
+                    <table class="table" id="datatabel">
                         <thead>
                             <tr>
                                 <th scope="col">Notifikasi</th>
@@ -26,15 +26,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $row)    
-                        <tr>
+                            @foreach($data as $row)
+                            <tr>
                                 <td scope="col">{{$row['notif_isi'].' '.$row['notif_laporan']}}</td>
                                 <td scope="col">{{$row['notif_waktu']}}</td>
                                 <td scope="col"><Button type="button" class="btn btn-primary">
-                                    <a href="{{$row['notif_link']}}" class="btn btn-primary btn-sm"> Lihat </a></td>
+                                        <a href="{{$row['notif_link']}}" class="btn btn-primary btn-sm"> Lihat </a></td>
                             </tr>
-                            </tbody>
                             @endforeach
+                        </tbody>
+                        
                     </table>
 
                 </div>
@@ -44,4 +45,12 @@
                     <a class="btn btn-primary" href="#">Cetak</a> -->
 
 </main>
+<script>
+    $(document).ready(function() {
+    $('#datatabel').DataTable({
+        scrollX: true,
+        responsive: true,
+        "bAutoWidth": false
+    });})
+</script>
 @endsection

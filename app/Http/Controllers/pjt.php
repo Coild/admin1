@@ -81,7 +81,7 @@ class pjt extends Controller
             ]);
         $data = contohkemasan::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penammbahan contoh kemas')
+            ->where('notif_laporan', 'penambahan contoh kemasan')
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
@@ -114,7 +114,7 @@ class pjt extends Controller
 
     public function terima_ambilbahanbaku(Request $req)
     {
-        // dd($req);
+        // dd($req);    
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
@@ -129,7 +129,7 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penambahan bahan baku')
+            ->where('notif_laporan', 'penambahan contoh bahan baku')
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
@@ -148,7 +148,7 @@ class pjt extends Controller
             'status' => 1,
         ]);
 
-        // dd($tgl);
+        // dd($req);
 
         laporan::all()->where('laporan_batch', $req['nobatch'])
             ->where('laporan_nama', 'penerimaan bahan')->first()->update([
@@ -157,7 +157,7 @@ class pjt extends Controller
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penerimaan bahan')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
         return redirect()->route('penerimaanBB');
@@ -290,18 +290,18 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = distribusiproduk::all()->where("id_batch", $req['nobatch'])->first()->update([
+        $user = distribusiproduk::all()->where("id_distribusi", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['nobatch'])
             ->where('laporan_nama', 'distribusi produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'distribusi produk')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
         return redirect()->route('pendistribusian-produk');

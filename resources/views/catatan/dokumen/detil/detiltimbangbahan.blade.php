@@ -103,7 +103,7 @@
 
                 </div>
 
-                <table class="table mt-5">
+                <table class="table mt-5" id="tabel1">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -119,13 +119,15 @@
                         <?php $i = 1; ?>
 
                         @foreach ($data as $row )
+                        <tr>
                         <td scope="col">{{$i}}</td>
                         <td scope="col">{{$row['tanggal']}}</td>
                         <td scope="col">{{$row['nama_bahan']}}</td>
                         <td scope="col">{{$row['nama_suplier']}}</td>
                         <td scope="col">{{$row['jumlah_bahan']}}</td>
                         <td scope="col">{{$row['hasil_penimbangan']}}</td>
-                        <td scope="col"><button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['timbang_bahan_id']}}">edit</button></td>
+                        <td scope="col"><button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['id_detiltimbangbahan']}}">edit</button></td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -157,7 +159,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                         Baku</label>
                                     <div class="col-sm">
-                                        <input class="form-control 1" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan">
+                                        <input class="form-control 1" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan" autocomplete="off">
                                         </input>
                                         <datalist id='listnamabahanbaku'>
                                             @foreach ($bahanbaku as $row)
@@ -228,7 +230,7 @@
                         <div class="card-header">Bahan Baku</div>
                         <div class="card-body">
                             <p class="statusMsg"></p>
-                            <form role="form" method="post" action="edit_penimbanganbahan" id='forminput4'>
+                            <form role="form" method="post" action="edit_detiltimbangbahan" id='forminput4'>
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="id" id="isi_bahanid">
@@ -245,13 +247,6 @@
                                             </option>
                                             @endforeach
                                         </datalist>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">No Loth</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="no_loth" class="form-control 4" placeholder="No Loth" id="isi_nolothbahan" />
                                     </div>
                                 </div>
 
@@ -298,7 +293,6 @@
             var jbahan = $(this).data('jbahan');
             var hasil = $(this).data('hasil');
             var id = $(this).data('id');
-
             $("#bahanbahan").val(nama);
             // $("#isi_tanggal").val(tanggal);
             $("#isi_nolothbahan").val(noloth);

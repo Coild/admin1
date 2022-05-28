@@ -60,6 +60,8 @@ Route::post('/printalatutama', [PrintController::class, 'cetak_alatutama'])->nam
 Route::post('/printdistribusiproduk', [PrintController::class, 'cetak_distribusiproduk'])->name('distribusiproduk');
 Route::post('/printpenanganankeluhan', [PrintController::class, 'cetak_penanganankeluhan'])->name('penanganankeluhan');
 
+Route::post('/printpelulusanproduk', [PrintController::class, 'cetak_pelulusanproduk'])->name('pelulusanproduk');
+
 Route::post('/printpenarikanproduk', [PrintController::class, 'cetak_penarikanproduk'])->name('penarikanproduk');
 
 Route::post('/printpemusnahanbahan', [PrintController::class, 'cetak_pemusnahanbahan'])->name('pemusnahanbahan');

@@ -6,7 +6,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Detil Timbang Bahan </h1>
+            <h1 class="mt-4">Detil Timbang Produk </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Nama Bahan</li>
             </ol>
@@ -112,7 +112,7 @@
                         <!--  -->
 
                     </div>
-                    <table class="table mt-5">
+                    <table class="table mt-5" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -138,7 +138,7 @@
                                 <td>{{ $row['hasil_penimbangan'] }}</td>
                                 <td>{{ $row['untuk_produk'] }}</td>
                                 <td>
-                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id']}}">edit</button>
+                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_detiltimbangproduk']}}">edit</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -164,7 +164,7 @@
                             <div class="card-header">Produk Antara</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_penimbanganprodukantara" id='forminput5'>
+                                <form role="form" method="post" action="edit_detiltimbangproduk" id='forminput5'>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="id" id="isi_produkid">

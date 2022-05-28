@@ -139,13 +139,13 @@
                                     <?php if ($row['status'] == 0) { ?>
                                         <form method="post" action="terimadistribusiproduk">
                                             @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
                                             <button type="submit" class="btn btn-primary">terima</button>
                                         </form>
                                     <?php } elseif ($row['status'] == 1) { ?>
                                         <form method="post" action="terimadistribusiproduk">
                                             @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_batch'] }}" />
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
                                             <button type="submit" class="btn btn-danger disabled">terima</button>
                                         </form>
                                     <?php } ?>

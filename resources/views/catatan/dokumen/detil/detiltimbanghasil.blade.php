@@ -6,7 +6,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Detil Timbang Bahan </h1>
+            <h1 class="mt-4">Detil Timbang Hasil </h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">{{session()->get('bahan')}}</li>
             </ol>
@@ -114,7 +114,7 @@
 
                     </div>
 
-                    <table class="table mt-5">
+                    <table class="table mt-5" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -148,7 +148,7 @@
                                     </form>
                                     @else
 
-                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ $row['jumlah_bahan_baku'] }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang']}}">edit</button>
+                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ $row['jumlah_bahan_baku'] }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-sisa="{{ $row['sisa_bahan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_detiltimbanghasil']}}">edit</button>
 
                                     @endif
                                 </td>
@@ -175,7 +175,7 @@
                             <div class="card-header">Hasil Timbang</div>
                             <div class="card-body">
                                 <p class="statusMsg"></p>
-                                <form role="form" method="post" action="edit_ruangtimbang" id='forminput6'>
+                                <form role="form" method="post" action="edit_detiltimbanghasil" id='forminput6'>
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="id" id="isi_ruangid">
@@ -217,6 +217,14 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa Bahan</label>
+                                        <div class="col-sm">
+                                            <input type="text" name="sisa_bahan" class="form-control 6"
+                                                id="isi_sisa" placeholder="Untuk Produk" />
+                                        </div>
+                                    </div>
+
                                     <a class="btn btn-primary" onclick="salert1(6)" href="#"
                                         style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                 </form>
@@ -237,6 +245,7 @@
                 var jminta = $(this).data('jminta');
                 var hasil = $(this).data('hasil');
                 var produk = $(this).data('produk');
+                var sisa = $(this).data('sisa');
                 var id = $(this).data('id');
 
                 $("#isi_namaruang").val(nama);
@@ -244,6 +253,7 @@
                 $("#isi_nolothruang").val(noloth);
                 $("#isi_jruang").val(jruang);
                 $("#isi_jminta").val(jminta);
+                $("#isi_sisa").val(jminta);
                 $("#isi_hasilruang").val(hasil);
                 $("#isi_produkruang").val(produk);
                 $("#isi_ruangid").val(id);

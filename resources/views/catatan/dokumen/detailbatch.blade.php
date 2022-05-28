@@ -90,6 +90,39 @@
 
                     </div>
                 @endforeach
+                    <!-- pop up end -->
+
+                    <table class="table" id="tabel1">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama BB</th>
+                                <th scope="col">Kode BB</th>
+                                <th scope="col">Persentase (%)</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($list_kom as $row)
+                            <?php $i++;
+                            ?>
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $row['komposisi_id'] }}</td>
+                                <td>{{ $row['kompisisi_nama'] }}</td>
+                                <td>{{ $row['komposisi_persen'] }}</td>
+                                <td>
+                                    <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>Hapus</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
                 <div class="card mb-4">
                     <div class="card-header">
@@ -159,40 +192,35 @@
                             </div>
                         </div>
 
-                        <!-- pop up end -->
+                    <!-- pop up end -->
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama BB</th>
-                                    <th scope="col">Kode BB</th>
-                                    <th scope="col">Persentase (%)</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 0; ?>
-                                @foreach ($list_kom as $row)
-                                    <?php $i++;
-                                    ?>
-                                    <tr>
-                                        <th scope="row">{{ $i }}</th>
-                                        <td>{{ $row['komposisi_id'] }}</td>
-                                        <td>{{ $row['kompisisi_nama'] }}</td>
-                                        <td>{{ $row['komposisi_persen'] }}</td>
-                                        <td>
-                                            <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                                <?php if ($status > 0) {
-                                                    echo 'disabled';
-                                                } ?>>Hapus</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table" id="tabel2">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Alat</th>
+                                <th scope="col">Kode Alat</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($list_alat as $row)
+                            <?php $i++;
+                            ?>
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $row['peralatan_nama'] }}</td>
+                                <td>{{ $row['peralatan_id'] }}</td>
+                                <td>
+                                    <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>Hapus</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="card mb-4">
@@ -258,38 +286,43 @@
                             </div>
                         </div>
 
-                        <!-- pop up end -->
+                    <!-- pop up end -->
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama Alat</th>
-                                    <th scope="col">Kode Alat</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 0; ?>
-                                @foreach ($list_alat as $row)
-                                    <?php $i++;
-                                    ?>
-                                    <tr>
-                                        <th scope="row">{{ $i }}</th>
-                                        <td>{{ $row['peralatan_nama'] }}</td>
-                                        <td>{{ $row['peralatan_id'] }}</td>
-                                        <td>
-                                            <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                                <?php if ($status > 0) {
-                                                    echo 'disabled';
-                                                } ?>>Hapus</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table" id="tabel3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Kode Bahan</th>
+                                <th scope="col">Nama Bahan</th>
+                                <th scope="col">Nomor Loth</th>
+                                <th scope="col">Jml Dibutuhkan</th>
+                                <th scope="col">Jml Ditimbang</th>
+                                <th scope="col">Ditimbang Oleh</th>
+                                <th scope="col">Diperiksa Oleh</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($list_nimbang as $row)
+                            <?php $i++;
+                            ?>
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $row['penimbangan_kodebahan'] }}</td>
+                                <td>{{ $row['penimbangan_namabahan'] }}</td>
+                                <td>{{ $row['penimbangan_loth'] }}</td>
+                                <td>{{ $row['penimbangan_jumlahbutuh'] }}</td>
+                                <td>{{ $row['penimbangan_jumlahtimbang'] }}</td>
+                                <td>{{ $row['penimbangan_timbangoleh'] }}</td>
+                                <td>{{ $row['penimbangan_periksaoleh'] }}</td>
+                                <td>
+                                    <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="card mb-4">
@@ -478,36 +511,33 @@
                             </div>
                         </div>
 
-                        <!-- pop up end -->
+                    <!-- pop up end -->
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Pengolahan</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 0; ?>
-                                @foreach ($list_olah as $row)
-                                    <?php $i++;
-                                    ?>
-                                    <tr>
-                                        <th scope="row">{{ $i }}</th>
-                                        <td>{{ $row['isi'] }}</td>
-                                        <td>
-                                            <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                                <?php if ($status > 0) {
-                                                    echo 'disabled';
-                                                } ?>>Hapus</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table" id="tabel4">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Pengolahan</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($list_olah as $row)
+                            <?php $i++;
+                            ?>
+                            <tr>
+                                <th scope="row">{{ $i }}</th>
+                                <td>{{ $row['isi'] }}</td>
+                                <td>
+                                    <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
+                                                                                                                                                                    echo 'disabled';
+                                                                                                                                                                } ?>>Hapus</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <?php foreach ($rekon as $row) {

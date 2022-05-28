@@ -180,6 +180,7 @@
                                         <form method="post" action="terimapelulusanproduk">
                                             @csrf
                                             <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                            <input type="hidden" name="no" value="{{ $row['id_pelulusan'] }}" />
                                             <button type="submit" class="btn btn-primary">terima</button>
                                         </form>
                                     <?php } elseif ($row['status'] == 1) { ?>

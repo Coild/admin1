@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, Detilruangan, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi};
+
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, Detilruangan};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -227,7 +228,7 @@ class PrintController extends Controller
     public function cetak_alatutama(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan')->first();
         $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -246,7 +247,7 @@ class PrintController extends Controller
     public function cetak_distribusiproduk(Request $req)
     {
         $id = $req['id'];
-        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan')->first();
         $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
         // dd($datapabrik);
         $logo = $datapabrik['logo'];
@@ -280,9 +281,20 @@ class PrintController extends Controller
 
     public function cetak_pelulusanproduk(Request $req)
     {
-        // $id = Session::get('data');
-        // echo "ini ".$id;
-        return " <h1> not found </h1>";
+        $id = $req['id'];
+        $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penerimaan bahan');
+        $datapabrik = pabrik::all()->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->first();
+        // dd($datapabrik);
+        $logo = $datapabrik['logo'];
+        $alamat = $datapabrik['alamat'];
+        $nama = $datapabrik['nama'];
+        $nohp = $datapabrik['no_hp'];
+        $data = pelulusanproduk::all()->where('id_pelulusan', $id)->first();
+        // dd($data);
+        return view('print.pelulusanproduk', [
+            'data' => $data, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
+            'nohp' => $nohp
+        ]);
     }
 
     public function cetak_penarikanproduk(Request $req)

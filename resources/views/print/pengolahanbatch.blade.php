@@ -211,9 +211,9 @@
                 ?>
                 <tr>
                     <td>{{$i}}</td>
-                    <td>{{$row['kompisisi_nama']}}</td>
-                    <td>{{$row['komposisi_id']}}</td>
-                    <td>{{$row['komposisi_persen']}}</td>
+                    <td>{{"*****"}}</td>
+                    <td>{{"*****"}}</td>
+                    <td>{{"*****"}}</td>
                 </tr>
                 @endforeach
 
