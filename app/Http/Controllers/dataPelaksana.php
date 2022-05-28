@@ -67,7 +67,7 @@ class dataPelaksana extends Controller
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
                 }
             } else {
-                if ($data->status == 0){
+                if ($data->status == 0) {
                     return '<form method="post" action="terima_cpbahan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
@@ -75,7 +75,7 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_bahan_id . ' />
                         <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
                     </form>';
-                }else {
+                } else {
                     return '<form method="post" action="terima_cpbahan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
@@ -133,7 +133,7 @@ class dataPelaksana extends Controller
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
                 }
             } else {
-                if ($data->status == 0){
+                if ($data->status == 0) {
                     return '<form method="post" action="terima_cpproduk">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=2 />
@@ -141,7 +141,7 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_produk_id . ' />
                         <button type="submit" class="btn btn-primary">Terima</button>
                     </form>';
-                }else{
+                } else {
                     return '<form method="post" action="terima_cpproduk">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=2 />
@@ -183,7 +183,7 @@ class dataPelaksana extends Controller
                             value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode .' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 } elseif ($data->status == 1) {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -196,10 +196,10 @@ class dataPelaksana extends Controller
                             value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditkemasan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode .' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 }
             } else {
-                if ($data->status == 0){
+                if ($data->status == 0) {
                     return '<form method="post" action="terima_cpkemasan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
@@ -207,7 +207,7 @@ class dataPelaksana extends Controller
                             value=' . $data->cp_kemasan_id . ' />
                         <button type="submit" class="btn btn-primary">Terima</button>
                     </form>';
-                }else{
+                } else {
                     return '<form method="post" action="terima_cpkemasan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
@@ -217,7 +217,6 @@ class dataPelaksana extends Controller
                     </form>';
                 }
             }
-
         })->rawColumns(['action'])->make();
     }
 
@@ -333,6 +332,8 @@ class dataPelaksana extends Controller
 
             elseif ($data->laporan_nama == 'pelatihan cpkb')
                 $form = '<form target="_blank" method="post" action="/printlatihcpkb">';
+            elseif ($data->laporan_nama == 'pelulusan produk jadi')
+                $form = '<form target="_blank" method="post" action="/printpelulusanproduk">';
             else
                 $form = '<form target="_blank" method="post" action="/printterimakemasan">';
             $isi =
