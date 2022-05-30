@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Laporan Penerimaan dan Pengeluaran Kemasan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,6 +37,7 @@
         .isi {
             text-align: center;
         }
+
     </style>
 </head>
 
@@ -65,44 +66,49 @@
         <center>
             <br>
             @foreach ($kop as $row)
-            <table class="table table-bordered">
-                <tr>
-                    <td rowspan="4">
-                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
+                <table class="table table-bordered">
+                    <tr>
+                        <td rowspan="4">
+                            <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;"
+                                alt="Your Picture">
 
-                    </td>
-                    <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PENERIMAAN BAHAN
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="3" colspan="3">
-                        Nomor Kode
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2" colspan="2">
-                        BAGIAN
+                        </td>
+                        <td rowspan="2" colspan="2" style="text-align: center;">
+                            CATATAN<br>PENERIMAAN KEMASAN
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" colspan="3">
+                            Nomor Kode
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" colspan="2">
+                            BAGIAN
 
-                    </td>
+                        </td>
 
 
-                </tr>
-                <tr> </tr>
-                <tr>
-                    <td rowspan="3">
-                        Nama Bahan <br>
-                        {{ $row['tgl_diajukan'] }}
-                    </td>
-                    <td rowspan="3" colspan="4">
-                        Untuk Produk <br>
-                        {{ $row['tgl_diajukan'] }}
-                    </td>
-                    <td rowspan="3">
-                        Unit
-                    </td>
-                </tr>
-            </table>
+                    </tr>
+                    <tr> </tr>
+                    <tr>
+                        <td rowspan="3">
+                            Disusun Oleh <br>
+                            {{ $row['laporan_diajukan'] }} <br>
+                            Tanggal <br>
+                            {{ $row['tgl_diajukan'] }}
+                        </td>
+                        <td rowspan="3" colspan="4">
+                            Disetujui Oleh <br>
+                            {{ $row['laporan_diterima'] }} <br>
+                            Tanggal <br>
+                            {{ $row['tgl_diajukan'] }}
+                        </td>
+                        <td rowspan="3">
+                            Unit
+                        </td>
+                    </tr>
+                </table>
             @endforeach
             <br><br>
             <table class="table isi table-bordered">
@@ -126,45 +132,45 @@
                 </tr>
                 <?php $cek = 1; ?>
                 @foreach ($masuk as $row)
-                <tr>
-                    <td>{{ $row['tanggal'] }}</td>
-                    <td>{{ $row['no_loth'] }}</td>
-                    <td>{{ $row['pemasok'] }}</td>
-                    <td>{{ $row['jumlah'] }}</td>
-                    <td>{{ $row['no_kontrol'] }}</td>
-                    <td>{{ $row['kedaluwarsa'] }}</td>
-                    <?php $i = 1; ?>
-                    @foreach ($keluar as $row)
-
-                    @if ($cek == $i)
-                    <td>{{ $row['tanggal'] }}</td>
-                    <td>{{ $row['untuk_produk'] }}</td>
-                    <td>{{ $row['no_batch'] }}</td>
-                    <td>{{ $row['jumlah'] }}</td>
-                    <td>{{ $row['sisa'] }}</td>
-                    <td> </td>
-                    @elseif($i >= $cek && $cek >= count($masuk))
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ $row['tanggal'] }}</td>
-                    <td>{{ $row['untuk_produk'] }}</td>
-                    <td>{{ $row['no_batch'] }}</td>
-                    <td>{{ $row['jumlah'] }}</td>
-                    <td>{{ $row['sisa'] }}</td>
-                    <td> </td>
-                    @elseif(count($keluar) <= $cek) <td>
+                    <tr>
+                        <td>{{ $row['tanggal'] }}</td>
+                        <td>{{ $row['no_loth'] }}</td>
+                        <td>{{ $row['pemasok'] }}</td>
+                        <td>{{ $row['jumlah'] }}</td>
+                        <td>{{ $row['no_kontrol'] }}</td>
+                        <td>{{ $row['kedaluwarsa'] }}</td>
+                        <?php $i = 1; ?>
+                        @foreach ($keluar as $row)
+                            @if ($cek == $i)
+                                <td>{{ $row['tanggal'] }}</td>
+                                <td>{{ $row['untuk_produk'] }}</td>
+                                <td>{{ $row['no_batch'] }}</td>
+                                <td>{{ $row['jumlah'] }}</td>
+                                <td>{{ $row['sisa'] }}</td>
+                                <td> </td>
+                            @elseif($i >= $cek && $cek >= count($masuk))
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ $row['tanggal'] }}</td>
+                        <td>{{ $row['untuk_produk'] }}</td>
+                        <td>{{ $row['no_batch'] }}</td>
+                        <td>{{ $row['jumlah'] }}</td>
+                        <td>{{ $row['sisa'] }}</td>
+                        <td> </td>
+                    @elseif(count($keluar) <= $cek)
+                        <td>
                         </td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                </tr>
+                    </tr>
                 @endif
                 <?php $i++; ?>
                 @endforeach

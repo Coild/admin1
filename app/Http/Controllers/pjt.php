@@ -181,8 +181,8 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penerrimaan produk')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_laporan', 'penergit loimaan produk')
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
         return redirect()->route('penerimaanBB');
@@ -205,7 +205,7 @@ class pjt extends Controller
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penerimaan kemasan')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
         return redirect()->route('penerimaanBB');
