@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Laporan Penerimaan dan Pengeluaran Produk</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
 
                     </td>
                     <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PENERIMAAN BAHAN
+                        CATATAN<br>PENERIMAAN PRODUK
                     </td>
                 </tr>
                 <tr>
@@ -91,11 +91,11 @@
                 <tr> </tr>
                 <tr>
                     <td rowspan="3">
-                        Nama Bahan <br>
+                        Nama Produk<br>
                         {{ $row['tgl_diajukan'] }}
                     </td>
                     <td rowspan="3" colspan="4">
-                        Untuk Produk <br>
+                        Untuk Distributor <br>
                         {{ $row['tgl_diajukan'] }}
                     </td>
                     <td rowspan="3">
