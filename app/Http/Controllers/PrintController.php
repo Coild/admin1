@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, Detilruangan};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, Detilperiksaalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, Detilruangan, Periksaalat};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -406,7 +406,7 @@ class PrintController extends Controller
         ]);
     }
 
-    public function cetak_periksaalat(Request $req)
+    public function cetak_pemeriksaansanitasialat(Request $req)
     {
         $id = $req['id'];
         $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'periksa sanitasi alat');
@@ -416,11 +416,15 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = periksaruang::all()->where('id_periksaalat', $id)->first();
+        $data = Periksaalat::all()->where('id_periksaalat', $id)->first();
+
+        $dataProtap = protap::all()->where('protap_id', $data->pob_nomor)->first();
         // dd($data);
-        return view('print.penanganankeluhan', [
+        $dataDetil = Detilperiksaalat::all()->where('id_induk', $id);
+        // dd($dataDetil);
+        return view('print.pembersihanalat', [
             'data' => $data, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
-            'nohp' => $nohp
+            'nohp' => $nohp, 'dataDetil' => $dataDetil, 'dataProtap' => $dataProtap
         ]);
     }
 
@@ -541,10 +545,14 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = periksaruang::all()->where('id_periksaruang', $id)->first();
+        // $data = periksaruang::all()->where('id_periksaruang', $id)->first();
         $dataDetail = Detilruangan::all()->where('id_induk', $id);
         // dd($dataDetail);
-        return view('print.pembersihanruangan', [
+        $data = periksaruang::join('protaps', 'periksaruangs.nomer_prosedur', 'protaps.protap_id')
+            ->get(['periksaruangs.*', 'protaps.protap_nama'])->first();
+
+        // dd($data);
+            return view('print.pembersihanruangan', [
             'data' => $data, 'dataDetail' => $dataDetail, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
             'nohp' => $nohp
         ]);

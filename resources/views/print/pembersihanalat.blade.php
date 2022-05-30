@@ -82,18 +82,18 @@
         <table width="100%" class="kop">
             <tr>
                 <td style="border:none;" width="30%">
-                    <img src={{ asset('asset/logo/logo.png') }} style="height:120px; width:auto;" alt="Your Picture">
+                    <img src={{ asset('asset/logo/').$logo }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td width="70%" class="tengah" style="border:none;">
                     <center>
                         <h1 style="font-weight: bolder; margin-bottom: -15px">
-                            {{ 'Jalan' }}
+                            {{ $alamat }}
                         </h1>
                         <p style="margin-bottom: -5px; font-size: 28px; ">
-                            {{ 'Nomo' }}
+                            {{ $nama }}
                         </p>
                         <p style="margin-bottom: -5px; font-size: 16px;">
-                            No Handphone : {{ '123' }}
+                            No Handphone : {{ $nohp }}
                         </p>
                     </center>
                 </td>
@@ -117,24 +117,23 @@
                                   </td>
                               </tr>
                               <tr>
-                                  <td>RUANGAN</td>
-                                  <td>Nomor: <br> Tanggal Berlaku</td>
+                                  <td>{{ $dataProtap['protap_ruangan'] }}</td>
+                                  <td>Nomor: <br> Tanggal Berlaku : </td>
                               </tr>
                               <tr>
                                   <td>
-                                      Disusun Oleh <br>
+                                      Disusun Oleh : {{ $dataProtap['protap_diajukan'] }} <br>
                                       Tanggal <br>
-                                      09 Oktober 2019
+                                      {{ $dataProtap['protap_tgl_diajukan'] }}
                                   </td>
                                   <td>
-                                      Disetujui Oleh <br>
+                                      Disetujui Oleh : {{ $dataProtap['protap_diterima'] }} <br>
                                       Tanggal <br>
-                                      09 Oktober 2019
+                                      {{ $dataProtap['protap_tgl_diterima'] }}
                                   </td>
                                   <td>
                                       Mengganti Nomor <br>
                                       Tanggal <br>
-                                      09 Oktober 2019
                                   </td>
                               </tr>
                           </table>
@@ -149,15 +148,15 @@
                                   </td>
                               </tr>
                               <tr>
-                                  <td style="text-align: left;" colspan="7">Dilaksanakan sesuai POB Nomor:<br>
-                                      Tanggal:
+                                  <td style="text-align: left;" colspan="7">Dilaksanakan sesuai POB Nomor: {{ $data['pob_nomor'] }} <br>
+                                      Tanggal: {{ $data['tanggal'] }}
                                   </td>
                               </tr>
                               <tr>
                                   <td colspan="7">
-                                      NAMA ALAT: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                      TIPE/MEREK: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                      RUANG: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      NAMA ALAT: {{ $data['nama_alat'] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      TIPE/MEREK: {{ $data['type_merk'] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      RUANG: {{ $data['nama_ruangan'] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   </td>
                               </tr>
                               <tr>
@@ -176,15 +175,42 @@
                                   <td>Tgl</td>
                                   <td>Jam</td>
                               </tr>
+                              @foreach ($dataDetil as $row)
                               <tr>
-                                  <td>isi 1</td>
-                                  <td>isi 2</td>
-                                  <td>isi 3</td>
-                                  <td>isi 4</td>
-                                  <td>isi 5</td>
-                                  <td>isi 6</td>
-                                  <td>isi 7</td>
-                              </tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($row['mulai_pemakaian'] != null)
+                                        {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('j F, Y') }}
+                                    @else
+                                        <div class="badge badge-danger"> belum</div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($row['mulai_pemakaian'] != null)
+                                        {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('h:i:s A') }}
+                                    @else
+                                        <div class="badge badge-danger"> belum</div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($row['mulai_pemakaian'] != null)
+                                        {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('j F, Y') }}
+                                    @else
+                                        <div class="badge badge-danger"> belum</div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($row['mulai_pemakaian'] != null)
+                                        {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('h:i:s A') }}
+                                    @else
+                                        <div class="badge badge-danger"> belum</div>
+                                    @endif
+                                </td>
+                                <td>{{$row['diperiksa_oleh']}}</td>
+                                <td>{{$row['keterangan']}}</td>
+                            </tr>    
+                              @endforeach
+                              
                           </table>
                       </div>
                   </div>

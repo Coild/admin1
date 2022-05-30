@@ -82,7 +82,7 @@
         <table width="100%" class="kop">
             <tr>
                 <td style="border:none;" width="30%">
-                    <img src={{ asset('asset/logo/logo.png') }} style="height:120px; width:auto;" alt="Your Picture">
+                    <img src={{ asset('asset/logo/').$logo }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td width="70%" class="tengah" style="border:none;">
                     <center>

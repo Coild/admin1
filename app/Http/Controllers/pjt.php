@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk, log};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +37,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pengolahan batch',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('pengolahanbatch');
     }
 
@@ -61,6 +70,16 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pengemasan batch',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
+
         return redirect()->route('pengemasan-batch');
     }
 
@@ -85,6 +104,16 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penambahan contoh kemasan',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
+
         return redirect()->route('ambilcontoh');
     }
 
@@ -109,6 +138,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penambahan contoh produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('ambilcontoh');
     }
 
@@ -133,6 +170,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penambahan contoh bahan baku',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('ambilcontoh');
     }
 
@@ -160,6 +206,15 @@ class pjt extends Controller
             ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penerimaan bahan',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('penerimaanBB');
     }
 
@@ -185,6 +240,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penerimaan produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('penerimaanBB');
     }
 
@@ -208,6 +272,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penerimaan kemasan',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('penerimaanBB');
     }
 
@@ -232,6 +304,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pelatihan higiene dan sanitasi',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
     }
 
@@ -255,6 +335,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pelatihan cpkb',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
     }
 
@@ -279,8 +367,53 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pengoperasiian alat',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pengoprasian-alat');
     }
+
+
+    public function terimaperiksaruang(Request $req)
+    {
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+        $pabrik = Auth::user()->pabrik;
+        $user = periksaruang::where("id_periksaruang", $req['id_periksaruang'])->first()->update([
+            'status' => 1,
+        ]);
+        laporan::all()->where('laporan_nomor', $req['id_periksaruang'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'tgl_diterima' => $tgl
+        ]);
+        $data = periksaruang::all()->where('status', 1);
+
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'periksa sanitasi ruangan')
+            ->where('notif_2',$req['id_periksaruang'])->first()->update([
+                'notif_3'  => 1
+            ]);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' menerima laporan periksa sanitasi ruang',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+        return redirect()->route('periksasaniruang');
+
+
+    }
+
 
     //distribusi produk
     public function terima_distribusiproduk(Request $req)
@@ -304,6 +437,14 @@ class pjt extends Controller
             ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan distribusi produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pendistribusian-produk');
     }
 
@@ -328,6 +469,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penimbangan bahan',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('penimbangan');
     }
 
@@ -351,6 +500,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penimbangan produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('penimbangan');
     }
 
@@ -374,6 +532,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan ruang timbang',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('penimbangan');
     }
 
@@ -398,6 +564,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pelulusan produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('pelulusan-produk');
     }
 
@@ -423,6 +598,16 @@ class pjt extends Controller
                 'notif_3'  => 1
             ]);
         $data = penanganankeluhan::all()->where('status', 1);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' menerima laporan penanganan keluhan',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+
         return redirect()->route('penanganan-keluhan');
     }
     public function terima_penarikanproduk(Request $req)
@@ -445,6 +630,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan penarikan produk',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('penarikan-produk');
     }
     public function terima_pemusnahanbahanbaku(Request $req)
@@ -467,6 +660,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan bahan',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanbahankemas(Request $req)
@@ -489,6 +690,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan bahan kemas',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanprodukantara(Request $req)
@@ -511,6 +720,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan produk antara',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_pemusnahanprodukjadi(Request $req)
@@ -533,6 +751,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan produk jadi',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pemusnahan-produk');
     }
     public function terima_stokbahanbaku(Request $req)
@@ -555,6 +781,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan kartu stok bahan baku',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('kartu-stok');
     }
     public function terima_stokbahankemas(Request $req)
@@ -576,7 +810,16 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+            
         $data = kartustokbahankemas::all()->where('status', 1);
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' menerima laporan kartu stok bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect()->route('kartu-stok');
     }
     public function terima_stokprodukjadi(Request $req)
@@ -599,6 +842,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan kartu stok produk jadi',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('kartu-stok');
     }
     public function terima_stokprodukantara(Request $req)
@@ -621,6 +872,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan kartu stok produk antara',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('kartu-stok');
     }
     public function terima_pemeriksaanbahanbaku(Request $req)
@@ -643,6 +902,15 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan Pemeriksaan Bahan Baku',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
+
         return redirect()->route('pemeriksaan-bahan');
     }
     public function terima_pemeriksaanbahankemas(Request $req)
@@ -665,6 +933,14 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan Pemeriksaan Bahan Kemas',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pemeriksaan-bahan');
     }
     public function terima_pemeriksaanprodukjadi(Request $req)
@@ -687,28 +963,22 @@ class pjt extends Controller
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);
+
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan Pemeriksaan Produk Jadi',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('pemeriksaan-bahan');
     }
 
     //higiene dan sanitasi
-    public function terima_periksaruang(Request $req) {
-        date_default_timezone_set("Asia/Jakarta");
-        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-        $tgl = $tgl->format('Y-m-d');
-        $pabrik = Auth::user()->pabrik;
-        $user = periksaruang::where("id_periksaruang", $req['id'])->update([
-            'status' => 1,
-        ]);
-        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
-            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
-            'tgl_diterima' => $tgl
-        ]);
-        $data = periksaruang::all()->where('status', 1);
-        return redirect()->route('periksasaniruang');
-    }
 
     public function terima_periksaalat(Request $req) {
         // dd($req['id']);
+        // dd($req);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
@@ -716,16 +986,29 @@ class pjt extends Controller
         $user = Periksaalat::where("id_periksaalat", $req['id_periksaalat'])->update([
             'status' => 1,
         ]);
-        // laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
-        //     'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
-        //     'tgl_diterima' => $tgl
-        // ]);
-        // $data = periksaalat::all()->where('status', 1);
-        // notif::all()->where('id_pabrik', Auth::user()->pabrik)
-        //     ->where('notif_laporan', 'periksa sanitasi ruangan')
-        //     ->where('notif_2',$req['no'])->first()->update([
-        //         'notif_3'  => 1
-        //     ]);
+
+        
+        laporan::all()->where('laporan_nomor', $req['id_periksaalat'])->where('laporan_nama', 'periksa sanitasi alat')->first()->update([
+            'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'tgl_diterima' => $tgl
+        ]);
+
+        $data = periksaalat::all()->where('status', 1);
+        
+        notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_laporan', 'pemeriksaan sanitasi alat')
+            ->where('notif_2',$req['id_periksaalat'])->first()->update([
+                'notif_3'  => 1
+            ]);
+
+            
+            $log = [
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemeriksaan sanitasi alat',
+                'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => Auth::user()->pabrik
+            ];
+            log::insert($log);
         return redirect()->route('periksasanialat');
     }
 
@@ -782,8 +1065,17 @@ class pjt extends Controller
             'pabrik_id' => $id,
         ];
 
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah spesifikasi bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         spesifikasi::insert($hasil);
         // // user::deleted()
+        
         return redirect('/spek_bahan_baku')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
@@ -804,6 +1096,16 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah spesifikasi bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+
         return redirect('/spek_bahan_kemas')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
@@ -824,6 +1126,15 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah spesifikasi produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
         return redirect('/spek_produk_antara')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
@@ -844,6 +1155,16 @@ class pjt extends Controller
 
         spesifikasi::insert($hasil);
         // // user::deleted()
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah spesifikasi produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+
         return redirect('/spek_produk_jadi')->with('success', 'Data Berhasil Ditambahkan!');;
     }
 
@@ -855,6 +1176,14 @@ class pjt extends Controller
 
 
         $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menghapus spesifikasi bahan baku',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
 
         return redirect('/spek_bahan_baku')->with('success', 'Data Berhasil Dihapus!');
     }
@@ -865,6 +1194,13 @@ class pjt extends Controller
         // dd($data);
         unlink("asset/coa/" . $data->file);
         $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menghapus spesifikasi bahan kemas',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/spek_bahan_kemas')->with('success', 'Data Berhasil Dihapus!');
     }
@@ -875,6 +1211,13 @@ class pjt extends Controller
         // dd($data);
         unlink("asset/coa/" . $data->file);
         $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menghapus spesifikasi produk jadi',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/spek_produk_jadi')->with('success', 'Data Berhasil Dihapus!');
     }
@@ -885,6 +1228,13 @@ class pjt extends Controller
         // dd($data);
         unlink("asset/coa/" . $data->file);
         $post = spesifikasi::all()->where('spesifikasi_id', $req->idBB)->each->delete();
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menghapus spesifikasi produk antara',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
 
         return redirect('/spek_produk_antara')->with('success', 'Data Berhasil Dihapus!');;
     }

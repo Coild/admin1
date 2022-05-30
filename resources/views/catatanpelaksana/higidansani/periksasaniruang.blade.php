@@ -49,7 +49,7 @@
                                                 <thead>
 
                                                     <tr>
-                                                        <th scope="col" style="width:5%" class="text-center">No</th>
+                                                        {{-- <th scope="col" style="width:5%" class="text-center">Protap Nomor</th> --}}
                                                         <th scope="col">Nama Ruangan</th>
                                                         <th scope="col">No Prosedur</th>
                                                         <th scope="col">Tanggal</th>
@@ -60,7 +60,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <td scope="col" class="text-center">1</td>
                                                     <td scope="col" class="text-center">
                                                         <div class="form-group row">
                                                             <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu</label> -->
@@ -75,9 +74,18 @@
                                                         <div class="form-group row">
                                                             <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Waktu</label> -->
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
+                                                                <select style="height: 35px;" class="form-control"
+                                                                    name="nomer_prosedur">
+                                                                    @foreach ($data2 as $row)
+                                                                        <option value="{{ $row['protap_id'] }}">
+                                                                            {{ $row['protap_nama'] }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                                {{-- <input class="form-control" type='text'
                                                                     placeholder="No. Prosedur" style="height: 35px;"
-                                                                    name="nomer_prosedur" id="inlineFormCustomSelect">
+                                                                    name="nomer_prosedur" id="inlineFormCustomSelect"> --}}
                                                             </div>
                                                         </div>
                                                     </td>
@@ -124,7 +132,7 @@
                                 <?php $i++; ?>
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $row['nomer_prosedur'] }}</td>
+                                    <td>{{ $row['protap_nama'] }}</td>
                                     <td>{{ \Carbon\Carbon::parse($row['tanggal_prosedur'])->format('j F, Y') }}</td>
                                     <td>{{ $row['nama_ruangan'] }}</td>
                                     <td>{{ $row['cara_pembersihan'] }}</td>
@@ -299,7 +307,16 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-4 col-form-label">No. Prosedur</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="no. prosedur" name="nomer_prosedur" id="modalnomer_prosedur">
+                                                <select style="height: 35px;" class="form-control"
+                                                    name="nomer_prosedur" id="modalnomer_prosedur">
+                                                    @foreach ($data2 as $row)
+                                                        <option value="{{ $row['protap_id'] }}">
+                                                            {{ $row['protap_nama'] }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                                {{-- <input class="form-control" type='text' placeholder="no. prosedur" name="nomer_prosedur" id="modalnomer_prosedur"> --}}
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -356,7 +373,7 @@
                 const formatYmd = new Date(tanggal_prosedur).toISOString().slice(0, 10);
                 $('#modalid_ruangan').val(p);
                 $('#modalnama_ruangan').val(nama_ruangan);
-                $('#modalnomer_prosedur').val(nomer_prosedur);
+                $('#modalnomer_prosedur').val(nomer_prosedur).change();
                 $('#modaltanggal_prosedur').val(formatYmd);
                 $('#modalcara_pembersihan').val(cara_pembersihan);
             }

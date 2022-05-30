@@ -220,57 +220,6 @@ class dataPelaksana extends Controller
         })->rawColumns(['action'])->make();
     }
 
-    // public function cp_bahanmasuk(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPbahanbakumasuk::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-    // public function cp_bahankeluar(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPbahanbakukeluar::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-
-    // public function cp_produkmasuk(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPprodukjadimasuk::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-    // public function cp_produkkeluar(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPprodukjadikeluar::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-
-    // public function cp_kemasanmasuk(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPkemasanmasuk::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-    // public function cp_kemasankeluar(Request $req)
-    // {
-    //     $id = Auth::user()->pabrik;
-    //     $data = PPkemasankeluar::all()->where('pabrik', $id)->where('induk', $req['induk']);
-    //     return DataTables::of($data)->addColumn('action', function ($data) {
-    //         return '<button type="submit" class="btn btn-primary">Edit</button>';
-    //     })->rawColumns(['action'])->make();
-    // }
-
     public function laporan()
     {
         $data = laporan::all()->where('pabrik_id', Auth::user()->pabrik)->where('laporan_diterima', "!=", 'belum')->sortByDesc('tgl_diterima');
@@ -339,6 +288,12 @@ class dataPelaksana extends Controller
                 $form = '<form target="_blank" method="post" action="/printpembersihanalat">';
             elseif ($data->laporan_nama == 'pelulusan produk jadi')
                 $form = '<form target="_blank" method="post" action="/printpelulusanproduk">';
+            
+            elseif ($data->laporan_nama == 'periksa sanitasi alat')
+                $form = '<form target="_blank" method="post" action="/printpemeriksaansanitasialat">';
+            
+
+
             else
                 $form = '<form target="_blank" method="post" action="/printterimakemasan">';
             $isi =
