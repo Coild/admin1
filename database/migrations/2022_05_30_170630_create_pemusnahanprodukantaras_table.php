@@ -15,6 +15,7 @@ class CreatePemusnahanprodukantarasTable extends Migration
     {
         Schema::create('pemusnahanprodukantaras', function (Blueprint $table) {
             $table->id('id_pemusnahanprodukantara', 20);
+            $table->integer('protap')->unsigned();
             $table->string('kode_pemusnahan', 20);
             $table->date('tanggal_pemusnahan')->nullable();
             $table->string('nama_produkantara', 100);

@@ -1,5 +1,82 @@
 
 
+function buttonTerimaLaporan(p){
+    // console.log(p);
+    var link = "formTerimaLaporan"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+function buttonTerimaLaporan2(p){
+    // console.log(p);
+    var link = "formTerimaLaporan2"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+function buttonTerimaLaporan3(p){
+    // console.log(p);
+    var link = "formTerimaLaporan3"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+function buttonTerimaLaporan4(p){
+    // console.log(p);
+    var link = "formTerimaLaporan4"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
+
 function buttonHapuspjt(p){
     // console.log(p);
     var link = "hapupjt"+p;
@@ -503,11 +580,16 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#tabelbeda1').DataTable({
-        responsive: true,
-        "bAutoWidth": false
+        responsive: true
     });
 });
 
+// $('#tabelbeda1').css('display','table') ;
+//   var table = $('#tabelbeda1').DataTable( {
+//     fixedHeader : true,
+//     paging : false,
+//   }) ;
+  
 $(document).ready(function () {
     $('#tabelbeda2').DataTable({
         responsive: true,

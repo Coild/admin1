@@ -10,4 +10,6 @@ class penarikanproduk extends Model
     use HasFactory;
     protected $primaryKey = 'id_produk_penarikan';
     public $timestamps = true;
+
+    protected $guarded =['id_produk_penarikan'];
 }

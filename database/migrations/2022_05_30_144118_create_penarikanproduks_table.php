@@ -10,6 +10,7 @@ class CreatePenarikanproduksTable extends Migration
 	{
 		Schema::create('penarikanproduks', function (Blueprint $table) {
 			$table->id('id_produk_penarikan', 20);
+			$table->integer('protap')->unsigned();
 			$table->string('kode_penarikan', 20);
 			$table->date('tanggal_penarikan')->nullable();
 			$table->string('nama_distributor', 100);

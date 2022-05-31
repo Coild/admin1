@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKartustokprodukantarasTable extends Migration
+class CreateKartustokprodukjadisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateKartustokprodukantarasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kartustokprodukantaras', function (Blueprint $table) {
-            $table->id('id_kartustokprodukantara', 20);
-            $table->string('nama_produkantara', 20);
+        Schema::create('kartustokprodukjadis', function (Blueprint $table) {
+            $table->id('id_kartustokprodukjadi', 20);
+            // $table->integer('protap')->unsigned();
+            $table->string('nama_produkjadi', 200);
             $table->date('tanggal')->nullable();
             $table->string('id_batch', 20);
             $table->string('jumlah', 30);
@@ -34,6 +35,6 @@ class CreateKartustokprodukantarasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kartustokprodukantaras');
+        Schema::dropIfExists('kartustokprodukjadis');
     }
 }

@@ -297,11 +297,14 @@
                     </table>
 
                     @if (Auth::user()->level == 2)
-                    <div style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" onclick="buttonModalTerima({{ $id_ruangan }})">
-                            Terima</button>
+                    <div style="text-align: center;" >
+                        <form method="post" action="terimaperiksaruang" id="formTerimaLaporan{{ $id_ruangan }}">
+                            @csrf
+                            <input type="hidden" name="id"
+                                value="{{ $id_ruangan }}" />
+                            <button type="button" onclick="buttonTerimaLaporan({{ $id_ruangan }})" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" >Terima</button>
+                        </form>
                     </div>
-                        
                     @endif
                 </div>
             </div>

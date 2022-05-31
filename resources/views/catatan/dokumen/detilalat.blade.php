@@ -276,44 +276,19 @@
                         </tbody>
                     </table>
                     @if (Auth::user()->level == 2)
-                    <div style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" onclick="buttonModalTerima({{ $id_alat }})">
-                            Terima</button>
+                    <div style="text-align: center;" >
+                        <form method="post" action="terima_periksaalat" id="formTerimaLaporan{{ $id_alat }}">
+                            @csrf
+                            <input type="hidden" name="id_periksaalat"
+                                value="{{ $id_alat }}" />
+                            <button type="button" onclick="buttonTerimaLaporan({{ $id_alat }})" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" >Terima</button>
+                        </form>
                     </div>
-                        
                     @endif
                 </div>
             </div>
         </div>
 
-
-        <div class="modal fade" id="ModalTambahKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Terima Laporan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="card-body">
-                            <form action="/terimaperiksaalat" method="post" id='formModalTambahKaryawan'>
-                                @csrf
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input type="hidden" id="id_periksaalat" name="id_periksaalat">
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Terima</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!-- Modal -->

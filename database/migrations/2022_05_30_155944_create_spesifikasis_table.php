@@ -15,6 +15,7 @@ class CreateSpesifikasisTable extends Migration
     {
         Schema::create('spesifikasis', function (Blueprint $table) {
             $table->id('spesifikasi_id');
+            $table->integer('protap')->unsigned();
             $table->string('kategori');
             $table->string('keterangan');
             $table->string('file');
