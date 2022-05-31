@@ -16,6 +16,7 @@ class CreateDistribusiproduksTable extends Migration
             $table->string('id_batch', 20);
             $table->string('jumlah', 20);
             $table->string('nama_distributor', 100);
+            $table->tinyInteger('protap', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->tinyInteger('status', 0)->unsigned();
             $table->integer("user_id", false);

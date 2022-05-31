@@ -20,6 +20,7 @@ class CreatePelulusanproduksTable extends Migration
 			$table->string('bau', 30);
 			$table->string('ph', 5);
 			$table->string('berat_jenis', 20);
+			$table->tinyInteger('protap', 0)->unsigned();
 			$table->integer('pabrik', false);
 			$table->tinyInteger('status', 0)->unsigned();
 			$table->integer("user_id", false);
