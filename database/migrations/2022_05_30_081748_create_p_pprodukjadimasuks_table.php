@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePPbahanbakumasuksTable extends Migration
+class CreatePPprodukjadimasuksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePPbahanbakumasuksTable extends Migration
      */
     public function up()
     {
-        Schema::create('p_pbahanbakumasuks', function (Blueprint $table) {
-            $table->id("id_ppbahanbaku", 10);
+        Schema::create('p_pprodukjadimasuks', function (Blueprint $table) {
+            $table->id("id_produkjadimasuk", 10);
             $table->date('tanggal')->nullable();
-            $table->string("nama_bahan", 100);
-            $table->string("no_pob", 100);
+            $table->string("nama_produkjadi", 100);
             $table->string("no_loth", 100);
             $table->string("pemasok", 100);
-            $table->string("jumlah", 100);
+            $table->string("jumlah", 100);            
             $table->string("no_kontrol", 100);
             $table->date('kedaluwarsa')->nullable();
             $table->integer('pabrik', false);
@@ -37,6 +36,6 @@ class CreatePPbahanbakumasuksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_pbahanbakumasuks');
+        Schema::dropIfExists('p_pprodukjadimasuks');
     }
 }

@@ -405,6 +405,12 @@ class Admin extends Controller
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         $produk = produk::all()->where('user_id', $pabrik);
         $kemasan = kemasan::all()->where('user_id', $pabrik);
+        $protap1 = protap::all()->where('protap_jenis',1)
+        ->where('protap_detil', 1);
+        $protap2 = protap::all()->where('protap_jenis',1)
+        ->where('protap_detil', 2);
+        $protap3 = protap::all()->where('protap_jenis',1)
+        ->where('protap_detil', 3);
         // dd($bahanbaku);
         if (Auth::user()->level == 2) {
             $data1 = cp_bahan::all()->where('pabrik', $pabrik);
@@ -415,7 +421,8 @@ class Admin extends Controller
             $data2 = cp_produk::all()->where('pabrik', $pabrik);
             $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
         }
-        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan]);
+        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan,
+        'protap1' => $protap1, 'protap2' => $protap2, 'protap3' => $protap3,]);
     }
 
     public function tambah_terimabahan(Request $req)
@@ -877,6 +884,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'tanggal' => $req['tanggal'],
+            'protap' => $req['protap'],
             'nama_bahan' => $req['nama_bahanbaku'],
             'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
@@ -3527,6 +3535,12 @@ class Admin extends Controller
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
+        $protap1 = protap::all()->where('protap_jenis',2)
+        ->where('protap_detil', 1);
+        $protap2 = protap::all()->where('protap_jenis',2)
+        ->where('protap_detil', 2);
+        $protap3 = protap::all()->where('protap_jenis',2)
+        ->where('protap_detil', 3);
         if (Auth::user()->level == 2) {
             $data = contohbahanbaku::all()->where('pabrik', $pabrik);
             $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
@@ -3540,7 +3554,9 @@ class Admin extends Controller
             $kemasan = kemasan::all()->where('user_id', $pabrik);;
         }
         $x = [];
-        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 'kemasan' => $kemasan ?? $x]);
+        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 
+        'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 
+        'kemasan' => $kemasan ?? $x, 'protap1' => $protap1,'protap2' => $protap2, 'protap3' => $protap3]);
     }
     public function tambah_penimbanganbahan(Request $req)
     {

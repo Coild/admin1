@@ -18,6 +18,7 @@ class CreateContohbahanbakusTable extends Migration
             $table->string('jumlah_kemasanbox', 20);
             $table->string('jumlah_produk', 20);
             $table->string('jenis_warnakemasan', 200);
+            $table->tinyInteger('protap', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->tinyInteger('status', 0)->unsigned();
             $table->integer("user_id", false);

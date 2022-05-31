@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimbangproduksTable extends Migration
+class CreateTimbangbahansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTimbangproduksTable extends Migration
      */
     public function up()
     {
-        Schema::create('timbangproduks', function (Blueprint $table) {
-            $table->id("timbang_produk_id", 10);
+        Schema::create('timbangbahans', function (Blueprint $table) {
+            $table->id("timbang_bahan_id", 10);
             $table->date('tanggal')->nullable();
-            $table->string("no_batch", 20);
+            $table->string("no_loth", 20);
             $table->integer('status', 0)->unsigned();
+            $table->tinyInteger('protap', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->integer("user_id", false);
             $table->timestamps();
@@ -31,6 +32,6 @@ class CreateTimbangproduksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timbangproduks');
+        Schema::dropIfExists('timbangbahans');
     }
 }
