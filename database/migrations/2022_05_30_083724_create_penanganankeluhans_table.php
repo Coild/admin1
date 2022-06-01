@@ -10,6 +10,7 @@ class CreatePenanganankeluhansTable extends Migration
     {
         Schema::create('penanganankeluhans', function (Blueprint $table) {
             $table->id('id_penanganankeluhan', 20);
+            $table->integer('protap')->unsigned();
             $table->string('kode_keluhan', 20);
             $table->string('nama_customer', 100);
             $table->date('tanggal_keluhan')->nullable();

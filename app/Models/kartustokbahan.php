@@ -10,7 +10,5 @@ class kartustokbahan extends Model
     use HasFactory;
     protected $primaryKey = 'id_kartustokbahan';
 
-    protected $fillable = [
-        'status',
-    ];
+    protected $guarded =['id_kartustokbahan'];
 }

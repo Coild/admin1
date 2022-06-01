@@ -47,6 +47,20 @@
                                             <div class="card-body">
 
                                                 <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
+                                                    <div class="col-sm">
+                                                        <select style="height: 35px;" class="form-control"
+                                                            name="protap_induk" id="protap_induk" >
+                                                            @foreach ($data2 as $row)
+                                                                <option value="{{ $row['protap_id'] }}">
+                                                                    {{ $row['protap_nama'] }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                         Penarikan</label>
                                                     <div class="col-sm">
@@ -135,6 +149,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Protap</th>
                             <th scope="col">Kode Penarikan Produk</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Nama Distributor</th>
@@ -153,6 +168,7 @@
                         $i++; ?>
                         <tr>
                             <td>{{ $i }}</td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_penarikan'] }}</td>
                             <td>{{ $row['tanggal_penarikan'] }}</td>
                             <td>{{ $row['nama_distributor'] }}</td>
@@ -174,11 +190,13 @@
                                 <?php } ?>
                             @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <form method="post" action="terimapenarikanproduk">
+                                    <form method="post" action="terimapenarikanproduk" id="formTerimaLaporan{{ $row['id_produk_penarikan'] }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $row['id_produk_penarikan'] }}" />
-                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                        <input type="hidden" name="id"
+                                            value="{{ $row['id_produk_penarikan'] }}" />
+                                        <button type="button" onclick="buttonTerimaLaporan({{ $row['id_produk_penarikan'] }})" class="btn btn-primary">Terima</button>
                                     </form>
+
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <form method="post" action="terimapenarikanproduk">
                                         @csrf
@@ -186,8 +204,6 @@
                                         <button type="submit" class="btn btn-danger disabled">Terima</button>
                                     </form>
                                 <?php } ?>
-                                
-                            
                             @endif
                             </td>
                         </tr>
@@ -204,6 +220,7 @@
             var inputid = '<input type="hidden" name="id" class ="form-control" value="' + params
                 .id_produk_penarikan + '"/>'
             $(inputid).insertAfter("#ambil_tanggal")
+            $("#protap_induk").val(params.protap)
             $("#kode_penarikan").val(params.kode_penarikan)
             $("#nama_distributor").val(params.nama_distributor)
             $("#produkditarik").val(params.produk_ditarik)

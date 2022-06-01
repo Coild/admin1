@@ -16,8 +16,8 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg @if($status == 1) disabled @endif" data-toggle="modal" data-target="#modalForm"
-                                onclick="setdatetoday()">
+                            <button class="btn btn-success btn-lg @if ($status == 1) disabled @endif"
+                                data-toggle="modal" data-target="#modalForm" onclick="setdatetoday()">
                                 Tambah Pemeriksaan Ruang
                             </button>
                         @endif
@@ -28,7 +28,7 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel">
-                                            Tambah Detail Pemeriksaan Ruang
+                                            Entry Data
                                         </h4>
                                     </div>
 
@@ -48,15 +48,14 @@
                                                     <div class="card-body">
                                                         @csrf
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        {{-- <input type="hidden" name="tanggal" id='ambil_tanggal'
-                                                            class="form-control" placeholder="" /> --}}
+
                                                         <input type="hidden" name="id_induk" value='{{ $id_ruangan }}'
-                                                            class="form-control" value="" placeholder="" />
+                                                            class="form-control 1" value="" placeholder="" />
                                                         <div class="form-group row">
-                                                            <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Ruangan </label>
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan
+                                                            </label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text' readonly
+                                                                <input class="form-control 1" type='text' readonly
                                                                     placeholder="Ruangan" style="height: 35px;"
                                                                     value="{{ $nama_ruangan }}"
                                                                     id="inlineFormCustomSelect">
@@ -122,7 +121,7 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Pelaksana</label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
+                                                                <input class="form-control 1" type='text'
                                                                     placeholder="Pelaksana" style="height: 35px;"
                                                                     id="inlineFormCustomSelect" name="pelaksana">
                                                             </div>
@@ -132,7 +131,7 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Diperiksa Oleh</label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
+                                                                <input class="form-control 1" type='text'
                                                                     placeholder="diperiksa oleh" style="height: 35px;"
                                                                     id="inlineFormCustomSelect" name="diperiksa_oleh">
                                                             </div>
@@ -142,7 +141,7 @@
                                                             <label for="inputEmail3"
                                                                 class="col-sm-3 col-form-label">Keterangan</label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
+                                                                <input class="form-control 1" type='text'
                                                                     placeholder="Keterangan" style="height: 35px;"
                                                                     name="keterangan" id="inlineFormCustomSelect">
                                                             </div>
@@ -151,7 +150,7 @@
 
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <a class="btn btn-primary" onclick="salert(1)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
@@ -159,18 +158,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!--  -->
-
-
-
-
                     </div>
 
                     <table class="table mt-5" style="text-align: center;" id="tabel2">
                         <thead>
                             <tr>
                                 <th scope="col" rowspan="3">No</th>
-                                {{-- <th scope="col" rowspan="3" >Nama Ruangan</th> --}}
                                 <th scope="col" colspan="8">Bagian yang dibersihkan</th>
                                 <th scope="col" rowspan="3">Pelaksana</th>
                                 <th scope="col" rowspan="3">Diperiksa oleh</th>
@@ -263,20 +256,9 @@
                                                 <form method="post" action="detilruangan" class="float-left mr-2"
                                                     id="detilruangan{{ $row['id'] }}">
                                                     @csrf
-                                                    <input type="hidden" value="{{ $row['lantai'] }}" name="lantai">
-                                                    <input type="hidden" value="{{ $row['meja'] }}" name="meja">
-                                                    <input type="hidden" value="{{ $row['jendela'] }}" name="jendela">
-                                                    <input type="hidden" value="{{ $row['langit'] }}" name="langit">
-                                                    <input type="hidden" value="{{ $row['id'] }}" name="id_ruangan">
-                                                    <input type="hidden" value="{{ $row['diperiksa_oleh'] }}"
-                                                        name="diperiksa_oleh">
-                                                    <input type="hidden" value="{{ $row['keterangan'] }}"
-                                                        name="keterangan">
-                                                    <input type="hidden" value="{{ $row['pelaksana'] }}"
-                                                        name="pelaksana">
 
                                                     <button type="button"
-                                                        onclick="buttonModalFormDetil({{ $row['id'] }})"
+                                                        onclick="buttonModalFormDetil({{ $row }})"
                                                         class="btn btn-primary"> Edit</button>
                                                 </form>
                                             @else
@@ -297,45 +279,18 @@
                     </table>
 
                     @if (Auth::user()->level == 2)
-                    <div style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" onclick="buttonModalTerima({{ $id_ruangan }})">
-                            Terima</button>
-                    </div>
-                        
+                        <div style="text-align: center;">
+                            <form method="post" action="terimaperiksaruang" id="formTerimaLaporan{{ $id_ruangan }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $id_ruangan }}" />
+                                <button type="button" onclick="buttonTerimaLaporan({{ $id_ruangan }})"
+                                    class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif">Terima</button>
+                            </form>
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
-
-
-        <div class="modal fade" id="ModalTambahKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Terima Laporan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="card-body">
-                            <form action="/terimaperiksaruang" method="post" id='formModalTambahKaryawan'>
-                                @csrf
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input type="hidden" id="id_periksaruangmodal" name="id_periksaruang">
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Terima</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Modal -->
         <div class="modal fade" id="formeditdetil" role="dialog">
@@ -351,7 +306,7 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form method="post" action="edit_detilperiksaruang" id=''>
+                        <form method="post" action="edit_detilperiksaruang" id="forminput2">
                             <div class="card mb-4">
                                 <div class="card-header" id='headertgl'></div>
                                 @csrf
@@ -364,12 +319,12 @@
                                     <div class="card-body">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="id_ruangan" id="idRuanganEditModal"
-                                            class="form-control" placeholder="" />
+                                        <input type="hidden" name="id_ruangan" id="idRuanganEditModal" />
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' readonly placeholder="Ruangan"
+                                                <input class="form-control
+                                                " type='text' readonly placeholder="Ruangan"
                                                     style="height: 35px;" value="{{ $nama_ruangan }}"
                                                     id="inlineFormCustomSelect">
                                             </div>
@@ -424,14 +379,16 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksana</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="pelaksana"
+                                                <input class="form-control 2
+                                                " type='text' placeholder="pelaksana"
                                                     style="height: 35px;" id="pelaksanaEditModal" name="pelaksana">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Diperiksa Oleh</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="diperiksa oleh"
+                                                <input class="form-control 2
+                                                " type='text' placeholder="diperiksa oleh"
                                                     style="height: 35px;" id="diperiksaEditModal" name="diperiksa_oleh">
                                             </div>
                                         </div>
@@ -439,13 +396,14 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="Ruangan"
+                                                <input class="form-control 2
+                                                " type='text' placeholder="Ruangan"
                                                     style="height: 35px;" name="keterangan" id="keteranganEditModal">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="submit"
+                                <button class="btn btn-primary" type="button" onclick="salert1(2)"
                                     style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</button>
                         </form>
                     </div>
@@ -453,57 +411,36 @@
             </div>
         </div>
         <!--  -->
-
-
-
         <script>
-            function buttonModalTerima(p) {
-                $('#ModalTambahKaryawan').modal('show');
-                $("#id_periksaruangmodal").val(p);
-            }
-        </script>
 
-
-        <script>
             function buttonModalFormDetil(p) {
                 $('#formeditdetil').modal('show');
-                // var lantai = $(this).data('lantai');
-                $idform = 'detilruangan' + p;
+           
+                $('#idRuanganEditModal').val(p.id);
+                $('#diperiksaEditModal').val(p.diperiksa_oleh);
+                $('#keteranganEditModal').val(p.keterangan);
+                $('#pelaksanaEditModal').val(p.pelaksana);
 
-                var id = $('#' + $idform + '').find('input[name="id_ruangan"]').val();
-                var lantai = $('#' + $idform + '').find('input[name="lantai"]').val();
-                var meja = $('#' + $idform + '').find('input[name="meja"]').val();
-                var jendela = $('#' + $idform + '').find('input[name="jendela"]').val();
-                var langit = $('#' + $idform + '').find('input[name="langit"]').val();
-                var diperiksa_oleh = $('#' + $idform + '').find('input[name="diperiksa_oleh"]').val();
-                var keterangan = $('#' + $idform + '').find('input[name="keterangan"]').val();
-                var pelaksana = $('#' + $idform + '').find('input[name="pelaksana"]').val();
-
-                $('#idRuanganEditModal').val(id);
-                $('#diperiksaEditModal').val(diperiksa_oleh);
-                $('#keteranganEditModal').val(keterangan);
-                $('#pelaksanaEditModal').val(pelaksana);
-
-                if (lantai != '') {
+                if (p.lantai != null) {
                     // console.log('isi');
                     $('#lantaiEditModal').prop('checked', true);
                 } else {
                     $('#lantaiEditModal').prop('checked', false);
                 }
 
-                if (meja != '') {
+                if (p.meja != null) {
                     $('#mejaEditModal').prop('checked', true);
                 } else {
                     $('#mejaEditModal').prop('checked', false);
                 }
 
-                if (jendela != '') {
+                if (p.jendela != null) {
                     $('#jendelaEditModal').prop('checked', true);
                 } else {
                     $('#jendelaEditModal').prop('checked', false);
                 }
 
-                if (langit != '') {
+                if (p.langit != null) {
                     $('#langitEditModal').prop('checked', true);
                 } else {
                     $('#langitEditModal').prop('checked', false);

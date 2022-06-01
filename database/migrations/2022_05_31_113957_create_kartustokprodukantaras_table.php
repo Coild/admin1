@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpesifikasibahanbakusTable extends Migration
+class CreateKartustokprodukantarasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateSpesifikasibahanbakusTable extends Migration
      */
     public function up()
     {
-        Schema::create('spesifikasibahanbakus', function (Blueprint $table) {
-            $table->id('id_spesifikasibahanbaku', 20);
-            $table->string('kode_spesifikasi', 20);
-            $table->string('nama_bahanbaku', 200);
-            $table->string('jenis_sediaan', 200);
-            $table->string('warna', 200);
-            $table->string('aroma', 200);
-            $table->string('tekstur', 200);
-            $table->string('bobot', 200);
+        Schema::create('kartustokprodukantaras', function (Blueprint $table) {
+            $table->id('id_kartustokprodukantara', 20);
+            // $table->integer('protap')->unsigned();
+            $table->string('nama_produkantara', 20);
             $table->date('tanggal')->nullable();
+            $table->string('id_batch', 20);
+            $table->string('jumlah', 30);
+            $table->string('nama_distributor', 100);
             $table->integer('pabrik', false);
             $table->integer("status", false);
             $table->integer('user_id', 0)->unsigned();
@@ -37,6 +35,6 @@ class CreateSpesifikasibahanbakusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spesifikasibahanbakus');
+        Schema::dropIfExists('kartustokprodukantaras');
     }
 }

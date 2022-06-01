@@ -279,7 +279,10 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = penanganankeluhan::all()->where('id_penanganankeluhan', $id)->first();
+        // $data = penanganankeluhan::all()->where('id_penanganankeluhan', $id)->first();
+        // dd($data);
+        $data = penanganankeluhan::join('protaps', 'penanganankeluhans.protap', '=', 'protaps.protap_id')
+            ->get(['penanganankeluhans.*', 'protaps.*'])->first();
         // dd($data);
         return view('print.penanganankeluhan', [
             'data' => $data, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
@@ -315,8 +318,10 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = penarikanproduk::all()->where('id_produk_penarikan', $id)->first();
+        // $data = penarikanproduk::all()->where('id_produk_penarikan', $id)->first();
         // dd($data);
+        $data = penarikanproduk::join('protaps', 'penarikanproduks.protap', '=', 'protaps.protap_id')
+            ->get(['penarikanproduks.*', 'protaps.*'])->first();
         return view('print.penarikanproduk', [
             'data' => $data, 'kop' => $kop, 'alamat' => $alamat, 'logo' => $logo, 'nama' => $nama,
             'nohp' => $nohp

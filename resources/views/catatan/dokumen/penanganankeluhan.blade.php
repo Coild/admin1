@@ -43,6 +43,21 @@
                                             <div class="card-header" id="headertgl">
                                             </div>
                                             <div class="card-body">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
+                                                    <div class="col-sm">
+                                                        <select style="height: 35px;" class="form-control"
+                                                            name="protap_induk" id="protap_induk" >
+                                                            @foreach ($data2 as $row)
+                                                                <option value="{{ $row['protap_id'] }}">
+                                                                    {{ $row['protap_nama'] }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                         Keluhan</label>
@@ -77,12 +92,9 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Produk
-                                                        Yang
-                                                        Digunakan</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang Digunakan</label>
                                                     <div class="col-sm">
-                                                        <input list="listproduk" style="height: 35px;" id='produk_yang_digunakan' class="form-control 3" name="produk_yang_digunakan">
-                                                        </input>
+                                                        <input list="listproduk" style="height: 35px;" id='produk_yang_digunakan' class="form-control 3" name="produk_yang_digunakan" autocomplete="off">
                                                         <datalist id="listproduk">
                                                             @foreach ($produk as $row)
                                                             <option value="{{ $row['produk_nama'] }}">
@@ -125,6 +137,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Protap</th>
                             <th scope="col">Kode Keluhan</th>
                             <th scope="col">Nama Customer</th>
                             <th scope="col">Tanggal Keluhan</th>
@@ -143,6 +156,7 @@
                         <?php $i++; ?>
                         <tr>
                             <td>{{ $i }}</td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_keluhan'] }}</td>
                             <td>{{ $row['nama_customer'] }}</td>
                             <td>{{ $row['tanggal_keluhan'] }}</td>
@@ -166,10 +180,11 @@
                                 
                             @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <form method="post" action="terimapenanganankeluhan">
+                                    <form method="post" action="terimapenanganankeluhan" id="formTerimaLaporan{{ $row['id_penanganankeluhan'] }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $row['id_penanganankeluhan'] }}" />
-                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                        <input type="hidden" name="id"
+                                            value="{{ $row['id_penanganankeluhan'] }}" />
+                                        <button type="button" onclick="buttonTerimaLaporan({{ $row['id_penanganankeluhan'] }})" class="btn btn-primary">Terima</button>
                                     </form>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <form method="post" action="terimapenanganankeluhan">
@@ -195,6 +210,7 @@
         var inputid = '<input type="hidden" name="id" class ="form-control" value="' + params
             .id_penanganankeluhan + '"/>'
         $(inputid).insertAfter("#ambil_tanggal")
+        $("#protap_induk").val(params.protap)
         $("#kode_keluhan").val(params.kode_keluhan)
         $("#nama_customer").val(params.nama_customer)
         $("#keluhan").val(params.keluhan)

@@ -381,23 +381,23 @@ class pjt extends Controller
 
     public function terimaperiksaruang(Request $req)
     {
-
+        // dd($req);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        $user = periksaruang::where("id_periksaruang", $req['id_periksaruang'])->first()->update([
+        $user = periksaruang::where("id_periksaruang", $req['id'])->first()->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_nomor', $req['id_periksaruang'])->where('laporan_nama', 'periksa sanitasi ruangan')->first()->update([
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Periksa Sanitasi Ruangan')->first()->update([
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = periksaruang::all()->where('status', 1);
 
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'periksa sanitasi ruangan')
-            ->where('notif_2',$req['id_periksaruang'])->first()->update([
+            ->where('notif_laporan', 'Periksa Sanitasi Ruangan')
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -410,7 +410,6 @@ class pjt extends Controller
         log::insert($log);
 
         return redirect()->route('periksasaniruang');
-
 
     }
 
@@ -588,13 +587,13 @@ class pjt extends Controller
         $user = penanganankeluhan::where("id_penanganankeluhan", $req['id'])->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'penanganan keluhan')->first()->update([
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Penanganan Keluhan')->first()->update([
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penanganan keluhan')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_laporan', 'Penanganan Keluhan')
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
         $data = penanganankeluhan::all()->where('status', 1);
@@ -627,7 +626,7 @@ class pjt extends Controller
         $data = penarikanproduk::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penarikan produk')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -638,6 +637,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
+            
         return redirect()->route('penarikan-produk');
     }
     public function terima_pemusnahanbahanbaku(Request $req)
@@ -650,19 +650,19 @@ class pjt extends Controller
         $user = pemusnahanbahanbaku::where("id_pemusnahanbahan", $req['id'])->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan bahan')->first()->update([
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'pemusnahan bahan baku')->first()->update([
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = pemusnahanbahanbaku::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'pemusnahan bahan')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_laporan', 'pemusnahan bahan baku')
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
             $log = [
-                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan bahan',
+                'log_isi' => Auth::user()->namadepan . ' menerima laporan pemusnahan bahan baku',
                 'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
                 'log_waktu' => date('Y-m-d H:i:s'),
                 'id_pabrik' => Auth::user()->pabrik
@@ -687,7 +687,7 @@ class pjt extends Controller
         $data = Pemusnahanbahankemas::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'pemusnahan bahan kemas')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -717,7 +717,7 @@ class pjt extends Controller
         $data = Pemusnahanprodukantara::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'pemusnahan produk antara')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -748,7 +748,7 @@ class pjt extends Controller
         $data = Pemusnahanprodukjadi::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'pemusnahan produk jadi')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -771,14 +771,14 @@ class pjt extends Controller
         $user = kartustokbahan::where("id_kartustokbahan", $req['id'])->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'kartu stok bahan baku')->first()->update([
+        laporan::all()->where('laporan_nomor', $req['id'])->where('laporan_nama', 'Kartu Stok Bahan Baku')->first()->update([
             'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
             'tgl_diterima' => $tgl
         ]);
         $data = kartustokbahan::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'kartu stok bahan baku')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_laporan', 'Kartu Stok Bahan Baku')
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -807,7 +807,7 @@ class pjt extends Controller
         ]);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'kartu stok bahan kemas')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
             
@@ -839,7 +839,7 @@ class pjt extends Controller
         $data = kartustokprodukjadi::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'kartu stok produk jadi')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -869,7 +869,7 @@ class pjt extends Controller
         $data = kartustokprodukantara::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'kartu stok produk antara')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -899,7 +899,7 @@ class pjt extends Controller
         $data = Spesifikasibahanbaku::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'Pemeriksaan Bahan Baku')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -930,7 +930,7 @@ class pjt extends Controller
         $data = Spesifikasibahankemas::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'Pemeriksaan Bahan Kemas')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -960,7 +960,7 @@ class pjt extends Controller
         $data = Spesifikasiprodukjadi::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'Pemeriksaan Produk Jadi')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 

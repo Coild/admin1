@@ -162,13 +162,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimadistribusiproduk', [pjt::class, 'terima_distribusiproduk'])->name('terima_distribusiproduk');
 
         Route::post('/terimapenanganankeluhan', [pjt::class, 'terima_penanganankeluhan'])->name('terima_penanganankeluhan');
-        Route::post('/terimapenarikanproduk', [pjt::class, 'terima_penarikanproduk'])->name('terima_penarikanproduk');
+        Route::post('/terimapenarikanproduk', [pjt::class, 'terima_penarikanproduk'])->name('terimapenarikanproduk');
         Route::post('/terimapemusnahanbahan', [pjt::class, 'terima_pemusnahanbahanbaku'])->name('terima_pemusnahanbahanbaku');
         Route::post('/terimapemusnahanbahankemas', [pjt::class, 'terima_pemusnahanbahankemas'])->name('terima_pemusnahanbahankemas');
         Route::post('/terimapemusnahanprodukantara', [pjt::class, 'terima_pemusnahanprodukantara'])->name('terima_pemusnahanprodukantara');
         Route::post('/terimapemusnahanprodukjadi', [pjt::class, 'terima_pemusnahanprodukjadi'])->name('terima_pemusnahanprodukjadi');
         Route::post('/terimakartustokbahan', [pjt::class, 'terima_stokbahanbaku'])->name('terima_stokbahanbaku');
         Route::post('/terimakartustokbahankemas', [pjt::class, 'terima_stokbahankemas'])->name('terima_stokbahankemas');
+        Route::post('/terimakartustokprodukantara', [pjt::class, 'terima_stokprodukantara'])->name('terimakartustokprodukantara');
         Route::post('/terimakartustokprodukjadi', [pjt::class, 'terima_stokprodukjadi'])->name('terima_stokprodukjadi');
         Route::post('/terimapemeriksaanbahanbaku', [pjt::class, 'terima_pemeriksaanbahanbaku'])->name('terima_pemeriksaanbahanbaku');
         Route::post('/terimapemeriksaanbahankemas', [pjt::class, 'terima_pemeriksaanbahankemas'])->name('terima_pemeriksaanbahankemas');
@@ -181,7 +182,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/terimakemasanmasuk', [pjt::class, 'terima_kemasanmasuk'])->name('terima_kemasanmasuk');
         Route::post('/terimakemasankeluar', [pjt::class, 'terima_kemasankeluar'])->name('terima_kemasankeluar');
 
-        // Route::post('/terimaperiksaruang', [pjt::class, 'terima_periksaruang'])->name('terima_periksaruang');
         Route::post('/terima_periksaalat', [pjt::class, 'terima_periksaalat'])->name('terima_periksaalat');
         Route::post('/terimaperiksaruang', [pjt::class, 'terimaperiksaruang'])->name('terimaperiksaruang');
 
@@ -397,7 +397,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('detiltimbangruang', [Admin::class, 'tampil_detiltimbangruang'])->name('detiltimbangruang');
 
         Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
-        // Route::get('kartu-stok', [Admin::class, 'tampil_kartustok'])->name('kartu-stok');
         Route::get('kalibrasi-alat', [Admin::class, 'tampil_kalibrasialat'])->name('kalibrasi-alat');
         Route::post('edit_kalibrasialat', [Admin::class, 'edit_kalibrasialat'])->name('edit_kalibrasialat');
         Route::get('pemeriksaan-bahan', [Admin::class, 'tampil_pemeriksaan'])->name('pemeriksaan-bahan');

@@ -68,7 +68,7 @@ class protapController extends Controller
          $judul = ["Penarikan Produk"];
       }
       if ($jenis == 15) {
-         $judul = ["Pemusnahan Produk"];
+         $judul = ["Pemusnahan Produk", "Bahan Baku", "Bahan Kemas", "Produk Antara", "Produk Jadi"];
       }
       if ($jenis == 16) {
          $judul = ["Penanganan Contoh Tertinggal"];

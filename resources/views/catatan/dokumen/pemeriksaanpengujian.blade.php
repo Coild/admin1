@@ -57,7 +57,21 @@
                                                             <div class="card-body">
 
                                                                 <div class="form-group row">
-                                                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
+                                                                    <div class="col-sm">
+                                                                        <select style="height: 35px;" class="form-control"
+                                                                            name="protap_induk" id="protap_indukbb" >
+                                                                            @foreach ($data_protapbb as $row)
+                                                                                <option value="{{ $row['protap_id'] }}">
+                                                                                    {{ $row['protap_nama'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                                         Pengujian</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="kode_spesifikasi" class="form-control 1" id="kode_spesifikasi" placeholder="Kode Pengujian" />
@@ -131,6 +145,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Protap</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">Kode Bahan Baku</th>
                                             <th scope="col">Nama Bahan Baku</th>
@@ -149,6 +164,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['kode_spesifikasi'] }}</td>
                                             <td>{{ $row['nama_bahanbaku'] }}</td>
@@ -174,11 +190,16 @@
                                             @else
                                             <td>
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapemeriksaanbahanbaku">
+                                                    <form method="post" action="terimapemeriksaanbahanbaku"
+                                                        id="formTerimaLaporan{{ $row['id_spesifikasibahanbaku'] }}">
                                                         @csrf
-                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahanbaku'] }}" />
-                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id"
+                                                            value="{{ $row['id_spesifikasibahanbaku'] }}" />
+                                                        <button type="button"
+                                                            onclick="buttonTerimaLaporan({{ $row['id_spesifikasibahanbaku'] }})"
+                                                            class="btn btn-primary">Terima</button>
                                                     </form>
+
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapemeriksaanbahanbaku">
                                                         @csrf
@@ -239,7 +260,21 @@
                                                             <div class="card-body">
 
                                                                 <div class="form-group row">
-                                                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
+                                                                    <div class="col-sm">
+                                                                        <select style="height: 35px;" class="form-control"
+                                                                            name="protap_induk" id="protap_indukbk" >
+                                                                            @foreach ($data_protapbk as $row)
+                                                                                <option value="{{ $row['protap_id'] }}">
+                                                                                    {{ $row['protap_nama'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                                         Pengujian</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="kode_spesifikasi" class="form-control 2" id="kode_spesifikasi1" placeholder="Kode Pengujian" />
@@ -309,6 +344,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Protap</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">Kode Pengujian</th>
                                             <th scope="col">Nama Bahan Kemas</th>
@@ -326,6 +362,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['kode_spesifikasi'] }}</td>
                                             <td>{{ $row['nama_bahankemas'] }}</td>
@@ -350,11 +387,16 @@
                                             @else
                                             <td>
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapemeriksaanbahankemas">
+                                                    <form method="post" action="terimapemeriksaanbahankemas"
+                                                        id="formTerimaLaporan2{{ $row['id_spesifikasibahankemas'] }}">
                                                         @csrf
-                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasibahankemas'] }}" />
-                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id"
+                                                            value="{{ $row['id_spesifikasibahankemas'] }}" />
+                                                        <button type="button"
+                                                            onclick="buttonTerimaLaporan2({{ $row['id_spesifikasibahankemas'] }})"
+                                                            class="btn btn-primary">Terima</button>
                                                     </form>
+
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapemeriksaanbahankemas">
                                                         @csrf
@@ -415,7 +457,21 @@
                                                             <div class="card-body">
 
                                                                 <div class="form-group row">
-                                                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
+                                                                    <div class="col-sm">
+                                                                        <select style="height: 35px;" class="form-control"
+                                                                            name="protap_induk" id="protap_indukpj" >
+                                                                            @foreach ($data_protappj as $row)
+                                                                                <option value="{{ $row['protap_id'] }}">
+                                                                                    {{ $row['protap_nama'] }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                                         Pengujian</label>
                                                                     <div class="col-sm">
                                                                         <input type="text" name="kode_spesifikasi" class="form-control 3" id="kode_spesifikasi2" placeholder="Kode Pengujian" />
@@ -444,8 +500,7 @@
                                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kategori Produk
                                                                         Jadi</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="kategori" class="form-control 3" id="kategori" placeholder="Kategori Produk
-                                                                                                                                                                                                                                                                                                                                                                                                            Jadi" />
+                                                                        <input type="text" name="kategori" class="form-control 3" id="kategori" placeholder="Kategori Produk Jadi" />
                                                                     </div>
                                                                 </div>
 
@@ -495,6 +550,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Protap</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">Kode Pengujian</th>
                                             <th scope="col">Nama Produk Jadi</th>
@@ -513,6 +569,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['kode_spesifikasi'] }}</td>
                                             <td>{{ $row['nama_produkjadi'] }}</td>
@@ -538,10 +595,14 @@
                                             @else
                                             <td>
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapemeriksaanprodukjadi">
+                                                    <form method="post" action="terimapemeriksaanprodukjadi"
+                                                        id="formTerimaLaporan3{{ $row['id_spesifikasiprodukjadi'] }}">
                                                         @csrf
-                                                        <input type="hidden" name="id" value="{{ $row['id_spesifikasiprodukjadi'] }}" />
-                                                        <button type="submit" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id"
+                                                            value="{{ $row['id_spesifikasiprodukjadi'] }}" />
+                                                        <button type="button"
+                                                            onclick="buttonTerimaLaporan3({{ $row['id_spesifikasiprodukjadi'] }})"
+                                                            class="btn btn-primary">Terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapemeriksaanprodukjadi">
@@ -557,7 +618,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -574,6 +634,7 @@
         var inputid = '<input type="hidden" name="id" class ="form-control 1" value="' + params
             .id_spesifikasibahanbaku + '"/>'
         $(inputid).insertAfter("#ambil_tanggal1")
+        $("#protap_indukbb").val(params.protap)
         $("#kode_spesifikasi").val(params.kode_spesifikasi)
         $("#namabahanbaku").val(params.nama_bahanbaku)
         $("#jenis_sediaan").val(params.jenis_sediaan)
@@ -589,6 +650,7 @@
         var inputid = '<input type="hidden" name="id" class ="form-control 2" value="' + params
             .id_spesifikasibahankemas + '"/>'
         $(inputid).insertAfter("#ambil_tanggal2")
+        $("#protap_indukbk").val(params.protap)
         $("#kode_spesifikasi1").val(params.kode_spesifikasi)
         $("#namabahanbaku1").val(params.nama_bahankemas)
         $("#jenis_sediaan1").val(params.jenis_sediaan)
@@ -604,6 +666,7 @@
         var inputid = '<input type="hidden" name="id" class ="form-control 3" value="' + params
             .id_spesifikasiprodukjadi + '"/>'
         $(inputid).insertAfter("#ambil_tanggal3")
+        $("#protap_indukpj").val(params.protap)
         $("#kode_spesifikasi2").val(params.kode_spesifikasi)
         $("#namaproduk").val(params.nama_produkjadi)
         $("#kategori").val(params.kategori)
