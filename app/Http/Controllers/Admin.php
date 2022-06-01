@@ -660,9 +660,6 @@ class Admin extends Controller
         }
     
 
-        // dd($lantai. ' ' .$meja. ' ' .$jendela. ' ' .$langit);
-        // $ini = Detilruangan::all()->where('id', $req->id_ruangan)->first();
-        // dd($ini); 
         Detilruangan::all()->where('id', $req->id_ruangan)->first()->update([
             'lantai' => $lantai,
             'meja' => $meja,
@@ -689,7 +686,7 @@ class Admin extends Controller
         // notif::insert($notif);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' mengubah laporan detil periksa sani ruang',
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan detil periksa sanitasi ruang',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -2319,7 +2316,7 @@ class Admin extends Controller
 
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
-            'notif_laporan' => "penmeriksaan sanitasi ruang",
+            'notif_laporan' => "Detil Laporan Pemeriksaan Ruangan",
             'notif_link' => 'periksasaniruang',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3050,19 +3047,19 @@ class Admin extends Controller
         // $nomer = detilalat::insertGetId($hasil);
         Detilperiksaalat::insert($hasil);
         
-       // $notif = [
-        //     'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
-        //     'notif_laporan' => "pengoperasian alat",
-        //     'notif_link' => 'periksasanialat',
-        //     'notif_waktu' => date('Y-m-d H:i:s'),
-        //     'notif_1' => Auth::user()->level,
-        //     'notif_2' => 0,
-        //     'notif_3' => 0,
-        //     'notif_level' => 1,
-        //     'status' => 0,
-        //     'id_pabrik' => Auth::user()->pabrik,
-        // ];
-        // notif::insert($notif);
+       $notif = [
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
+            'notif_laporan' => "Detil Pengoperasian Alat",
+            'notif_link' => 'periksasanialat',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => 0,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menambah laporan detil pemeriksaan sanitasi alat',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,

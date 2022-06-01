@@ -42,7 +42,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detilalat" id='forminput1'>
+                                        <form method="post" action="tambah_detilalat" id='forminput'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
@@ -138,7 +138,7 @@
                                                             id="inputEmail3" placeholder="Keterangan" />
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
+                                                <a class="btn btn-primary" onclick="salert(1)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                             </div>
@@ -252,16 +252,8 @@
                                             <form method="post" class="float-left mr-2"
                                                 id="detilalat{{ $row['id_detilalat'] }}">
                                                 @csrf
-                                                <input type="hidden" value="{{ $row['mulai_pemakaian'] }}" name="mulai_pemakaian">
-                                                <input type="hidden" value="{{ $row['selesai_pemakaian'] }}" name="selesai_pemakaian">
-                                                <input type="hidden" value="{{ $row['produksi'] }}" name="produksi">
-                                                <input type="hidden" value="{{ $row['no_batch'] }}" name="no_batch">
-                                                <input type="hidden" value="{{ $row['diperiksa_oleh'] }}" name="diperiksa_oleh">
-                                                <input type="hidden" value="{{ $row['mulai_pembersihan'] }}" name="mulai_pembersihan">
-                                                <input type="hidden" value="{{ $row['selesai_pembersihan'] }}" name="selesai_pembersihan">
-                                                <input type="hidden" value="{{ $row['keterangan'] }}" name="keterangan">
                                                 <button type="button"
-                                                    onclick="buttonModalFormDetil({{ $row['id_detilalat'] }})"
+                                                    onclick="buttonModalFormDetil({{ $row }})"
                                                     class="btn btn-primary"> Edit</button>
                                             </form>
                                             @else
@@ -407,36 +399,18 @@
 
     <script>
 
-            function buttonModalTerima(p) {
-                $('#ModalTambahKaryawan').modal('show');
-                $("#id_periksaalat").val(p);
-            }
-
         function buttonModalFormDetil(p) {
                 $('#editalat').modal('show');
-                // var lantai = $(this).data('lantai');
-                $idform = 'detilalat' + p;
-                
-
-                var mulai_pemakaian = $('#' + $idform + '').find('input[name="mulai_pemakaian"]').val();
-                var selesai_pemakaian = $('#' + $idform + '').find('input[name="selesai_pemakaian"]').val();
-                var produksi = $('#' + $idform + '').find('input[name="produksi"]').val();
-                var no_batch = $('#' + $idform + '').find('input[name="no_batch"]').val();
-                var diperiksa_oleh = $('#' + $idform + '').find('input[name="diperiksa_oleh"]').val();
-                var mulai_pembersihan = $('#' + $idform + '').find('input[name="mulai_pembersihan"]').val();
-                var selesai_pembersihan = $('#' + $idform + '').find('input[name="selesai_pembersihan"]').val();
-                var keterangan = $('#' + $idform + '').find('input[name="keterangan"]').val();
-                
-                
-                $('#Modalid_detilalat').val(p);
-                $('#Modalmulai_pemakaian').val(new Date(mulai_pemakaian).toJSON().slice(0,19));
-                $('#Modalselesai_pemakaian').val(new Date(selesai_pemakaian).toJSON().slice(0,19));
-                $('#Modalproduksi').val(produksi);
-                $('#Modalno_batch').val(no_batch);
-                $('#Modaldiperiksa_oleh').val(diperiksa_oleh);
-                $('#Modalmulai_pembersihan').val(new Date(mulai_pembersihan).toJSON().slice(0,19));
-                $('#Modalselesai_pembersihan').val(new Date(selesai_pembersihan).toJSON().slice(0,19));
-                $('#Modalketerangan').val(keterangan);
+            console.log(p)
+                $('#Modalid_detilalat').val(p.id_detilalat);
+                $('#Modalmulai_pemakaian').val(new Date(p.mulai_pemakaian).toJSON().slice(0,19));
+                $('#Modalselesai_pemakaian').val(new Date(p.selesai_pemakaian).toJSON().slice(0,19));
+                $('#Modalproduksi').val(p.produksi);
+                $('#Modalno_batch').val(p.no_batch);
+                $('#Modaldiperiksa_oleh').val(p.diperiksa_oleh);
+                $('#Modalmulai_pembersihan').val(new Date(p.mulai_pembersihan).toJSON().slice(0,19));
+                $('#Modalselesai_pembersihan').val(new Date(p.selesai_pembersihan).toJSON().slice(0,19));
+                $('#Modalketerangan').val(p.keterangan);
                 
             }
     </script>
