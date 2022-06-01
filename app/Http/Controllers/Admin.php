@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 
 // use App\Models\{pabrik,bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanproduk, penanganankeluhan, penarikanproduk, pendistribusianproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, produk, produksi, programpelatihan, programpelatihanhiginitas, rekonsiliasi, ruangtimbang, timbangbahan, timbangproduk};
@@ -56,7 +57,7 @@ class Admin extends Controller
         unlink("asset/coa/" . $data['coa_file']);
         $post = coa::all()->where('coa_id', $id)->each->delete();
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menghapus laporan COA',
+            'log_isi' => Auth::user()->namadepan . ' Menghapus laporan COA',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -82,7 +83,7 @@ class Admin extends Controller
 
         coa::insert($hasil);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan COA',
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan COA',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -108,7 +109,7 @@ class Admin extends Controller
         unlink("asset/dip/" . $data['dip_file']);
         $post = dip::all()->where('dip_id', $id)->each->delete();
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menghapus laporan DIP',
+            'log_isi' => Auth::user()->namadepan . ' Menghapus laporan DIP',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -134,7 +135,7 @@ class Admin extends Controller
 
         dip::insert($hasil);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan DIP',
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan DIP',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -160,7 +161,7 @@ class Admin extends Controller
         unlink("asset/perizinan/" . $data['perizinan_file']);
         $post = perizinan::all()->where('perizinan_id', $id)->each->delete();
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengahapus laporan perizinan',
+            'log_isi' => Auth::user()->namadepan . ' Mengahapus laporan perizinan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -187,7 +188,7 @@ class Admin extends Controller
         perizinan::insert($hasil);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan perizinan',
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan perizinan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -212,7 +213,7 @@ class Admin extends Controller
         unlink("asset/dip/" . $data[0]['jabatan_file']);
         $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menghapus laporan jabatan',
+            'log_isi' => Auth::user()->namadepan . ' Menghapus laporan jabatan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -238,7 +239,7 @@ class Admin extends Controller
 
         jabatan::insert($hasil);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan jabatan',
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan jabatan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -263,7 +264,7 @@ class Admin extends Controller
         unlink("asset/pobpabrik/" . $data[0]['pobpabrik_file']);
         $post = pobpabrik::all()->where('pobpabrik_id', $id)->each->delete();
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menghapus laporan protap pabrik',
+            'log_isi' => Auth::user()->namadepan . ' Menghapus laporan protap pabrik',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -289,7 +290,7 @@ class Admin extends Controller
 
         pobpabrik::insert($hasil);
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Menambah laporan protap pabrik',
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan protap pabrik',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -316,7 +317,7 @@ class Admin extends Controller
             'data' => $data,
             'nama_ruangan' => $req->nama_ruangan,
             'status' => $req->status,
-            'pelaksana' => Auth::user()->namadepan.' '.Auth::user()->namabelakang,
+            'pelaksana' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'id_ruangan' => $req->id_ruangan
         ]);
     }
@@ -330,17 +331,17 @@ class Admin extends Controller
         $jenis = $req['jenis'];
         $nama = $req['nama'];
         if ($jenis == 1) {
-            $status = cp_bahan::all('status')->where('cp_bahan_id')->first();            
+            $status = cp_bahan::all('status')->where('cp_bahan_id')->first();
         }
         if ($jenis == 2) {
-            $status = cp_produk::all('status')->where('cp_produk_id')->first();            
+            $status = cp_produk::all('status')->where('cp_produk_id')->first();
         }
         if ($jenis == 3) {
-            $status = cp_kemasan::all('status')->where('cp_kemasan_id')->first();            
+            $status = cp_kemasan::all('status')->where('cp_kemasan_id')->first();
         }
-        $protap_bahan = protap::all()->where('protap_jenis',1)->where('protap_detil',1);
-        $protap_produk = protap::all()->where('protap_jenis',1)->where('protap_detil',2);
-        $protap_kemasan = protap::all()->where('protap_jenis',1)->where('protap_detil',3);
+        $protap_bahan = protap::all()->where('protap_jenis', 1)->where('protap_detil', 1);
+        $protap_produk = protap::all()->where('protap_jenis', 1)->where('protap_detil', 2);
+        $protap_kemasan = protap::all()->where('protap_jenis', 1)->where('protap_detil', 3);
         $status = $req['status_induk'];
         session(['induk' => $induk]);
         session(['jenis' => $jenis]);
@@ -370,17 +371,17 @@ class Admin extends Controller
         $induk =  session()->get('induk');
         $nama  =  session()->get('nama');
         $pabrik = Auth::user()->pabrik;
-        $protap_bahan = protap::all()->where('protap_jenis',1)->where('protap_detil',1);
-        $protap_produk = protap::all()->where('protap_jenis',1)->where('protap_detil',2);
-        $protap_kemasan = protap::all()->where('protap_jenis',1)->where('protap_detil',3);
+        $protap_bahan = protap::all()->where('protap_jenis', 1)->where('protap_detil', 1);
+        $protap_produk = protap::all()->where('protap_jenis', 1)->where('protap_detil', 2);
+        $protap_kemasan = protap::all()->where('protap_jenis', 1)->where('protap_detil', 3);
         if ($jenis == 1) {
-            $status = cp_bahan::all('status')->where('cp_bahan_id')->first();            
+            $status = cp_bahan::all('status')->where('cp_bahan_id')->first();
         }
         if ($jenis == 2) {
-            $status = cp_produk::all('status')->where('cp_produk_id')->first();            
+            $status = cp_produk::all('status')->where('cp_produk_id')->first();
         }
         if ($jenis == 3) {
-            $status = cp_kemasan::all('status')->where('cp_kemasan_id')->first();            
+            $status = cp_kemasan::all('status')->where('cp_kemasan_id')->first();
         }
         // dd($req);
         if ($jenis == 1) {
@@ -407,24 +408,25 @@ class Admin extends Controller
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         $produk = produk::all()->where('user_id', $pabrik);
         $kemasan = kemasan::all()->where('user_id', $pabrik);
-        $protap1 = protap::all()->where('protap_jenis',1)
-        ->where('protap_detil', 1);
-        $protap2 = protap::all()->where('protap_jenis',1)
-        ->where('protap_detil', 2);
-        $protap3 = protap::all()->where('protap_jenis',1)
-        ->where('protap_detil', 3);
+        $protap1 = protap::all()->where('protap_jenis', 1)
+            ->where('protap_detil', 1);
+        $protap2 = protap::all()->where('protap_jenis', 1)
+            ->where('protap_detil', 2);
+        $protap3 = protap::all()->where('protap_jenis', 1)
+            ->where('protap_detil', 3);
         // dd($bahanbaku);
-        if (Auth::user()->level == 2) {
-            $data1 = cp_bahan::all()->where('pabrik', $pabrik);
-            $data2 = cp_produk::all()->where('pabrik', $pabrik);
-            $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
-        } else {
-            $data1 = cp_bahan::all()->where('pabrik', $pabrik);
-            $data2 = cp_produk::all()->where('pabrik', $pabrik);
-            $data3 = cp_kemasan::all()->where('pabrik', $pabrik);
-        }
-        return view('catatan.dokumen.penerimaanBB', ['data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan,
-        'protap1' => $protap1, 'protap2' => $protap2, 'protap3' => $protap3,]);
+
+        $data1 = cp_bahan::join('protaps', 'cp_bahans.protap', '=', 'protaps.protap_id')
+            ->get(['cp_bahans.*', 'protaps.protap_nama'])->where('cp_bahans.pabrik', $pabrik);
+        $data2 = cp_produk::join('protaps', 'cp_produks.protap', '=', 'protaps.protap_id')
+            ->get(['cp_produks.*', 'protaps.protap_nama'])->where('cp_produks.pabrik', $pabrik);
+        $data3 = cp_kemasan::join('protaps', 'cp_kemasans.protap', '=', 'protaps.protap_id')
+            ->get(['cp_kemasans.*', 'protaps.protap_nama'])->where('cp_kemasans.pabrik', $pabrik);
+
+        return view('catatan.dokumen.penerimaanBB', [
+            'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan,
+            'protap1' => $protap1, 'protap2' => $protap2, 'protap3' => $protap3,
+        ]);
     }
 
     public function tambah_terimabahan(Request $req)
@@ -437,6 +439,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
@@ -496,6 +499,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
@@ -553,6 +557,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'],
             'kode' => $req['kode'],
@@ -600,7 +605,7 @@ class Admin extends Controller
         return redirect()->route('penerimaanBB');
     }
 
-    
+
 
     public function edit_detilperiksaruang(Request $req)
     {
@@ -621,11 +626,11 @@ class Admin extends Controller
                 $lantai = $tglLamalantai;
             } else {
                 $lantai = $tgl;
-            }  
+            }
         } else {
             $lantai = null;
-        } 
-    
+        }
+
 
         if ($req['meja'] == 'Sudah') {
             if ($dataAwal['meja'] != null) {
@@ -633,11 +638,11 @@ class Admin extends Controller
                 $meja = $tglLamameja;
             } else {
                 $meja = $tgl;
-            }  
-        } else{
+            }
+        } else {
             $meja = null;
-        } 
-        
+        }
+
         if ($req['jendela'] == 'Sudah') {
             if ($dataAwal['jendela'] != null) {
                 $tglLamajendela = new \DateTime(Carbon::create($dataAwal['jendela'])->toDateTimeString());
@@ -645,10 +650,10 @@ class Admin extends Controller
             } else {
                 $jendela = $tgl;
             }
-        }else {
+        } else {
             $jendela = null;
-        } 
-        
+        }
+
         if ($req['langit'] == 'Sudah') {
             if ($dataAwal['langit'] != null) {
                 $tglLamalangit = new \DateTime(Carbon::create($dataAwal['langit'])->toDateTimeString());
@@ -657,10 +662,10 @@ class Admin extends Controller
             } else {
                 $langit = $tgl;
             }
-        }  else {
+        } else {
             $langit = null;
         }
-    
+
 
         // dd($lantai. ' ' .$meja. ' ' .$jendela. ' ' .$langit);
         // $ini = Detilruangan::all()->where('id', $req->id_ruangan)->first();
@@ -718,7 +723,7 @@ class Admin extends Controller
         // dd($ini); 
         $time = strtotime($req->tanggal_prosedur);
 
-        $newformat = date('Y-m-d',$time);
+        $newformat = date('Y-m-d', $time);
 
         Periksaruang::all()->where('id_periksaruang', $req->id_ruangan)->first()->update([
             'nomer_prosedur' => $req->nomer_prosedur,
@@ -1425,8 +1430,8 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
-            $data = pengolahanbatch::join('protaps', 'pengolahanbatche  s.pob', '=', 'protaps.protap_id')
-            ->get(['pengolahanbatches.*', 'protaps.protap_nama']);; //;
+            $data = pengolahanbatch::join('protaps', 'pengolahanbatches.pob', '=', 'protaps.protap_id')
+                ->get(['pengolahanbatches.*', 'protaps.protap_nama']); //;
             // dd($pabrik);
         } else {
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);
@@ -1434,7 +1439,7 @@ class Admin extends Controller
         }
         $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
         $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
-        $protap = protap::all()->where('user_id',Auth::user()->pabrik)->where('protap_jenis', 8);
+        $protap = protap::all()->where('user_id', Auth::user()->pabrik)->where('protap_jenis', 8);
         // dd(Auth::user()->pabrik);
 
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data, 'data2' => $data2, 'data3' => $data3, 'protap' => $protap]);
@@ -1640,6 +1645,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $nobatch = $req['nobatch'];
         $hasil = [
+            'protap' => $req['protap'],
             'penimbangan_kodebahan' => $req['kode_bahan'],
             'penimbangan_namabahan' => $req['nama_bahan'],
             'penimbangan_loth' => $req['no_loth'],
@@ -1661,7 +1667,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        $to = $req['nobatch'];  
+        $to = $req['nobatch'];
         return redirect('/detil_batch/');
     }
 
@@ -2124,7 +2130,7 @@ class Admin extends Controller
 
         $nomer = Periksaalat::insertGetId($hasil);
 
-        
+
         $laporan = [
             'laporan_nama' => 'periksa sanitasi alat',
             'laporan_batch' => $req['no_batch'] ?? 0,
@@ -2138,7 +2144,7 @@ class Admin extends Controller
         ];
 
         laporan::insert($laporan);
-        
+
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
             'notif_laporan' => "pemeriksaan sanitasi alat",
@@ -2212,7 +2218,7 @@ class Admin extends Controller
         // $data = periksaruang::all()->where('pabrik', $pabrik);
         $data = periksaruang::join('protaps', 'periksaruangs.nomer_prosedur', '=', 'protaps.protap_id')
             ->get(['periksaruangs.*', 'protaps.protap_nama']);
-        return view('catatanpelaksana.higidansani.periksasaniruang', ['data' => $data,'data2' => $data2]);
+        return view('catatanpelaksana.higidansani.periksasaniruang', ['data' => $data, 'data2' => $data2]);
     }
 
     public function tambah_periksaruang(Request $req)
@@ -2282,27 +2288,27 @@ class Admin extends Controller
             $lantai = $tgl;
         } else {
             $lantai = null;
-        } 
-        
+        }
+
         if ($req['meja'] == 'Sudah') {
             $meja = $tgl;
-        } else{
+        } else {
             $meja = null;
-        } 
-        
+        }
+
         if ($req['jendela'] == 'Sudah') {
             $jendela = $tgl;
-        }else {
+        } else {
             $jendela = null;
-        } 
-        
+        }
+
         if ($req['langit'] == 'Sudah') {
             $langit = $tgl;
-        }  else {
+        } else {
             $langit = null;
         }
 
-        
+
         $laporan = [
             'id_induk' => $req->id_induk,
             'lantai' => $lantai,
@@ -2392,6 +2398,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_pelatihan' => $req['kode_pelatihan'],
             'materi_pelatihan' => $req['materi_pelatihan'],
             'peserta_pelatihan' => $req['peserta_pelatihan'],
@@ -2451,6 +2458,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_pelatihan' => $req['kode_pelatihan'],
             'materi_pelatihan' => $req['materi_pelatihan'],
             'peserta_pelatihan' => $req['peserta_pelatihan'],
@@ -2592,15 +2600,17 @@ class Admin extends Controller
     public function tampil_programpelatihanhigienitasdansanitasi()
     {
         $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = programpelatihan::all()->where('pabrik', $pabrik);
-            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
-        } else {
-            $data = programpelatihan::all()->where('pabrik', $pabrik);
-            $data1 = Pelatihancpkb::all()->where('pabrik', $pabrik);
-        }
 
-        return view('catatan.dokumen.programpelatihanhiginitas', ['data' => $data, 'data1' => $data1]);
+        $data = programpelatihan::join('protaps', 'programpelatihans.protap', '=', 'protaps.protap_id')
+            ->get(['programpelatihans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $data1 = Pelatihancpkb::join('protaps', 'pelatihancpkbs.protap', '=', 'protaps.protap_id')
+            ->get(['pelatihancpkbs.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $protap1 = protap::all()->where('protap_jenis', 4)->where('protap_detil', 1);
+        $protap2 = protap::all()->where('protap_jenis', 4)->where('protap_detil', 2);
+        return view('catatan.dokumen.programpelatihanhiginitas', [
+            'data' => $data, 'data1' => $data1,
+            'protap1' => $protap1, 'protap2' => $protap2
+        ]);
     }
     public function tambah_keluhan(Request $req)
     {
@@ -2833,10 +2843,11 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' =>  $req['protap'],
             'kode_distribusi' => $req['kode_distribusi'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'].' '.$req['satuan'],
+            'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -2922,11 +2933,10 @@ class Admin extends Controller
     public function tampil_distribusi()
     {
         $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = distribusiproduk::all()->where('pabrik', $pabrik);
-        } else
-            $data = distribusiproduk::all()->where('pabrik', $pabrik);
-        return view('catatan.dokumen.pendistribusianproduk', ['data' => $data]);
+            $data = distribusiproduk::join('protaps', 'distribusiproduks.protap', '=', 'protaps.protap_id')
+            ->get(['distribusiproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            $protap = protap::all()->where('protap_jenis',11);
+        return view('catatan.dokumen.pendistribusianproduk', ['data' => $data,'protap' => $protap]);
     }
     public function tambah_operasialat(Request $req)
     {
@@ -2964,7 +2974,7 @@ class Admin extends Controller
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
             'notif_laporan' => "pengoprasian alat",
-            'notif_link' => 'pengoperasianalat',
+            'notif_link' => 'pengoprasian-alat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => $nomer,
@@ -3040,8 +3050,8 @@ class Admin extends Controller
 
         // $nomer = detilalat::insertGetId($hasil);
         Detilperiksaalat::insert($hasil);
-        
-       // $notif = [
+
+        // $notif = [
         //     'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
         //     'notif_laporan' => "pengoperasian alat",
         //     'notif_link' => 'periksasanialat',
@@ -3062,7 +3072,6 @@ class Admin extends Controller
         ];
         log::insert($log);
         return redirect('/periksasanialat');
-
     }
 
 
@@ -3099,14 +3108,14 @@ class Admin extends Controller
     public function tampil_pengorasianalat()
     {
         $pabrik = Auth::user()->pabrik;
-        $protap = protap::all('protap_nama','protap_id','protap_jenis')->where('protap_jenis',5);
+        $protap = protap::all('protap_nama', 'protap_id', 'protap_jenis')->where('protap_jenis', 5);
         // dd($protap);
         if (Auth::user()->level == 2) {
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
-            ->get(['pengoprasianalats.*', 'protaps.protap_nama']);//all()->where('pabrik', $pabrik);
+                ->get(['pengoprasianalats.*', 'protaps.protap_nama']); //all()->where('pabrik', $pabrik);
         } else
-        $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
-        ->get(['pengoprasianalats.*', 'protaps.protap_nama']);
+            $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
+                ->get(['pengoprasianalats.*', 'protaps.protap_nama']);
         return view('catatan.dokumen.pengoprasianalat', compact('data', 'protap'));
     }
     public function tampil_detilalat(Request $req)
@@ -3115,7 +3124,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
         $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
-        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat ]);
+        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
     }
 
 
@@ -3124,6 +3133,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $id = Auth::user()->id;
         $hasil = [
+            'protap' => $req['protap'],
             'nama_bahan' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
             'kedaluwarsa' => $req['kedaluwarsa'],
@@ -3220,26 +3230,26 @@ class Admin extends Controller
     public function tampil_pelulusanproduk()
     {
         $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = pelulusanproduk::all()->where('pabrik', $pabrik);
-        } else {
-            $data = pelulusanproduk::all()->where('pabrik', $pabrik);
+            $data = pelulusanproduk::join('protaps', 'pelulusanproduks.protap', '=', 'protaps.protap_id')
+            ->get(['pelulusanproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
-        }
-        return view('catatan.dokumen.pelulusanproduk', ['data' => $data, 'bahanbaku' => $bahanbaku ?? []]);
+            $protap = protap::all()->where('protap_jenis',11);
+        
+        return view('catatan.dokumen.pelulusanproduk', ['data' => $data,'protap' => $protap, 'bahanbaku' => $bahanbaku ?? []]);
     }
     public function tambah_contohbahan(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_bahan' => $req['kode_bahan'],
             'nama_bahanbaku' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
-            'jumlah_produk' => $req['jumlah_ambil'].' '.$req['satuan'],
+            'jumlah_produk' => $req['jumlah_ambil'] . ' ' . $req['satuan'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -3292,13 +3302,14 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_produk' => $req['kode_produk'],
             'nama_produkjadi' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
-            'jumlah_produk' => $req['jumlah_ambil'].' '.$req['satuan'],
+            'jumlah_produk' => $req['jumlah_ambil'] . ' ' . $req['satuan'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -3326,7 +3337,7 @@ class Admin extends Controller
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan",
             'notif_laporan' => "penambahan contoh produk",
-            'notif_link' => 'ambilcontoh#pills-profile',
+            'notif_link' => 'ambilcontoh',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => $nomer,
@@ -3350,13 +3361,14 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
             'no_batch' => $req['nobatch'],
             'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
-            'jumlah_produk' => $req['jumlah_ambil'].' '.$req['satuan'],
+            'jumlah_produk' => $req['jumlah_ambil'] . ' ' . $req['satuan'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -3526,34 +3538,36 @@ class Admin extends Controller
     public function tampil_pengambilancontoh()
     {
         $pabrik = Auth::user()->pabrik;
-        $protap1 = protap::all()->where('protap_jenis',2)
-        ->where('protap_detil', 1);
-        $protap2 = protap::all()->where('protap_jenis',2)
-        ->where('protap_detil', 2);
-        $protap3 = protap::all()->where('protap_jenis',2)
-        ->where('protap_detil', 3);
-        if (Auth::user()->level == 2) {
-            $data = contohbahanbaku::all()->where('pabrik', $pabrik);
-            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
-            $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-        } else {
-            $data = contohbahanbaku::all()->where('pabrik', $pabrik);
-            $data1 = contohprodukjadi::all()->where('pabrik', $pabrik);
-            $data2 = contohkemasan::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);;
-            $produk = produk::all()->where('user_id', $pabrik);;
-            $kemasan = kemasan::all()->where('user_id', $pabrik);;
-        }
+        $protap1 = protap::all()->where('protap_jenis', 2)
+            ->where('protap_detil', 1);
+        $protap2 = protap::all()->where('protap_jenis', 2)
+            ->where('protap_detil', 2);
+        $protap3 = protap::all()->where('protap_jenis', 2)
+            ->where('protap_detil', 3);
+
+        $data = contohbahanbaku::join('protaps', 'contohbahanbakus.protap', '=', 'protaps.protap_id')
+            ->get(['contohbahanbakus.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $data1 = contohprodukjadi::join('protaps', 'contohprodukjadis.protap', '=', 'protaps.protap_id')
+            ->get(['contohprodukjadis.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $data2 = contohkemasan::join('protaps', 'contohkemasans.protap', '=', 'protaps.protap_id')
+            ->get(['contohkemasans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        $produk = produk::all()->where('user_id', $pabrik);
+        $kemasan = kemasan::all()->where('user_id', $pabrik);
+
         $x = [];
-        return view('catatan.dokumen.pengambilancontoh', ['data' => $data, 'data1' => $data1, 
-        'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x, 
-        'kemasan' => $kemasan ?? $x, 'protap1' => $protap1,'protap2' => $protap2, 'protap3' => $protap3]);
+        return view('catatan.dokumen.pengambilancontoh', [
+            'data' => $data, 'data1' => $data1,
+            'data2' => $data2, 'bahanbaku' => $bahanbaku ?? $x, 'produk' => $produk ?? $x,
+            'kemasan' => $kemasan ?? $x, 'protap1' => $protap1, 'protap2' => $protap2, 'protap3' => $protap3
+        ]);
     }
     public function tambah_penimbanganbahan(Request $req)
     {
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'tanggal' => $req['tanggal'],
             'no_loth' => $req['no_loth'],
             'pabrik' => $pabrik,
@@ -3609,6 +3623,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'tanggal' => $req['tanggal'],
             'no_batch' => $req['nobatch'],
             'pabrik' => $pabrik,
@@ -3663,6 +3678,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
 
@@ -3857,19 +3873,23 @@ class Admin extends Controller
     public function tampil_penimbangan()
     {
         $pabrik = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = timbangbahan::all()->where('pabrik', $pabrik);
-            $data1 = timbangproduk::all()->where('pabrik', $pabrik);
-            $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
-        } else {
-            $data = timbangbahan::all()->where('pabrik', $pabrik);
-            $data1 = timbangproduk::all()->where('pabrik', $pabrik);
-            $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
-            $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
-            $produkantara = produkantara::all()->where('user_id', $pabrik);
-        }
+
+        $data = timbangbahan::join('protaps', 'timbangbahans.protap', '=', 'protaps.protap_id')
+            ->get(['timbangbahans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $data1 = timbangproduk::join('protaps', 'timbangproduks.protap', '=', 'protaps.protap_id')
+            ->get(['timbangproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $data2 = ruangtimbang::join('protaps', 'ruangtimbangs.protap', '=', 'protaps.protap_id')
+            ->get(['ruangtimbangs.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+        $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
+        $produkantara = produkantara::all()->where('user_id', $pabrik);
+        $protap1 =  protap::all()->where('protap_jenis', 7)->where('protap_detil', 1);
+        $protap2 =  protap::all()->where('protap_jenis', 7)->where('protap_detil', 2);
+        $protap3 =  protap::all()->where('protap_jenis', 7)->where('protap_detil', 3);
         // dd($produkantara);
-        return view('catatan.dokumen.penimbangan', ['data' => $data, 'data1' => $data1, 'data2' => $data2, 'bahanbaku' => $bahanbaku ?? [], 'produkantara' => $produkantara ?? []]);
+        return view('catatan.dokumen.penimbangan', [
+            'data' => $data, 'data1' => $data1, 'data2' => $data2,
+            'protap1' => $protap1, 'protap2' => $protap2, 'protap3' => $protap3, 'bahanbaku' => $bahanbaku ?? [], 'produkantara' => $produkantara ?? []
+        ]);
     }
 
     //detil penimbangan
@@ -4246,7 +4266,7 @@ class Admin extends Controller
                 'nama_bahankemas' => $req['nama'],
                 'tanggal' => $req['tanggal'],
                 'id_batch' => $req['no_batch'],
-                'jumlah' => $req['jumlah'].' '.$req['satuan'],
+                'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
                 'nama_distributor' => $req['nama_distributor'],
                 'status' => 0
             ]);
@@ -4287,7 +4307,7 @@ class Admin extends Controller
             'nama_produkantara' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'].' '.$req['satuan'],
+            'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -4343,7 +4363,7 @@ class Admin extends Controller
                 'nama_produkantara' => $req['nama'],
                 'tanggal' => $req['tanggal'],
                 'id_batch' => $req['no_batch'],
-                'jumlah' => $req['jumlah'].' '.$req['satuan'],
+                'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
                 'nama_distributor' => $req['nama_distributor'],
                 'status' => 0
             ]);
@@ -4504,7 +4524,7 @@ class Admin extends Controller
             'nama_bahanbaku' => $req['nama_bahanbaku'],
             'no_batch' => $req['no_batch'],
             'asal_bahanbaku' => $req['asal_bahanbaku'],
-            'jumlah_bahanbaku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
+            'jumlah_bahanbaku' => $req['jumlah_bahanbaku'] . ' ' . $req['satuan'],
             'alasan_pemusnahan' => $req['alasan_pemusnahan'],
             'cara_pemunsnahan' => $req['cara_pemusnahan'],
             'nama_petugas' => $req['petugas'],
@@ -4608,7 +4628,7 @@ class Admin extends Controller
             'nama_bahan_kemas' => $req['nama_bahankemas'],
             'no_batch' => $req['no_batch'],
             'asal_bahankemas' => $req['asal_bahankemas'],
-            'jumlah_bahankemas' => $req['jumlah_bahankemas'].' '.$req['satuan'],
+            'jumlah_bahankemas' => $req['jumlah_bahankemas'] . ' ' . $req['satuan'],
             'alasan_pemusnahan' => $req['alasan_pemusnahan'],
             'cara_pemunsnahan' => $req['cara_pemusnahan'],
             'nama_petugas' => $req['petugas'],
@@ -4712,7 +4732,7 @@ class Admin extends Controller
             'nama_produkantara' => $req['nama_produkantara'],
             'no_batch' => $req['no_batch'],
             'asal_produkantara' => $req['asal_produkantara'],
-            'jumlah_produkantara' => $req['jumlah_produkantara'].' '.$req['satuan'],
+            'jumlah_produkantara' => $req['jumlah_produkantara'] . ' ' . $req['satuan'],
             'alasan_pemusnahan' => $req['alasan_pemusnahan'],
             'cara_pemunsnahan' => $req['cara_pemusnahan'],
             'nama_petugas' => $req['petugas'],
@@ -5461,20 +5481,20 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
 
-            $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
-            // dd($data);
-            $produk = produk::all()->where('user_id', Auth::user()->pabrik);
-            $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
-            $protap = protap::all()->where('user_id', Auth::user()->pabrik);
+        $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
+        // dd($data);
+        $produk = produk::all()->where('user_id', Auth::user()->pabrik);
+        $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
+        $protap = protap::all()->where('user_id', Auth::user()->pabrik);
         // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['kemasbatch' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? [], 'protaps' => $protap ?? []]);
     }
 
-    public function log () {
+    public function log()
+    {
         // Posts::orderBy('created_at', 'desc')->get();
         // return view('layout.log', ['dataLog' => DB::select('select * from logs')]);
         return view('layout.log', ['dataLog' => Log::orderBy('log_id', 'desc')->get()]);
-
     }
 
     public function notif()
@@ -5485,8 +5505,8 @@ class Admin extends Controller
             $data = notif::all()->where('id_pabrik', Auth::user()->pabrik);
         }
         if (Auth::user()->level ==  3) {
-            notif::where('id_pabrik',Auth::user()->pabrik)->where('notif_3',1)
-            ->update(['notif_3' => 2]);
+            notif::where('id_pabrik', Auth::user()->pabrik)->where('notif_3', 1)
+                ->update(['notif_3' => 2]);
             $data = notif::all()->where('id_pabrik', Auth::user()->pabrik)
                 ->where('notif_3', '!=', 0);
         }

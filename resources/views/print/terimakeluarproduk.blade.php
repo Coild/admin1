@@ -64,46 +64,45 @@
         </table>
         <center>
             <br>
-            @foreach ($kop as $row)
             <table class="table table-bordered">
                 <tr>
-                    <td rowspan="4">
+                    <td rowspan="4" style="text-align: center;">
                         <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
 
                     </td>
                     <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PENERIMAAN PRODUK
+                        CATATAN<br>PENERIMAAN BAHAN
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="3" colspan="3">
-                        Nomor Kode
+                    <td rowspan="3" colspan="3" style="text-align: center;">
+                        Nomor Kode <br> {{$data['kode']}}  
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="2">
+                    <td rowspan="2" colspan="2" style="text-align: center;">
                         BAGIAN
-
+                        {{$protap['protap_ruangan']}}
                     </td>
 
 
                 </tr>
                 <tr> </tr>
                 <tr>
-                    <td rowspan="3">
-                        Nama Produk<br>
-                        {{ $row['tgl_diajukan'] }}
+                    <td rowspan="3"  style="text-align: center;">
+                        Nama Bahan <br>
+                        {{$data['nama']}}
                     </td>
-                    <td rowspan="3" colspan="4">
-                        Untuk Distributor <br>
-                        {{ $row['tgl_diajukan'] }}
+                    <td rowspan="3" colspan="4" style="text-align: center;">
+                        Untuk Produk <br>
+                        {{$data['nama']}}
                     </td>
-                    <td rowspan="3">
-                        Unit
+                    <td rowspan="3" style="text-align: center;">
+                        Unit <br>
+                        {{$data['jumlah']}}
                     </td>
                 </tr>
             </table>
-            @endforeach
             <br><br>
             <table class="table isi table-bordered">
                 <tr>

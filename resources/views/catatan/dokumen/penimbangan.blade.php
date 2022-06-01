@@ -54,7 +54,20 @@
                                                         <p class="statusMsg"></p>
                                                         <form role="form" method="post" action="tambah_penimbanganbahan" id='forminput1'>
                                                             @csrf
+                                                            <div class="form-group row">
+                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                                    Dengan PROTAP No</label>
+                                                                <div class="col-sm">
+                                                                    {{-- <input type="text" name="pob" class="form-control 1" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    <select name="protap" class="form-control 1">
+                                                                        @foreach ($protap1 as $isi)
+                                                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                                        @endforeach
 
+                                                                    </select>
+                                                                    <div id="error-box" style="color: red"></div>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No Loth</label>
                                                                 <div class="col-sm">
@@ -79,6 +92,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">No Loth</th>
                                             <th scope="col">Status</th>
@@ -91,6 +105,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['no_loth'] }}</td>
                                             <td>
@@ -107,6 +122,7 @@
                                                     <form method="post" action="terimapenimbanganbahan">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
+                                                        <input type="hidden" name="no" value="{{ $row['timbang_bahan_id'] }}" />
                                                         <button type="submit" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
@@ -188,6 +204,20 @@
                                                             @csrf
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                             <div class="form-group row">
+                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                                    Dengan PROTAP No</label>
+                                                                <div class="col-sm">
+                                                                    {{-- <input type="text" name="pob" class="form-control 2" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    <select name="protap" class="form-control 2">
+                                                                        @foreach ($protap2 as $isi)
+                                                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                                        @endforeach
+
+                                                                    </select>
+                                                                    <div id="error-box" style="color: red"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                                     Batch</label>
                                                                 <div class="col-sm">
@@ -211,6 +241,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">No Batch</th>
                                             <th scope="col">Status</th>
@@ -223,6 +254,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['no_batch'] }}</td>
                                             <td>
@@ -239,6 +271,7 @@
                                                     <form method="post" action="terimapenimbanganproduk">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
+                                                        <input type="hidden" name="no" value="{{ $row['timbang_produk_id'] }}" />
                                                         <button type="submit" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
@@ -320,7 +353,20 @@
                                                         <form role="form" method="post" action="tambah_ruangtimbang" id='forminput3'>
                                                             @csrf
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                            <div class="form-group row">
+                                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                                    Dengan PROTAP No</label>
+                                                                <div class="col-sm">
+                                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    <select name="protap" class="form-control 3">
+                                                                        @foreach ($protap2 as $isi)
+                                                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                                        @endforeach
 
+                                                                    </select>
+                                                                    <div id="error-box" style="color: red"></div>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                                                     Baku</label>
@@ -383,6 +429,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Tanggal</th>
                                             <th scope="col">Nama Bahan Baku</th>
                                             <th scope="col">Jumlah Bahan Baku</th>
@@ -397,6 +444,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['nama_bahan_baku'] }}</td>
                                             <td>{{ $row['jumlah_bahan_baku'] }}</td>
@@ -414,6 +462,7 @@
                                                     <form method="post" action="terimapenimbanganruang">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['id_ruangtimbang'] }}" />
+                                                        <input type="hidden" name="no" value="{{ $row['id_ruangtimbang'] }}" />
                                                         <button type="submit" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
@@ -481,7 +530,20 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="id" id="isi_bahanid">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                    Dengan PROTAP No</label>
+                                <div class="col-sm">
+                                    {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                    <select name="pob" class="form-control 4">
+                                        @foreach ($protap1 as $isi)
+                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                        @endforeach
 
+                                    </select>
+                                    <div id="error-box" style="color: red"></div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No Loth</label>
                                 <div class="col-sm">
@@ -519,7 +581,20 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="id" id="isi_produkid">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                    Dengan PROTAP No</label>
+                                <div class="col-sm">
+                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                    <select name="protap" class="form-control 5">
+                                        @foreach ($protap2 as $isi)
+                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                        @endforeach
 
+                                    </select>
+                                    <div id="error-box" style="color: red"></div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                     Batch</label>
@@ -558,6 +633,20 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="id" id="isi_ruangid">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                    Dengan PROTAP No</label>
+                                <div class="col-sm">
+                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                    <select name="protap" class="form-control 6">
+                                        @foreach ($protap3 as $isi)
+                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <div id="error-box" style="color: red"></div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                     Baku</label>

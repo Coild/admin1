@@ -102,52 +102,56 @@
         </table>
         <center>
             <br>
-                <table class="table table-bordered">
-                    <tr>
-                        <td rowspan="4">
-                            <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;"
-                                alt="Your Picture">
+            <table class="table table-bordered">
+                <tr>
+                    <td rowspan="4">
+                        <img src={{ asset("asset/logo/$logo") }} style="height: 100px; width:auto;" ;alt="Your Picture">
+                    </td>
+                    <td rowspan="2" style="text-align: center;">
+                        CATATAN<br>PENGGUNAAN ALAT UTAMA
+                    </td>
+                    <td colspan="3">Halaman:</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" colspan="3">
+                        Nomor: {{$protap['protap_nomor']}}<br>
+                        Tanggal Berlaku: {{$protap['protap_tgl_diterima']}}<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        BAGIAN <br>
+                        {{$protap['protap_ruangan']}}
 
-                        </td>
-                        <td rowspan="2" colspan="2" style="text-align: center;">
-                            CATATAN<br>PENGGUNA ALAT UTAMA
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3" colspan="3">
+                    </td>
+                    <!-- <td rowspan="3">
                             Nomor: <br>
                             Tanggal Berlaku: <br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" colspan="2">
-                            BAGIAN
+                        </td> -->
 
-                        </td>
-
-
-                    </tr>
-                    <tr> </tr>
-                    <tr>
-                        <td rowspan="3">
-                            Disusun Oleh <br>
-                            {{ $kop['laporan_diajukan'] }} <br>
-                            Tanggal <br>
-                            {{ $kop['tgl_diajukan'] }}
-                        </td>
-                        <td rowspan="3" colspan="4">
-                            Disetujui Oleh <br>
-                            {{ $kop['laporan_diterima'] }} <br>
-                            Tanggal <br>
-                            {{ $kop['tgl_diajukan'] }}
-                        </td>
-                        <td rowspan="3">
-                            Mengganti Nomor <br>
-                            Tanggal <br>
-                            09 Oktober 2019
-                        </td>
-                    </tr>
-                </table>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td rowspan="3">
+                        Disusun Oleh <br>
+                        {{$protap['protap_diajukan']}} <br>
+                        Tanggal <br>
+                        {{$protap['protap_tgl_diajukan']}}
+                    </td>
+                    <td rowspan="3">
+                        Disetujui Oleh <br>
+                        {{$protap['protap_diterima']}} <br>
+                        Tanggal <br>
+                        {{$protap['protap_tgl_diterima']}}
+                    </td>
+                    <td rowspan="3" colspan="3">
+                        Mengganti Nomor <br>
+                        - <br>
+                        Tanggal <br>
+                        -
+                    </td>
+                </tr>
+            </table>
             <br>
             <br>
             <table class="table isi table-bordered">

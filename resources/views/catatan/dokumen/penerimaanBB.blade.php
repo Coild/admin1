@@ -849,8 +849,8 @@
                 serverSide: true,
                 ajax: "{{ url('/cp_bahan') }}",
                 columns: [{
-                        data: 'protap',
-                        name: 'protap'
+                        data: 'protap_nama',
+                        name: 'protap_nama'
                     }, {
                         data: 'kode',
                         name: 'kode'
@@ -882,8 +882,8 @@
                 serverSide: true,
                 ajax: "{{ url('/cp_produk') }}",
                 columns: [{
-                        data: 'protap',
-                        name: 'protap'
+                        data: 'protap_nama',
+                        name: 'protap_nama'
                     }, {
                         data: 'kode',
                         name: 'kode'
@@ -915,8 +915,8 @@
                 serverSide: true,
                 ajax: "{{ url('/cp_kemasan') }}",
                 columns: [{
-                        data: 'protap',
-                        name: 'protap'
+                        data: 'protap_nama',
+                        name: 'protap_nama'
                     }, {
                         data: 'kode',
                         name: 'kode'

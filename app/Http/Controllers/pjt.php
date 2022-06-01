@@ -221,7 +221,7 @@ class pjt extends Controller
 
 
     public function terima_cp_produk(Request $req)
-    {
+    { 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
@@ -236,7 +236,7 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penergit loimaan produk')
+            ->where('notif_laporan', 'penerimaan produk')
             ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
@@ -289,7 +289,7 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        // dd(  $req['nobatch']);
+        // dd($req);
         $user = programpelatihan::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
@@ -320,7 +320,7 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        // dd($req['nobatch']);
+        // dd($req);
         $user = Pelatihancpkb::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
             'status' => 1,
         ]);
@@ -363,8 +363,8 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'pengoperasiian alat')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_laporan', 'pengoprasian alat')
+            ->where('notif_2',$req['nobatch'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -528,7 +528,7 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'ruang timbang')
+            ->where('notif_laporan', 'ruang penimbangan')
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);

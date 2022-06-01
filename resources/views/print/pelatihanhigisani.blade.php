@@ -77,75 +77,78 @@
 
 <body class="A4">
     <section class="sheet padding-10mm" style="height: auto;">
-    <table width="100%" class="kop">
+        <table width="100%" class="kop">
             <tr>
-                <td style="border:none;"  width="30%">
+                <td style="border:none;" width="30%">
                     <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
                 </td>
                 <td width="70%" class="tengah" style="border:none;">
-                <center>
-                    <h1 style="font-weight: bolder; margin-bottom: -15px">
-                        {{ $nama }}
-                    </h1>
-                    <p style="margin-bottom: -5px; font-size: 28px; ">
-                        {{ $alamat }}
-                    </p>
-                    <p style="margin-bottom: -5px; font-size: 16px;">
-                        No Handphone : {{ $nohp }}
-                    </p>
+                    <center>
+                        <h1 style="font-weight: bolder; margin-bottom: -15px">
+                            {{ $nama }}
+                        </h1>
+                        <p style="margin-bottom: -5px; font-size: 28px; ">
+                            {{ $alamat }}
+                        </p>
+                        <p style="margin-bottom: -5px; font-size: 16px;">
+                            No Handphone : {{ $nohp }}
+                        </p>
                     </center>
                 </td>
             </tr>
         </table>
         <center>
             <br>
-            @foreach($kop as $row)
             <table class="table table-bordered">
                 <tr>
                     <td rowspan="4">
-                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
-
+                        <img src={{ asset("asset/logo/$logo") }} style="height: 100px; width:auto;" ;alt="Your Picture">
                     </td>
-                    <td rowspan="2" colspan="2" style="text-align: center;">
-                        CATATAN<br>PELATIHAN HIGIENE DAN SANITASI
+                    <td rowspan="2" style="text-align: center;">
+                        CATATAN<br>PENGMBILAN BAHAN KEMASAN
                     </td>
+                    <td colspan="3">Halaman:</td>
                 </tr>
                 <tr>
                     <td rowspan="3" colspan="3">
-                        Nomor: <br>
-                        Tanggal Berlaku: <br>
+                        Nomor: {{$protap['protap_nomor']}}<br>
+                        Tanggal Berlaku: {{$protap['protap_tgl_diterima']}}<br>
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="2">
-                        BAGIAN
+                    <td rowspan="2">
+                        BAGIAN <br>
+                        {{$protap['protap_ruangan']}}
 
                     </td>
-
+                    <!-- <td rowspan="3">
+                            Nomor: <br>
+                            Tanggal Berlaku: <br>
+                        </td> -->
 
                 </tr>
-                <tr> </tr>
+                <tr></tr>
                 <tr>
                     <td rowspan="3">
                         Disusun Oleh <br>
-                        {{$row['laporan_diajukan']}} <br>
+                        {{$protap['protap_diajukan']}} <br>
                         Tanggal <br>
-                        {{$row['tgl_diajukan']}}
-                    </td>
-                    <td rowspan="3" colspan="4">
-                        Disetujui Oleh <br>
-                        {{$row['laporan_diterima']}} <br>
-                        Tanggal <br>
-                        {{$row['tgl_diajukan']}}
+                        {{$protap['protap_tgl_diajukan']}}
                     </td>
                     <td rowspan="3">
-                        Mengganti Nomor <br>
+                        Disetujui Oleh <br>
+                        {{$protap['protap_diterima']}} <br>
                         Tanggal <br>
-                        09 Oktober 2019
+                        {{$protap['protap_tgl_diterima']}}
+                    </td>
+                    <td rowspan="3" colspan="3">
+                        Mengganti Nomor <br>
+                        - <br>
+                        Tanggal <br>
+                        -
                     </td>
                 </tr>
             </table>
-            @endforeach
             <br><br>
             <table>
 

@@ -45,6 +45,20 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <div class="card-body">
 
+                                            <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                        Dengan PROTAP No</label>
+                                    <div class="col-sm">
+                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="pob" class="form-control">
+                                            @foreach ($protap as $isi)
+                                            <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        <div id="error-box" style="color: red"></div>
+                                    </div>
+                                </div>
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
                                                         Pendistribusian</label>
@@ -66,14 +80,13 @@
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                                     <div class="col-sm">
-                                                        
+
                                                         <div class="row">
                                                             <div class="col-sm-8">
                                                                 <input type="text" name="jumlah" class="form-control" id="inputEmail3" placeholder="Jumlah" />
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <select class="form-select"
-                                                                    name="satuan" id="">
+                                                                <select class="form-select" name="satuan" id="">
                                                                     <option value="gr"> gr</option>
                                                                     <option value="kg"> kg</option>
                                                                     <option value="ml"> ml</option>
@@ -107,6 +120,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Sesuai PROTAP</th>
                             <th scope="col">Kode Distribusi</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">No Batch</th>
@@ -122,6 +136,7 @@
                         <?php $i++; ?>
                         <tr>
                             <td>{{ $i }}</td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_distribusi'] }}</td>
                             <td>{{ $row['tanggal'] }}</td>
                             <td>{{ $row['id_batch'] }}</td>
@@ -136,27 +151,27 @@
                             </td>
                             <td>
                                 @if (Auth::user()->level == 2)
-                                    <?php if ($row['status'] == 0) { ?>
-                                        <form method="post" action="terimadistribusiproduk">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
-                                            <button type="submit" class="btn btn-primary">terima</button>
-                                        </form>
-                                    <?php } elseif ($row['status'] == 1) { ?>
-                                        <form method="post" action="terimadistribusiproduk">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
-                                            <button type="submit" class="btn btn-danger disabled">terima</button>
-                                        </form>
-                                    <?php } ?>
-                                
+                                <?php if ($row['status'] == 0) { ?>
+                                    <form method="post" action="terimadistribusiproduk">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
+                                        <button type="submit" class="btn btn-primary">terima</button>
+                                    </form>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <form method="post" action="terimadistribusiproduk">
+                                        @csrf
+                                        <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
+                                        <button type="submit" class="btn btn-danger disabled">terima</button>
+                                    </form>
+                                <?php } ?>
+
                                 @else
-                                    <?php if ($row['status'] == 0) { ?>
-                                        <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
-                                    <?php } elseif ($row['status'] == 1) { ?>
-                                        <button id="klikdis" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
-                                    <?php } ?>
-                                
+                                <?php if ($row['status'] == 0) { ?>
+                                    <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                <?php } elseif ($row['status'] == 1) { ?>
+                                    <button id="klikdis" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                <?php } ?>
+
                                 @endif
                             </td>
                         </tr>
@@ -190,8 +205,22 @@
                             <div class="card-header" id='headertgl'></div>
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            <div class="card-body">
 
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                        Dengan PROTAP No</label>
+                                    <div class="col-sm">
+                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="pob" class="form-control 1">
+                                            @foreach ($protap as $isi)
+                                            <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        <div id="error-box" style="color: red"></div>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">Kode
                                         Pendistribusian</label>
@@ -211,14 +240,13 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-8">
                                                 <input type="text" name="jumlah" class="form-control 1" id="isi_jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select"
-                                                    name="satuan" id="">
+                                                <select class="form-select" name="satuan" id="">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>

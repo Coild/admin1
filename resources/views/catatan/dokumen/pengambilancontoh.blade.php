@@ -60,7 +60,7 @@
                                                                 <div class="col-sm">
                                                                     {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                                                     <select name="protap" class="form-control 1">
-                                                                        @foreach ($protap2 as $isi)
+                                                                        @foreach ($protap1 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                                                         @endforeach
 
@@ -172,6 +172,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Kode Bahan Baku</th>
                                             <th scope="col">Nama Bahan Baku</th>
                                             <th scope="col">No Batch</th>
@@ -190,6 +191,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['kode_bahan'] }}</td>
                                             <td>{{ $row['nama_bahanbaku'] }}</td>
                                             <td>{{ $row['no_batch'] }}</td>
@@ -408,6 +410,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Kode Produk</th>
                                             <th scope="col">Nama Produk</th>
                                             <th scope="col">No Batch</th>
@@ -426,6 +429,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['kode_produk'] }}</td>
                                             <td>{{ $row['nama_produkjadi'] }}</td>
                                             <td>{{ $row['no_batch'] }}</td>
@@ -644,6 +648,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Sesuai PROTAP</th>
                                             <th scope="col">Kode Bahan Baku</th>
                                             <th scope="col">Nama Bahan Baku</th>
                                             <th scope="col">No Batch</th>
@@ -662,6 +667,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['kode_kemasan'] }}</td>
                                             <td>{{ $row['nama_kemasan'] }}</td>
                                             <td>{{ $row['no_batch'] }}</td>
@@ -1021,7 +1027,7 @@
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 1">
-                                            @foreach ($protap as $isi)
+                                            @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
 

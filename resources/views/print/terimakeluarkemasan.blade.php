@@ -65,51 +65,45 @@
         </table>
         <center>
             <br>
-            @foreach ($kop as $row)
-                <table class="table table-bordered">
-                    <tr>
-                        <td rowspan="4">
-                            <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;"
-                                alt="Your Picture">
+            <table class="table table-bordered">
+                <tr>
+                    <td rowspan="4" style="text-align: center;">
+                        <img src={{ asset("asset/logo/$logo") }} style="height:120px; width:auto;" alt="Your Picture">
 
-                        </td>
-                        <td rowspan="2" colspan="2" style="text-align: center;">
-                            CATATAN<br>PENERIMAAN KEMASAN
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3" colspan="3">
-                            Nomor Kode
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" colspan="2">
-                            BAGIAN
-
-                        </td>
+                    </td>
+                    <td rowspan="2" colspan="2" style="text-align: center;">
+                        CATATAN<br>PENERIMAAN KEMASAN
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" colspan="3" style="text-align: center;">
+                        Nomor Kode <br> {{$data['kode']}}  
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2" colspan="2" style="text-align: center;">
+                        BAGIAN
+                        {{$protap['protap_ruangan']}}
+                    </td>
 
 
-                    </tr>
-                    <tr> </tr>
-                    <tr>
-                        <td rowspan="3">
-                            Disusun Oleh <br>
-                            {{ $row['laporan_diajukan'] }} <br>
-                            Tanggal <br>
-                            {{ $row['tgl_diajukan'] }}
-                        </td>
-                        <td rowspan="3" colspan="4">
-                            Disetujui Oleh <br>
-                            {{ $row['laporan_diterima'] }} <br>
-                            Tanggal <br>
-                            {{ $row['tgl_diajukan'] }}
-                        </td>
-                        <td rowspan="3">
-                            Unit
-                        </td>
-                    </tr>
-                </table>
-            @endforeach
+                </tr>
+                <tr> </tr>
+                <tr>
+                    <td rowspan="3"  style="text-align: center;">
+                        Nama Bahan <br>
+                        {{$data['nama']}}
+                    </td>
+                    <td rowspan="3" colspan="4" style="text-align: center;">
+                        Untuk Produk <br>
+                        {{$data['nama']}}
+                    </td>
+                    <td rowspan="3" style="text-align: center;">
+                        Unit <br>
+                        {{$data['jumlah']}}
+                    </td>
+                </tr>
+            </table>
             <br><br>
             <table class="table isi table-bordered">
                 <tr>

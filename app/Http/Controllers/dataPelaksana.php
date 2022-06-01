@@ -25,11 +25,10 @@ class dataPelaksana extends Controller
     public function cp_bahan()
     {
         $id = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = cp_bahan::all()->where('pabrik', $id);
-        } else {
-            $data = cp_bahan::all()->where('pabrik', $id);
-        }
+
+            $data = cp_bahan::join('protaps', 'cp_bahans.protap', '=', 'protaps.protap_id')
+        ->get(['cp_bahans.*', 'protaps.protap_nama'])->where('pabrik', $id);
+        
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
                 return 'Diajukan';
@@ -91,11 +90,9 @@ class dataPelaksana extends Controller
     public function cp_produk()
     {
         $id = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = cp_produk::all()->where('pabrik', $id);
-        } else {
-            $data = cp_produk::all()->where('pabrik', $id);
-        }
+
+            $data = cp_produk::join('protaps', 'cp_produks.protap', '=', 'protaps.protap_id')
+        ->get(['cp_produks.*', 'protaps.protap_nama'])->where('pabrik', $id);
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
                 return 'Diajukan';
@@ -157,11 +154,10 @@ class dataPelaksana extends Controller
     public function cp_kemasan()
     {
         $id = Auth::user()->pabrik;
-        if (Auth::user()->level == 2) {
-            $data = cp_kemasan::all()->where('pabrik', $id);
-        } else {
-            $data = cp_kemasan::all()->where('pabrik', $id);
-        }
+
+            $data = cp_kemasan::join('protaps', 'cp_kemasans.protap', '=', 'protaps.protap_id')
+        ->get(['cp_kemasans.*', 'protaps.protap_nama'])->where('pabrik', $id);
+
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
                 return 'Diajukan';
