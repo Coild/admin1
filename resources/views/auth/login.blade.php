@@ -61,12 +61,6 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer text-left py-3">
-                        <div class="small" class="d-flex-center">
-                            <a class="small" href="/showregister">Buat Akun</a>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>

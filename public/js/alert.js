@@ -652,8 +652,7 @@ $(document).ready(function () {
   
 $(document).ready(function () {
     $('#tabelbeda2').DataTable({
-        responsive: true,
-        "bAutoWidth": false
+        responsive: true
     });
 });
 

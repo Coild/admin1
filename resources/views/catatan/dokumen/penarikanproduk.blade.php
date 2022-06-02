@@ -34,7 +34,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form method="post" action="tambah_penarikan" id='forminput'>
+                                    <form method="post" action="tambah_penarikan" id='forminput1'>
                                         <div class="card mb-4">
                                             <div class="card-header">
                                                 <i class="fas fa-table me-1"></i>
@@ -49,7 +49,7 @@
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Protap</label>
                                                     <div class="col-sm">
-                                                        <select style="height: 35px;" class="form-control"
+                                                        <select style="height: 35px;" class="form-control 1"
                                                             name="protap_induk" id="protap_induk" >
                                                             @foreach ($data2 as $row)
                                                                 <option value="{{ $row['protap_id'] }}">
@@ -64,17 +64,17 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                         Penarikan</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="kode_penarikan" class="form-control" id="kode_penarikan" placeholder="Kode Penarikan" />
+                                                        <input type="text" name="kode_penarikan" class="form-control 1" id="kode_penarikan" placeholder="Kode Penarikan" />
                                                     </div>
                                                 </div>
 
-                                                <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
+                                                <input type="hidden" id='ambil_tanggal'/>
 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                         Distributor</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="nama_distributor" class="form-control" id="nama_distributor" placeholder="Nama Distributor" />
+                                                        <input type="text" name="nama_distributor" class="form-control 1" id="nama_distributor" placeholder="Nama Distributor" />
                                                     </div>
                                                 </div>
 
@@ -82,7 +82,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Produk Yang
                                                         Ditarik</label>
                                                     <div class="col-sm">
-                                                        <input type="text" list="listproduk" style="height: 35px;" id='produkditarik' class="form-control 3" name="produk_ditarik" autocomplete="off">
+                                                        <input type="text" list="listproduk" style="height: 35px;" id='produkditarik' class="form-control 1" name="produk_ditarik" autocomplete="off">
                                                         </input>
                                                         <datalist id="listproduk">
                                                             @foreach ($produk as $row)
@@ -101,7 +101,7 @@
                                                         
                                                         <div class="row">
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="jumlah_produk_ditarik" class="form-control" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
+                                                                <input type="text" name="jumlah_produk_ditarik" class="form-control 1" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="form-select"
@@ -120,7 +120,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                         Batch</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="no_batch" class="form-control" id="no_batch" placeholder="No Batch" />
+                                                        <input type="text" name="no_batch" class="form-control 1" id="no_batch" placeholder="No Batch" />
                                                     </div>
                                                 </div>
 
@@ -128,12 +128,12 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Alasan
                                                         Penarikan</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="alasan_penarikan" class="form-control" id="alasan_penarikan" placeholder="Alasan Penarikan" />
+                                                        <input type="text" name="alasan_penarikan" class="form-control 1" id="alasan_penarikan" placeholder="Alasan Penarikan" />
                                                     </div>
                                                 </div>
 
                                             </div>
-                                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                            <a class="btn btn-primary" onclick="salert1(1)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                     </form>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
     <script>
         function editdata(params) {
             setdatetoday()
-            $("#forminput").attr("action", "edit_penarikan");
+            $("#forminput1").attr("action", "edit_penarikan");
             var inputid = '<input type="hidden" name="id" class ="form-control" value="' + params
                 .id_produk_penarikan + '"/>'
             $(inputid).insertAfter("#ambil_tanggal")

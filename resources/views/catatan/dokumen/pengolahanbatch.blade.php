@@ -54,6 +54,8 @@
                                 @endif
                             </td>
                             <td>
+                                @if (Auth::user()->level != 2)
+                                    
                                 <?php if ($row['status'] == 0) { ?>
                                     <form action="/detil_batch" method="post" class="float-left mr-2">
                                         @csrf
@@ -70,8 +72,27 @@
                                     </form>
                                     <button class="btn btn-danger disabled" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
                                 <?php } ?>
-
-
+                                @else
+                                    @if ($row['status'] == 0)
+                                        <form action="/detil_batch" method="post" class="float-left mr-2">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                            <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
+                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                            <button type="submit" class="btn btn-success"> Buka</button>
+                                        </form>
+                                        <button class="btn btn-primary">Terima</button>
+                                    @else
+                                        <form action="/detil_batch" method="post" class="float-left mr-2">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                            <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
+                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                            <button type="submit" class="btn btn-success"> Buka</button>
+                                        </form>
+                                        <button class="btn btn-danger disabled">Terima</button>
+                                    @endif
+                                @endif
                             </td>
                         </tr>
                         @endforeach

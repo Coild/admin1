@@ -2785,7 +2785,7 @@ class Admin extends Controller
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_penarikan' => $req['kode_penarikan'],
-                'tanggal_penarikan' => $req['tanggal'],
+                // 'tanggal_penarikan' => $req['tanggal'],
                 'nama_distributor' => $req['nama_distributor'],
                 'produk_ditarik' => $req['produk_ditarik'],
                 'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'],
