@@ -60,20 +60,7 @@
                                                 <input type="text" class="form-control 1" placeholder="Nama Bahan Baku" name="nama_bahanbaku" value="{{$nama}}" readonly>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                Dengan PROTAP
-                                                No</label>
-                                            <div class="col-sm">
-                                                {{-- <input type="text" class="form-control 1" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1">
-                                                    @foreach ($protap_bahan as $bahan))
-                                                    <option value="{{$bahan['protap_id']}}">{{$bahan['protap_nama']}}</option>
-                                                    @endforeach
 
-                                                </select>
-                                            </div>
-                                        </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -122,7 +109,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">PROTAP</th>
                                 <th scope="col">Nama Bahan</th>
                                 <th scope="col">No Loth</th>
                                 <th scope="col">Asal Produk Jadi</th>
@@ -141,7 +127,6 @@
                             <?php $i++; ?>
                             <tr>
                                 <td>{{ $row['tanggal'] }}</td>
-                                <td>{{ $row['no_pob'] }}</td>
                                 <td>{{ $row['nama_bahan'] }}</td>
                                 <td>{{ $row['no_loth'] }}</td>
                                 <td>{{ $row['pemasok'] }}</td>
@@ -348,20 +333,7 @@
                                                 <input type="text" class="form-control 3" placeholder="Nama Produk Jadi" name="nama_produkjadi">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label" value="{{$nama}}" readonly>Sesuai
-                                                Dengan PROTAP
-                                                No</label>
-                                            <div class="col-sm">
-                                                {{-- <input type="text" class="form-control 3" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1">
-                                                    @foreach ($protap_produk as $produk))
-                                                    <option value="{{$produk['protap_id']}}">{{$produk['protap_nama']}}</option>
-                                                    @endforeach
 
-                                                </select>
-                                            </div>
-                                        </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal3' class="form-control 3" placeholder="" />
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -413,7 +385,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">PROTAP</th>
                                 <th scope="col">Nama Produk Jadi</th>
                                 <th scope="col">No Loth</th>
                                 <th scope="col">Asal Produk Jadi</th>
@@ -431,7 +402,6 @@
                             <?php $i++; ?>
                             <tr>
                                 <td>{{ $row['tanggal'] }}</td>
-                                <td>{{ $row['no_pob'] }}</td>
                                 <td>{{ $row['nama_produkjadi'] }}</td>
                                 <td>{{ $row['no_loth'] }}</td>
                                 <td>{{ $row['pemasok'] }}</td>
@@ -635,20 +605,6 @@
                                                 <input type="text" class="form-control 5" placeholder="Nama Produk Jadi" name="nama_kemasan">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                Dengan PROTAP
-                                                No</label>
-                                            <div class="col-sm">
-                                                {{-- <input type="text" class="form-control 5" placeholder="Nomor PROTAP" name='pob_no'> --}}
-                                                <select name="pob_no" class="form-control 1">
-                                                    @foreach ($protap_kemasan as $kemasan)
-                                                    <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
-                                                    @endforeach
-
-                                                </select>
-                                            </div>
-                                        </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal5' class="form-control 5" placeholder="" />
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -698,7 +654,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">PROTAP</th>
                                 <th scope="col">Nama Produk Jadi</th>
                                 <th scope="col">No Loth</th>
                                 <th scope="col">Asal Produk Jadi</th>
@@ -716,7 +671,6 @@
                             <?php $i++; ?>
                             <tr>
                                 <td>{{ $row['tanggal'] }}</td>
-                                <td>{{ $row['no_pob'] }}</td>
                                 <td>{{ $row['nama_kemasan'] }}</td>
                                 <td>{{ $row['no_loth'] }}</td>
                                 <td>{{ $row['pemasok'] }}</td>
@@ -901,14 +855,7 @@
                                 <input type="text" class="form-control 7" placeholder="Nama Bahan Baku" name="nama_bahanbaku" id="bahanmasuk_nama" value="{{$nama}}" readonly>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                Dengan PROTAP
-                                No</label>
-                            <div class="col-sm">
-                                <input type="text" id="bahanmasuk_protap" class="form-control 7" placeholder="Nomor PROTAP" name='pob_no'>
-                            </div>
-                        </div>
+
                         <input type="hidden" name="tanggal" id='ambil_tanggal1' class="tanggal" placeholder="" />
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -1043,14 +990,7 @@
                                 <input type="text" class="form-control 9" placeholder="Nama Produk Jadi" name="nama_produkjadi" id="produkmasuk_nama" value="{{$nama}}" readonly>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                Dengan PROTAP
-                                No</label>
-                            <div class="col-sm">
-                                <input type="text" id="produkmasuk_protap" class="form-control 9" placeholder="Nomor PROTAP" name='pob_no'>
-                            </div>
-                        </div>
+
                         <input type="hidden" name="tanggal" id='ambil_tanggal3' class="tanggal" placeholder="" />
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -1185,14 +1125,7 @@
                                 <input type="text" class="form-control 11" placeholder="Nama Produk Jadi" name="nama_kemasan" id="kemasanmasuk_nama" value="{{$nama}}" readonly>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                Dengan PROTAP
-                                No</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control 11" placeholder="Nomor PROTAP" name='pob_no' id="kemasanmasuk_protap">
-                            </div>
-                        </div>
+
                         <input type="hidden" name="tanggal" id='ambil_tanggal5' class="tanggal" placeholder="" />
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -1301,7 +1234,7 @@
             </div>
         </div>
 
-        
+
         {{-- end modal --}}
 
         <script>
