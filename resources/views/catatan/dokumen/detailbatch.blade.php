@@ -563,16 +563,7 @@
                             </form>
                             @if (Auth::user()->level == 2)
                                 <center>
-                                    <form action="/pjt_pengolahanbatch" method="post">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $nobatch }}">
-                                        <input type="hidden" name="no" value="{{ $no }}">
-                                        <button type="submit" class="btn btn-success btn-lg mt-5" <?php if ($status > 0) {
-                                            echo 'disabled';
-                                        } ?>>
-                                            Terima
-                                        </button>
-                                    </form>
+                                    
                                 </center>
                             @endif
 

@@ -67,7 +67,7 @@ class pjt extends Controller
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'pengemasan batch')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 

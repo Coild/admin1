@@ -133,16 +133,28 @@
 
                                 @if (Auth::user()->level == 2)
                                     <?php if ($row['status'] == 0) { ?>
-                                        <form method="post" action="terimaoperasialat">
+                                        <form method="post" action="detilalat" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <input type="hidden" name="status_induk" value="0" />
+                                        <button type="submit" class="btn btn-primary">lihat</button>
+                                    </form>
+                                        <form method="post" action="terimaoperasialat" id="terimalaporan{{ $row['id_operasi'] }}">
                                             @csrf
                                             <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                            <button @if ($row['status']=='1' ) @endif type="submit" class="btn btn-primary">terima</button>
+                                            <button onclick="TerimaLaporan({{ $row['id_operasi'] }})" @if ($row['status']=='1' ) @endif type="button" class="btn btn-primary">terima</button>
                                         </form>
                                     <?php } elseif ($row['status'] == 1) { ?>
-                                        <form method="post" action="terimaoperasialat">
+                                        <form method="post" action="detilalat" class="float-left mr-2">
+                                        @csrf
+                                        <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
+                                        <input type="hidden" name="status_induk" value="0" />
+                                        <button type="submit" class="btn btn-primary">lihat</button>
+                                    </form>
+                                        <form method="post" action="terimaoperasialat" id="terimalaporan2">
                                             @csrf
                                             <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                            <button @if ($row['status']=='1' ) {{'disabled'}} @endif type="submit" class="btn btn-danger">terima</button>
+                                            <button  onclick="TerimaLaporan(2)" @if ($row['status']=='1' ) {{'disabled'}} @endif type="button" class="btn btn-danger">terima</button>
                                         </form>
                                     <?php } ?>
                                 @else

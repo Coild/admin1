@@ -152,10 +152,10 @@
                             <td>
                                 @if (Auth::user()->level == 2)
                                 <?php if ($row['status'] == 0) { ?>
-                                    <form method="post" action="terimadistribusiproduk">
+                                    <form method="post" action="terimadistribusiproduk" id="terimalaporan{{ $row['id_distribusi'] }}">
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{ $row['id_distribusi'] }}" />
-                                        <button type="submit" class="btn btn-primary">terima</button>
+                                        <button type="button" onclick="TerimaLaporan({{ $row['id_distribusi'] }})" class="btn btn-primary">terima</button>
                                     </form>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <form method="post" action="terimadistribusiproduk">

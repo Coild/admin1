@@ -19,6 +19,25 @@ function buttonTerimaLaporan(p){
     });
 }
 
+function TerimaLaporan(p){
+    // console.log(p);
+    var link = "terimalaporan"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
 function buttonTerimaLaporan2(p){
     // console.log(p);
     var link = "formTerimaLaporan2"+p;

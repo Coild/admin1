@@ -190,11 +190,11 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                     @if ($row['status'] == 0)
-                                                        <form method="post" action="terimapelatihanhigisani">
+                                                        <form method="post" action="terimapelatihanhigisani" id="terimalaporan{{ $row['id_programpelatihan'] }}">
                                                             @csrf
                                                             <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
                                                             <input type="hidden" name="no" value="{{ $row['id_programpelatihan'] }}" />                                                    
-                                                            <button type="submit" class="btn btn-primary">terima</button>
+                                                            <button type="button" onclick="TerimaLaporan({{ $row['id_programpelatihan'] }})" class="btn btn-primary">Terima</button>
                                                         </form>
                                                     @else
                                                         <button type="submit" class="btn btn-danger disabled">terima</button>
@@ -390,11 +390,11 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                     @if ($row['status'] == 0)
-                                                        <form method="post" action="terimapelatihancpkb">
+                                                        <form method="post" action="terimapelatihancpkb" id="terimalapooran{{ $row['id_pelatihancpkb'] }}">
                                                             @csrf
                                                             <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
                                                             <input type="hidden" name="no" value="{{ $row['id_pelatihancpkb'] }}" />
-                                                            <button type="submit" class="btn btn-primary">terima</button>
+                                                            <button type="button" onclick="TerimaLaporan({{ $row['id_pelatihancpkb'] }})" class="btn btn-primary">Terima</button>
                                                         </form>
                                                     @else
                                                         <button type="submit" class="btn btn-danger disabled">terima</button>
