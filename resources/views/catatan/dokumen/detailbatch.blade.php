@@ -26,7 +26,7 @@
 
 
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan POB No</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
                                 <div class="col-sm-10">
                                     <p class="form-control"> {{ $row['pob'] }} </p>
                                 </div>
@@ -90,21 +90,94 @@
 
                     </div>
                 @endforeach
-                    <!-- pop up end -->
+                <!-- pop up end -->
 
-                    <table class="table" id="tabel1">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama BB</th>
-                                <th scope="col">Kode BB</th>
-                                <th scope="col">Persentase (%)</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 0; ?>
-                            @foreach ($list_kom as $row)
+
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Komposisi
+            </div>
+            <div class="card-body">
+                <!-- pop up -->
+                <!-- Button to trigger modal -->
+                @if (Auth::user()->level != 2)
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" <?php if ($status > 0) {
+                        echo 'disabled';
+                    } ?>>
+                        Tambah Komposisi
+                    </button>
+                @endif
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalForm" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Entry Kopmosisi
+                                </h4>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <p class="statusMsg"></p>
+                                <form action="/input_komposisi" method="post" role="form">
+                                    @csrf
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
+                                    <div class="form-group">
+                                        <label for="inputName">Nama BB</label>
+                                        <input type="text" name="nama" class="form-control" id="inputName"
+                                            placeholder="Nama BB" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail">Kode BB</label>
+                                        <input type="text" name="id" class="form-control" id="inputName"
+                                            placeholder="Kode BB" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputMessage">Persentase</label>
+                                        <input type="text" name="persen" class="form-control" id="inputName"
+                                            placeholder="Persentase" />
+                                    </div>
+                                    <!-- Modal Footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary submitBtn"
+                                            onclick="submitContactForm()">
+                                            Tambah
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pop up end -->
+
+                <table class="table" id="tabel1">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama BB</th>
+                            <th scope="col">Kode BB</th>
+                            <th scope="col">Persentase (%)</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 0; ?>
+                        @foreach ($list_kom as $row)
                             <?php $i++;
                             ?>
                             <tr>
@@ -113,84 +186,84 @@
                                 <td>{{ $row['kompisisi_nama'] }}</td>
                                 <td>{{ $row['komposisi_persen'] }}</td>
                                 <td>
-                                    <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                                                                                                        echo 'disabled';
-                                                                                                                                                                    } ?>>Hapus</a>
+                                    @if (Auth::user()->level != 2)
+                                        <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button"
+                                        class="btn btn-danger" onclick="return confirm('Hapus? ')"
+                                        <?php if ($status > 0) {
+                                            echo 'disabled';
+                                        } ?>>Hapus</a>
+                                    @endif
+
                                 </td>
                             </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
+
             </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Komposisi
-                    </div>
-                    <div class="card-body">
-                        <!-- pop up -->
-                        <!-- Button to trigger modal -->
-                        @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
-                                <?php if ($status > 0) {
-                                    echo 'disabled';
-                                } ?>>
-                                Tambah Komposisi
-                            </button>
-                        @endif
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Peralatan
+                </div>
+                <div class="card-body">
+                    <!-- pop up -->
+                    <!-- Button to trigger modal -->
+                    @if (Auth::user()->level != 2)
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
+                            <?php if ($status > 0) {
+                                echo 'disabled';
+                            } ?>>
+                            Tambah Peralatan
+                        </button>
+                    @endif
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalForm" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Entry Kopmosisi
-                                        </h4>
-                                    </div>
-
-                                    <!-- Modal Body -->
-                                    <div class="modal-body">
-                                        <p class="statusMsg"></p>
-                                        <form action="/input_komposisi" method="post" role="form">
-                                            @csrf
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
-                                            <div class="form-group">
-                                                <label for="inputName">Nama BB</label>
-                                                <input type="text" name="nama" class="form-control" id="inputName"
-                                                    placeholder="Nama BB" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail">Kode BB</label>
-                                                <input type="text" name="id" class="form-control" id="inputName"
-                                                    placeholder="Kode BB" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputMessage">Persentase</label>
-                                                <input type="text" name="persen" class="form-control" id="inputName"
-                                                    placeholder="Persentase" />
-                                            </div>
-                                            <!-- Modal Footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
-                                                    Tambah
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalForm1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Entry Peralatan
+                                    </h4>
                                 </div>
+
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <p class="statusMsg"></p>
+                                    <form action="/input_peralatan" method="post" role="form">
+                                        @csrf
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
+                                        <div class="form-group">
+                                            <label for="inputName">Nama Alat</label>
+                                            <input name="nama" type="text" class="form-control" id="inputName"
+                                                placeholder="Nama Alat" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail">Kode Alat</label>
+                                            <input name="kode" type="text" class="form-control" id="inputName"
+                                                placeholder="Kode Alat" />
+                                        </div>
+                                        <!-- Modal Footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary submitBtn"
+                                                onclick="submitContactForm()">
+                                                Tambah
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
                             </div>
                         </div>
+                    </div>
 
                     <!-- pop up end -->
 
@@ -206,120 +279,23 @@
                         <tbody>
                             <?php $i = 0; ?>
                             @foreach ($list_alat as $row)
-                            <?php $i++;
-                            ?>
-                            <tr>
-                                <th scope="row">{{ $i }}</th>
-                                <td>{{ $row['peralatan_nama'] }}</td>
-                                <td>{{ $row['peralatan_id'] }}</td>
-                                <td>
-                                    <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                                                                                                        echo 'disabled';
-                                                                                                                                                                    } ?>>Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Peralatan
-                    </div>
-                    <div class="card-body">
-                        <!-- pop up -->
-                        <!-- Button to trigger modal -->
-                        @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
-                                <?php if ($status > 0) {
-                                    echo 'disabled';
-                                } ?>>
-                                Tambah Peralatan
-                            </button>
-                        @endif
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalForm1" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Entry Peralatan
-                                        </h4>
-                                    </div>
-
-                                    <!-- Modal Body -->
-                                    <div class="modal-body">
-                                        <p class="statusMsg"></p>
-                                        <form action="/input_peralatan" method="post" role="form">
-                                            @csrf
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
-                                            <div class="form-group">
-                                                <label for="inputName">Nama Alat</label>
-                                                <input name="nama" type="text" class="form-control" id="inputName"
-                                                    placeholder="Nama Alat" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail">Kode Alat</label>
-                                                <input name="kode" type="text" class="form-control" id="inputName"
-                                                    placeholder="Kode Alat" />
-                                            </div>
-                                            <!-- Modal Footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
-                                                    Tambah
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                    <!-- pop up end -->
-
-                    <table class="table" id="tabel3">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Kode Bahan</th>
-                                <th scope="col">Nama Bahan</th>
-                                <th scope="col">Nomor Loth</th>
-                                <th scope="col">Jml Dibutuhkan</th>
-                                <th scope="col">Jml Ditimbang</th>
-                                <th scope="col">Ditimbang Oleh</th>
-                                <th scope="col">Diperiksa Oleh</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 0; ?>
-                            @foreach ($list_nimbang as $row)
-                            <?php $i++;
-                            ?>
-                            <tr>
-                                <th scope="row">{{ $i }}</th>
-                                <td>{{ $row['penimbangan_kodebahan'] }}</td>
-                                <td>{{ $row['penimbangan_namabahan'] }}</td>
-                                <td>{{ $row['penimbangan_loth'] }}</td>
-                                <td>{{ $row['penimbangan_jumlahbutuh'] }}</td>
-                                <td>{{ $row['penimbangan_jumlahtimbang'] }}</td>
-                                <td>{{ $row['penimbangan_timbangoleh'] }}</td>
-                                <td>{{ $row['penimbangan_periksaoleh'] }}</td>
-                                <td>
-                                    <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
-                                </td>
-                            </tr>
+                                <?php $i++;
+                                ?>
+                                <tr>
+                                    <th scope="row">{{ $i }}</th>
+                                    <td>{{ $row['peralatan_nama'] }}</td>
+                                    <td>{{ $row['peralatan_id'] }}</td>
+                                    <td>
+                                        @if (Auth::user()->level != 2)
+                                            <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button"
+                                            class="btn btn-danger" onclick="return confirm('Hapus? ')"
+                                            <?php if ($status > 0) {
+                                                echo 'disabled';
+                                            } ?>>Hapus</a>
+                                        @endif
+                                        
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -414,7 +390,7 @@
 
                         <!-- pop up end -->
 
-                        <table class="table">
+                        <table class="table" id="tabel3">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -443,8 +419,10 @@
                                         <td>{{ $row['penimbangan_timbangoleh'] }}</td>
                                         <td>{{ $row['penimbangan_periksaoleh'] }}</td>
                                         <td>
-                                            <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            @if (Auth::user()->level != 2)
+                                                <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button"
+                                                    class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -511,92 +489,98 @@
                             </div>
                         </div>
 
-                    <!-- pop up end -->
+                        <!-- pop up end -->
 
-                    <table class="table" id="tabel4">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Pengolahan</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 0; ?>
-                            @foreach ($list_olah as $row)
-                            <?php $i++;
-                            ?>
-                            <tr>
-                                <th scope="row">{{ $i }}</th>
-                                <td>{{ $row['isi'] }}</td>
-                                <td>
-                                    <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button" class="btn btn-danger" onclick="return confirm('Hapus? ')" <?php if ($status > 0) {
-                                                                                                                                                                    echo 'disabled';
-                                                                                                                                                                } ?>>Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        <table class="table" id="tabel4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Pengolahan</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 0; ?>
+                                @foreach ($list_olah as $row)
+                                    <?php $i++;
+                                    ?>
+                                    <tr>
+                                        <th scope="row">{{ $i }}</th>
+                                        <td>{{ $row['isi'] }}</td>
+                                        <td>
+                                            @if (Auth::user()->level != 2)
+                                                <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button"
+                                                class="btn btn-danger" onclick="return confirm('Hapus? ')"
+                                                <?php if ($status > 0) {
+                                                    echo 'disabled';
+                                                } ?>>Hapus</a>
+                                            @endif
 
-                <?php foreach ($rekon as $row) {
-                    $awal = $row['awal'];
-                    $akhir = $row['akhir'];
-                } ?>
-
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Rekonsiliasi hasil
-
+                                            
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="card-body">
 
-                        <form action="/input_rekonsiliasi" method="post" role="form">
-                            @csrf
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
-                            <div class="form-group">
-                                <label for="inputName">Perkiraan</label>
-                                <input type="text" name="awal" value="{{ $awal }}" class="form-control"
-                                    id="inputName" placeholder="keterangan" />
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Hasil</label>
-                                <input type="text" name="akhir" value="{{ $akhir }}" class="form-control"
-                                    id="inputName" placeholder="keterangan" />
-                            </div>
-                            @if (Auth::user()->level != 2)
+                    <?php foreach ($rekon as $row) {
+                        $awal = $row['awal'];
+                        $akhir = $row['akhir'];
+                    } ?>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Rekonsiliasi hasil
+
+                        </div>
+                        <div class="card-body">
+
+                            <form action="/input_rekonsiliasi" method="post" role="form">
+                                @csrf
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
+                                <div class="form-group">
+                                    <label for="inputName">Perkiraan</label>
+                                    <input type="text" name="awal" value="{{ $awal }}" class="form-control"
+                                        id="inputName" placeholder="keterangan" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName">Hasil</label>
+                                    <input type="text" name="akhir" value="{{ $akhir }}" class="form-control"
+                                        id="inputName" placeholder="keterangan" />
+                                </div>
+                                @if (Auth::user()->level != 2)
+                                    <center>
+                                        <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
+                                            echo 'disabled';
+                                        } ?>> Simpan
+                                        </button>
+                                    </center>
+                                @endif
+
+                            </form>
+                            @if (Auth::user()->level == 2)
                                 <center>
-                                    <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
-                                        echo 'disabled';
-                                    } ?>> Simpan
-                                    </button>
+                                    <form action="/pjt_pengolahanbatch" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $nobatch }}">
+                                        <input type="hidden" name="no" value="{{ $no }}">
+                                        <button type="submit" class="btn btn-success btn-lg mt-5" <?php if ($status > 0) {
+                                            echo 'disabled';
+                                        } ?>>
+                                            Terima
+                                        </button>
+                                    </form>
                                 </center>
                             @endif
 
-                        </form>
-                        @if (Auth::user()->level == 2)
-                            <center>
-                                <form action="/pjt_pengolahanbatch" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $nobatch }}">
-                                    <input type="hidden" name="no" value="{{ $no }}">
-                                    <button type="submit" class="btn btn-success btn-lg mt-5" <?php if ($status > 0) {
-                                        echo 'disabled';
-                                    } ?>>
-                                        Terima
-                                    </button>
-                                </form>
-                            </center>
-                        @endif
-
+                        </div>
                     </div>
+
+
                 </div>
-
-
             </div>
-        </div>
     </main>
 @endsection

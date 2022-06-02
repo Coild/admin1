@@ -151,7 +151,7 @@
 
                                     <!-- pop up end -->
 
-                                    <table class="table mt-5" id="tabel1">
+                                    <table class="table display nowrap hide" style="width:100%" id="tabel1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -758,7 +758,7 @@
 
                                     <!-- pop up end -->
 
-                                    <table class="table display nowrap hide" id="tabelbeda1">
+                                    <table class="table display nowrap hide" style="width:100%" id="tabelbeda1">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>

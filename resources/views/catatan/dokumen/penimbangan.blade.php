@@ -88,7 +88,7 @@
                                 <!-- pop up end -->
                                 @endif
 
-                                <table class="table mt-5" id="tabel1">
+                                <table class="table display nowrap hide" style="width:100%" id="tabel1">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -425,7 +425,7 @@
                                 </div>
                                 <!-- pop up end -->
 
-                                <table id="tabelbeda2" class="table mt-5">
+                                <table id="tabel2" class="table display nowrap hide" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>

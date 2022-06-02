@@ -239,8 +239,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hapus_olah/{id}', [Admin::class, 'hapus_olah']);
         Route::post('/tambah_batch', [Admin::class, 'tambah_batch']);
         Route::post('/edit_batch', [Admin::class, 'edit_batch']);
-        // Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']);
-
         Route::post('/tambah_prkemas', [Admin::class, 'tambah_prkemas']);
         Route::post('/tambah_proisi', [Admin::class, 'tambah_proisi']);
         Route::post('/tambah_protanda', [Admin::class, 'tambah_protanda']);

@@ -160,6 +160,7 @@
                                             <th scope="col">Metode Pelatihan</th>
                                             <th scope="col">Jadwal</th>
                                             <th scope="col">Metode Penilaian</th>
+                                            <th scope="col">Status</th>
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
@@ -180,18 +181,31 @@
                                             </td>
                                             <td>{{ $row['metode_penilaian'] }}</td>
                                             <td>
+                                                <?php if ($row['status'] == 0) {
+                                                    echo 'Diajukan';
+                                                } elseif ($row['status'] == 1) {
+                                                    echo 'Diterima';
+                                                } ?>
+                                            </td>
+                                            <td>
                                                 @if (Auth::user()->level == 2)
-                                                <form method="post" action="terimapelatihanhigisani">
-                                                    @csrf
-                                                    <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
-                                                    <input type="hidden" name="no" value="{{ $row['id_programpelatihan'] }}" />                                                    
-                                                    <button type="submit" class="btn btn-primary">terima</button>
-                                                </form>
+                                                    @if ($row['status'] == 0)
+                                                        <form method="post" action="terimapelatihanhigisani">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
+                                                            <input type="hidden" name="no" value="{{ $row['id_programpelatihan'] }}" />                                                    
+                                                            <button type="submit" class="btn btn-primary">terima</button>
+                                                        </form>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger disabled">terima</button>
+                                                    @endif
                                                 @else
-                                                <button type="button" id="klikhigi" class="btn btn-primary" data-toggle="modal" data-target="#edithigi" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{
-                                                                $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan']));
-                                                                 }}" data-selesai="{{
-                                                                $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan']));  }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_programpelatihan'] }}">edit</button>
+                                                    @if ($row['status'] == 0)
+                                                        <button type="button" id="klikhigi" class="btn btn-primary" data-toggle="modal" data-target="#edithigi" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan']));  }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_programpelatihan'] }}">edit</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger disabled">edit</button>
+                                                    @endif
+                                                
                                                 @endif
                                             </td>
                                         </tr>
@@ -334,7 +348,7 @@
                                     <!-- pop up end -->
 
                                 </div>
-                                <table id="dataTable1" class="table mt-5">
+                                <table id="tabel2" class="table mt-5">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -375,14 +389,22 @@
                                             </td>
                                             <td>
                                                 @if (Auth::user()->level == 2)
-                                                <form method="post" action="terimapelatihancpkb">
-                                                    @csrf
-                                                    <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
-                                                    <input type="hidden" name="no" value="{{ $row['id_pelatihancpkb'] }}" />
-                                                    <button type="submit" class="btn btn-primary">terima</button>
-                                                </form>
+                                                    @if ($row['status'] == 0)
+                                                        <form method="post" action="terimapelatihancpkb">
+                                                            @csrf
+                                                            <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
+                                                            <input type="hidden" name="no" value="{{ $row['id_pelatihancpkb'] }}" />
+                                                            <button type="submit" class="btn btn-primary">terima</button>
+                                                        </form>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger disabled">terima</button>
+                                                    @endif
                                                 @else
-                                                <button type="button" id="klikcpkb" class="btn btn-primary" data-toggle="modal" data-target="#editcpkb" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan'])); }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_pelatihancpkb'] }}">edit</button>
+                                                    @if ($row['status'] == 0)
+                                                        <button type="button" id="klikcpkb" class="btn btn-primary" data-toggle="modal" data-target="#editcpkb" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan'])); }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_pelatihancpkb'] }}">edit</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-danger disabled">edit</button>
+                                                    @endif
                                                 @endif
                                             </td>
                                         </tr>

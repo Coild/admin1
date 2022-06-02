@@ -2783,7 +2783,7 @@ class Admin extends Controller
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_penarikan' => $req['kode_penarikan'],
-                'tanggal_penarikan' => $req['tanggal'],
+                // 'tanggal_penarikan' => $req['tanggal'],
                 'nama_distributor' => $req['nama_distributor'],
                 'produk_ditarik' => $req['produk_ditarik'],
                 'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'],
@@ -4353,9 +4353,9 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
+        
         $log = [
             'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok produk antara',
-            'notif_laporan' => 'kartu stok produk antara',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
