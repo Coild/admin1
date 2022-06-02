@@ -197,7 +197,7 @@
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
                                         <input type="hidden" name="no" value="{{ $row['id_pelulusan'] }}" />
-                                        <button type="button " onclick="TerimaLaporan({{ $row['id_pelulusan'] }})" class="btn btn-primary">terima</button>
+                                        <button type="button" onclick="TerimaLaporan({{ $row['id_pelulusan'] }})" class="btn btn-primary">terima</button>
                                     </form>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <form method="post" action="terimapelulusanproduk">
@@ -209,7 +209,7 @@
 
                                 @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <button id="klik_lulus" class="btn btn-primary" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
+                                    <button id="klik_lulus" class="btn btn-primary" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}"  data-protap="{{$row['protap_id']}}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <button id="klik_lulus" class="btn btn-danger disabled" data-toggle="modal" data-target="#editlulus" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-kadaluarsa="{{ $newDate = date('Y-m-d', strtotime($row['kedaluwarsa'])); }}" data-pemasok="{{ $row['nama_pemasok'] }}" data-warna="{{ $row['warna'] }}" data-bau="{{ $row['bau'] }}" data-ph="{{ $row['ph'] }}" data-berat="{{ $row['berat_jenis'] }}" data-id="{{ $row['id_pelulusan'] }}">Edit</button>
                                 <?php } ?>
@@ -254,7 +254,7 @@
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
                                                     {{-- <input type="text" name="pob" class="form-control 2" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                    <select name="protap" class="form-control 1">
+                                                    <select name="protap" class="form-control 1" id="isi_protap">
                                                         @foreach ($protap as $isi)
                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                                         @endforeach
@@ -354,6 +354,7 @@
 <script>
     $(document).on('click', "#klik_lulus", function() {
         var nama = $(this).data('nama');
+        var protap = $(this).data('protap');
         var kadaluarsa = $(this).data('kadaluarsa');
         var nobatch = $(this).data('nobatch');
         var pemasok = $(this).data('pemasok');
@@ -362,8 +363,9 @@
         var ph = $(this).data('ph');
         var berat = $(this).data('berat');
         var id = $(this).data('id');
-
+console.log(protap);;
         $("#isi_nama").val(nama);
+        $("#isi_protap").val(protap);
         $("#nobatch").val(nobatch);
         $("#kadaluarsa").val(kadaluarsa);
         $("#pemasok").val(pemasok);

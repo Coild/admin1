@@ -3202,6 +3202,7 @@ class Admin extends Controller
         $id = $req['id'];
 
         $hasil = [
+            'protap' => $req['protap'],
             'nama_bahan' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
             'kedaluwarsa' => $req['kedaluwarsa'],
@@ -3239,7 +3240,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
             $data = pelulusanproduk::join('protaps', 'pelulusanproduks.protap', '=', 'protaps.protap_id')
-            ->get(['pelulusanproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['pelulusanproduks.*', 'protaps.protap_nama','protaps.protap_id'])->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $protap = protap::all()->where('protap_jenis',11);
 
