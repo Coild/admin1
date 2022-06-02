@@ -69,7 +69,7 @@
                         </div>
                         <!--  -->
 
-                        <table class="table-striped col-lg-12" id="tabel1">
+                        <table class="table display nowrap hide" style="width:100%"id="tabel1">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
