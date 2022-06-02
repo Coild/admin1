@@ -2078,7 +2078,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data1 = periksaruang::all();
         $data2 = protap::all()->where('protap_jenis', 21);
-        $data = Periksaalat::all()->where('pabrik', $pabrik);
+
+        $data = Periksaalat::join('protaps', 'periksaalats.pob_nomor', '=', 'protaps.protap_id')
+            ->get(['periksaalats.*', 'protaps.protap_nama']);
+
         return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
 
@@ -2206,7 +2209,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'tanggal_prosedur' => $req['tanggal'],
+            'tanggal_prosedur' => $req['tanggal_prosedur'],
             'nomer_prosedur' => $req['nomer_prosedur'],
             'nama_ruangan' => $req['nama_ruangan'],
             'cara_pembersihan' => $req['cara_pembersihan'],

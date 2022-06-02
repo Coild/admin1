@@ -95,7 +95,7 @@
                         </div>
 
                     </div>
-                    <table class="table" style="margin-top: 50px" id="tabel1">
+                    <table class="table display nowrap hide" style="width:100%" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

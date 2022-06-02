@@ -121,7 +121,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $row['pob_nomor'] }}</td>
+                                            <td>{{ $row['protap_nama'] }}</td>
                                             <td>{{ $row['tanggal'] }}</td>
                                             <td>{{ $row['nama_ruangan'] }}</td>
                                             <td>{{ $row['nama_alat'] }}</td>
