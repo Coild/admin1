@@ -435,11 +435,11 @@ class Admin extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-
+        // dd($req);
         $data = [
             'protap' => $req['protap'],
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -499,7 +499,7 @@ class Admin extends Controller
         $data = [
             'protap' => $req['protap'],
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -557,7 +557,7 @@ class Admin extends Controller
         $data = [
             'protap' => $req['protap'],
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -711,7 +711,7 @@ class Admin extends Controller
         // dd($req);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
-         
+
         $time = strtotime($req->tanggal_prosedur);
 
         $newformat = date('Y-m-d', $time);
@@ -723,7 +723,7 @@ class Admin extends Controller
             'cara_pembersihan' => $req->cara_pembersihan
         ]);
 
-    
+
         $log = [
             'log_isi' => Auth::user()->namadepan . ' mengubah laporan periksa sani ruang',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
@@ -747,7 +747,7 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -757,7 +757,7 @@ class Admin extends Controller
 
         cp_bahan::all()->where('cp_bahan_id', $cpid)->first()->update([
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
@@ -800,12 +800,13 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
             'status' => 0,
         ];
+        cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
 
         // $nomer = cp_produk::insertGetId($data);
 
@@ -847,12 +848,13 @@ class Admin extends Controller
 
         $data = [
             'nama' => $req['nama'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
             'ruang' => $req['ruang'],
             'pabrik' => $pabrik,
             'status' => 0,
         ];
+        cp_kemasan::all()->where('cp_kemasan_id', $cpid)->first()->update($data);
 
         // cp_kemasan::all()->where('cp_kemasan_id', $cpid)->first()->update($data);
         // $notif = [
@@ -886,12 +888,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'tanggal' => $req['tanggal'],
-            'protap' => $req['protap'],
             'nama_bahan' => $req['nama_bahanbaku'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
@@ -935,7 +935,7 @@ class Admin extends Controller
             'nama_bahan' => $req['nama_bahanbaku'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
             'induk' => $req['induk'],
@@ -975,10 +975,9 @@ class Admin extends Controller
         $data = [
             'tanggal' => $req['tanggal'],
             'nama_produkjadi' => $req['nama_produkjadi'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
@@ -1022,7 +1021,7 @@ class Admin extends Controller
             'nama_produk' => $req['nama_produk'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
             'induk' => $req['induk'],
@@ -1061,10 +1060,9 @@ class Admin extends Controller
         $data = [
             'tanggal' => $req['tanggal'],
             'nama_kemasan' => $req['nama_kemasan'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'pabrik' => $pabrik,
@@ -1107,7 +1105,7 @@ class Admin extends Controller
             'nama_kemasan' => $req['nama_kemasan'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
             'induk' => $req['induk'],
@@ -1149,7 +1147,7 @@ class Admin extends Controller
             'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
@@ -1174,7 +1172,7 @@ class Admin extends Controller
             'nama_bahan' => $req['nama_bahanbaku'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
         ];
         PPbahanbakukeluar::all()->where('id_ppbahanbakukeluar', $id)->first()->update($data);
@@ -1199,7 +1197,7 @@ class Admin extends Controller
             'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
@@ -1224,7 +1222,7 @@ class Admin extends Controller
             'nama_produk' => $req['nama_produk'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
             'induk' => $req['induk'],
@@ -1255,7 +1253,7 @@ class Admin extends Controller
             'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
@@ -1277,7 +1275,7 @@ class Admin extends Controller
             'nama_kemasan' => $req['nama_kemasan'],
             'untuk_produk' => $req['untuk_produk'],
             'no_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
         ];
         PPkemasankeluar::all()->where('id_ppkemasankeluar', $id)->first()->update($data);
@@ -1967,11 +1965,12 @@ class Admin extends Controller
         }
     }
 
-    public function tampil_laporan()
+    public function tampil_laporan(Request $req)
     {
         $id = Auth::user()->pabrik;
-        $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
-        return view('laporan', ['batch' => $data]);
+        $produk  = produk::all()->where('user_id', Auth::user()->pabrik);
+        // $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
+        return view('laporan', compact('produk'));
     }
 
     public function tampil_periksapersonil()
@@ -2714,7 +2713,7 @@ class Admin extends Controller
 
         $data2 = protap::all()->where('protap_jenis', 13);
         return view('catatan.dokumen.penanganankeluhan', [
-            'data' => $data, 
+            'data' => $data,
             'produk' => $produk ?? "",
             'data2' => $data2
         ]);
@@ -2839,7 +2838,7 @@ class Admin extends Controller
 
         $data2 = protap::all()->where('protap_jenis', 14);
         return view('catatan.dokumen.penarikanproduk', [
-            'data' => $data, 
+            'data' => $data,
             'produk' => $produk ?? [],
             'data2' => $data2
         ]);
@@ -2909,7 +2908,7 @@ class Admin extends Controller
             'kode_distribusi' => $req['kode_distribusi'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
         ];
 
@@ -3056,7 +3055,7 @@ class Admin extends Controller
 
         // $nomer = detilalat::insertGetId($hasil);
         Detilperiksaalat::insert($hasil);
-        
+
        $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
             'notif_laporan' => "Detil Pengoperasian Alat",
@@ -3240,7 +3239,7 @@ class Admin extends Controller
             ->get(['pelulusanproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $protap = protap::all()->where('protap_jenis',11);
-        
+
         return view('catatan.dokumen.pelulusanproduk', ['data' => $data,'protap' => $protap, 'bahanbaku' => $bahanbaku ?? []]);
     }
     public function tambah_contohbahan(Request $req)
@@ -4121,7 +4120,7 @@ class Admin extends Controller
             'nama_bahan' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -4176,7 +4175,7 @@ class Admin extends Controller
                 'nama_bahan' => $req['nama'],
                 'tanggal' => $req['tanggal'],
                 'id_batch' => $req['no_batch'],
-                'jumlah' => $req['jumlah'],
+                'jumlah' => $req['jumlah'].' '.$req['satuan'],
                 'nama_distributor' => $req['nama_distributor'],
                 'status' => 0
             ]);
@@ -4218,7 +4217,7 @@ class Admin extends Controller
             'nama_bahankemas' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -4411,7 +4410,7 @@ class Admin extends Controller
             'nama_produkjadi' => $req['nama'],
             'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
-            'jumlah' => $req['jumlah'],
+            'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -4466,7 +4465,7 @@ class Admin extends Controller
                 'nama_produkjadi' => $req['nama'],
                 'tanggal' => $req['tanggal'],
                 'id_batch' => $req['no_batch'],
-                'jumlah' => $req['jumlah'],
+                'jumlah' => $req['jumlah'].' '.$req['satuan'],
                 'nama_distributor' => $req['nama_distributor'],
                 'status' => 0
             ]);
@@ -4952,28 +4951,28 @@ class Admin extends Controller
         if (Auth::user()->level == 2) {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama']);
-            
-            
+
+
             $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama']);
-            
+
             $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama']);
-            
+
 
             $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama']);
         } else {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama']);
-            
-            
+
+
             $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama']);
-            
+
             $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama']);
-            
+
 
             $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama']);
@@ -4991,13 +4990,13 @@ class Admin extends Controller
         $data_protappj = protap::all()->where('protap_detil', 4)->where('protap_jenis', 15);
 
         return view('catatan.dokumen.pemusnahanproduk', [
-            'data' => $data, 
-            'data1' => $data1, 
-            'data2' => $data2, 
-            'data3' => $data3,  
-            'bahanbaku' => $bahanbaku ?? [], 
-            'produkantara' => $produkantara ?? [], 
-            'produkjadi' => $produkjadi ?? [], 
+            'data' => $data,
+            'data1' => $data1,
+            'data2' => $data2,
+            'data3' => $data3,
+            'bahanbaku' => $bahanbaku ?? [],
+            'produkantara' => $produkantara ?? [],
+            'produkjadi' => $produkjadi ?? [],
             'kemasan' => $kemasan ?? [],
             'data_protapbb' => $data_protapbb,
             'data_protapbk' => $data_protapbk,
@@ -5440,7 +5439,7 @@ class Admin extends Controller
         } else {
             $data = spesifikasibahanbaku::join('protaps', 'spesifikasibahanbakus.protap', '=', 'protaps.protap_id')
             ->get(['spesifikasibahanbakus.*', 'protaps.protap_nama']);
-            
+
             $data1 = spesifikasibahankemas::join('protaps', 'Spesifikasibahankemas.protap', '=', 'protaps.protap_id')
             ->get(['spesifikasibahankemas.*', 'protaps.protap_nama']);
 
@@ -5458,11 +5457,11 @@ class Admin extends Controller
 
 
         return view('catatan.dokumen.pemeriksaanpengujian', [
-            'data' => $data, 
-            'data1' => $data1, 
-            'data2' => $data2, 
-            'produkjadi' => $produkjadi ?? [], 
-            'bahanbaku' => $bahanbaku ?? [], 
+            'data' => $data,
+            'data1' => $data1,
+            'data2' => $data2,
+            'produkjadi' => $produkjadi ?? [],
+            'bahanbaku' => $bahanbaku ?? [],
             'kemasan' => $kemasan ?? [],
             'data_protapbb' => $data_protapbb,
             'data_protapbk' => $data_protapbk,
