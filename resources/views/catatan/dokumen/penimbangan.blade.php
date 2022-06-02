@@ -119,17 +119,17 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapenimbanganbahan">
+                                                    <form method="post" action="terimapenimbanganbahan" id="terimalaporan{{ $row['timbang_bahan_id'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['timbang_bahan_id'] }}" />
-                                                        <button type="submit" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporan({{ $row['timbang_bahan_id'] }})"  class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
-                                                    <form method="post" action="terimapenimbanganbahan">
+                                                    <form method="post" action="terimapenimbanganbahan" id="terimalaporan2">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
-                                                        <button type="submit" class="btn btn-danger disabled">terima</button>
+                                                        <button type="button" onclick="TerimaLaporan(2)"  class="btn btn-danger disabled">terima</button>
                                                     </form>
                                                 <?php } ?>
                                                 @else
@@ -268,11 +268,11 @@
                                             <td>
 
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapenimbanganproduk">
+                                                    <form method="post" action="terimapenimbanganproduk" id="terimalaporan{{ $row['timbang_produk_id'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['timbang_produk_id'] }}" />
-                                                        <button type="submit" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporan({{ $row['timbang_produk_id'] }})" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapenimbanganproduk">
@@ -459,11 +459,11 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimapenimbanganruang">
+                                                    <form method="post" action="terimapenimbanganruang" id= "terimalaporan{{ $row['id_ruangtimbang'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['id_ruangtimbang'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['id_ruangtimbang'] }}" />
-                                                        <button type="submit" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporan({{ $row['id_ruangtimbang'] }})" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapenimbanganruang">

@@ -55,7 +55,7 @@
                             </td>
                             <td>
                                 @if (Auth::user()->level != 2)
-                                    
+
                                 <?php if ($row['status'] == 0) { ?>
                                     <form action="/detil_batch" method="post" class="float-left mr-2">
                                         @csrf
@@ -75,23 +75,36 @@
                                     <button class="btn btn-danger disabled">Edit</button>
                                 <?php } ?>
                                 @else
-                                    @if ($row['status'] == 0)
-                                        <form action="/detil_batch" method="post" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                            <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
-                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                            <button type="submit" class="btn btn-success"> Buka</button>
-                                        </form>
-                                    @else
-                                        <form action="/detil_batch" method="post" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                            <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
-                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                            <button type="submit" class="btn btn-success"> Buka</button>
-                                        </form>
-                                    @endif
+                                @if ($row['status'] == 0)
+                                <form action="/detil_batch" method="post" class="float-left mr-2">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                    <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
+                                    <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                    <button type="submit" class="btn btn-success"> Buka</button>
+                                </form>
+                                <form action="/pjt_pengolahanbatch" method="post" id="terimalaporan{{ $row['batch'] }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $row['nomor_batch'] }}">
+                                        <input type="hidden" name="no" value="{{ $row['batch'] }}">
+                                        <button onclick="TerimaLaporan({{ $row['batch'] }})" type="button"   <?php if ($status > 0) {
+                                            echo 'disabled';   echo 'class="btn btn-danger btn-lg mt-5"';
+                                        } else {
+                                            echo 'class="btn btn-success btn-lg mt-5"';
+                                        }?>>
+                                            Terima
+                                        </button>
+                                    </form>
+                                @else
+                                <form action="/detil_batch" method="post" class="float-left mr-2">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                    <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
+                                    <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                    <button type="submit" class="btn btn-success"> Buka</button>
+                                </form>
+                                <button  class="btn btn-danger ">Terima</buttoncl>
+                                @endif
                                 @endif
                             </td>
                         </tr>
@@ -129,7 +142,7 @@
                                                     Dengan PROTAP No</label>
                                                 <div class="col-sm">
                                                     {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                    <select name="pob" class="form-control 1" >
+                                                    <select name="pob" class="form-control 1">
                                                         @foreach ($protap as $kemasan)
                                                         <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                                         @endforeach
@@ -257,16 +270,16 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
-                                        <div class="col-sm">
-                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                    <select name="pob" class="form-control 1" >
-                                                        @foreach ($protap as $kemasan)
-                                                        <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
-                                                        @endforeach
+                                    <div class="col-sm">
+                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="pob" class="form-control 1">
+                                            @foreach ($protap as $kemasan)
+                                            <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
+                                            @endforeach
 
-                                                    </select>
-                                                    <div id="error-box" style="color: red"></div>
-                                                </div>
+                                        </select>
+                                        <div id="error-box" style="color: red"></div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group row">
@@ -375,7 +388,7 @@
         $("#namaproduk").change(function() {
             var cekname = produks.find(produk => produk.produk_nama ===
                 document.getElementById('namaproduk').value)?.produk_nama;
-                var tmp = []
+            var tmp = []
             if (typeof produks === 'object') {
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);

@@ -2877,19 +2877,19 @@ class Admin extends Controller
 
         laporan::insert($laporan);
 
-        // $notif = [
-        //     'notif_isi' => Auth::user()->namadepan . " menambah laporan",
-        //     'notif_laporan' => "distribusi produk",
-        //     'notif_link' => 'pendistribusian-produk',
-        //     'notif_waktu' => date('Y-m-d H:i:s'),
-        //     'notif_1' => Auth::user()->level,
-        //     'notif_2' => $nomer,
-        //     'notif_3' => 0,
-        //     'notif_level' => 1,
-        //     'status' => 0,
-        //     'id_pabrik' => Auth::user()->pabrik,
-        // ];
-        // notif::insert($notif);
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan",
+            'notif_laporan' => "distribusi produk",
+            'notif_link' => 'pendistribusian-produk',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => $nomer,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' menambah laporan distribusi produk',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
