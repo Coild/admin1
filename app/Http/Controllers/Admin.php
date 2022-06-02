@@ -1967,11 +1967,12 @@ class Admin extends Controller
         }
     }
 
-    public function tampil_laporan()
-    {
+    public function tampil_laporan(Request $req)
+    {   
         $id = Auth::user()->pabrik;
-        $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
-        return view('laporan', ['batch' => $data]);
+        $produk  = produk::all()->where('user_id', Auth::user()->pabrik);
+        // $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
+        return view('laporan', compact('produk'));
     }
 
     public function tampil_periksapersonil()
