@@ -49,8 +49,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control">
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="protap" class="form-control">
                                             @foreach ($protap as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -211,8 +211,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 1">
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="protap" class="form-control 1">
                                             @foreach ($protap as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach

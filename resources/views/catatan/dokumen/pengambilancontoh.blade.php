@@ -213,13 +213,13 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikbahan" type="submit" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikbahan" type="submit" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-danger disabled">Edit</button>
+                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-danger disabled">Edit</button>
                                                     </form>
                                                 <?php } ?>
                                             </td>

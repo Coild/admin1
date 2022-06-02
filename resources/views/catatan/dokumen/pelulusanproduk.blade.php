@@ -35,111 +35,111 @@
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
                                     <form method="post" action="tambah_pelulusan" id='forminput7'>
+
+                                        <div class="card-header">
+                                            <i class="fas fa-table me-1"></i>
+                                            Produk
+                                        </div>
+                                        <div class="card-header" id='headertgl'>
+                                        </div>
+                                        @csrf
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                    Dengan PROTAP No</label>
+                                                <div class="col-sm">
+                                                    {{-- <input type="text" name="pob" class="form-control 7" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                    <select name="protap" class="form-control 1">
+                                                        @foreach ($protap as $isi)
+                                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                    <div id="error-box" style="color: red"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
+                                                <div class="col-sm">
+                                                    <input type="text" list="listbahanbaku" style="height: 35px;" id='nama_bahankau' class="form-control 7" name="nama_bahan" autocomplete="off">
+                                                    </input>
+                                                    <datalist id="listbahanbaku">
+                                                        @foreach ($bahanbaku as $row)
+                                                        <option value="{{ $row['bahanbaku_nama'] }}">
+                                                            {{ $row['bahanbaku_nama'] }}
+                                                        </option>
+                                                        @endforeach
+                                                    </datalist>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">No
+                                                    Batch</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="nobatch" class="form-control 7" id="inputEmail3" placeholder="No Batch" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
+                                                <div class="col-sm">
+                                                    <input type="date" name="kedaluwarsa" class="form-control 7" id="inputEmail3" placeholder="" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                    Pemasok</label>
+                                                <div class="col-sm">
+                                                    <input type="text" name="nama_pemasok" class="form-control 7" id="inputEmail3" placeholder="Nama Pemasok" />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
+
+                                        </div>
+
                                         <div class="card mb-4">
                                             <div class="card-header">
                                                 <i class="fas fa-table me-1"></i>
-                                                Produk
+                                                Pemeriksaan
                                             </div>
-                                            <div class="card-header" id='headertgl'>
-                                            </div>
-                                            @csrf
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
                                             <div class="card-body">
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
-                                                        Dengan PROTAP No</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Warna</label>
                                                     <div class="col-sm">
-                                                        {{-- <input type="text" name="pob" class="form-control 7" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                        <select name="protap" class="form-control 1">
-                                                            @foreach ($protap as $isi)
-                                                            <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
-                                                            @endforeach
-
-                                                        </select>
-                                                        <div id="error-box" style="color: red"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='nama_bahankau' class="form-control 7" name="nama_bahan" autocomplete="off">
-                                                        </input>
-                                                        <datalist id="listbahanbaku">
-                                                            @foreach ($bahanbaku as $row)
-                                                            <option value="{{ $row['bahanbaku_nama'] }}">
-                                                                {{ $row['bahanbaku_nama'] }}
-                                                            </option>
-                                                            @endforeach
-                                                        </datalist>
+                                                        <input type="text" name="warna" class="form-control 7" id="inputEmail3" placeholder="Warna" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">No
-                                                        Batch</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Bau</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="nobatch" class="form-control 7" id="inputEmail3" placeholder="No Batch" />
+                                                        <input type="bau" name="bau" class="form-control 7" id="inputEmail3" placeholder="Bau" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">pH</label>
                                                     <div class="col-sm">
-                                                        <input type="date" name="kedaluwarsa" class="form-control 7" id="inputEmail3" placeholder="" />
+                                                        <input type="text" name="ph" class="form-control 7" id="inputEmail3" placeholder="pH" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                                        Pemasok</label>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Berat
+                                                        Jenis</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="nama_pemasok" class="form-control 7" id="inputEmail3" placeholder="Nama Pemasok" />
+                                                        <input type="text" name="berat_jenis" class="form-control 7" id="inputEmail3" placeholder="Berat Jenis" />
                                                     </div>
                                                 </div>
-
-                                                <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
 
                                             </div>
-
-                                            <div class="card mb-4">
-                                                <div class="card-header">
-                                                    <i class="fas fa-table me-1"></i>
-                                                    Pemeriksaan
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Warna</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="warna" class="form-control 7" id="inputEmail3" placeholder="Warna" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Bau</label>
-                                                        <div class="col-sm">
-                                                            <input type="bau" name="bau" class="form-control 7" id="inputEmail3" placeholder="Bau" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">pH</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="ph" class="form-control 7" id="inputEmail3" placeholder="pH" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Berat
-                                                            Jenis</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="berat_jenis" class="form-control 7" id="inputEmail3" placeholder="Berat Jenis" />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <a class="btn btn-primary" onclick="salert1(7)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                        </div>
+                                        <a class="btn btn-primary" onclick="salert1(7)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                     </form>
                                 </div>
                             </div>
@@ -249,47 +249,62 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="card-body">
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
+                                                    Dengan PROTAP No</label>
+                                                <div class="col-sm">
+                                                    {{-- <input type="text" name="pob" class="form-control 2" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                    <select name="protap" class="form-control 1">
+                                                        @foreach ($protap as $isi)
+                                                        <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                        @endforeach
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
-                                    <div class="col-sm">
-                                        <input type="text" list="listbahanbaku" style="height: 35px;" id='isi_nama' class="form-control 2" name="nama_bahan" autocomplete="off">
-                                        </input>
-                                        <datalist id="listbahanbaku">
-                                            @foreach ($bahanbaku as $row)
-                                            <option value="{{ $row['bahanbaku_nama'] }}">
-                                                {{ $row['bahanbaku_nama'] }}
-                                            </option>
-                                            @endforeach
-                                        </datalist>
-                                    </div>
-                                </div>
+                                                    </select>
+                                                    <div id="error-box" style="color: red"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk</label>
+                                                <div class="col-sm">
+                                                    <input id="isi_nama" type="text" list="listbahanbaku" style="height: 35px;" id='nama_bahankau' class="form-control 2" name="nama_bahan" autocomplete="off">
+                                                    </input>
+                                                    <datalist id="listbahanbaku">
+                                                        @foreach ($bahanbaku as $row)
+                                                        <option value="{{ $row['bahanbaku_nama'] }}">
+                                                            {{ $row['bahanbaku_nama'] }}
+                                                        </option>
+                                                        @endforeach
+                                                    </datalist>
+                                                </div>
+                                            </div>
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">No
-                                        Batch</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="nobatch" class="form-control 2" id="nobatch" placeholder="No Batch" />
-                                    </div>
-                                </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">No
+                                                    Batch</label>
+                                                <div class="col-sm">
+                                                    <input id="nobatch" type="text" name="nobatch" class="form-control 2" id="inputEmail3" placeholder="No Batch" />
+                                                </div>
+                                            </div>
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
-                                    <div class="col-sm">
-                                        <input type="date" name="kedaluwarsa" class="form-control 2" id="kadaluarsa" placeholder="" />
-                                    </div>
-                                </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
+                                                <div class="col-sm">
+                                                    <input type="date" id="kadaluarsa" name="kedaluwarsa" class="form-control 2" id="inputEmail3" placeholder="" />
+                                                </div>
+                                            </div>
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
-                                        Pemasok</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="nama_pemasok" class="form-control 2" id="pemasok" placeholder="Nama Pemasok" />
-                                    </div>
-                                </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                    Pemasok</label>
+                                                <div class="col-sm">
+                                                    <input id="pemasok" type="text" name="nama_pemasok" class="form-control 2" id="inputEmail3" placeholder="Nama Pemasok" />
+                                                </div>
+                                            </div>
 
+                                            <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
 
-                            </div>
+                                        </div>
+
 
                             <div class="card mb-4">
                                 <div class="card-header">

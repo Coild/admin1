@@ -58,7 +58,7 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 1" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    {{-- <input type="text" name="protap" class="form-control 1" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                                                     <select name="protap" class="form-control 1">
                                                                         @foreach ($protap1 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -207,7 +207,7 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 2" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    {{-- <input type="text" name="protap" class="form-control 2" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                                                     <select name="protap" class="form-control 2">
                                                                         @foreach ($protap2 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -293,7 +293,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
+                                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ (int) filter_var($row['hasil_penimbangan'], FILTER_SANITIZE_NUMBER_INT);  }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangproduk" method="post" class="float-left mr-3">
                                                         @csrf
@@ -303,7 +303,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikproduk" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
+                                                    <button id="klikproduk" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } ?>
                                             </td>
                                             @endif
@@ -357,9 +357,9 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                                                    {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                                                     <select name="protap" class="form-control 3">
-                                                                        @foreach ($protap2 as $isi)
+                                                                        @foreach ($protap3 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                                                         @endforeach
 
@@ -482,7 +482,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ $row['jumlah_bahan_baku'] }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
+                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangruang" method="post" class="float-left mr-3">
                                                         @csrf
@@ -492,7 +492,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikruang" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ $row['jumlah_bahan_baku'] }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
+                                                    <button id="klikruang" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } ?>
                                                 @endif
                                             </td>
@@ -535,7 +535,7 @@
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
                                     {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                    <select name="pob" class="form-control 4">
+                                    <select name="protap" class="form-control 4">
                                         @foreach ($protap1 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                         @endforeach
@@ -585,7 +585,7 @@
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
-                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                    {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                     <select name="protap" class="form-control 5">
                                         @foreach ($protap2 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -637,7 +637,7 @@
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
-                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                    {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                     <select name="protap" class="form-control 6">
                                         @foreach ($protap3 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -682,14 +682,6 @@
                                                 <option value="L"> L</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <select class="form-select" name="satuan" id="">
-                                            <option value="gr"> gr</option>
-                                            <option value="kg"> kg</option>
-                                            <option value="ml"> ml</option>
-                                            <option value="L"> L</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>

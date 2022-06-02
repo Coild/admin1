@@ -147,15 +147,15 @@
                                     <?php } ?>
                                 @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <form method="post" action="detil-alat" class="float-left mr-2">
+                                    <form method="post" action="detilalat" class="float-left mr-2">
                                         @csrf
                                         <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
                                         <input type="hidden" name="status_induk" value="0" />
                                         <button type="submit" class="btn btn-primary">lihat</button>
                                     </form>
-                                    <button id="editdata" type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['pob'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
+                                    <button id="editdata" type="button" class="btn btn-success" data-toggle="modal" data-target="#editalat" data-nama="{{ $row['nama_alat'] }}" data-protap="{{ $row['protap_id'] }}" data-ruangan="{{ $row['ruang'] }}" data-merek="{{ $row['tipe_merek'] }}" data-tanggal="{{ $row['tanggal'] }}" data-id="{{ $row['id_operasi'] }}">edit</button>
                                 <?php } elseif ($row['status'] == 1) { ?>
-                                    <form method="post" action="detil-alat" class="float-left mr-2">
+                                    <form method="post" action="detilalat" class="float-left mr-2">
                                         @csrf
                                         <input type="hidden" name="induk" value="{{ $row['id_operasi'] }}" />
                                         <input type="hidden" name="status_induk" value="1" />
@@ -203,9 +203,12 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
                                         Sesuai PROTAP</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="pelaksanaan_pob" class="form-control 1" id="isi_protap" placeholder="NO PROTAP" />
-                                    </div>
+                                        <select name="pob_no" class="col-sm-7 form-control 1" autocomplete="off">
+                                                            @foreach ($protap as $kemasan))
+                                                            <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
+                                                            @endforeach
+
+                                                        </select>
                                 </div>
 
                                 {{-- <input type="hidden" id='ambil_tanggal' class="form-control 1" name="tanggal" placeholder="" /> --}}

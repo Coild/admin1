@@ -1616,15 +1616,14 @@ class Admin extends Controller
 
     //catat penimbangan
     public function tambah_penimbangan(Request $req)
-    {
+    { 
         $id = Auth::user()->id;
         $nobatch = $req['nobatch'];
         $hasil = [
-            'protap' => $req['protap'],
             'penimbangan_kodebahan' => $req['kode_bahan'],
             'penimbangan_namabahan' => $req['nama_bahan'],
             'penimbangan_loth' => $req['no_loth'],
-            'penimbangan_jumlahbutuh' => $req['jumlah_butuh'],
+            'penimbangan_jumlahbutuh' => $req['jumlah_butuh'].' '.$req['satuan'],
             'penimbangan_jumlahtimbang' => $req['jumlah_timbang'],
             'penimbangan_timbangoleh' => $req['ditimbang'],
             'penimbangan_periksaoleh' => $req['diperiksa'],
@@ -3001,7 +3000,8 @@ class Admin extends Controller
     }
 
     public function edit_operasialat(Request $req)
-    {
+    {   echo "tolol";
+        // dd($req);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
@@ -3687,7 +3687,7 @@ class Admin extends Controller
             'tanggal' => $req['tanggal'],
             'nama_bahan_baku' => $req['nama_bahanbaku'],
 
-            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
             'hasil_timbang' => $req['hasil_penimbangan'],
             'pabrik' => $pabrik,
             'status' => 0,
@@ -3799,6 +3799,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'no_loth' => $req['no_loth'],
+            'protap' => $req['protap'],
         ];
 
         $nomer = timbangbahan::where('timbang_bahan_id', $id)->update($hasil);
@@ -3830,6 +3831,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'no_batch' => $req['nobatch'],
+            'protap' => $req['protap'],
         ];
         // dd($hasil);
 
@@ -3864,6 +3866,7 @@ class Admin extends Controller
             'nama_bahan_baku' => $req['nama_bahanbaku'],
             'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
             'hasil_timbang' => $req['hasil_penimbangan'],
+            'protap' => $req['protap'],
         ];
         $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
         $log = [
@@ -5574,7 +5577,7 @@ class Admin extends Controller
         // dd($data);
         $produk = produk::all()->where('user_id', Auth::user()->pabrik);
         $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
-        $protap = protap::all()->where('user_id', Auth::user()->pabrik);
+        $protap = protap::all()->where('user_id', Auth::user()->pabrik)->where('protap_jenis',9);
         // dd($produk);
         return view('catatan.dokumen.pengemasanbatch', ['kemasbatch' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? [], 'protaps' => $protap ?? []]);
     }

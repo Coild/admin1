@@ -6,18 +6,21 @@
 @section('content')
 <main>
     <div class="container-fluid px-4">
-        
-        <h1 class="mt-4">Laporan             <?php 
-        $tujuan = "";
-        $tujuan.="/laporandata";
-                        if (isset($_POST['tahun'])) {
-                            if($_POST['tahun']!=0)
-                                {$tujuan.= "?tahun=" . $_POST['tahun'];}
-                        
-                        
-                            if($_POST['bulan']!="0")
-                            {$tujuan.= "&";$tujuan.= "bulan=" . $_POST['bulan']; }
-                        };?> {{$tujuan}} </h1>
+
+        <h1 class="mt-4">Laporan <?php
+                                    $tujuan = "";
+                                    $tujuan .= "/laporandata";
+                                    if (isset($_POST['tahun'])) {
+                                        if ($_POST['tahun'] != 0) {
+                                            $tujuan .= "?tahun=" . $_POST['tahun'];
+                                        }
+                                        if (isset($_POST['bulan'])) {
+                                            if ($_POST['bulan'] != "0") {
+                                                $tujuan .= "&";
+                                                $tujuan .= "bulan=" . $_POST['bulan'];
+                                            }
+                                        }
+                                    }; ?>  </h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Laporan</li>
         </ol>
@@ -68,7 +71,7 @@
                                     <option value="12">Desember</option>
                                 </select>
                             </div>
-            
+
                         </div>
                         <button class="btn btn-primary" type="submit">Cari</button>
                     </form>
@@ -108,10 +111,12 @@
         });
         $(document).ready(function() {
             var x = true;
+            var r = <?php  echo "'".url($tujuan)."'"; ?>;
+            console.log(r);
             $('#laporan').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{url($tujuan)}}",
+                ajax: r,
                 columns: [{
                         data: 'laporan_nama',
                         name: 'laporan_nama'

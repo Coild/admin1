@@ -81,7 +81,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                             PROTAP</label>
                                                         <div class="col-sm">
-                                                            <select name="protap" class="form-control 75" id="inputEmail3">
+                                                            <select autocomplete="off" name="protap" class="form-control 75" id="inputEmail3">
                                                                 @foreach ($protaps as $data )
                                                                     <option value="{{ $data['protap_id']}}">
                                                                         {{$data['protap_nama']}}
@@ -297,7 +297,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                             PROTAP</label>
                                         <div class="col-sm">
-                                            <select name="protap" class="form-control" id="inputEmail3">
+                                            <select autocomplete="off" name="protap" class="form-control" id="inputEmail3">
                                                 @foreach ($protaps as $data )
                                                     <option value="{{ $data['protap_id']}}">
                                                         {{$data['protap_nama']}}
@@ -325,7 +325,7 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                         <div class="col-sm">
-                                            <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 1" id="isi_kemasan">
+                                            <input autocomplete="off" type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 1" id="isi_kemasan">
                                             </input>
                                             <datalist id="kemasan">
                                                 @foreach ($kemasan as $row)
