@@ -415,11 +415,11 @@ class Admin extends Controller
         // dd($bahanbaku);
 
         $data1 = cp_bahan::join('protaps', 'cp_bahans.protap', '=', 'protaps.protap_id')
-            ->get(['cp_bahans.*', 'protaps.protap_nama'])->where('cp_bahans.pabrik', $pabrik);
+            ->get(['cp_bahans.*', 'protaps.protap_nama', 'protap_id'])->where('cp_bahans.pabrik', $pabrik);
         $data2 = cp_produk::join('protaps', 'cp_produks.protap', '=', 'protaps.protap_id')
-            ->get(['cp_produks.*', 'protaps.protap_nama'])->where('cp_produks.pabrik', $pabrik);
+            ->get(['cp_produks.*', 'protaps.protap_nama', 'protap_id'])->where('cp_produks.pabrik', $pabrik);
         $data3 = cp_kemasan::join('protaps', 'cp_kemasans.protap', '=', 'protaps.protap_id')
-            ->get(['cp_kemasans.*', 'protaps.protap_nama'])->where('cp_kemasans.pabrik', $pabrik);
+            ->get(['cp_kemasans.*', 'protaps.protap_nama', 'protap_id'])->where('cp_kemasans.pabrik', $pabrik);
 
         return view('catatan.dokumen.penerimaanBB', [
             'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'bahanbaku' => $bahanbaku, 'produk' => $produk, 'kemasan' => $kemasan,
@@ -1406,7 +1406,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = pengolahanbatch::join('protaps', 'pengolahanbatches.pob', '=', 'protaps.protap_id')
-                ->get(['pengolahanbatches.*', 'protaps.protap_nama']); //;
+                ->get(['pengolahanbatches.*', 'protaps.protap_nama', 'protap_id']); //;
             // dd($pabrik);
         } else {
             $data = pengolahanbatch::all()->where('pabrik', $pabrik);
@@ -1616,7 +1616,7 @@ class Admin extends Controller
 
     //catat penimbangan
     public function tambah_penimbangan(Request $req)
-    { 
+    {
         $id = Auth::user()->id;
         $nobatch = $req['nobatch'];
         $hasil = [
@@ -2080,7 +2080,7 @@ class Admin extends Controller
         $data2 = protap::all()->where('protap_jenis', 21);
 
         $data = Periksaalat::join('protaps', 'periksaalats.pob_nomor', '=', 'protaps.protap_id')
-            ->get(['periksaalats.*', 'protaps.protap_nama']);
+            ->get(['periksaalats.*', 'protaps.protap_nama', 'protap_id']);
 
         return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
     }
@@ -2196,7 +2196,7 @@ class Admin extends Controller
         $data2 = protap::all()->where('protap_jenis', 22);
         // $data = periksaruang::all()->where('pabrik', $pabrik);
         $data = periksaruang::join('protaps', 'periksaruangs.nomer_prosedur', '=', 'protaps.protap_id')
-            ->get(['periksaruangs.*', 'protaps.protap_nama']);
+            ->get(['periksaruangs.*', 'protaps.protap_nama', 'protap_id']);
         return view('catatanpelaksana.higidansani.periksasaniruang', [
             'data' => $data,
             'data2' => $data2
@@ -2584,9 +2584,9 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
 
         $data = programpelatihan::join('protaps', 'programpelatihans.protap', '=', 'protaps.protap_id')
-            ->get(['programpelatihans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['programpelatihans.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $data1 = Pelatihancpkb::join('protaps', 'pelatihancpkbs.protap', '=', 'protaps.protap_id')
-            ->get(['pelatihancpkbs.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['pelatihancpkbs.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $protap1 = protap::all()->where('protap_jenis', 4)->where('protap_detil', 1);
         $protap2 = protap::all()->where('protap_jenis', 4)->where('protap_detil', 2);
         return view('catatan.dokumen.programpelatihanhiginitas', [
@@ -2705,12 +2705,12 @@ class Admin extends Controller
         if (Auth::user()->level == 2) {
             // $data = penanganankeluhan::all()->where('pabrik', $pabrik);
             $data = penanganankeluhan::join('protaps', 'penanganankeluhans.protap', '=', 'protaps.protap_id')
-            ->get(['penanganankeluhans.*', 'protaps.protap_nama']);
+            ->get(['penanganankeluhans.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             // $data = penanganankeluhan::all()->where('pabrik', $pabrik);
             $produk = produk::all()->where('user_id', $pabrik);
             $data = penanganankeluhan::join('protaps', 'penanganankeluhans.protap', '=', 'protaps.protap_id')
-            ->get(['penanganankeluhans.*', 'protaps.protap_nama']);
+            ->get(['penanganankeluhans.*', 'protaps.protap_nama', 'protap_id']);
         }
 
         $data2 = protap::all()->where('protap_jenis', 13);
@@ -2830,11 +2830,11 @@ class Admin extends Controller
         if (Auth::user()->level == 2) {
             // $data = penarikanproduk::all()->where('pabrik', $pabrik);
             $data = penarikanproduk::join('protaps', 'penarikanproduks.protap', '=', 'protaps.protap_id')
-            ->get(['penarikanproduks.*', 'protaps.protap_nama']);
+            ->get(['penarikanproduks.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             // $data = penarikanproduk::all()->where('pabrik', $pabrik);
             $data = penarikanproduk::join('protaps', 'penarikanproduks.protap', '=', 'protaps.protap_id')
-            ->get(['penarikanproduks.*', 'protaps.protap_nama']);
+            ->get(['penarikanproduks.*', 'protaps.protap_nama', 'protap_id']);
             $produk = produk::all()->where('user_id', $pabrik);
         }
 
@@ -2941,7 +2941,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
             $data = distribusiproduk::join('protaps', 'distribusiproduks.protap', '=', 'protaps.protap_id')
-            ->get(['distribusiproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['distribusiproduks.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
             $protap = protap::all()->where('protap_jenis',11);
         return view('catatan.dokumen.pendistribusianproduk', ['data' => $data,'protap' => $protap]);
     }
@@ -3003,31 +3003,31 @@ class Admin extends Controller
     }
 
     public function edit_operasialat(Request $req)
-    {   echo "tolol";
+    {
         // dd($req);
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'pob' => $req['pelaksanaan_pob'],
+            'pob' => $req['protap'],
             'nama_alat' => $req['nama_alat'],
             'tipe_merek' => $req['tipemerek'],
             'ruang' => $req['ruang'],
         ];
         // dd($req);
         $nomer = pengoprasianalat::where('id_operasi', $req['id'])->update($hasil);
-        // $notif = [
-        //     'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
-        //     'notif_laporan' => "pengoperasian alat",
-        //     'notif_link' => 'pengoperasian-alat',
-        //     'notif_waktu' => date('Y-m-d H:i:s'),
-        //     'notif_1' => Auth::user()->level,
-        //     'notif_2' => 0,
-        //     'notif_3' => 0,
-        //     'notif_level' => 1,
-        //     'status' => 0,
-        //     'id_pabrik' => Auth::user()->pabrik,
-        // ];
-        // notif::insert($notif);
+        $notif = [
+            'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
+            'notif_laporan' => "pengoperasian alat",
+            'notif_link' => 'pengoperasian-alat',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => 0,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Mengubah laporan pengoperasian alat',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
@@ -3120,10 +3120,10 @@ class Admin extends Controller
         // dd($protap);
         if (Auth::user()->level == 2) {
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
-                ->get(['pengoprasianalats.*', 'protaps.protap_nama']); //all()->where('pabrik', $pabrik);
+                ->get(['pengoprasianalats.*', 'protaps.protap_nama', 'protap_id', 'protap_id']); //all()->where('pabrik', $pabrik);
         } else
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
-                ->get(['pengoprasianalats.*', 'protaps.protap_nama']);
+                ->get(['pengoprasianalats.*', 'protaps.protap_nama', 'protap_id']);
         return view('catatan.dokumen.pengoprasianalat', compact('data', 'protap'));
     }
     public function tampil_detilalat(Request $req)
@@ -3240,7 +3240,7 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
             $data = pelulusanproduk::join('protaps', 'pelulusanproduks.protap', '=', 'protaps.protap_id')
-            ->get(['pelulusanproduks.*', 'protaps.protap_nama','protaps.protap_id'])->where('pabrik', $pabrik);
+            ->get(['pelulusanproduks.*', 'protaps.protap_nama', 'protap_id','protaps.protap_id'])->where('pabrik', $pabrik);
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $protap = protap::all()->where('protap_jenis',11);
 
@@ -3555,11 +3555,11 @@ class Admin extends Controller
             ->where('protap_detil', 3);
 
         $data = contohbahanbaku::join('protaps', 'contohbahanbakus.protap', '=', 'protaps.protap_id')
-            ->get(['contohbahanbakus.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['contohbahanbakus.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $data1 = contohprodukjadi::join('protaps', 'contohprodukjadis.protap', '=', 'protaps.protap_id')
-            ->get(['contohprodukjadis.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['contohprodukjadis.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $data2 = contohkemasan::join('protaps', 'contohkemasans.protap', '=', 'protaps.protap_id')
-            ->get(['contohkemasans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['contohkemasans.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         $produk = produk::all()->where('user_id', $pabrik);
         $kemasan = kemasan::all()->where('user_id', $pabrik);
@@ -3887,11 +3887,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
 
         $data = timbangbahan::join('protaps', 'timbangbahans.protap', '=', 'protaps.protap_id')
-            ->get(['timbangbahans.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['timbangbahans.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $data1 = timbangproduk::join('protaps', 'timbangproduks.protap', '=', 'protaps.protap_id')
-            ->get(['timbangproduks.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['timbangproduks.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $data2 = ruangtimbang::join('protaps', 'ruangtimbangs.protap', '=', 'protaps.protap_id')
-            ->get(['ruangtimbangs.*', 'protaps.protap_nama'])->where('pabrik', $pabrik);
+            ->get(['ruangtimbangs.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         $produkantara = produkantara::all()->where('user_id', $pabrik);
         $protap1 =  protap::all()->where('protap_jenis', 7)->where('protap_detil', 1);
@@ -4357,7 +4357,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik,
         ];
         notif::insert($notif);
-        
+
         $log = [
             'log_isi' => Auth::user()->namadepan . ' menambah laporan kartu stok produk antara',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
@@ -4957,32 +4957,32 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
             $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama']);
+            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
             $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
             $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama']);
+            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
             $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
-            ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama']);
+            ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $produkantara = produkantara::all()->where('user_id', $pabrik);
@@ -5435,23 +5435,23 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         if (Auth::user()->level == 2) {
             $data = spesifikasibahanbaku::join('protaps', 'spesifikasibahanbakus.protap', '=', 'protaps.protap_id')
-            ->get(['spesifikasibahanbakus.*', 'protaps.protap_nama']);
+            ->get(['spesifikasibahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
             $data1 = spesifikasibahankemas::join('protaps', 'spesifikasibahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['spesifikasibahankemas.*', 'protaps.protap_nama']);
+            ->get(['spesifikasibahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = Spesifikasiprodukjadi::join('protaps', 'Spesifikasiprodukjadis.protap', '=', 'protaps.protap_id')
-            ->get(['Spesifikasiprodukjadis.*', 'protaps.protap_nama']);
+            ->get(['Spesifikasiprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
         } else {
             $data = spesifikasibahanbaku::join('protaps', 'spesifikasibahanbakus.protap', '=', 'protaps.protap_id')
-            ->get(['spesifikasibahanbakus.*', 'protaps.protap_nama']);
+            ->get(['spesifikasibahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
             $data1 = spesifikasibahankemas::join('protaps', 'Spesifikasibahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['spesifikasibahankemas.*', 'protaps.protap_nama']);
+            ->get(['spesifikasibahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = Spesifikasiprodukjadi::join('protaps', 'Spesifikasiprodukjadis.protap', '=', 'protaps.protap_id')
-            ->get(['Spesifikasiprodukjadis.*', 'protaps.protap_nama']);
+            ->get(['Spesifikasiprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
             $kemasan = kemasan::all()->where('user_id', $pabrik);

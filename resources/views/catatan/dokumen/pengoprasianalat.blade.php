@@ -53,7 +53,7 @@
                                                         Sesuai PROTAP</label>
                                                     <div class="col-sm">
                                                         {{-- <input type="text" name="pelaksanaan_pob" class="form-control 2" id="inputEmail3" placeholder="NO PROTAP" /> --}}
-                                                        <select name="pob_no" class="form-control 1" autocomplete="off">
+                                                        <select name="protap" class="form-control 1" autocomplete="off">
                                                             @foreach ($protap as $kemasan))
                                                             <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                                             @endforeach
@@ -215,7 +215,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Pelaksanaan
                                         Sesuai PROTAP</label>
-                                        <select name="pob_no" class="col-sm-7 form-control 1" autocomplete="off">
+                                        <select name="protap" class="col-sm-7 form-control 1" autocomplete="off">
                                                             @foreach ($protap as $kemasan))
                                                             <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                                             @endforeach

@@ -153,7 +153,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 3">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -429,7 +429,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 1">
+                                        <select name="pob" class="form-control 4" id="protap_bahan">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -522,7 +522,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 1">
+                                        <select name="pob" class="form-control 5" id="protap_produk">
                                             @foreach ($protap2 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -614,7 +614,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 6" id="protap_kemasan">
                                             @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -806,7 +806,9 @@
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
-
+            var protap = $(this).data('protap');
+            console.log(protap);
+            $("#protap_bahan").val(protap);
             $("#bahannama").val(nama);
             $("#bahanjumlah").val(jumlah);
             $("#bahanruang").val(ruangan);
@@ -820,7 +822,9 @@
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
+            var protap = $(this).data('protap');
 
+            $("#protap_produk").val(protap);
             $("#produknama").val(nama);
             $("#produkjumlah").val(jumlah);
             $("#produkruang").val(ruangan);
@@ -834,8 +838,9 @@
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
+            var protap = $(this).data('protap');
 
-
+            $("#protap_kemasan").val(protap);
             $("#kemasannama").val(nama);
             $("#kemasanjumlah").val(jumlah);
             $("#kemasanruang").val(ruangan);
