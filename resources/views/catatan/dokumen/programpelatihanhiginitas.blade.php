@@ -201,7 +201,7 @@
                                                     @endif
                                                 @else
                                                     @if ($row['status'] == 0)
-                                                        <button type="button" id="klikhigi" class="btn btn-primary" data-toggle="modal" data-target="#edithigi" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan']));  }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_programpelatihan'] }}">edit</button>
+                                                        <button type="button" id="klikhigi" class="btn btn-primary" data-toggle="modal" data-target="#edithigi" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan']));  }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_programpelatihan'] }}">edit</button>
                                                     @else
                                                         <button type="submit" class="btn btn-danger disabled">edit</button>
                                                     @endif
@@ -401,7 +401,7 @@
                                                     @endif
                                                 @else
                                                     @if ($row['status'] == 0)
-                                                        <button type="button" id="klikcpkb" class="btn btn-primary" data-toggle="modal" data-target="#editcpkb" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan'])); }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_pelatihancpkb'] }}">edit</button>
+                                                        <button type="button" id="klikcpkb" class="btn btn-primary" data-toggle="modal" data-target="#editcpkb" data-protap="{{ $row['protap_id'] }}" data-target="#editcpkb" data-kode="{{ $row['kode_pelatihan'] }}" data-materi="{{ $row['materi_pelatihan'] }}" data-peserta="{{ $row['peserta_pelatihan'] }}" data-pelatih="{{ $row['pelatih'] }}" data-metode="{{ $row['metode_pelatihan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_berakhir_pelatihan'])); }}" data-nilai="{{ $row['metode_penilaian'] }}" data-id="{{ $row['id_pelatihancpkb'] }}">edit</button>
                                                     @else
                                                         <button type="submit" class="btn btn-danger disabled">edit</button>
                                                     @endif
@@ -445,7 +445,7 @@
                                 Dengan PROTAP No</label>
                             <div class="col-sm">
                                 {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                <select name="protap" class="form-control 3">
+                                <select name="protap" class="form-control 3" id="higi_protap">
                                     @foreach ($protap1 as $isi)
                                     <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                     @endforeach
@@ -556,7 +556,7 @@
                                 Dengan PROTAP No</label>
                             <div class="col-sm">
                                 {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                <select name="protap" class="form-control 4">
+                                <select name="protap" class="form-control 4" id="cpkb_protap">
                                     @foreach ($protap2 as $isi)
                                     <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                     @endforeach
@@ -654,6 +654,7 @@
     $(document).on('click', "#klikhigi", function() {
 
         var kode = $(this).data('kode');
+        var protap = $(this).data('protap');
         var materi = $(this).data('materi');
         var peserta = $(this).data('peserta');
         var pelatih = $(this).data('pelatih');
@@ -664,6 +665,7 @@
         var id = $(this).data('id');
 
         $("#higi_kode").val(kode);
+        $("#higi_protap").val(protap);
         $("#higi_materi").val(materi);
         $("#higi_peserta").val(peserta);
         $("#higi_pelatih").val(pelatih);
@@ -679,6 +681,7 @@
     $(document).on('click', "#klikcpkb", function() {
 
         var kode = $(this).data('kode');
+        var protap = $(this).data('protap');
         var materi = $(this).data('materi');
         var peserta = $(this).data('peserta');
         var pelatih = $(this).data('pelatih');
@@ -689,6 +692,7 @@
         var id = $(this).data('id');
 
         $("#cpkb_kode").val(kode);
+        $("#cpkb_protap").val(protap);
         $("#cpkb_materi").val(materi);
         $("#cpkb_peserta").val(peserta);
         $("#cpkb_pelatih").val(pelatih);

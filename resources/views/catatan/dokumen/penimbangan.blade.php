@@ -463,7 +463,7 @@
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['id_ruangtimbang'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['id_ruangtimbang'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan({{ $row['id_ruangtimbang'] }})" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporan({{ $row['id_ruangtimbang'] }} )" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapenimbanganruang">
