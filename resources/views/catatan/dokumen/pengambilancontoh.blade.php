@@ -213,7 +213,7 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
@@ -451,7 +451,7 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikproduk" type="submit" data-toggle="modal" data-target="#editproduk" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_produkjadi'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikproduk" type="submit" data-toggle="modal" data-target="#editproduk" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_produkjadi'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
@@ -689,7 +689,7 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikkemasan" type="submit" data-toggle="modal" data-target="#editkemasan" data-kode="{{ $row['kode_kemasan'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_kemasan'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikkemasan" type="submit" data-toggle="modal" data-target="#editkemasan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_kemasan'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_kemasan'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
@@ -758,7 +758,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 7" id="bahan_protap">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -892,7 +892,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 8" id="produk_protap">
                                             @foreach ($protap2 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -1026,7 +1026,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 9" id="kemasan_protap">
                                             @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -1257,7 +1257,9 @@
             var jumlahproduk = $(this).data('jumlahproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
+            var protap = $(this).data('protap');
 
+            $("#bahan_protap").val(protap);
             $("#bahan_nama").val(nama);
             $("#bahan_kode").val(kode);
             $("#bahan_tglambil").val(tglambil);
@@ -1279,8 +1281,10 @@
             var jumlahproduk = $(this).data('jumlahproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
+            var protap = $(this).data('protap');
 
-            $("#produk_nama").val(nama);
+
+            $("#produk_protap").val(protap);
             $("#produk_kode").val(kode);
             $("#produk_tglambil").val(tglambil);
             $("#produk_nobatch").val(nobatch);
@@ -1301,8 +1305,10 @@
             var jumlahproduk = $(this).data('jumlahproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
+            var protap = $(this).data('protap');
 
-            $("#kemasan_nama").val(nama);
+
+            $("#kemasan_protap").val(protap);
             $("#kemasan_kode").val(kode);
             $("#kemasan_tglambil").val(tglambil);
             $("#kemasan_nobatch").val(nobatch);

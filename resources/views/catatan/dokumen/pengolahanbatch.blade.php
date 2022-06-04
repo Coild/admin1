@@ -64,7 +64,7 @@
                                         <input type="hidden" name="status" value="{{ $row['status'] }}">
                                         <button type="submit" class="btn btn-primary"> Buka</button>
                                     </form>
-                                    <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
+                                    <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <form action="/detil_batch" method="post" class="float-left mr-2">
                                         @csrf
@@ -272,7 +272,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 1">
+                                        <select name="pob" class="form-control 1" id="protap">
                                             @foreach ($protap as $kemasan)
                                             <option value="{{$kemasan['protap_id']}}">{{$kemasan['protap_nama']}}</option>
                                             @endforeach
@@ -370,12 +370,14 @@
             var kemasan = $(this).data('kemasan');
             var protap = $(this).data('protap');
             var id = $(this).data('id');
+            var protap = $(this).data('protap');
 
             // console.log("ini " + nama + " ruangan " + id);
             $("#editnamaproduk").val(nama);
             $("#editkodeproduk").val(kode);
             $("#isi_nobatch").val(nobatch);
             $("#isi_besar").val(besar);
+            $("#protap").val(protap);
             $("#isi_bentuk").val(bentuk);
             $("#isi_kategori").val(kategori);
             $("#isi_kemasan").val(kemasan);

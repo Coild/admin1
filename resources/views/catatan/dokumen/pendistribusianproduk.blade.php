@@ -167,7 +167,7 @@
 
                                 @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                    <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <button id="klikdis" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
                                 <?php } ?>
@@ -212,7 +212,7 @@
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
                                         {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="protap" class="form-control 1">
+                                        <select name="protap" class="form-control 1" id="protap">
                                             @foreach ($protap as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -281,7 +281,9 @@
         var nobatch = $(this).data('nobatch');
         var jumlah = $(this).data('jumlah');
         var id = $(this).data('id');
+        var protap = $(this).data('protap');
 
+        $("#protap").val(protap);
         $("#isi_nobatch").val(nobatch);
         $("#isi_jumlah").val(jumlah);
         $("#isi_kode").val(kode);

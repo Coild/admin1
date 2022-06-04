@@ -27,8 +27,8 @@ class dataPelaksana extends Controller
         $id = Auth::user()->pabrik;
 
             $data = cp_bahan::join('protaps', 'cp_bahans.protap', '=', 'protaps.protap_id')
-        ->get(['cp_bahans.*', 'protaps.protap_nama'])->where('pabrik', $id);
-        
+        ->get(['cp_bahans.*', 'protaps.protap_nama', 'protaps.protap_id'])->where('pabrik', $id);
+
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
                 return 'Diajukan';
@@ -50,7 +50,7 @@ class dataPelaksana extends Controller
                             value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editbahan" class="btn btn-success" data-toggle="modal" data-target="#modaleditbahan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . ' data-protap=' . $data->protap_id .'>Edit</button>';
                 } elseif ($data->status == 1) {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -92,7 +92,7 @@ class dataPelaksana extends Controller
         $id = Auth::user()->pabrik;
 
             $data = cp_produk::join('protaps', 'cp_produks.protap', '=', 'protaps.protap_id')
-        ->get(['cp_produks.*', 'protaps.protap_nama'])->where('pabrik', $id);
+        ->get(['cp_produks.*', 'protaps.protap_nama', 'protaps.protap_id'])->where('pabrik', $id);
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
                 return 'Diajukan';
@@ -114,7 +114,7 @@ class dataPelaksana extends Controller
                             value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editproduk" class="btn btn-success" data-toggle="modal" data-target="#modaleditproduk"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . ' data-protap=' . $data->protap_id .'>Edit</button>';
                 } elseif ($data->status == 1) {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -127,7 +127,7 @@ class dataPelaksana extends Controller
                             value=' . 1 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editproduk" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditproduk"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id .'>Edit</button>';
                 }
             } else {
                 if ($data->status == 0) {
@@ -156,7 +156,7 @@ class dataPelaksana extends Controller
         $id = Auth::user()->pabrik;
 
             $data = cp_kemasan::join('protaps', 'cp_kemasans.protap', '=', 'protaps.protap_id')
-        ->get(['cp_kemasans.*', 'protaps.protap_nama'])->where('pabrik', $id);
+        ->get(['cp_kemasans.*', 'protaps.protap_nama', 'protaps.protap_id'])->where('pabrik', $id);
 
         return DataTables::of($data)->editColumn('status', function ($data) {
             if ($data->status == 0) {
@@ -179,7 +179,7 @@ class dataPelaksana extends Controller
                             value=' . 0 . ' />
                         <button type="submit" class="btn btn-primary">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-success" data-toggle="modal" data-target="#modaleditkemasan"
-                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
+                    data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_kemasan_id . ' data-protap=' . $data->protap_id .'>Edit</button>';
                 } elseif ($data->status == 1) {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -221,10 +221,10 @@ class dataPelaksana extends Controller
         // dd($_GET    );
         if(isset($_GET['tahun'])){
             $data = laporan::whereYEAR('tgl_diterima', $_GET['tahun']);
-        
+
             if(isset($_GET['bulan'])) {
 
-                
+
                 $data = $data->whereMONTH('tgl_diterima', $_GET['bulan'])->get('*');}
             else {
                 $data = $data->get();
@@ -233,7 +233,7 @@ class dataPelaksana extends Controller
             $data = laporan::all();
         }
 
-        
+
         $data = $data->sortByDesc('tgl_diterima');
         // dd($data);
         return DataTables::of($data)->addColumn('action', function ($data) {
@@ -300,10 +300,10 @@ class dataPelaksana extends Controller
                 $form = '<form target="_blank" method="post" action="/printpembersihanalat">';
             elseif ($data->laporan_nama == 'pelulusan produk jadi')
                 $form = '<form target="_blank" method="post" action="/printpelulusanproduk">';
-            
+
             elseif ($data->laporan_nama == 'periksa sanitasi alat')
                 $form = '<form target="_blank" method="post" action="/printpemeriksaansanitasialat">';
-            
+
 
 
             else
