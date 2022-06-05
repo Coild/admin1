@@ -42,7 +42,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detilalat" id='forminput'>
+                                        <form method="post" action="tambah_detiloperasilalat" id='forminput'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf

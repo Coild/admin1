@@ -136,7 +136,7 @@
                                             @if (Auth::user()->level != 2)
                                                 <td>
                                                     <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="detilalat" class="float-left mr-2">
+                                                    <form method="post" action="tampil_detilperiksaalat" class="float-left mr-2">
                                                         @csrf
                                                         <input type="hidden" name="id_alat"
                                                             value="{{ $row['id_periksaalat'] }}" />
@@ -145,11 +145,10 @@
                                                         <input type="hidden" name="status" value="{{ $row['status'] }}" />
                                                         <button type="submit" class="btn btn-success">Lihat</button>
                                                     </form>
-                                                    <a href="#" type="button" data-toggle="modal" data-target="#modalForm"
-                                                        class="btn btn-primary"
+                                                    <a href="#" type="button" data-toggle="modal" data-target="#modalForm" class="btn btn-primary"
                                                         onclick="editdata({{ $row }})">Edit</a>
                                                     <?php } elseif ($row['status'] == 1) { ?>
-                                                    <form method="post" action="detilalat" class="float-left mr-2">
+                                                    <form method="post" action="tampil_detilperiksaalat" class="float-left mr-2">
                                                         @csrf
                                                         <input type="hidden" name="id_alat"
                                                             value="{{ $row['id_periksaalat'] }}" />
@@ -159,7 +158,7 @@
                                                         <button type="submit" class="btn btn-success">Lihat</button>
                                                     </form>
 
-                                                    <form method="post" action="detilalat" class="float-left mr-2">
+                                                    <form method="post" action="tampil_detilperiksaalat">
                                                         @csrf
                                                         <input type="hidden" name="id_alat"
                                                             value="{{ $row['id_periksaalat'] }}" />
@@ -173,7 +172,7 @@
                                             @else
                                                 <td>
                                                     <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="detilalat" class="float-left mr-2">
+                                                    <form method="post" action="tampil_detilperiksaalat" class="float-left mr-2">
                                                         @csrf
                                                         <input type="hidden" name="id_alat"
                                                             value="{{ $row['id_periksaalat'] }}" />
@@ -194,7 +193,7 @@
                                                     </form>
 
                                                     <?php } elseif ($row['status'] == 1) { ?>
-                                                    <form method="post" action="detilalat" class="float-left mr-2">
+                                                    <form method="post" action="tampil_detilperiksaalat" class="float-left mr-2">
                                                         @csrf
                                                         <input type="hidden" name="id_alat"
                                                             value="{{ $row['id_periksaalat'] }}" />

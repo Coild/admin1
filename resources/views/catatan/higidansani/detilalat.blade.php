@@ -1,25 +1,32 @@
 @extends('layout.app')
 @section('title')
-    <title>
-        Detail Periksa Ruang</title>
+    <title>Detail Pengoprasian Alat Utama</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Detail Pemeriksaan Ruang</h1>
-            <ol class="breadcrumb mb-4">{{ $nama_ruangan }}</li>
+            <h1>Catatan Pengoprasian Alat Utama</h1>
+            <ol class="breadcrumb mb-4">Detail Pengoprasian Alat Utama</li>
             </ol>
             <div class="row">
 
                 <div class="card mb-4">
+
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg @if($status == 1) disabled @endif" data-toggle="modal" data-target="#modalForm"
-                                onclick="setdatetoday()">
-                                Tambah Pemeriksaan Ruang
-                            </button>
+                            @if ($status == 0)
+                                <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
+                                    onclick="setdatetoday()">
+                                    Tambah Pengoprasian Alat Utama
+                                </button>
+                            @else
+                                <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm"
+                                    onclick="setdatetoday()">
+                                    Tambah Pengoprasian Alat Utama
+                                </button>
+                            @endif
                         @endif
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
@@ -28,149 +35,113 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel">
-                                            Tambah Detail Pemeriksaan Ruang
+                                            Tambah Detail Pengoprasian Alat Utama
                                         </h4>
                                     </div>
 
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detilperiksaruang" id='forminput'>
+                                        <form method="post" action="tambah_detilalat" id='forminput'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
+                                                <input type="hidden" name="id_alat" value="{{ $id_alat }}">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <i class="fas fa-table me-1"></i>
+                                                        Pemakaian
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Mulai</label>
+                                                            <div class="col-sm">
+                                                                <input type="datetime-local" name="mulai_pemakaian"
+                                                                    class="form-control 1" id="inputEmail3" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Selesai</label>
+                                                            <div class="col-sm">
+                                                                <input type="datetime-local" name="selesai_pemakaian"
+                                                                    class="form-control 1" id="inputEmail3" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Produksi</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="produksi" class="form-control 1"
+                                                                    id="inputEmail3" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-3 col-form-label">No.
+                                                                Batch</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="no_batch" class="form-control 1"
+                                                                    id="inputEmail3" placeholder="no batch..." />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="card mb-4">
                                                     <div class="card-header">
                                                         <i class="fas fa-table me-1"></i>
-                                                        Pemeriksaan Ruang
+                                                        Pembersihan
                                                     </div>
                                                     <div class="card-body">
-                                                        @csrf
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        {{-- <input type="hidden" name="tanggal" id='ambil_tanggal'
-                                                            class="form-control" placeholder="" /> --}}
-                                                        <input type="hidden" name="id_induk" value='{{ $id_ruangan }}'
-                                                            class="form-control" value="" placeholder="" />
-                                                        <div class="form-group row">
-                                                            <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Ruangan</label>
-                                                            <div class="col-sm">
-                                                                <input class="form-control" type='text' readonly
-                                                                    placeholder="Ruangan" style="height: 35px;"
-                                                                    value="{{ $nama_ruangan }}"
-                                                                    id="inlineFormCustomSelect">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Lantai</div>
-                                                            <div class="col-sm-6">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='lantai' value="Belum">
-                                                                    <input type="checkbox" name="lantai"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch1">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch1">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Dinding</div>
-                                                            <div class="col-sm-6">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='dinding' value="Belum">
-                                                                    <input type="checkbox" name="dinding"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch2">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch2">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
-                                                        <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Meja</div>
-                                                            <div class="col-sm-5">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='meja' value="Belum">
-                                                                    <input type="checkbox" name="meja"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch3">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch3">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Jendela</div>
-                                                            <div class="col-sm-6">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='jendela' value="Belum">
-                                                                    <input type="checkbox" name="jendela"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch4">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch4">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Langit-langit/
-                                                                Plafon</div>
-                                                            <div class="col-sm-6">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='langit' value="Belum">
-                                                                    <input type="checkbox" name="langit"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch5">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch5">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div style="padding-left:10%;" class="form-group row">
-                                                            <div class="col-sm-6">Kontainer</div>
-                                                            <div class="col-sm-6">
-                                                                <div class="custom-control custom-switch">
-                                                                    <input type="hidden" name='kontainer' value="Belum">
-                                                                    <input type="checkbox" name="kontainer"
-                                                                        class="custom-control-input" value="Sudah"
-                                                                        id="customSwitch6">
-                                                                    <label class="custom-control-label"
-                                                                        for="customSwitch6">Sudah</label>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
-
 
                                                         <div class="form-group row">
                                                             <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Diperiksa Oleh</label>
+                                                                class="col-sm-3 col-form-label">Mulai</label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
-                                                                    placeholder="diperiksa oleh" style="height: 35px;"
-                                                                    id="inlineFormCustomSelect" name="diperiksa_oleh">
+                                                                <input type="datetime-local" name="mulai_pembersihan"
+                                                                    class="form-control 1" id="inputEmail3" />
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             <label for="inputEmail3"
-                                                                class="col-sm-3 col-form-label">Keterangan</label>
+                                                                class="col-sm-3 col-form-label">selesai</label>
                                                             <div class="col-sm">
-                                                                <input class="form-control" type='text'
-                                                                    placeholder="Ruangan" style="height: 35px;"
-                                                                    name="keterangan" id="inlineFormCustomSelect">
+                                                                <input type="datetime-local" name="selesai_pembersihan"
+                                                                    class="form-control 1" id="inputEmail3" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3"
+                                                                class="col-sm-3 col-form-label">Oleh</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" name="diperiksa_oleh"
+                                                                    class="form-control 1" id="inputEmail3"
+                                                                    placeholder="Oleh..." />
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3"
+                                                        class="col-sm-3 col-form-label">Keterangan</label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="keterangan" class="form-control 1"
+                                                            id="inputEmail3" placeholder="Keterangan" />
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-primary" onclick="salert(1)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -178,385 +149,269 @@
                         </div>
                         <!--  -->
 
-
-
-
                     </div>
 
-                    <table class="table mt-5" style="text-align: center;" id="tabel2">
+                    <table class="table mt-5" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col" rowspan="3">No</th>
-                                {{-- <th scope="col" rowspan="3" >Nama Ruangan</th> --}}
-                                <th scope="col" colspan="8">Bagian yang dibersihkan</th>
-                                <th scope="col" rowspan="3">Pelaksana</th>
-                                <th scope="col" rowspan="3">Diperiksa oleh</th>
+                                <th scope="col" colspan="6">Pemakaian</th>
+                                <th scope="col" colspan="5">Pembersihan</th>
                                 <th scope="col" rowspan="3">Keterangan</th>
                                 <th scope="col" rowspan="3">Action</th>
                             </tr>
                             <tr>
-                                <th scope="col" colspan="2">Lantai</th>
-                                <th scope="col" colspan="2">Meja</th>
-                                <th scope="col" colspan="2">Jendela</th>
-                                <th scope="col" colspan="2">Langit-langit</th>
+                                <th scope="col" colspan="2">Mulai</th>
+                                <th scope="col" rowspan="2">Produksi</th>
+                                <th scope="col" rowspan="2">No. Batch</th>
+                                <th scope="col" colspan="2">Selesai</th>
+                                <th scope="col" rowspan="2">Oleh</th>
+                                <th scope="col" colspan="2">Mulai</th>
+                                <th scope="col" colspan="2">Selesai</th>
                             </tr>
                             <tr>
-                                <th scope="col">Tgl</th>
+                                <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
-                                <th scope="col">Tgl</th>
+                                <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
-                                <th scope="col">Tgl</th>
+                                <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
-                                <th scope="col">Tgl</th>
+                                <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $row)
+                                <?php $i = 0;
+                                $i++; ?>
                                 <tr>
-                                    <td> {{ $loop->iteration }} </td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        @if ($row['lantai'] != null)
-                                            {{ \Carbon\Carbon::parse($row['lantai'])->format('j F, Y') }}
+                                        @if ($row['mulai_pemakaian'] != null)
+                                            {{ \Carbon\Carbon::parse($row['mulai_pemakaian'])->format('j F, Y') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($row['lantai'] != null)
-                                            {{ \Carbon\Carbon::parse($row['lantai'])->format('h:i:s A') }}
+                                        @if ($row['mulai_pemakaian'] != null)
+                                            {{ \Carbon\Carbon::parse($row['mulai_pemakaian'])->format('h:i:s A') }}
+                                        @else
+                                            <div class="badge badge-danger"> belum</div>
+                                        @endif
+                                    </td>
+                                    <td>{{ $row['produksi'] }}</td>
+                                    <td>{{ $row['no_batch'] }}</td>
+                                    <td>
+                                        @if ($row['selesai_pemakaian'] != null)
+                                            {{ \Carbon\Carbon::parse($row['selesai_pemakaian'])->format('j F, Y') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($row['meja'] != null)
-                                            {{ \Carbon\Carbon::parse($row['meja'])->format('j F, Y') }}
+                                        @if ($row['selesai_pemakaian'] != null)
+                                            {{ \Carbon\Carbon::parse($row['selesai_pemakaian'])->format('h:i:s A') }}
+                                        @else
+                                            <div class="badge badge-danger"> belum</div>
+                                        @endif
+                                    </td>
+                                    <td>{{ $row['diperiksa_oleh'] }}</td>
+                                    <td>
+                                        @if ($row['mulai_pembersihan'] != null)
+                                            {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('j F, Y') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($row['meja'] != null)
-                                            {{ \Carbon\Carbon::parse($row['meja'])->format('h:i:s A') }}
+                                        @if ($row['mulai_pembersihan'] != null)
+                                            {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('h:i:s A') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($row['jendela'] != null)
-                                            {{ \Carbon\Carbon::parse($row['jendela'])->format('j F, Y') }}
+                                        @if ($row['selesai_pembersihan'] != null)
+                                            {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('j F, Y') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($row['jendela'] != null)
-                                            {{ \Carbon\Carbon::parse($row['jendela'])->format('h:i:s A') }}
+                                        @if ($row['selesai_pembersihan'] != null)
+                                            {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('h:i:s A') }}
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
-                                    <td>
-                                        @if ($row['langit'] != null)
-                                            {{ \Carbon\Carbon::parse($row['langit'])->format('j F, Y') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($row['langit'] != null)
-                                            {{ \Carbon\Carbon::parse($row['langit'])->format('h:i:s A') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
-                                    <td> {{ $pelaksana }} </td>
-                                    <td> {{ $row['diperiksa_oleh'] }} </td>
-                                    <td> {{ $row['keterangan'] }} </td>
+                                    <td>{{ $row['keterangan'] }}</td>
                                     <td>
                                         @if (Auth::user()->level != 2)
                                             @if ($status == 0)
-                                                <form method="post" action="detilruangan" class="float-left mr-2"
-                                                    id="detilruangan{{ $row['id'] }}">
-                                                    @csrf
-                                                    <input type="hidden" value="{{ $row['lantai'] }}" name="lantai">
-                                                    <input type="hidden" value="{{ $row['meja'] }}" name="meja">
-                                                    <input type="hidden" value="{{ $row['jendela'] }}" name="jendela">
-                                                    <input type="hidden" value="{{ $row['langit'] }}" name="langit">
-                                                    <input type="hidden" value="{{ $row['id'] }}" name="id_ruangan">
-                                                    <input type="hidden" value="{{ $row['diperiksa_oleh'] }}"
-                                                        name="diperiksa_oleh">
-                                                    <input type="hidden" value="{{ $row['keterangan'] }}"
-                                                        name="keterangan">
-
-                                                    <button type="button"
-                                                        onclick="buttonModalFormDetil({{ $row['id'] }})"
-                                                        class="btn btn-primary"> Edit</button>
-                                                </form>
+                                            <form method="post" class="float-left mr-2"
+                                                id="detilalat{{ $row['id_detilalat'] }}">
+                                                @csrf
+                                                <button type="button"
+                                                    onclick="buttonModalFormDetil({{ $row }})"
+                                                    class="btn btn-primary"> Edit</button>
+                                            </form>
                                             @else
-                                                <form method="post" action="detilruangan" class="float-left mr-2">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger disabled"> Edit</button>
-                                                </form>
+                                                <button id="editdata" class="btn btn-danger disabled">Edit</button>
                                             @endif
                                         @else
-                                            @if ($status == 0)
-                                                <form method="post" action="detilruangan" class="float-left mr-2"
-                                                    id="detilruangan{{ $row['id'] }}">
-                                                    @csrf
-                                                    <input type="hidden" name="status" value="0" />
-                                                    <input type="hidden" value="{{ $row['lantai'] }}" name="lantai">
-                                                    <input type="hidden" value="{{ $row['meja'] }}" name="meja">
-                                                    <input type="hidden" value="{{ $row['jendela'] }}" name="jendela">
-                                                    <input type="hidden" value="{{ $row['langit'] }}" name="langit">
-                                                    <input type="hidden" value="{{ $row['id'] }}" name="id_ruangan">
-                                                    <input type="hidden" value="{{ $row['diperiksa_oleh'] }}"
-                                                        name="diperiksa_oleh">
-                                                    <input type="hidden" value="{{ $row['keterangan'] }}"
-                                                        name="keterangan">
-
-                                                    <button type="button"
-                                                        onclick="buttonModalFormDetil({{ $row['id'] }})"
-                                                        class="btn btn-primary disabled"> Edit</button>
-                                                </form>
-                                            @else
-                                                <form method="post" action="detilruangan" class="float-left mr-2">
-                                                    @csrf
-                                                    <input type="hidden" name="id_ruangan"
-                                                        value="{{ $row['id_periksaruang'] }}" />
-                                                    <button type="submit" class="btn btn-danger disabled"> Edit</button>
-                                                </form>
-                                            @endif
+                                            -
                                         @endif
                                     </td>
-
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
-
                     @if (Auth::user()->level == 2)
-                    <div style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" onclick="buttonModalTerima({{ $id_ruangan }})">
-                            Terima</button>
+                    <div style="text-align: center;" >
+                        <form method="post" action="terima_periksaalat" id="formTerimaLaporan{{ $id_alat }}">
+                            @csrf
+                            <input type="hidden" name="id_periksaalat"
+                                value="{{ $id_alat }}" />
+                            <button type="button" onclick="buttonTerimaLaporan({{ $id_alat }})" class="btn btn-primary btn-lg mt-5 @if ($status == 1) disabled @endif" >Terima</button>
+                        </form>
                     </div>
-                        
                     @endif
                 </div>
             </div>
         </div>
 
 
-        <div class="modal fade" id="ModalTambahKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Terima Laporan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="card-body">
-                            <form action="/terimaperiksaruang" method="post" id='formModalTambahKaryawan'>
-                                @csrf
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input type="hidden" id="id_periksaruangmodal" name="id_periksaruang">
-
-                                {{-- <div class="form-floating mb-3">
-                                <input class="form-control" name="diperiksaoleh" id="username" type="text"
-                                    placeholder="Diperiksa oleh" required/>
-                                <label for="inputEmail">Diperiksa oleh</label>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <input class="form-control" name="keterangan" id="username" type="text"
-                                    placeholder="keterangan" required/>
-                                <label for="inputEmail">Keterangan</label>
-                            </div> --}}
-
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Terima</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Modal -->
-        <div class="modal fade" id="formeditdetil" role="dialog">
+        <div class="modal fade" id="editalat" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
-                            Edit Detail Pemeriksaan Ruang
+                            Edit Pengoprasian Alat Utama
                         </h4>
                     </div>
 
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form method="post" action="edit_detilperiksaruang" id=''>
+                        <form method="post" action="edit_detilalat" id='forminput2'>
                             <div class="card mb-4">
                                 <div class="card-header" id='headertgl'></div>
                                 @csrf
+                                <input type="hidden" name="Modalid_detilalat" id="Modalid_detilalat" >
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-table me-1"></i>
+                                        Pemakaian
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Mulai</label>
+                                            <div class="col-sm">
+                                                <input type="datetime-local" name="mulai_pemakaian" class="form-control 2"
+                                                    id="Modalmulai_pemakaian" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Selesai</label>
+                                            <div class="col-sm">
+                                                <input type="datetime-local" name="selesai_pemakaian" class="form-control 2"
+                                                    id="Modalselesai_pemakaian" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Produksi</label>
+                                            <div class="col-sm">
+                                                <input type="text" name="produksi" class="form-control 2"
+                                                    id="Modalproduksi" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">No.
+                                                Batch</label>
+                                            <div class="col-sm">
+                                                <input type="text" name="no_batch" class="form-control 2" id="Modalno_batch"
+                                                    placeholder="no batch..." />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
-                                        Pemeriksaan Ruang
+                                        Pembersihan
                                     </div>
                                     <div class="card-body">
-                                        @csrf
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <input type="hidden" name="id_ruangan" id="idRuanganEditModal"
-                                            class="form-control" placeholder="" />
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
-                                            <div class="col-sm">
-                                                <input class="form-control" type='text' readonly placeholder="Ruangan"
-                                                    style="height: 35px;" value="{{ $nama_ruangan }}"
-                                                    id="inlineFormCustomSelect">
-                                            </div>
-                                        </div>
 
-                                        <div style="padding-left:10%;" class="form-group row">
-                                            <div class="col-sm-6">Lantai</div>
-                                            <div class="col-sm-6">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="hidden" name='lantai' value="Belum">
-                                                    <input type="checkbox" name="lantai" class="custom-control-input"
-                                                        value="Sudah" id="lantaiEditModal">
-                                                    <label class="custom-control-label" for="lantaiEditModal">Sudah</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="padding-left:10%;" class="form-group row">
-                                            <div class="col-sm-6">Meja</div>
-                                            <div class="col-sm-5">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="hidden" name='meja' value="Belum">
-                                                    <input type="checkbox" name="meja" class="custom-control-input"
-                                                        value="Sudah" id="mejaEditModal">
-                                                    <label class="custom-control-label" for="mejaEditModal">Sudah</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="padding-left:10%;" class="form-group row">
-                                            <div class="col-sm-6">Jendela</div>
-                                            <div class="col-sm-6">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="hidden" name='jendela' value="Belum">
-                                                    <input type="checkbox" name="jendela" class="custom-control-input"
-                                                        value="Sudah" id="jendelaEditModal">
-                                                    <label class="custom-control-label"
-                                                        for="jendelaEditModal">Sudah</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="padding-left:10%;" class="form-group row">
-                                            <div class="col-sm-6">Langit-langit/
-                                                Plafon</div>
-                                            <div class="col-sm-6">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="hidden" name='langit' value="Belum">
-                                                    <input type="checkbox" name="langit" class="custom-control-input"
-                                                        value="Sudah" id="langitEditModal">
-                                                    <label class="custom-control-label" for="langitEditModal">Sudah</label>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Diperiksa Oleh</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Mulai</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="diperiksa oleh"
-                                                    style="height: 35px;" id="diperiksaEditModal" name="diperiksa_oleh">
+                                                <input type="datetime-local" name="mulai_pembersihan"
+                                                    class="form-control 2" id="Modalmulai_pembersihan" />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">selesai</label>
                                             <div class="col-sm">
-                                                <input class="form-control" type='text' placeholder="Ruangan"
-                                                    style="height: 35px;" name="keterangan" id="keteranganEditModal">
+                                                <input type="datetime-local" name="selesai_pembersihan"
+                                                    class="form-control 2" id="Modalselesai_pembersihan" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Oleh</label>
+                                            <div class="col-sm">
+                                                <input type="text" name="diperiksa_oleh" class="form-control 2"
+                                                    id="Modaldiperiksa_oleh" placeholder="Oleh..." />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="submit"
-                                    style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</button>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
+                                    <div class="col-sm">
+                                        <input type="text" name="keterangan" class="form-control 2" id="Modalketerangan"
+                                            placeholder="Keterangan" />
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" onclick="salert1(2)" href="#"
+                                    style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <!--  -->
-
-
-
-        <script>
-            function buttonModalTerima(p) {
-                // alert('ini'+p);
-                console.log(p);
-
-                $('#ModalTambahKaryawan').modal('show');
-                $("#id_periksaruangmodal").val(p);
-            }
-        </script>
-
-
-        <script>
-            function buttonModalFormDetil(p) {
-                $('#formeditdetil').modal('show');
-                // var lantai = $(this).data('lantai');
-                $idform = 'detilruangan' + p;
-
-                var id = $('#' + $idform + '').find('input[name="id_ruangan"]').val();
-                var lantai = $('#' + $idform + '').find('input[name="lantai"]').val();
-                var meja = $('#' + $idform + '').find('input[name="meja"]').val();
-                var jendela = $('#' + $idform + '').find('input[name="jendela"]').val();
-                var langit = $('#' + $idform + '').find('input[name="langit"]').val();
-                var diperiksa_oleh = $('#' + $idform + '').find('input[name="diperiksa_oleh"]').val();
-                var keterangan = $('#' + $idform + '').find('input[name="keterangan"]').val();
-
-                $('#idRuanganEditModal').val(id);
-                $('#diperiksaEditModal').val(diperiksa_oleh);
-                $('#keteranganEditModal').val(keterangan);
-
-                if (lantai != '') {
-                    // console.log('isi');
-                    $('#lantaiEditModal').prop('checked', true);
-                } else {
-                    $('#lantaiEditModal').prop('checked', false);
-                }
-
-                if (meja != '') {
-                    $('#mejaEditModal').prop('checked', true);
-                } else {
-                    $('#mejaEditModal').prop('checked', false);
-                }
-
-                if (jendela != '') {
-                    $('#jendelaEditModal').prop('checked', true);
-                } else {
-                    $('#jendelaEditModal').prop('checked', false);
-                }
-
-                if (langit != '') {
-                    $('#langitEditModal').prop('checked', true);
-                } else {
-                    $('#langitEditModal').prop('checked', false);
-                }
-            }
-        </script>
     </main>
+
+
+    <script>
+
+        function buttonModalFormDetil(p) {
+                $('#editalat').modal('show');
+            console.log(p)
+                $('#Modalid_detilalat').val(p.id_detilalat);
+                $('#Modalmulai_pemakaian').val(new Date(p.mulai_pemakaian).toJSON().slice(0,19));
+                $('#Modalselesai_pemakaian').val(new Date(p.selesai_pemakaian).toJSON().slice(0,19));
+                $('#Modalproduksi').val(p.produksi);
+                $('#Modalno_batch').val(p.no_batch);
+                $('#Modaldiperiksa_oleh').val(p.diperiksa_oleh);
+                $('#Modalmulai_pembersihan').val(new Date(p.mulai_pembersihan).toJSON().slice(0,19));
+                $('#Modalselesai_pembersihan').val(new Date(p.selesai_pembersihan).toJSON().slice(0,19));
+                $('#Modalketerangan').val(p.keterangan);
+                
+            }
+    </script>
 @endsection

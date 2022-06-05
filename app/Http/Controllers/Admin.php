@@ -1436,7 +1436,9 @@ class Admin extends Controller
         return view('catatan.dokumen.detailbatch', [
             'id' => $id, 'no' => $req['nomor'],
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
-            'list_olah' => $olah, 'rekon' => $rekon
+            'list_olah' => $olah, 'rekon' => $rekon,
+            'status' => $req['status'],
+
         ]);
     }
 
@@ -3018,7 +3020,7 @@ class Admin extends Controller
         $notif = [
             'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
             'notif_laporan' => "pengoperasian alat",
-            'notif_link' => 'pengoperasian-alat',
+            'notif_link' => 'pengoprasian-alat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
             'notif_2' => 0,
@@ -3037,6 +3039,7 @@ class Admin extends Controller
         log::insert($log);
         return redirect('/pengoprasian-alat');
     }
+
     public function tambah_detilalat(Request $req)
     {
 
@@ -3061,7 +3064,7 @@ class Admin extends Controller
 
        $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
-            'notif_laporan' => "Detil Pengoperasian Alat",
+            'notif_laporan' => "Detil Pembersihan Alat",
             'notif_link' => 'periksasanialat',
             'notif_waktu' => date('Y-m-d H:i:s'),
             'notif_1' => Auth::user()->level,
@@ -3080,6 +3083,51 @@ class Admin extends Controller
         ];
         log::insert($log);
         return redirect('/periksasanialat');
+    }
+
+    public function tambah_detiloperasilalat(Request $req)
+    {
+
+        // dd(Detilperiksaalat::all());
+        $id = Auth::user()->id;
+        $induk =  $req['id_alat'];
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            'id_induk' => $req['id_alat'],
+            'mulai_pemakaian' => $req['mulai_pemakaian'],
+            'selesai_pemakaian' => $req['selesai_pemakaian'],
+            'produksi' => $req['produksi'],
+            'no_batch' => $req['no_batch'],
+            'diperiksa_oleh' => $req['diperiksa_oleh'],
+            'mulai_pembersihan' => $req['mulai_pembersihan'],
+            'selesai_pembersihan' => $req['selesai_pembersihan'],
+            'keterangan' => $req['keterangan']
+        ];
+
+        // $nomer = detilalat::insertGetId($hasil);
+        Detilperiksaalat::insert($hasil);
+
+       $notif = [
+            'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
+            'notif_laporan' => "Detil Pengoperasian Alat",
+            'notif_link' => 'pengoprasian-alat',
+            'notif_waktu' => date('Y-m-d H:i:s'),
+            'notif_1' => Auth::user()->level,
+            'notif_2' => 0,
+            'notif_3' => 0,
+            'notif_level' => 1,
+            'status' => 0,
+            'id_pabrik' => Auth::user()->pabrik,
+        ];
+        notif::insert($notif);
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan detil pengoprasian alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        return redirect('/pengoprasian-alat');
     }
 
 
@@ -3109,7 +3157,9 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/periksasanialat');
+        return \Illuminate\Support\Facades\Redirect::back();
+
+        // return redirect('/periksasanialat');
     }
 
 
@@ -3124,15 +3174,27 @@ class Admin extends Controller
         } else
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
                 ->get(['pengoprasianalats.*', 'protaps.protap_nama', 'protap_id']);
+
         return view('catatan.dokumen.pengoprasianalat', compact('data', 'protap'));
     }
-    public function tampil_detilalat(Request $req)
+
+    public function tampil_detiloperasialat(Request $req)
     {
         // dd($req);
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
         $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
-        return view('catatan.dokumen.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
+        return view('catatan.dokumen.detiloperasialat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
+    }
+
+
+    public function tampil_detilperiksaalat(Request $req)
+    {
+        // dd($req);
+        $pabrik = Auth::user()->pabrik;
+        // session(['idoperasi' => $req['induk']]);
+        $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
+        return view('catatan.higidansani.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
     }
 
 
@@ -3435,7 +3497,6 @@ class Admin extends Controller
             'kode_bahan' => $req['kode_bahan'],
             'nama_bahanbaku' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
-            'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
@@ -3474,7 +3535,6 @@ class Admin extends Controller
             'kode_produk' => $req['kode_produk'],
             'nama_produkjadi' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
-            'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
@@ -3512,7 +3572,6 @@ class Admin extends Controller
             'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
             'no_batch' => $req['nobatch'],
-            'tanggal_ambil' => $req['tanggal'],
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box'],
             'jumlah_produk' => $req['jumlah_ambil'],
@@ -3923,7 +3982,11 @@ class Admin extends Controller
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         // $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
-        return view('catatan.dokumen.detil.detiltimbangbahan', ['data' => $data, 'bahanbaku' => $bahanbaku]);
+        return view('catatan.dokumen.detil.detiltimbangbahan', [
+            'data' => $data, 
+            'bahanbaku' => $bahanbaku, 
+            'status' => $status,
+        ]);
     }
 
     public function tampil_detiltimbangproduk(Request $req)

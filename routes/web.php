@@ -313,6 +313,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_operasialat', [Admin::class, 'tambah_operasialat'])->name('tambah_operasialat');
         Route::post('edit_operasialat', [Admin::class, 'edit_operasialat'])->name('edit_operasialat');
         Route::post('tambah_detilalat', [Admin::class, 'tambah_detilalat'])->name('tambah_detilalat');
+        Route::post('tambah_detiloperasilalat', [Admin::class, 'tambah_detiloperasilalat'])->name('tambah_detiloperasilalat');
         Route::post('edit_detilalat', [Admin::class, 'edit_detilalat'])->name('edit_detilalat');
         Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
         Route::post('edit_pemusnahanbahan', [Admin::class, 'edit_pemusnahanbahan'])->name('edit_pemusnahanbahan');
@@ -382,7 +383,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk'])->name('penarikan-produk');
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
         Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
-        Route::post('detilalat', [Admin::class, 'tampil_detilalat'])->name('detilalat');
+        Route::post('tampil_detilperiksaalat', [Admin::class, 'tampil_detilperiksaalat'])->name('tampil_detilperiksaalat');
+        Route::post('tampil_detiloperasialat', [Admin::class, 'tampil_detiloperasialat'])->name('tampil_detiloperasialat');
         Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');
         // Route::post('detil-alat', [Admin::class, 'tampil_detilalatid']);
         Route::get('pelulusan-produk', [Admin::class, 'tampil_pelulusanproduk'])->name('pelulusan-produk');

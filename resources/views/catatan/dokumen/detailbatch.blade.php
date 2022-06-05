@@ -105,9 +105,7 @@
                 <!-- pop up -->
                 <!-- Button to trigger modal -->
                 @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" <?php if ($status > 0) {
-                        echo 'disabled';
-                    } ?>>
+                    <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm">
                         Tambah Komposisi
                     </button>
                 @endif
@@ -188,10 +186,7 @@
                                 <td>
                                     @if (Auth::user()->level != 2)
                                         <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button"
-                                        class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                        <?php if ($status > 0) {
-                                            echo 'disabled';
-                                        } ?>>Hapus</a>
+                                        class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                     @endif
 
                                 </td>
@@ -211,11 +206,7 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm1"
-                            <?php if ($status > 0) {
-                                echo 'disabled';
-                            } ?>>
-                            Tambah Peralatan
+                        <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm1">Tambah Peralatan
                         </button>
                     @endif
 
@@ -288,10 +279,7 @@
                                     <td>
                                         @if (Auth::user()->level != 2)
                                             <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button"
-                                            class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                            <?php if ($status > 0) {
-                                                echo 'disabled';
-                                            } ?>>Hapus</a>
+                                            class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                         @endif
                                         
                                     </td>
@@ -310,11 +298,7 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2"
-                                <?php if ($status > 0) {
-                                    echo 'disabled';
-                                } ?>>
-                                Data Penimbangan
+                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm2">Data Penimbangan
                             </button>
                         @endif
                         <!-- Modal -->
@@ -420,8 +404,7 @@
                                         <td>{{ $row['penimbangan_periksaoleh'] }}</td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                                <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button"
-                                                    class="btn btn-danger" onclick="return confirm('Hapus? ')">Hapus</a>
+                                                <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button"class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -440,11 +423,7 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm3"
-                                <?php if ($status > 0) {
-                                    echo 'disabled';
-                                } ?>>
-                                Perlakuan
+                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm3">Perlakuan
                             </button>
                         @endif
                         <!-- Modal -->
@@ -510,10 +489,7 @@
                                         <td>
                                             @if (Auth::user()->level != 2)
                                                 <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button"
-                                                class="btn btn-danger" onclick="return confirm('Hapus? ')"
-                                                <?php if ($status > 0) {
-                                                    echo 'disabled';
-                                                } ?>>Hapus</a>
+                                                class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                             @endif
 
                                             
@@ -563,7 +539,13 @@
                             </form>
                             @if (Auth::user()->level == 2)
                                 <center>
-                                    
+                                    <form action="/pjt_pengolahanbatch" method="post" id="terimalaporan{{ $id }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $id }}">
+                                        <button onclick="TerimaLaporan({{ $id }})" type="button" class="btn btn-primary btn-lg">
+                                            Terima
+                                        </button>
+                                    </form>
                                 </center>
                             @endif
 

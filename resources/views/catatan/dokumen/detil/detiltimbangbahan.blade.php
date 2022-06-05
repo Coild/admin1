@@ -16,9 +16,15 @@
                 <div class="card-body">
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                        Tambah Data
-                    </button>
+                    @if ($status == 0)
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                            Tambah Data
+                        </button>
+                    @else
+                        <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm">
+                            Tambah Data
+                        </button>    
+                    @endif
 
                     <!-- Modal -->
                     <div class="modal fade" id="modalForm" role="dialog">
@@ -126,7 +132,14 @@
                         <td scope="col">{{$row['nama_suplier']}}</td>
                         <td scope="col">{{$row['jumlah_bahan']}}</td>
                         <td scope="col">{{$row['hasil_penimbangan']}}</td>
-                        <td scope="col"><button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['id_detiltimbangbahan']}}">edit</button></td>
+                        <td scope="col">
+                            @if ($status == 0)
+                                <button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['id_detiltimbangbahan']}}">edit</button>
+                            @else
+                                <button class="btn btn-danger disabled"> edit  </button>
+                            @endif
+                            
+                        </td>
                         </tr>
                         @endforeach
                     </tbody>

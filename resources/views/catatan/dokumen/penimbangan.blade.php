@@ -119,13 +119,33 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                 <?php if ($row['status'] == 0) { ?>
+                                                    <form action="detiltimbangbahan" method="post" class="float-left mr-3">
+                                                        @csrf
+                                                        <input type="hidden" name="induk" value="{{ $row['timbang_bahan_id'] }}">
+                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                                        <input type="hidden" name="noloth" value="{{ $row['no_loth'] }}">
+                                                        <button type="submit" class="btn btn-success"> Lihat
+                                                        </button>
+                                                    </form>
+
                                                     <form method="post" action="terimapenimbanganbahan" id="terimalaporan{{ $row['timbang_bahan_id'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['timbang_bahan_id'] }}" />
+                                                        <input type="hidden" name="status" value="{{ $row['status'] }}" />
+
                                                         <button type="button" onclick="TerimaLaporan({{ $row['timbang_bahan_id'] }})"  class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
+                                                    <form action="detiltimbangbahan" method="post" class="float-left mr-3">
+                                                        @csrf
+                                                        <input type="hidden" name="induk" value="{{ $row['timbang_bahan_id'] }}">
+                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                                        <input type="hidden" name="noloth" value="{{ $row['no_loth'] }}">
+                                                        <button type="submit" class="btn btn-success"> Lihat
+                                                        </button>
+                                                    </form>
+                                                    
                                                     <form method="post" action="terimapenimbanganbahan" id="terimalaporan2">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />

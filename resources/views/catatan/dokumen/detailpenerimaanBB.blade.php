@@ -136,7 +136,7 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                    <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
+                                    <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-kedaluwarsa="{{ $row['kedaluwarsa'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_kontrol'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-primary">Edit</button>
                                     @else
                                     <button id="klikbahanmasuk" data-toggle="modal" data-target="#editbahanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_ppbahanbaku'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
@@ -411,7 +411,8 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                    <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" 
+                                    data-kedaluwarsa="{{ $row['kedaluwarsa'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_kontrol'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-primary">Edit</button>
                                     @else
                                     <button type="button" id="klikprodukmasuk" data-toggle="modal" data-target="#editprodukmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_produkjadimasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
@@ -680,7 +681,7 @@
                                 @if (Auth::user()->level != 2)
                                 <td>
                                     @if ($status == 0)
-                                    <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
+                                    <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-kedaluwarsa="{{ $row['kedaluwarsa'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_kontrol'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-primary">Edit</button>
                                     @else
                                     <button type="button" id="klikkemasanmasuk" data-toggle="modal" data-target="#editkemasanmasuk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-noloth="{{ $row['no_loth'] }}" data-pemasok="{{ $row['pemasok'] }}" data-nokontrol="{{ $row['no_loth'] }}" data-jumlah="{{ $row['jumlah'] }}" data-protap="{{ $row['no_pob'] }}" data-id={{ $row['id_kemasanmasuk'] }} class="btn btn-danger disabled">Edit</button>
                                     @endif
@@ -861,7 +862,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Loth</label>
                             <div class="col-sm">
-                                <input type="text" id="bahanmasuk_noloth" class="tanggal" name="no_loth" placeholder="Nomor Loth" />
+                                <input type="text" id="bahanmasuk_noloth" class="form-control 7" name="no_loth" placeholder="Nomor Loth" />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -1017,7 +1018,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="inputEmail3" id="produkmasuk_kadaluarsa">Tanggal
+                            <label class="col-sm-3 col-form-label" for="inputEmail3" id="produkmasuk_kadaluarsaedit">Tanggal
                                 Kadaluarsa</label>
                             <div class="col-sm">
                                 <input type="date" id="produkmasuk_kadaluarsa" name="kedaluwarsa" class="form-control 9" />
@@ -1152,7 +1153,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="inputEmail3" id="kemasanmasuk_kadaluarsa">Tanggal
+                            <label class="col-sm-3 col-form-label" for="inputEmail3" id="kemasanmasuk_kadaluarsaedit">Tanggal
                                 Kadaluarsa</label>
                             <div class="col-sm">
                                 <input type="date" id="kemasanmasuk_kadaluarsa" name="kedaluwarsa" class="form-control 11" />
@@ -1247,7 +1248,7 @@
                 var noloth = $(this).data('noloth');
                 var nokontrol = $(this).data('nokontrol');
                 var pemasok = $(this).data('pemasok');
-                var kadaluarsa = $(this).data('kadaluarsa');
+                var kadaluarsa = $(this).data('kedaluwarsa');
                 var id = $(this).data('id');
 
                 $("#bahanmasuk_nama").val(nama);
@@ -1270,7 +1271,7 @@
                 var noloth = $(this).data('noloth');
                 var nokontrol = $(this).data('nokontrol');
                 var pemasok = $(this).data('pemasok');
-                var kadaluarsa = $(this).data('kadaluarsa');
+                var kadaluarsa = $(this).data('kedaluwarsa');
                 var id = $(this).data('id');
 
                 $("#produkmasuk_nama").val(nama);
@@ -1292,7 +1293,7 @@
                 var noloth = $(this).data('noloth');
                 var nokontrol = $(this).data('nokontrol');
                 var pemasok = $(this).data('pemasok');
-                var kadaluarsa = $(this).data('kadaluarsa');
+                var kadaluarsa = $(this).data('kedaluwarsa');
                 var id = $(this).data('id');
 
                 $("#kemasanmasuk_nama").val(nama);
