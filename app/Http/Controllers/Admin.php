@@ -2908,10 +2908,11 @@ class Admin extends Controller
     public function edit_distribusi(Request $req)
     {
         $id = $req['id'];
+        // dd($req);
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_distribusi' => $req['kode_distribusi'],
-            'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],

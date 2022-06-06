@@ -86,7 +86,7 @@
                                                                 <input type="text" name="jumlah" class="form-control" id="inputEmail3" placeholder="Jumlah" />
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <select class="form-select" name="satuan" id="">
+                                                                <select class="form-select" name="satuan" id="satuuan">
                                                                     <option value="gr"> gr</option>
                                                                     <option value="kg"> kg</option>
                                                                     <option value="ml"> ml</option>
@@ -167,7 +167,10 @@
 
                                 @else
                                 <?php if ($row['status'] == 0) { ?>
-                                    <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
+                                    <button id="klikdis" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#edit_distribusi" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" 
+                                    data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah']) }}" 
+                                    data-satuan="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah']) }}" 
+                                    data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
                                 <?php } elseif ($row['status'] == 1) { ?>
                                     <button id="klikdis" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#edit_distribusi" data-kode="{{ $row['kode_distribusi'] }}" data-nobatch="{{ $row['id_batch'] }}" data-jumlah="{{ $row['jumlah'] }}" data-nama="{{ $row['nama_distributor'] }}" data-id="{{ $row['id_distribusi'] }}">edit</button>
                                 <?php } ?>
@@ -246,7 +249,7 @@
                                                 <input type="text" name="jumlah" class="form-control 1" id="isi_jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuan" id="satuan">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -282,8 +285,10 @@
         var jumlah = $(this).data('jumlah');
         var id = $(this).data('id');
         var protap = $(this).data('protap');
+        var satuan = $(this).data('satuan');
 
         $("#protap").val(protap);
+        $("#satuan").val(satuan);
         $("#isi_nobatch").val(nobatch);
         $("#isi_jumlah").val(jumlah);
         $("#isi_kode").val(kode);

@@ -215,7 +215,8 @@
                                                         <input type="hidden" name="nobatch" value="" />
                                                         <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
                                                         data-jumlahbox="{{ preg_replace('/[^0-9]/', '', $row['jumlah_kemasanbox']) }}" 
-                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}" data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
+                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}" 
+                                                        data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
 
