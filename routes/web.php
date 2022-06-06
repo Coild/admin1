@@ -99,6 +99,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //pemilik
     Route::group(['middleware' => 'pemilik'], function () {
+        Route::get('/laporanpemilik', [Admin::class, 'tampil_laporan'])->name('laporanpemilik');
+        // Route::post('/laporan', [Admin::class, 'tampil_laporan']);
         Route::get('/aplicant', [pemilik::class, 'tampil_aplicant']);
         Route::post('/terima', [pemilik::class, 'terima']);
         Route::post('/tolak', [pemilik::class, 'tolak']);

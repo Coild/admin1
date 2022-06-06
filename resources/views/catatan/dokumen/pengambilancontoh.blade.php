@@ -215,7 +215,8 @@
                                                         <input type="hidden" name="nobatch" value="" />
                                                         <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
                                                         data-jumlahbox="{{ preg_replace('/[^0-9]/', '', $row['jumlah_kemasanbox']) }}" 
-                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}" data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
+                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}" 
+                                                        data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
 
@@ -1168,8 +1169,8 @@
                 Object.keys(bahanbakus).forEach(function(key) {
                     tmp.push(bahanbakus[key]);
                 })
-            }
             bahanbakus = tmp
+            }
             if (cekname) {
                 document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
                     .bahanbaku_nama ===
@@ -1186,8 +1187,8 @@
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
                 })
-            }
             kemasans = tmp
+            }
             if (cekname) {
                 document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('namakemasan').value).kemasan_kode
@@ -1203,8 +1204,8 @@
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
-            }
             produks = tmp
+            }
             if (cekname) {
                 document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('namaproduk').value).produk_kode
@@ -1221,8 +1222,9 @@
                 Object.keys(bahanbakus).forEach(function(key) {
                     tmp.push(bahanbakus[key]);
                 })
-            }
+                
             bahanbakus = tmp
+            }
             if (cekname) {
                 document.getElementById('bahan_kode').value = bahanbakus.find(bahanbaku => bahanbaku
                     .bahanbaku_nama ===
@@ -1239,8 +1241,9 @@
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
                 })
+                kemasans = tmp
             }
-            kemasans = tmp
+            
             if (cekname) {
                 document.getElementById('kemasan_kode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('kemasan_nama').value).kemasan_kode
@@ -1256,8 +1259,9 @@
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
+                produks = tmp
             }
-            produks = tmp
+            
             if (cekname) {
                 document.getElementById('produk_kode').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('produk_nama').value).produk_kode

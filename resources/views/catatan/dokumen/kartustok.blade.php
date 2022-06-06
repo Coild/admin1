@@ -115,7 +115,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
-                                                                                        name="satuan" id="">
+                                                                                        name="satuan" id="satuan1">
                                                                                         <option value="gr"> gr</option>
                                                                                         <option value="kg"> kg</option>
                                                                                         <option value="ml"> ml</option>
@@ -318,7 +318,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
-                                                                                        name="satuan" id="">
+                                                                                        name="satuan" id="satuan2">
                                                                                         <option value="gr"> gr</option>
                                                                                         <option value="kg"> kg</option>
                                                                                         <option value="ml"> ml</option>
@@ -518,7 +518,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
-                                                                                        name="satuan" id="">
+                                                                                        name="satuan" id="satuan3">
                                                                                         <option value="gr"> gr</option>
                                                                                         <option value="kg"> kg</option>
                                                                                         <option value="ml"> ml</option>
@@ -721,7 +721,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
-                                                                                        name="satuan" id="">
+                                                                                        name="satuan" id="satuan4">
                                                                                         <option value="gr"> gr</option>
                                                                                         <option value="kg"> kg</option>
                                                                                         <option value="ml"> ml</option>
@@ -844,7 +844,8 @@
                 $(inputid).insertAfter("#ambil_tanggal1")
                 $("#namabahanbaku").val(params.nama_bahan)
                 $("#no_batch").val(params.id_batch)
-                $("#jumlah").val(params.jumlah)
+                $("#jumlah").val(params.jumlah.replace(/[^0-9]/g, ''))
+                $("#satuan1").val(params.jumlah.replace(/[^a-zA-Z]+/, ''))
                 $("#nama_distributor").val(params.nama_distributor)
             }
 
@@ -856,7 +857,8 @@
                 $(inputid).insertAfter("#ambil_tanggal2")
                 $("#namabahanbaku1").val(params.nama_bahankemas)
                 $("#no_batch1").val(params.id_batch)
-                $("#jumlah1").val(params.jumlah)
+                $("#jumlah1").val(params.jumlah.replace(/[^0-9]/g, ''))
+                $("#satuan2").val(params.jumlah.replace(/[^a-zA-Z]+/, ''))
                 $("#nama_distributor1").val(params.nama_distributor)
             }
 
@@ -868,7 +870,8 @@
                 $(inputid).insertAfter("#ambil_tanggal3")
                 $("#namabahanbaku2").val(params.nama_produkantara)
                 $("#no_batch2").val(params.id_batch)
-                $("#jumlah2").val(params.jumlah)
+                $("#jumlah2").val(params.jumlah.replace(/[^0-9]/g, ''))
+                $("#satuan3").val(params.jumlah.replace(/[^a-zA-Z]+/, ''))
                 $("#nama_distributor2").val(params.nama_distributor)
             }
 
@@ -880,7 +883,8 @@
                 $(inputid).insertAfter("#ambil_tanggal4")
                 $("#namaproduk3").val(params.nama_produkjadi)
                 $("#no_batch3").val(params.id_batch)
-                $("#jumlah3").val(params.jumlah)
+                $("#jumlah3").val(params.jumlah.replace(/[^0-9]/g, ''))
+                $("#satuan4").val(params.jumlah.replace(/[^a-zA-Z]+/, ''))
                 $("#nama_distributor3").val(params.nama_distributor)
             }
         </script>

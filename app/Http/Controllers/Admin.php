@@ -2912,10 +2912,11 @@ class Admin extends Controller
     public function edit_distribusi(Request $req)
     {
         $id = $req['id'];
+        // dd($req);
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_distribusi' => $req['kode_distribusi'],
-            'tanggal' => $req['tanggal'],
             'id_batch' => $req['no_batch'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'nama_distributor' => $req['nama_distributor'],
@@ -3932,7 +3933,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'nama_bahan_baku' => $req['nama_bahanbaku'],
-            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
             'hasil_timbang' => $req['hasil_penimbangan'],
             'protap' => $req['protap'],
         ];
