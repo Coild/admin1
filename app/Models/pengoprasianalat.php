@@ -15,6 +15,7 @@ class pengoprasianalat extends Model
         'mulai',
         'selesai',
         'oleh',
-        'ket'
+        'ket',
+        'protap'
     ];
 }

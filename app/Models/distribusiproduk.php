@@ -17,5 +17,6 @@ class distribusiproduk extends Model
         'id_batch',
         'jumlah',
         'nama_distributor',
+        'protap'
     ];
 }

@@ -118,7 +118,7 @@
                                                                             <input type="text" name="jumlah_box" class="form-control 1" placeholder="Jumlah Bahan Baku dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanbox" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -138,7 +138,7 @@
                                                                             <input type="text" name="jumlah_ambil" class="form-control 1" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanproduk" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -213,18 +213,20 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
+                                                        data-jumlahbox="{{ preg_replace('/[^0-9]/', '', $row['jumlah_kemasanbox']) }}" 
+                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}" data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
 
-                                                        <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-danger disabled">Edit</button>
+                                                    <button id="klikbahan" type="button" data-toggle="modal" data-target="#editbahan" data-kode="{{ $row['kode_bahan'] }}" data-nama="{{ $row['nama_bahanbaku'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_bahanbaku'] }}" class="btn btn-danger disabled">Edit</button>
 
                                                 <?php } ?>
                                             </td>
                                             @else
                                             <?php if ($row['status'] == 0) { ?>
                                                 <td>
-                                                    <form method="post" action="terimaambilbahanbaku"  id="terimalaporan{{ $row['no_batch'] }}">
+                                                    <form method="post" action="terimaambilbahanbaku" id="terimalaporan{{ $row['no_batch'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
 
@@ -353,7 +355,7 @@
                                                                             <input type="text" name="jumlah_box" class="form-control 2" placeholder="Jumlah Produk Dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanbox" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -374,7 +376,7 @@
                                                                             <input type="text" name="jumlah_ambil" class="form-control 2" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanproduk" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -449,13 +451,27 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikproduk" type="button" data-toggle="modal" data-target="#editproduk" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_produkjadi'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikproduk" type="button" data-toggle="modal" data-target="#editproduk" 
+                                                        data-protap="{{ $row['protap_id'] }}" 
+                                                        data-kode="{{ $row['kode_produk'] }}" 
+                                                        data-nama="{{ $row['nama_produkjadi'] }}" 
+                                                        data-nobatch="{{ $row['no_batch'] }}" 
+                                                        data-tglambil="{{ $row['tanggal_ambil'] }}" 
+                                                        data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
+                                                        data-jumlahbox="{{ preg_replace('/[^0-9]/', '', $row['jumlah_kemasanbox']) }}" 
+                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}"
+                                                        data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}"
+                                                        data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}" 
+                                                        data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" 
+                                                        data-id="{{ $row['id_produkjadi'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikproduk" type="submit" data-toggle="modal" data-target="#editproduk" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_produkjadi'] }}" class="btn btn-danger disabled">Edit</button>
+                                                        <button id="klikproduk" type="submit" data-toggle="modal" data-target="#editproduk" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produkjadi'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
+                                                        data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" 
+                                                        data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_produkjadi'] }}" class="btn btn-danger disabled">Edit</button>
                                                     </form>
                                                 <?php } ?>
 
@@ -591,7 +607,7 @@
                                                                             <input type="text" name="jumlah_box" class="form-control 3" placeholder="Jumlah Kemasan dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanbox" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -612,7 +628,7 @@
                                                                             <input type="text" name="jumlah_ambil" class="form-control 3" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <select class="form-select" name="satuan" id="">
+                                                                            <select class="form-select" name="satuanproduk" id="">
                                                                                 <option value="gr"> gr</option>
                                                                                 <option value="kg"> kg</option>
                                                                                 <option value="ml"> ml</option>
@@ -687,7 +703,12 @@
                                                     <form action="#">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="" />
-                                                        <button id="klikkemasan" type="button" data-toggle="modal" data-target="#editkemasan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_kemasan'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" data-jumlahbox="{{ $row['jumlah_kemasanbox'] }}" data-jumlahproduk="{{ $row['jumlah_produk'] }}" data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_kemasan'] }}" class="btn btn-primary">Edit</button>
+                                                        <button id="klikkemasan" type="button" data-toggle="modal" data-target="#editkemasan" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_kemasan'] }}" data-nama="{{ $row['nama_kemasan'] }}" data-nobatch="{{ $row['no_batch'] }}" data-tglambil="{{ $row['tanggal_ambil'] }}" data-kadaluarsa="{{ $row['kedaluwarsa'] }}" 
+                                                        data-jumlahbox="{{ preg_replace('/[^0-9]/', '', $row['jumlah_kemasanbox']) }}" 
+                                                        data-satuanbox="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_kemasanbox'])   }}"
+                                                        data-jumlahproduk="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}"
+                                                        data-satuanproduk="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}"  
+                                                        data-jeniswarna="{{ $row['jenis_warnakemasan'] }}" data-id="{{ $row['id_kemasan'] }}" class="btn btn-primary">Edit</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="#">
@@ -712,7 +733,7 @@
                                                     <form method="post" action="terimaambilbahankemas" id="terimalaporan6">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan(6)" class="btn btn-danger" disabled    >Terima</button>
+                                                        <button type="button" onclick="TerimaLaporan(6)" class="btn btn-danger" disabled>Terima</button>
                                                     </form>
                                                 <?php } ?>
 
@@ -815,7 +836,7 @@
                                                 <input type="text" name="jumlah_box" class="form-control 7" placeholder="Jumlah Bahan Baku dalam Box" id="bahan_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanbox" id="bahan_box">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -837,7 +858,7 @@
                                                 <input type="text" name="jumlah_ambil" class="form-control 7" placeholder="Jumlah Produk Yang Diambil" id="bahan_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanproduk" id="bahan_produk">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -949,7 +970,7 @@
                                                 <input type="text" name="jumlah_box" class="form-control 8" placeholder="Jumlah Produk Dalam Box" id="produk_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanbox" id="produk_box">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -970,7 +991,7 @@
                                                 <input type="text" name="jumlah_ambil" class="form-control 8" placeholder="Jumlah Produk Yang Diambil" id="produk_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanproduk" id="produk_produk">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -1084,7 +1105,7 @@
                                                 <input type="text" name="jumlah_box" class="form-control 9" placeholder="Jumlah Kemasan dalam Box" id="kemasan_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanbox" id="kemasan_box">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -1104,7 +1125,7 @@
                                                 <input type="text" name="jumlah_ambil" class="form-control 9" placeholder="Jumlah Kemasan Yang Diambil" id="kemasan_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuanproduk" id="kemasan_produk">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -1253,12 +1274,16 @@
             var nobatch = $(this).data('nobatch');
             var jumlahbox = $(this).data('jumlahbox');
             var jumlahproduk = $(this).data('jumlahproduk');
+            var satuanbox = $(this).data('satuanbox');
+            var satuanproduk = $(this).data('satuanproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
             var protap = $(this).data('protap');
 
             $("#bahan_protap").val(protap);
             $("#bahan_nama").val(nama);
+            $("#bahan_box").val(satuanbox);
+            $("#bahan_produk").val(satuanproduk);
             $("#bahan_kode").val(kode);
             $("#bahan_tglambil").val(tglambil);
             $("#bahan_nobatch").val(nobatch);
@@ -1277,6 +1302,8 @@
             var nobatch = $(this).data('nobatch');
             var jumlahbox = $(this).data('jumlahbox');
             var jumlahproduk = $(this).data('jumlahproduk');
+            var satuanbox = $(this).data('satuanbox');
+            var satuanproduk = $(this).data('satuanproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
             var protap = $(this).data('protap');
@@ -1284,6 +1311,8 @@
 
             $("#produk_protap").val(protap);
             $("#produk_kode").val(kode);
+            $("#produk_box").val(satuanbox);
+            $("#produk_produk").val(satuanproduk);
             $("#produk_tglambil").val(tglambil);
             $("#produk_nobatch").val(nobatch);
             $("#produk_kadaluarsa").val(kadaluarsa);
@@ -1301,6 +1330,8 @@
             var nobatch = $(this).data('nobatch');
             var jumlahbox = $(this).data('jumlahbox');
             var jumlahproduk = $(this).data('jumlahproduk');
+            var satuanbox = $(this).data('satuanbox');
+            var satuanproduk = $(this).data('satuanproduk');
             var jeniswarna = $(this).data('jeniswarna');
             var id = $(this).data('id');
             var protap = $(this).data('protap');
@@ -1308,6 +1339,8 @@
 
             $("#kemasan_protap").val(protap);
             $("#kemasan_kode").val(kode);
+            $("#kemasan_box").val(satuanbox);
+            $("#kemasan_produk").val(satuanproduk);
             $("#kemasan_tglambil").val(tglambil);
             $("#kemasan_nobatch").val(nobatch);
             $("#kemasan_kadaluarsa").val(kadaluarsa);

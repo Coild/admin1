@@ -105,7 +105,7 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="form-select"
-                                                                    name="satuan" id="">
+                                                                    name="satuan" id="satuan">
                                                                     <option value="gr"> gr</option>
                                                                     <option value="kg"> kg</option>
                                                                     <option value="ml"> ml</option>
@@ -223,10 +223,11 @@
             $("#protap_induk").val(params.protap)
             $("#kode_penarikan").val(params.kode_penarikan)
             $("#nama_distributor").val(params.nama_distributor)
-            $("#produkditarik").val(params.produk_ditarik)
-            $("#jumlah_produk_ditarik").val(params.jumlah_produk_ditarik)
+            $("#produkditarik").val(params.produk_ditarik)            
             $("#no_batch").val(params.no_batch)
             $("#alasan_penarikan").val(params.alasan_penarikan)
+            $("#jumlah_produk_ditarik").val(params.jumlah_produk_ditarik.replace(/[^0-9]/g, ''))
+            $("#satuan").val(params.jumlah_produk_ditarik.replace(/[^a-zA-Z]+/,''))
         }
     </script>
 </main>
