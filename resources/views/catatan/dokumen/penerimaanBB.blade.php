@@ -772,13 +772,15 @@
         });
         $("#kemasannama").change(function() {
             var tmp = []
+            console.log(kemasans);
             var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
                 document.getElementById('kemasannama').value)?.kemasan_nama;
             if (typeof kemasans === 'object') {
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
-            kemasans = tmp
+            
                 })
+                kemasans = tmp
             }
             if (cekname) {
                 document.getElementById('kemasankode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
@@ -814,7 +816,7 @@
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
             var protap = $(this).data('protap');
-            console.log(protap);
+            // console.log(protap); 
             $("#protap_bahan").val(protap);
             $("#bahannama").val(nama);
             $("#bahansatuan").val(satuan);
