@@ -1148,7 +1148,6 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_bahan' => $req['nama_bahanbaku'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
@@ -1198,7 +1197,6 @@ class Admin extends Controller
         // dd($id);
         $data = [
             'nama_produkjadi' => $req['nama_produkjadi'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
@@ -1254,7 +1252,6 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_kemasan' => $req['nama_kemasan'],
-            'no_pob' => $req['pob_no'],
             'no_loth' => $req['no_loth'],
             'pemasok' => $req['pemasok'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
