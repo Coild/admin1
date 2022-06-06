@@ -61,7 +61,7 @@ class dataPelaksana extends Controller
                             value=' . $data->nama . ' />
                             <input type="hidden" name="status_induk"
                             value=' . 1 . ' />
-                        <button type="submit" class="btn btn-primary">Lihat</button>
+                        <button type="submit" class="btn btn-success">Lihat</button>
                     </form>' . '<button type="button" id="editbahan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditbahan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $result = preg_replace("/[^0-9]/", "", $data->jumlah) .' data-satuan=' . $result = preg_replace("/[^a-zA-Z]+/", "", $data->jumlah) . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_bahan_id . '>Edit</button>';
                 }
@@ -76,14 +76,10 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
-                </form>' .'<form method="post" action="terima_cpbahan">
-                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-                        <input type="hidden" name="jenis" value=1 />
-                        <input type="hidden" name="nobatch"
-                            value=' . $data->cp_bahan_id . ' />
-                        <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
-                    </form>';
+                    <button type="submit" class="btn btn-success">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpbahan" id="formTerimaLaporan' . $data->cp_bahan_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=1 /><input type="hidden" name="nobatch"value=' . $data->cp_bahan_id . ' /><button type="button"onclick="buttonTerimaLaporan(' . $data->cp_bahan_id . ')" class="btn btn-primary float-left mr-2">Terima</button>
+                    </form>
+                    ';
                 } else {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                     ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -94,7 +90,7 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
+                    <button type="submit" class="btn btn-success">Lihat</button>
                 </form>' .'<form method="post" action="terima_cpbahan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
@@ -145,7 +141,7 @@ class dataPelaksana extends Controller
                             value=' . $data->nama . ' />
                             <input type="hidden" name="status_induk"
                             value=' . 1 . ' />
-                        <button type="submit" class="btn btn-primary">Lihat</button>
+                        <button type="submit" class="btn btn-success">Lihat</button>
                     </form>' . '<button type="button" id="editproduk" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditproduk"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_produk_id .'>Edit</button>';
                 }
@@ -160,13 +156,8 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
-                </form>' .'<form method="post" action="terima_cpproduk">
-                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-                        <input type="hidden" name="jenis" value=2 />
-                        <input type="hidden" name="nobatch"
-                            value=' . $data->cp_produk_id . ' />
-                        <button type="submit" class="btn btn-primary">Terima</button>
+                    <button type="submit" class="btn btn-success">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpproduk" id="formTerimaLaporan' . $data->cp_produk_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=2 /><input type="hidden" name="nobatch"value=' . $data->cp_produk_id . ' /><button type="button"onclick="buttonTerimaLaporan(' . $data->cp_produk_id . ')" class="btn btn-primary float-left mr-2">Terima</button>
                     </form>';
                 } else {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
@@ -178,7 +169,7 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
+                    <button type="submit" class="btn btn-success">Lihat</button>
                 </form>' .'<form method="post" action="terima_cpproduk">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=2 />
@@ -230,7 +221,7 @@ class dataPelaksana extends Controller
                             value=' . $data->nama . ' />
                             <input type="hidden" name="status_induk"
                             value=' . 1 . ' />
-                        <button type="submit" class="btn btn-primary">Lihat</button>
+                        <button type="submit" class="btn btn-success">Lihat</button>
                     </form>' . '<button type="button" id="editkemasan" class="btn btn-danger disabled" data-toggle="modal" data-target="#modaleditkemasan"
                     data-nama="' . $data->nama . '" data-ruangan=' . $data->ruang . ' data-jumlah=' . $data->jumlah . ' data-kode=' . $data->kode . ' data-cpid=' . $data->cp_kemasan_id . '>Edit</button>';
                 }
@@ -245,14 +236,8 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
-                </form>' .'<form method="post" action="terima_cpkemasan">
-                        ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
-                        <input type="hidden" name="jenis" value=1 />
-                        <input type="hidden" name="nobatch"
-                            value=' . $data->cp_kemasan_id . ' />
-                        <button type="submit" class="btn btn-primary">Terima</button>
-                    </form>';
+                    <button type="submit" class="btn btn-success">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpkemasan" id="formTerimaLaporan' . $data->cp_kemasan_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=3 /><input type="hidden" name="nobatch"value=' . $data->cp_kemasan_id . ' /><button type="button"onclick="buttonTerimaLaporan(' . $data->cp_kemasan_id . ')" class="btn btn-primary float-left mr-2">Terima</button></form>';
                 } else {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                     ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -263,7 +248,7 @@ class dataPelaksana extends Controller
                         value=' . $data->nama . ' />
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
-                    <button type="submit" class="btn btn-primary">Lihat</button>
+                    <button type="submit" class="btn btn-success">Lihat</button>
                 </form>' .'<form method="post" action="terima_cpkemasan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />

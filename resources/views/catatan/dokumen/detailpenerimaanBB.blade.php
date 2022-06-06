@@ -99,7 +99,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +231,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(2)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(2)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -374,7 +374,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -506,7 +506,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -644,7 +644,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(5)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(5)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -776,7 +776,7 @@
                                 <!-- Modal Footer -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(6)">Tambah</button>
+                                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(6)">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -895,7 +895,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(7)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(7)">Simpan</button>
                 </div>
             </div>
         </div>
@@ -958,7 +958,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(8)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(8)">Simpan</button>
                 </div>
             </div>
         </div>
@@ -1030,7 +1030,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(9)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(9)">Simpan</button>
                 </div>
             </div>
         </div>
@@ -1093,7 +1093,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(10)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(10)">Simpan</button>
                 </div>
             </div>
         </div>
@@ -1165,7 +1165,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(11)">Tambah</button>
+                    <button type="button" class="btn btn-primary submitBtn" onclick="salert1(11)">Simpan</button>
                 </div>
             </div>
         </div>
@@ -1229,7 +1229,7 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(12)">Tambah</button>
+                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(12)">Simpan</button>
                     </div>
                 </div>
             </div>
