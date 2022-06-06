@@ -469,7 +469,7 @@
                                                 <input type="text" id="bahanjumlah" name="jumlah" class="form-control 4" id="jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuan" id="bahansatuan">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -562,7 +562,7 @@
                                                 <input type="text" id="produkjumlah" name="jumlah" class="form-control 5" id="Jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuan" id="produksatuan">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -653,7 +653,7 @@
                                                 <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
-                                                <select class="form-select" name="satuan" id="">
+                                                <select class="form-select" name="satuan" id="kemasansatuan">
                                                     <option value="gr"> gr</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="ml"> ml</option>
@@ -808,6 +808,7 @@
 
         $(document).on('click', "#editbahan", function() {
             var nama = $(this).data('nama');
+            var satuan = $(this).data('satuan');
             var ruangan = $(this).data('ruangan');
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
@@ -816,6 +817,7 @@
             console.log(protap);
             $("#protap_bahan").val(protap);
             $("#bahannama").val(nama);
+            $("#bahansatuan").val(satuan);
             $("#bahanjumlah").val(jumlah);
             $("#bahanruang").val(ruangan);
             document.getElementById('bahankode').value = kode;
@@ -824,6 +826,7 @@
 
         $(document).on('click', "#editproduk", function() {
             var nama = $(this).data('nama');
+            var satuan = $(this).data('satuan');
             var ruangan = $(this).data('ruangan');
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
@@ -832,6 +835,7 @@
 
             $("#protap_produk").val(protap);
             $("#produknama").val(nama);
+            $("#produksatuan").val(satuan);
             $("#produkjumlah").val(jumlah);
             $("#produkruang").val(ruangan);
             document.getElementById('produkkode').value = kode;
@@ -840,6 +844,7 @@
 
         $(document).on('click', "#editkemasan", function() {
             var nama = $(this).data('nama');
+            var satuan = $(this).data('satuan');
             var ruangan = $(this).data('ruangan');
             var jumlah = $(this).data('jumlah');
             var kode = $(this).data('kode');
@@ -848,6 +853,7 @@
 
             $("#protap_kemasan").val(protap);
             $("#kemasannama").val(nama);
+            $("#kemasansatuan").val(satuan);
             $("#kemasanjumlah").val(jumlah);
             $("#kemasanruang").val(ruangan);
             document.getElementById('kemasankode').value = kode;
