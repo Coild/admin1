@@ -284,10 +284,23 @@
                                                     Diterima
                                                 <?php } ?>
                                             </td>
-                                            @if (Auth::user()->level == 2)
                                             <td>
+                                            <form action="detiltimbangproduk" method="post" class="float-left mr-3">
+                                                @csrf
+                                                <input type="hidden" name="induk" value="{{ $row['timbang_produk_id'] }}">
+                                                <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                                <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}">
+                                                <button type="submit" class="btn btn-success"> Lihat
+                                                </button>
+                                            </form>
+
+                                            @if (Auth::user()->level == 2)
+                                            
+                                                
+                                                
 
                                                 <?php if ($row['status'] == 0) { ?>
+                                                    
                                                     <form method="post" action="terimapenimbanganproduk" id="terimalaporan{{ $row['timbang_produk_id'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
@@ -301,32 +314,17 @@
                                                         <button type="submit" class="btn btn-danger disabled">terima</button>
                                                     </form>
                                                 <?php } ?>
-                                            </td>
+
                                             @else
-                                            <td>
+
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form action="detiltimbangproduk" method="post" class="float-left mr-3">
-                                                        @csrf
-                                                        <input type="hidden" name="induk" value="{{ $row['timbang_produk_id'] }}">
-                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                                        <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}">
-                                                        <button type="submit" class="btn btn-success"> Lihat
-                                                        </button>
-                                                    </form>
                                                     <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ (int) filter_var($row['hasil_penimbangan'], FILTER_SANITIZE_NUMBER_INT);  }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
-                                                    <form action="detiltimbangproduk" method="post" class="float-left mr-3">
-                                                        @csrf
-                                                        <input type="hidden" name="induk" value="{{ $row['timbang_produk_id'] }}">
-                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                                        <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}">
-                                                        <button type="submit" class="btn btn-success"> Lihat
-                                                        </button>
-                                                    </form>
                                                     <button id="klikproduk" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } ?>
-                                            </td>
+                                            
                                             @endif
+                                        </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -477,6 +475,15 @@
                                                 <?php } ?>
                                             </td>
                                             <td>
+                                                <form action="detiltimbangruang" method="post" class="float-left mr-3">
+                                                    @csrf
+                                                    <input type="hidden" name="induk" value="{{ $row['id_ruangtimbang'] }}">
+                                                    <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                                    <input type="hidden" name="bahan" value="{{ $row['nama_bahan_baku'] }}">
+                                                    <button type="submit" class="btn btn-success"> Lihat
+                                                    </button>
+                                                </form>
+
                                                 @if (Auth::user()->level == 2)
                                                 <?php if ($row['status'] == 0) { ?>
                                                     <form method="post" action="terimapenimbanganruang" id= "terimalaporan{{ $row['id_ruangtimbang'] }}">
@@ -493,25 +500,9 @@
                                                     </form>
                                                 <?php } ?>
                                                 @else
-                                                <?php if ($row['status'] == 0) { ?>
-                                                    <form action="detiltimbangruang" method="post" class="float-left mr-3">
-                                                        @csrf
-                                                        <input type="hidden" name="induk" value="{{ $row['id_ruangtimbang'] }}">
-                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                                        <input type="hidden" name="bahan" value="{{ $row['nama_bahan_baku'] }}">
-                                                        <button type="submit" class="btn btn-success"> Lihat
-                                                        </button>
-                                                    </form>
+                                                <?php if ($row['status'] == 0) { ?>    
                                                     <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
-                                                    <form action="detiltimbangruang" method="post" class="float-left mr-3">
-                                                        @csrf
-                                                        <input type="hidden" name="induk" value="{{ $row['id_ruangtimbang'] }}">
-                                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                                        <input type="hidden" name="bahan" value="{{ $row['nama_bahan_baku'] }}">
-                                                        <button type="submit" class="btn btn-success"> Lihat
-                                                        </button>
-                                                    </form>
                                                     <button id="klikruang" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } ?>
                                                 @endif

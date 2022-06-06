@@ -16,9 +16,11 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                            Tambah Data
-                        </button>
+                        @if (Auth::user()->level != 2)
+                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm">
+                                Tambah Data
+                            </button>
+                        @endif
 
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
@@ -140,16 +142,11 @@
                                 <td>{{ $row['sisa_bahan'] }}</td>
                                 <td>{{ $row['untuk_produk'] }}</td>
                                 <td>
-                                    @if (Auth::user()->level == 2)
-                                    <form method="post" action="terimapenimbanganruang">
-                                        @csrf
-                                        <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
-                                        <button type="submit" class="btn btn-primary">terima</button>
-                                    </form>
-                                    @else
-
+                                    @if (Auth::user()->level != 2)
                                     <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ $row['jumlah_bahan_baku'] }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-sisa="{{ $row['sisa_bahan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_detiltimbanghasil']}}">edit</button>
 
+
+                                    
                                     @endif
                                 </td>
                             </tr>

@@ -16,9 +16,12 @@
                     <div class="card-body">
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-                            Tambah Data
-                        </button>
+                        @if (Auth::user()->level != 2)
+                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm">
+                                Tambah Data
+                            </button>
+                        @endif
+                        
 
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">

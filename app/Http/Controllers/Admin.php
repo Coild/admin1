@@ -2725,12 +2725,16 @@ class Admin extends Controller
     }
     public function tambah_penarikan(Request $req)
     {
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl = new \DateTime(Carbon::now()->toDateTimeString());
+        $tgl = $tgl->format('Y-m-d');
+
         $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'protap' => $req['protap_induk'],
             'kode_penarikan' => $req['kode_penarikan'],
-            'tanggal_penarikan' => $req['tanggal'],
+            'tanggal_penarikan' => $tgl,
             'nama_distributor' => $req['nama_distributor'],
             'produk_ditarik' => $req['produk_ditarik'],
             'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'].' '.$req['satuan'],
@@ -4009,7 +4013,12 @@ class Admin extends Controller
         // $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
-        return view('catatan.dokumen.detil.detiltimbangproduk', ['data' => $data, 'produkantara' => $produkantara]);
+        return view('catatan.dokumen.detil.detiltimbangproduk', [
+            'data' => $data, 
+            'produkantara' => $produkantara,
+            'status' => $req['status'],
+            
+        ]);
     }
 
     public function tampil_detiltimbangruang(Request $req)
@@ -4030,7 +4039,7 @@ class Admin extends Controller
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
         // $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
-        return view('catatan.dokumen.detil.detiltimbanghasil', compact('data', 'bahanbaku'));
+        return view('catatan.dokumen.detil.detiltimbanghasil', compact('data', 'bahanbaku', 'status'));
     }
 
     public function tambah_detiltimbangbahan(Request $req)
