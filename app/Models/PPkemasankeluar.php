@@ -9,14 +9,15 @@ class PPkemasankeluar extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id_ppkemasankeluar';
+    protected $guarded = ['id_ppkemasankeluar'];
 
-    protected $fillable = [
-        'status',
-        'tanggal',
-        'nama_kemasan',
-        'untuk_produk',
-        'no_batch',
-        'jumlah',
-        'sisa',
-    ];
+    // protected $fillable = [
+    //     'status',
+    //     'tanggal',
+    //     'nama_kemasan',
+    //     'untuk_produk',
+    //     'no_batch',
+    //     'jumlah',
+    //     'sisa',
+    // ];
 }

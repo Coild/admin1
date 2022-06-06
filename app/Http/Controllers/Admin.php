@@ -1181,7 +1181,7 @@ class Admin extends Controller
         PPbahanbakukeluar::all()->where('id_ppbahanbakukeluar', $id)->first()->update($data);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penerimaan bahan baku kel;uar',
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan penerimaan bahan baku kel;uar',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -1206,7 +1206,7 @@ class Admin extends Controller
         PPprodukjadimasuk::all()->where('id_produkjadimasuk', $id)->first()->update($data);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penerimaan produk jadi masuk',
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan penerimaan produk jadi masuk',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -1227,15 +1227,13 @@ class Admin extends Controller
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
-            'induk' => $req['induk'],
-            'user_id' => $id,
+            'induk' => $req['induk']
         ];
-        PPprodukjadikeluar::all()->where('id_pprodukjadikeluar', $id)->first()->update($data);
-        $induk = $req['induk'];
-        $jenis = $req['jenis'];
+        PPprodukjadikeluar::all()->where('id_ppprodukjadikeluar', $id)->first()->update($data);
+
 
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penerimaan produk jadi keluar',
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan penerimaan produk jadi keluar',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
@@ -1281,7 +1279,7 @@ class Admin extends Controller
         ];
         PPkemasankeluar::all()->where('id_ppkemasankeluar', $id)->first()->update($data);
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' Menambah laporan penerimaan kemasan keluar',
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan penerimaan kemasan keluar',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik

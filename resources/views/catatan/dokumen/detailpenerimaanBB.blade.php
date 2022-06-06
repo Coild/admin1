@@ -1334,13 +1334,14 @@
                 var produk = $(this).data('produk');
                 var id = $(this).data('id');
 
+                // console.log('id keluar'+id);
                 $("#produkkeluar_nama").val(nama);
                 $("#produkkeluar_jumlah").val(jumlah);
                 $("#produkkeluar_tanggal").val(tanggal);
                 $("#produkkeluar_nobatch").val(nobatch);
                 $("#produkkeluar_sisa").val(sisa);
                 $("#produkkeluar_produk").val(produk);
-                $("#id_produkmasuk").val(id);
+                $("#id_produkkeluar").val(id);
             })
             $(document).on('click', "#klikkemasankeluar", function() {
                 var nama = $(this).data('nama');
