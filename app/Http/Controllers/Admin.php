@@ -1325,7 +1325,8 @@ class Admin extends Controller
         return view('catatan.dokumen.detilkemasbatch', [
             'id' => $id,
             'data' => $data, 'kemasan' => $kemasan, 'prkemas' => $prkemas,
-            'proisi' => $proisi, 'protanda' => $protanda
+            'proisi' => $proisi, 'protanda' => $protanda,
+            'status' => $req['status']
         ]);
     }
 
@@ -5651,13 +5652,21 @@ class Admin extends Controller
     {
         $pabrik = Auth::user()->pabrik;
 
-        $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
+        // $data = Pengemasanbatchproduk::all()->where('pabrik', $pabrik);
         // dd($data);
         $produk = produk::all()->where('user_id', Auth::user()->pabrik);
         $kemasan = kemasan::all()->where('user_id', Auth::user()->pabrik);
         $protap = protap::all()->where('user_id', Auth::user()->pabrik)->where('protap_jenis',9);
         // dd($produk);
-        return view('catatan.dokumen.pengemasanbatch', ['kemasbatch' => $data, 'produk' => $produk ?? [], 'kemasan' => $kemasan ?? [], 'protaps' => $protap ?? []]);
+        $data1 = Pengemasanbatchproduk::join('protaps', 'pengemasanbatchproduks.protap', '=', 'protaps.protap_id')
+        ->get(['pengemasanbatchproduks.*', 'protaps.protap_nama']);
+
+        return view('catatan.dokumen.pengemasanbatch', [
+            'kemasbatch' => $data1, 
+            'produk' => $produk ?? [], 
+            'kemasan' => $kemasan ?? [], 
+            'protaps' => $protap ?? []
+        ]);
     }
 
     public function log()

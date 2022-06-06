@@ -150,8 +150,7 @@
                                                         Kemasan</label>
                                                     <div class="col-sm">
                                                         <input placeholder="Nama Kemasan" class="form-control"
-                                                            list="listnamaproduk" type="text" name='nama' id="namaproduk">
-                                                        </input>
+                                                            list="listnamaproduk" type="text" name='nama' id="namaproduk" autocomplete="off">
                                                         <datalist id='listnamaproduk'>
                                                             @foreach ($kemasan as $row)
                                                                 <option value="{{ $row['kemasan_nama'] }}">
@@ -352,7 +351,9 @@
                                             {{ $row['isi'] }}
                                         </td>
                                         <td>
+                                            @if (Auth::user()->level != 2)
                                             <button class="btn btn-primary">Edit</button>
+                                            @endif
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -441,7 +442,10 @@
                                             {{ $row['isi'] }}
                                         </td>
                                         <td>
+                                            @if (Auth::user()->level != 2)
                                             <button class="btn btn-primary">Edit</button>
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

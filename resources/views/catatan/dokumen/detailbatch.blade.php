@@ -537,7 +537,7 @@
                                 @endif
 
                             </form>
-                            @if (Auth::user()->level == 2)
+                            {{-- @if (Auth::user()->level == 2)
                                 <center>
                                     <form action="/pjt_pengolahanbatch" method="post" id="terimalaporan{{ $id }}">
                                         @csrf
@@ -547,7 +547,7 @@
                                         </button>
                                     </form>
                                 </center>
-                            @endif
+                            @endif --}}
 
                         </div>
                     </div>

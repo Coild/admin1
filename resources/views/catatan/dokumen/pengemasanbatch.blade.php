@@ -177,7 +177,7 @@
                         $i++; ?>
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $row['protap'] }}</td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_produk'] }}</td>
                             <td>{{ $row['nama_produk'] }}</td>
                             <td>{{ $row['no_batch'] }}</td>
@@ -195,24 +195,22 @@
                                 <?php } ?>
                             </td>
                             <td>
+                                <form method="post" action="detilkemasbatch" class="float-left mr-2">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
+                                    <input type="hidden" name="status" value="{{ $row['status'] }}" />
+                                    <button type="submit" class="btn btn-primary">lihat</button>
+                                </form>
                                 @if (Auth::user()->level == 2)
                                     <?php if ($row['status'] == 0) { ?>
-                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
-                                            <button type="submit" class="btn btn-primary">lihat</button>
-                                        </form>
+                                        
                                         <form method="post" action="terima_kemasbatch" id="terimalaporan{{ $row['id_pengemasanbatchproduk'] }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id_pengemasanbatchproduk'] }}" />
                                             <button type="button" class="btn btn-primary" onclick="TerimaLaporan({{ $row['id_pengemasanbatchproduk'] }})">terima</button>
                                         </form>
                                     <?php } elseif ($row['status'] == 1) { ?>
-                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
-                                            <button type="submit" class="btn btn-primary">lihat</button>
-                                        </form>
+                                        
                                         <form method="post" action="terima_kemasbatch">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id_pengemasanbatchproduk'] }}" />
@@ -222,18 +220,10 @@
 
                                 @else
                                     <?php if ($row['status'] == 0) { ?>
-                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
-                                            <button type="submit" class="btn btn-primary">lihat</button>
-                                        </form>
+                                        
                                         <button id="klik_kemas" type="button" class="btn btn-success" data-toggle="modal" data-target="#editkemasbatch" data-protap="{{ $row['protap'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['no_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuksediaan'] }}" data-kemasan="{{ $row['kemasan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])); }}" data-id="{{ $row['id_pengemasanbatchproduk'] }}">edit</button>
                                     <?php } elseif ($row['status'] == 1) { ?>
-                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
-                                            <button type="submit" class="btn btn-primary">lihat</button>
-                                        </form>
+                                        
                                         <button id="klik_kemas" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#editkemasbatch" data-protap="{{ $row['protap'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['no_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuksediaan'] }}" data-kemasan="{{ $row['kemasan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])); }}" data-id="{{ $row['id_pengemasanbatchproduk'] }}">edit</button>
                                     <?php } ?>
 
@@ -275,7 +265,7 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                             Produk</label>
                                         <div class="col-sm">
-                                            <input class="form-control 1" list="listnamaproduk" type="text" name='nama_produk' id="editnamaproduk">
+                                            <input class="form-control 1" list="listnamaproduk" type="text" name='nama_produk' id="editnamaproduk" autocomplete="off">
                                             </input>
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produk as $row)
@@ -307,14 +297,13 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                             PROTAP</label>
                                         <div class="col-sm">
-                                            <select autocomplete="off" name="protap" class="form-control" id="inputEmail3">
+                                            <select autocomplete="off" name="protap" class="form-control" id="isi_protap">
                                                 @foreach ($protaps as $data )
                                                     <option value="{{ $data['protap_id']}}">
                                                         {{$data['protap_nama']}}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            {{-- <input type="text" name="protap" class="form-control 1" id="isi_protap" placeholder="Sesuai PROTAP" /> --}}
                                         </div>
                                     </div>
 
