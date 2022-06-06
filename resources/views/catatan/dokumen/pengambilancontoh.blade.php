@@ -1169,8 +1169,8 @@
                 Object.keys(bahanbakus).forEach(function(key) {
                     tmp.push(bahanbakus[key]);
                 })
-            }
             bahanbakus = tmp
+            }
             if (cekname) {
                 document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
                     .bahanbaku_nama ===
@@ -1187,8 +1187,8 @@
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
                 })
-            }
             kemasans = tmp
+            }
             if (cekname) {
                 document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('namakemasan').value).kemasan_kode
@@ -1204,8 +1204,8 @@
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
-            }
             produks = tmp
+            }
             if (cekname) {
                 document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('namaproduk').value).produk_kode
@@ -1222,8 +1222,9 @@
                 Object.keys(bahanbakus).forEach(function(key) {
                     tmp.push(bahanbakus[key]);
                 })
-            }
+                
             bahanbakus = tmp
+            }
             if (cekname) {
                 document.getElementById('bahan_kode').value = bahanbakus.find(bahanbaku => bahanbaku
                     .bahanbaku_nama ===
@@ -1240,8 +1241,9 @@
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
                 })
+                kemasans = tmp
             }
-            kemasans = tmp
+            
             if (cekname) {
                 document.getElementById('kemasan_kode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('kemasan_nama').value).kemasan_kode
@@ -1257,8 +1259,9 @@
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
+                produks = tmp
             }
-            produks = tmp
+            
             if (cekname) {
                 document.getElementById('produk_kode').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('produk_nama').value).produk_kode

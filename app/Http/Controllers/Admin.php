@@ -3929,7 +3929,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'nama_bahan_baku' => $req['nama_bahanbaku'],
-            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'],
+            'jumlah_bahan_baku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
             'hasil_timbang' => $req['hasil_penimbangan'],
             'protap' => $req['protap'],
         ];
