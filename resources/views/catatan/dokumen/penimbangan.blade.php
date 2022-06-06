@@ -162,7 +162,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['timbang_bahan_id'] }}">edit</button>
+                                                    <button id="klik_bahan" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editBahan" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan'] }}" data-noloth="{{ $row['no_loth'] }}" data-suplai="{{ $row['nama_suplier'] }}" data-jbahan="{{ $row['jumlah_bahan'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-id="{{ $row['timbang_bahan_id'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangbahan" method="post" class="float-left mr-3">
                                                         @csrf
@@ -313,7 +313,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ (int) filter_var($row['hasil_penimbangan'], FILTER_SANITIZE_NUMBER_INT);  }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
+                                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ (int) filter_var($row['hasil_penimbangan'], FILTER_SANITIZE_NUMBER_INT);  }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangproduk" method="post" class="float-left mr-3">
                                                         @csrf
@@ -502,7 +502,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
+                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangruang" method="post" class="float-left mr-3">
                                                         @csrf
@@ -555,7 +555,7 @@
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
                                     {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                    <select name="protap" class="form-control 4">
+                                    <select name="protap" class="form-control 4" id="isi_bahanprotap">
                                         @foreach ($protap1 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                         @endforeach
@@ -606,7 +606,7 @@
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
                                     {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                    <select name="protap" class="form-control 5">
+                                    <select name="protap" class="form-control 5" id="isi_produkprotap">
                                         @foreach ($protap2 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                         @endforeach
@@ -658,7 +658,7 @@
                                     Dengan PROTAP No</label>
                                 <div class="col-sm">
                                     {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                    <select name="protap" class="form-control 6">
+                                    <select name="protap" class="form-control 6" id="isi_hasilprotap">
                                         @foreach ($protap3 as $isi)
                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                         @endforeach
@@ -728,11 +728,14 @@
 
         var noloth = $(this).data('noloth');
         var id = $(this).data('id');
+        var protap = $(this).data('protap');
 
+        $("#isi_bahanprotap").val(protap);
 
         $("#isi_nolothbahan").val(noloth);
 
         $("#isi_bahanid").val(id);
+        
         // document.getElementById('cpbahan').value = cpid;
     })
     $(document).on('click', "#klikproduk", function() {
@@ -741,6 +744,9 @@
 
         var id = $(this).data('id');
 
+        var protap = $(this).data('protap');
+
+        $("#isi_produkprotap").val(protap);
 
         $("#isi_nobatch").val(nobatch);
 
@@ -753,7 +759,9 @@
         var jruang = $(this).data('jbahan');
         var hasil = $(this).data('hasil');
         var id = $(this).data('id');
+        var protap = $(this).data('protap');
 
+        $("#isi_hasilprotap").val(protap);
         $("#isi_namaruang").val(nama);
         $("#isi_jruang").val(jruang);
         $("#isi_hasilruang").val(hasil);

@@ -11,18 +11,19 @@ class contohbahanbaku extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id_bahanbaku';
+    protected $guarded = ['id_bahanbaku'];
     public $timestamps = true;
 
-    protected $fillable = [
-        'id_bahanbaku',
-        'nama_bahanbaku',
-        'no_batch',
-        'tanggal_ambil',
-        'kedaluwarsa',
-        'jumlah_kemasanbox',
-        'jumlah_produk',
-        'jenis_warnakemasan',
-        'status',
-        'protap'
-    ];
+    // protected $fillable = [
+    //     'id_bahanbaku',
+    //     'nama_bahanbaku',
+    //     'no_batch',
+    //     'tanggal_ambil',
+    //     'kedaluwarsa',
+    //     'jumlah_kemasanbox',
+    //     'jumlah_produk',
+    //     'jenis_warnakemasan',
+    //     'status',
+    //     'protap'
+    // ];
 }
