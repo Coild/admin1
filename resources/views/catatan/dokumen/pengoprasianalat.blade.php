@@ -295,7 +295,7 @@
             var protap = $(this).data('protap');
             var tanggal = $(this).data('tanggal');
             var id = $(this).data('id');
-
+            console.log("protap "+protap);
             $("#isi_nama").val(nama);
             $("#isi_tipe").val(merek);
             $("#isi_ruang").val(ruangan);

@@ -1409,9 +1409,11 @@ class Admin extends Controller
                 ->get(['pengolahanbatches.*', 'protaps.protap_nama', 'protap_id']); //;
             // dd($pabrik);
         } else {
-            $data = pengolahanbatch::all()->where('pabrik', $pabrik);
+            $data = pengolahanbatch::join('protaps', 'pengolahanbatches.pob', '=', 'protaps.protap_id')
+                ->get(['pengolahanbatches.*', 'protaps.protap_nama', 'protap_id']); 
             // echo "halo";
         }
+        // dd($data);
         $data2 = produk::all()->where('user_id', Auth::user()->pabrik);
         $data3 = kemasan::all()->where('user_id', Auth::user()->pabrik);
         $protap = protap::all()->where('user_id', Auth::user()->pabrik)->where('protap_jenis', 8);

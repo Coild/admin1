@@ -453,12 +453,12 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        // dd($req['nobatch']);
-        $user = timbangbahan::all()->where("no_loth", $req['nobatch'])->first()->update([
+        // dd($req);
+        $user = timbangbahan::all()->where("timbang_bahan_id", $req['no'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['no'])
             ->where('laporan_nama', 'penimbangan bahan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -485,11 +485,11 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = timbangproduk::all()->where("no_batch", $req['nobatch'])->first()->update([
+        $user = timbangproduk::all()->where("timbang_produk_id", $req['no'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['no'])
             ->where('laporan_nama', 'penimbangan produk utama')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -517,11 +517,11 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req['nobatch']);
-        $user = ruangtimbang::all()->where("id_ruangtimbang", $req['nobatch'])->first()->update([
+        $user = ruangtimbang::all()->where("id_ruangtimbang", $req['no'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_nomor', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['no'])
             ->where('laporan_nama', 'ruang timbang')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
