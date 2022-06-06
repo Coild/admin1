@@ -30,6 +30,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Sesuai PROTAP</th>
                             <th scope="col">Kode Produk</th>
                             <th scope="col">Nama Produk</th>
                             <th scope="col">Nomor Batch</th>
@@ -42,7 +43,8 @@
                         @foreach ($data as $row)
                         <?php $i++; ?>
                         <tr>
-                            <td>{{ $i }}</td>
+                            <td>{{ $i }} </td>
+                            <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_produk'] }}</td>
                             <td>{{ $row['nama_produk'] }}</td>
                             <td>{{ $row['nomor_batch'] }}</td>
@@ -368,7 +370,7 @@
             var id = $(this).data('id');
             var protap = $(this).data('protap');
 
-            // console.log("ini " + nama + " ruangan " + id);
+            console.log("ini " + protap + " ruangan " + id);
             $("#editnamaproduk").val(nama);
             $("#editkodeproduk").val(kode);
             $("#isi_nobatch").val(nobatch);
@@ -401,14 +403,15 @@
             }
         });
         $("#editnamaproduk").change(function() {
+            var tmp = []
             var cekname = produks.find(produk => produk.produk_nama ===
                 document.getElementById('editnamaproduk').value)?.produk_nama;
             if (typeof produks === 'object') {
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
-            }
             produks = tmp
+            }
             if (cekname) {
                 document.getElementById('editkodeproduk').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('editnamaproduk').value).produk_kode

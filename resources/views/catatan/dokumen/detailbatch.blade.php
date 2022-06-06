@@ -124,23 +124,23 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <p class="statusMsg"></p>
-                                <form action="/input_komposisi" method="post" role="form">
+                                <form action="/input_komposisi" method="post" role="form" id ="forminput1">
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                     <div class="form-group">
                                         <label for="inputName">Nama BB</label>
-                                        <input type="text" name="nama" class="form-control" id="inputName"
+                                        <input type="text" name="nama" class="form-control 1" id="inputName"
                                             placeholder="Nama BB" />
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail">Kode BB</label>
-                                        <input type="text" name="id" class="form-control" id="inputName"
+                                        <input type="text" name="id" class="form-control 1" id="inputName"
                                             placeholder="Kode BB" />
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMessage">Persentase</label>
-                                        <input type="text" name="persen" class="form-control" id="inputName"
+                                        <input type="text" name="persen" class="form-control 1" id="inputName"
                                             placeholder="Persentase" />
                                     </div>
                                     <!-- Modal Footer -->
@@ -148,8 +148,8 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button type="submit" class="btn btn-primary submitBtn"
-                                            onclick="submitContactForm()">
+                                        <button type="button" class="btn btn-primary submitBtn"
+                                            onclick="salert1(1)">
                                             Tambah
                                         </button>
                                     </div>
@@ -224,18 +224,18 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_peralatan" method="post" role="form">
+                                    <form action="/input_peralatan" method="post" role="form" id="forminput2>
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                         <div class="form-group">
                                             <label for="inputName">Nama Alat</label>
-                                            <input name="nama" type="text" class="form-control" id="inputName"
+                                            <input name="nama" type="text" class="form-control 2" id="inputName"
                                                 placeholder="Nama Alat" />
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">Kode Alat</label>
-                                            <input name="kode" type="text" class="form-control" id="inputName"
+                                            <input name="kode" type="text" class="form-control 2" id="inputName"
                                                 placeholder="Kode Alat" />
                                         </div>
                                         <!-- Modal Footer -->
@@ -243,8 +243,8 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-primary submitBtn"
-                                                onclick="submitContactForm()">
+                                            <button type="button" class="btn btn-primary submitBtn"
+                                                onclick="salert1(2)">
                                                 Tambah
                                             </button>
                                         </div>
@@ -315,43 +315,43 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/input_penimbangan" method="post" role="form">
+                                        <form action="/input_penimbangan" method="post" role="form" id="forminput3">
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Kode Bahan</label>
-                                                <input type="text" name="kode_bahan" class="form-control" id="inputName"
+                                                <input type="text" name="kode_bahan" class="form-control 3" id="inputName"
                                                     placeholder="Kode Bahan" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Nama Bahan</label>
-                                                <input type="text" name="nama_bahan" class="form-control" id="inputName"
+                                                <input type="text" name="nama_bahan" class="form-control 3" id="inputName"
                                                     placeholder="Nama Bahan" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomor Loth</label>
-                                                <input type="text" name="no_loth" class="form-control" id="inputName"
+                                                <input type="text" name="no_loth" class="form-control 3" id="inputName"
                                                     placeholder="Nomor Loth" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Dibutuhkan</label>
-                                                <input type="text" name="jumlah_butuh" class="form-control"
+                                                <input type="text" name="jumlah_butuh" class="form-control 3"
                                                     id="inputName" placeholder="Jumlah yang Dibutuhkan" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Ditimbang</label>
-                                                <input type="text" name="jumlah_timbang" class="form-control"
+                                                <input type="text" name="jumlah_timbang" class="form-control 3"
                                                     id="inputName" placeholder="Jumlah yang Ditimbang" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Ditimbang Oleh</label>
-                                                <input type="text" name="ditimbang" class="form-control" id="inputName"
+                                                <input type="text" name="ditimbang" class="form-control 3" id="inputName"
                                                     placeholder="Ditimbang Oleh" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Diperiksa Oleh</label>
-                                                <input type="text" name="diperiksa" class="form-control" id="inputName"
+                                                <input type="text" name="diperiksa" class="form-control 3" id="inputName"
                                                     placeholder="Diperiksa Oleh" />
                                             </div>
                                             <!-- Modal Footer -->
@@ -359,8 +359,8 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
+                                                <button type="button" class="btn btn-primary submitBtn"
+                                                    onclick="salert1(3)">
                                                     Tambah
                                                 </button>
                                             </div>
@@ -440,13 +440,13 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/input_olah" method="post" role="form">
+                                        <form action="/input_olah" method="post" role="form" id="forminput5">
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Isi</label>
-                                                <input type="text" name="isi" class="form-control" id="inputName"
+                                                <input type="text" name="isi" class="form-control 5" id="inputName"
                                                     placeholder="keterangan" />
                                             </div>
 
@@ -455,8 +455,8 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
+                                                <button type="button" class="btn btn-primary submitBtn"
+                                                    onclick="salert1(5)">
                                                     Tambah
                                                 </button>
                                             </div>
@@ -513,23 +513,23 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="/input_rekonsiliasi" method="post" role="form">
+                            <form action="/input_rekonsiliasi" method="post" role="form" id="forminput6">
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                 <div class="form-group">
                                     <label for="inputName">Perkiraan</label>
-                                    <input type="text" name="awal" value="{{ $awal }}" class="form-control"
+                                    <input type="text" name="awal" value="{{ $awal }}" class="form-control  6"
                                         id="inputName" placeholder="keterangan" />
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Hasil</label>
-                                    <input type="text" name="akhir" value="{{ $akhir }}" class="form-control"
+                                    <input type="text" name="akhir" value="{{ $akhir }}" class="form-control 6"
                                         id="inputName" placeholder="keterangan" />
                                 </div>
                                 @if (Auth::user()->level != 2)
                                     <center>
-                                        <button type="submit" class="btn btn-success btn-lg" <?php if ($status > 0) {
+                                        <button type="button" onclick="salert1(6)" class="btn btn-success btn-lg" <?php if ($status > 0) {
                                             echo 'disabled';
                                         } ?>> Simpan
                                         </button>
