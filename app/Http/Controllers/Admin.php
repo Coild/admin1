@@ -2503,6 +2503,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_pelatihan' => $req['kode_pelatihan'],
             'materi_pelatihan' => $req['materi_pelatihan'],
             'peserta_pelatihan' => $req['peserta_pelatihan'],
@@ -2543,6 +2544,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_pelatihan' => $req['kode_pelatihan'],
             'materi_pelatihan' => $req['materi_pelatihan'],
             'peserta_pelatihan' => $req['peserta_pelatihan'],
