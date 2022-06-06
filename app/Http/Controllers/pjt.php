@@ -90,10 +90,10 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        contohkemasan::all()->where("no_batch", $req['nobatch'])->first()->update([
+        contohkemasan::all()->where("id_kemasan", $req['id'])->first()->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['id'])
             ->where('laporan_nama', 'penambahan contoh kemasan')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -101,7 +101,7 @@ class pjt extends Controller
         $data = contohkemasan::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penambahan contoh kemasan')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -124,10 +124,10 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        $user = contohprodukjadi::all()->where("no_batch", $req['nobatch'])->first()->update([
+        $user = contohprodukjadi::all()->where("id_produkjadi", $req['id'])->first()->update([
             'status' => 1,
         ]);
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['id'])
             ->where('laporan_nama', 'penambahan contoh produk')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -135,7 +135,7 @@ class pjt extends Controller
         $data = contohprodukjadi::all()->where('status', 1);
         notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penambahan contoh produk')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 
@@ -156,18 +156,18 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
 
-        contohbahanbaku::all()->where("no_batch", $req['nobatch'])->first()->update([
+        contohbahanbaku::all()->where("id_bahanbaku", $req['id'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['id'])
             ->where('laporan_nama', 'penambahan contoh bahan baku')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
             ->where('notif_laporan', 'penambahan contoh bahan baku')
-            ->where('notif_2',$req['no'])->first()->update([
+            ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
 

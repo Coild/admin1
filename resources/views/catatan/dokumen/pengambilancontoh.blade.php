@@ -226,12 +226,12 @@
                                             @else
                                             <?php if ($row['status'] == 0) { ?>
                                                 <td>
-                                                    <form method="post" action="terimaambilbahanbaku" id="terimalaporan{{ $row['no_batch'] }}">
+                                                    <form method="post" action="terimaambilbahanbaku"  id="terimalaporan1{{ $row['id_bahanbaku'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
 
-                                                        <input type="hidden" name="no" value="{{ $row['id_bahanbaku'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan({{ $row['no_batch'] }})" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id" value="{{ $row['id_bahanbaku'] }}" />
+                                                        <button type="button" onclick="TerimaLaporanMultiP(1,{{ $row['id_bahanbaku'] }})" class="btn btn-primary">Terima</button>
                                                     </form>
                                                 </td>
                                             <?php } elseif ($row['status'] == 1) { ?>
@@ -239,7 +239,7 @@
                                                     <form method="post" action="terimaambilbahanbaku" id="terimalaporan2">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan(2)" class="btn btn-danger" disabled>Terima</button>
+                                                        <button type="button" onclick="TerimaLaporanMultiP(2)" class="btn btn-danger" disabled>Terima</button>
                                                     </form>
                                                 </td>
                                             <?php } ?>
@@ -480,18 +480,19 @@
                                             @else
                                             <td>
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimaambilprodukjadi" id="terimalaporan{{ $row['no_batch'] }}">
+                                                    <form method="post" action="terimaambilprodukjadi" id="terimalaporan2{{ $row['id_produkjadi'] }}">
                                                         @csrf
 
                                                         <input type="hidden" name="no" value="{{ $row['id_produkjadi'] }}" />
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan({{ $row['no_batch'] }})" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id" value="{{ $row['id_produkjadi'] }}" />
+                                                        <button type="button" onclick="TerimaLaporanMultiP(2,{{ $row['id_produkjadi'] }})" class="btn btn-primary">Terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimaambilprodukjadi" id="terimalaporan4">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan(4)" class="btn btn-danger" disabled>Terima</button>
+                                                        <button type="button" onclick="TerimaLaporanMultiP(4)" class="btn btn-danger" disabled>Terima</button>
                                                     </form>
                                                 <?php } ?>
                                             </td>
@@ -722,18 +723,18 @@
                                             @else
                                             <td>
                                                 <?php if ($row['status'] == 0) { ?>
-                                                    <form method="post" action="terimaambilbahankemas" id="terimalaporan{{ $row['no_batch'] }}">
+                                                    <form method="post" action="terimaambilbahankemas" id="terimalaporan3{{ $row['id_kemasan'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
 
-                                                        <input type="hidden" name="no" value="{{ $row['id_kemasan'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan({{ $row['no_batch'] }})" class="btn btn-primary">Terima</button>
+                                                        <input type="hidden" name="id" value="{{ $row['id_kemasan'] }}" />
+                                                        <button type="button" onclick="TerimaLaporanMultiP(3,{{ $row['id_kemasan'] }})" class="btn btn-primary">Terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimaambilbahankemas" id="terimalaporan6">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan(6)" class="btn btn-danger" disabled>Terima</button>
+                                                        <button type="button" onclick="TerimaLaporanMultiP(6)" class="btn btn-danger" disabled    >Terima</button>
                                                     </form>
                                                 <?php } ?>
 
