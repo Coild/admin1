@@ -746,6 +746,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
@@ -753,9 +754,10 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'status' => 0,
         ];
-        // dd($data);
+        // dd($cpid);
 
         cp_bahan::all()->where('cp_bahan_id', $cpid)->first()->update([
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
@@ -799,6 +801,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
@@ -847,6 +850,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
 
         $data = [
+            'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
@@ -3983,8 +3987,8 @@ class Admin extends Controller
         // $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
         return view('catatan.dokumen.detil.detiltimbangbahan', [
-            'data' => $data, 
-            'bahanbaku' => $bahanbaku, 
+            'data' => $data,
+            'bahanbaku' => $bahanbaku,
             'status' => $status,
         ]);
     }

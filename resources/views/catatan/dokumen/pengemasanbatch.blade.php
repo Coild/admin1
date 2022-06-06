@@ -197,12 +197,22 @@
                             <td>
                                 @if (Auth::user()->level == 2)
                                     <?php if ($row['status'] == 0) { ?>
+                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
+                                            <button type="submit" class="btn btn-primary">lihat</button>
+                                        </form>
                                         <form method="post" action="terima_kemasbatch" id="terimalaporan{{ $row['id_pengemasanbatchproduk'] }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id_pengemasanbatchproduk'] }}" />
                                             <button type="button" class="btn btn-primary" onclick="TerimaLaporan({{ $row['id_pengemasanbatchproduk'] }})">terima</button>
                                         </form>
                                     <?php } elseif ($row['status'] == 1) { ?>
+                                        <form method="post" action="detilkemasbatch" class="float-left mr-2">
+                                            @csrf
+                                            <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
+                                            <button type="submit" class="btn btn-primary">lihat</button>
+                                        </form>
                                         <form method="post" action="terima_kemasbatch">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['id_pengemasanbatchproduk'] }}" />

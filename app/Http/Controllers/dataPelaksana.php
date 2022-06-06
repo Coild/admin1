@@ -67,7 +67,17 @@ class dataPelaksana extends Controller
                 }
             } else {
                 if ($data->status == 0) {
-                    return '<form method="post" action="terima_cpbahan">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=1 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_bahan_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpbahan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
                         <input type="hidden" name="nobatch"
@@ -75,7 +85,17 @@ class dataPelaksana extends Controller
                         <button type="submit" class="btn btn-primary float-left mr-2">Terima</button>
                     </form>';
                 } else {
-                    return '<form method="post" action="terima_cpbahan">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=1 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_bahan_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpbahan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
                         <input type="hidden" name="nobatch"
@@ -131,7 +151,17 @@ class dataPelaksana extends Controller
                 }
             } else {
                 if ($data->status == 0) {
-                    return '<form method="post" action="terima_cpproduk">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=2 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_produk_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpproduk">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=2 />
                         <input type="hidden" name="nobatch"
@@ -139,7 +169,17 @@ class dataPelaksana extends Controller
                         <button type="submit" class="btn btn-primary">Terima</button>
                     </form>';
                 } else {
-                    return '<form method="post" action="terima_cpproduk">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=2 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_produk_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpproduk">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=2 />
                         <input type="hidden" name="nobatch"
@@ -196,7 +236,17 @@ class dataPelaksana extends Controller
                 }
             } else {
                 if ($data->status == 0) {
-                    return '<form method="post" action="terima_cpkemasan">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=3 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_kemasan_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpkemasan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
                         <input type="hidden" name="nobatch"
@@ -204,7 +254,17 @@ class dataPelaksana extends Controller
                         <button type="submit" class="btn btn-primary">Terima</button>
                     </form>';
                 } else {
-                    return '<form method="post" action="terima_cpkemasan">
+                    return '<form method="post" class="float-left mr-1" action="detilterimabb">
+                    ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
+                    <input type="hidden" name="jenis" value=3 />
+                    <input type="hidden" name="induk"
+                        value=' . $data->cp_kemasan_id . ' />
+                        <input type="hidden" name="nama"
+                        value=' . $data->nama . ' />
+                        <input type="hidden" name="status_induk"
+                        value=' . 0 . ' />
+                    <button type="submit" class="btn btn-primary">Lihat</button>
+                </form>' .'<form method="post" action="terima_cpkemasan">
                         ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
                         <input type="hidden" name="jenis" value=1 />
                         <input type="hidden" name="nobatch"

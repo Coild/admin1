@@ -14,6 +14,7 @@ class cp_bahan extends Model
         'jumlah',
         'ruang',
         'nama',
-        'kode'
+        'kode',
+        'protap'
     ];
 }

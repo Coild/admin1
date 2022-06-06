@@ -219,7 +219,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/hapus_produk_antara', [pjt::class, 'hapus_produkantara'])->name("hapus_produk_antara");
         Route::post('/hapus_produk_jadi', [pjt::class, 'hapus_produkjadi'])->name("hapus_produk_jadi");
 
-        
+
 
     });
 
@@ -270,7 +270,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_periksapersonil', [Admin::class, 'tambah_periksapersonil']);
         Route::post('/tambah_periksaalat', [Admin::class, 'tambah_periksaalat']);
         Route::post('/tambah_detilperiksaruang', [Admin::class, 'tambah_detilperiksaruang']);
-        
+
 
 
 
@@ -382,7 +382,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('penanganan-keluhan', [Admin::class, 'tampil_penanganankeluhan'])->name('penanganan-keluhan');
         Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk'])->name('penarikan-produk');
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
-        Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
+        Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoperasian-alat');
         Route::post('tampil_detilperiksaalat', [Admin::class, 'tampil_detilperiksaalat'])->name('tampil_detilperiksaalat');
         Route::post('tampil_detiloperasialat', [Admin::class, 'tampil_detiloperasialat'])->name('tampil_detiloperasialat');
         Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');
@@ -430,7 +430,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/detilruangan', [Admin::class, 'tampil_detilruangan']);
     Route::get('/detilruangan', [Admin::class, 'tampil_detilruangan'])->name('detilruangan');
 
-    
+
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 
     // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');

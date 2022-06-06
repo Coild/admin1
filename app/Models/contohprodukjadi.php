@@ -21,5 +21,6 @@ class contohprodukjadi extends Model
         'jumlah_produk',
         'jenis_warnakemasan',
         'status',
+        'protap'
     ];
 }

@@ -20,5 +20,6 @@ class programpelatihan extends Model
         'jadwal_berakhir_pelatihan',
         'metode_penilaian',
         'status',
+        'protap'
     ];
 }

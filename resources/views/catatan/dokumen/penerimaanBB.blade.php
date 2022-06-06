@@ -152,7 +152,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 3">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -245,7 +245,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 1">
                                             @foreach ($protap2 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -337,7 +337,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 1">
                                             @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -428,8 +428,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 4" id="protap_bahan">
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="protap" class="form-control 4" id="protap_bahan">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -521,8 +521,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                        <select name="pob" class="form-control 5" id="protap_produk">
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        <select name="protap" class="form-control 5" id="protap_produk">
                                             @foreach ($protap2 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                             @endforeach
@@ -613,7 +613,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 6" id="protap_kemasan">
                                             @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -751,14 +751,17 @@
         });
 
         $("#bahannama").change(function() {
+            var tmp = []
             var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                 document.getElementById('bahannama').value)?.bahanbaku_nama;
             if (typeof bahanbakus === 'object') {
                 Object.keys(bahanbakus).forEach(function(key) {
                     tmp.push(bahanbakus[key]);
                 })
+                bahanbakus = tmp
             }
-            bahanbakus = tmp
+
+            console.log(bahanbakus);
             if (cekname) {
                 document.getElementById('bahankode').value = bahanbakus.find(bahanbaku => bahanbaku
                     .bahanbaku_nama ===
@@ -768,14 +771,15 @@
             }
         });
         $("#kemasannama").change(function() {
+            var tmp = []
             var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
                 document.getElementById('kemasannama').value)?.kemasan_nama;
             if (typeof kemasans === 'object') {
                 Object.keys(kemasans).forEach(function(key) {
                     tmp.push(kemasans[key]);
+            kemasans = tmp
                 })
             }
-            kemasans = tmp
             if (cekname) {
                 document.getElementById('kemasankode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                     document.getElementById('kemasannama').value).kemasan_kode
@@ -784,14 +788,16 @@
             }
         });
         $("#produknama").change(function() {
+            var tmp = []
             var cekname = produks.find(produk => produk.produk_nama ===
                 document.getElementById('produknama').value)?.produk_nama;
             if (typeof produks === 'object') {
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
+                produks = tmp
             }
-            produks = tmp
+
             if (cekname) {
                 document.getElementById('produkkode').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('produknama').value).produk_kode
