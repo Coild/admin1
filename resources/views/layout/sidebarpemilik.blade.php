@@ -9,7 +9,7 @@
                 </a>
 
                 <a @if(Request::is('laporan')) id='side_aktif' @endif
-                class="nav-link" href="{{ route('laporan') }}">
+                class="nav-link" href="{{ route('laporans') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Laporan
                 </a>
