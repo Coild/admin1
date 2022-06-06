@@ -1315,6 +1315,7 @@
 
 
             $("#produk_protap").val(protap);
+            $("#produk_nama").val(nama);
             $("#produk_kode").val(kode);
             $("#produk_box").val(satuanbox);
             $("#produk_produk").val(satuanproduk);
@@ -1344,6 +1345,7 @@
 
             $("#kemasan_protap").val(protap);
             $("#kemasan_kode").val(kode);
+            $("#kemasan_nama").val(nama);
             $("#kemasan_box").val(satuanbox);
             $("#kemasan_produk").val(satuanproduk);
             $("#kemasan_tglambil").val(tglambil);

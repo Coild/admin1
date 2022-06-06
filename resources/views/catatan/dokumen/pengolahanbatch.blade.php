@@ -56,35 +56,24 @@
                                 @endif
                             </td>
                             <td>
+                                <form action="/detil_batch" method="post" class="float-left mr-2">
+                                    @csrf
+                                    <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
+                                    <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
+                                    <input type="hidden" name="status" value="{{ $row['status'] }}">
+                                    <button type="submit" class="btn btn-success"> Buka</button>
+                                </form>
+
                                 @if (Auth::user()->level != 2)
 
                                     <?php if ($row['status'] == 0) { ?>
-                                        <form action="/detil_batch" method="post" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                            <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
-                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                            <button type="submit" class="btn btn-primary"> Buka</button>
-                                        </form>
-                                        <button class="btn btn-success" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
+
+                                        <button class="btn btn-primary" id="klikbatch" data-toggle="modal" data-target="#editbatch" data-protap="{{ $row['protap_id'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['nomor_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuk_sedia'] }}" data-kategori="{{ $row['kategori'] }}" data-kemasan="{{ $row['kemasan'] }}" data-protap="{{ $row['pob'] }}" data-id="{{ $row['batch'] }}">Edit</button>
                                     <?php } elseif ($row['status'] == 1) { ?>
-                                        <form action="/detil_batch" method="post" class="float-left mr-2">
-                                            @csrf
-                                            <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                            <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                            <button type="submit" class="btn btn-primary"> Buka</button>
-                                        </form>
                                         <button class="btn btn-danger disabled">Edit</button>
                                     <?php } ?>
                                 @else
                                     @if ($row['status'] == 0)
-                                    <form action="/detil_batch" method="post" class="float-left mr-2">
-                                        @csrf
-                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                        <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
-                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                        <button type="submit" class="btn btn-success"> Buka</button>
-                                    </form>
                                     <form action="/pjt_pengolahanbatch" method="post" id="terimalaporan{{ $row['batch'] }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $row['nomor_batch'] }}">
@@ -94,14 +83,7 @@
                                             </button>
                                         </form>
                                     @else
-                                    <form action="/detil_batch" method="post" class="float-left mr-2">
-                                        @csrf
-                                        <input type="hidden" name="nobatch" value="{{ $row['nomor_batch'] }}">
-                                        <input type="hidden" name="nomor" value="{{ $row['batch'] }}">
-                                        <input type="hidden" name="status" value="{{ $row['status'] }}">
-                                        <button type="submit" class="btn btn-success"> Buka</button>
-                                    </form>
-                                    <button  class="btn btn-danger disabled ">Terima</buttoncl>
+                                    <button  class="btn btn-danger disabled ">Terima</button>
                                     @endif
                                 @endif
                             </td>
@@ -214,7 +196,6 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                                 <div class="col-sm">
                                                     <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 17" id="inlineFormCustomSelect" autocomplete="off">
-                                                    </input>
                                                     <datalist id="kemasan">
                                                         @foreach ($data3 as $row)
                                                         <option value="{{ $row['kemasan_nama'] }}">

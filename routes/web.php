@@ -384,7 +384,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('penanganan-keluhan', [Admin::class, 'tampil_penanganankeluhan'])->name('penanganan-keluhan');
         Route::get('penarikan-produk', [Admin::class, 'tampil_penarikanproduk'])->name('penarikan-produk');
         Route::get('pendistribusian-produk', [Admin::class, 'tampil_distribusi'])->name('pendistribusian-produk');
-        Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoperasian-alat');
+        Route::get('pengoprasian-alat', [Admin::class, 'tampil_pengorasianalat'])->name('pengoprasian-alat');
         Route::post('tampil_detilperiksaalat', [Admin::class, 'tampil_detilperiksaalat'])->name('tampil_detilperiksaalat');
         Route::post('tampil_detiloperasialat', [Admin::class, 'tampil_detiloperasialat'])->name('tampil_detiloperasialat');
         Route::get('detil-alat', [Admin::class, 'tampil_detilalatid'])->name('detilalatid');

@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>Pngolahan Batch</title>
+    <title>Pengolahan Batch</title>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <div class="row">
                 @foreach ($data as $row)
                     <?php $nobatch = $row['nomor_batch'];
-                    $status = $row['status'];
+                    // $status = $row['status'];
                     $awal = 0;
                     $akhir = 0; ?>
                     <div class="card mb-4">
@@ -105,9 +105,16 @@
                 <!-- pop up -->
                 <!-- Button to trigger modal -->
                 @if (Auth::user()->level != 2)
-                    <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm">
-                        Tambah Komposisi
-                    </button>
+                    @if($status == 1) 
+                        <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm">
+                            Tambah Komposisi
+                        </button> 
+                    @else 
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                            Tambah Komposisi
+                        </button> 
+                    @endif
+                    
                 @endif
 
                 <!-- Modal -->
