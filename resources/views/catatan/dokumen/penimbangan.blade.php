@@ -145,7 +145,7 @@
                                                         <button type="submit" class="btn btn-success"> Lihat
                                                         </button>
                                                     </form>
-                                                    
+
                                                     <form method="post" action="terimapenimbanganbahan" id="terimalaporan2">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
@@ -295,17 +295,13 @@
                                             </form>
 
                                             @if (Auth::user()->level == 2)
-                                            
-                                                
-                                                
+
+
+
 
                                                 <?php if ($row['status'] == 0) { ?>
-<<<<<<< HEAD
-                                                    <form method="post" action="terimapenimbanganproduk" id="terimatimbangproduk{{ $row['timbang_produk_id'] }}">
-=======
-                                                    
+
                                                     <form method="post" action="terimapenimbanganproduk" id="terimalaporan{{ $row['timbang_produk_id'] }}">
->>>>>>> 9b303085406da0c9caad8766d259931032a8d813
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['timbang_produk_id'] }}" />
@@ -326,7 +322,7 @@
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <button id="klikproduk" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['timbang_produk_id'] }}">edit</button>
                                                 <?php } ?>
-                                            
+
                                             @endif
                                         </td>
                                         </tr>
@@ -504,8 +500,12 @@
                                                     </form>
                                                 <?php } ?>
                                                 @else
-                                                <?php if ($row['status'] == 0) { ?>    
-                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
+                                                <?php if ($row['status'] == 0) { ?>
+                                                    <button id="klikruang" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editRuang" data-protap="{{ $row['protap_id'] }}" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}"
+                                                    data-jbahan="{{  preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}"
+                                                    data-satuan="{{  preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_bahan_baku']) }}"
+                                                    data-jminta="{{ $row['jumlah_permintaan'] }}"
+                                                    data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <button id="klikruang" type="submit" class="btn btn-danger disabled" data-toggle="modal" data-target="#editRuang" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_bahan_baku'] }}" data-noloth="{{ $row['no_loth'] }}" data-jbahan="{{ preg_replace('/[^0-9]/', '', $row['jumlah_bahan_baku']) }}" data-jminta="{{ $row['jumlah_permintaan'] }}" data-hasil="{{ $row['hasil_timbang'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_ruangtimbang'] }}">edit</button>
                                                 <?php } ?>
@@ -690,7 +690,7 @@
                                             <input type="text" name="jumlah_bahanbaku" class="form-control 6" id="isi_jruang" placeholder="Jumlah Bahan Baku" />
                                         </div>
                                         <div class="col-sm-4">
-                                            <select class="form-select" name="satuan" id="">
+                                            <select class="form-select" name="satuan" id="satuanruang">
                                                 <option value="gr"> gr</option>
                                                 <option value="kg"> kg</option>
                                                 <option value="ml"> ml</option>
@@ -730,7 +730,7 @@
         $("#isi_nolothbahan").val(noloth);
 
         $("#isi_bahanid").val(id);
-        
+
         // document.getElementById('cpbahan').value = cpid;
     })
     $(document).on('click', "#klikproduk", function() {
@@ -755,9 +755,11 @@
         var hasil = $(this).data('hasil');
         var id = $(this).data('id');
         var protap = $(this).data('protap');
+        var satuan = $(this).data('satuan');
 
         $("#isi_hasilprotap").val(protap);
         $("#isi_namaruang").val(nama);
+        $("#satuanruang").val(satuan);
         $("#isi_jruang").val(jruang);
         $("#isi_hasilruang").val(hasil);
         $("#isi_ruangid").val(id);

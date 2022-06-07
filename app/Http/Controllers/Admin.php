@@ -1410,7 +1410,7 @@ class Admin extends Controller
             // dd($pabrik);
         } else {
             $data = pengolahanbatch::join('protaps', 'pengolahanbatches.pob', '=', 'protaps.protap_id')
-                ->get(['pengolahanbatches.*', 'protaps.protap_nama', 'protap_id']); 
+                ->get(['pengolahanbatches.*', 'protaps.protap_nama', 'protap_id']);
             // echo "halo";
         }
         // dd($data);
@@ -3577,6 +3577,7 @@ class Admin extends Controller
     {
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
+        // dd($req);
         $hasil = [
             'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
@@ -4018,10 +4019,10 @@ class Admin extends Controller
         $produkantara = produkantara::all()->where('user_id', $pabrik);
         // dd($produkantara);
         return view('catatan.dokumen.detil.detiltimbangproduk', [
-            'data' => $data, 
+            'data' => $data,
             'produkantara' => $produkantara,
             'status' => $req['status'],
-            
+
         ]);
     }
 
@@ -5664,9 +5665,9 @@ class Admin extends Controller
         ->get(['pengemasanbatchproduks.*', 'protaps.protap_nama']);
 
         return view('catatan.dokumen.pengemasanbatch', [
-            'kemasbatch' => $data1, 
-            'produk' => $produk ?? [], 
-            'kemasan' => $kemasan ?? [], 
+            'kemasbatch' => $data1,
+            'produk' => $produk ?? [],
+            'kemasan' => $kemasan ?? [],
             'protaps' => $protap ?? []
         ]);
     }

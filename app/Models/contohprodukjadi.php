@@ -12,8 +12,8 @@ class contohprodukjadi extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'id_kemasan',
-        'nama_kemasan',
+        'id_produkjadi',
+        'nama_produkjadi',
         'no_batch',
         'tanggal_ambil',
         'kedaluwarsa',
