@@ -37,7 +37,7 @@
                                             Pelatihan
                                             Higiene dan Sanitasi</a>
                                         <a class="nav-link"
-                                            href="{{ route('pengoperasian-alat') }}">Pengoperasian
+                                            href="{{ route('pengoprasian-alat') }}">Pengoperasian
                                             Peralatan
                                             Utama</a>
                                         <a class="nav-link" href="{{ route('penimbangan') }}">Penimbangan</a>

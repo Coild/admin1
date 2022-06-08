@@ -21,11 +21,6 @@ class CreatePeriksaalatsTable extends Migration
             $table->string('nama_ruangan', 200);
             $table->string('nama_alat', 200);
             $table->string('type_merk', 200);
-            // $table->string('bagian_alat', 200);
-            // $table->string('cara_pembersihan', 200);
-            // $table->string('pelaksana', 200);
-            // $table->string('persetujuan', 200)->nullable();
-            // $table->string('keterangan', 200);
             $table->integer('pabrik', false);
             $table->tinyInteger('status', 0)->unsigned();
             $table->integer('user_id', 0)->unsigned();
