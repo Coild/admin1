@@ -960,7 +960,7 @@
             $("#no_batch1").val(params.no_batch)
             $("#asal_bahankemas1").val(params.asal_bahankemas)
             $("#jumlah_bahankemas1").val(params.jumlah_bahankemas.replace(/[^0-9]/g, ''))
-            $("#satuan2").val(params.jumlah_bahanbaku.replace(/[^a-zA-Z]+/, ''))
+            $("#satuan2").val(params.jumlah_bahankemas.replace(/[^a-zA-Z]+/, ''))
             $("#alasan_pemusnahan1").val(params.alasan_pemusnahan)
             $("#cara_pemusnahan1").val(params.cara_pemunsnahan)
             $("#petugas1").val(params.nama_petugas)

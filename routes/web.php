@@ -244,6 +244,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tambah_prkemas', [Admin::class, 'tambah_prkemas']);
         Route::post('/tambah_proisi', [Admin::class, 'tambah_proisi']);
         Route::post('/tambah_protanda', [Admin::class, 'tambah_protanda']);
+        Route::post('/edit_prkemas', [Admin::class, 'edit_prkemas']);
+        Route::post('/edit_proisi', [Admin::class, 'edit_proisi']);
+        Route::post('/edit_protanda', [Admin::class, 'edit_protanda']);
 
         Route::post('/tambah_terimabahan', [Admin::class, 'tambah_terimabahan'])->name('tambah_terimabahan');
         Route::post('/tambah_terimaproduk', [Admin::class, 'tambah_terimaproduk'])->name('tambah_terimaproduk');

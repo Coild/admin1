@@ -11,6 +11,6 @@ class prosedur_isi extends Model
     protected $primaryKey = 'id_proisi';
 
     protected $fillable = [
-        
+        'isi'
     ];
 }

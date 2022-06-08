@@ -1399,6 +1399,78 @@ class Admin extends Controller
         return redirect('/detilkemasbatch');
     }
 
+    public function edit_protanda(Request $req)
+    {
+        $id = session()->get('detilkemasbatch');
+        $pabrik = Auth::user()->pabrik;
+        $key = $req['key'];
+        $data = [
+            'isi' => $req['isi'],
+            'id_kemas' => $id,
+        ];
+        // dd($req);
+        prosedur_tanda::all()->where("id_protanda", $key)->first()->update($data);
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan prosedur penanda pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+        return redirect('/detilkemasbatch');
+    }
+
+    public function edit_proisi(Request $req)
+    {
+        $id = session()->get('detilkemasbatch');
+        $pabrik = Auth::user()->pabrik;
+        $key = $req['key'];
+        $data = [
+            'isi' => $req['isi'],
+            'id_kemas' => $id,
+        ];
+        prosedur_isi::all()->where("id_proisi", $key)->first()->update($data);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Menambah laporan prosedur pengisian batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+        return redirect('/detilkemasbatch');
+    }
+
+    public function edit_prkemas(Request $req)
+    {
+        $id = session()->get('detilkemasbatch');
+        $pabrik = Auth::user()->pabrik;
+        $key = $req['key'];
+        // dd($key);
+        $data = [
+            'kode_kemas' => $req['kode'],
+            'nama_kemas' => $req['nama'],
+            'j_butuh' => $req['jbutuh'],
+            'j_tolak' => $req['jtolak'],
+            'no_qc' => $req['noqc'],
+            'j_pakai' => $req['jpakai'],
+            'j_kembali' => $req['jkembali'],
+            'id_kemasbatch' => $id,
+        ];
+        pr_bahankemas::all()->where("id_pr_bahankemas", $key)->first()->update($data);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' Mengubah laporan penerimaan dan rekonsiliasi pengemasan batch',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+        return redirect('/detilkemasbatch');
+    }
+
 
 
     //tampil batch
@@ -3620,6 +3692,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         // dd($req);
         $hasil = [
+            'protap' => $req['protap'],
             'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
             'no_batch' => $req['nobatch'],

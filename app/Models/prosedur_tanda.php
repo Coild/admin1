@@ -11,6 +11,6 @@ class prosedur_tanda extends Model
     protected $primaryKey = 'id_protanda';
 
     protected $fillable = [
-        
+        'isi'
     ];
 }

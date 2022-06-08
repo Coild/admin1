@@ -139,7 +139,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/tambah_prkemas" method="post" role="form">
+                                        <form action="/tambah_prkemas" method="post" role="form" id="forminput9">
                                             @csrf
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -149,7 +149,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                         Kemasan</label>
                                                     <div class="col-sm">
-                                                        <input placeholder="Nama Kemasan" class="form-control"
+                                                        <input placeholder="Nama Kemasan" class="form-control 9"
                                                             list="listnamaproduk" type="text" name='nama' id="namaproduk" autocomplete="off">
                                                         <datalist id='listnamaproduk'>
                                                             @foreach ($kemasan as $row)
@@ -165,7 +165,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
                                                         kemasan</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="kode" readonly class="form-control"
+                                                        <input type="text" name="kode" readonly class="form-control 9"
                                                             id="kodeproduk" placeholder="Kode Kemasan" />
                                                     </div>
                                                 </div>
@@ -174,7 +174,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dibutuhkan</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="jbutuh" class="form-control" id="butuh"
+                                                        <input type="text" name="jbutuh" class="form-control 9" id="jbutuh"
                                                             placeholder="Jumlah Dibutuhkan" />
                                                     </div>
 
@@ -184,7 +184,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Ditolak</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="jtolak" class="form-control" id="tolak"
+                                                        <input type="text" name="jtolak" class="form-control 9" id="jtolak"
                                                             placeholder="Jumlah Ditolak" />
                                                     </div>
                                                 </div>
@@ -192,7 +192,7 @@
                                                 <div class="form-group row">
                                                     <label for="tolak" class="col-sm-3 col-form-label">No QC</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="noqc" class="form-control" id="tolak"
+                                                        <input type="text" name="noqc" class="form-control 9" id="noqc"
                                                             placeholder="No QC" />
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dipakai</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="jpakai" class="form-control" id="butuh"
+                                                        <input type="text" name="jpakai" class="form-control 9" id="jpakai"
                                                             placeholder="Jumlah Dipakai" />
                                                     </div>
 
@@ -211,7 +211,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Dikembalikan</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="jkembali" class="form-control" id="tolak"
+                                                        <input type="text" name="jkembali" class="form-control 9" id="jkembali"
                                                             placeholder="Jumlah Dikembalikan" />
                                                     </div>
                                                 </div>
@@ -222,9 +222,9 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
-                                                    Tambah
+                                                <button type="button" class="btn btn-primary submitBtn"
+                                                    onclick="salert1(9)">
+                                                    Simpan
                                                 </button>
                                             </div>
                                         </form>
@@ -245,6 +245,7 @@
                                     <th scope="col" colspan="2" style="text-align: center;">Jumlah</th>
                                     <th scope="col" rowspan="2">No QC</th>
                                     <th scope="col" colspan="2" style="text-align: center;">Jumlah</th>
+                                    <th scope="col" rowspan="2" style="text-align: center;">Action</th>
 
                                 </tr>
                                 <tr>
@@ -264,6 +265,9 @@
                                         <td>{{ $row['no_qc'] }}</td>
                                         <td>{{ $row['j_pakai'] }}</td>
                                         <td>{{ $row['j_kembali'] }}</td>
+                                        <td>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm" onclick="editdata1({{$row}})">Edit</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -302,13 +306,14 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/tambah_proisi" method="post" role="form">
+                                        <form action="/tambah_proisi" method="post" role="form" id="forminput7">
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
+                                            <input type="hidden" id="bawah" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Isi</label>
-                                                <input name="isi" type="text" class="form-control" id="inputName"
+                                                <input name="isi" id="proisi" type="text"
+                                                class="form-control 7"
                                                     placeholder="Keterangan" />
                                             </div>
 
@@ -317,9 +322,9 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
-                                                    Tambah
+                                                <button type="button" class="btn btn-primary submitBtn"
+                                                    onclick="salert1(7)">
+                                                    Simpan
                                                 </button>
                                             </div>
                                         </form>
@@ -352,7 +357,7 @@
                                         </td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                            <button class="btn btn-primary">Edit</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm1" onclick="editdata2({{$row}})">Edit</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -380,7 +385,7 @@
                             </button>
                         @endif
                         <!-- Modal -->
-                        <div class="modal fade" id="modalForm2" role="dialog">
+                        <div class="modal fade" id="modalForm2" role="dialog" id="forminput5">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <!-- Modal Header -->
@@ -393,13 +398,13 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/tambah_protanda" method="post" role="form">
+                                        <form action="/tambah_protanda" method="post" role="form"  id="forminput5">
                                             @csrf
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Isi</label>
-                                                <input type="text" name="isi" class="form-control" id="inputName"
+                                                <input type="text" name="isi" class="form-control 5" id="isi_protanda"
                                                     placeholder="Keterangan" />
                                             </div>
 
@@ -408,8 +413,8 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn"
-                                                    onclick="submitContactForm()">
+                                                <button type="button" class="btn btn-primary submitBtn"
+                                                    onclick="salert1(5)">
                                                     Tambah
                                                 </button>
                                             </div>
@@ -443,7 +448,7 @@
                                         </td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                            <button class="btn btn-primary">Edit</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm2" onclick="editdata3({{$row}})">Edit</button>
                                             @endif
                                             
                                         </td>
@@ -479,5 +484,38 @@
                 document.getElementById('kodeproduk').value = ""
             }
         });
+
+
+        function editdata2(params) {
+            $("#forminput7").attr("action", "edit_proisi");
+        var inputid = '<input type="hidden" name="key" class ="form-control 7" value="' + params
+            .id_proisi + '"/>'
+            $(inputid).insertAfter("#bawah  ")
+        $("#proisi").val(params.isi)
+            }
+
+            function editdata3(params) {
+                console.log(params.isi)
+                $("#forminput5").attr("action", "edit_protanda");
+        var inputid = '<input type="hidden" name="key" class ="form-control 5" value="' + params
+            .id_protanda + '"/>';
+            $(inputid).insertAfter("#isi_protanda")
+        $("#isi_protanda").val(params.isi)
+            }
+
+            function editdata1(params) {
+                $("#forminput9").attr("action", "edit_prkemas");
+        var inputid = '<input type="hidden" name="key" class ="form-control 9" value="' + params
+            .id_pr_bahankemas + '"/>'
+            $(inputid).insertAfter("#jbutuh")
+        $("#namaproduk").val(params.nama_kemas)
+        $("#kodeproduk").val(params.kode_kemas)
+        $("#jbutuh").val(params.j_butuh)
+        $("#jtolak").val(params.j_tolak)
+        $("#noqc").val(params.no_qc)
+        $("#jpakai").val(params.j_pakai)
+        $("#jkembali").val(params.j_kembali)
+            }
+
     </script>
 @endsection

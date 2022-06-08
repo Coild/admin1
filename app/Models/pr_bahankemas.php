@@ -11,6 +11,12 @@ class pr_bahankemas extends Model
     protected $primaryKey = 'id_pr_bahankemas';
 
     protected $fillable = [
-        
+        'kode_kemas',
+                                        'nama_kemas',
+                                        'j_butuh',
+                                        'j_tolak',
+                                        'no_qc',
+                                        'j_pakai',
+                                        'j_kembali',
     ];
 }
