@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetiloperasialasTable extends Migration
+class CreateDetiloperasialatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDetiloperasialasTable extends Migration
      */
     public function up()
     {
-        Schema::create('detiloperasialas', function (Blueprint $table) {
+        Schema::create('detiloperasialats', function (Blueprint $table) {
             $table->id();
             $table->integer('id_induk');
             $table->dateTime('mulai_pemakaian')->nullable();
@@ -32,6 +32,6 @@ class CreateDetiloperasialasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detiloperasialas');
+        Schema::dropIfExists('detiloperasialats');
     }
 }

@@ -94,7 +94,7 @@
                                                 </div>
 
 
-                                                <div class="card mb-4">
+                                                {{-- <div class="card mb-4">
                                                     <div class="card-header">
                                                         <i class="fas fa-table me-1"></i>
                                                         Pembersihan
@@ -129,7 +129,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="form-group row">
                                                     <label for="inputEmail3"
                                                         class="col-sm-3 col-form-label">Keterangan</label>
@@ -156,7 +156,7 @@
                             <tr>
                                 <th scope="col" rowspan="3">No</th>
                                 <th scope="col" colspan="6">Pemakaian</th>
-                                <th scope="col" colspan="5">Pembersihan</th>
+                                {{-- <th scope="col" colspan="5">Pembersihan</th> --}}
                                 <th scope="col" rowspan="3">Keterangan</th>
                                 <th scope="col" rowspan="3">Action</th>
                             </tr>
@@ -165,19 +165,19 @@
                                 <th scope="col" rowspan="2">Produksi</th>
                                 <th scope="col" rowspan="2">No. Batch</th>
                                 <th scope="col" colspan="2">Selesai</th>
-                                <th scope="col" rowspan="2">Oleh</th>
+                                {{-- <th scope="col" rowspan="2">Oleh</th>
                                 <th scope="col" colspan="2">Mulai</th>
-                                <th scope="col" colspan="2">Selesai</th>
+                                <th scope="col" colspan="2">Selesai</th> --}}
                             </tr>
                             <tr>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
-                                <th scope="col">Tanggal</th>
+                                {{-- <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Jam</th>
+                                <th scope="col">Jam</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -216,41 +216,41 @@
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
                                     </td>
-                                    <td>{{ $row['diperiksa_oleh'] }}</td>
-                                    <td>
-                                        @if ($row['mulai_pembersihan'] != null)
-                                            {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('j F, Y') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($row['mulai_pembersihan'] != null)
-                                            {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('h:i:s A') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($row['selesai_pembersihan'] != null)
-                                            {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('j F, Y') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($row['selesai_pembersihan'] != null)
-                                            {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('h:i:s A') }}
-                                        @else
-                                            <div class="badge badge-danger"> belum</div>
-                                        @endif
-                                    </td>
+                                        {{-- <td>{{ $row['diperiksa_oleh'] }}</td>
+                                        <td>
+                                            @if ($row['mulai_pembersihan'] != null)
+                                                {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('j F, Y') }}
+                                            @else
+                                                <div class="badge badge-danger"> belum</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($row['mulai_pembersihan'] != null)
+                                                {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('h:i:s A') }}
+                                            @else
+                                                <div class="badge badge-danger"> belum</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($row['selesai_pembersihan'] != null)
+                                                {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('j F, Y') }}
+                                            @else
+                                                <div class="badge badge-danger"> belum</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($row['selesai_pembersihan'] != null)
+                                                {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('h:i:s A') }}
+                                            @else
+                                                <div class="badge badge-danger"> belum</div>
+                                            @endif
+                                        </td> --}}
                                     <td>{{ $row['keterangan'] }}</td>
                                     <td>
                                         @if (Auth::user()->level != 2)
                                             @if ($status == 0)
                                             <form method="post" class="float-left mr-2"
-                                                id="detilalat{{ $row['id_detilalat'] }}">
+                                                id="detilalat{{ $row['id'] }}">
                                                 @csrf
                                                 <button type="button"
                                                     onclick="buttonModalFormDetil({{ $row }})"
@@ -346,7 +346,7 @@
                                 </div>
 
 
-                                <div class="card mb-4">
+                                {{-- <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
                                         Pembersihan
@@ -377,7 +377,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                     <div class="col-sm">
@@ -402,14 +402,14 @@
         function buttonModalFormDetil(p) {
                 $('#editalat').modal('show');
             console.log(p)
-                $('#Modalid_detilalat').val(p.id_detilalat);
+                $('#Modalid_detilalat').val(p.id);
                 $('#Modalmulai_pemakaian').val(new Date(p.mulai_pemakaian).toJSON().slice(0,19));
                 $('#Modalselesai_pemakaian').val(new Date(p.selesai_pemakaian).toJSON().slice(0,19));
                 $('#Modalproduksi').val(p.produksi);
                 $('#Modalno_batch').val(p.no_batch);
-                $('#Modaldiperiksa_oleh').val(p.diperiksa_oleh);
-                $('#Modalmulai_pembersihan').val(new Date(p.mulai_pembersihan).toJSON().slice(0,19));
-                $('#Modalselesai_pembersihan').val(new Date(p.selesai_pembersihan).toJSON().slice(0,19));
+                // $('#Modaldiperiksa_oleh').val(p.diperiksa_oleh);
+                // $('#Modalmulai_pembersihan').val(new Date(p.mulai_pembersihan).toJSON().slice(0,19));
+                // $('#Modalselesai_pembersihan').val(new Date(p.selesai_pembersihan).toJSON().slice(0,19));
                 $('#Modalketerangan').val(p.keterangan);
                 
             }

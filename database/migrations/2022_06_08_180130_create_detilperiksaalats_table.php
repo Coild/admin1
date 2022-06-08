@@ -16,10 +16,10 @@ class CreateDetilperiksaalatsTable extends Migration
         Schema::create('detilperiksaalats', function (Blueprint $table) {
             $table->id('id_detilalat');
             $table->integer('id_induk');
-            $table->dateTime('mulai_pemakaian')->nullable();
-            $table->dateTime('selesai_pemakaian')->nullable();
-            $table->string('produksi')->nullable();
-            $table->string('no_batch')->nullable();
+            // $table->dateTime('mulai_pemakaian')->nullable();
+            // $table->dateTime('selesai_pemakaian')->nullable();
+            // $table->string('produksi')->nullable();
+            // $table->string('no_batch')->nullable();
             $table->string('diperiksa_oleh')->nullable();
             $table->dateTime('mulai_pembersihan')->nullable();
             $table->dateTime('selesai_pembersihan')->nullable();

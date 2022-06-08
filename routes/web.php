@@ -317,6 +317,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('tambah_detilalat', [Admin::class, 'tambah_detilalat'])->name('tambah_detilalat');
         Route::post('tambah_detiloperasilalat', [Admin::class, 'tambah_detiloperasilalat'])->name('tambah_detiloperasilalat');
         Route::post('edit_detilalat', [Admin::class, 'edit_detilalat'])->name('edit_detilalat');
+        Route::post('edit_detilperiksaalat', [Admin::class, 'edit_detilperiksaalat'])->name('edit_detilperiksaalat');
         Route::post('tambah_pemusnahanbahan', [Admin::class, 'tambah_pemusnahanbahan'])->name('tambah_pemusnahanbahan');
         Route::post('edit_pemusnahanbahan', [Admin::class, 'edit_pemusnahanbahan'])->name('edit_pemusnahanbahan');
         Route::post('tambah_pemusnahanbahankemas', [Admin::class, 'tambah_pemusnahanbahankemas'])->name('tambah_pemusnahanbahankemas');

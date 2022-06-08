@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-
 use Carbon\Carbon;
+
 use App\Models\log;
-use App\Models\Detilperiksaalat;
 use Illuminate\Http\Request;
+use App\Models\Detiloperasialat;
+use App\Models\Detilperiksaalat;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -2086,7 +2087,11 @@ class Admin extends Controller
         $data = Periksaalat::join('protaps', 'periksaalats.pob_nomor', '=', 'protaps.protap_id')
             ->get(['periksaalats.*', 'protaps.protap_nama', 'protap_id']);
 
-        return view('catatan.higidansani.periksasanialat', ['data' => $data, 'data1' => $data1, 'data2' => $data2]);
+        return view('catatan.higidansani.periksasanialat', [
+            'data' => $data, 
+            'data1' => $data1, 
+            'data2' => $data2
+        ]);
     }
 
 
@@ -3058,10 +3063,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'id_induk' => $req['id_alat'],
-            'mulai_pemakaian' => $req['mulai_pemakaian'],
-            'selesai_pemakaian' => $req['selesai_pemakaian'],
-            'produksi' => $req['produksi'],
-            'no_batch' => $req['no_batch'],
+            // 'mulai_pemakaian' => $req['mulai_pemakaian'],
+            // 'selesai_pemakaian' => $req['selesai_pemakaian'],
+            // 'produksi' => $req['produksi'],
+            // 'no_batch' => $req['no_batch'],
             'diperiksa_oleh' => $req['diperiksa_oleh'],
             'mulai_pembersihan' => $req['mulai_pembersihan'],
             'selesai_pembersihan' => $req['selesai_pembersihan'],
@@ -3107,14 +3112,14 @@ class Admin extends Controller
             'selesai_pemakaian' => $req['selesai_pemakaian'],
             'produksi' => $req['produksi'],
             'no_batch' => $req['no_batch'],
-            'diperiksa_oleh' => $req['diperiksa_oleh'],
-            'mulai_pembersihan' => $req['mulai_pembersihan'],
-            'selesai_pembersihan' => $req['selesai_pembersihan'],
+            // 'diperiksa_oleh' => $req['diperiksa_oleh'],
+            // 'mulai_pembersihan' => $req['mulai_pembersihan'],
+            // 'selesai_pembersihan' => $req['selesai_pembersihan'],
             'keterangan' => $req['keterangan']
         ];
 
         // $nomer = detilalat::insertGetId($hasil);
-        Detilperiksaalat::insert($hasil);
+        Detiloperasialat::insert($hasil);
 
        $notif = [
             'notif_isi' => Auth::user()->namadepan . " menambah laporan ",
@@ -3150,6 +3155,37 @@ class Admin extends Controller
             'selesai_pemakaian' => $req['selesai_pemakaian'],
             'produksi' => $req['produksi'],
             'no_batch' => $req['no_batch'],
+            // 'mulai_pembersihan' => $req['mulai_pembersihan'],
+            // 'selesai_pembersihan' => $req['selesai_pembersihan'],
+            // 'diperiksa_oleh' => $req['diperiksa_oleh'],
+            'keterangan' => $req['keterangan'],
+        ];
+        // dd($req);
+        $nomer = Detiloperasialat::where('id', $req['Modalid_detilalat'])->update($hasil);
+
+        $log = [
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan detil operasi alat',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
+            'log_waktu' => date('Y-m-d H:i:s'),
+            'id_pabrik' => Auth::user()->pabrik
+        ];
+        log::insert($log);
+
+        // return \Illuminate\Support\Facades\Redirect::back();
+
+        return redirect('/pengoprasian-alat');
+    }
+
+    public function edit_detilperiksaalat(Request $req)
+    {
+        // dd($req);
+        $id = Auth::user()->id;
+        $pabrik = Auth::user()->pabrik;
+        $hasil = [
+            // 'mulai_pemakaian' => $req['mulai_pemakaian'],
+            // 'selesai_pemakaian' => $req['selesai_pemakaian'],
+            // 'produksi' => $req['produksi'],
+            // 'no_batch' => $req['no_batch'],
             'mulai_pembersihan' => $req['mulai_pembersihan'],
             'selesai_pembersihan' => $req['selesai_pembersihan'],
             'diperiksa_oleh' => $req['diperiksa_oleh'],
@@ -3159,17 +3195,18 @@ class Admin extends Controller
         $nomer = Detilperiksaalat::where('id_detilalat', $req['Modalid_detilalat'])->update($hasil);
 
         $log = [
-            'log_isi' => Auth::user()->namadepan . ' mengubah laporan detil pemeriksaan sanitasi alat',
+            'log_isi' => Auth::user()->namadepan . ' mengubah laporan detil periksa sanitasi alat',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
 
-        return \Illuminate\Support\Facades\Redirect::back();
+        // return \Illuminate\Support\Facades\Redirect::back();
 
-        // return redirect('/periksasanialat');
+        return redirect('/periksasanialat');
     }
+
 
 
     public function tampil_pengorasianalat()
@@ -3192,7 +3229,7 @@ class Admin extends Controller
         // dd($req);
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
-        $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
+        $data = Detiloperasialat::all()->where('id_induk', $req['id_alat']);
         return view('catatan.dokumen.detiloperasialat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
     }
 
@@ -3203,7 +3240,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
         $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
-        return view('catatan.higidansani.detilalat', ['data' => $data, 'status' => $req->status, 'id_alat' => $req->id_alat]);
+        return view('catatan.higidansani.detilalat', [
+            'data' => $data, 
+            'status' => $req->status, 
+            'id_alat' => $req->id_alat
+        ]);
     }
 
 

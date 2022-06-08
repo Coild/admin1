@@ -1,12 +1,12 @@
 @extends('layout.app')
 @section('title')
-    <title>Detail Pengoprasian Alat Utama</title>
+    <title>Detail Periksa Sanitasi Alat</title>
 @endsection
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1>Catatan Pengoprasian Alat Utama</h1>
-            <ol class="breadcrumb mb-4">Detail Pengoprasian Alat Utama</li>
+            <h1>Catatan Detail Periksa Sanitasi Alat </h1>
+            <ol class="breadcrumb mb-4">Detail Periksa Sanitasi Alat </li>
             </ol>
             <div class="row">
 
@@ -19,12 +19,12 @@
                             @if ($status == 0)
                                 <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"
                                     onclick="setdatetoday()">
-                                    Tambah Pengoprasian Alat Utama
+                                    Tambah Periksa Sanitasi Alat 
                                 </button>
                             @else
                                 <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm"
                                     onclick="setdatetoday()">
-                                    Tambah Pengoprasian Alat Utama
+                                    Tambah Periksa Sanitasi Alat 
                                 </button>
                             @endif
                         @endif
@@ -35,7 +35,7 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel">
-                                            Tambah Detail Pengoprasian Alat Utama
+                                            Tambah Detail Periksa Sanitasi Alat 
                                         </h4>
                                     </div>
 
@@ -48,7 +48,7 @@
                                                 @csrf
                                                 <input type="hidden" name="id_alat" value="{{ $id_alat }}">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                <div class="card">
+                                                {{-- <div class="card">
                                                     <div class="card-header">
                                                         <i class="fas fa-table me-1"></i>
                                                         Pemakaian
@@ -91,7 +91,7 @@
                                                         </div>
 
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
 
                                                 <div class="card mb-4">
@@ -153,27 +153,29 @@
 
                     <table class="table mt-5" id="tabel1">
                         <thead>
-                            <tr>
-                                <th scope="col" rowspan="3">No</th>
+                            {{-- <tr>
+                                
                                 <th scope="col" colspan="6">Pemakaian</th>
                                 <th scope="col" colspan="5">Pembersihan</th>
-                                <th scope="col" rowspan="3">Keterangan</th>
-                                <th scope="col" rowspan="3">Action</th>
-                            </tr>
+                                
+                            </tr> --}}
                             <tr>
-                                <th scope="col" colspan="2">Mulai</th>
+                                <th scope="col" rowspan="2">No</th>
+                                {{-- <th scope="col" colspan="2">Mulai</th>
                                 <th scope="col" rowspan="2">Produksi</th>
                                 <th scope="col" rowspan="2">No. Batch</th>
-                                <th scope="col" colspan="2">Selesai</th>
-                                <th scope="col" rowspan="2">Oleh</th>
+                                <th scope="col" colspan="2">Selesai</th> --}}
+                                <th scope="col" rowspan="2">Diperiksa Oleh</th>
                                 <th scope="col" colspan="2">Mulai</th>
                                 <th scope="col" colspan="2">Selesai</th>
+                                <th scope="col" rowspan="2">Keterangan</th>
+                                <th scope="col" rowspan="2">Action</th>
                             </tr>
                             <tr>
-                                <th scope="col">Tanggal</th>
+                                {{-- <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Jam</th>
+                                <th scope="col">Jam</th> --}}
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
                                 <th scope="col">Tanggal</th>
@@ -186,7 +188,7 @@
                                 $i++; ?>
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
+                                    {{-- <td>
                                         @if ($row['mulai_pemakaian'] != null)
                                             {{ \Carbon\Carbon::parse($row['mulai_pemakaian'])->format('j F, Y') }}
                                         @else
@@ -215,7 +217,7 @@
                                         @else
                                             <div class="badge badge-danger"> belum</div>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>{{ $row['diperiksa_oleh'] }}</td>
                                     <td>
                                         @if ($row['mulai_pembersihan'] != null)
@@ -290,20 +292,20 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
-                            Edit Pengoprasian Alat Utama
+                            Edit Periksa Sanitasi Alat
                         </h4>
                     </div>
 
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form method="post" action="edit_detilalat" id='forminput2'>
+                        <form method="post" action="edit_detilperiksaalat" id='forminput2'>
                             <div class="card mb-4">
                                 <div class="card-header" id='headertgl'></div>
                                 @csrf
                                 <input type="hidden" name="Modalid_detilalat" id="Modalid_detilalat" >
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <div class="card">
+                                {{-- <div class="card">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
                                         Pemakaian
@@ -343,7 +345,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="card mb-4">
@@ -370,7 +372,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Oleh</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Diperiksa Oleh</label>
                                             <div class="col-sm">
                                                 <input type="text" name="diperiksa_oleh" class="form-control 2"
                                                     id="Modaldiperiksa_oleh" placeholder="Oleh..." />
@@ -403,10 +405,10 @@
                 $('#editalat').modal('show');
             console.log(p)
                 $('#Modalid_detilalat').val(p.id_detilalat);
-                $('#Modalmulai_pemakaian').val(new Date(p.mulai_pemakaian).toJSON().slice(0,19));
-                $('#Modalselesai_pemakaian').val(new Date(p.selesai_pemakaian).toJSON().slice(0,19));
-                $('#Modalproduksi').val(p.produksi);
-                $('#Modalno_batch').val(p.no_batch);
+                // $('#Modalmulai_pemakaian').val(new Date(p.mulai_pemakaian).toJSON().slice(0,19));
+                // $('#Modalselesai_pemakaian').val(new Date(p.selesai_pemakaian).toJSON().slice(0,19));
+                // $('#Modalproduksi').val(p.produksi);
+                // $('#Modalno_batch').val(p.no_batch);
                 $('#Modaldiperiksa_oleh').val(p.diperiksa_oleh);
                 $('#Modalmulai_pembersihan').val(new Date(p.mulai_pembersihan).toJSON().slice(0,19));
                 $('#Modalselesai_pembersihan').val(new Date(p.selesai_pembersihan).toJSON().slice(0,19));
