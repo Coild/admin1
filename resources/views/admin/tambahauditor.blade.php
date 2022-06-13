@@ -66,7 +66,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
-                            Tammbah Pabrik
+                            Tambah Auditor
                         </h4>
                     </div>
                     <!-- Modal Body -->

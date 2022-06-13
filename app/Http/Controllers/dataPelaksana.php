@@ -339,7 +339,7 @@ class dataPelaksana extends Controller
             elseif ($data->laporan_nama == 'pelatihan cpkb')
                 $form = '<form target="_blank" method="post" action="/printlatihcpkb">';
                 //higi sani pengoperasian alat
-                elseif ($data->laporan_nama == 'periksa sanitasi ruangan')
+                elseif ($data->laporan_nama == 'Periksa Sanitasi Ruangan')
                 $form = '<form target="_blank" method="post" action="/printpembersihanruangan">';
                 elseif ($data->laporan_nama == 'pelatihan cpkb')
                 $form = '<form target="_blank" method="post" action="/printpembersihanalat">';
@@ -349,6 +349,8 @@ class dataPelaksana extends Controller
             elseif ($data->laporan_nama == 'periksa sanitasi alat')
                 $form = '<form target="_blank" method="post" action="/printpemeriksaansanitasialat">';
 
+                elseif ($data->laporan_nama == 'ruang timbang')
+                $form = '<form target="_blank" method="post" action="/printpemeriksaansanitasialat">';
 
 
             else

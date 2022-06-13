@@ -152,10 +152,10 @@
                                                 id="terimalaporan{{ $row['id_operasi'] }}">
                                                 @csrf
                                                 <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                                <button onclick="TerimaLaporan({{ $row['id_operasi'] }})"
-                                                    @if ($row['status'] == '1')  @endif type="button"
+                                                <button onclick="TerimaLaporanOperasiAlat({{ $row['id_operasi'] }})" type="button"
                                                     class="btn btn-primary">terima</button>
                                             </form>
+
                                             <?php } elseif ($row['status'] == 1) { ?>
 
                                             <form method="post" action="tampil_detiloperasialat" class="float-left mr-2">
@@ -164,12 +164,11 @@
                                                 <input type="hidden" name="status" value="{{ $row['status'] }}" />
                                                 <button type="submit" class="btn btn-success">lihat</button>
                                             </form>
-                                            <form method="post" action="terimaoperasialat" id="terimalaporan2">
+                                            <form method="post" action="terimaoperasialat">
                                                 @csrf
                                                 <input type="hidden" name="nobatch" value="{{ $row['id_operasi'] }}" />
-                                                <button onclick="TerimaLaporan(2)"
-                                                    @if ($row['status'] == '1') {{ 'disabled' }} @endif
-                                                    type="button" class="btn btn-danger">terima</button>
+                                                <button
+                                                    type="button" class="btn btn-danger disabled">terima</button>
                                             </form>
                                             <?php } ?>
                                         @else

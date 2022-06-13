@@ -179,28 +179,28 @@
                               <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    @if ($row['mulai_pemakaian'] != null)
+                                    @if ($row['mulai_pembersihan'] != null)
                                         {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('j F, Y') }}
                                     @else
                                         <div class="badge badge-danger"> belum</div>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($row['mulai_pemakaian'] != null)
+                                    @if ($row['mulai_pembersihan'] != null)
                                         {{ \Carbon\Carbon::parse($row['mulai_pembersihan'])->format('h:i:s A') }}
                                     @else
                                         <div class="badge badge-danger"> belum</div>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($row['mulai_pemakaian'] != null)
+                                    @if ($row['selesai_pembersihan'] != null)
                                         {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('j F, Y') }}
                                     @else
                                         <div class="badge badge-danger"> belum</div>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($row['mulai_pemakaian'] != null)
+                                    @if ($row['selesai_pembersihan'] != null)
                                         {{ \Carbon\Carbon::parse($row['selesai_pembersihan'])->format('h:i:s A') }}
                                     @else
                                         <div class="badge badge-danger"> belum</div>

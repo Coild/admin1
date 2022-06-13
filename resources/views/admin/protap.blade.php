@@ -59,10 +59,9 @@
                                                         {{ $row['tgl_upload'] }}
                                                     </td>
                                                     <td>
-                                                        <button>
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary">Buka</a>
-                                                        </button>
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -112,10 +111,10 @@
                                                         {{ $row['tgl_upload'] }}
                                                     </td>
                                                     <td>
-                                                        <button>
+                                                        
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary">Buka</a>
-                                                        </button>
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -163,10 +162,10 @@
                                                         {{ $row['tgl_upload'] }}
                                                     </td>
                                                     <td>
-                                                        <button>
+                                                        
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary">Buka</a>
-                                                        </button>
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -215,10 +214,9 @@
                                                         {{ $row['tgl_upload'] }}
                                                     </td>
                                                     <td>
-                                                        <button>
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button
                                                                 type="button" class="btn btn-primary">Buka</a>
-                                                        </button>
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -254,7 +252,7 @@
                             <input type="hidden" name="kategori" value="Aturan Baru" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
@@ -302,7 +300,7 @@
                             <input type="hidden" name="kategori" value="Aturan Produk" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
@@ -349,7 +347,7 @@
                             <input type="hidden" name="kategori" value="Aturan Pabrik" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control file" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
@@ -396,7 +394,7 @@
                             <input type="hidden" name="kategori" value="Aturan Iklan" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control file" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>

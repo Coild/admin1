@@ -124,19 +124,19 @@
                         <td style="border-right-color:white;" colspan="2">Ruangan</td>
                         <td colspan="2">: MIXING</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td rowspan="3">No</td>
                         <td colspan="6">Pemakaian</td>
                         <td colspan="6">Pembersihan</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td colspan="2">Mulai</td>
                         <td rowspan="2">Produksi</td>
                         <td rowspan="2">No Batch</td>
                         <td colspan="2">Selesai</td>
-                        <td rowspan="2">Oleh</td>
+                        {{-- <td rowspan="2">Oleh</td>
                         <td colspan="2">Mulai</td>
-                        <td colspan="2">Selesai</td>
+                        <td colspan="2">Selesai</td> --}}
                         <td rowspan="2">Ket</td>         
                     </tr>
                     <tr>
@@ -144,10 +144,10 @@
                         <td>Jam</td>
                         <td>Tgl</td>
                         <td>Jam</td>
-                        <td>Tgl</td>
+                        {{-- <td>Tgl</td>
                         <td>Jam</td>
                         <td>Tgl</td>
-                        <td>Jam</td>    
+                        <td>Jam</td> --}}
                     </tr>
                     <tr>
                         <td>isi 1</td>

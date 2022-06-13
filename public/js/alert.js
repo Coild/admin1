@@ -58,6 +58,25 @@ function TerimaLaporan(p){
     });
 }
 
+function TerimaLaporanOperasiAlat(p){
+    // console.log(p);
+    var link = "terimalaporan"+p;
+    // console.log(link);
+    Swal.fire({
+        title: "Apakah Anda Yakin",
+        text: "Terima Laporan?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Terima",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
+
 function TerimaLaporan(o,p){
     // console.log(p);
     var link = "terima"+o+p;

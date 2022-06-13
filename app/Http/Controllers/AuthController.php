@@ -86,7 +86,7 @@ class AuthController extends Controller
         $user->namadepan = $request->namadepan;
         $user->namabelakang = $request->namabelakang;
         $user->pabrik = $request->search;
-        $user->level = 2;
+        $user->level = 3;
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
 

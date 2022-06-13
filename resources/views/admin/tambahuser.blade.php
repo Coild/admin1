@@ -145,7 +145,7 @@
                             @csrf
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
-                                <input class="form1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
+                                <input class="form-control 1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
                                 <label for="inputEmail">Password Baru</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>

@@ -159,17 +159,17 @@
                     <td colspan="3">
                         <img src={{ asset("asset/logo/$logo") }} style="height:80px; width:auto;" alt="Your Picture">
                     </td>
-                    <td colspan="4">
+                    <td colspan="5">
                         CATATAN<br>PENGGUNA ALAT UTAMA
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;" colspan="7">Dilaksanakan sesuai PROTAP Nomor:<br>
+                    <td style="text-align: left;" colspan="8">Dilaksanakan sesuai PROTAP Nomor:<br>
                         Tanggal:
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="7">
+                    <td colspan="8">
                         NAMA ALAT: {{ $data['nama_alat'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         TIPE/MEREK: {{ $data['tipe_merek'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         RUANG: {{ $data['ruang'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -177,13 +177,14 @@
                 </tr>
                 <tr>
                     <td rowspan="3">No</td>
-                    <td colspan="6">PEMBERSIHAN</td>
+                    <td colspan="7">PEMAKAIAN</td>
                 </tr>
                 <tr>
                     <td colspan="2">Mulai</td>
                     <td colspan="2">Seleseai</td>
-                    <td rowspan="2">Oleh</td>
-                    <td rowspan="2">Ket</td>
+                    <td rowspan="2">Produksi</td>
+                    <td rowspan="2">No. Batch</td>
+                    <td rowspan="2">Keterangan</td>
                 </tr>
                 <tr>
                     <td>Tgl</td>
@@ -195,12 +196,10 @@
                 @foreach ($isi as $baris)
                     <tr>
                         <?php $i++;
-                        // "{{ $newDate = date('Y-m-d\TH:i', strtotime($row['jadwal_mulai_pelatihan'])); }}"
-                        // $mulai = DateTime::createFromFormat('Y-m-d', strtotime($baris['mulai']));
-                        // $selesai = DateTime::createFromFormat('Y-m-d', strtotime($baris['selesai']));
-                        $mulai = $baris['mulai'];
+                        
+                        $mulai = $baris['mulai_pemakaian'];
                         $mulai = strtotime($mulai);
-                        $selesai = $baris['selesai'];
+                        $selesai = $baris['selesai_pemakaian'];
                         $selesai = strtotime($selesai);
                          ?>
 
@@ -210,8 +209,9 @@
                         <td>{{ date('H:i',$mulai) }}</td>
                         <td>{{ date('d-m-Y',$selesai) }}</td>
                         <td>{{ date('H:i',$selesai) }}</td>
-                        <td>{{ $baris['oleh'] }}</td>
-                        <td>{{ $baris['ket'] }}</td>
+                        <td>{{ $baris['produksi'] }}</td>
+                        <td>{{ $baris['no_batch'] }}</td>
+                        <td>{{ $baris['keterangan'] }}</td>
                     </tr>
                 @endforeach
             </table>
