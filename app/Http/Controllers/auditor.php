@@ -46,10 +46,12 @@ class auditor extends Controller
         audit::insert($hasil);
         $notif = [
             'notif_isi' => Auth::user()->namadepan." meminta audit laporan ".$req['nama'],
+            'notif_laporan' => $req['nama'],
             'notif_link' => 'list_audit',
             'notif_waktu' => date('Y-m-d H:i:s'),
-            'notif_1' => $req['asal'],
+            'notif_1' => $req['asal'] ?? 0,
             'notif_2' => Auth::user()->level,
+            'notif_3' => 1,
             'notif_level' => 2,
             'status' => 0,
             'id_pabrik'=> $req['pabrik'],
