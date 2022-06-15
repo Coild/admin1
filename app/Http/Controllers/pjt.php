@@ -290,11 +290,11 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req);
-        $user = programpelatihan::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
+        $user = programpelatihan::all()->where("id_programpelatihan", $req['no'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['no'])
             ->where('laporan_nama', 'pelatihan higiene dan sanitasi')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl
@@ -321,11 +321,11 @@ class pjt extends Controller
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         // dd($req);
-        $user = Pelatihancpkb::all()->where("kode_pelatihan", $req['nobatch'])->first()->update([
+        $user = Pelatihancpkb::all()->where("id_pelatihancpkb", $req['no'])->first()->update([
             'status' => 1,
         ]);
 
-        laporan::all()->where('laporan_batch', $req['nobatch'])
+        laporan::all()->where('laporan_nomor', $req['no'])
             ->where('laporan_nama', 'pelatihan cpkb')->first()->update([
                 'laporan_diterima' =>  Auth::user()->namadepan.' '.Auth::user()->namabelakang,
                 'tgl_diterima' => $tgl

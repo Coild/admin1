@@ -72,42 +72,42 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/register_pabrik" method="post" id='forminput'>
+                        <form action="/register_pabrik" method="post" id='forminput1'>
                             @csrf
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" name="namadepan" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                        <input class="form-control 1" name="namadepan" id="inputFirstName" type="text" placeholder="Enter your first name" />
                                         <label for="inputFirstName">First name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" name="namabelakang" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                        <input class="form-control 1" name="namabelakang" id="inputLastName" type="text" placeholder="Enter your last name" />
                                         <label for="inputLastName">Last name</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="username" id="inputUsername" type="text" placeholder="name@example.com" />
+                                <input class="form-control 1" name="username" id="inputUsername" type="text" placeholder="name@example.com" />
                                 <label for="inputEmail">Username</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="pabrik" id="inputEmail" type="text" placeholder="name@example.com" />
+                                <input class="form-control 1" name="pabrik" id="inputEmail" type="text" placeholder="name@example.com" />
                                 <label for="inputEmail">Pabrik</label>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Create a password" />
+                                        <input class="form-control 1" name="password" id="inputPassword" type="password" placeholder="Create a password" />
                                         <label for="inputPassword">Password</label>
                                     </div>
                                     <p id="message1" class="text-danger"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                        <input class="form-control 1" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
                                         <label for="inputPasswordConfirm">Confirm Password</label>
                                     </div>
                                     <p id="message" class="text-danger"></p>
@@ -115,7 +115,7 @@
                             </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid justify-content-center">
-                                    <a href="#" onclick="pembuatanuser({msg: 'Apakah Anda Yakin Terima Pengguna Ini?',title: 'Apakah Data Sudah Benar?'})" style="width: 200px" class="btn btn-primary btn-block">Tambah
+                                    <a href="#" onclick="pembuatanuser({msg: 'Apakah Anda Yakin Menambah Pengguna Ini?',title: 'Apakah Data Sudah Benar?', no:1})" style="width: 200px" class="btn btn-primary btn-block">Tambah
                                         Akun</a>
                                 </div>
                             </div>

@@ -360,7 +360,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/audit_pabrik', [Auditor::class, 'list_pabrik']);
         Route::post('/audit_dokumen', [Auditor::class, 'list_dokumen']);
         Route::post('/audit_batch', [Auditor::class, 'list_batch']);
-        Route::get('/list_audit', [Auditor::class, 'list_request']);
+        Route::get('/list_audit', [Auditor::class, 'list_request'])->name('list_audit');
 
         Route::post('tambah_request', [Auditor::class, 'tambah_request']);
     });

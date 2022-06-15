@@ -56,11 +56,11 @@ class superadmin extends Controller
         $simpan = $user->save();
 
         if ($simpan) {
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect('/dashboard');
+            Session::flash('success', 'Data Berhasil Ditambah');
+            return redirect('/pabrik');
         } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect('showregister');
+            Session::flash('errors', ['' => 'Data Gagal Ditambah']);
+            return redirect('pabrik');
         }
     }
 
@@ -76,10 +76,10 @@ class superadmin extends Controller
         $simpan = $user->save();
 
         if ($simpan) {
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
+            Session::flash('success', 'Data Berhasil Ditambah');
             return redirect('/audit');
         } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
+            Session::flash('errors', ['' => 'Data Gagal Ditambah']);
             return redirect('audit');
         }
     }

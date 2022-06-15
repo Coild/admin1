@@ -40,9 +40,9 @@ function TerimaLaporanMultiP(f,id){
 
 
 function TerimaLaporan(p){
-    // console.log(p);
+    console.log(p);
     var link = "terimalaporan"+p;
-    // console.log(link);
+    console.log(link);
     Swal.fire({
         title: "Apakah Anda Yakin",
         text: "Terima Laporan?",
@@ -77,24 +77,6 @@ function TerimaLaporanOperasiAlat(p){
     });
 }
 
-function TerimaLaporan(o,p){
-    // console.log(p);
-    var link = "terima"+o+p;
-    // console.log(link);
-    Swal.fire({
-        title: "Apakah Anda Yakin",
-        text: "Terima Laporan?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Terima",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById(link).submit();
-        }
-    });
-}
 
 function buttonTerimaLaporan2(p){
     // console.log(p);
@@ -310,7 +292,8 @@ function logout() {
 }
 
 function pembuatanuser(params) {
-    const mycomp = document.getElementsByClassName("form-control");
+    console.log(params.no);
+    const mycomp = document.getElementsByClassName("form-control "+params);
     var valid = false;
     for (i = 0; i < mycomp.length; i++) {
         if (mycomp[i].value == "") {
@@ -346,7 +329,7 @@ function pembuatanuser(params) {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById("forminput").submit();
+                    document.getElementById("forminput"+params.no).submit();
                     swalWithBootstrapButtons.fire(
                         "Tersimpan!",
                         "Pengguna Berhasil Dibuat.",

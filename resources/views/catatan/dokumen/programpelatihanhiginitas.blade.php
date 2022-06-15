@@ -390,7 +390,7 @@
                                             <td>
                                                 @if (Auth::user()->level == 2)
                                                     @if ($row['status'] == 0)
-                                                        <form method="post" action="terimapelatihancpkb" id="terimalapooran{{ $row['id_pelatihancpkb'] }}">
+                                                        <form method="post" action="terimapelatihancpkb" id="terimalaporan{{ $row['id_pelatihancpkb'] }}">
                                                             @csrf
                                                             <input type="hidden" name="nobatch" value="{{ $row['kode_pelatihan'] }}" />
                                                             <input type="hidden" name="no" value="{{ $row['id_pelatihancpkb'] }}" />
