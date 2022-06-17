@@ -381,7 +381,7 @@
             var id = $(this).data('id');
 
             $("#editnamaproduk").val(nama);
-            $("#editkodeproduk").val(nobatch);
+            $("#editkodeproduk").val(kode);
             $("#isi_nobatch").val(nobatch);
             $("#isi_besar").val(besar);
             $("#isi_bentuk").val(bentuk);

@@ -3616,6 +3616,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_bahan' => $req['kode_bahan'],
             'nama_bahanbaku' => $req['nama_bahan'],
             'no_batch' => $req['nobatch'],
@@ -3654,6 +3655,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
+            'protap' => $req['protap'],
             'kode_produk' => $req['kode_produk'],
             'nama_produkjadi' => $req['nama_produk'],
             'no_batch' => $req['nobatch'],
@@ -4194,7 +4196,7 @@ class Admin extends Controller
         $hasil = [
             'tanggal' => $req['tanggal'],
             'asal_produk' => $req['asal_produk'],
-            'nama_produk_antara' => $req['nama_produk_antara'],
+            'nama_produk_antara' => $req['nama'],
             'jumlah_produk' => $req['jumlah_produk'],
             'hasil_penimbangan' => $req['hasil_timbang'],
             'untuk_produk' => $req['untuk_produk'],
@@ -5049,7 +5051,7 @@ class Admin extends Controller
             'nama_produkjadi' => $req['nama'],
             'no_batch' => $req['no_batch'],
             'asal_produkjadi' => $req['asal_produkantara'],
-            'jumlah_produkjadi' => $req['jumlah_produkantara'],
+            'jumlah_produkjadi' => $req['jumlah_produkantara'].' '.$req['satuan'],
             'alasan_pemusnahan' => $req['alasan_pemusnahan'],
             'cara_pemunsnahan' => $req['cara_pemusnahan'],
             'nama_petugas' => $req['petugas'],

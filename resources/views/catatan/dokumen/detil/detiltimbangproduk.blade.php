@@ -60,10 +60,19 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk Antara</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk
+                                                            Antara</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_produk_antara" class="form-control 1"
-                                                                id="nama_produk_antara" placeholder="Nama Produk Antara" />
+                                                            <input class="form-control 5" list="listnamaproduk" type="text" name='nama'
+                                                                autocomplete="off">
+                                                            </input>
+                                                            <datalist id='listnamaproduk'>
+                                                                @foreach ($produkantara as $row)
+                                                                    <option value="{{ $row['produkantara_nama'] }}">
+                                                                        {{ $row['produkantara_nama'] }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </datalist>
                                                         </div>
                                                     </div>
 
@@ -176,7 +185,7 @@
                                             Antara</label>
                                         <div class="col-sm">
                                             <input class="form-control 5" list="listnamaproduk" type="text" name='nama'
-                                                id="isi_produknama">
+                                                id="isi_produknama" autocomplete="off">
                                             </input>
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produkantara as $row)
