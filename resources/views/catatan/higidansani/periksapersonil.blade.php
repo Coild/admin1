@@ -38,8 +38,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_periksapersonil" enctype="multipart/form-data"
-                                            id='forminput'>
+                                        <form method="post" action="tambah_periksapersonil" enctype="multipart/form-data" id='forminput7'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
@@ -51,14 +50,14 @@
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                 <div class="card-body">
 
-                                                    <input type="hidden" id='ambil_tanggal' class="form-control"
+                                                    <input type="hidden" id='ambil_tanggal'
                                                         name="tanggal" placeholder="" />
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                             Personil</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="nama_personil" class="form-control"
+                                                            <input type="text" name="nama_personil" class="form-control 7"
                                                                 id="nama_personil" placeholder="Nama Personil" />
                                                         </div>
                                                     </div>
@@ -67,13 +66,13 @@
                                                         <label class="col-sm-3 col-form-label"
                                                             for="exampleFormControlFile1">Surat Sehat</label>
                                                         <div class="col-sm">
-                                                            <input type="file" name="file" class="form-control"
+                                                            <input type="file" name="file" class="form-control 7"
                                                                 id="fileform" onchange="return filecheck()">
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <a class="btn btn-primary" onclick="salert1(7)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
@@ -128,7 +127,7 @@
     <script>
         function editdata(params) {
             setdatetoday()
-            $("#forminput").attr("action", "edit_periksapersonil");
+            $("#forminput7").attr("action", "edit_periksapersonil");
             var inputid = '<input type="hidden" id="id" name="id" class ="form-control" value="' + params
                 .personil_id + '"/>'
             var filename = '<input type="hidden" id="filename" name="filename" class ="form-control" value="' + params

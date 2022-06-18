@@ -13,6 +13,7 @@ class contohprodukjadi extends Model
 
     protected $fillable = [
         'id_produkjadi',
+        'kode_produk',
         'nama_produkjadi',
         'no_batch',
         'tanggal_ambil',

@@ -170,8 +170,10 @@ class AuthController extends Controller
     }
 
     public function reset_passu(Request $req)
-    {
-            $id = $req['id'];
+    {   
+            $id = user::all()->where('pabrik',$req['id'])
+            ->where('level',1)->first()['id'];
+            // dd($id);
 
             $user = User::all()->where("id", $id)->first()->update([
                 'password' => Hash::make($req['baru']),

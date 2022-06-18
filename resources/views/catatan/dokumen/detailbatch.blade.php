@@ -11,9 +11,8 @@
                 <li class="breadcrumb-item active">Pengolahan Batch</li>
             </ol>
             <div class="row">
-                @foreach ($data as $row)
-                    <?php $nobatch = $row['nomor_batch'];
-                    // $status = $row['status'];
+                    <?php $nobatch = $data['nomor_batch'];
+                    // $status = $data['status'];
                     $awal = 0;
                     $akhir = 0; ?>
                     <div class="card mb-4">
@@ -28,7 +27,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['pob'] }} </p>
+                                    <p class="form-control"> {{ $data['pob'] }} </p>
                                 </div>
                             </div>
 
@@ -45,42 +44,42 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Produk</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['kode_produk'] }} </p>
+                                    <p class="form-control"> {{ $data['kode_produk'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Produk</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['nama_produk'] }} </p>
+                                    <p class="form-control"> {{ $data['nama_produk'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Batch</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['nomor_batch'] }} </p>
+                                    <p class="form-control"> {{ $data['nomor_batch'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Besar Batch</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['besar_batch'] }} </p>
+                                    <p class="form-control"> {{ $data['besar_batch'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Bentuk Sediaan</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['bentuk_sedia'] }} </p>
+                                    <p class="form-control"> {{ $data['bentuk_sedia'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kemasan</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['kemasan'] }} </p>
+                                    <p class="form-control"> {{ $data['kemasan'] }} </p>
                                 </div>
                             </div>
 
@@ -89,7 +88,7 @@
                         </div>
 
                     </div>
-                @endforeach
+                
                 <!-- pop up end -->
 
 

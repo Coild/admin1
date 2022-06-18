@@ -141,7 +141,7 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/reset_password" method="post" id='input1'>
+                        <form action="/reset_passwordu" method="post" id='input1'>
                             @csrf
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
@@ -198,7 +198,7 @@
 <script>
     $(document).on('click', "#klik", function() {
         var id = $(this).data('id');
-        // console.log("hai " + id);
+        console.log("hai " + id);
         $("#isi_idpass").val(id);
         console.log("in "+$("#isi_idpass").val());
     })

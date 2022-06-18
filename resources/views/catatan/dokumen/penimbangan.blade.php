@@ -134,7 +134,7 @@
                                                         <input type="hidden" name="no" value="{{ $row['timbang_bahan_id'] }}" />
                                                         <input type="hidden" name="status" value="{{ $row['status'] }}" />
 
-                                                        <button type="button" onclick="TerimaLaporan('timbangbahan',{{ $row['timbang_bahan_id'] }})"  class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporanku('timbangbahan',{{ $row['timbang_bahan_id'] }})"  class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form action="detiltimbangbahan" method="post" class="float-left mr-3">
@@ -149,7 +149,7 @@
                                                     <form method="post" action="terimapenimbanganbahan" id="terimalaporan2">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_loth'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan(2)"  class="btn btn-danger disabled">terima</button>
+                                                        <button type="button" onclick="TerimaLaporanku(2)"  class="btn btn-danger disabled">terima</button>
                                                     </form>
                                                 <?php } ?>
                                                 @else
@@ -301,11 +301,11 @@
 
                                                 <?php if ($row['status'] == 0) { ?>
 
-                                                    <form method="post" action="terimapenimbanganproduk" id="terimalaporan{{ $row['timbang_produk_id'] }}">
+                                                    <form method="post" action="terimapenimbanganproduk" id="terimatimbangproduk{{ $row['timbang_produk_id'] }}">
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['no_batch'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['timbang_produk_id'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan('timbangproduk',{{ $row['timbang_produk_id'] }})" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporanku('timbangproduk',{{ $row['timbang_produk_id'] }})" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapenimbanganproduk">
@@ -490,7 +490,7 @@
                                                         @csrf
                                                         <input type="hidden" name="nobatch" value="{{ $row['id_ruangtimbang'] }}" />
                                                         <input type="hidden" name="no" value="{{ $row['id_ruangtimbang'] }}" />
-                                                        <button type="button" onclick="TerimaLaporan('timbangruang',{{ $row['id_ruangtimbang'] }} )" class="btn btn-primary">terima</button>
+                                                        <button type="button" onclick="TerimaLaporanku('timbangruang',{{ $row['id_ruangtimbang'] }} )" class="btn btn-primary">terima</button>
                                                     </form>
                                                 <?php } elseif ($row['status'] == 1) { ?>
                                                     <form method="post" action="terimapenimbanganruang">

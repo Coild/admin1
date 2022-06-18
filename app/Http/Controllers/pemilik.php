@@ -136,8 +136,9 @@ class pemilik extends Controller
     {
         // dd($req);
         $user = audit::all()->where("audit_pabrik", $req->pabrik)
-            ->where("nobatch", $req->nobatch)
-            ->where("audit_laporan", $req->laporan)->first()->update([
+            
+            ->where("audit_laporan", $req->laporan)
+            ->where("audit_id", $req->no)->first()->update([
                 'audit_status' => 1
             ]);
         return redirect('bos_audit');

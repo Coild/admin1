@@ -121,6 +121,6 @@ class superadmin extends Controller
         ];
         aturan::insert($data);
         // // user::deleted()
-        return redirect('dashboard');
+        return redirect('update-protap');
     }
 }

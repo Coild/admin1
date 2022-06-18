@@ -32,7 +32,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
 Route::post('/reset_password', [AuthController::class, 'reset_pass']);
-Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
 
 Route::view('/template', 'print.template');
 
@@ -86,6 +85,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(
         ['middleware' => 'admin'],
         function () {
+            
+Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
             Route::get('/pabrik', [superadmin::class, 'tampil_pabrik']);
             Route::get('/audit', [superadmin::class, 'tampil_audit']);
             Route::get('/inspek', [superadmin::class, 'tampil_inspek']);

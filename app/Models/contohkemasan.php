@@ -14,6 +14,7 @@ class contohkemasan extends Model
     protected $fillable = [
         'id_kemasan',
         'nama_kemasan',
+        'kode_kemasan',
         'no_batch',
         'tanggal_ambil',
         'kedaluwarsa',

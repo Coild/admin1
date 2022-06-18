@@ -58,7 +58,7 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                                         Baku</label>
                                                     <div class="col-sm">
-                                                        <input class="form-control 2" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan">
+                                                        <input class="form-control 2" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan" autocomplete="off">
                                                         </input>
                                                         <datalist id='listnamabahanbaku'>
                                                             @foreach ($bahanbaku as $row)
@@ -140,6 +140,7 @@
                             
                         </td>
                         </tr>
+                        <?php $i++;?>
                         @endforeach
                     </tbody>
                 </table>
@@ -250,7 +251,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan
                                         Baku</label>
                                     <div class="col-sm">
-                                        <input class="form-control 4" list="listnamabahanbaku" type="text" name='nama_bahan' id="bahanbahan">
+                                        <input class="form-control 4" list="listnamabahanbaku" type="text" name='nama_bahan' id="bahanbahan" autocomplete="off">
                                         </input>
                                         <datalist id='listnamabahanbaku'>
                                             @foreach ($bahanbaku as $row)

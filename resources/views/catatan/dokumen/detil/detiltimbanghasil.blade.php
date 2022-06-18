@@ -250,7 +250,7 @@
                 $("#isi_nolothruang").val(noloth);
                 $("#isi_jruang").val(jruang);
                 $("#isi_jminta").val(jminta);
-                $("#isi_sisa").val(jminta);
+                $("#isi_sisa").val(sisa);
                 $("#isi_hasilruang").val(hasil);
                 $("#isi_produkruang").val(produk);
                 $("#isi_ruangid").val(id);

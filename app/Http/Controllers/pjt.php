@@ -18,13 +18,13 @@ class pjt extends Controller
 
     public function terima_batch(Request  $req)
     {
-        $id = $req['id'];
+        $id = $req['no'];
         // dd($req);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
         $pabrik = Auth::user()->pabrik;
-        $user = pengolahanbatch::all()->where("nomor_batch", $id)->first()->update([
+        $user = pengolahanbatch::all()->where("batch", $id)->first()->update([
             'status' => 1,
         ]);
         laporan::all()->where('laporan_batch', $req['id'])
@@ -484,7 +484,7 @@ class pjt extends Controller
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
         $tgl = $tgl->format('Y-m-d');
-        // dd($req['nobatch']);
+        // dd($req['no'])   ;
         $user = timbangproduk::all()->where("timbang_produk_id", $req['no'])->first()->update([
             'status' => 1,
         ]);
@@ -495,7 +495,7 @@ class pjt extends Controller
                 'tgl_diterima' => $tgl
             ]);
             notif::all()->where('id_pabrik', Auth::user()->pabrik)
-            ->where('notif_laporan', 'penimbangan produk')
+            ->where('notif_laporan', 'penimbangan produk antara')
             ->where('notif_2',$req['no'])->first()->update([
                 'notif_3'  => 1
             ]);

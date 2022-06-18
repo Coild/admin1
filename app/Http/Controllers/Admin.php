@@ -810,6 +810,7 @@ class Admin extends Controller
             'pabrik' => $pabrik,
             'status' => 0,
         ];
+        // dd($data);
         cp_produk::all()->where('cp_produk_id', $cpid)->first()->update($data);
 
         // $nomer = cp_produk::insertGetId($data);
@@ -1501,8 +1502,8 @@ class Admin extends Controller
         $id = $req['nobatch'] ??  session()->get('detilbatch');
         session(['detilbatch' => $req['nobatch'] ??  $id]);
         $data = pengolahanbatch::all()->where('nomor_batch', $id)->first();
-        $data = [$data];
-        // dd($id);
+        // $data = [$data];
+        // dd($data['nomor_batch']);
         $kom = komposisi::all()->where('nomor_batch', $id);
         $alat = peralatan::all()->where('nomor_batch', $id);
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
@@ -3664,7 +3665,7 @@ class Admin extends Controller
             'jumlah_produk' => $req['jumlah_ambil']. ' ' . $req['satuanproduk'],
             'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
         ];
-
+// dd($hasil);
         $nomer = contohprodukjadi::all()->where('id_produkjadi', $id)->first()->update($hasil);
         // $notif = [
         //     'notif_isi' => Auth::user()->namadepan . " mengubah laporan ",
@@ -4102,7 +4103,7 @@ class Admin extends Controller
             'status1' => $status,
             'noloth' => $noloth,
         ]);
-        $data = detiltimbangbahan::all()->where('induk', $pabrik);
+        $data = detiltimbangbahan::all()->where('induk', $induk);
         // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
         // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
@@ -4127,7 +4128,7 @@ class Admin extends Controller
             'nobatch' => $noloth,
         ]);
 
-        $data = detiltimbangproduk::all()->where('induk', $pabrik);
+        $data = detiltimbangproduk::all()->where('induk', $induk);
         // dd($data);
         // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
         // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
@@ -4154,7 +4155,7 @@ class Admin extends Controller
             'bahan' => $bahan,
         ]);
 
-        $data = detiltimbanghasil::all()->where('induk', $pabrik);
+        $data = detiltimbanghasil::all()->where('induk', $induk);
         // $data1 = timbangproduk::all()->where('pabrik', $pabrik);
         // $data2 = ruangtimbang::all()->where('pabrik', $pabrik);
         $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
@@ -4165,7 +4166,7 @@ class Admin extends Controller
 
     public function tambah_detiltimbangbahan(Request $req)
     {
-        $id = Auth::user()->id;
+                $id = Auth::user()->id;
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'tanggal' => $req['tanggal'],
@@ -4176,6 +4177,7 @@ class Admin extends Controller
             'induk'  => session()->get('induk1'),
         ];
 
+        // dd($hasil);
         $nomer = detiltimbangbahan::insertGetId($hasil);
 
         $log = [
@@ -4264,16 +4266,17 @@ class Admin extends Controller
     }
     public function edit_detiltimbangproduk(Request $req)
     {
+        
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'asal_produk' => $req['asal_produk'],
-            'nama_produk_antara' => $req['nama_produk_antara'],
+            'nama_produk_antara' => $req['nama'],
             'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => $req['hasil_timbang'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'],
             'untuk_produk' => $req['untuk_produk'],
         ];
-        // dd($hasil);
+        // dd($req);
 
 
         $nomer = detiltimbangproduk::where('id_detiltimbangproduk', $id)->update($hasil);

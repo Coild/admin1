@@ -42,14 +42,16 @@
                                 </th>
 
                                 @if($row['audit_status']==0)
-
+                                
                                 <th scope="col">
-                                    <form action="/terima_request" method="post">
+
+                                    <form action="/terima_request" method="post" id="terimalaporan{{ $row['audit_id'] }}">
                                         @csrf
                                         <input type="hidden" name="nobatch" value="{{$row['nobatch']}}">
+                                        <input type="hidden" name="no" value="{{$row['audit_id']}}">
                                         <input type="hidden" name="laporan" value="{{$row['audit_laporan']}}">
                                         <input type="hidden" name="pabrik" value="{{$row['audit_pabrik']}}">
-                                        <button type="submit" type="submit" class="btn btn-success">
+                                        <button type="button" onclick="TerimaLaporan({{ $row['audit_id'] }})" class="btn btn-success">
                                             Terima
                                         </button>
                                     </form>

@@ -245,18 +245,18 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form action="/input_aturan" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/input_aturan" method="post" enctype="multipart/form-data" id="forminput1">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="kategori" value="Aturan Baru" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control 1" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="upload" class="form-control 1" id="exampleFormControlFile1">
                             </div>
 
                             <!-- Modal Footer -->
@@ -264,7 +264,7 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">
                                     Tambah
                                 </button>
                             </div>
@@ -293,25 +293,25 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form action="/input_aturan" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/input_aturan" method="post" enctype="multipart/form-data" id="forminput2">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="kategori" value="Aturan Produk" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control 2" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="upload" class="form-control 2" id="exampleFormControlFile1">
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(2)">
                                     Tambah
                                 </button>
                             </div>
@@ -340,25 +340,25 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form action="/input_aturan" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/input_aturan" method="post" enctype="multipart/form-data" id="forminput3">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="kategori" value="Aturan Pabrik" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control 3" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="upload" class="form-control 3" id="exampleFormControlFile1">
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">
                                     Tambah
                                 </button>
                             </div>
@@ -387,25 +387,25 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form action="/input_aturan" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/input_aturan" method="post" enctype="multipart/form-data" id="forminput4">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="kategori" value="Aturan Iklan" />
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Tanggal</label>
-                                <input type="date" name="tgl" class="form-control file" id="exampleFormControlFile1">
+                                <input type="date" name="tgl" class="form-control 4" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="upload" class="form-control 4" id="exampleFormControlFile1">
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">
                                     Tambah
                                 </button>
                             </div>
@@ -420,4 +420,5 @@
         </div>
         <!--  -->
     </main>
+
 @endsection
