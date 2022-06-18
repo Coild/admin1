@@ -62,9 +62,9 @@
                                         <a   class="nav-link" href="{{ route('kartu-stok') }}">Kartu Stok</a>
                                         <a   class="nav-link" href="{{ route('kalibrasi-alat') }}">Kalibrasi
                                             Alat</a>
-                                        <a   class="nav-link"
+                                        {{-- <a   class="nav-link"
                                             href="{{ route('pemeriksaan-bahan') }}">Pemeriksaan/Pengujian
-                                            Bahan</a>
+                                            Bahan</a> --}}
                                     </nav>
                                 </div>
                                 <a   class="nav-link" data-bs-toggle="collapse" data-bs-target="#cttpabrik2"
