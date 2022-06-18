@@ -231,7 +231,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_peralatan" method="post" role="form" id="forminput2>
+                                    <form action="/input_peralatan" method="post" role="form" id="forminput2">
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="nobatch" value="{{ $nobatch }}" />

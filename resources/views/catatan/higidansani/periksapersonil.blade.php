@@ -103,11 +103,13 @@
                                     <td>{{ $row['nama'] }}</td>
                                     <td>
                                         @if (Auth::user()->level == 2)
-                                            <form method="post" action="terimapenimbanganproduk">
+                                            {{-- <form method="post" action="terimapenimbanganproduk">
                                                 @csrf
                                                 <input type="hidden" name="nobatch" value="{{ $row['personil_id'] }}" />
                                                 <button type="submit" class="btn btn-primary">Terima</button>
-                                            </form>
+                                            </form> --}}
+                                            <a href="asset/health_personil/{{ $row['nama_file'] }}"
+                                                class="btn btn-primary">Buka</a>
                                         @else
                                             <a href="asset/health_personil/{{ $row['nama_file'] }}"
                                                 class="btn btn-primary">Buka</a>
