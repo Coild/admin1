@@ -28,7 +28,7 @@
 
                                         <a   class="nav-link" href="{{ route('penerimaanBB') }}">Penerimaan
                                             Penyerahan dan
-                                            Penyimapanan</a>
+                                            Penyimpanan</a>
                                         <a   class="nav-link" href="{{ route('ambilcontoh') }}">Pengambilan
                                             Sample</a>
                                         <a   class="nav-link"
@@ -114,7 +114,7 @@
                                         <a   class="nav-link" href="{{ route('tampil', 1) }}">Penerimaan
                                             Penyerahan
                                             dan
-                                            Penyimapanan</a>
+                                            Penyimpanan</a>
                                         <a   class="nav-link" href="{{ route('tampil', 2) }}">Pengambilan
                                             Contoh</a>
                                         <a   class="nav-link" href="{{ route('tampil', 3) }}">Spesifikasi
@@ -133,7 +133,7 @@
                                             Batch</a>
                                         <a   class="nav-link" href="{{ route('tampil', 9) }}">Pengemasan
                                             Batch</a>
-                                        <a   class="nav-link" href="{{ route('tampil', 10) }}">Peberian Nomor
+                                        <a   class="nav-link" href="{{ route('tampil', 10) }}">Pemberian Nomor
                                             Batch</a>
                                         <a   class="nav-link" href="{{ route('tampil', 11) }}">Pelulusan Produk
                                             Jadi</a>

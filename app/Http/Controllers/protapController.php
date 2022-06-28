@@ -24,7 +24,7 @@ class protapController extends Controller
 
       if ($jenis == 1) {
          $judul = ["Penerimaan Penyerahan dan
-            Penyimapanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
+            Penyimpanan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
       }
       if ($jenis == 2) {
          $judul = ["Pengambilan Contoh", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
@@ -120,7 +120,7 @@ class protapController extends Controller
       ];
 
       if ($jenis == 1) {
-         $judul = "Penerimaan Penyerahan dan Penyimapanan" ;
+         $judul = "Penerimaan Penyerahan dan Penyimpanan" ;
       }
       if ($jenis == 2) {
          $judul =  "Pengambilan Contoh" ;
@@ -231,7 +231,7 @@ class protapController extends Controller
       ];
 
       if ($jenis == 1) {
-         $judul = "Penerimaan Penyerahan dan Penyimapanan" ;
+         $judul = "Penerimaan Penyerahan dan Penyimpanan" ;
       }
       if ($jenis == 2) {
          $judul =  "Pengambilan Contoh" ;
