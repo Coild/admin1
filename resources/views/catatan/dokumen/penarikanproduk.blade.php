@@ -100,8 +100,8 @@
                                                     <div class="col-sm">
                                                         
                                                         <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <input type="text" name="jumlah_produk_ditarik" class="form-control 1" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
+                                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                <input type="number" name="jumlah_produk_ditarik" class="form-control 1" id="jumlah_produk_ditarik" placeholder="Jumlah Produk Ditarik" />
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="form-select"

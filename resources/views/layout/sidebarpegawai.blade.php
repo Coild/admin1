@@ -141,6 +141,7 @@
                                             Baku</a>
                                         <a   class="nav-link" href="{{ route('tampil', 13) }}">Penanganan
                                             Keluhan</a>
+                                        <a   class="nav-link" href="{{ route('tampil', 25) }}">Pendistribusian Produk</a>
                                         <a   class="nav-link" href="{{ route('tampil', 14) }}">Penarikan
                                             Produk</a>
                                         <a   class="nav-link" href="{{ route('tampil', 15) }}">Pemusnahan
@@ -152,6 +153,8 @@
                                         <a   class="nav-link" href="{{ route('tampil', 17) }}">Pembuatan PROTAP
                                             dan
                                             Penomoran</a>
+
+                                        
                                         <!-- <a class="nav-link" href="{{ route('tampil', 18) }}">Ceklis & TTD Yang
                                             Sudah Dibersihkan</a> -->
                                         <a   class="nav-link"
