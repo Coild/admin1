@@ -80,25 +80,25 @@
                         <tbody>
                             <?php $i = 0 ?>
                             @foreach($list_coa as $row)
-                            <?php $i++; 
+                            <?php $i++;
                             $nama = $row['coa_nama'];
                             ?>
                             <tr>
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$row['coa_nama']}}</td>
                                 <td>
-                                    <a href="/asset/coa/{{$row['coa_file']}}" button type="button" class="btn btn-primary float-left mr-1">Buka</button>
-                                    
+                                    <a href="/asset/coa/{{$row['coa_file']}}" button type="button" class="btn btn-primary float-left mr-1">Buka</a>
+
                                         <form action="/hapus_coa" method="get"
                                                 id="hapupjt{{ $row['coa_id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['coa_id'] }}">
                                                 <button type="button" class="btn btn-danger" onclick="buttonHapuspjt({{ $row['coa_id'] }})"> Hapus</button>
                                             </form>
-                                            
+
                                 </td>
                             </tr>
-        
+
                             @endforeach
                         </tbody>
                     </table>
