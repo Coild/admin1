@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, dataPelaksana, PrintController};
-use App\Http\Middleware\admin as MiddlewareAdmin;
+use view;
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\admin as MiddlewareAdmin;
+use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, dataPelaksana, PrintController};
 
 /*
 |--------------------------------------------------------------------------

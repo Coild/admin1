@@ -3039,7 +3039,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
             $data = distribusiproduk::join('protaps', 'distribusiproduks.protap', '=', 'protaps.protap_id')
             ->get(['distribusiproduks.*', 'protaps.protap_nama', 'protap_id'])->where('pabrik', $pabrik);
-            $protap = protap::all()->where('protap_jenis',11);
+            $protap = protap::all()->where('protap_jenis',25);
         return view('catatan.dokumen.pendistribusianproduk', ['data' => $data,'protap' => $protap]);
     }
     public function tambah_operasialat(Request $req)

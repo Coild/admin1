@@ -133,6 +133,7 @@
                                             Batch</a>
                                         <a class="nav-link" href="{{ route('tampil', 11) }}">Pelulusan Produk
                                             Jadi</a>
+                                        <a   class="nav-link" href="{{ route('tampil', 25) }}">Pendistribusian Produk</a>
                                         <a class="nav-link" href="{{ route('tampil', 12) }}">Uji Ulang Bahan
                                             Baku</a>
                                         <a class="nav-link" href="{{ route('tampil', 13) }}">Penanganan

@@ -58,7 +58,6 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                                                     <select name="protap" class="form-control 1">
                                                                         @foreach ($protap1 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -100,7 +99,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <input type="hidden" name="tanggal" id='ambil_tanggal1' class="form-control 1" placeholder="" />
+                                                            <input type="hidden" name="tanggal" id='ambil_tanggal1'/>
 
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kedaluwarsa</label>
@@ -114,8 +113,8 @@
                                                                     Bahan Baku dalam Box</label>
                                                                 <div class="col-sm">
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_box" class="form-control 1" placeholder="Jumlah Bahan Baku dalam Box" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_box" class="form-control 1" placeholder="Jumlah Bahan Baku dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanbox" id="">
@@ -134,8 +133,8 @@
                                                                     Produk Yang Diambil</label>
                                                                 <div class="col-sm">
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_ambil" class="form-control 1" placeholder="Jumlah Produk Yang Diambil" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_ambil" class="form-control 1" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanproduk" id="">
@@ -296,8 +295,7 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                                    <select name="protap" class="form-control 1">
+                                                                    <select name="protap" class="form-control 2">
                                                                         @foreach ($protap2 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                                                         @endforeach
@@ -352,8 +350,8 @@
                                                                 <div class="col-sm">
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_box" class="form-control 2" placeholder="Jumlah Produk Dalam Box" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_box" class="form-control 2" placeholder="Jumlah Produk Dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanbox" id="">
@@ -373,8 +371,8 @@
                                                                 <div class="col-sm">
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_ambil" class="form-control 2" placeholder="Jumlah Produk Yang Diambil" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_ambil" class="form-control 2" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanproduk" id="">
@@ -548,8 +546,7 @@
                                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                                                     Dengan PROTAP No</label>
                                                                 <div class="col-sm">
-                                                                    {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                                    <select name="protap" class="form-control 1">
+                                                                    <select name="protap" class="form-control 3">
                                                                         @foreach ($protap3 as $isi)
                                                                         <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
                                                                         @endforeach
@@ -605,8 +602,8 @@
                                                                 <div class="col-sm">
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_box" class="form-control 3" placeholder="Jumlah Kemasan dalam Box" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_box" class="form-control 3" placeholder="Jumlah Kemasan dalam Box" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanbox" id="">
@@ -626,8 +623,8 @@
                                                                 <div class="col-sm">
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" name="jumlah_ambil" class="form-control 3" placeholder="Jumlah Produk Yang Diambil" />
+                                                                        <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                            <input type="number" name="jumlah_ambil" class="form-control 3" placeholder="Jumlah Produk Yang Diambil" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <select class="form-select" name="satuanproduk" id="">
@@ -778,7 +775,6 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 7" id="bahan_protap">
                                             @foreach ($protap1 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -834,8 +830,8 @@
                                         Bahan Baku dalam Box</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_box" class="form-control 7" placeholder="Jumlah Bahan Baku dalam Box" id="bahan_jumlahbox" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_box" class="form-control 7" placeholder="Jumlah Bahan Baku dalam Box" id="bahan_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanbox" id="bahan_box">
@@ -856,8 +852,8 @@
                                     <div class="col-sm">
 
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_ambil" class="form-control 7" placeholder="Jumlah Produk Yang Diambil" id="bahan_jumlahambil" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_ambil" class="form-control 7" placeholder="Jumlah Produk Yang Diambil" id="bahan_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanproduk" id="bahan_produk">
@@ -912,7 +908,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
+                                        
                                         <select name="protap" class="form-control 8" id="produk_protap">
                                             @foreach ($protap2 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -968,8 +964,8 @@
                                     <div class="col-sm">
 
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_box" class="form-control 8" placeholder="Jumlah Produk Dalam Box" id="produk_jumlahbox" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_box" class="form-control 8" placeholder="Jumlah Produk Dalam Box" id="produk_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanbox" id="produk_box">
@@ -989,8 +985,8 @@
                                     <div class="col-sm">
 
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_ambil" class="form-control 8" placeholder="Jumlah Produk Yang Diambil" id="produk_jumlahambil" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_ambil" class="form-control 8" placeholder="Jumlah Produk Yang Diambil" id="produk_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanproduk" id="produk_produk">
@@ -1046,7 +1042,6 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Sesuai
                                         Dengan PROTAP No</label>
                                     <div class="col-sm">
-                                        {{-- <input type="text" name="pob" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
                                         <select name="protap" class="form-control 9" id="kemasan_protap">
                                             @foreach ($protap3 as $isi)
                                             <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
@@ -1103,8 +1098,8 @@
                                     <div class="col-sm">
 
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_box" class="form-control 9" placeholder="Jumlah Kemasan dalam Box" id="kemasan_jumlahbox" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_box" class="form-control 9" placeholder="Jumlah Kemasan dalam Box" id="kemasan_jumlahbox" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanbox" id="kemasan_box">
@@ -1123,8 +1118,8 @@
                                     <div class="col-sm">
 
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah_ambil" class="form-control 9" placeholder="Jumlah Kemasan Yang Diambil" id="kemasan_jumlahambil" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_ambil" class="form-control 9" placeholder="Jumlah Kemasan Yang Diambil" id="kemasan_jumlahambil" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuanproduk" id="kemasan_produk">

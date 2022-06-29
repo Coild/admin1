@@ -99,6 +99,9 @@ class protapController extends Controller
       if ($jenis == 24) {
          $judul = ["Pemeriksaan/Pengujian Bahan", "Bahan Baku", "Bahan Kemas","Produk Antara", "Produk Jadi"];
       }
+      if ($jenis == 25) {
+         $judul = ["Pendistribusian Produk"];
+      }
       // dd($ajukan);
       return view('protap.tampil_protap', ['list_protap' => $data,  'jenis' => $jenis,
        'judul'  => $judul, 'ajukan' => $ajukan, 'pemilik' => $pemilik]);
@@ -190,6 +193,9 @@ class protapController extends Controller
       }
       if ($jenis == 24) {
          $judul =  "Pemeriksaan/Pengujian Bahan" ;
+      }
+      if ($jenis == 25) {
+         $judul = "Pendistribusian Produk";
       }
 
       $log['log_isi'] = Auth::user()->namadepan.' menghapus protap ' . $judul;
@@ -301,6 +307,9 @@ class protapController extends Controller
       }
       if ($jenis == 24) {
          $judul =  "Pemeriksaan/Pengujian Bahan" ;
+      }
+      if ($jenis == 25) {
+         $judul = "Pendistribusian Produk";
       }
 
       if ($detil == 1) {

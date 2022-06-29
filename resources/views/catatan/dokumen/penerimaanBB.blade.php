@@ -188,8 +188,8 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm">
                                             <div class="row">
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="jumlah" class="form-control 3" id="inputEmail3" placeholder="Jumlah" />
+                                                <div class="col-sm-8" data-tip="Hanya angka saja" >
+                                                    <input type="number" name="jumlah" class="form-control 3" id="inputEmail3" placeholder="Jumlah" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <select class="form-select" name="satuan" id="">
@@ -202,6 +202,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <input type="hidden" id='ambil_tanggal3' name="tanggal" placeholder="" />
 
                                     <div class="form-group row">
@@ -283,8 +284,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah" class="form-control 2" id="inputEmail3" placeholder="Jumlah" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah" class="form-control 2" id="inputEmail3" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="">
@@ -297,7 +298,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                     <div class="col-sm">
@@ -373,8 +374,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="jumlah" class="form-control 1" id="inputEmail3" placeholder="Jumlah" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah" class="form-control 1" id="inputEmail3" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="">
@@ -387,6 +388,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                     <div class="col-sm">
@@ -465,8 +467,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" id="bahanjumlah" name="jumlah" class="form-control 4" id="jumlah" placeholder="Jumlah" />
+                                            <div class="col-sm-8" data-tip1="Hanya angka saja">
+                                                <input type="number" id="bahanjumlah" name="jumlah" class="form-control 4" id="jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="bahansatuan">
@@ -479,6 +481,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <input type="hidden" id='ambil_tanggal3' class="tanggal" name="tanggal" placeholder="" />
 
                                 <div class="form-group row">
@@ -558,8 +561,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" id="produkjumlah" name="jumlah" class="form-control 5" id="Jumlah" placeholder="Jumlah" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" id="produkjumlah" name="jumlah" class="form-control 5" id="Jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="produksatuan">
@@ -572,7 +575,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                     <div class="col-sm">
@@ -649,8 +652,8 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm">
                                         <div class="row">
-                                            <div class="col-sm-8">
-                                                <input type="text" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah" placeholder="Jumlah" />
+                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                <input type="number" id="kemasanjumlah" name="jumlah" class="form-control 6" id="jumlah" placeholder="Jumlah" />
                                             </div>
                                             <div class="col-sm-4">
                                                 <select class="form-select" name="satuan" id="kemasansatuan">
@@ -663,6 +666,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan</label>
                                     <div class="col-sm">

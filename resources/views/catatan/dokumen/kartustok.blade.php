@@ -108,8 +108,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah"
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah"
                                                                                         class="form-control 1" id="jumlah"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
@@ -125,7 +125,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    <br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Nama
@@ -311,8 +311,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah"
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah"
                                                                                         class="form-control 2" id="jumlah1"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
@@ -328,7 +328,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    <br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Nama
@@ -511,8 +511,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah"
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah"
                                                                                         class="form-control 3" id="jumlah2"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
@@ -528,7 +528,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+<br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Asal
@@ -714,8 +714,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah"
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah"
                                                                                         class="form-control 4" id="jumlah3"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
@@ -731,7 +731,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    <br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Nama

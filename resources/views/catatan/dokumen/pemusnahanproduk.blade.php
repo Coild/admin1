@@ -121,8 +121,8 @@
                                                                     <div class="col-sm">
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="jumlah_bahanbaku" class="form-control 1" id="jumlah_bahanbaku" placeholder="Jumlah Bahan Baku" />
+                                                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <input type="number" name="jumlah_bahanbaku" class="form-control 1" id="jumlah_bahanbaku" placeholder="Jumlah Bahan Baku" />
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <select class="form-select" name="satuan" id="satuan">
@@ -347,8 +347,8 @@
                                                                     <div class="col-sm">
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="jumlah_bahankemas" class="form-control 2" id="jumlah_bahankemas1" placeholder="Jumlah Bahan Kemas" />
+                                                                            <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <input type="number" name="jumlah_bahankemas" class="form-control 2" id="jumlah_bahankemas1" placeholder="Jumlah Bahan Kemas" />
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <select class="form-select" name="satuan" id="satuan2">
@@ -573,8 +573,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah_produkantara" class="form-control 3" id="jumlah_produkantara2" placeholder="Jumlah Produk Antara" />
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah_produkantara" class="form-control 3" id="jumlah_produkantara2" placeholder="Jumlah Produk Antara" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select" name="satuan" id="satuan3">
@@ -800,8 +800,8 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" name="jumlah_produkantara" class="form-control 4" id="jumlah_produkantara3" placeholder="Jumlah Produk Jadi" />
+                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                    <input type="number" name="jumlah_produkantara" class="form-control 4" id="jumlah_produkantara3" placeholder="Jumlah Produk Jadi" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select" name="satuan" id="satuan4">
