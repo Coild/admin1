@@ -48,7 +48,7 @@
 
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">Pilih File Perizinan</label>
-                                                <input type="file" name="upload" class="form-control-file"
+                                                <input onchange="return filecheck()" type="file" name="upload" class="form-control-file"
                                                     id="exampleFormControlFile1">
                                             </div>
                                             <!-- Modal Footer -->

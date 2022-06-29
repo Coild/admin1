@@ -216,8 +216,9 @@ class Admin extends Controller
     {
         $data = jabatan::all()->where('jabatan_id', $id);
         // dd($data);
-        unlink("asset/dip/" . $data[0]['jabatan_file']);
         $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
+        
+        unlink("asset/dip/" . $data[0]['jabatan_file']);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menghapus laporan jabatan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
@@ -238,7 +239,7 @@ class Admin extends Controller
         $file->move($tujuan_upload, $filename);
         $id = Auth::user()->pabrik;
         $hasil = [
-            'jabatan_file' => $nama,
+            'jabatan_file' => $filename,
             'jabatan_nama' => $req['nama'],
             'user_id' => $id,
         ];

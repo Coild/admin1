@@ -36,7 +36,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_dip" method="post" enctype="multipart/form-data" role="form">
+                                    <form action="/input_dip" method="post" enctype="multipart/form-data" role="form" id="forminput1">
 
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -47,7 +47,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Pilih File DIP</label>
-                                            <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
+                                            <input onchange="return filecheck()" type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
                                         </div>
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">

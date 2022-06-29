@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk, log};
+use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk, log,protap};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -842,7 +842,6 @@ class pjt extends Controller
             ->where('notif_2',$req['id'])->first()->update([
                 'notif_3'  => 1
             ]);
-
             $log = [
                 'log_isi' => Auth::user()->namadepan . ' menerima laporan kartu stok produk jadi',
                 'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
@@ -1021,33 +1020,37 @@ class pjt extends Controller
     public function tampil_bahan_baku()
     {
         $id = Auth::user()->pabrik;
+        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',1);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 1);
-        return view('spesifikasi.bahanbaku', ['list' => $data]);
+        return view('spesifikasi.bahanbaku', ['list' => $data, 'protap' => $protap]);
     }
 
     public function tampil_bahan_kemas()
     {
         $id = Auth::user()->pabrik;
+        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',2);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 2);
-        return view('spesifikasi.bahankemas', ['list' => $data]);
+        return view('spesifikasi.bahankemas', ['list' => $data, 'protap' => $protap]);
     }
 
     public function tampil_produk_antara()
     {
         $id = Auth::user()->pabrik;
+        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',3);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 3);
-        return view('spesifikasi.produkantara', ['list' => $data]);
+        return view('spesifikasi.produkantara', ['list' => $data, 'protap' => $protap]);
     }
 
     public function tampil_produk_jadi()
     {
         $id = Auth::user()->pabrik;
+        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',4);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 4);
-        return view('spesifikasi.produkjadi', ['list' => $data]);
+        return view('spesifikasi.produkjadi', ['list' => $data, 'protap' => $protap]);
     }
 
     public function tambah_bahan_baku(Request $req)
@@ -1060,6 +1063,7 @@ class pjt extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'file' => $nama,
+            'protap' => $req['protap'],
             'kategori' => 1,
             'keterangan' => $req['nama'],
             'pabrik_id' => $id,
@@ -1089,6 +1093,7 @@ class pjt extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'file' => $nama,
+            'protap' => $req['protap'],
             'kategori' => 2,
             'keterangan' => $req['nama'],
             'pabrik_id' => $id,
@@ -1119,6 +1124,7 @@ class pjt extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'file' => $nama,
+            'protap' => $req['protap'],
             'kategori' => 3,
             'keterangan' => $req['nama'],
             'pabrik_id' => $id,
@@ -1148,6 +1154,7 @@ class pjt extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'file' => $nama,
+            'protap' => $req['protap'],
             'kategori' => 4,
             'keterangan' => $req['nama'],
             'pabrik_id' => $id,
