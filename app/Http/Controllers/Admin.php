@@ -31,12 +31,19 @@ class Admin extends Controller
         $isipabrik = aturan::all()->where('kategori', 'Aturan Pabrik')->sortByDesc('tgl_upload')->first();
         $isiiklan = aturan::all()->where('kategori', 'Aturan Iklan')->sortByDesc('tgl_upload')->first();
 
-        $baru = isset($isibaru) ? 'asset/aturam/' . $isibaru['nama'] : '#';
-        $pabrik = isset($isipabrik['nama']) ?  'asset/aturam/' . $isipabrik['nama'] : '#';
-        $produk = isset($isiproduk) ?  'asset/aturam/' . $isiproduk['nama'] : '#';
-        $iklan = isset($isiiklan) ?  'asset/aturam/' . $isiiklan['nama'] : '#';
+        $tglbaru = isset($isibaru) ? $isibaru['tgl_upload'] : 'Belum ada aturan';
+        $tglpabrik = isset($isipabrik) ?  $isipabrik['tgl_upload'] : 'Belum ada aturan';
+        $tglproduk = isset($isiproduk) ?  $isiproduk['tgl_upload'] : 'Belum ada aturan';
+        $tgliklan = isset($isiiklan) ?  $isiiklan['tgl_upload'] : 'Belum ada aturan';
 
-        return view('dashboard', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan]);
+
+        $baru = isset($isibaru) ? 'asset/aturan/' . $isibaru['nama'] : '#';
+        $pabrik = isset($isipabrik['nama']) ?  'asset/aturan/' . $isipabrik['nama'] : '#';
+        $produk = isset($isiproduk) ?  'asset/aturan/' . $isiproduk['nama'] : '#';
+        $iklan = isset($isiiklan) ?  'asset/aturan/' . $isiiklan['nama'] : '#';
+
+        return view('dashboard', ['struktur' => $struktur ??  '', 'baru' => $baru, 'produk' => $produk, 'pabrik' => $pabrik, 'iklan' => $iklan,
+        'tglbaru' => $tglbaru, 'tglproduk' => $tglproduk, 'tglpabrik' => $tglpabrik, 'tgliklan' => $tgliklan]);
     }
 
 
@@ -2161,8 +2168,8 @@ class Admin extends Controller
             ->get(['periksaalats.*', 'protaps.protap_nama', 'protap_id']);
 
         return view('catatan.higidansani.periksasanialat', [
-            'data' => $data, 
-            'data1' => $data1, 
+            'data' => $data,
+            'data1' => $data1,
             'data2' => $data2
         ]);
     }
@@ -3314,8 +3321,8 @@ class Admin extends Controller
         // session(['idoperasi' => $req['induk']]);
         $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
         return view('catatan.higidansani.detilalat', [
-            'data' => $data, 
-            'status' => $req->status, 
+            'data' => $data,
+            'status' => $req->status,
             'id_alat' => $req->id_alat
         ]);
     }
@@ -4266,7 +4273,7 @@ class Admin extends Controller
     }
     public function edit_detiltimbangproduk(Request $req)
     {
-        
+
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [

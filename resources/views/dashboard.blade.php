@@ -5,6 +5,29 @@
 @endsection
 
 @section('content')
+<?php function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+
+	// variabel pecahkan 0 = tahun
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tanggal
+
+	return $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2];
+} ?>
 <main>
     <div class="container-fluid px-4">
         <h1 class="">Dashboard</h1>
@@ -16,7 +39,13 @@
             <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Baru BPOM</div>
                 <div class="card-body">
-                    <h5>Tanggal : 27 Maret 2019 </h5>
+                    <h5>Tanggal : <?php if ($tglbaru != 'Belum ada aturan') {
+                        $date=date_create($tglbaru);
+                        echo tgl_indo(date_format($date,"d-m-Y"));
+                    } else {
+                        echo $tglbaru;
+                    }
+                    ?> </h5>
                     <br>
                     @if(Auth::user()->level==0)
                     {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm1">Ganti</button> --}}
@@ -28,7 +57,13 @@
             <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3"id="bg-dashcard">
                 <div class="card-header text-white">Aturan Produk</div>
                 <div class="card-body">
-                    <h5>Tanggal : 27 Maret 2019 </h5>
+                    <h5>Tanggal : <?php if ($tglproduk != 'Belum ada aturan') {
+                        $date=date_create($tglproduk);
+                        echo tgl_indo(date_format($date,"d-m-Y"));
+                    } else {
+                        echo $tglproduk;
+                    }
+                    ?> </h5>
                     <br> @if(Auth::user()->level==0)
                     {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm2">Ganti</button> --}}
                     @endif <a href="{{$produk}}" class="btn btn-light  float-right btn-sm">unduh</a>
@@ -38,7 +73,13 @@
             <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Pabrik</div>
                 <div class="card-body">
-                    <h5>Tanggal : 27 Maret 2019 </h5>
+                    <h5>Tanggal : <?php if ($tglpabrik != 'Belum ada aturan') {
+                        $date=date_create($tglpabrik);
+                        echo tgl_indo(date_format($date,"d-m-Y"));
+                    } else {
+                        echo $tglpabrik;
+                    }
+                    ?> </h5>
                     <br> @if(Auth::user()->level==0)
                     {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm3">Ganti</button> --}}
                     @endif <a href="{{$pabrik}}" class="btn btn-light  float-right btn-sm">unduh</a>
@@ -48,7 +89,13 @@
             <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3 card text-white ml-4 mb-3" id="bg-dashcard">
                 <div class="card-header text-white">Aturan Iklan</div>
                 <div class="card-body">
-                    <h5>Tanggal : 27 Maret 2019 </h5>
+                    <h5>Tanggal : <?php if ($tgliklan != 'Belum ada aturan') {
+                        $date=date_create($tgliklan);
+                        echo tgl_indo(date_format($date,"d-m-Y"));
+                    } else {
+                        echo $tgliklan;
+                    }
+                    ?> </h5>
                     <br> @if(Auth::user()->level==0)
                     {{-- <button class="btn btn-light float-right btn-sm" data-toggle="modal" data-target="#modalForm4">Ganti</button> --}}
                     @endif <a href="{{$iklan}}" class="btn btn-light  float-right btn-sm">unduh</a>
