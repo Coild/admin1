@@ -494,7 +494,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                                            <div class="col-sm"><input type="text" class="form-control 4" name="jumlah" placeholder="Jumlah" /></div>
+                                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 4" name="jumlah" placeholder="Jumlah" /></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
@@ -624,7 +624,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                                            <div class="col-sm"><input type="text" class="form-control 5" name="jumlah" placeholder="Jumlah" /></div>
+                                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 5" name="jumlah" placeholder="Jumlah" /></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -764,7 +764,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                                            <div class="col-sm"><input type="text" class="form-control 6" name="jumlah" placeholder="Jumlah" /></div>
+                                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 6" name="jumlah" placeholder="Jumlah" /></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
@@ -875,7 +875,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" id="bahanmasuk_jumlah" class="form-control 7" name="jumlah" placeholder="Jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" id="bahanmasuk_jumlah" class="form-control 7" name="jumlah" placeholder="Jumlah" /></div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -946,7 +946,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" id="bahankeluar_jumlah" class="form-control 8" name="jumlah" placeholder="Jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" id="bahankeluar_jumlah" class="form-control 8" name="jumlah" placeholder="Jumlah" /></div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
@@ -1010,7 +1010,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" id="produkmasuk_jumlah" class="form-control 9" name="jumlah" placeholder="Jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" id="produkmasuk_jumlah" class="form-control 9" name="jumlah" placeholder="Jumlah" /></div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
