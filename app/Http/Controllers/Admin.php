@@ -4872,7 +4872,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = Pemusnahanbahankemas::insertGetId($hasil);
+        $nomer = pemusnahanbahankemas::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -4914,7 +4914,7 @@ class Admin extends Controller
     }
     public function edit_pemusnahanbahankemas(Request $req)
     {
-        Pemusnahanbahankemas::where('id_pemusnahanbahankemas', $req['id'])
+        pemusnahanbahankemas::where('id_pemusnahanbahankemas', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
@@ -4978,7 +4978,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = Pemusnahanprodukantara::insertGetId($hasil);
+        $nomer = pemusnahanprodukantara::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -5021,7 +5021,7 @@ class Admin extends Controller
     public function edit_pemusnahanprodukantara(Request $req)
     {
         // dd($req);
-        Pemusnahanprodukantara::where('id_pemusnahanprodukantara', $req['id'])
+        pemusnahanprodukantara::where('id_pemusnahanprodukantara', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
@@ -5085,7 +5085,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = Pemusnahanprodukjadi::insertGetId($hasil);
+        $nomer = pemusnahanprodukjadi::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -5127,7 +5127,7 @@ class Admin extends Controller
     }
     public function edit_pemusnahanprodukjadi(Request $req)
     {
-        Pemusnahanprodukjadi::where('id_pemusnahanprodukjadi', $req['id'])
+        pemusnahanprodukjadi::where('id_pemusnahanprodukjadi', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
@@ -5179,28 +5179,28 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = Pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = Pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = Pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
