@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk, log,protap};
+use App\Models\{contohbahanbaku, contohprodukjadi, contohkemasan, cp_bahan, cp_kemasan, cp_produk, distribusiproduk, kartustokbahankemas, kartustokprodukjadi, kartustokbahan, kartustokprodukantara, pengolahanbatch, laporan, notif, Pelatihancpkb, pelulusanproduk, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pemusnahanbahanbaku, pemusnahanbahankemas, pemusnahanprodukantara, pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, Periksaalat, periksaruang, programpelatihan, ruangtimbang, spesifikasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk, log,protap};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +10,13 @@ use Illuminate\Support\Str;
 
 class pjt extends Controller
 {
+    public function bersih($string) {
+        //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+     
+        return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
+        
+     }
+
     public function tampil_pengolahanbatch()
     {
         $data = pengolahanbatch::all()->where('status', 0);
@@ -1065,7 +1072,7 @@ class pjt extends Controller
             'file' => $nama,
             'protap' => $req['protap'],
             'kategori' => 1,
-            'keterangan' => $req['nama'],
+            'keterangan' => pjt::bersih($req['nama']),
             'pabrik_id' => $id,
         ];
 
@@ -1095,7 +1102,7 @@ class pjt extends Controller
             'file' => $nama,
             'protap' => $req['protap'],
             'kategori' => 2,
-            'keterangan' => $req['nama'],
+            'keterangan' => pjt::bersih($req['nama']),
             'pabrik_id' => $id,
         ];
 
@@ -1126,7 +1133,7 @@ class pjt extends Controller
             'file' => $nama,
             'protap' => $req['protap'],
             'kategori' => 3,
-            'keterangan' => $req['nama'],
+            'keterangan' => pjt::bersih($req['nama']),
             'pabrik_id' => $id,
         ];
 
@@ -1156,7 +1163,7 @@ class pjt extends Controller
             'file' => $nama,
             'protap' => $req['protap'],
             'kategori' => 4,
-            'keterangan' => $req['nama'],
+            'keterangan' => pjt::bersih($req['nama']),
             'pabrik_id' => $id,
         ];
 
