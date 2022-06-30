@@ -223,8 +223,8 @@
                                         <br>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                                            <div class="col-sm">
-                                                <input type="text" class="form-control 2" name="sisa" placeholder="Sisa" />
+                                            <div class="col-sm" data-tip="Hanya angka saja">
+                                                <input type="number" class="form-control 2" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
@@ -498,8 +498,8 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                                            <div class="col-sm">
-                                                <input type="text" class="form-control 4" name="sisa" placeholder="Sisa" />
+                                            <div class="col-sm" data-tip="Hanya angka saja">
+                                                <input type="number" class="form-control 4" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
@@ -768,8 +768,8 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                                            <div class="col-sm">
-                                                <input type="text" class="form-control 6" name="sisa" placeholder="Sisa" />
+                                            <div class="col-sm" data-tip="Hanya angka saja">
+                                                <input type="number" class="form-control 6" name="sisa" placeholder="Sisa" />
                                             </div>
                                         </div>
                                     </form>
@@ -875,7 +875,9 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" id="bahanmasuk_jumlah" class="form-control 7" name="jumlah" placeholder="Jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja">
+                                <input type="number" id="bahanmasuk_jumlah" class="form-control 7" name="jumlah" placeholder="Jumlah" />
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -950,8 +952,8 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                            <div class="col-sm">
-                                <input type="text" id="bahankeluar_sisa" class="form-control 8" name="sisa" placeholder="Sisa" />
+                            <div class="col-sm" data-tip="Hanya angka saja">
+                                <input type="number" id="bahankeluar_sisa" class="form-control 8" name="sisa" placeholder="Sisa" />
                             </div>
                         </div>
                     </form>
@@ -1081,12 +1083,12 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" class="form-control 10" name="jumlah" placeholder="Jumlah" id="produkkeluar_jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 10" name="jumlah" placeholder="Jumlah" id="produkkeluar_jumlah" /></div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control 10" name="sisa" placeholder="Sisa" id="produkkeluar_sisa" />
+                            <div class="col-sm" data-tip="Hanya angka saja">
+                                <input type="number" class="form-control 10" name="sisa" placeholder="Sisa" id="produkkeluar_sisa" />
                             </div>
                         </div>
                     </form>
@@ -1145,7 +1147,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                            <div class="col-sm"><input type="text" class="form-control 11" name="jumlah" placeholder="Jumlah" id="kemasanmasuk_jumlah" /></div>
+                            <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 11" name="jumlah" placeholder="Jumlah" id="kemasanmasuk_jumlah" /></div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
@@ -1217,12 +1219,12 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail" class="col-sm-3 col-form-label">Jumlah</label>
-                                <div class="col-sm"><input type="text" class="form-control 12" name="jumlah" placeholder="Jumlah" id="kemasankeluar_jumlah" /></div>
+                                <div class="col-sm" data-tip="Hanya angka saja"><input type="number" class="form-control 12" name="jumlah" placeholder="Jumlah" id="kemasankeluar_jumlah" /></div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail" class="col-sm-3 col-form-label">Sisa</label>
-                                <div class="col-sm">
-                                    <input type="text" class="form-control 12" name="sisa" placeholder="Sisa" id="kemasankeluar_sisa" />
+                                <div class="col-sm" data-tip="Hanya angka saja">
+                                    <input type="number" class="form-control 12" name="sisa" placeholder="Sisa" id="kemasankeluar_sisa" />
                                 </div>
                             </div>
                         </form>
@@ -1246,6 +1248,7 @@
                 var nama = $(this).data('nama');
                 var tanggal = $(this).data('tanggal');
                 var jumlah = $(this).data('jumlah');
+                // console.log("ini "+typeof jumlah)
                 var protap = $(this).data('protap');
                 var noloth = $(this).data('noloth');
                 var nokontrol = $(this).data('nokontrol');
@@ -1254,7 +1257,8 @@
                 var id = $(this).data('id');
 
                 $("#bahanmasuk_nama").val(nama);
-                $("#bahanmasuk_jumlah").val(jumlah);
+                $("#bahanmasuk_jumlah").val(parseInt(jumlah));
+                
                 $("#bahanmasuk_tanggal").val(tanggal);
                 $("#bahanmasuk_protap").val(protap);
                 $("#bahanmasuk_noloth").val(noloth);
@@ -1277,7 +1281,7 @@
                 var id = $(this).data('id');
 
                 $("#produkmasuk_nama").val(nama);
-                $("#produkmasuk_jumlah").val(jumlah);
+                $("#produkmasuk_jumlah").val(parseInt(jumlah));
                 $("#produkmasuk_tanggal").val(tanggal);
                 $("#produkmasuk_protap").val(protap);
                 $("#produkmasuk_noloth").val(noloth);
@@ -1299,7 +1303,7 @@
                 var id = $(this).data('id');
 
                 $("#kemasanmasuk_nama").val(nama);
-                $("#kemasanmasuk_jumlah").val(jumlah);
+                $("#kemasanmasuk_jumlah").val(parseInt(jumlah));
                 $("#kemasanmasuk_tanggal").val(tanggal);
                 $("#kemasanmasuk_protap").val(protap);
                 $("#kemasanmasuk_noloth").val(noloth);
@@ -1319,10 +1323,10 @@
                 var id = $(this).data('id');
 
                 $("#bahankeluar_nama").val(nama);
-                $("#bahankeluar_jumlah").val(jumlah);
+                $("#bahankeluar_jumlah").val(parseInt(jumlah));
                 $("#bahankeluar_tanggal").val(tanggal);
                 $("#bahankeluar_nobatch").val(nobatch);
-                $("#bahankeluar_sisa").val(sisa);
+                $("#bahankeluar_sisa").val(parseInt(jumlah));
                 $("#bahankeluar_produk").val(produk);
                 $("#id_bahankeluar").val(id);
             })
@@ -1338,10 +1342,10 @@
 
                 // console.log('id keluar'+id);
                 $("#produkkeluar_nama").val(nama);
-                $("#produkkeluar_jumlah").val(jumlah);
+                $("#produkkeluar_jumlah").val(parseInt(jumlah));
                 $("#produkkeluar_tanggal").val(tanggal);
                 $("#produkkeluar_nobatch").val(nobatch);
-                $("#produkkeluar_sisa").val(sisa);
+                $("#produkkeluar_sisa").val(parseInt(jumlah));
                 $("#produkkeluar_produk").val(produk);
                 $("#id_produkkeluar").val(id);
             })
@@ -1355,10 +1359,10 @@
                 var id = $(this).data('id');
 
                 $("#kemasankeluar_nama").val(nama);
-                $("#kemasankeluar_jumlah").val(jumlah);
+                $("#kemasankeluar_jumlah").val(parseInt(jumlah));
                 $("#kemasankeluar_tanggal").val(tanggal);
                 $("#kemasankeluar_nobatch").val(nobatch);
-                $("#kemasankeluar_sisa").val(sisa);
+                $("#kemasankeluar_sisa").val(parseInt(jumlah));
                 $("#kemasankeluar_produk").val(produk);
                 $("#id_kemasankeluar").val(id);
             })
