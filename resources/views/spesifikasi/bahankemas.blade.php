@@ -36,10 +36,18 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/tambah_bahan_kemas" method="post" enctype="multipart/form-data" role="form" id="formSpesifikasi">
+                                    <form action="/tambah_bahan_kemas" method="post" enctype="multipart/form-data" role="form" id="forminput1">
 
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                        <div class="form-group">
+                                            <label for="inputName">Sesuai PROTAP</label>
+                                            <select name="protap" id="protap" class="form-control 1">
+                                                @foreach($protap as $isi) 
+                                                    <option value="{{$isi['protap_id']}}">{{$isi['protap_nama']}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="inputName">Keterangan</label>
                                             <input type="text" class="form-control 1" id="inputName" name="nama" />
@@ -54,7 +62,7 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert(1)">
+                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">
                                                 Tambah
                                             </button>
                                         </div>
