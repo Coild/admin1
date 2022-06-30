@@ -27,6 +27,13 @@ class Admin extends Controller
         
      }
 
+     public function bersih_angka($string) {
+        //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+     
+        return preg_replace('/[^A-Za-z0-9\-]/', ' ', $string); // Removes special chars.
+        
+     }
+
     public function dashboard()
     {
         $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
@@ -90,7 +97,7 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'coa_file' => $filename,
-            'coa_nama' => $req['nama'],
+            'coa_nama' => Admin::bersih($req['nama']),
             'user_id' => $id,
         ];
 
@@ -142,7 +149,7 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'dip_file' => $filename,
-            'dip_nama' => $req['nama'],
+            'dip_nama' => Admin::bersih($req['nama']),
             'user_id' => $id,
         ];
 
@@ -194,7 +201,7 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'perizinan_file' => $filename,
-            'perizinan_nama' => $req['nama'],
+            'perizinan_nama' => Admin::bersih($req['nama']),
             'user_id' => $id,
         ];
 
@@ -247,7 +254,7 @@ class Admin extends Controller
         $id = Auth::user()->pabrik;
         $hasil = [
             'jabatan_file' => $filename,
-            'jabatan_nama' => $req['nama'],
+            'jabatan_nama' => Admin::bersih($req['nama']),
             'user_id' => $id,
         ];
 
@@ -298,7 +305,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $hasil = [
             'pobpabrik_file' => $filename,
-            'pobpabrik_nama' => $req['nama'],
+            'pobpabrik_nama' => Admin::bersih($req['nama']),
             'user_id' => $id,
         ];
 
@@ -517,7 +524,7 @@ class Admin extends Controller
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];
@@ -575,7 +582,7 @@ class Admin extends Controller
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];
@@ -910,7 +917,7 @@ class Admin extends Controller
         $data = [
             'tanggal' => $req['tanggal'],
             'nama_bahan' => $req['nama_bahanbaku'],
-            'no_loth' => $req['no_loth'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
             'pemasok' => $req['pemasok'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'no_kontrol' => $req['no_kontrol'],
