@@ -80,7 +80,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-        // dd($request);
+        $check_username = User::all()->where("nama", ucwords(strtolower($request->username)))->first();
+
+        if($check_username){
+            return redirect('/karyawan')->with('error', 'Username Telah tTersedia');
+        }
+
+        
         $user = new User;
         $user->nama = ucwords(strtolower($request->username));
         $user->namadepan = $request->namadepan;
@@ -90,15 +96,6 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $simpan = $user->save();
 
-        //YANG DIUBAH
-        // if ($simpan) {
-        //     Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-        //     return redirect('/login');
-        // } else {
-        //     Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-        //     return redirect('showregister');
-        // }
-        
         if ($simpan) {
             $log = [
                 'log_isi' => session()->get('pabrik').' <b> Menambah '. $request->namadepan . ' ' .  $request->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',

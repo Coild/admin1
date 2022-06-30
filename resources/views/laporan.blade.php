@@ -30,7 +30,7 @@
 
             <div class="card mb-4">
 
-                <div class="card-body">
+                {{-- <div class="card-body">
 
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -76,7 +76,7 @@
                         <button class="btn btn-primary" type="submit">Cari</button>
                     </form>
 
-                </div>
+                </div> --}}
             </div>
 
             <table class="table" id="laporan">

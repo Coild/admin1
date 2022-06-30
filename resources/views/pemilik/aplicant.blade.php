@@ -20,7 +20,7 @@
                     </div>
                     <!-- pop up end -->
 
-                    <table class="table">
+                    <table class="table" id="tabel1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

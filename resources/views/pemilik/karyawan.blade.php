@@ -200,7 +200,7 @@
                             <input type="hidden" name="id" id="isi_id" />
                             <label for="inputName">Nama</label>
                             <input name="nama" type="text" class="form-control" id="inputName"
-                                placeholder="Nama Alat" />
+                                placeholder="Nama" readonly/>
                             <div class="form-group">
                                 <label for="inputEmail">Posisi</label>
                                 <select style="height: 35px;" class="form-control" name="posisi"
