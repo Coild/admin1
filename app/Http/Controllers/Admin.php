@@ -20,6 +20,13 @@ $b = 0;
 class Admin extends Controller
 {
 
+    public function bersih($string) {
+        //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+     
+        return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
+        
+     }
+
     public function dashboard()
     {
         $pabrik = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
@@ -450,7 +457,7 @@ class Admin extends Controller
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];

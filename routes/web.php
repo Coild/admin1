@@ -1,6 +1,6 @@
 <?php
 
-use view;
+// use view;
 use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin as MiddlewareAdmin;
