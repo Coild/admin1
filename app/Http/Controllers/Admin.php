@@ -701,8 +701,8 @@ class Admin extends Controller
             'jendela' => $jendela,
             'langit' => $langit,
             'pelaksana' => $req->pelaksana,
-            'diperiksa_oleh' => $req->diperiksa_oleh,
-            'keterangan' => $req->keterangan,
+            'diperiksa_oleh' => Admin::bersih($req->diperiksa_oleh),
+            'keterangan' => Admin::bersih($req->keterangan),
         ]);
 
         // dd($dataygdiubah);
@@ -749,8 +749,8 @@ class Admin extends Controller
         Periksaruang::all()->where('id_periksaruang', $req->id)->first()->update([
             'nomer_prosedur' => $req->nomer_prosedur,
             'tanggal_prosedur' => $newformat,
-            'nama_ruangan' => $req->nama_ruangan,
-            'cara_pembersihan' => $req->cara_pembersihan
+            'nama_ruangan' => Admin::bersih($req->nama_ruangan),
+            'cara_pembersihan' => Admin::bersih($req->cara_pembersihan)
         ]);
 
 
@@ -779,8 +779,8 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'kode' => Admin::bersih_angka($req['kode']),
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];
@@ -834,8 +834,8 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'kode' => Admin::bersih_angka($req['kode']),
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];
@@ -884,8 +884,8 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'nama' => $req['nama'],
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'kode' => $req['kode'],
-            'ruang' => $req['ruang'],
+            'kode' => Admin::bersih_angka($req['kode']),
+            'ruang' => Admin::bersih($req['ruang']),
             'pabrik' => $pabrik,
             'status' => 0,
         ];
@@ -1179,10 +1179,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_bahan' => $req['nama_bahanbaku'],
-            'no_loth' => $req['no_loth'],
-            'pemasok' => $req['pemasok'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
+            'pemasok' => Admin::bersih($req['pemasok']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'no_kontrol' => $req['no_kontrol'],
+            'no_kontrol' => Admin::bersih_angka($req['no_kontrol']),
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
         PPbahanbakumasuk::all()->where('id_ppbahanbaku', $id)->first()->update($data);
@@ -1205,7 +1205,7 @@ class Admin extends Controller
         $data = [
             'nama_bahan' => $req['nama_bahanbaku'],
             'untuk_produk' => $req['untuk_produk'],
-            'no_batch' => $req['no_batch'],
+            'no_batch' => Admin::bersih_angka($req['no_batch']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
         ];
@@ -1228,10 +1228,10 @@ class Admin extends Controller
         // dd($id);
         $data = [
             'nama_produkjadi' => $req['nama_produkjadi'],
-            'no_loth' => $req['no_loth'],
-            'pemasok' => $req['pemasok'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
+            'pemasok' => Admin::bersih($req['pemasok']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'no_kontrol' => $req['no_kontrol'],
+            'no_kontrol' => Admin::bersih_angka($req['no_kontrol']),
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
         PPprodukjadimasuk::all()->where('id_produkjadimasuk', $id)->first()->update($data);
@@ -1253,8 +1253,8 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_produk' => $req['nama_produk'],
-            'untuk_produk' => $req['untuk_produk'],
-            'no_batch' => $req['no_batch'],
+            'untuk_produk' => Admin::bersih($req['untuk_produk']),
+            'no_batch' => Admin::bersih_angka($req['no_batch']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
             'pabrik' => $pabrik,
@@ -1281,10 +1281,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_kemasan' => $req['nama_kemasan'],
-            'no_loth' => $req['no_loth'],
-            'pemasok' => $req['pemasok'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
+            'pemasok' => Admin::bersih($req['pemasok']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'no_kontrol' => $req['no_kontrol'],
+            'no_kontrol' => Admin::bersih_angka($req['no_kontrol']),
             'kedaluwarsa' => $req['kedaluwarsa'],
         ];
         PPkemasanmasuk::all()->where('id_kemasanmasuk', $id)->first()->update($data);
@@ -1303,8 +1303,8 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $data = [
             'nama_kemasan' => $req['nama_kemasan'],
-            'untuk_produk' => $req['untuk_produk'],
-            'no_batch' => $req['no_batch'],
+            'untuk_produk' => Admin::bersih($req['untuk_produk']),
+            'no_batch' => Admin::bersih_angka($req['no_batch']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
             'sisa' => $req['sisa'],
         ];
@@ -1435,7 +1435,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $key = $req['key'];
         $data = [
-            'isi' => $req['isi'],
+            'isi' => Admin::bersih($req['isi']),
             'id_kemas' => $id,
         ];
         // dd($req);
@@ -1456,7 +1456,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $key = $req['key'];
         $data = [
-            'isi' => $req['isi'],
+            'isi' => Admin::bersih($req['isi']),
             'id_kemas' => $id,
         ];
         prosedur_isi::all()->where("id_proisi", $key)->first()->update($data);
@@ -1483,7 +1483,7 @@ class Admin extends Controller
             'nama_kemas' => $req['nama'],
             'j_butuh' => $req['jbutuh'],
             'j_tolak' => $req['jtolak'],
-            'no_qc' => $req['noqc'],
+            'no_qc' => Admin::bersih_angka($req['noqc']),
             'j_pakai' => $req['jpakai'],
             'j_kembali' => $req['jkembali'],
             'id_kemasbatch' => $id,
@@ -1635,7 +1635,7 @@ class Admin extends Controller
             'pob' => $req['pob'],
             'kode_produk' => $req['kode_produk'],
             'nama_produk' => $req['nama_produk'],
-            'nomor_batch' => $req['no_batch'],
+            'nomor_batch' => Admin::bersih_angka($req['no_batch']),
             'besar_batch' => $req['besar_batch'],
             'bentuk_sedia' => $req['bentuk_sediaan'],
             'kategori' => $req['kategori'],
@@ -2152,11 +2152,11 @@ class Admin extends Controller
         $filedelete = $tujuan_upload . "/" . $nama;
         File::delete(public_path("/" . $filedelete));
         $file = $req->file('file');
-        $namasimpan = $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $namasimpan = Admin::bersih($req['nama_personil']) . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $file->move($tujuan_upload, $namasimpan);
         Periksapersonil::where('personil_id', $req['id'])
             ->update([
-                'nama' => $req['nama_personil'],
+                'nama' => Admin::bersih($req['nama_personil']),
                 'nama_file' => $req['nama_personil'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten,
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -2266,9 +2266,9 @@ class Admin extends Controller
         Periksaalat::where('id_periksaalat', $req['id'])
             ->update([
                 'pob_nomor' => $req['pob_nomor'],
-                'nama_ruangan' => $req['nama_ruangan'],
-                'nama_alat' => $req['nama_alat'],
-                'type_merk' => $req['type_merk'],
+                'nama_ruangan' => Admin::bersih($req['nama_ruangan']),
+                'nama_alat' => Admin::bersih($req['nama_alat']),
+                'type_merk' => Admin::bersih($req['type_merk']),
             ]);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -2614,14 +2614,14 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'protap' => $req['protap'],
-            'kode_pelatihan' => $req['kode_pelatihan'],
-            'materi_pelatihan' => $req['materi_pelatihan'],
-            'peserta_pelatihan' => $req['peserta_pelatihan'],
-            'pelatih' => $req['pelatih'],
-            'metode_pelatihan' => $req['metode_pelatihan'],
+            'kode_pelatihan' => Admin::bersih_angka($req['kode_pelatihan']),
+            'materi_pelatihan' => Admin::bersih($req['materi_pelatihan']),
+            'peserta_pelatihan' => Admin::bersih($req['peserta_pelatihan']),
+            'pelatih' => Admin::bersih($req['pelatih']),
+            'metode_pelatihan' => Admin::bersih($req['metode_pelatihan']),
             'jadwal_mulai_pelatihan' => $req['mulai'],
             'jadwal_berakhir_pelatihan' => $req['berakhir'],
-            'metode_penilaian' => $req['metode_penilaian'],
+            'metode_penilaian' => Admin::bersih($req['metode_penilaian']),
         ];
         // dd($hasil);
 
@@ -2655,14 +2655,14 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'protap' => $req['protap'],
-            'kode_pelatihan' => $req['kode_pelatihan'],
-            'materi_pelatihan' => $req['materi_pelatihan'],
-            'peserta_pelatihan' => $req['peserta_pelatihan'],
-            'pelatih' => $req['pelatih'],
-            'metode_pelatihan' => $req['metode_pelatihan'],
+            'kode_pelatihan' => Admin::bersih_angka($req['kode_pelatihan']),
+            'materi_pelatihan' => Admin::bersih($req['materi_pelatihan']),
+            'peserta_pelatihan' => Admin::bersih($req['peserta_pelatihan']),
+            'pelatih' => Admin::bersih($req['pelatih']),
+            'metode_pelatihan' => Admin::bersih($req['metode_pelatihan']),
             'jadwal_mulai_pelatihan' => $req['mulai'],
             'jadwal_berakhir_pelatihan' => $req['berakhir'],
-            'metode_penilaian' => $req['metode_penilaian'],
+            'metode_penilaian' => Admin::bersih($req['metode_penilaian']),
             'pabrik' => $pabrik,
             'status' => 0,
             'user_id' => $id,
@@ -2771,14 +2771,14 @@ class Admin extends Controller
         penanganankeluhan::where('id_penanganankeluhan', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
-                'kode_keluhan' => $req['kode_keluhan'],
-                'nama_customer' => $req['nama_customer'],
+                'kode_keluhan' => Admin::bersih_angka($req['kode_keluhan']),
+                'nama_customer' => Admin::bersih($req['nama_customer']),
                 'tanggal_keluhan' => $req['tanggal_keluhan'],
-                'keluhan' => $req['keluhan'],
+                'keluhan' => Admin::bersih($req['keluhan']),
                 'tanggal_ditanggapi' => $req['tanggal_tanggapi_keluhan'],
-                'produk_yang_digunakan' => $req['produk_yang_digunakan'],
-                'penanganan_keluhan' => $req['penanganan_keluhan'],
-                'tindak_lanjut' => $req['tindak_lanjut'],
+                'produk_yang_digunakan' => Admin::bersih($req['produk_yang_digunakan']),
+                'penanganan_keluhan' => Admin::bersih($req['penanganan_keluhan']),
+                'tindak_lanjut' => Admin::bersih($req['tindak_lanjut']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -2902,13 +2902,13 @@ class Admin extends Controller
         penarikanproduk::where('id_produk_penarikan', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
-                'kode_penarikan' => $req['kode_penarikan'],
+                'kode_penarikan' => Admin::bersih_angka($req['kode_penarikan']),
                 // 'tanggal_penarikan' => $req['tanggal'],
-                'nama_distributor' => $req['nama_distributor'],
-                'produk_ditarik' => $req['produk_ditarik'],
+                'nama_distributor' => Admin::bersih($req['nama_distributor']),
+                'produk_ditarik' => Admin::bersih($req['produk_ditarik']),
                 'jumlah_produk_ditarik' => $req['jumlah_produk_ditarik'].' '.$req['satuan'],
-                'no_batch' => $req['no_batch'],
-                'alasan_penarikan' => $req['alasan_penarikan'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'alasan_penarikan' => Admin::bersih($req['alasan_penarikan']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -3026,10 +3026,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'protap' => $req['protap'],
-            'kode_distribusi' => $req['kode_distribusi'],
-            'id_batch' => $req['no_batch'],
+            'kode_distribusi' => Admin::bersih_angka($req['kode_distribusi']),
+            'id_batch' => Admin::bersih_angka($req['no_batch']),
             'jumlah' => $req['jumlah'].' '.$req['satuan'],
-            'nama_distributor' => $req['nama_distributor'],
+            'nama_distributor' => Admin::bersih($req['nama_distributor']),
         ];
 
         $nomer = distribusiproduk::where('id_distribusi', $id)->update($hasil);
@@ -3127,9 +3127,9 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'pob' => $req['protap'],
-            'nama_alat' => $req['nama_alat'],
-            'tipe_merek' => $req['tipemerek'],
-            'ruang' => $req['ruang'],
+            'nama_alat' => Admin::bersih($req['nama_alat']),
+            'tipe_merek' => Admin::bersih($req['tipemerek']),
+            'ruang' => Admin::bersih($req['ruang']),
         ];
         // dd($req);
         $nomer = pengoprasianalat::where('id_operasi', $req['id'])->update($hasil);
@@ -3256,11 +3256,11 @@ class Admin extends Controller
             'mulai_pemakaian' => $req['mulai_pemakaian'],
             'selesai_pemakaian' => $req['selesai_pemakaian'],
             'produksi' => $req['produksi'],
-            'no_batch' => $req['no_batch'],
+            'no_batch' => Admin::bersih_angka($req['no_batch']),
             // 'mulai_pembersihan' => $req['mulai_pembersihan'],
             // 'selesai_pembersihan' => $req['selesai_pembersihan'],
             // 'diperiksa_oleh' => $req['diperiksa_oleh'],
-            'keterangan' => $req['keterangan'],
+            'keterangan' => Admin::bersih($req['keterangan']),
         ];
         // dd($req);
         $nomer = Detiloperasialat::where('id', $req['Modalid_detilalat'])->update($hasil);
@@ -3290,8 +3290,8 @@ class Admin extends Controller
             // 'no_batch' => $req['no_batch'],
             'mulai_pembersihan' => $req['mulai_pembersihan'],
             'selesai_pembersihan' => $req['selesai_pembersihan'],
-            'diperiksa_oleh' => $req['diperiksa_oleh'],
-            'keterangan' => $req['keterangan'],
+            'diperiksa_oleh' => Admin::bersih($req['diperiksa_oleh']),
+            'keterangan' => Admin::bersih($req['keterangan']),
         ];
         // dd($req);
         $nomer = Detilperiksaalat::where('id_detilalat', $req['Modalid_detilalat'])->update($hasil);
@@ -3418,12 +3418,12 @@ class Admin extends Controller
         $hasil = [
             'protap' => $req['protap'],
             'nama_bahan' => $req['nama_bahan'],
-            'no_batch' => $req['nobatch'],
+            'no_batch' => Admin::bersih_angka($req['nobatch']),
             'kedaluwarsa' => $req['kedaluwarsa'],
-            'nama_pemasok' => $req['nama_pemasok'],
-            'warna' => $req['warna'],
-            'bau' => $req['bau'],
-            'ph' => $req['ph'],
+            'nama_pemasok' => Admin::bersih($req['nama_pemasok']),
+            'warna' => Admin::bersih($req['warna']),
+            'bau' => Admin::bersih($req['bau']),
+            'ph' => Admin::bersih($req['ph']),
             'berat_jenis' => $req['berat_jenis'],
         ];
         $nomer = pelulusanproduk::where('id_pelulusan', $id)->update($hasil);
@@ -3649,11 +3649,11 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'kode_bahan' => $req['kode_bahan'],
             'nama_bahanbaku' => $req['nama_bahan'],
-            'no_batch' => $req['nobatch'],
+            'no_batch' => Admin::bersih_angka($req['nobatch']),
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box']. ' ' . $req['satuanbox'],
             'jumlah_produk' => $req['jumlah_ambil']. ' ' . $req['satuanproduk'],
-            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+            'jenis_warnakemasan' => Admin::bersih($req['jenis_warna_kemasan']),
         ];
 
         contohbahanbaku::all()->where('id_bahanbaku', $id)->first()->update($hasil);
@@ -3688,11 +3688,11 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'kode_produk' => $req['kode_produk'],
             'nama_produkjadi' => $req['nama_produk'],
-            'no_batch' => $req['nobatch'],
+            'no_batch' => Admin::bersih_angka($req['nobatch']),
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box']. ' ' . $req['satuanbox'],
             'jumlah_produk' => $req['jumlah_ambil']. ' ' . $req['satuanproduk'],
-            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+            'jenis_warnakemasan' => Admin::bersih($req['jenis_warna_kemasan']),
         ];
 // dd($hasil);
         $nomer = contohprodukjadi::all()->where('id_produkjadi', $id)->first()->update($hasil);
@@ -3727,11 +3727,11 @@ class Admin extends Controller
             'protap' => $req['protap'],
             'kode_kemasan' => $req['kode_kemasan'],
             'nama_kemasan' => $req['nama_kemasan'],
-            'no_batch' => $req['nobatch'],
+            'no_batch' => Admin::bersih_angka($req['nobatch']),
             'kedaluwarsa' => $req['kedaluwarsa'],
             'jumlah_kemasanbox' => $req['jumlah_box']. ' ' . $req['satuanbox'],
             'jumlah_produk' => $req['jumlah_ambil']. ' ' . $req['satuanproduk'],
-            'jenis_warnakemasan' => $req['jenis_warna_kemasan'],
+            'jenis_warnakemasan' => Admin::bersih($req['jenis_warna_kemasan']),
         ];
 
 
@@ -4017,7 +4017,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'no_loth' => $req['no_loth'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
             'protap' => $req['protap'],
         ];
 
@@ -4049,7 +4049,7 @@ class Admin extends Controller
         $id = $req['id'];
         $pabrik = Auth::user()->pabrik;
         $hasil = [
-            'no_batch' => $req['nobatch'],
+            'no_batch' => Admin::bersih_angka($req['nobatch']),
             'protap' => $req['protap'],
         ];
         // dd($hasil);
@@ -4084,7 +4084,7 @@ class Admin extends Controller
         $hasil = [
             'nama_bahan_baku' => $req['nama_bahanbaku'],
             'jumlah_bahan_baku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
-            'hasil_timbang' => $req['hasil_penimbangan'],
+            'hasil_timbang' => Admin::bersih($req['hasil_penimbangan']),
             'protap' => $req['protap'],
         ];
         $nomer = ruangtimbang::where('id_ruangtimbang', $id)->update($hasil);
@@ -4276,9 +4276,9 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'nama_bahan' => $req['nama_bahan'],
-            'nama_suplier' => $req['nama_suplier'],
+            'nama_suplier' => Admin::bersih($req['nama_suplier']),
             'jumlah_bahan' => $req['jumlah_bahan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'hasil_penimbangan' => Admin::bersih($req['hasil_penimbangan']),
         ];
 
         $nomer = detiltimbangbahan::where('id_detiltimbangbahan', $id)->update($hasil);
@@ -4300,10 +4300,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $hasil = [
             'asal_produk' => $req['asal_produk'],
-            'nama_produk_antara' => $req['nama'],
+            'nama_produk_antara' => Admin::bersih($req['nama']),
             'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
-            'untuk_produk' => $req['untuk_produk'],
+            'hasil_penimbangan' => Admin::bersih($req['hasil_penimbangan']),
+            'untuk_produk' => Admin::bersih($req['untuk_produk']),
         ];
         // dd($req);
 
@@ -4326,11 +4326,11 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         // dd($req);
         $hasil = [
-            'no_loth' => $req['no_loth'],
+            'no_loth' => Admin::bersih_angka($req['no_loth']),
             'jumlah_permintaan' => $req['jumlah_permintaan'],
-            'hasil_penimbangan' => $req['hasil_penimbangan'],
+            'hasil_penimbangan' => Admin::bersih($req['hasil_penimbangan']),
             'sisa_bahan' => $req['sisa_bahan'],
-            'untuk_produk' => $req['untuk_produk'],
+            'untuk_produk' =>  Admin::bersih($req['untuk_produk']),
         ];
         $nomer = detiltimbanghasil::where('id_detiltimbanghasil', $id)->update($hasil);
         $log = [
@@ -4503,9 +4503,9 @@ class Admin extends Controller
             ->update([
                 'nama_bahankemas' => $req['nama'],
                 'tanggal' => $req['tanggal'],
-                'id_batch' => $req['no_batch'],
+                'id_batch' => Admin::bersih_angka($req['no_batch']),
                 'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
-                'nama_distributor' => $req['nama_distributor'],
+                'nama_distributor' => Admin::bersih($req['nama_distributor']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -4600,9 +4600,9 @@ class Admin extends Controller
             ->update([
                 'nama_produkantara' => $req['nama'],
                 'tanggal' => $req['tanggal'],
-                'id_batch' => $req['no_batch'],
+                'id_batch' => Admin::bersih_angka($req['no_batch']),
                 'jumlah' => $req['jumlah'] . ' ' . $req['satuan'],
-                'nama_distributor' => $req['nama_distributor'],
+                'nama_distributor' => Admin::bersih($req['nama_distributor']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -4697,9 +4697,9 @@ class Admin extends Controller
             ->update([
                 'nama_produkjadi' => $req['nama'],
                 'tanggal' => $req['tanggal'],
-                'id_batch' => $req['no_batch'],
+                'id_batch' => Admin::bersih_angka($req['no_batch']),
                 'jumlah' => $req['jumlah'].' '.$req['satuan'],
-                'nama_distributor' => $req['nama_distributor'],
+                'nama_distributor' => Admin::bersih($req['nama_distributor']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -4821,12 +4821,12 @@ class Admin extends Controller
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
                 'tanggal_pemusnahan' => $req['tanggal'],
                 'nama_bahanbaku' => $req['nama_bahanbaku'],
-                'no_batch' => $req['no_batch'],
-                'asal_bahanbaku' => $req['asal_bahanbaku'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'asal_bahanbaku' => Admin::bersih($req['asal_bahanbaku']),
                 'jumlah_bahanbaku' => $req['jumlah_bahanbaku'].' '.$req['satuan'],
-                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
-                'cara_pemunsnahan' => $req['cara_pemusnahan'],
-                'nama_petugas' => $req['petugas'],
+                'alasan_pemusnahan' => Admin::bersih($req['alasan_pemusnahan']),
+                'cara_pemunsnahan' => Admin::bersih($req['cara_pemusnahan']),
+                'nama_petugas' => Admin::bersih($req['petugas']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -4927,12 +4927,12 @@ class Admin extends Controller
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
                 'tanggal_pemusnahan' => $req['tanggal'],
                 'nama_bahan_kemas' => $req['nama_bahankemas'],
-                'no_batch' => $req['no_batch'],
-                'asal_bahankemas' => $req['asal_bahankemas'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'asal_bahankemas' => Admin::bersih($req['asal_bahankemas']),
                 'jumlah_bahankemas' => $req['jumlah_bahankemas'].' '.$req['satuan'],
-                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
-                'cara_pemunsnahan' => $req['cara_pemusnahan'],
-                'nama_petugas' => $req['petugas'],
+                'alasan_pemusnahan' => Admin::bersih($req['alasan_pemusnahan']),
+                'cara_pemunsnahan' => Admin::bersih($req['cara_pemusnahan']),
+                'nama_petugas' => Admin::bersih($req['petugas']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -5034,12 +5034,12 @@ class Admin extends Controller
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
                 'tanggal_pemusnahan' => $req['tanggal'],
                 'nama_produkantara' => $req['nama_produkantara'],
-                'no_batch' => $req['no_batch'],
-                'asal_produkantara' => $req['asal_produkantara'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'asal_produkantara' => Admin::bersih($req['asal_produkantara']),
                 'jumlah_produkantara' => $req['jumlah_produkantara'].' '.$req['satuan'],
-                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
-                'cara_pemunsnahan' => $req['cara_pemusnahan'],
-                'nama_petugas' => $req['petugas'],
+                'alasan_pemusnahan' => Admin::bersih($req['alasan_pemusnahan']),
+                'cara_pemunsnahan' => Admin::bersih($req['cara_pemusnahan']),
+                'nama_petugas' => Admin::bersih($req['petugas']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -5140,12 +5140,12 @@ class Admin extends Controller
                 'kode_pemusnahan' => $req['kode_pemusnahan'],
                 'tanggal_pemusnahan' => $req['tanggal'],
                 'nama_produkjadi' => $req['nama'],
-                'no_batch' => $req['no_batch'],
-                'asal_produkjadi' => $req['asal_produkantara'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'asal_produkjadi' => Admin::bersih($req['asal_produkjadi']),
                 'jumlah_produkjadi' => $req['jumlah_produkantara'].' '.$req['satuan'],
-                'alasan_pemusnahan' => $req['alasan_pemusnahan'],
-                'cara_pemunsnahan' => $req['cara_pemusnahan'],
-                'nama_petugas' => $req['petugas'],
+                'alasan_pemusnahan' => Admin::bersih($req['alasan_pemusnahan']),
+                'cara_pemunsnahan' => Admin::bersih($req['cara_pemusnahan']),
+                'nama_petugas' => Admin::bersih($req['petugas']),
                 'status' => 0
             ]);
         date_default_timezone_set("Asia/Jakarta");
@@ -5301,12 +5301,12 @@ class Admin extends Controller
         $filedelete = $tujuan_upload . "/" . $nama;
         Storage::delete($filedelete);
         $file = $req->file('file');
-        $namasimpan = $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $namasimpan = Admin::bersih($req['nama_alat']) . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
         $file->move($tujuan_upload, $namasimpan);
         Kalibrasialat::where('kalibrasi_id', $req['id'])
             ->update([
-                'nama_alat' => $req['nama_alat'],
-                'nama_file' => $req['nama_alat'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten,
+                'nama_alat' => Admin::bersih($req['nama_alat']),
+                'nama_file' => Admin::bersih($req['nama_alat']) . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten,
             ]);
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -5415,9 +5415,9 @@ class Admin extends Controller
                 'kode_spesifikasi' => $req['kode_spesifikasi'],
                 'nama_bahanbaku' => $req['nama_bahanbaku'],
                 'jenis_sediaan' => $req['jenis_sediaan'],
-                'warna' => $req['warna'],
-                'aroma' => $req['aroma'],
-                'tekstur' => $req['tekstur'],
+                'warna' => Admin::bersih($req['warna']),
+                'aroma' => Admin::bersih($req['aroma']),
+                'tekstur' => Admin::bersih($req['tekstur']),
                 'bobot' => $req['bobot'],
                 'tanggal' => $req['tanggal'],
                 'status' => 0
@@ -5517,9 +5517,9 @@ class Admin extends Controller
                 'kode_spesifikasi' => $req['kode_spesifikasi'],
                 'nama_bahankemas' => $req['nama_bahankemas'],
                 'jenis_bahankemas' => $req['jenis_bahankemas'],
-                'warna' => $req['warna'],
-                'ukuran' => $req['ukuran_bahankemas'],
-                'bocorcacat' => $req['bocor_cacat'],
+                'warna' =>  Admin::bersih($req['warna']),
+                'ukuran' =>  Admin::bersih($req['ukuran_bahankemas']),
+                'bocorcacat' => Admin::bersih($req['bocor_cacat']),
                 'tanggal' => $req['tanggal'],
                 'status' => 0
             ]);
@@ -5619,10 +5619,10 @@ class Admin extends Controller
                 'kode_spesifikasi' => $req['kode_spesifikasi'],
                 'nama_produkjadi' => $req['nama_produkjadi'],
                 'kategori' => $req['kategori'],
-                'no_batch' => $req['no_batch'],
-                'warna' => $req['warna'],
-                'aroma' => $req['aroma'],
-                'bocorcacat' => $req['bocor_cacat'],
+                'no_batch' => Admin::bersih_angka($req['no_batch']),
+                'warna' => Admin::bersih($req['warna']),
+                'aroma' => Admin::bersih($req['aroma']),
+                'bocorcacat' => Admin::bersih($req['bocor_cacat']),
                 'tanggal' => $req['tanggal'],
                 'status' => 0
             ]);
@@ -5767,7 +5767,7 @@ class Admin extends Controller
         $hasil = [
             'kode_produk' => $req['kode_produk'],
             'nama_produk' => $req['nama_produk'],
-            'no_batch' => $req['no_batch'],
+            'no_batch' => Admin::bersih($req['no_batch']),
             'protap' => $req['protap'],
             'besar_batch' => $req['besar_batch'],
             'bentuksediaan' => $req['bentuk_sediaan'],
