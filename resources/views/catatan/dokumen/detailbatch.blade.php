@@ -135,19 +135,27 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                     <div class="form-group">
-                                        <label for="inputName">Nama BB</label>
+                                        <label for="inputName" class="col-sm">Nama BB</label>
+                                        <div class="col-sm">
+                                            
                                         <input type="text" name="nama" class="form-control 1" id="inputName"
                                             placeholder="Nama BB" />
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail">Kode BB</label>
+                                        <label for="inputEmail" class="col-sm">Kode BB</label>
+                                        <div class="col-sm">
                                         <input type="text" name="id" class="form-control 1" id="inputName"
                                             placeholder="Kode BB" />
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputMessage">Persentase</label>
-                                        <input type="text" name="persen" class="form-control 1" id="inputName"
+                                        <label for="inputMessage" class="col-sm">Persentase</label>
+                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                            <input type="number" name="persen" class="form-control 1" id="inputName"
                                             placeholder="Persentase" />
+                                        </div>
+                                        
                                     </div>
                                     <!-- Modal Footer -->
                                     <div class="modal-footer">
@@ -186,8 +194,8 @@
                             ?>
                             <tr>
                                 <th scope="row">{{ $i }}</th>
-                                <td>{{ $row['komposisi_id'] }}</td>
                                 <td>{{ $row['kompisisi_nama'] }}</td>
+                                <td>{{ $row['komposisi_id'] }}</td>
                                 <td>{{ $row['komposisi_persen'] }}</td>
                                 <td>
                                     @if (Auth::user()->level != 2)
@@ -342,19 +350,26 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Dibutuhkan</label>
-                                                <input type="text" name="jumlah_butuh" class="form-control 3"
+                                                <div data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_butuh" class="form-control 3"
                                                     id="inputName" placeholder="Jumlah yang Dibutuhkan" />
+                                                </div>
                                             </div>
+                                            <br>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Ditimbang</label>
-                                                <input type="text" name="jumlah_timbang" class="form-control 3"
+                                                <div data-tip="Hanya angka saja">
+                                                <input type="number" name="jumlah_timbang" class="form-control 3"
                                                     id="inputName" placeholder="Jumlah yang Ditimbang" />
+                                                </div>
                                             </div>
+                                            <br>
                                             <div class="form-group">
                                                 <label for="inputEmail">Ditimbang Oleh</label>
                                                 <input type="text" name="ditimbang" class="form-control 3" id="inputName"
                                                     placeholder="Ditimbang Oleh" />
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label for="inputEmail">Diperiksa Oleh</label>
                                                 <input type="text" name="diperiksa" class="form-control 3" id="inputName"

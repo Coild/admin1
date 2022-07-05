@@ -43,8 +43,7 @@
                                         <div class="modal-content">
                                             <!-- Modal Header -->
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">Pelatihan Higiene dan
-                                                    Sanitasi</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Pelatihan Higiene dan Sanitasi</h4>
                                             </div>
 
                                             <!-- Modal Body -->

@@ -59,7 +59,6 @@
                                                         Baku</label>
                                                     <div class="col-sm">
                                                         <input class="form-control 2" list="listnamabahanbaku" type="text" name='nama_bahan' id="isi_bahan" autocomplete="off">
-                                                        </input>
                                                         <datalist id='listnamabahanbaku'>
                                                             @foreach ($bahanbaku as $row)
                                                             <option value="{{ $row['bahanbaku_nama'] }}">
@@ -81,8 +80,8 @@
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                                         Bahan
                                                         Baku</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" name="jumlah_bahan" class="form-control 2" id="inputEmail3" placeholder="Jumlah Bahan Baku" />
+                                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                                        <input type="number"  name="jumlah_bahan" class="form-control 2" id="inputEmail3" placeholder="Jumlah Bahan Baku" />
                                                     </div>
                                                 </div>
 
@@ -252,7 +251,7 @@
                                         Baku</label>
                                     <div class="col-sm">
                                         <input class="form-control 4" list="listnamabahanbaku" type="text" name='nama_bahan' id="bahanbahan" autocomplete="off">
-                                        </input>
+                                        
                                         <datalist id='listnamabahanbaku'>
                                             @foreach ($bahanbaku as $row)
                                             <option value="{{ $row['bahanbaku_nama'] }}">
@@ -274,8 +273,8 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah Bahan
                                         Baku</label>
-                                    <div class="col-sm">
-                                        <input type="text" name="jumlah_bahan" class="form-control 4" id="isi_jbahan" placeholder="Jumlah Bahan Baku" />
+                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                        <input type="number" name="jumlah_bahan" class="form-control 4" id="isi_jbahan" placeholder="Jumlah Bahan Baku" />
                                     </div>
                                 </div>
 

@@ -69,8 +69,8 @@
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                                             Permintaan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="jumlah_permintaan"
+                                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                                            <input type="number" name="jumlah_permintaan"
                                                                 class="form-control 1" id="jumlah_permintaan"
                                                                 placeholder="Jumlah Permintaan" />
                                                         </div>
@@ -88,8 +88,8 @@
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa
                                                             Bahan</label>
-                                                        <div class="col-sm">
-                                                            <input type="text" name="sisa_bahan" class="form-control 1"
+                                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                                            <input type="number" name="sisa_bahan" class="form-control 1"
                                                                 id="sisa_bahan" placeholder="Sisa Bahan" />
                                                         </div>
                                                     </div>
@@ -190,8 +190,8 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                             Permintaan</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="jumlah_permintaan" class="form-control 6"
+                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                            <input type="number" name="jumlah_permintaan" class="form-control 6"
                                                 id="isi_jminta" placeholder="Jumlah Permintaan" />
                                         </div>
                                     </div>
@@ -216,8 +216,8 @@
 
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa Bahan</label>
-                                        <div class="col-sm">
-                                            <input type="text" name="sisa_bahan" class="form-control 6"
+                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                            <input type="number" name="sisa_bahan" class="form-control 6"
                                                 id="isi_sisa" placeholder="Untuk Produk" />
                                         </div>
                                     </div>

@@ -1326,7 +1326,7 @@
                 $("#bahankeluar_jumlah").val(parseInt(jumlah));
                 $("#bahankeluar_tanggal").val(tanggal);
                 $("#bahankeluar_nobatch").val(nobatch);
-                $("#bahankeluar_sisa").val(parseInt(jumlah));
+                $("#bahankeluar_sisa").val(parseInt(sisa));
                 $("#bahankeluar_produk").val(produk);
                 $("#id_bahankeluar").val(id);
             })
@@ -1345,7 +1345,7 @@
                 $("#produkkeluar_jumlah").val(parseInt(jumlah));
                 $("#produkkeluar_tanggal").val(tanggal);
                 $("#produkkeluar_nobatch").val(nobatch);
-                $("#produkkeluar_sisa").val(parseInt(jumlah));
+                $("#produkkeluar_sisa").val(parseInt(sisa));
                 $("#produkkeluar_produk").val(produk);
                 $("#id_produkkeluar").val(id);
             })
@@ -1362,7 +1362,7 @@
                 $("#kemasankeluar_jumlah").val(parseInt(jumlah));
                 $("#kemasankeluar_tanggal").val(tanggal);
                 $("#kemasankeluar_nobatch").val(nobatch);
-                $("#kemasankeluar_sisa").val(parseInt(jumlah));
+                $("#kemasankeluar_sisa").val(parseInt(sisa));
                 $("#kemasankeluar_produk").val(produk);
                 $("#id_kemasankeluar").val(id);
             })

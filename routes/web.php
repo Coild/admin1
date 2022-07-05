@@ -441,7 +441,6 @@ Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
 
     Route::post('/tambah_periksaruang', [Admin::class, 'tambah_periksaruang']);
 
-    // Route::get('/pengolahanbatch/{id}',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
 
     Route::get('/index', function () {
         return redirect()->route('dashboard');

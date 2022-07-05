@@ -173,8 +173,8 @@
                                                 <div class="form-group row">
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dibutuhkan</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" name="jbutuh" class="form-control 9" id="jbutuh"
+                                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                                        <input type="number" name="jbutuh" class="form-control 9" id="jbutuh"
                                                             placeholder="Jumlah Dibutuhkan" />
                                                     </div>
 
@@ -183,8 +183,8 @@
                                                 <div class="form-group row">
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Ditolak</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" name="jtolak" class="form-control 9" id="jtolak"
+                                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                                        <input type="number" name="jtolak" class="form-control 9" id="jtolak"
                                                             placeholder="Jumlah Ditolak" />
                                                     </div>
                                                 </div>
@@ -200,8 +200,8 @@
                                                 <div class="form-group row">
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dipakai</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" name="jpakai" class="form-control 9" id="jpakai"
+                                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                                        <input type="number" name="jpakai" class="form-control 9" id="jpakai"
                                                             placeholder="Jumlah Dipakai" />
                                                     </div>
 
@@ -210,8 +210,8 @@
                                                 <div class="form-group row">
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Dikembalikan</label>
-                                                    <div class="col-sm">
-                                                        <input type="text" name="jkembali" class="form-control 9" id="jkembali"
+                                                    <div class="col-sm" data-tip="Hanya angka saja">
+                                                        <input type="number" name="jkembali" class="form-control 9" id="jkembali"
                                                             placeholder="Jumlah Dikembalikan" />
                                                     </div>
                                                 </div>

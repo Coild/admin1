@@ -824,7 +824,7 @@
             $("#protap_bahan").val(protap);
             $("#bahannama").val(nama);
             $("#bahansatuan").val(satuan);
-            $("#bahanjumlah").val(jumlah);
+            $("#bahanjumlah").val(parseInt(jumlah));
             $("#bahanruang").val(ruangan);
             document.getElementById('bahankode').value = kode;
             document.getElementById('cpbahan').value = cpid;
@@ -842,7 +842,7 @@
             $("#protap_produk").val(protap);
             $("#produknama").val(nama);
             $("#produksatuan").val(satuan);
-            $("#produkjumlah").val(jumlah);
+            $("#produkjumlah").val(parseInt(jumlah));
             $("#produkruang").val(ruangan);
             document.getElementById('produkkode').value = kode;
             document.getElementById('cpproduk').value = cpid;
@@ -860,7 +860,7 @@
             $("#protap_kemasan").val(protap);
             $("#kemasannama").val(nama);
             $("#kemasansatuan").val(satuan);
-            $("#kemasanjumlah").val(jumlah);
+            $("#kemasanjumlah").val(parseInt(jumlah));
             $("#kemasanruang").val(ruangan);
             document.getElementById('kemasankode').value = kode;
             document.getElementById('cpkemasan').value = cpid;

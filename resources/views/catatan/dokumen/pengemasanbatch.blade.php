@@ -88,7 +88,7 @@
                                                                     </option>
                                                                 @endforeach
                                                             </select>
-                                                            {{-- <input type="text" name="protap" class="form-control 75" id="inputEmail3" placeholder="Sesuai PROTAP" /> --}}
+
                                                         </div>
                                                     </div>
 
@@ -109,8 +109,7 @@
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Kemasan</label>
                                                         <div class="col-sm">
-                                                            <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 75" id="inlineFormCustomSelect">
-                                                            </input>
+                                                            <input type="text" list="kemasan" style="height: 35px;" name="kemasan" class="form-control 75" id="inlineFormCustomSelect" autocomplete="off">
                                                             <datalist id="kemasan">
                                                                 @foreach ($kemasan as $row)
                                                                 <option value="{{ $row['kemasan_nama'] }}">
