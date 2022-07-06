@@ -22,23 +22,23 @@ class Admin extends Controller
 
     public function bersih($string) {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-     
+
         return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
-        
+
      }
 
      public function bersih_angka($string) {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-     
+
         return preg_replace('/[^A-Za-z0-9\-]/', ' ', $string); // Removes special chars.
-        
+
      }
 
      public function bersih_karakter($string) {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-     
+
         return preg_replace('/[^A-Za-z0-9.,\-]/', ' ', $string); // Removes special chars.
-        
+
      }
 
     public function dashboard()
@@ -238,7 +238,7 @@ class Admin extends Controller
         $data = jabatan::all()->where('jabatan_id', $id);
         // dd($data);
         $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
-        
+
         unlink("asset/dip/" . $data[0]['jabatan_file']);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menghapus laporan jabatan',
@@ -1673,7 +1673,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $nobatch = $req['nobatch'];
         $hasil = [
-            'komposisi_id' => Admin::bersih_angka($req['id']),
+            'komposisi_kode' => Admin::bersih_angka($req['id']),
             'kompisisi_nama' => Admin::bersih($req['nama']),
             'komposisi_persen' => Admin::bersih_angka($req['persen']),
             'nomor_batch' => Admin::bersih_angka($nobatch),
@@ -1700,7 +1700,7 @@ class Admin extends Controller
         $id = Auth::user()->id;
         $nobatch = $req['nobatch'];
         $hasil = [
-            'peralatan_id' => $req['kode'],
+            'peralatan_kode' => $req['kode'],
             'peralatan_nama' => Admin::bersih($req['nama']),
             'nomor_batch' => Admin::bersih_angka($nobatch),
             'user_id' => $id,

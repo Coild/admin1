@@ -88,7 +88,7 @@
                         </div>
 
                     </div>
-                
+
                 <!-- pop up end -->
 
 
@@ -104,16 +104,16 @@
                 <!-- pop up -->
                 <!-- Button to trigger modal -->
                 @if (Auth::user()->level != 2)
-                    @if($status == 1) 
+                    @if($status == 1)
                         <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm">
                             Tambah Komposisi
-                        </button> 
-                    @else 
+                        </button>
+                    @else
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
                             Tambah Komposisi
-                        </button> 
+                        </button>
                     @endif
-                    
+
                 @endif
 
                 <!-- Modal -->
@@ -137,7 +137,7 @@
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm">Nama BB</label>
                                         <div class="col-sm">
-                                            
+
                                         <input type="text" name="nama" class="form-control 1" id="inputName"
                                             placeholder="Nama BB" />
                                         </div>
@@ -155,7 +155,7 @@
                                             <input type="number" name="persen" class="form-control 1" id="inputName"
                                             placeholder="Persentase" />
                                         </div>
-                                        
+
                                     </div>
                                     <!-- Modal Footer -->
                                     <div class="modal-footer">
@@ -195,7 +195,7 @@
                             <tr>
                                 <th scope="row">{{ $i }}</th>
                                 <td>{{ $row['kompisisi_nama'] }}</td>
-                                <td>{{ $row['komposisi_id'] }}</td>
+                                <td>{{ $row['komposisi_kode'] }}</td>
                                 <td>{{ $row['komposisi_persen'] }}</td>
                                 <td>
                                     @if (Auth::user()->level != 2)
@@ -289,13 +289,13 @@
                                 <tr>
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $row['peralatan_nama'] }}</td>
-                                    <td>{{ $row['peralatan_id'] }}</td>
+                                    <td>{{ $row['peralatan_kode'] }}</td>
                                     <td>
                                         @if (Auth::user()->level != 2)
                                             <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button"
                                             class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                         @endif
-                                        
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -369,7 +369,7 @@
                                                 <input type="text" name="ditimbang" class="form-control 3" id="inputName"
                                                     placeholder="Ditimbang Oleh" />
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label for="inputEmail">Diperiksa Oleh</label>
                                                 <input type="text" name="diperiksa" class="form-control 3" id="inputName"
@@ -513,7 +513,7 @@
                                                 class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
                                             @endif
 
-                                            
+
                                         </td>
                                     </tr>
                                 @endforeach

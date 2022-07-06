@@ -14,7 +14,8 @@ class CreateKomposisisTable extends Migration
     public function up()
     {
         Schema::create('komposisis', function (Blueprint $table) {
-            $table->string("komposisi_id", 10);
+            $table->id('komposisi_id',5);
+            $table->string("komposisi_kode", 10);
             $table->string("kompisisi_nama", 100);
             $table->string("komposisi_persen", 20);
             $table->string("nomor_batch", 100);
