@@ -820,7 +820,7 @@
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
             var protap = $(this).data('protap');
-            // console.log(protap); 
+            console.log(ruangan);
             $("#protap_bahan").val(protap);
             $("#bahannama").val(nama);
             $("#bahansatuan").val(satuan);
@@ -838,6 +838,7 @@
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
             var protap = $(this).data('protap');
+            console.log(ruangan);
 
             $("#protap_produk").val(protap);
             $("#produknama").val(nama);
@@ -856,7 +857,7 @@
             var kode = $(this).data('kode');
             var cpid = $(this).data('cpid');
             var protap = $(this).data('protap');
-
+            console.log(ruangan);
             $("#protap_kemasan").val(protap);
             $("#kemasannama").val(nama);
             $("#kemasansatuan").val(satuan);
