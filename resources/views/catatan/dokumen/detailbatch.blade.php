@@ -540,13 +540,20 @@
                                 <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                 <div class="form-group">
                                     <label for="inputName">Perkiraan</label>
-                                    <input type="text" name="awal" value="{{ $awal }}" class="form-control  6"
+                                    <div data-tip="Hanya angka saja">
+                                        <input type="number" name="awal" value="{{ $awal }}" class="form-control  6"
                                         id="inputName" placeholder="keterangan" />
+                                    </div>
+                                    
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="inputName">Hasil</label>
-                                    <input type="text" name="akhir" value="{{ $akhir }}" class="form-control 6"
+                                    <div data-tip="Hanya angka saja">
+                                        <input type="number" name="akhir" value="{{ $akhir }}" class="form-control 6"
                                         id="inputName" placeholder="keterangan" />
+                                    </div>
+                                    
                                 </div>
                                 @if (Auth::user()->level != 2)
                                     <center>
