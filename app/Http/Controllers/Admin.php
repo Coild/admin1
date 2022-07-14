@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, Detilruangan, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, PemusnahanBahanKemas, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, Periksasaniruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
+use App\Models\{aturan, cp_bahan, cp_kemasan, cp_produk, jabatan, pabrik, bahanbaku, catatbersih, coa, company, contohbahanbaku, contohkemasan, contohprodukjadi, detilalat, Detilruangan, detiltimbangbahan, detiltimbanghasil, detiltimbangproduk, dip, distribusiproduk, Kalibrasialat, kartustok, kartustokbahan, kartustokbahankemas, kartustokprodukantara, kartustokprodukjadi, kemasan, perizinan, pobpabrik, komposisi, laporan, notif, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, pemusnahanbahankema, pemusnahanproduk, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, pendistribusianproduk, Pengemasanbatchproduk, pengolahanbatch, pengoprasianalat, pengorasianalat, peralatan, penimbangan, Periksaalat, Periksapersonil, periksaruang, Periksasaniruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, produk, produkantara, produksi, programpelatihan, programpelatihanhiginitas, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, ruangtimbang, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, timbangbahan, timbangproduk};
 
 $a = 0;
 $b = 0;
@@ -4879,7 +4879,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = PemusnahanBahanKemas::insertGetId($hasil);
+        $nomer = pemusnahanbahankema::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -4921,7 +4921,7 @@ class Admin extends Controller
     }
     public function edit_pemusnahanbahankemas(Request $req)
     {
-        PemusnahanBahanKemas::where('id_pemusnahanbahankemas', $req['id'])
+        pemusnahanbahankema::where('id_pemusnahanbahankemas', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_pemusnahan' => Admin::bersih_angka($req['kode_pemusnahan']),
@@ -5186,7 +5186,7 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = PemusnahanBahanKemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = pemusnahanbahankema::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
@@ -5200,7 +5200,7 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = PemusnahanBahanKemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = pemusnahanbahankema::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
