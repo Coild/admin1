@@ -5186,8 +5186,8 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = pemusnahanbahankema::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
+            $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
@@ -5200,8 +5200,8 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = pemusnahanbahankema::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
-            ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
+            $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
