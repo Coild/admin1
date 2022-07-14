@@ -9,6 +9,7 @@ class pemusnahanbahankemas extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id_pemusnahanbahankemas';
+    protected $table = 'pemusnahanbahankemas';
     // public $timestamps = true;
 
     protected $guarded =['id_pemusnahanbahankemas'];
