@@ -4879,7 +4879,7 @@ class Admin extends Controller
             'user_id' => $id,
         ];
 
-        $nomer = pemusnahanbahankemas::insertGetId($hasil);
+        $nomer = PemusnahanBahanKemas::insertGetId($hasil);
 
         date_default_timezone_set("Asia/Jakarta");
         $tgl = new \DateTime(Carbon::now()->toDateTimeString());
@@ -4921,7 +4921,7 @@ class Admin extends Controller
     }
     public function edit_pemusnahanbahankemas(Request $req)
     {
-        pemusnahanbahankemas::where('id_pemusnahanbahankemas', $req['id'])
+        PemusnahanBahanKemas::where('id_pemusnahanbahankemas', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
                 'kode_pemusnahan' => Admin::bersih_angka($req['kode_pemusnahan']),
@@ -5186,7 +5186,7 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = PemusnahanBahanKemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
@@ -5200,7 +5200,7 @@ class Admin extends Controller
             ->get(['pemusnahanbahanbakus.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data1 = pemusnahanbahankemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
+            $data1 = PemusnahanBahanKemas::join('protaps', 'Pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['Pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
             $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
