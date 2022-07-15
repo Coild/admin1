@@ -5189,11 +5189,11 @@ class Admin extends Controller
             $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
@@ -5203,11 +5203,11 @@ class Admin extends Controller
             $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
