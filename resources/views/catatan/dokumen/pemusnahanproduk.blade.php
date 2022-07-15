@@ -126,7 +126,10 @@
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <select class="form-select" name="satuan" id="satuan">
-                                                                                    <option value="pcs"> pcs</option>
+                                                                                    <option value="gr"> gr</option>
+                                                                                    <option value="kg"> kg</option>
+                                                                                    <option value="ml"> ml</option>
+                                                                                    <option value="L"> L</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
