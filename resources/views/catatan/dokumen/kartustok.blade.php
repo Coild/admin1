@@ -59,8 +59,8 @@
                                                         <div class="card-header">Bahan Baku</div>
                                                         <div class="card-body">
                                                             <p class="statusMsg"></p>
-                                                            <form role="form" method="post" action="tambah_kartustokbahan"
-                                                                id='forminput1'>
+                                                            <form role="form" method="post"
+                                                                action="tambah_kartustokbahan" id='forminput1'>
                                                                 @csrf
                                                                 <input type="hidden" name="_token"
                                                                     value="{{ csrf_token() }}" />
@@ -108,9 +108,11 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <div class="col-sm-8"
+                                                                                    data-tip="Hanya angka saja">
                                                                                     <input type="number" name="jumlah"
-                                                                                        class="form-control 1" id="jumlah"
+                                                                                        class="form-control 1"
+                                                                                        id="jumlah"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
@@ -132,13 +134,15 @@
                                                                             Distributor</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
-                                                                                class="form-control 1" id="nama_distributor"
+                                                                                class="form-control 1"
+                                                                                id="nama_distributor"
                                                                                 placeholder="Nama Distributor" />
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
-                                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
+                                                                <a class="btn btn-primary" onclick="salert1(1)"
+                                                                    href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
                                                             </form>
@@ -241,8 +245,8 @@
                                     <!-- pop up -->
                                     <!-- Button to trigger modal -->
                                     @if (Auth::user()->level != 2)
-                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm5"
-                                            onclick="setdatetoday1(2)">
+                                        <button class="btn btn-success btn-lg" data-toggle="modal"
+                                            data-target="#modalForm5" onclick="setdatetoday1(2)">
                                             Tambah Kartu Stok Bahan Kemas
                                         </button>
                                     @endif
@@ -276,8 +280,9 @@
                                                                             Kemas</label>
                                                                         <div class="col-sm">
                                                                             <input class="form-control 2"
-                                                                                list="listnamakemas" type="text" name='nama'
-                                                                                id="namabahanbaku1" autocomplete="off">
+                                                                                list="listnamakemas" type="text"
+                                                                                name='nama' id="namabahanbaku1"
+                                                                                autocomplete="off">
                                                                             </input>
                                                                             <datalist id='listnamakemas'>
                                                                                 @foreach ($kemasan as $row)
@@ -311,9 +316,11 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <div class="col-sm-8"
+                                                                                    data-tip="Hanya angka saja">
                                                                                     <input type="number" name="jumlah"
-                                                                                        class="form-control 2" id="jumlah1"
+                                                                                        class="form-control 2"
+                                                                                        id="jumlah1"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
@@ -342,7 +349,8 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <a class="btn btn-primary" onclick="salert1(2)" href="#"
+                                                                <a class="btn btn-primary" onclick="salert1(2)"
+                                                                    href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
                                                             </form>
@@ -511,9 +519,11 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <div class="col-sm-8"
+                                                                                    data-tip="Hanya angka saja">
                                                                                     <input type="number" name="jumlah"
-                                                                                        class="form-control 3" id="jumlah2"
+                                                                                        class="form-control 3"
+                                                                                        id="jumlah2"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
@@ -528,7 +538,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-<br>
+                                                                    <br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Asal
@@ -542,7 +552,8 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <a class="btn btn-primary" onclick="salert1(3)" href="#"
+                                                                <a class="btn btn-primary" onclick="salert1(3)"
+                                                                    href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
                                                             </form>
@@ -714,15 +725,18 @@
                                                                         <div class="col-sm">
 
                                                                             <div class="row">
-                                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                                <div class="col-sm-8"
+                                                                                    data-tip="Hanya angka saja">
                                                                                     <input type="number" name="jumlah"
-                                                                                        class="form-control 4" id="jumlah3"
+                                                                                        class="form-control 4"
+                                                                                        id="jumlah3"
                                                                                         placeholder="Jumlah" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
                                                                                         name="satuan" id="satuan4">
-                                                                                        <option value="pcs"> pcs</option>
+                                                                                        <option value="pcs"> pcs
+                                                                                        </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -742,7 +756,8 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <a class="btn btn-primary" onclick="salert1(4)" href="#"
+                                                                <a class="btn btn-primary" onclick="salert1(4)"
+                                                                    href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
                                                                     role="button">Simpan</a>
                                                             </form>
@@ -783,8 +798,7 @@
                                                         echo 'Diterima';
                                                     } ?></td>
                                                     <td>
-                                                    @if (Auth::user()->level != 2)
-                                                        
+                                                        @if (Auth::user()->level != 2)
                                                             <?php if ($row['status'] == 0) { ?>
                                                             <a href="#" type="submit" data-toggle="modal"
                                                                 data-target="#modalForm7" class="btn btn-primary"
@@ -794,7 +808,7 @@
                                                                 data-target="#modalForm7" class="btn btn-danger disabled"
                                                                 onclick="editdata4({{ $row }})">Edit</a>
                                                             <?php } ?>
-                                                    @else
+                                                        @else
                                                             <?php if ($row['status'] == 0) { ?>
 
                                                             <form method="post" action="terimakartustokprodukjadi"
@@ -816,10 +830,8 @@
                                                                     class="btn btn-danger disabled">Terima</button>
                                                             </form>
                                                             <?php } ?>
-
-                                                        
-                                                    @endif
-                                                </td>
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
