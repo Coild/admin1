@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class logadmin extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'logadmin_id';
+    protected $guarded = ['logadmin_id'];
+
 }
