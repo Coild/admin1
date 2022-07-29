@@ -80,7 +80,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-        dd(session()->get('pabrik'));
+        // dd(session()->get('pabrik'));
         $check_username = User::all()->where("nama", ucwords(strtolower($request->username)))->first();
 
         if($check_username){
