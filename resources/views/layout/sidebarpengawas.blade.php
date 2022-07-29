@@ -74,7 +74,7 @@
                                     data-bs-parent="#cttpabrik0">
                                     <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ route('periksapersonil') }}">Pemeriksaan Personil</a>
-                                        <a class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan Saniiitasi
+                                        <a class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan Sanitasi
                                             Ruangan</a>
                                         <a class="nav-link" href="{{ route('periksasanialat') }}">Pembersihan Sanitasi Alat</a>
                                     </nav>

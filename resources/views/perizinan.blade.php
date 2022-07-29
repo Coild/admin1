@@ -50,6 +50,7 @@
                                                 <label for="exampleFormControlFile1">Pilih File Perizinan</label>
                                                 <input onchange="return filecheck()" type="file" name="upload" class="form-control-file"
                                                     id="exampleFormControlFile1">
+                                                    <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
                                             </div>
                                             <!-- Modal Footer -->
                                             <div class="modal-footer">

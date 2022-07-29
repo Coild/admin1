@@ -326,10 +326,7 @@
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
                                                                                         name="satuan" id="satuan2">
-                                                                                        <option value="gr"> gr</option>
-                                                                                        <option value="kg"> kg</option>
-                                                                                        <option value="ml"> ml</option>
-                                                                                        <option value="L"> L</option>
+                                                                                        <option value="pcs"> pcs</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -529,10 +526,7 @@
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
                                                                                         name="satuan" id="satuan3">
-                                                                                        <option value="gr"> gr</option>
-                                                                                        <option value="kg"> kg</option>
-                                                                                        <option value="ml"> ml</option>
-                                                                                        <option value="L"> L</option>
+                                                                                        <option value="pcs"> pcs</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -541,13 +535,13 @@
                                                                     <br>
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
-                                                                            class="col-sm-3 col-form-label">Asal
+                                                                            class="col-sm-3 col-form-label">Nama
                                                                             Ruangan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
                                                                                 class="form-control 3"
                                                                                 id="nama_distributor2"
-                                                                                placeholder="Asal Ruangan" />
+                                                                                placeholder="Nama Ruangan" />
                                                                         </div>
                                                                     </div>
 
@@ -746,12 +740,12 @@
                                                                     <div class="form-group row">
                                                                         <label for="inputEmail3"
                                                                             class="col-sm-3 col-form-label">Nama
-                                                                            Distributor</label>
+                                                                            Ruangan</label>
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nama_distributor"
                                                                                 class="form-control 4"
                                                                                 id="nama_distributor3"
-                                                                                placeholder="Nama Distributor" />
+                                                                                placeholder="Nama Ruangan" />
                                                                         </div>
                                                                     </div>
 

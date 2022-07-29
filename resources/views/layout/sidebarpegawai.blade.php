@@ -77,7 +77,7 @@
                                         <a   class="nav-link" href="{{ route('periksapersonil') }}">Pemeriksaan
                                             Personil</a>
                                         <a   class="nav-link" href="{{ route('periksasaniruang') }}">Pembersihan
-                                            Saniiitasi
+                                            Sanitasi
                                             Ruangan</a>
                                         <a   class="nav-link" href="{{ route('periksasanialat') }}">Pembersihan
                                             Sanitasi Alat</a>
@@ -171,7 +171,7 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a   class="nav-link" href="{{ route('tampil', 19) }}">Label Status
                                             Kebersihan
-                                            Peralatan Sebelum Pengguanaan</a>
+                                            Peralatan Sebelum Penggunaan</a>
                                         <a   class="nav-link" href="{{ route('tampil', 20) }}">Program
                                             Pemeriksaan
                                             Kesehatan

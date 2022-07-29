@@ -119,6 +119,7 @@
                                         File Protap</label>
                                     <div class="col-sm">
                                         <input type="file" name="upload" class="form-control 1" id="fileform" onchange="return filecheck()">
+                                        <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
                                     </div>
                                 </div>
                                 <!-- Modal Footer -->

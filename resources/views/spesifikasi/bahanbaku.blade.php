@@ -56,6 +56,7 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Pilih File</label>
                                             <input type="file" name="upload" class="form-control 1" id="fileform" onchange="return filecheck()">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
                                         </div>
                                         <!-- Modal Footer -->
                                         <div class="modal-footer">

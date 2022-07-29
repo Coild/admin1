@@ -5134,6 +5134,7 @@ class Admin extends Controller
     }
     public function edit_pemusnahanprodukjadi(Request $req)
     {
+        // dd($req);
         pemusnahanprodukjadi::where('id_pemusnahanprodukjadi', $req['id'])
             ->update([
                 'protap' => $req['protap_induk'],
@@ -5141,7 +5142,7 @@ class Admin extends Controller
                 'tanggal_pemusnahan' => $req['tanggal'],
                 'nama_produkjadi' => Admin::bersih($req['nama']),
                 'no_batch' => Admin::bersih_angka($req['no_batch']),
-                'asal_produkjadi' => Admin::bersih($req['asal_produkjadi']),
+                'asal_produkjadi' => Admin::bersih($req['asal_produkantara']),
                 'jumlah_produkjadi' => $req['jumlah_produkantara'].' '.$req['satuan'],
                 'alasan_pemusnahan' => Admin::bersih($req['alasan_pemusnahan']),
                 'cara_pemunsnahan' => Admin::bersih($req['cara_pemusnahan']),
@@ -5189,11 +5190,11 @@ class Admin extends Controller
             $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
         } else {
             $data = pemusnahanbahanbaku::join('protaps', 'pemusnahanbahanbakus.protap', '=', 'protaps.protap_id')
@@ -5203,11 +5204,11 @@ class Admin extends Controller
             $data1 = pemusnahanbahankema::join('protaps', 'pemusnahanbahankemas.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanbahankemas.*', 'protaps.protap_nama', 'protap_id']);
 
-            $data2 = pemusnahanprodukantara::join('protaps', 'Pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
+            $data2 = pemusnahanprodukantara::join('protaps', 'pemusnahanprodukantaras.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukantaras.*', 'protaps.protap_nama', 'protap_id']);
 
 
-            $data3 = pemusnahanprodukjadi::join('protaps', 'Pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
+            $data3 = pemusnahanprodukjadi::join('protaps', 'pemusnahanprodukjadis.protap', '=', 'protaps.protap_id')
             ->get(['pemusnahanprodukjadis.*', 'protaps.protap_nama', 'protap_id']);
 
             $bahanbaku = bahanbaku::all()->where('user_id', $pabrik);
