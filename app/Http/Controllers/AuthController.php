@@ -32,9 +32,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
+        // dd(Admin::bersih($request->input('username')));
         $data = [
-            'nama'     => $request->input('username'),
+            'nama'     => Admin::bersih($request->input('username')),
             'password'  => $request->input('password'),
         ];
 
