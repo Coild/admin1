@@ -1879,20 +1879,30 @@ class Admin extends Controller
 
     public function tambah_company(Request $req)
     {
+        $id = Auth::user()->pabrik;
+       if($req->file('upload')!=null){
         $file = $req->file('upload');
         $nama = $file->getClientOriginalName();
         $tujuan_upload = 'asset/logo/';
         $ext = pathinfo($nama, PATHINFO_EXTENSION);
         $file->move($tujuan_upload, session('pabrik') . '.' . $ext);
-        $id = Auth::user()->pabrik;
 
-        // dd($req);
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
             'nama' => Admin::bersih_karakter($req['nama']),
             'alamat' => Admin::bersih_karakter($req['alamat']),
             'no_hp' => Admin::bersih_angka($req['telp']),
             'logo' =>  session('pabrik') . '.' . $ext,
         ]);
+       } else {
+        $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
+            'nama' => Admin::bersih_karakter($req['nama']),
+            'alamat' => Admin::bersih_karakter($req['alamat']),
+            'no_hp' => Admin::bersih_angka($req['telp']),
+        ]);
+       }
+
+        // dd($req);
+        
 
         $log = [
             'log_isi' => Auth::user()->namadepan . ' menambah pabrik',
