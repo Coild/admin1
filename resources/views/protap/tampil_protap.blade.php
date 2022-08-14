@@ -146,6 +146,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Nomor PROTAP</th>
                             <th scope="col">Nama PROTAP</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -159,6 +160,7 @@
                         <tr>
                             <th scope="row">{{ $i }}</th>
                             <td>{{ $row['protap_nama'] }}</td>
+                            <td>{{ $row['protap_nomor'] }}</td>
                             <td>
                                 @if (Auth::user()->level == 2)
                                 <a href="#" type="button" class="btn btn-danger" onclick="hapusprotap({msg: 'Apakah Anda Yakin Hapus {{$row['protap_nama']}}?',id:{{ $row['protap_id'] }},url:'hapus_protap/{{ $row['protap_id'] }}/{{ $row['protap_jenis'] }}'})">Hapus</a>
