@@ -166,7 +166,7 @@
                                 @if (Auth::user()->level == 2)
                                 <a href="#" type="button" class="btn btn-danger" onclick="hapusprotap({msg: 'Apakah Anda Yakin Hapus {{$row['protap_nama']}}?',id:{{ $row['protap_id'] }},url:'hapus_protap/{{ $row['protap_id'] }}/{{ $row['protap_jenis'] }}'})">Hapus</a>
                                 @endif
-                                <a href="/asset/protap/{{ $row['protap_file'] }}" button type="button" class="btn btn-primary">Buka</a>
+                                <a target="_blank" href="/asset/protap/{{ $row['protap_file'] }}" button type="button" class="btn btn-primary">Buka</a>
                             </td>
                         </tr>
                         @endforeach

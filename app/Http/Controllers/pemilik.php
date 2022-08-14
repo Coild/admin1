@@ -158,7 +158,7 @@ class pemilik extends Controller
     public function log () {
         // Posts::orderBy('created_at', 'desc')->get();
         // return view('layout.log', ['dataLog' => DB::select('select * from logs')]);
-        return view('layout.logadmin', ['dataLog' => Logadmin::orderBy('logadmin_id', 'desc')->get()]);
+        return view('layout.logadmin', ['dataLog' => Logadmin::all()->where('id_pabrik', Auth::user()->pabrik)->orderBy('logadmin_id', 'desc')->get()]);
         
     }
 

@@ -1888,6 +1888,7 @@ class Admin extends Controller
 
         // dd($req);
         $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
+            'nama' => Admin::bersih_karakter($req['nama']),
             'alamat' => Admin::bersih_karakter($req['alamat']),
             'no_hp' => Admin::bersih_angka($req['telp']),
             'logo' =>  session('pabrik') . '.' . $ext,

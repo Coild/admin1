@@ -86,8 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(
         ['middleware' => 'admin'],
         function () {
-            
-Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
+
+            Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
+            Route::post('/reset_passworda', [AuthController::class, 'reset_passa']);
             Route::get('/pabrik', [superadmin::class, 'tampil_pabrik']);
             Route::get('/audit', [superadmin::class, 'tampil_audit']);
             Route::get('/inspek', [superadmin::class, 'tampil_inspek']);
@@ -203,8 +204,7 @@ Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
         Route::get('/hapus_produkantara/{id}', [Admin::class, 'hapus_produkantara']);
 
         Route::get('/laporan', [Admin::class, 'tampil_laporan'])->name('laporan');
-        Route::post('/laporan', [Admin::class, 'tampil_laporan'])
-        ;
+        Route::post('/laporan', [Admin::class, 'tampil_laporan']);
 
 
         Route::get('/spek_bahan_baku', [pjt::class, 'tampil_bahan_baku'])->name("tampil_bahanbaku");
@@ -222,9 +222,6 @@ Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
         Route::post('/hapus_bahan_kemas', [pjt::class, 'hapus_bahankemas'])->name("hapus_bahan_kemas");
         Route::post('/hapus_produk_antara', [pjt::class, 'hapus_produkantara'])->name("hapus_produk_antara");
         Route::post('/hapus_produk_jadi', [pjt::class, 'hapus_produkjadi'])->name("hapus_produk_jadi");
-
-
-
     });
 
 
@@ -464,7 +461,4 @@ Route::post('/reset_passwordu', [AuthController::class, 'reset_passu']);
 
     Route::post('/edit_detilperiksaruang', [Admin::class, 'edit_detilperiksaruang']);
     Route::post('/edit_periksaruang', [Admin::class, 'edit_periksaruang']);
-
-
-
 });

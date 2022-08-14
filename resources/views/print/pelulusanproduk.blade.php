@@ -163,7 +163,7 @@
                     <tr>
                         <td>7</td>
                         <td>Kesimpulan</td>
-                        <td>DILULUSKAN/DITOLAK</td>
+                        <td>DILULUSKAN</td>
                     </tr>
                     <tr>
                         <td></td>

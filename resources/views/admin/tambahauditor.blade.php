@@ -44,6 +44,7 @@
                                         <td>
                                             <button class="btn btn-primary btn-sm" id="detil" data-toggle="modal" data-target="#lihat"
                                     data-nama="{{ $row['nama'] }}" data-alamat="{{ $row['alamat'] }}" data-nohp="{{ $row['no_hp'] }}">Lihat</button>
+                                    <button id="klik" class="btn btn-success btn-sm" data-toggle="modal" data-target="#resetpass" data-id="{{$row['id']}}">Reset</button>
                                         </td>
                                     </tr>
 
@@ -164,6 +165,37 @@
         </div>
     </div>
     <!--  -->
+     <!-- Modal Reset-->
+     <div class="modal fade" id="resetpass" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Reset Password
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p class="statusMsg"></p>
+                    <div class="container">
+                        <form action="/reset_passworda" method="post" id='input1'>
+                            @csrf
+                            <input type="hidden" name="id" id="isi_idpass">
+                            <div class="form-floating mb-3">
+                                <input class="form-control 1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
+                                <label for="inputEmail">Password Baru</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <!-- Modal -->
     <script>
         $(document).on('click', "#klik", function() {
             var id = $(this).data('id');
