@@ -179,7 +179,7 @@
                                         <a class="nav-link" href="{{ route('tampil', 20) }}">Program
                                             Pemeriksaan
                                             Kesehatan
-                                            Untuk Personil Prodi</a>
+                                            Untuk Personil</a>
                                         <a class="nav-link" href="{{ route('tampil', 21) }}">Pembersihan dan
                                             Sanitasi
                                             Peralatan</a>
