@@ -157,7 +157,7 @@ class dataPelaksana extends Controller
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
                     <button type="submit" class="btn btn-success">Lihat</button>
-                </form>' .'<form method="post" action="terima_cpproduk" id="formTerimaLaporan' . $data->cp_produk_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=2 /><input type="hidden" name="nobatch"value=' . $data->cp_produk_id . ' /><button type="button"onclick="buttonTerimaLaporan(' . $data->cp_produk_id . ')" class="btn btn-primary float-left mr-2">Terima</button>
+                </form>' .'<form method="post" action="terima_cpproduk" id="formTerimaLaporan2' . $data->cp_produk_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=2 /><input type="hidden" name="nobatch"value=' . $data->cp_produk_id . ' /><button type="button"onclick="buttonTerimaLaporan2(' . $data->cp_produk_id . ')" class="btn btn-primary float-left mr-2">Terima</button>
                     </form>';
                 } else {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
@@ -237,7 +237,7 @@ class dataPelaksana extends Controller
                         <input type="hidden" name="status_induk"
                         value=' . 0 . ' />
                     <button type="submit" class="btn btn-success">Lihat</button>
-                </form>' .'<form method="post" action="terima_cpkemasan" id="formTerimaLaporan' . $data->cp_kemasan_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=3 /><input type="hidden" name="nobatch"value=' . $data->cp_kemasan_id . ' /><button type="button"onclick="buttonTerimaLaporan(' . $data->cp_kemasan_id . ')" class="btn btn-primary float-left mr-2">Terima</button></form>';
+                </form>' .'<form method="post" action="terima_cpkemasan" id="formTerimaLaporan3' . $data->cp_kemasan_id . '">' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '<input type="hidden" name="jenis" value=3 /><input type="hidden" name="nobatch"value=' . $data->cp_kemasan_id . ' /><button type="button"onclick="buttonTerimaLaporan3(' . $data->cp_kemasan_id . ')" class="btn btn-primary float-left mr-2">Terima</button></form>';
                 } else {
                     return '<form method="post" class="float-left mr-1" action="detilterimabb">
                     ' . '<input type="hidden" name="_token" value="' . csrf_token() . '   " />' . '
@@ -263,19 +263,19 @@ class dataPelaksana extends Controller
 
     public function laporan()
     {
-        // dd($_GET    );
+        $id = Auth::user()->pabrik;
         if(isset($_GET['tahun'])){
             $data = laporan::whereYEAR('tgl_diterima', $_GET['tahun']);
 
             if(isset($_GET['bulan'])) {
 
 
-                $data = $data->whereMONTH('tgl_diterima', $_GET['bulan'])->get('*');}
+                $data = $data->whereMONTH('tgl_diterima', $_GET['bulan'])->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum')->get('*');}
             else {
                 $data = $data->get();
             }
         } else {
-            $data = laporan::all();
+            $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');;
         }
 
 

@@ -2085,9 +2085,10 @@ class Admin extends Controller
     public function tampil_laporan(Request $req)
     {
         $id = Auth::user()->pabrik;
-        $produk  = produk::all()->where('user_id', Auth::user()->pabrik);
-        // $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
-        return view('laporan', compact('produk'));
+        // $produk  = produk::all()->where('user_id', Auth::user()->pabrik);
+        $data = laporan::all()->where('pabrik_id', $id)->where('laporan_diterima', '!=', 'belum');
+        // dd($data);
+        return view('laporan', compact('data'));
     }
 
     public function tampil_periksapersonil()
