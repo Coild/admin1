@@ -129,7 +129,7 @@ class pemilik extends Controller
     public function list_request()
     {
         $data = audit::all()->where('audit_pabrik', Auth::user()->pabrik);
-        dd($data);
+        // dd($data);
         return view('pemilik.request', ['data' => $data]);
     }
 

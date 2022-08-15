@@ -1,4 +1,6 @@
 
+const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  
 
 function buttonTerimaLaporan(p){
     // console.log(p);
@@ -237,23 +239,40 @@ function salert(params) {
 
   const mycomp = document.getElementsByClassName("form-control "+params);
     var valid = false;
-
+    var pesan = "";
     for (i = 0; i < mycomp.length; i++) {
         // var x = text_gagal[i].value = 'coba';
         console.log(mycomp[i].value);
+        
+        // if (specialChars.test( mycomp[i].value)) {
+        //     pesan = "tidak boleh ada karakter spesial";
+        //     break;
+        //  } 
+         if (mycomp[i].value.length>200) {
+            pesan = "Data terlalu panjang";
+            break;
+         } 
         if (mycomp[i].value == "") {
             valid = true;
             break;
-        }
+        } 
     }
     if (valid) {
         valid = false;
+        
+        Swal.fire({
+            icon: "error",
+            title: "Data tidak sesuai",
+            text: "Sebagian Data Kosong!",
+        });
+        
+     } else if (pesan!="") {
         Swal.fire({
             icon: "error",
             title: "Tidak Valid",
-            text: "Sebagian Data Kosong!",
+            text: pesan,
         });
-    } else {
+     } else {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success",
@@ -442,21 +461,42 @@ function salert1(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
 
     var valid = false;
+    var pesan = "";
 
     for (i = 0; i < mycomp.length; i++) {
-        console.log(i +" - " +mycomp[i].value);
+        // var x = text_gagal[i].value = 'coba';
+        console.log(mycomp[i].value);
+        
+        // if (specialChars.test( mycomp[i].value)) {
+        //     pesan = "tidak boleh ada karakter spesial";
+        //     break;
+        //  } 
+         if (mycomp[i].value.length>200) {
+            pesan = "Data terlalu panjang";
+            break;
+         } 
         if (mycomp[i].value == "") {
             valid = true;
-        }
+            break;
+        } 
     }
     if (valid) {
         valid = false;
+        
+        Swal.fire({
+            icon: "error",
+            title: "Data tidak sesuai",
+            text: "Sebagian Data Kosong!",
+        });
+        
+     } else if (pesan!="") {
         Swal.fire({
             icon: "error",
             title: "Tidak Valid",
-            text: "Sebagian Data Kosong!",
+            text: pesan,
         });
-    } else {
+     }
+     else {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success",
@@ -504,19 +544,38 @@ function salert1(params) {
     var valid = false;
 
     for (i = 0; i < mycomp.length; i++) {
-        console.log(i +" - " +mycomp[i].value);
+        // var x = text_gagal[i].value = 'coba';
+        console.log(mycomp[i].value);
+        
+        // if (specialChars.test( mycomp[i].value)) {
+        //     pesan = "tidak boleh ada karakter spesial";
+        //     break;
+        //  } 
+         if (mycomp[i].value.length>200) {
+            pesan = "Data terlalu panjang";
+            break;
+         } 
         if (mycomp[i].value == "") {
             valid = true;
-        }
+            break;
+        } 
     }
     if (valid) {
         valid = false;
+        
+        Swal.fire({
+            icon: "error",
+            title: "Data tidak sesuai",
+            text: "Sebagian Data Kosong!",
+        });
+        
+     } else if (pesan!="") {
         Swal.fire({
             icon: "error",
             title: "Tidak Valid",
-            text: "Sebagian Data Kosong!",
+            text: pesan,
         });
-    } else {
+     }  else {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success",
