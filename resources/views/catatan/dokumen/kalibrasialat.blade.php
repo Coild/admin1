@@ -61,8 +61,10 @@
                                                     <label class="col-sm-3 col-form-label" for="exampleFormControlFile1">Dokumen Kalibrasi</label>
                                                     <div class="col-sm">
                                                         <input type="file" name="file" class="form-control" id="fileform" onchange="return filecheck()">
-                                                    </div>
-                                                </div>
+                                                        <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
+                                                    </div> 
+                                                   
+                                                </div> 
 
                                             </div>
                                             <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
