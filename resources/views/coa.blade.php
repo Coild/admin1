@@ -36,7 +36,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form action="/input_coa" method="post" enctype="multipart/form-data" role="form">
+                                    <form action="/input_coa" method="post" enctype="multipart/form-data" id="forminput" role="form">
 
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -55,7 +55,7 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert()">
                                                 Tambah
                                             </button>
                                         </div>

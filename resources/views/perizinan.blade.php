@@ -36,7 +36,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form action="/input_perizinan" method="post" enctype="multipart/form-data"
+                                        <form action="/input_perizinan" method="post" enctype="multipart/form-data" id="forminput"
                                             role="form">
 
                                             @csrf
@@ -57,7 +57,7 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="submit" class="btn btn-primary submitBtn" onclick="salert()">
+                                                <button type="button" class="btn btn-primary submitBtn" onclick="salert()">
                                                     Tambah
                                                 </button>
                                             </div>
