@@ -25,8 +25,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $no = 0;?>
                             @foreach($data as $row)
-                            <tr><?php $no = 0;
+                            <tr><?php 
                                 $no++; ?>
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['laporan_batch']}}</th>

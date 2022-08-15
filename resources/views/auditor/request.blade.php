@@ -19,7 +19,6 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nomor Batch</th>
                             <th scope="col">Catatan</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
@@ -30,7 +29,6 @@
                        <?php $i=0; $i++; ?>
                         <tr>
                         <th scope="col">{{$i}}</th>
-                            <th scope="col">{{$row['nobatch']}}</th>
                             <th scope="col">{{$row['audit_laporan']}}</th>
                             <th scope="col">
                                 @if($row['audit_status']==0)
