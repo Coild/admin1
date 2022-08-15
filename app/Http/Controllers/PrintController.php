@@ -98,8 +98,8 @@ class PrintController extends Controller
         $alamat = $datapabrik['alamat'];
         $nama = $datapabrik['nama'];
         $nohp = $datapabrik['no_hp'];
-        $data = contohbahanbaku::all()->where('id_bahanbaku', $id);
-        // dd($id);
+        $data = contohbahanbaku::all()->where('id_bahanbaku', $req['id']);
+        // dd($req['id']);
         $kop = laporan::all()->where('laporan_nomor', $id)->where('pabrik_id', $id = $req['pabrik'] ?? Auth::user()->pabrik)->where('laporan_nama', 'penambahan contoh bahan baku');
         // dd($kop);
         return view('print.ambilbahanbaku', [
