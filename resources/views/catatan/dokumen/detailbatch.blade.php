@@ -365,7 +365,7 @@
                                                         <div class="col-sm-8"
                                                             data-tip="Hanya angka saja">
                                                             <input type="number"
-                                                                name="jumlah_bahanbaku"
+                                                                name="jumlah_butuh"
                                                                 class="form-control 1"
                                                                 id="jumlah_bahanbaku"
                                                                 placeholder="Jumlah Bahan Baku" />
@@ -401,7 +401,7 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <select class="form-select"
-                                                            name="satua2" id="satuan2">
+                                                            name="satuan2" id="satuan2">
                                                             <option value="gr"> gr</option>
                                                             <option value="kg"> kg</option>
                                                             <option value="ml"> ml</option>

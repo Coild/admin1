@@ -19,7 +19,7 @@ class CreatePenimbangansTable extends Migration
             $table->string("penimbangan_namabahan", 100);
             $table->string("penimbangan_loth", 100);
             $table->string("penimbangan_jumlahbutuh");
-            $table->integer("penimbangan_jumlahtimbang", false);
+            $table->string("penimbangan_jumlahtimbang");
             $table->string("penimbangan_timbangoleh", 100);
             $table->string("penimbangan_periksaoleh", 100);
             $table->string("nomor_batch",100);

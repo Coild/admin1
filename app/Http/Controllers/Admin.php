@@ -1732,13 +1732,13 @@ class Admin extends Controller
             'penimbangan_namabahan' => Admin::bersih($req['nama_bahan']),
             'penimbangan_loth' => Admin::bersih_angka($req['no_loth']),
             'penimbangan_jumlahbutuh' => $req['jumlah_butuh'].' '.$req['satuan'],
-            'penimbangan_jumlahtimbang' => $req['jumlah_timbang'],
+            'penimbangan_jumlahtimbang' => $req['jumlah_timbang'].' '.$req['satuan2'],
             'penimbangan_timbangoleh' => Admin::bersih($req['ditimbang']),
             'penimbangan_periksaoleh' => Admin::bersih($req['diperiksa']),
             'nomor_batch' => Admin::bersih_angka($nobatch),
             'user_id' => $id,
         ];
-
+// dd($hasil);
         penimbangan::insert($hasil);
 
         $log = [
