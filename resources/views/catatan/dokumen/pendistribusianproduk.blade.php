@@ -35,7 +35,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_distribusi" id='forminput'>
+                                        <form method="post" action="tambah_distribusi" id='forminput2'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
@@ -51,7 +51,7 @@
                                                             Dengan PROTAP No</label>
                                                         <div class="col-sm">
                                                             {{-- <input type="text" name="protap" class="form-control 17" id="inputEmail3" placeholder="Nomor PROTAP" required /> --}}
-                                                            <select name="protap" class="form-control">
+                                                            <select name="protap" class="form-control 2">
                                                                 @foreach ($protap as $isi)
                                                                     <option value="{{ $isi['protap_id'] }}">
                                                                         {{ $isi['protap_nama'] }}</option>
@@ -66,7 +66,7 @@
                                                             Pendistribusian</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="kode_distribusi"
-                                                                class="form-control" id="inputEmail3"
+                                                                class="form-control 2" id="inputEmail3"
                                                                 placeholder="Kode Pendistribusian" />
                                                         </div>
                                                     </div>
@@ -78,7 +78,7 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                             Batch</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="no_batch" class="form-control"
+                                                            <input type="text" name="no_batch" class="form-control 2"
                                                                 id="inputEmail3" placeholder="No Batch" />
                                                         </div>
                                                     </div>
@@ -91,11 +91,11 @@
                                                             <div class="row">
                                                                 <div class="col-sm-8" data-tip="Hanya angka saja">
                                                                     <input type="number" name="jumlah"
-                                                                        class="form-control" id="inputEmail3"
+                                                                        class="form-control 2" id="inputEmail3"
                                                                         placeholder="Jumlah" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <select class="form-select" name="satuan"
+                                                                    <select class="form-select 2" name="satuan"
                                                                         id="satuuan">
                                                                         <option value="gr"> gr</option>
                                                                         <option value="kg"> kg</option>
@@ -113,13 +113,13 @@
                                                             Distributor</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="nama_distributor"
-                                                                class="form-control" id="inputEmail3"
+                                                                class="form-control 2" id="inputEmail3"
                                                                 placeholder="Nama Distributor" />
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert()" href="#"
+                                                <a class="btn btn-primary" onclick="salert(2)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>

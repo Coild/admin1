@@ -35,7 +35,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <p class="statusMsg"></p>
-                                    <form method="post" action="tambah_kalibrasialat" enctype="multipart/form-data" id='forminput'>
+                                    <form method="post" action="tambah_kalibrasialat" enctype="multipart/form-data" id='forminput1'>
                                         <div class="card mb-4">
                                             <div class="card-header">
                                                 <i class="fas fa-table me-1"></i>
@@ -47,13 +47,13 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <div class="card-body">
 
-                                                <input type="hidden" id='ambil_tanggal' class="form-control" name="tanggal" placeholder="" />
+                                                <input type="hidden" id='ambil_tanggal' class="form-control 1" name="tanggal" placeholder="" />
 
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
                                                         Alat</label>
                                                     <div class="col-sm">
-                                                        <input type="text" name="nama_alat" class="form-control" id="nama_alat" placeholder="Nama Alat" />
+                                                        <input type="text" name="nama_alat" class="form-control 1" id="nama_alat" placeholder="Nama Alat" />
                                                     </div>
                                                 </div>
 
@@ -67,7 +67,7 @@
                                                 </div> 
 
                                             </div>
-                                            <a class="btn btn-primary" onclick="salert()" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
+                                            <a class="btn btn-primary" onclick="salert1(1)" href="#" style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>
                                     </form>
                                 </div>
                             </div>

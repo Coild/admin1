@@ -493,7 +493,7 @@ function salert1(params) {
         Swal.fire({
             icon: "error",
             title: "Tidak Valid",
-            text: pesan,
+            text: "y",
         });
      }
      else {
@@ -540,7 +540,7 @@ function salert1(params) {
 
 function salert1(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
-
+    var pesan =""
     var valid = false;
 
     for (i = 0; i < mycomp.length; i++) {
