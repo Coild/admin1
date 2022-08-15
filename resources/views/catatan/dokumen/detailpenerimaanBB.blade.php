@@ -481,7 +481,7 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                                 Distributor</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 4" placeholder="Untuk Distributor" name="untuk_produk">
+                                                <input type="text" class="form-control 4" placeholder="Untuk Produk" name="untuk_produk">
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal4' class="form-control 4" placeholder="" />
@@ -749,9 +749,9 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                                Distributor</label>
+                                                produk</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 6" placeholder="Untuk Distributor" name="untuk_produk">
+                                                <input type="text" class="form-control 6" placeholder="Untuk produk" name="untuk_produk">
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal6' class="form-control 6" placeholder="" />
@@ -1068,7 +1068,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
-                                Distributor</label>
+                                Produk</label>
                             <div class="col-sm">
                                 <input type="text" class="form-control 10" placeholder="Untuk Distributor" name="untuk_produk" id="produkkeluar_produk">
                             </div>

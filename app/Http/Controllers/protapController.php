@@ -11,6 +11,21 @@ use Illuminate\Http\Request;
 class protapController extends Controller
 {
 
+   public function bersih($string) {
+      //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+      return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
+
+   }
+
+   public function bersih_angka($string) {
+      //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+      return preg_replace('/[^A-Za-z0-9\-]/', ' ', $string); // Removes special chars.
+
+   }
+
+
    public function tampil_protap($jenis)
    {
       $id = Auth::user()->id;
@@ -216,10 +231,10 @@ class protapController extends Controller
       $pabrik = Auth::user()->pabrik;
       $hasil = [
          'protap_file' => $nama,
-         'protap_nama' => $req['nama'],
-         'protap_nomor' => $req['nomor'],
-         'protap_ruangan' => $req['ruangan'],
-         'protap_diajukan' => $req['diajukan'],
+         'protap_nama' => protap::bersih($req['nama']),
+         'protap_nomor' => protap::bersih($req['nomor']),
+         'protap_ruangan' => protap::bersih($req['ruangan']),
+         'protap_diajukan' => ($req['diajukan']),
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
          'protap_diterima' => $req['disetujui'],
          'protap_tgl_diterima' => $req['tgl_disetujui'],
