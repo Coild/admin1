@@ -23,10 +23,10 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody><?php $no=0; ?>
                             @foreach($pabrik as $row)
                             
-                            <tr><?php $no=0; $no++;?>
+                            <tr><?php  $no++;?>
                                 <th scope="col">{{$no}}</th>
                                 <th scope="col">{{$row['nama']}}</th>
                                 <th scope="col">
@@ -39,6 +39,7 @@
                                     </form>
                                 </th>
                             </tr>
+                            
                             @endforeach
                         </tbody>
                     </table>
