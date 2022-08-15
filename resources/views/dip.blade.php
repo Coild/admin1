@@ -42,12 +42,12 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-group">
                                             <label for="inputName">Nama DIP</label>
-                                            <input type="text" class="form-control" id="inputName" name="nama" />
+                                            <input type="text" class="form-control 1" id="inputName" name="nama" />
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Pilih File DIP</label>
-                                            <input onchange="return filecheck()" type="file" name="upload" class="form-control-file" id="fileform">
+                                            <input onchange="return filecheck()" type="file" name="upload" class="form-control 1" id="fileform">
                                             <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
                                         </div>
                                         <!-- Modal Footer -->
@@ -55,7 +55,7 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert(1)">
+                                            <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">
                                                 Tambah
                                             </button>
                                         </div>
