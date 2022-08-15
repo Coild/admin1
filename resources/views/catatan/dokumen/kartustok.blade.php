@@ -113,7 +113,8 @@
                                                                                     <input type="number" name="jumlah"
                                                                                         class="form-control 1"
                                                                                         id="jumlah"
-                                                                                        placeholder="Jumlah" />
+                                                                                        placeholder="Jumlah"
+                                                                                        id="inputnumber" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
@@ -323,7 +324,8 @@
                                                                                     <input type="number" name="jumlah"
                                                                                         class="form-control 2"
                                                                                         id="jumlah1"
-                                                                                        placeholder="Jumlah" />
+                                                                                        placeholder="Jumlah"
+                                                                                        id="inputnumber2" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
@@ -528,7 +530,8 @@
                                                                                     <input type="number" name="jumlah"
                                                                                         class="form-control 3"
                                                                                         id="jumlah2"
-                                                                                        placeholder="Jumlah" />
+                                                                                        placeholder="Jumlah"
+                                                                                        id="inputnumber3" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
@@ -736,7 +739,8 @@
                                                                                     <input type="number" name="jumlah"
                                                                                         class="form-control 4"
                                                                                         id="jumlah3"
-                                                                                        placeholder="Jumlah" />
+                                                                                        placeholder="Jumlah"
+                                                                                        id="inputnumber4" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"

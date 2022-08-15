@@ -174,7 +174,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dibutuhkan</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jbutuh" class="form-control 9" id="jbutuh"
+                                                        <input type="number" name="jbutuh" class="form-control 9" id="inputnumber"
                                                             placeholder="Jumlah Dibutuhkan" />
                                                     </div>
 
@@ -184,7 +184,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Ditolak</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jtolak" class="form-control 9" id="jtolak"
+                                                        <input type="number" name="jtolak" class="form-control 9" id="inputnumber1"
                                                             placeholder="Jumlah Ditolak" />
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dipakai</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jpakai" class="form-control 9" id="jpakai"
+                                                        <input type="number" name="jpakai" class="form-control 9" id="inputnumber2"
                                                             placeholder="Jumlah Dipakai" />
                                                     </div>
 
@@ -211,7 +211,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Dikembalikan</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jkembali" class="form-control 9" id="jkembali"
+                                                        <input type="number" name="jkembali" class="form-control 9" id="inputnumber3"
                                                             placeholder="Jumlah Dikembalikan" />
                                                     </div>
                                                 </div>

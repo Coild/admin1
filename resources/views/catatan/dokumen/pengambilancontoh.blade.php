@@ -140,7 +140,8 @@
                                                                                     <input type="number"
                                                                                         name="jumlah_box"
                                                                                         class="form-control 1"
-                                                                                        placeholder="Jumlah Bahan Baku dalam Box" />
+                                                                                        placeholder="Jumlah Bahan Baku dalam Box"
+                                                                                        id="inputnumber"/>
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
@@ -1391,6 +1392,11 @@
             var produks = JSON.parse('<?= json_encode($produk) ?>')
             var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
             var bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+
+            numericPattern = '/^[0-9]*$/';
+            function numericOnly(event) {
+                return this.numericPattern.test(event.key);
+            }
             $("#namabahanbaku").change(function() {
                 var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
                     document.getElementById('namabahanbaku').value)?.bahanbaku_nama;

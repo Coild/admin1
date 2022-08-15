@@ -156,7 +156,7 @@
                                     <div class="form-group">
                                         <label for="inputMessage" class="col-sm">Persentase</label>
                                         <div class="col-sm" data-tip="Hanya angka saja">
-                                            <input type="number" name="persen" class="form-control 1" id="inputName"
+                                            <input type="number" name="persen" class="form-control 1" id="inputNumber"
                                                 placeholder="Persentase" />
                                         </div>
 
@@ -367,7 +367,7 @@
                                                             <input type="number"
                                                                 name="jumlah_butuh"
                                                                 class="form-control 1"
-                                                                id="jumlah_bahanbaku"
+                                                                id="inputNumber2"
                                                                 placeholder="Jumlah Bahan Baku" />
                                                         </div>
                                                         <div class="col-sm-4">
@@ -396,7 +396,7 @@
                                                         <input type="number"
                                                             name="jumlah_timbang"
                                                             class="form-control 1"
-                                                            id="jumlah_bahanbaku"
+                                                            id="inputNumber3"
                                                             placeholder="Jumlah Bahan Baku" />
                                                     </div>
                                                     <div class="col-sm-4">
@@ -596,7 +596,7 @@
                                     <label for="inputName">Perkiraan</label>
                                     <div data-tip="Hanya angka saja">
                                         <input type="number" name="awal" value="{{ $awal }}"
-                                            class="form-control  6" id="inputName" placeholder="keterangan" />
+                                            class="form-control  6" id="inputNumbe5" placeholder="keterangan" />
                                     </div>
 
                                 </div>
@@ -605,7 +605,7 @@
                                     <label for="inputName">Hasil</label>
                                     <div data-tip="Hanya angka saja">
                                         <input type="number" name="akhir" value="{{ $akhir }}"
-                                            class="form-control 6" id="inputName" placeholder="keterangan" />
+                                            class="form-control 6" id="inputnumber6" placeholder="keterangan" />
                                     </div>
 
                                 </div>

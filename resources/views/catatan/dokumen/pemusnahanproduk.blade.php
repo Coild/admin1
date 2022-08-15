@@ -154,8 +154,9 @@
                                                                                     <input type="number"
                                                                                         name="jumlah_bahanbaku"
                                                                                         class="form-control 1"
-                                                                                        id="jumlah_bahanbaku"
-                                                                                        placeholder="Jumlah Bahan Baku" />
+                                                                                        id="inputnumber"
+                                                                                        placeholder="Jumlah Bahan Baku" 
+                                                                                        />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
@@ -437,7 +438,7 @@
                                                                                     <input type="number"
                                                                                         name="jumlah_bahankemas"
                                                                                         class="form-control 2"
-                                                                                        id="jumlah_bahankemas1"
+                                                                                        iid="inputnumber1"
                                                                                         placeholder="Jumlah Bahan Kemas" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
@@ -727,7 +728,7 @@
                                                                                         <input type="number"
                                                                                             name="jumlah_produkantara"
                                                                                             class="form-control 3"
-                                                                                            id="jumlah_produkantara2"
+                                                                                            id="inputnumber2"
                                                                                             placeholder="Jumlah Produk Antara" />
                                                                                     </div>
                                                                                     <div class="col-sm-4">
@@ -1023,7 +1024,7 @@
                                                                                         <input type="number"
                                                                                             name="jumlah_produkantara"
                                                                                             class="form-control 4"
-                                                                                            id="jumlah_produkantara3"
+                                                                                            id="inputnumber3"
                                                                                             placeholder="Jumlah Produk Jadi" />
                                                                                     </div>
                                                                                     <div class="col-sm-4">
@@ -1198,7 +1199,7 @@
                 $("#namabahanbaku").val(params.nama_bahanbaku)
                 $("#no_batch").val(params.no_batch)
                 $("#asal_bahanbaku").val(params.asal_bahanbaku)
-                $("#jumlah_bahanbaku").val(params.jumlah_bahanbaku.replace(/[^0-9]/g, ''))
+                $("#inputnumber").val(params.jumlah_bahanbaku.replace(/[^0-9]/g, ''))
                 $("#satuan").val(params.jumlah_bahanbaku.replace(/[^a-zA-Z]+/, ''))
                 $("#alasan_pemusnahan").val(params.alasan_pemusnahan)
                 $("#cara_pemusnahan").val(params.cara_pemunsnahan)
@@ -1216,7 +1217,7 @@
                 $("#namabahanbaku1").val(params.nama_bahan_kemas)
                 $("#no_batch1").val(params.no_batch)
                 $("#asal_bahankemas1").val(params.asal_bahankemas)
-                $("#jumlah_bahankemas1").val(params.jumlah_bahankemas.replace(/[^0-9]/g, ''))
+                $("#inputnumber1").val(params.jumlah_bahankemas.replace(/[^0-9]/g, ''))
                 $("#satuan2").val(params.jumlah_bahankemas.replace(/[^a-zA-Z]+/, ''))
                 $("#alasan_pemusnahan1").val(params.alasan_pemusnahan)
                 $("#cara_pemusnahan1").val(params.cara_pemunsnahan)
@@ -1234,7 +1235,7 @@
                 $("#namabahanbaku2").val(params.nama_produkantara)
                 $("#no_batch2").val(params.no_batch)
                 $("#asal_produkantara2").val(params.asal_produkantara)
-                $("#jumlah_produkantara2").val(params.jumlah_produkantara.replace(/[^0-9]/g, ''))
+                $("#inputnumber2").val(params.jumlah_produkantara.replace(/[^0-9]/g, ''))
                 $("#satuan3").val(params.jumlah_produkantara.replace(/[^a-zA-Z]+/, ''))
                 $("#alasan_pemusnahan2").val(params.alasan_pemusnahan)
                 $("#cara_pemusnahan2").val(params.cara_pemunsnahan)
@@ -1252,8 +1253,8 @@
                 $("#namabahanbaku3").val(params.nama_produkjadi)
                 $("#no_batch3").val(params.no_batch)
                 $("#asal_produkantara3").val(params.asal_produkjadi)
-                $("#jumlah_produkantara3").val(params.jumlah_produkjadi)
-                $("#jumlah_produkantara3").val(params.jumlah_produkjadi.replace(/[^0-9]/g, ''))
+                // $("#inputnumber3").val(params.jumlah_produkjadi)
+                $("#inputnumber3").val(params.jumlah_produkjadi.replace(/[^0-9]/g, ''))
                 $("#satuan4").val(params.jumlah_produkjadi.replace(/[^a-zA-Z]+/, ''))
                 $("#alasan_pemusnahan3").val(params.alasan_pemusnahan)
                 $("#cara_pemusnahan3").val(params.cara_pemunsnahan)
