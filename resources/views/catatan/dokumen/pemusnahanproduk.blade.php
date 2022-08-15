@@ -75,8 +75,7 @@
                                                                                 class="form-control" name="protap_induk"
                                                                                 id="protap_indukbb">
                                                                                 @foreach ($data_protapbb as $row)
-                                                                                    <option
-                                                                                        value="{{ $row['protap_id'] }}">
+                                                                                    <option value="{{ $row['protap_id'] }}">
                                                                                         {{ $row['protap_nama'] }}
                                                                                     </option>
                                                                                 @endforeach
@@ -165,6 +164,8 @@
                                                                                         <option value="kg"> kg</option>
                                                                                         <option value="ml"> ml</option>
                                                                                         <option value="L"> L</option>
+                                                                                        <option value="Pcs"> Pcs
+                                                                                        </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -442,7 +443,11 @@
                                                                                 <div class="col-sm-4">
                                                                                     <select class="form-select"
                                                                                         name="satuan" id="satuan2">
-                                                                                        <option value="pcs"> pcs
+                                                                                        <option value="gr"> gr</option>
+                                                                                        <option value="kg"> kg</option>
+                                                                                        <option value="ml"> ml</option>
+                                                                                        <option value="L"> L</option>
+                                                                                        <option value="Pcs"> Pcs
                                                                                         </option>
                                                                                     </select>
                                                                                 </div>
@@ -728,7 +733,15 @@
                                                                                     <div class="col-sm-4">
                                                                                         <select class="form-select"
                                                                                             name="satuan" id="satuan3">
-                                                                                            <option value="pcs"> pcs
+                                                                                            <option value="gr"> gr
+                                                                                            </option>
+                                                                                            <option value="kg"> kg
+                                                                                            </option>
+                                                                                            <option value="ml"> ml
+                                                                                            </option>
+                                                                                            <option value="L"> L
+                                                                                            </option>
+                                                                                            <option value="Pcs"> Pcs
                                                                                             </option>
                                                                                         </select>
                                                                                     </div>
@@ -1016,7 +1029,15 @@
                                                                                     <div class="col-sm-4">
                                                                                         <select class="form-select"
                                                                                             name="satuan" id="satuan4">
-                                                                                            <option value="pcs"> pcs
+                                                                                            <option value="gr"> gr
+                                                                                            </option>
+                                                                                            <option value="kg"> kg
+                                                                                            </option>
+                                                                                            <option value="ml"> ml
+                                                                                            </option>
+                                                                                            <option value="L"> L
+                                                                                            </option>
+                                                                                            <option value="Pcs"> Pcs
                                                                                             </option>
                                                                                         </select>
                                                                                     </div>
