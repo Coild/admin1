@@ -11,83 +11,80 @@
                 <li class="breadcrumb-item active">Pengolahan Batch</li>
             </ol>
             <div class="row">
-                    <?php $nobatch = $data['nomor_batch'];
-                    // $status = $data['status'];
-                    $awal = 0;
-                    $akhir = 0; ?>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Bagian Produksi
-                        </div>
-
-                        <div class="card-body">
-
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['pob'] }} </p>
-                                </div>
-                            </div>
-
-                        </div>
+                <?php $nobatch = $data['nomor_batch'];
+                // $status = $data['status'];
+                $awal = 0;
+                $akhir = 0; ?>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Bagian Produksi
                     </div>
 
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Produk
-                        </div>
-                        <div class="card-body">
+                    <div class="card-body">
 
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Produk</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['kode_produk'] }} </p>
-                                </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['pob'] }} </p>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Produk</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['nama_produk'] }} </p>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Batch</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['nomor_batch'] }} </p>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Besar Batch</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['besar_batch'] }} </p>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Bentuk Sediaan</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['bentuk_sedia'] }} </p>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Kemasan</label>
-                                <div class="col-sm-10">
-                                    <p class="form-control"> {{ $data['kemasan'] }} </p>
-                                </div>
-                            </div>
-
-
-
                         </div>
 
                     </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Produk
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Produk</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['kode_produk'] }} </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Produk</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['nama_produk'] }} </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Batch</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['nomor_batch'] }} </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Besar Batch</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['besar_batch'] }} </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bentuk Sediaan</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['bentuk_sedia'] }} </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kemasan</label>
+                            <div class="col-sm-10">
+                                <p class="form-control"> {{ $data['kemasan'] }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 <!-- pop up end -->
 
@@ -104,7 +101,7 @@
                 <!-- pop up -->
                 <!-- Button to trigger modal -->
                 @if (Auth::user()->level != 2)
-                    @if($status == 1)
+                    @if ($status == 1)
                         <button class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="#modalForm">
                             Tambah Komposisi
                         </button>
@@ -113,7 +110,6 @@
                             Tambah Komposisi
                         </button>
                     @endif
-
                 @endif
 
                 <!-- Modal -->
@@ -130,30 +126,38 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <p class="statusMsg"></p>
-                                <form action="/input_komposisi" method="post" role="form" id ="forminput1">
+                                <form action="/input_komposisi" method="post" role="form" id="forminput1">
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
-                                    <div class="form-group">
-                                        <label for="inputName" class="col-sm">Nama BB</label>
+                                    
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Bahan Baku</label>
                                         <div class="col-sm">
-
-                                        <input type="text" name="nama" class="form-control 1" id="inputName"
-                                            placeholder="Nama BB" />
+                                            <input class="form-control 4" list="listnamabahanbaku" type="text" name='nama' id="bahannama" autocomplete="off">
+                                            </input>
+                                            <datalist id='listnamabahanbaku'>
+                                                @foreach ($bahanbaku as $row)
+                                                <option value="{{ $row['bahanbaku_nama'] }}">
+                                                    {{ $row['bahanbaku_nama'] }}
+                                                </option>
+                                                @endforeach
+                                            </datalist>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail" class="col-sm">Kode BB</label>
+    
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                            Bahan Baku</label>
                                         <div class="col-sm">
-                                        <input type="text" name="id" class="form-control 1" id="inputName"
-                                            placeholder="Kode BB" />
+                                            <input type="text" name="id" readonly class="form-control 4" id="bahankode" placeholder="Kode Bahan Baku" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMessage" class="col-sm">Persentase</label>
                                         <div class="col-sm" data-tip="Hanya angka saja">
                                             <input type="number" name="persen" class="form-control 1" id="inputName"
-                                            placeholder="Persentase" />
+                                                placeholder="Persentase" />
                                         </div>
 
                                     </div>
@@ -162,8 +166,7 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button type="button" class="btn btn-primary submitBtn"
-                                            onclick="salert1(1)">
+                                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">
                                             Tambah
                                         </button>
                                     </div>
@@ -200,7 +203,8 @@
                                 <td>
                                     @if (Auth::user()->level != 2)
                                         <a href="/hapus_komposisi/{{ $row['komposisi_id'] }}" type="button"
-                                        class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
+                                            class="btn btn-danger @if ($status != 0) disabled @endif"
+                                            onclick="return confirm('Hapus? ')">Hapus</a>
                                     @endif
 
                                 </td>
@@ -220,7 +224,8 @@
                     <!-- pop up -->
                     <!-- Button to trigger modal -->
                     @if (Auth::user()->level != 2)
-                        <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm1">Tambah Peralatan
+                        <button class="btn btn-success btn-lg @if ($status != 0) disabled @endif"
+                            data-toggle="modal" data-target="#modalForm1">Tambah Peralatan
                         </button>
                     @endif
 
@@ -293,7 +298,8 @@
                                     <td>
                                         @if (Auth::user()->level != 2)
                                             <a href="/hapus_peralatan/{{ $row['peralatan_id'] }}" type="button"
-                                            class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
+                                                class="btn btn-danger @if ($status != 0) disabled @endif"
+                                                onclick="return confirm('Hapus? ')">Hapus</a>
                                         @endif
 
                                     </td>
@@ -312,7 +318,8 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm2">Data Penimbangan
+                            <button class="btn btn-success btn-lg @if ($status != 0) disabled @endif"
+                                data-toggle="modal" data-target="#modalForm2">Data Penimbangan
                             </button>
                         @endif
                         <!-- Modal -->
@@ -335,45 +342,45 @@
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Kode Bahan</label>
-                                                <input type="text" name="kode_bahan" class="form-control 3" id="inputName"
-                                                    placeholder="Kode Bahan" />
+                                                <input type="text" name="kode_bahan" class="form-control 3"
+                                                    id="inputName" placeholder="Kode Bahan" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Nama Bahan</label>
-                                                <input type="text" name="nama_bahan" class="form-control 3" id="inputName"
-                                                    placeholder="Nama Bahan" />
+                                                <input type="text" name="nama_bahan" class="form-control 3"
+                                                    id="inputName" placeholder="Nama Bahan" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomor Loth</label>
-                                                <input type="text" name="no_loth" class="form-control 3" id="inputName"
-                                                    placeholder="Nomor Loth" />
+                                                <input type="text" name="no_loth" class="form-control 3"
+                                                    id="inputName" placeholder="Nomor Loth" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Dibutuhkan</label>
                                                 <div data-tip="Hanya angka saja">
-                                                <input type="number" name="jumlah_butuh" class="form-control 3"
-                                                    id="inputName" placeholder="Jumlah yang Dibutuhkan" />
+                                                    <input type="number" name="jumlah_butuh" class="form-control 3"
+                                                        id="inputName" placeholder="Jumlah yang Dibutuhkan" />
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group">
                                                 <label for="inputEmail">Jumlah yang Ditimbang</label>
                                                 <div data-tip="Hanya angka saja">
-                                                <input type="number" name="jumlah_timbang" class="form-control 3"
-                                                    id="inputName" placeholder="Jumlah yang Ditimbang" />
+                                                    <input type="number" name="jumlah_timbang" class="form-control 3"
+                                                        id="inputName" placeholder="Jumlah yang Ditimbang" />
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group">
                                                 <label for="inputEmail">Ditimbang Oleh</label>
-                                                <input type="text" name="ditimbang" class="form-control 3" id="inputName"
-                                                    placeholder="Ditimbang Oleh" />
+                                                <input type="text" name="ditimbang" class="form-control 3"
+                                                    id="inputName" placeholder="Ditimbang Oleh" />
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputEmail">Diperiksa Oleh</label>
-                                                <input type="text" name="diperiksa" class="form-control 3" id="inputName"
-                                                    placeholder="Diperiksa Oleh" />
+                                                <input type="text" name="diperiksa" class="form-control 3"
+                                                    id="inputName" placeholder="Diperiksa Oleh" />
                                             </div>
                                             <!-- Modal Footer -->
                                             <div class="modal-footer">
@@ -425,7 +432,9 @@
                                         <td>{{ $row['penimbangan_periksaoleh'] }}</td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                                <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}" type="button"class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
+                                                <a href="hapus_penimbangan/{{ $row['penimbangan_id'] }}"
+                                                    type="button"class="btn btn-danger @if ($status != 0) disabled @endif"
+                                                    onclick="return confirm('Hapus? ')">Hapus</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -444,7 +453,8 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm3">Perlakuan
+                            <button class="btn btn-success btn-lg @if ($status != 0) disabled @endif"
+                                data-toggle="modal" data-target="#modalForm3">Perlakuan
                             </button>
                         @endif
                         <!-- Modal -->
@@ -467,8 +477,8 @@
                                             <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
                                             <div class="form-group">
                                                 <label for="inputName">Isi</label>
-                                                <input type="text" name="isi" class="form-control 5" id="inputName"
-                                                    placeholder="keterangan" />
+                                                <input type="text" name="isi" class="form-control 5"
+                                                    id="inputName" placeholder="keterangan" />
                                             </div>
 
                                             <!-- Modal Footer -->
@@ -510,7 +520,8 @@
                                         <td>
                                             @if (Auth::user()->level != 2)
                                                 <a href="/hapus_olah/{{ $row['produksi_id'] }}" type="button"
-                                                class="btn btn-danger @if($status != 0) disabled @endif" onclick="return confirm('Hapus? ')">Hapus</a>
+                                                    class="btn btn-danger @if ($status != 0) disabled @endif"
+                                                    onclick="return confirm('Hapus? ')">Hapus</a>
                                             @endif
 
 
@@ -541,25 +552,26 @@
                                 <div class="form-group">
                                     <label for="inputName">Perkiraan</label>
                                     <div data-tip="Hanya angka saja">
-                                        <input type="number" name="awal" value="{{ $awal }}" class="form-control  6"
-                                        id="inputName" placeholder="keterangan" />
+                                        <input type="number" name="awal" value="{{ $awal }}"
+                                            class="form-control  6" id="inputName" placeholder="keterangan" />
                                     </div>
-                                    
+
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="inputName">Hasil</label>
                                     <div data-tip="Hanya angka saja">
-                                        <input type="number" name="akhir" value="{{ $akhir }}" class="form-control 6"
-                                        id="inputName" placeholder="keterangan" />
+                                        <input type="number" name="akhir" value="{{ $akhir }}"
+                                            class="form-control 6" id="inputName" placeholder="keterangan" />
                                     </div>
-                                    
+
                                 </div>
                                 @if (Auth::user()->level != 2)
                                     <center>
-                                        <button type="button" onclick="salert1(6)" class="btn btn-success btn-lg" <?php if ($status > 0) {
-                                            echo 'disabled';
-                                        } ?>> Simpan
+                                        <button type="button" onclick="salert1(6)" class="btn btn-success btn-lg"
+                                            <?php if ($status > 0) {
+                                                echo 'disabled';
+                                            } ?>> Simpan
                                         </button>
                                     </center>
                                 @endif
@@ -584,4 +596,33 @@
                 </div>
             </div>
     </main>
+    <script>
+        var bahanbakus = JSON.parse('<?= json_encode($bahanbaku) ?>')
+
+        $("#bahannama").change(function() {
+
+// console.log('clicked');
+            var tmp = []
+            if (typeof bahanbakus === 'object') {
+
+                Object.keys(bahanbakus).forEach(function(key) {
+
+                    tmp.push(bahanbakus[key]);
+                })
+            }
+            bahanbakus = tmp
+            console.log(bahanbakus);
+            var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                document.getElementById('bahannama').value)?.bahanbaku_nama;
+
+
+            if (cekname) {
+                document.getElementById('bahankode').value = bahanbakus.find(bahanbaku => bahanbaku
+                    .bahanbaku_nama ===
+                    document.getElementById('bahannama').value).bahanbaku_kode
+            } else {
+                document.getElementById('bahankode').value = ""
+            }
+        });
+    </script>
 @endsection

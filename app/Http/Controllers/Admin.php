@@ -1538,11 +1538,12 @@ class Admin extends Controller
         $nimbang = penimbangan::all()->where('nomor_batch', $id);
         $olah = produksi::all()->where('id_batch', $id);
         $rekon = rekonsiliasi::all()->where('id_batch', $id);
+        $bahanbaku = bahanbaku::all()->where('user_id', Auth::user()->pabrik);
         return view('catatan.dokumen.detailbatch', [
             'id' => $id, 'no' => $req['nomor'],
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
             'list_olah' => $olah, 'rekon' => $rekon,
-            'status' => $req['status'],
+            'status' => $req['status'], 'bahanbaku' => $bahanbaku
 
         ]);
     }

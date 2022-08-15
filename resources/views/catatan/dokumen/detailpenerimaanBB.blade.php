@@ -205,7 +205,7 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                                 Distributor</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 2" placeholder="Untuk Distributor" name="untuk_produk">
+                                                <input type="text" class="form-control 2" placeholder="Untuk Produk" name="untuk_produk">
                                             </div>
                                         </div>
                                         <input type="hidden" name="tanggal" id='ambil_tanggal2' class="form-control 2" placeholder="" />
@@ -245,7 +245,7 @@
                             <tr>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Bahan</th>
-                                <th scope="col">Untuk Distributor</th>
+                                <th scope="col">Untuk Produk</th>
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Sisa</th>
@@ -520,7 +520,7 @@
                             <tr>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk</th>
-                                <th scope="col">Untuk Distributor</th>
+                                <th scope="col">Untuk Produk</th>
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Sisa</th>
@@ -790,7 +790,7 @@
                             <tr>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Nama Produk</th>
-                                <th scope="col">Untuk Distributor</th>
+                                <th scope="col">Untuk Produk</th>
                                 <th scope="col">No Batch</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Sisa</th>
