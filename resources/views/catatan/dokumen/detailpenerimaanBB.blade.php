@@ -66,7 +66,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Loth</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 1" name="no_loth" placeholder="Nomor Loth" />
+                                                <input type="text" class="form-control 1" name="no_loth" placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -213,7 +213,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Batch</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 2" name="no_batch" placeholder="Nomor Batch" />
+                                                <input type="text" class="form-control 2" name="no_batch" placeholder="Nomor Batch" maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -341,7 +341,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Loth</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 3" name="no_loth" placeholder="Nomor Loth" />
+                                                <input type="text" class="form-control 3" name="no_loth" placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -489,7 +489,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Batch</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 4" name="no_batch" placeholder="Nomor Batch" />
+                                                <input type="text" class="form-control 4" name="no_batch" placeholder="Nomor Batch"  maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -613,7 +613,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Loth</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 5" name="no_loth" placeholder="Nomor Loth" />
+                                                <input type="text" class="form-control 5" name="no_loth" placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -759,7 +759,7 @@
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                                 Batch</label>
                                             <div class="col-sm">
-                                                <input type="text" class="form-control 6" name="no_batch" placeholder="Nomor Batch" />
+                                                <input type="text" class="form-control 6" name="no_batch" placeholder="Nomor Batch" maxlength="20"/>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -864,7 +864,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Loth</label>
                             <div class="col-sm">
-                                <input type="text" id="bahanmasuk_noloth" class="form-control 7" name="no_loth" placeholder="Nomor Loth" />
+                                <input type="text" id="bahanmasuk_noloth" class="form-control 7" name="no_loth" placeholder="Nomor Loth" maxlength="20"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -943,7 +943,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Batch</label>
                             <div class="col-sm">
-                                <input type="text" id="bahankeluar_nobatch" class="form-control 8" name="no_batch" placeholder="Nomor Batch" />
+                                <input type="text" id="bahankeluar_nobatch" class="form-control 8" name="no_batch" placeholder="Nomor Batch" maxlength="20"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -1001,7 +1001,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Loth</label>
                             <div class="col-sm">
-                                <input type="text" id="produkmasuk_noloth" class="form-control 9" name="no_loth" placeholder="Nomor Loth" />
+                                <input type="text" id="produkmasuk_noloth" class="form-control 9" name="no_loth" placeholder="Nomor Loth" maxlength="20"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -1078,7 +1078,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Batch</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 10" name="no_batch" placeholder="Nomor Batch" id="produkkeluar_nobatch" />
+                                <input type="text" class="form-control 10" name="no_batch" placeholder="Nomor Batch" id="produkkeluar_nobatch" maxlength="20"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -1136,7 +1136,7 @@
                             <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                 Loth</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control 11" name="no_loth" placeholder="Nomor Loth" id="kemasanmasuk_noloth" />
+                                <input type="text" class="form-control 11" name="no_loth" placeholder="Nomor Loth" id="kemasanmasuk_noloth" maxlength="20"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -1214,7 +1214,7 @@
                                 <label for="inputEmail" class="col-sm-3 col-form-label">Nomer
                                     Batch</label>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control 12" name="no_batch" placeholder="Nomor Batch" id="kemasankeluar_nobatch" />
+                                    <input type="text" class="form-control 12" name="no_batch" placeholder="Nomor Batch" id="kemasankeluar_nobatch" maxlength="20"/>
                                 </div>
                             </div>
                             <div class="form-group row">

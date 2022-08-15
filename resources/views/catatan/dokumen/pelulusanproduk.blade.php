@@ -79,7 +79,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                     Batch</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="nobatch" class="form-control 7" id="inputEmail3" placeholder="No Batch" />
+                                                    <input type="text" name="nobatch" class="form-control 7" id="inputEmail3" placeholder="No Batch" maxlength="20"/>
                                                 </div>
                                             </div>
 
@@ -282,7 +282,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                     Batch</label>
                                                 <div class="col-sm">
-                                                    <input id="nobatch" type="text" name="nobatch" class="form-control 2" id="inputEmail3" placeholder="No Batch" />
+                                                    <input id="nobatch" type="text" name="nobatch" class="form-control 2" id="inputEmail3" placeholder="No Batch" maxlength="20"/>
                                                 </div>
                                             </div>
 

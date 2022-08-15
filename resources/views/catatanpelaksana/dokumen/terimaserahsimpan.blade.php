@@ -86,7 +86,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomer Loth</label>
                                                 <input type="text" class="form-control" id="inputName"
-                                                    placeholder="Nomor Loth" />
+                                                    placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Pemasok</label>
@@ -210,7 +210,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Untuk Produk</label>
                                                 <input type="text" class="form-control" id="inputName"
-                                                    placeholder="Nomor Loth" />
+                                                    placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomor Batch</label>

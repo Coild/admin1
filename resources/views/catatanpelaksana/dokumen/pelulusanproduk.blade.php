@@ -59,7 +59,7 @@
                                                             Batch</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="nobatch" class="form-control"
-                                                                id="inputEmail3" placeholder="No Batch" />
+                                                                id="inputEmail3" placeholder="No Batch" maxlength="20"/>
                                                         </div>
                                                     </div>
 

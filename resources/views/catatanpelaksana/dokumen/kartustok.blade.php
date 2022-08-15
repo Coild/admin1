@@ -87,7 +87,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
                                                                                 class="form-control 1" id="inputEmail3"
-                                                                                placeholder="No Batch" />
+                                                                                placeholder="No Batch" maxlength="20"/>
                                                                         </div>
                                                                     </div>
 
@@ -231,7 +231,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
                                                                                 class="form-control 2" id="inputEmail3"
-                                                                                placeholder="No Batch" />
+                                                                                placeholder="No Batch" maxlength="20"/>
                                                                         </div>
                                                                     </div>
 
@@ -375,7 +375,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="no_batch"
                                                                                 class="form-control 3" id="inputEmail3"
-                                                                                placeholder="No Batch" />
+                                                                                placeholder="No Batch" maxlength="20"/>
                                                                         </div>
                                                                     </div>
 

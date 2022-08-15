@@ -132,7 +132,7 @@
                                                             Batch</label>
                                                         <div class="col-sm">
                                                             <input type="text" name="no_batch" class="form-control 1"
-                                                                id="no_batch" placeholder="No Batch" />
+                                                                id="no_batch" placeholder="No Batch" maxlength="20"/>
                                                         </div>
                                                     </div>
 

@@ -353,7 +353,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Nomor Loth</label>
                                                 <input type="text" name="no_loth" class="form-control 3"
-                                                    id="inputName" placeholder="Nomor Loth" />
+                                                    id="inputName" placeholder="Nomor Loth" maxlength="20"/>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="inputEmail3"

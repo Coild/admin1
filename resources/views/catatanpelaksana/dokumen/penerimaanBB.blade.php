@@ -85,7 +85,7 @@
                                                                 Loth</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 1" name="no_loth"
-                                                                    placeholder="Nomor Loth" />
+                                                                    placeholder="Nomor Loth" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -235,7 +235,7 @@
                                                                 Batch</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 2" name="no_batch"
-                                                                    placeholder="Nomor Batch" />
+                                                                    placeholder="Nomor Batch" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -377,7 +377,7 @@
                                                                 Loth</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 3" name="no_loth"
-                                                                    placeholder="Nomor Loth" />
+                                                                    placeholder="Nomor Loth" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -528,7 +528,7 @@
                                                                 Batch</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 4" name="no_batch"
-                                                                    placeholder="Nomor Batch" />
+                                                                    placeholder="Nomor Batch" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -670,7 +670,7 @@
                                                                 Loth</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 5" name="no_loth"
-                                                                    placeholder="Nomor Loth" />
+                                                                    placeholder="Nomor Loth" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -821,7 +821,7 @@
                                                                 Batch</label>
                                                             <div class="col-sm">
                                                                 <input type="text" class="form-control 6" name="no_batch"
-                                                                    placeholder="Nomor Batch" />
+                                                                    placeholder="Nomor Batch" maxlength="20"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

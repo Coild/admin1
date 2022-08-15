@@ -161,7 +161,7 @@
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
                                                     Batch</label>
                                                 <div class="col-sm">
-                                                    <input type="text" name="no_batch" class="form-control 17" id="inputEmail3" placeholder="Nomor Batch" />
+                                                    <input type="text" name="no_batch" class="form-control 17" id="inputEmail3" placeholder="Nomor Batch" maxlength="20"/>
                                                 </div>
                                                 <p class="text-danger"></p>
                                             </div>
@@ -288,7 +288,7 @@
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor
                                         Batch</label>
                                     <div class="col-sm">
-                                        <input type="text" name="no_batch" class="form-control 1" id="isi_nobatch" placeholder="Nomor Batch" />
+                                        <input type="text" name="no_batch" class="form-control 1" id="isi_nobatch" placeholder="Nomor Batch" maxlength="20"/>
                                     </div>
                                 </div>
 

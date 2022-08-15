@@ -89,7 +89,7 @@
                                                                     <div class="col-sm">
                                                                         <input type="text" name="nobatch"
                                                                             class="form-control 1" id="inputEmail3"
-                                                                            placeholder="No Batch" />
+                                                                            placeholder="No Batch" maxlength="20"/>
                                                                     </div>
                                                                 </div>
 
@@ -270,7 +270,7 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="tanggal" id='ambil_tanggal2'
-                                                                    class="form-control 2" placeholder="" />
+                                                                    class="form-control 2" placeholder="" maxlength="20"/>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
@@ -446,7 +446,7 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="tanggal" id='ambil_tanggal3'
-                                                                    class="form-control 3" placeholder="" />
+                                                                    class="form-control 3" placeholder="" maxlength="20"/>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"

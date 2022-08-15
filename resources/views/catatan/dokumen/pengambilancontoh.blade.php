@@ -113,7 +113,7 @@
                                                                         <div class="col-sm">
                                                                             <input type="text" name="nobatch"
                                                                                 class="form-control 1"
-                                                                                placeholder="No Batch" />
+                                                                                placeholder="No Batch" maxlength="20"/>
                                                                         </div>
                                                                     </div>
 
@@ -421,7 +421,7 @@
                                                                     <div class="col-sm">
                                                                         <input type="text" name="nobatch"
                                                                             class="form-control 2"
-                                                                            placeholder="No Batch" />
+                                                                            placeholder="No Batch" maxlength="20"/>
                                                                     </div>
                                                                 </div>
 
@@ -730,7 +730,7 @@
                                                                     <div class="col-sm">
                                                                         <input type="text" name="nobatch"
                                                                             class="form-control 3"
-                                                                            placeholder="No Batch" />
+                                                                            placeholder="No Batch" maxlength="20"/>
                                                                     </div>
                                                                 </div>
 
@@ -1012,7 +1012,7 @@
                                             Batch</label>
                                         <div class="col-sm">
                                             <input type="text" name="nobatch" class="form-control 7"
-                                                placeholder="No Batch" id="bahan_nobatch" />
+                                                tch" id="bahan_nobatch" />
                                         </div>
                                     </div>
 
@@ -1157,7 +1157,7 @@
                                             Batch</label>
                                         <div class="col-sm">
                                             <input type="text" name="nobatch" class="form-control 8"
-                                                placeholder="No Batch" id="produk_nobatch" />
+                                                tch" id="produk_nobatch" />
                                         </div>
                                     </div>
 
@@ -1304,7 +1304,7 @@
                                             Batch</label>
                                         <div class="col-sm">
                                             <input type="text" name="nobatch" class="form-control 9"
-                                                placeholder="No Batch" id="kemasan_nobatch" />
+                                                placeholder="No Batch" id="kemasan_nobatch" maxlength="20"/>
                                         </div>
                                     </div>
 

@@ -316,7 +316,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">Nomor Loth</label>
-                                            <input type="text" name="no_loth" class="form-control" id="inputName" placeholder="Nomor Loth" />
+                                            <input type="text" name="no_loth" class="form-control" id="inputName" placeholder="Nomor Loth" maxlength="20"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">Jumlah yang Dibutuhkan</label>

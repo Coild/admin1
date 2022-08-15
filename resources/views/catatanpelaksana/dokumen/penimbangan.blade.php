@@ -261,7 +261,7 @@
                                                                 </div>
 
                                                                 <input type="hidden" name="tanggal" id='ambil_tanggal2'
-                                                                    class="form-control 2" placeholder="" />
+                                                                    class="form-control 2" placeholder="" maxlength="20"/>
 
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"

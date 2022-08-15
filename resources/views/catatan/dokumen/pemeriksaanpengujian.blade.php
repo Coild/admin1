@@ -508,7 +508,7 @@
                                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">No
                                                                         Batch</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="no_batch" class="form-control 3" id="no_batch" placeholder="No Batch" />
+                                                                        <input type="text" name="no_batch" class="form-control 3" id="no_batch" placeholder="No Batch" maxlength="20"/>
                                                                     </div>
                                                                 </div>
 
