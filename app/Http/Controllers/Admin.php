@@ -5846,13 +5846,20 @@ class Admin extends Controller
         if (Auth::user()->level ==  2) {
             notif::where('id_pabrik', Auth::user()->pabrik)
                 ->where('status', 0)->update(['status' => 1]);
-            $data = notif::all()->where('id_pabrik', Auth::user()->pabrik);
+            $data = notif::all()->where('id_pabrik', Auth::user()->pabrik)
+            ->where('notif_level',1);
         }
         if (Auth::user()->level ==  3) {
             notif::where('id_pabrik', Auth::user()->pabrik)->where('notif_3', 1)
                 ->update(['notif_3' => 2]);
             $data = notif::all()->where('id_pabrik', Auth::user()->pabrik)
-                ->where('notif_3', '!=', 0);
+                ->where('notif_3', '!=', 0)->where('notif_level',2);
+        }
+        if (Auth::user()->level ==  4 || Auth::user()->level ==  1 ) {
+            notif::where('id_pabrik', Auth::user()->pabrik)->where('notif_3', 1)
+                ->update(['notif_3' => 2]);
+            $data = notif::all()->where('id_pabrik', Auth::user()->pabrik)
+                ->where('notif_3', '!=', 0)->where('notif_level',2);
         }
 
         return view('layout.notif', compact('data'));

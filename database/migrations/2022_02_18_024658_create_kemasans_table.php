@@ -15,8 +15,8 @@ class CreateKemasansTable extends Migration
     {
         Schema::create('kemasans', function (Blueprint $table) {
             $table->id("kemasan_id");
-            $table->string("kemasan_kode", 100);
-            $table->string("kemasan_nama", 100);
+            $table->string("kemasan_kode", 200);
+            $table->string("kemasan_nama", 200);
             $table->integer("user_id", false);
             $table->timestamps();
         });

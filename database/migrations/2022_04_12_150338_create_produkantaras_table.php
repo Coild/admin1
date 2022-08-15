@@ -15,8 +15,8 @@ class CreateProdukantarasTable extends Migration
     {
         Schema::create('produkantaras', function (Blueprint $table) {
             $table->id("produkantara_id");
-            $table->string("produkantara_nama", 100);
-            $table->string("produkantara_kode", 25);
+            $table->string("produkantara_nama", 200);
+            $table->string("produkantara_kode", 205);
             $table->integer("user_id", false);
             $table->timestamps();
         });

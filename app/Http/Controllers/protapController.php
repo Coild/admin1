@@ -14,14 +14,14 @@ class protapController extends Controller
    public function bersih($string) {
       //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-      return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
+      return preg_replace('/[^A-Za-z\.]/', '', $string); // Removes special chars.
 
    }
 
    public function bersih_angka($string) {
       //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-      return preg_replace('/[^A-Za-z0-9\-]/', ' ', $string); // Removes special chars.
+      return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 
    }
 
@@ -224,16 +224,17 @@ class protapController extends Controller
       $exten = $file->getClientOriginalExtension();
       $nama = $req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
       $tujuan_upload = 'asset/protap/';
-      $file->move($tujuan_upload, $nama);
+      $file->move($tujuan_upload, protapController::bersih($nama));
       $jenis = $req['jenis'];
       $detil = $req['detil'];
       $id = Auth::user()->pabrik;
       $pabrik = Auth::user()->pabrik;
+      $nama =protapController::bersih($nama);
       $hasil = [
          'protap_file' => $nama,
-         'protap_nama' => protap::bersih($req['nama']),
-         'protap_nomor' => protap::bersih($req['nomor']),
-         'protap_ruangan' => protap::bersih($req['ruangan']),
+         'protap_nama' => protapController::bersih($req['nama']),
+         'protap_nomor' => protapController::bersih($req['nomor']),
+         'protap_ruangan' => protapController::bersih($req['ruangan']),
          'protap_diajukan' => ($req['diajukan']),
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
          'protap_diterima' => $req['disetujui'],
@@ -243,6 +244,8 @@ class protapController extends Controller
          'protap_pabrik' => $pabrik,
          'user_id' => $id,
       ];
+
+      // dd($hasil);
 
 
       $log = [

@@ -16,7 +16,7 @@ class CreateSpesifikasibahankemasTable extends Migration
         Schema::create('spesifikasibahankemas', function (Blueprint $table) {
             $table->id('id_spesifikasibahankemas', 20);
             $table->integer('protap')->unsigned();
-            $table->string('kode_spesifikasi', 20);
+            $table->string('kode_spesifikasi', 200);
             $table->string('nama_bahankemas', 200);
             $table->string('jenis_bahankemas', 200);
             $table->string('warna', 200);

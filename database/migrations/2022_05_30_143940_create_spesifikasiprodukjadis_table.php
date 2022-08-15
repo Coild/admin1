@@ -16,7 +16,7 @@ class CreateSpesifikasiprodukjadisTable extends Migration
         Schema::create('spesifikasiprodukjadis', function (Blueprint $table) {
             $table->id('id_spesifikasiprodukjadi', 20);
             $table->integer('protap')->unsigned();
-            $table->string('kode_spesifikasi', 20);
+            $table->string('kode_spesifikasi', 200);
             $table->string('nama_produkjadi', 200);
             $table->string('kategori', 200);
             $table->string('no_batch', 200);

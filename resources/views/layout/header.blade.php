@@ -78,7 +78,14 @@
                             </div>
                         </li>
                     @else
-                        Tidak Ada Notifikasi
+                    <li>
+                        <div class="d-flex">
+                            <div class="d-flex flex-column justify-content-center">
+                                <a href="/notif" class="ml-2">Lihat semua notifikasi <i
+                                        class="fas fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </li>
                     @endif
                 </ul>
             </li>
@@ -137,7 +144,14 @@
                             </div>
                         </li>
                     @else
-                        Tidak Ada Notifikasi
+                    <li>
+                        <div class="d-flex">
+                            <div class="d-flex flex-column justify-content-center">
+                                <a href="/notif" class="ml-2">Lihat semua notifikasi <i
+                                        class="fas fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </li>
                     @endif
                 </ul>
             </li>

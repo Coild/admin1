@@ -15,14 +15,14 @@ class CreatePenimbangansTable extends Migration
     {
         Schema::create('penimbangans', function (Blueprint $table) {
             $table->id("penimbangan_id", 10);
-            $table->string("penimbangan_kodebahan", 100);
-            $table->string("penimbangan_namabahan", 100);
-            $table->string("penimbangan_loth", 100);
+            $table->string("penimbangan_kodebahan", 200);
+            $table->string("penimbangan_namabahan", 200);
+            $table->string("penimbangan_loth", 200);
             $table->string("penimbangan_jumlahbutuh");
             $table->string("penimbangan_jumlahtimbang");
-            $table->string("penimbangan_timbangoleh", 100);
-            $table->string("penimbangan_periksaoleh", 100);
-            $table->string("nomor_batch",100);
+            $table->string("penimbangan_timbangoleh", 200);
+            $table->string("penimbangan_periksaoleh", 200);
+            $table->string("nomor_batch",200);
             $table->integer("user_id",false);
             $table->timestamps();
         });

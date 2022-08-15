@@ -16,10 +16,10 @@ class CreatePelulusanproduksTable extends Migration
 			$table->date('kedaluwarsa')->nullable();
 			$table->string('nama_pemasok', 200);
 			$table->date('tanggal')->nullable();
-			$table->string('warna', 30);
-			$table->string('bau', 30);
-			$table->string('ph', 5);
-			$table->string('berat_jenis', 20);
+			$table->string('warna', 200);
+			$table->string('bau', 200);
+			$table->string('ph', 200);
+			$table->string('berat_jenis', 200);
 			$table->tinyInteger('protap', 0)->unsigned();
 			$table->integer('pabrik', false);
 			$table->tinyInteger('status', 0)->unsigned();

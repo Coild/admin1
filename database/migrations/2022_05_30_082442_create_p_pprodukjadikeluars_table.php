@@ -16,11 +16,11 @@ class CreatePPprodukjadikeluarsTable extends Migration
         Schema::create('p_pprodukjadikeluars', function (Blueprint $table) {
             $table->id("id_ppprodukjadikeluar", 10);
             $table->date('tanggal')->nullable();
-            $table->string("nama_produk", 100);
-            $table->string("untuk_produk", 100);
+            $table->string("nama_produk", 200);
+            $table->string("untuk_produk", 200);
             $table->string("no_batch", 0);
-            $table->string("jumlah", 100);
-            $table->string("sisa", 100);
+            $table->string("jumlah", 200);
+            $table->string("sisa", 200);
             $table->integer('pabrik', false);
             $table->integer('induk', false);
             $table->integer("user_id", false);

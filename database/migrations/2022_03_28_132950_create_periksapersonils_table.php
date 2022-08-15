@@ -15,7 +15,7 @@ class CreatePeriksapersonilsTable extends Migration
     {
         Schema::create('periksapersonils', function (Blueprint $table) {
             $table->id('personil_id');
-            $table->string('nama', 50);
+            $table->string('nama', 200);
             $table->string('nama_file', 200);
             $table->integer('pabrik', false);
             $table->integer('user_id', 0)->unsigned();

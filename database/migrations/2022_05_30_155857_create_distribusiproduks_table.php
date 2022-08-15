@@ -11,11 +11,11 @@ class CreateDistribusiproduksTable extends Migration
         Schema::create('distribusiproduks', function (Blueprint $table) {
 
             $table->id('id_distribusi', 20);
-            $table->string('kode_distribusi', 20);
+            $table->string('kode_distribusi', 200);
             $table->date('tanggal')->nullable();
-            $table->string('id_batch', 20);
-            $table->string('jumlah', 20);
-            $table->string('nama_distributor', 100);
+            $table->string('id_batch', 200);
+            $table->string('jumlah', 200);
+            $table->string('nama_distributor', 200);
             $table->tinyInteger('protap', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->tinyInteger('status', 0)->unsigned();

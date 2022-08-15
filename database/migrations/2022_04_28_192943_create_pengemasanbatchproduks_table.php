@@ -16,9 +16,9 @@ class CreatePengemasanbatchproduksTable extends Migration
         Schema::create('pengemasanbatchproduks', function (Blueprint $table) {
             $table->id('id_pengemasanbatchproduk', 20);
             $table->string('protap', 20);
-            $table->string('kode_produk', 20);
+            $table->string('kode_produk', 200);
             $table->string('nama_produk', 200);
-            $table->string('no_batch', 20);
+            $table->string('no_batch', 200);
             $table->string('besar_batch', 200);
             $table->string('bentuksediaan', 200);
             $table->string('kemasan', 200);

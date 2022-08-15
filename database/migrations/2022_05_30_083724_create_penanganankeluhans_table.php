@@ -12,13 +12,13 @@ class CreatePenanganankeluhansTable extends Migration
             $table->id('id_penanganankeluhan', 20);
             $table->integer('protap')->unsigned();
             $table->string('kode_keluhan', 20);
-            $table->string('nama_customer', 100);
+            $table->string('nama_customer', 200);
             $table->date('tanggal_keluhan')->nullable();
-            $table->string('keluhan', 100);
+            $table->string('keluhan', 200);
             $table->date('tanggal_ditanggapi')->nullable();
-            $table->string('produk_yang_digunakan', 100);
-            $table->string('penanganan_keluhan', 100);
-            $table->string('tindak_lanjut', 100);
+            $table->string('produk_yang_digunakan', 200);
+            $table->string('penanganan_keluhan', 200);
+            $table->string('tindak_lanjut', 200);
             $table->integer('status', 0)->unsigned();
             $table->integer('pabrik', false);
             $table->integer("user_id", false);

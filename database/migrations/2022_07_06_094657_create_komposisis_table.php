@@ -15,10 +15,10 @@ class CreateKomposisisTable extends Migration
     {
         Schema::create('komposisis', function (Blueprint $table) {
             $table->id('komposisi_id',5);
-            $table->string("komposisi_kode", 10);
-            $table->string("kompisisi_nama", 100);
-            $table->string("komposisi_persen", 20);
-            $table->string("nomor_batch", 100);
+            $table->string("komposisi_kode", 200);
+            $table->string("kompisisi_nama", 200);
+            $table->string("komposisi_persen", 200);
+            $table->string("nomor_batch", 200);
             $table->integer("user_id", false);
             $table->timestamps();
         });

@@ -16,11 +16,11 @@ class CreateDetiltimbangproduksTable extends Migration
         Schema::create('detiltimbangproduks', function (Blueprint $table) {
             $table->id("id_detiltimbangproduk");
             $table->date("tanggal");
-            $table->string("nama_produk_antara", 100);
-            $table->string("asal_produk", 100);
-            $table->string("jumlah_produk", 20);
-            $table->string("hasil_penimbangan", 20);
-            $table->string("untuk_produk", 100);
+            $table->string("nama_produk_antara", 200);
+            $table->string("asal_produk", 200);
+            $table->string("jumlah_produk", 200);
+            $table->string("hasil_penimbangan", 200);
+            $table->string("untuk_produk", 200);
             $table->integer("induk",0);
             $table->timestamps();
         });

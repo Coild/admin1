@@ -11,7 +11,7 @@ class CreatePengoprasianalatsTable extends Migration
 		Schema::create('pengoprasianalats', function (Blueprint $table) {
 
 			$table->id('id_operasi', 20);
-			$table->string('pob', 20);
+			$table->string('pob', 200);
 			$table->date('tanggal')->nullable();
 			$table->string('nama_alat', 200);
 			$table->string('tipe_merek', 200);

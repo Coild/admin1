@@ -15,7 +15,7 @@ class CreateKalibrasialatsTable extends Migration
     {
         Schema::create('kalibrasialats', function (Blueprint $table) {
             $table->id('kalibrasi_id');
-            $table->string('nama_alat', 50);
+            $table->string('nama_alat', 200);
             $table->string('nama_file', 200);
             $table->integer('pabrik', false);
             $table->integer('user_id', 0)->unsigned();

@@ -16,11 +16,11 @@ class CreateKartustokbahankemasTable extends Migration
         Schema::create('kartustokbahankemas', function (Blueprint $table) {
             $table->id('id_kartustokbahankemas', 20);
             // $table->integer('protap')->unsigned();
-            $table->string('nama_bahankemas', 20);
+            $table->string('nama_bahankemas', 200);
             $table->string('id_batch', 20);
             $table->date('tanggal')->nullable();
-            $table->string('jumlah', 30);
-            $table->string('nama_distributor', 100);
+            $table->string('jumlah', 200);
+            $table->string('nama_distributor', 200);
             $table->integer('pabrik', false);
             $table->integer("status", false);
             $table->integer('user_id', 0)->unsigned();

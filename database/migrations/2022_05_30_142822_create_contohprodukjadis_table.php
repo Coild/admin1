@@ -10,13 +10,13 @@ class CreateContohprodukjadisTable extends Migration
 	{
 		Schema::create('contohprodukjadis', function (Blueprint $table) {
 			$table->id('id_produkjadi', 11);
-			$table->string('kode_produk', 20);
+			$table->string('kode_produk', 200);
 			$table->string('nama_produkjadi', 200);
 			$table->string('no_batch', 20);
 			$table->date('tanggal_ambil')->nullable();
 			$table->date('kedaluwarsa')->nullable();
-			$table->string('jumlah_kemasanbox', 20);
-			$table->string('jumlah_produk', 20);
+			$table->string('jumlah_kemasanbox', 200);
+			$table->string('jumlah_produk', 200);
 			$table->string('jenis_warnakemasan', 200);
 			$table->tinyInteger('protap', 0)->unsigned();
 			$table->integer('pabrik', false);

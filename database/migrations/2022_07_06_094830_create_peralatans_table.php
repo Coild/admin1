@@ -15,9 +15,9 @@ class CreatePeralatansTable extends Migration
     {
         Schema::create('peralatans', function (Blueprint $table) {
             $table->id('peralatan_id',5);
-            $table->string("peralatan_kode", 50);
-            $table->string("peralatan_nama", 100);
-            $table->string("nomor_batch",100);
+            $table->string("peralatan_kode", 200);
+            $table->string("peralatan_nama", 200);
+            $table->string("nomor_batch",200);
             $table->integer("user_id",false);
             $table->timestamps();
         });

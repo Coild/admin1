@@ -15,9 +15,9 @@ class CreateRekonsiliasisTable extends Migration
     {
         Schema::create('rekonsiliasis', function (Blueprint $table) {
             $table->id('rekonsiliasi_id');
-            $table->string('awal',25);
-            $table->string('akhir',25);
-            $table->string('id_batch',25);
+            $table->string('awal',200);
+            $table->string('akhir',200);
+            $table->string('id_batch',200);
             $table->integer('user_id',0)->unsigned();
             $table->timestamps();
         });

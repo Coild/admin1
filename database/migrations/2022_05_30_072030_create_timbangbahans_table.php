@@ -16,7 +16,7 @@ class CreateTimbangbahansTable extends Migration
         Schema::create('timbangbahans', function (Blueprint $table) {
             $table->id("timbang_bahan_id", 10);
             $table->date('tanggal')->nullable();
-            $table->string("no_loth", 20);
+            $table->string("no_loth", 200);
             $table->integer('status', 0)->unsigned();
             $table->tinyInteger('protap', 0)->unsigned();
             $table->integer('pabrik', false);
