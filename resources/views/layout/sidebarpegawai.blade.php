@@ -198,8 +198,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Pemeriksaan/Pengujian
                     Bahan
                 </a>
-
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="assets/pdf/cttbpom.pdf" target="_blank">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Format Baku BPOM
                 </a>

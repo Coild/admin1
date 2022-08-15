@@ -4214,8 +4214,8 @@ class Admin extends Controller
             'tanggal' => $req['tanggal'],
             'nama_bahan' => $req['nama_bahan'],
             'nama_suplier' => Admin::bersih($req['nama_suplier']),
-            'jumlah_bahan' => $req['jumlah_bahan'],
-            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']),
+            'jumlah_bahan' => $req['jumlah_bahan'].' '.$req['satuan'],
+            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']).' '.$req['satuan'],
             'induk'  => session()->get('induk1'),
         ];
 
