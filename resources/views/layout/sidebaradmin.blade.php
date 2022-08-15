@@ -23,7 +23,7 @@
                     UPDATE PROTAP
                 </a>
 
-                <a @if(Request::is('logPemilik')) id='side_aktif' @endif class="nav-link collapsed" href="logPemilik">
+                <a @if(Request::is('logPemilik')) id='side_aktif' @endif class="nav-link collapsed" href="logAdmin">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     LOG
                 </a>

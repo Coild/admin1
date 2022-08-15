@@ -29,7 +29,7 @@
                     DAFTAR AUDIT
                 </a>
 
-                <a @if(Request::is('logAdmin')) id='side_aktif' @endif  class="nav-link collapsed" href="logAdmin">
+                <a @if(Request::is('logAdmin')) id='side_aktif' @endif  class="nav-link collapsed" href="logPemilik">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     LOG
                 </a>
