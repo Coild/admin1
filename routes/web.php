@@ -18,7 +18,7 @@ use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, prota
 */
 
 Route::view('/coba', 'print.pembersihanalat');
-Route::get('notif', [Admin::class, 'notif']);
+
 Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
 Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
 
@@ -34,16 +34,21 @@ Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']
 
 Route::post('/reset_password', [AuthController::class, 'reset_pass']);
 
-Route::view('/template', 'print.template');
+// Route::view('/template', 'print.template');
 
-Route::get('/resetpass', function () {
-    return view('auth.resetpass');
-});
-Route::get('/auto', function () {
-    return view('catatan.dokumen.auto');
-});
+// Route::get('/resetpass', function () {
+//     return view('auth.resetpass');
+// });
+// Route::get('/auto', function () {
+//     return view('catatan.dokumen.auto');
+// });
 
-//print
+
+// Route::get('/dummy', [PrintController::class, 'dummy']);
+
+Route::group(['middleware' => 'auth'], function () {
+
+    //print
 Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
 Route::post('/printpengemasanbatch', [PrintController::class, 'cetak_pengemasanbatch']);
 Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
@@ -78,10 +83,7 @@ Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihan
 Route::post('/printpemeriksaansanitasialat', [PrintController::class, 'cetak_pemeriksaansanitasialat'])->name('printpemeriksaansanitasialat');
 
 
-// Route::get('/dummy', [PrintController::class, 'dummy']);
-
-Route::group(['middleware' => 'auth'], function () {
-
+    Route::get('notif', [Admin::class, 'notif']);
     //admin
     Route::group(
         ['middleware' => 'admin'],
