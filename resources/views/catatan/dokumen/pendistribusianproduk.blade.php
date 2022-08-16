@@ -119,7 +119,7 @@
                                                     </div>
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert(2)" href="#"
+                                                <a class="btn btn-primary" onclick="salert1(2)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
