@@ -25,8 +25,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i=0; ?>
                        @foreach($data as $row)
-                       <?php $i=0; $i++; ?>
+                       <?php  $i++; ?>
                         <tr>
                         <th scope="col">{{$i}}</th>
                             <th scope="col">{{$row['audit_laporan']}}</th>

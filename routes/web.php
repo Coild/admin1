@@ -17,7 +17,9 @@ use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, prota
 |
 */
 
-Route::view('/coba', 'print.pembersihanalat');
+// Route::view('/coba', 'print.pembersihanalat');
+Route::post('coba',[Admin::class, 'coba']);
+Route::get('coba',[Admin::class, 'coba']);
 
 Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
 Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
