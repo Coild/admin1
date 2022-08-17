@@ -26,7 +26,7 @@ class Admin extends Controller
     public function bersih($string) {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-        return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
+        return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
 
      }
 
@@ -494,7 +494,7 @@ class Admin extends Controller
 
         $laporan = [
             'laporan_nama' => 'penerimaan bahan',
-            'laporan_batch' => $nomer,
+            'laporan_batch' => Admin::bersih_angka($nomer),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -554,7 +554,7 @@ class Admin extends Controller
 
         $laporan = [
             'laporan_nama' => 'penerimaan produk',
-            'laporan_batch' => $nomer,
+            'laporan_batch' => Admin::bersih_angka($nomer),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -1606,7 +1606,7 @@ class Admin extends Controller
 
         $laporan = [
             'laporan_nama' => 'pengolahan batch',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -2249,7 +2249,7 @@ class Admin extends Controller
 
         $laporan = [
             'laporan_nama' => 'periksa sanitasi alat',
-            'laporan_batch' => $req['no_batch'] ?? 0,
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? 0,
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -2364,7 +2364,7 @@ class Admin extends Controller
 
         $inilaporan = [
             'laporan_nama' => 'Periksa Sanitasi Ruangan',
-            'laporan_batch' => $req['no_batch'] ?? $nomer,
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? $nomer,
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -2539,7 +2539,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pelatihan higiene dan sanitasi',
-            'laporan_batch' => $req['kode_pelatihan'],
+            'laporan_batch' => Admin::bersih_angka($req['kode_pelatihan']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -2599,7 +2599,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pelatihan cpkb',
-            'laporan_batch' => $req['kode_pelatihan'],
+            'laporan_batch' => Admin::bersih_angka($req['kode_pelatihan']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -2889,7 +2889,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penarikan produk',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3012,7 +3012,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'distribusi produk',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3112,7 +3112,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pengoperasian alat',
-            'laporan_batch' => $req['no_batch'] ?? $nomer,
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? $nomer,
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3403,7 +3403,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pelulusan produk jadi',
-            'laporan_batch' => $req['nobatch'],
+            'laporan_batch' => Admin::bersih_angka($req['nobatch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3513,7 +3513,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penambahan contoh bahan baku',
-            'laporan_batch' => $req['nobatch'],
+            'laporan_batch' => Admin::bersih_angka($req['nobatch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3573,7 +3573,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penambahan contoh produk',
-            'laporan_batch' => $req['nobatch'],
+            'laporan_batch' => Admin::bersih_angka($req['nobatch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3633,7 +3633,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penambahan contoh kemasan',
-            'laporan_batch' => $req['nobatch'],
+            'laporan_batch' => Admin::bersih_angka($req['nobatch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3833,7 +3833,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penimbangan bahan',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? Admin::bersih_angka($req['no_loth']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3890,7 +3890,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'penimbangan produk utama',
-            'laporan_batch' => $req['nobatch'],
+            'laporan_batch' => Admin::bersih_angka($req['nobatch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -3947,7 +3947,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'ruang timbang',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'] ?? '-',
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? Admin::bersih_angka($req['no_loth']) ?? '-',
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4004,7 +4004,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'ruang timbang',
-            'laporan_batch' => $req['no_batch'] ?? $req['no_loth'] ?? '-',
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']) ?? Admin::bersih_angka($req['no_loth']) ?? '-',
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4394,7 +4394,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'Kartu Stok Bahan Baku',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4491,7 +4491,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'kartu stok bahan kemas',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4586,7 +4586,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'kartu stok produk antara',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4684,7 +4684,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'kartu stok produk jadi',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4806,7 +4806,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pemusnahan bahan baku',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -4913,7 +4913,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pemusnahan bahan kemas',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5019,7 +5019,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pemusnahan produk antara',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5126,7 +5126,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pemusnahan produk jadi',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5402,7 +5402,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'Pemeriksaan Bahan Baku',
-            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_batch' => Admin::bersih_angka($req['kode_spesifikasi']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5504,7 +5504,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'Pemeriksaan Bahan Kemas',
-            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_batch' => Admin::bersih_angka($req['kode_spesifikasi']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5606,7 +5606,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'Pemeriksaan Produk Jadi',
-            'laporan_batch' => $req['kode_spesifikasi'],
+            'laporan_batch' => Admin::bersih_angka($req['kode_spesifikasi']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
@@ -5755,7 +5755,7 @@ class Admin extends Controller
         $tgl = $tgl->format('Y-m-d');
         $laporan = [
             'laporan_nama' => 'pengemasan batch produk',
-            'laporan_batch' => $req['no_batch'],
+            'laporan_batch' => Admin::bersih_angka($req['no_batch']),
             'laporan_nomor' => $nomer,
             'laporan_diajukan' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
             'laporan_diterima' => "belum",
