@@ -393,6 +393,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'auditor'], function () {
         Route::get('/audit_pabrik', [Auditor::class, 'list_pabrik']);
         Route::post('/audit_dokumen', [Auditor::class, 'list_dokumen']);
+        Route::get('/audit_dokumen', [Auditor::class, 'list_pabrik']);
         Route::post('/audit_batch', [Auditor::class, 'list_batch']);
         Route::get('/list_audit', [Auditor::class, 'list_request'])->name('list_audit');
 
