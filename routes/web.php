@@ -82,6 +82,40 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihanalat'])->name('pembersihanalat');
     Route::post('/printpemeriksaansanitasialat', [PrintController::class, 'cetak_pemeriksaansanitasialat'])->name('printpemeriksaansanitasialat');
 
+    // print get
+    Route::get('/printpengolahanbatch', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpengemasanbatch', [Admin::class, 'tampil_laporan']);
+    Route::get('/printambilbahankemas', [Admin::class, 'tampil_laporan']);
+    Route::get('/printambilprodukjadi', [Admin::class, 'tampil_laporan']);
+    Route::get('/printambilbahanbaku', [Admin::class, 'tampil_laporan']);
+    Route::get('/printlatihhigisani', [Admin::class, 'tampil_laporan']);
+    Route::get('/printlatihcpkb', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printterimabahan', [Admin::class, 'tampil_laporan']);
+    Route::get('/printterimaproduk', [Admin::class, 'tampil_laporan']);
+    Route::get('/printterimakemasan', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printalatutama', [Admin::class, 'tampil_laporan']);
+    Route::get('/printdistribusiproduk', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpenanganankeluhan', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printpelulusanproduk', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printpenarikanproduk', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printpemusnahanbahan', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemusnahanbahankemas', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemusnahanprodukantara', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemusnahanprodukjadi', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printpemeriksaanbahan', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemeriksaanproduk', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemeriksaankemasan', [Admin::class, 'tampil_laporan']);
+
+    Route::get('/printpembersihanruangan', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpembersihanalat', [Admin::class, 'tampil_laporan']);
+    Route::get('/printpemeriksaansanitasialat', [Admin::class, 'tampil_laporan']);
+
     Route::get('notif', [Admin::class, 'notif']);
     //admin
     Route::group(
