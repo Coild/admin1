@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihanalat'])->name('pembersihanalat');
     Route::post('/printpemeriksaansanitasialat', [PrintController::class, 'cetak_pemeriksaansanitasialat'])->name('printpemeriksaansanitasialat');
 
-    Route::get('Notif', [Admin::class, 'notif']);
+    Route::get('notif', [Admin::class, 'notif']);
     //admin
     Route::group(
         ['middleware' => 'admin'],
