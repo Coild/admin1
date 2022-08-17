@@ -49,41 +49,40 @@ Route::post('/reset_password', [AuthController::class, 'reset_pass']);
 Route::group(['middleware' => 'auth'], function () {
 
     //print
-Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
-Route::post('/printpengemasanbatch', [PrintController::class, 'cetak_pengemasanbatch']);
-Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
-Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
-Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahanbaku');
-Route::post('/printlatihhigisani', [PrintController::class, 'cetak_latihhigisani'])->name('latihhigisani');
-Route::post('/printlatihcpkb', [PrintController::class, 'cetak_latihcpkb'])->name('latihcpkb');
+    Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
+    Route::post('/printpengemasanbatch', [PrintController::class, 'cetak_pengemasanbatch']);
+    Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
+    Route::post('/printambilprodukjadi', [PrintController::class, 'cetak_ambilprodukjadi'])->name('ambilbprodukjadi');
+    Route::post('/printambilbahanbaku', [PrintController::class, 'cetak_ambilbahanbaku'])->name('ambilbahanbaku');
+    Route::post('/printlatihhigisani', [PrintController::class, 'cetak_latihhigisani'])->name('latihhigisani');
+    Route::post('/printlatihcpkb', [PrintController::class, 'cetak_latihcpkb'])->name('latihcpkb');
 
-Route::post('/printterimabahan', [PrintController::class, 'cetak_terimabahan'])->name('terimabahan');
-Route::post('/printterimaproduk', [PrintController::class, 'cetak_terimaproduk'])->name('terimaproduk');
-Route::post('/printterimakemasan', [PrintController::class, 'cetak_terimakemasan'])->name('terimakemasan');
+    Route::post('/printterimabahan', [PrintController::class, 'cetak_terimabahan'])->name('terimabahan');
+    Route::post('/printterimaproduk', [PrintController::class, 'cetak_terimaproduk'])->name('terimaproduk');
+    Route::post('/printterimakemasan', [PrintController::class, 'cetak_terimakemasan'])->name('terimakemasan');
 
-Route::post('/printalatutama', [PrintController::class, 'cetak_alatutama'])->name('alatutama');
-Route::post('/printdistribusiproduk', [PrintController::class, 'cetak_distribusiproduk'])->name('distribusiproduk');
-Route::post('/printpenanganankeluhan', [PrintController::class, 'cetak_penanganankeluhan'])->name('penanganankeluhan');
+    Route::post('/printalatutama', [PrintController::class, 'cetak_alatutama'])->name('alatutama');
+    Route::post('/printdistribusiproduk', [PrintController::class, 'cetak_distribusiproduk'])->name('distribusiproduk');
+    Route::post('/printpenanganankeluhan', [PrintController::class, 'cetak_penanganankeluhan'])->name('penanganankeluhan');
 
-Route::post('/printpelulusanproduk', [PrintController::class, 'cetak_pelulusanproduk'])->name('pelulusanproduk');
+    Route::post('/printpelulusanproduk', [PrintController::class, 'cetak_pelulusanproduk'])->name('pelulusanproduk');
 
-Route::post('/printpenarikanproduk', [PrintController::class, 'cetak_penarikanproduk'])->name('penarikanproduk');
+    Route::post('/printpenarikanproduk', [PrintController::class, 'cetak_penarikanproduk'])->name('penarikanproduk');
 
-Route::post('/printpemusnahanbahan', [PrintController::class, 'cetak_pemusnahanbahan'])->name('pemusnahanbahan');
-Route::post('/printpemusnahanbahankemas', [PrintController::class, 'cetak_pemusnahanbahankemas'])->name('pemusnahanbahankemas');
-Route::post('/printpemusnahanprodukantara', [PrintController::class, 'cetak_pemusnahanprodukantara'])->name('pemusnahanprodukantara');
-Route::post('/printpemusnahanprodukjadi', [PrintController::class, 'cetak_pemusnahanprodukjadi'])->name('pemusnahanprodukjadi');
+    Route::post('/printpemusnahanbahan', [PrintController::class, 'cetak_pemusnahanbahan'])->name('pemusnahanbahan');
+    Route::post('/printpemusnahanbahankemas', [PrintController::class, 'cetak_pemusnahanbahankemas'])->name('pemusnahanbahankemas');
+    Route::post('/printpemusnahanprodukantara', [PrintController::class, 'cetak_pemusnahanprodukantara'])->name('pemusnahanprodukantara');
+    Route::post('/printpemusnahanprodukjadi', [PrintController::class, 'cetak_pemusnahanprodukjadi'])->name('pemusnahanprodukjadi');
 
-Route::post('/printpemeriksaanbahan', [PrintController::class, 'cetak_periksabahanbaku'])->name('periksabahanbaku');
-Route::post('/printpemeriksaanproduk', [PrintController::class, 'cetak_periksaprodukjadi'])->name('periksaprodukjadi');
-Route::post('/printpemeriksaankemasan', [PrintController::class, 'cetak_periksabahankemas'])->name('periksabahankemas');
+    Route::post('/printpemeriksaanbahan', [PrintController::class, 'cetak_periksabahanbaku'])->name('periksabahanbaku');
+    Route::post('/printpemeriksaanproduk', [PrintController::class, 'cetak_periksaprodukjadi'])->name('periksaprodukjadi');
+    Route::post('/printpemeriksaankemasan', [PrintController::class, 'cetak_periksabahankemas'])->name('periksabahankemas');
 
-Route::post('/printpembersihanruangan', [PrintController::class, 'cetak_pembersihanruangan'])->name('periksaruang');
-Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihanalat'])->name('pembersihanalat');
-Route::post('/printpemeriksaansanitasialat', [PrintController::class, 'cetak_pemeriksaansanitasialat'])->name('printpemeriksaansanitasialat');
+    Route::post('/printpembersihanruangan', [PrintController::class, 'cetak_pembersihanruangan'])->name('periksaruang');
+    Route::post('/printpembersihanalat', [PrintController::class, 'cetak_pembersihanalat'])->name('pembersihanalat');
+    Route::post('/printpemeriksaansanitasialat', [PrintController::class, 'cetak_pemeriksaansanitasialat'])->name('printpemeriksaansanitasialat');
 
-Route::get('notif', [Admin::class, 'notif']);
-    
+    Route::get('Notif', [Admin::class, 'notif']);
     //admin
     Route::group(
         ['middleware' => 'admin'],
