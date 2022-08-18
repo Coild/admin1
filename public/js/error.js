@@ -238,7 +238,12 @@ function resetPassword(params) {
             errors.push("Password kurang dari 8 karakter");
         }
         if (mycomp[0].value.search(/[a-z]/i) < 0) {
+          if (mycomp[0].value.search(/[A-Z]/i) < 0) {
+            errors.push("password minimal mengandung sebuah huruf kecil, besar");
+          } else {
             errors.push("password minimal mengandung sebuah huruf kecil");
+          }
+            
         }
         if (mycomp[0].value.search(/[A-Z]/i) < 0) {
             errors.push("password minimal mengandung sebuah huruf besar");
