@@ -127,20 +127,20 @@
         <div class="modal-body">
           
             <div class="card-body">
-                <form action="/register" method="post" id='formModalTambahKaryawan'>
+                <form action="/register" method="post" class="forminput1" id='formModalTambahKaryawan'>
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating mb-3 mb-md-0">
-                                <input class="form-control" name="namadepan" id="inputFirstName"
+                                <input class="form-control 1" name="namadepan" id="inputFirstName"
                                     type="text" placeholder="Enter your first name" required />
                                 <label for="inputFirstName">First name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input class="form-control" name="namabelakang" id="inputLastName"
+                                <input class="form-control 1" name="namabelakang" id="inputLastName"
                                     type="text" placeholder="Enter your last name" required />
                                 <label for="inputLastName">Last name</label>
                             </div>
@@ -148,7 +148,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input class="form-control" name="username" id="username" type="text"
+                        <input class="form-control 1" name="username" id="username" type="text"
                             placeholder="name@example.com" required/>
                         <label for="inputEmail">Username</label>
                     </div>
@@ -156,13 +156,13 @@
                     <div class="form-floating mb-3">
                         <input class="form-control" name="search" id="inputPabrik" type="hidden"
                             placeholder="" readonly value="{{ Auth::user()->pabrik }}"/>
-                            <input class="form-control" id="inputPabrik" type="text"
+                            <input class="form-control 1 pass1" id="inputPabrik" type="text"
                             placeholder="" readonly value="{{ session()->get('pabrik') }}"/>
                             <label for="inputPabrik">Pabrik</label>
                     </div>
                     
                         <div class="form-floating">
-                            <input class="form-control" name="password" id="inputPassword"
+                            <input class="form-control 1 pass2" name="password" id="inputPassword"
                                 type="password" placeholder="Create a password" required />
                             <label for="inputPassword">Password</label>
                         </div>
@@ -173,7 +173,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="button" class="btn btn-primary" onclick="buttonFormTambahKaryawan()">Tambah</button>
+          <button type="button" class="btn btn-primary" onclick="validatePassword(1)">Tambah</button>
         </div>
       </div>
     </div>

@@ -330,7 +330,7 @@ function logout() {
 }
 
 function pembuatanuser(params) {
-    console.log(params.no);
+    // console.log(params.no);
     const mycomp = document.getElementsByClassName("form-control "+params);
     var valid = false;
     for (i = 0; i < mycomp.length; i++) {
