@@ -179,14 +179,14 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/reset_passworda" method="post" id='input1'>
+                        <form action="/reset_passworda" method="post" class="forminput3" id='input1'>
                             @csrf
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
-                                <input class="form-control 1" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
+                                <input class="form-control 3" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
                                 <label for="inputEmail">Password Baru</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-primary" onclick="resetPassword(3)">Simpan</button>
                         </form>
                     </div>
                 </div>

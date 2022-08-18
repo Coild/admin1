@@ -128,7 +128,7 @@ function validatePassword(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
     const pass1 = document.getElementsByClassName("form-control " + params + " pass1");
     const pass2 = document.getElementsByClassName("form-control " + params + " pass2");
-    console.log("pass "+pass1[0].value + " "+pass2[0].value);
+    console.log("pass " + pass1[0].value + " " + pass2[0].value);
     // console.log("length "+pass1.length + " "+pass2.length);
     var valid = false;
     var pesan = "";
@@ -178,7 +178,7 @@ function validatePassword(params) {
             if (errors.length > 0) { // alert(errors.join("\n"));
                 Swal.fire({icon: "error", title: "Password", text: errors});
             } else {
-              console.log("simpan");
+                console.log("simpan");
                 swalWithBootstrapButtons.fire({
                     title: "Apakah data sudah benar?",
                     text: "Data yang sudah disimpan dapat diubah!",
@@ -189,7 +189,7 @@ function validatePassword(params) {
                     reverseButtons: true
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        document.getElementById("forminput"+params).submit();
+                        document.getElementById("forminput" + params).submit();
                         swalWithBootstrapButtons.fire("Tersimpan!", "Data pegawai berhasil disimpan.", "success");
                     } else if (
                         /* Read more about handling dismissals below */
@@ -199,6 +199,77 @@ function validatePassword(params) {
                     }
                 });
             }
-        } 
+        }
+    }
+}
+
+function resetPassword(params) {
+    const mycomp = document.getElementsByClassName("form-control " + params);
+    // console.log("pass " + pass1[0].value + " " + pass2[0].value);
+    // console.log("length "+pass1.length + " "+pass2.length);
+    var valid = false;
+    pesan = "";
+    var errors = [];
+    console.log(mycomp[0].value);
+    if (mycomp[0].value.length > 200) {
+        pesan = "Data terlalu panjang";
+    }
+    if (mycomp[0].value == "") {
+        valid = true;
+    }
+
+    if (valid) {
+        valid = false;
+        Swal.fire({icon: "error", title: "Data tidak sesuai", text: "Sebagian Data Kosong!"});
+
+    } else if (pesan != "") {
+        Swal.fire({icon: "error", title: "Tidak Valid", text: pesan});
+    } else {
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+
+        if (mycomp[0].value.length < 8) {
+            errors.push("Password kurang dari 8 karakter");
+        }
+        if (mycomp[0].value.search(/[a-z]/i) < 0) {
+            errors.push("password minimal mengandung sebuah huruf kecil");
+        }
+        if (mycomp[0].value.search(/[A-Z]/i) < 0) {
+            errors.push("password minimal mengandung sebuah huruf besar");
+        }
+        if (mycomp[0].value.search(/[0-9]/) < 0) {
+            errors.push("password minimal mengandung satu digit angka");
+        }
+        if (errors.length > 0) { // alert(errors.join("\n"));
+            Swal.fire({icon: "error", title: "Password", text: errors});
+        } else {
+            console.log("simpan");
+            swalWithBootstrapButtons.fire({
+                title: "Apakah data sudah benar?",
+                text: "Data yang sudah disimpan dapat diubah!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Simpan",
+                cancelButtonText: "Batal",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("forminput" + params).submit();
+                    swalWithBootstrapButtons.fire("Tersimpan!", "Data pegawai berhasil disimpan.", "success");
+                } else if (
+                    /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire("Dibatalkan", "Silahkan tinjau kembali data yang dimasukkan :)", "error");
+                }
+            });
+        }
+
     }
 }
