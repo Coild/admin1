@@ -35,6 +35,36 @@
             margin: -5px;
         }
 
+        #message1 {
+            display: none;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        #message1 p {
+            padding: 15px 35px;
+            font-size: 15px;
+            margin: -5px;
+        }
+
+        #lulus1 {
+            display: none;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        #lulus1 p {
+            padding: 15px 35px;
+            font-size: 15px;
+            margin: -5px;
+        }
+
         .valid {
             color: green;
         }
@@ -234,9 +264,21 @@
                                 </div>
 
                                 <div class="form-floating">
-                                    <input class="form-control 1 pass2" name="password" id="inputPassword"
+                                    <input class="form-control 1 pass2" name="password" id="psw1"
                                         type="password" placeholder="Create a password" required />
                                     <label for="inputPassword">Password</label>
+                                    <div id="message1">
+                                        <h5>Password must contain the following:</h5>
+                                        <p id="letter1" class="invalid">Minimal 1 buah <b>huruf kecil</b></p>
+                                        <p id="capital1" class="invalid">Minimal 1 buah <b>huruf kapital </b>
+                                        </p>
+                                        <p id="number1" class="invalid">Minimal 1 buah <b>angka</b></p>
+                                        <p id="special1" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_)</b></p>
+                                        <p id="length1" class="invalid">Minial <b>8 characters</b></p>
+                                    </div>
+                                    <div id="lulus1">
+                                        <p class="valid"> password kuat </p>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -245,7 +287,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary" onclick="validatePassword(1)">Tambah</button>
+                        <button type="button" class="btn btn-primary" id="lolos1" onclick="salert1(1)">Tambah</button>
                     </div>
                 </div>
             </div>
@@ -404,6 +446,115 @@
             // When the user clicks outside of the password field, hide the message box
             myInput.onblur = function() {
                 document.getElementById("message").style.display = "none";
+            }
+
+            // When the user starts to type something inside the password field
+            myInput.onkeyup = function() {
+
+                // Validate lowercase letters
+                var specialChar = /[\_\@\#]/g;
+                if (myInput.value.match(specialChar)) {
+                    special.classList.remove("invalid");
+                    special.classList.add("valid");
+                } else {
+                    special.classList.remove("valid");
+                    special.classList.add("invalid");
+                }
+
+                // Validate lowercase letters
+                var lowerCaseLetters = /[a-z]/g;
+                if (myInput.value.match(lowerCaseLetters)) {
+                    letter.classList.remove("invalid");
+                    letter.classList.add("valid");
+                } else {
+                    letter.classList.remove("valid");
+                    letter.classList.add("invalid");
+                }
+
+                // Validate capital letters
+                var upperCaseLetters = /[A-Z]/g;
+                if (myInput.value.match(upperCaseLetters)) {
+                    capital.classList.remove("invalid");
+                    capital.classList.add("valid");
+                } else {
+                    capital.classList.remove("valid");
+                    capital.classList.add("invalid");
+                }
+
+                // Validate numbers
+                var numbers = /[0-9]/g;
+                if (myInput.value.match(numbers)) {
+                    number.classList.remove("invalid");
+                    number.classList.add("valid");
+                } else {
+                    number.classList.remove("valid");
+                    number.classList.add("invalid");
+                }
+
+                // Validate length
+                if (myInput.value.length >= 8) {
+                    length.classList.remove("invalid");
+                    length.classList.add("valid");
+                } else {
+                    length.classList.remove("valid");
+                    length.classList.add("invalid");
+                }
+
+                //lolos password 
+
+
+
+
+                if (myInput.value.length >= 8 && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) &&
+                    myInput.value.match(lowerCaseLetters) && myInput.value.match(specialChar)) {
+                    lolos.disabled = false;
+                    document.getElementById("message").style.display = "none";
+                    document.getElementById("lulus").style.display = "block";
+                    valdi = true;
+                } else {
+                    document.getElementById("message").style.display = "block";
+                    document.getElementById("lulus").style.display = "none";
+                    lolos.disabled = true;
+                    valdi = false;
+                }
+
+            }
+        </script>
+
+         {{-- script strong --}}
+         <script>
+            var banned = [
+                "<",
+                ">",
+                "%",
+                "\"",
+                "\'",
+                "&",
+                "|",
+                "!"
+            ];
+            var myInput = document.getElementById("psw1");
+            myInput.addEventListener("keydown", function(e) {
+                console.log(banned);
+                if (banned.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+            var letter = document.getElementById("letter1");
+            var capital = document.getElementById("capital1");
+            var number = document.getElementById("number1");
+            var special = document.getElementById("special1");
+            var length = document.getElementById("length1");
+            var lolos = document.getElementById("lolos1");
+
+            // When the user clicks on the password field, show the message box
+            myInput.onfocus = function() {
+                if (!valdi) document.getElementById("message1").style.display = "block";
+            }
+
+            // When the user clicks outside of the password field, hide the message box
+            myInput.onblur = function() {
+                document.getElementById("message1").style.display = "none";
             }
 
             // When the user starts to type something inside the password field
