@@ -173,7 +173,7 @@ class AuthController extends Controller
                 'password' => Hash::make($req['baru']),
             ]);
         
-        return redirect('/karyawan'); //->with('status', 'Kata sandi lama anda salah!');
+        return redirect('/karyawan')->with('success', 'Password berhasil diganti!');
     }
 
     public function reset_passa(Request $req)
@@ -187,7 +187,7 @@ class AuthController extends Controller
                 'password' => Hash::make($req['baru']),
             ]);
         
-        return redirect('/audit'); //->with('status', 'Kata sandi lama anda salah!');
+        return redirect('/audit')->with('success', 'Password berhasil diganti!');
     }
 
     public function reset_passu(Request $req)
@@ -200,7 +200,7 @@ class AuthController extends Controller
                 'password' => Hash::make($req['baru']),
             ]);
 
-        return redirect('/pabrik'); //->with('status', 'Kata sandi lama anda salah!');
+        return redirect('/pabrik')->with('success', 'Password berhasil diganti!');
     }
 
     public function autocompleteSearch(Request $request)
