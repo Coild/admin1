@@ -208,13 +208,13 @@
                                 <label for="psw1">Password</label>
                                 
                                 <div id="message1" class="mb-2">
-                                    <h5>Password must contain the following:</h5>
+                                    <h5>Password harus mengandung:</h5>
                                         <p id="letter1" class="invalid1">Minimal 1 buah <b>huruf kecil</b></p>
                                         <p id="capital1" class="invalid1">Minimal 1 buah <b>huruf kapital </b>
                                         </p>
                                         <p id="number1" class="invalid1">Minimal 1 buah <b>angka</b></p>
                                         <p id="special1" class="invalid1">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
-                                        <p id="length1" class="invalid1">Minial <b>8 characters</b></p>
+                                        <p id="length1" class="invalid1">Minimmal <b>8 karakter</b></p>
                                 </div>
                                 <div id="lulus1" class="mb-2">
                                     <p class="valid1"> password kuat </p>
@@ -259,13 +259,13 @@
 
                             </div>
                             <div id="message" class="mb-2">
-                                <h5>Password must contain the following:</h5>
+                                <h5>Password harus mengandung:</h5>
                                     <p id="letter" class="invalid">Minimal 1 buah <b>huruf kecil</b></p>
                                     <p id="capital" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                     </p>
                                     <p id="number" class="invalid">Minimal 1 buah <b>angka</b></p>
                                     <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
-                                    <p id="length" class="invalid">Minial <b>8 characters</b></p>
+                                    <p id="length" class="invalid">Minimal <b>8 karakter</b></p>
                             </div>
                             <div id="lulus" class="mb-2">
                                 <p class="valid"> password kuat </p>
