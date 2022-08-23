@@ -205,7 +205,7 @@
                                 
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid justify-content-center">
-                                        <button onclick="salert1(1)" id="lolos" style="width: 200px" disabled
+                                        <button type="button" onclick="salert1(1)" id="lolos" style="width: 200px" disabled
                                             class="btn btn-primary btn-block">Tambah
                                             Akun</button>
                                     </div>
@@ -264,7 +264,7 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/reset_passworda" method="post" class="forminput3" id='input1'>
+                        <form action="/reset_passworda" method="post" id="forminput3">
                             @csrf
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
@@ -299,7 +299,7 @@
         $(document).on('click', "#klik", function() {
             var id = $(this).data('id');
             console.log("hai " + id);
-            $("#isi_id").val(id);
+            $("#isi_idpass").val(id);
         })
 
         $(document).on('click', "#detil", function() {

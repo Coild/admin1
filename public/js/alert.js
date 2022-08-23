@@ -457,96 +457,18 @@ function filecheck() {
     }
 }
 
-// function salert1(params) {
-//     const mycomp = document.getElementsByClassName("form-control " + params);
 
-//     var valid = false;
-//     var pesan = "";
-
-//     for (i = 0; i < mycomp.length; i++) {
-//         // var x = text_gagal[i].value = 'coba';
-//         console.log(mycomp[i].value);
-        
-//         // if (specialChars.test( mycomp[i].value)) {
-//         //     pesan = "tidak boleh ada karakter spesial";
-//         //     break;
-//         //  } 
-//          if (mycomp[i].value.length>200) {
-//             pesan = "Data terlalu panjang";
-//             break;
-//          } 
-//         if (mycomp[i].value == "") {
-//             valid = true;
-//             break;
-//         } 
-//     }
-//     if (valid) {
-//         valid = false;
-        
-//         Swal.fire({
-//             icon: "error",
-//             title: "Data tidak sesuai",
-//             text: "Sebagian Data Kosong!",
-//         });
-        
-//      } else if (pesan!="") {
-//         Swal.fire({
-//             icon: "error",
-//             title: "Tidak Valid",
-//             text: "y",
-//         });
-//      }
-//      else {
-//         const swalWithBootstrapButtons = Swal.mixin({
-//             customClass: {
-//                 confirmButton: "btn btn-success",
-//                 cancelButton: "btn btn-danger",
-//             },
-//             buttonsStyling: false,
-//         });
-
-//         swalWithBootstrapButtons
-//             .fire({
-//                 title: "Apakah data sudah benar?",
-//                 text: "Data yang sudah disimpan tidak dapat dirubah!",
-//                 icon: "warning",
-//                 showCancelButton: true,
-//                 confirmButtonText: "Simpan",
-//                 cancelButtonText: "Batal",
-//                 reverseButtons: true,
-//             })
-//             .then((result) => {
-//                 if (result.isConfirmed) {
-//                     document.getElementById("forminput" + params).submit();
-//                     swalWithBootstrapButtons.fire(
-//                         "Tersimpan!",
-//                         "Data berhasil disimpan.",
-//                         "success"
-//                     );
-//                 } else if (
-//                     /* Read more about handling dismissals below */
-//                     result.dismiss === Swal.DismissReason.cancel
-//                 ) {
-//                     swalWithBootstrapButtons.fire(
-//                         "Dibatalkan",
-//                         "Silahkan tinjau kembali data yang dimasukkan :)",
-//                         "error"
-//                     );
-//                 }
-//             });
-//     }
-// }
 
 
 function salert1(params) {
-    console.log(params);
+    // console.log(params);
     const mycomp = document.getElementsByClassName("form-control " + params);
     var pesan =""
     var valid = false;
 
     for (i = 0; i < mycomp.length; i++) {
         // var x = text_gagal[i].value = 'coba';
-        console.log(mycomp[i].value);
+        // console.log(mycomp[i].value);
         
         // if (specialChars.test( mycomp[i].value)) {
         //     pesan = "tidak boleh ada karakter spesial";
@@ -597,6 +519,7 @@ function salert1(params) {
             })
             .then((result) => {
                 if (result.isConfirmed) {
+                    console.log("forminput"+params);
                     document.getElementById("forminput" + params).submit();
                     swalWithBootstrapButtons.fire(
                         "Tersimpan!",
