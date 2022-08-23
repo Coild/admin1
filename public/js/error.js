@@ -128,7 +128,7 @@ function validatePassword(params) {
     const mycomp = document.getElementsByClassName("form-control " + params);
     const pass1 = document.getElementsByClassName("form-control " + params + " pass1");
     const pass2 = document.getElementsByClassName("form-control " + params + " pass2");
-    console.log("pass " + pass1[0].value + " " + pass2[0].value);
+    // console.log("pass " + pass1[0].value + " " + pass2[0].value);
     // console.log("length "+pass1.length + " "+pass2.length);
     var valid = false;
     var pesan = "";
@@ -166,16 +166,19 @@ function validatePassword(params) {
             if (pass1[0].value.length < 8) {
                 errors.push("Password kurang dari 8 karakter");
             }
-            if (pass1[0].value.search(/[a-z]/i) < 0) {
+            if (pass1[0].value.search(/[a-z]/g) < 0) {
+              console.log('kecil');
                 errors.push("password minimal mengandung sebuah huruf kecil");
             }
-            if (pass1[0].value.search(/[A-Z]/i) < 0) {
+            if (pass1[0].value.search(/[A-Z]/g) < 0) {
+              console.log('besar');
                 errors.push("password minimal mengandung sebuah huruf besar");
             }
             if (pass1[0].value.search(/[0-9]/) < 0) {
                 errors.push("password minimal mengandung satu digit angka");
             }
             if (errors.length > 0) { // alert(errors.join("\n"));
+              console.log(errors);
                 Swal.fire({icon: "error", title: "Password", text: errors});
             } else {
                 console.log("simpan");
@@ -237,15 +240,15 @@ function resetPassword(params) {
         if (mycomp[0].value.length < 8) {
             errors.push("Password kurang dari 8 karakter");
         }
-        if (mycomp[0].value.search(/[a-z]/i) < 0) {
-          if (mycomp[0].value.search(/[A-Z]/i) < 0) {
+        if (mycomp[0].value.search(/[a-z]/g) < 0) {
+          if (mycomp[0].value.search(/[A-Z]/g) < 0) {
             errors.push("password minimal mengandung sebuah huruf kecil, besar");
           } else {
             errors.push("password minimal mengandung sebuah huruf kecil");
           }
             
         }
-        if (mycomp[0].value.search(/[A-Z]/i) < 0) {
+        if (mycomp[0].value.search(/[A-Z]/g) < 0) {
             errors.push("password minimal mengandung sebuah huruf besar");
         }
         if (mycomp[0].value.search(/[0-9]/) < 0) {
