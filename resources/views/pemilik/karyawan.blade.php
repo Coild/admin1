@@ -91,6 +91,7 @@
                                                     <input class="form-control 7" name="baru" id="psw"
                                                         type="text" placeholder="masukan password" autocomplete="off" />
                                                     <label for="inputEmail">Password Baru</label>
+                                                    
                                                     <div id="message">
                                                         <h5>Password must contain the following:</h5>
                                                         <p id="letter" class="invalid">A <b>lowercase</b> letter</p>

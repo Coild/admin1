@@ -19,6 +19,15 @@ use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AuthController extends Controller
 {
+
+    public function bersih($string) {
+        //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+        return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
+
+     }
+
+
     public function showFormLogin()
     {
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
@@ -34,7 +43,7 @@ class AuthController extends Controller
     {
         // dd(Admin::bersih($request->input('username')));
         $data = [
-            'nama'     => Admin::bersih($request->input('username')),
+            'nama'     => AuthController::bersih($request->input('username')),
             'password'  => $request->input('password'),
         ];
 

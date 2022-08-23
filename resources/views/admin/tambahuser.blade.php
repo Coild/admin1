@@ -4,6 +4,59 @@
 @endsection
 
 @section('content')
+<style>
+    #message {
+        display: none;
+        background: #f1f1f1;
+        color: #000;
+        position: relative;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    #message p {
+        padding: 15px 35px;
+        font-size: 15px;
+        margin: -5px;
+    }
+
+    #lulus {
+        display: none;
+        background: #f1f1f1;
+        color: #000;
+        position: relative;
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    #lulus p {
+        padding: 15px 35px;
+        font-size: 15px;
+        margin: -5px;
+    }
+
+    .valid {
+        color: green;
+    }
+
+    .valid:before {
+        position: relative;
+        left: -35px;
+        content: "✔";
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+        color: red;
+    }
+
+    .invalid:before {
+        position: relative;
+        left: -35px;
+        content: "✖";
+    }
+</style>
+
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Daftar Pabrik </h1>
@@ -97,21 +150,9 @@
                                 <input class="form-control 1" name="pabrik" id="inputEmail" type="text" placeholder="name@example.com" />
                                 <label for="inputEmail">Pabrik</label>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control 1 pass1" name="password" id="inputPassword" type="password" placeholder="Create a password" />
-                                        <label for="inputPassword">Password</label>
-                                    </div>
-                                    <p id="message1" class="text-danger"></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control 1 pass2" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                        <label for="inputPasswordConfirm">Confirm Password</label>
-                                    </div>
-                                    <p id="message" class="text-danger"></p>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control 1 pass1" name="password" id="inputPassword" type="password" placeholder="Create a password" />
+                                <label for="inputPassword">Password</label>
                             </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid justify-content-center">
@@ -141,14 +182,27 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <div class="container">
-                        <form action="/reset_passwordu" method="post" class="forminput7" id='input1'>
+                        <form action="/reset_passwordu" method="post" class="form-input" id='forminput7'>
                             @csrf
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
-                                <input class="form-control 7" name="baru" id="user" type="text" placeholder="masukan password" autocomplete="off" />
-                                <label for="inputEmail">Password Baru</label>
+                                <input class="form-control 7" name="baru" id="psw" type="text" placeholder="masukan password" autocomplete="off" />
+                                <label for="psw">Password Baru</label>
+
                             </div>
-                            <button type="button" class="btn btn-primary" onclick="resetPassword(7)">Simpan</button>
+                            <div id="message" class="mb-2">
+                                <h5>Password must contain the following:</h5>
+                                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                <p id="capital" class="invalid">A <b>capital (uppercase)</b>
+                                    letter</p>
+                                <p id="number" class="invalid">A <b>number</b></p>
+                                <p id="special" class="invalid">A <b>spesial karakter</b></p>
+                                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                            </div>
+                            <div id="lulus" class="mb-2">
+                                <p class="valid"> password kuat </p>
+                            </div>
+                            <button disabled id="lolos" type="button" class="btn btn-primary" onclick="salert1(7)" >Simpan</button>
                         </form>
                     </div>
                 </div>
@@ -224,4 +278,112 @@
         }
     })
 </script>
+
+
+        {{-- script strong --}}
+        <script>
+            var valdi = false;
+            var banned = [
+                "<",
+                ">",
+                "%",
+                "\"",
+                "\'",
+                "&",
+                "|",
+                "!"
+            ];
+            var myInput = document.getElementById("psw");
+            myInput.addEventListener("keydown", function(e) {
+                console.log(banned);
+                if (banned.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+            var letter = document.getElementById("letter");
+            var capital = document.getElementById("capital");
+            var number = document.getElementById("number");
+            var special = document.getElementById("special");
+            var length = document.getElementById("length");
+            var lolos = document.getElementById("lolos");
+
+            // When the user clicks on the password field, show the message box
+            myInput.onfocus = function() {
+                if (!valdi) document.getElementById("message").style.display = "block";
+            }
+
+            // When the user clicks outside of the password field, hide the message box
+            myInput.onblur = function() {
+                document.getElementById("message").style.display = "none";
+            }
+
+            // When the user starts to type something inside the password field
+            myInput.onkeyup = function() {
+
+                // Validate lowercase letters
+                var specialChar = /[\_\@\#]/g;
+                if (myInput.value.match(specialChar)) {
+                    special.classList.remove("invalid");
+                    special.classList.add("valid");
+                } else {
+                    special.classList.remove("valid");
+                    special.classList.add("invalid");
+                }
+
+                // Validate lowercase letters
+                var lowerCaseLetters = /[a-z]/g;
+                if (myInput.value.match(lowerCaseLetters)) {
+                    letter.classList.remove("invalid");
+                    letter.classList.add("valid");
+                } else {
+                    letter.classList.remove("valid");
+                    letter.classList.add("invalid");
+                }
+
+                // Validate capital letters
+                var upperCaseLetters = /[A-Z]/g;
+                if (myInput.value.match(upperCaseLetters)) {
+                    capital.classList.remove("invalid");
+                    capital.classList.add("valid");
+                } else {
+                    capital.classList.remove("valid");
+                    capital.classList.add("invalid");
+                }
+
+                // Validate numbers
+                var numbers = /[0-9]/g;
+                if (myInput.value.match(numbers)) {
+                    number.classList.remove("invalid");
+                    number.classList.add("valid");
+                } else {
+                    number.classList.remove("valid");
+                    number.classList.add("invalid");
+                }
+
+                // Validate length
+                if (myInput.value.length >= 8) {
+                    length.classList.remove("invalid");
+                    length.classList.add("valid");
+                } else {
+                    length.classList.remove("valid");
+                    length.classList.add("invalid");
+                }
+
+                //lolos password 
+
+                if (myInput.value.length >= 8 && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) && myInput.value.match(lowerCaseLetters) && myInput.value.match(specialChar)) {
+                    lolos.disabled = false;
+                    document.getElementById("message").style.display = "none";
+                    document.getElementById("lulus").style.display = "block";
+                    valdi = true;
+                } else {
+                    document.getElementById("message").style.display = "block";
+                    document.getElementById("lulus").style.display = "none";
+                    lolos.disabled = true;
+                    valdi = false;
+                }
+
+            }
+        </script>
+
 @endsection
