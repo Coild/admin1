@@ -189,13 +189,13 @@
                                         placeholder="*********" />
                                     <label for="inputEmail">Password</label>
                                     <div id="message">
-                                        <h5>Password must contain the following:</h5>
+                                        <h5>Password harus mengandung:</h5>
                                         <p id="letter" class="invalid">Minimal 1 buah <b>huruf kecil</b></p>
                                         <p id="capital" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                         </p>
                                         <p id="number" class="invalid">Minimal 1 buah <b>angka</b></p>
                                         <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
-                                        <p id="length" class="invalid">Minial <b>8 characters</b></p>
+                                        <p id="length" class="invalid">Minimal <b>8 characters</b></p>
                                     </div>
                                     <div id="lulus">
                                         <p class="valid"> password kuat </p>
@@ -272,13 +272,13 @@
                                     placeholder="masukan password" autocomplete="off" />
                                 <label for="inputEmail">Password Baru</label>
                                 <div id="message1">
-                                    <h5>Password must contain the following:</h5>
+                                    <h5>Password harus mengandung:</h5>
                                     <p id="letter1" class="invalid">Minimal 1 buah <b>huruf kecil</b></p>
                                     <p id="capital1" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                     </p>
                                     <p id="number1" class="invalid">Minimal 1 buah <b>angka</b></p>
                                     <p id="special1" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
-                                    <p id="length1" class="invalid">Minial <b>8 characters</b></p>
+                                    <p id="length1" class="invalid">Minimal <b>8 characters</b></p>
                                 </div>
                                 <div id="lulus1">
                                     <p class="valid"> password kuat </p>
