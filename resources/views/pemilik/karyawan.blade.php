@@ -94,12 +94,12 @@
                                                     
                                                     <div id="message">
                                                         <h5>Password must contain the following:</h5>
-                                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b>
-                                                            letter</p>
-                                                        <p id="number" class="invalid">A <b>number</b></p>
-                                                        <p id="special" class="invalid">A <b>spesial karakter</b></p>
-                                                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                                                        <p id="letter" class="invalid">Minimal 1 buah <b>huruf kecil</b></p>
+                                                        <p id="capital" class="invalid">Minimal 1 buah <b>huruf kapital </b>
+                                                        </p>
+                                                        <p id="number" class="invalid">Minimal 1 buah <b>angka</b></p>
+                                                        <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
+                                                        <p id="length" class="invalid">Minial <b>8 characters</b></p>
                                                     </div>
                                                     <div id="lulus">
                                                         <p class="valid"> password kuat </p>
