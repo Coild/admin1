@@ -477,12 +477,12 @@
             e.preventDefault();
         }
     });
-    var letter = document.getElementById("letter1");
-    var capital = document.getElementById("capital1");
-    var number = document.getElementById("number1");
-    var special = document.getElementById("special1");
-    var length = document.getElementById("length1");
-    var lolos = document.getElementById("lolos1");
+    var letter1 = document.getElementById("letter1");
+    var capital1 = document.getElementById("capital1");
+    var number1 = document.getElementById("number1");
+    var special1 = document.getElementById("special1");
+    var length1 = document.getElementById("length1");
+    var lolos1 = document.getElementById("lolos1");
 
     // When the user clicks on the password field, show the message box
     myInput1.onfocus = function() {
@@ -498,65 +498,65 @@
     myInput1.onkeyup = function() {
 
         // Validate lowercase letters
-        var specialChar = /[\_\@\#]/g;
-        if (myInput1.value.match(specialChar)) {
-            special.classList.remove("invalid1");
-            special.classList.add("valid1");
+        var specialChar1 = /[\_\@\#]/g;
+        if (myInput1.value.match(specialChar1)) {
+            special1.classList.remove("invalid1");
+            special1.classList.add("valid1");
         } else {
-            special.classList.remove("valid1");
-            special.classList.add("invalid1");
+            special1.classList.remove("valid1");
+            special1.classList.add("invalid1");
         }
 
         // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        if (myInput1.value.match(lowerCaseLetters)) {
-            letter.classList.remove("invalid1");
-            letter.classList.add("valid1");
+        var lowerCaseLetters1 = /[a-z]/g;
+        if (myInput1.value.match(lowerCaseLetters1)) {
+            letter1.classList.remove("invalid1");
+            letter1.classList.add("valid1");
         } else {
-            letter.classList.remove("valid1");
-            letter.classList.add("invalid1");
+            letter1.classList.remove("valid1");
+            letter1.classList.add("invalid1");
         }
 
         // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        if (myInput1.value.match(upperCaseLetters)) {
-            capital.classList.remove("invalid1");
-            capital.classList.add("valid1");
+        var upperCaseLetters1 = /[A-Z]/g;
+        if (myInput1.value.match(upperCaseLetters1)) {
+            capital1.classList.remove("invalid1");
+            capital1.classList.add("valid1");
         } else {
-            capital.classList.remove("valid1");
-            capital.classList.add("invalid1");
+            capital1.classList.remove("valid1");
+            capital1.classList.add("invalid1");
         }
 
         // Validate numbers
-        var numbers = /[0-9]/g;
-        if (myInput1.value.match(numbers)) {
-            number.classList.remove("invalid1");
-            number.classList.add("valid1");
+        var numbers1 = /[0-9]/g;
+        if (myInput1.value.match(numbers1)) {
+            number1.classList.remove("invalid1");
+            number1.classList.add("valid1");
         } else {
-            number.classList.remove("valid1");
-            number.classList.add("invalid1");
+            number1.classList.remove("valid1");
+            number1.classList.add("invalid1");
         }
 
         // Validate length
         if (myInput1.value.length >= 8) {
-            length.classList.remove("invalid1");
-            length.classList.add("valid1");
+            length1.classList.remove("invalid1");
+            length1.classList.add("valid1");
         } else {
-            length.classList.remove("valid1");
-            length.classList.add("invalid1");
+            length1.classList.remove("valid1");
+            length1.classList.add("invalid1");
         }
 
         //lolos password 
 
-        if (myInput1.value.length >= 8 && myInput1.value.match(numbers) && myInput1.value.match(upperCaseLetters) && myInput1.value.match(lowerCaseLetters) && myInput1.value.match(specialChar)) {
-            lolos.disabled = false;
+        if (myInput1.value.length >= 8 && myInput1.value.match(numbers1) && myInput1.value.match(upperCaseLetters1) && myInput1.value.match(lowerCaseLetters1) && myInput1.value.match(specialChar1)) {
+            lolos1.disabled = false;
             document.getElementById("message1").style.display = "none";
             document.getElementById("lulus1").style.display = "block";
             valdi1 = true;
         } else {
             document.getElementById("message1").style.display = "block";
             document.getElementById("lulus1").style.display = "none";
-            lolos.disabled = true;
+            lolos1.disabled = true;
             valdi1 = false;
         }
 
