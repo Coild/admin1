@@ -36,12 +36,12 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">
                                             <input name="username" class="form-control" id="inputEmail" type="text"
-                                                placeholder="name@example.com" />
+                                                placeholder="name@example.com" onkeypress="return event.keyCode !=13;"/>
                                             <label for="inputEmail">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input name="password" class="form-control" id="inputPassword"
-                                                type="password" placeholder="Password" />
+                                                type="password" placeholder="Password" onkeypress="return event.keyCode !=13;"/>
                                             <label for="inputPassword">Password</label>
                                         </div>
                                         <div class="g-recaptcha" data-callback="recaptcha_callback"

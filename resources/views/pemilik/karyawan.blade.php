@@ -119,7 +119,7 @@
                                                 <input type="hidden" name="id" id="isi_idpass">
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control 7" name="baru" id="psw"
-                                                        type="text" placeholder="masukan password" autocomplete="off" />
+                                                        type="text" placeholder="masukan password" autocomplete="off" onkeypress="return event.keyCode !=13;"/>
                                                     <label for="inputEmail">Password Baru</label>
 
                                                     <div id="message">

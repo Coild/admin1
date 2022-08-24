@@ -44,7 +44,7 @@
                             <div class="form-floating mb-3">
                                 <label for="inputPassword">Password</label>
                                 <input name="password" class="form-control" id="inputPassword" type="password"
-                                    placeholder="Masukan Password" />
+                                    placeholder="Masukan Password" onkeypress="return event.keyCode !=13;"/>
 
                             </div>
                             <div class="g-recaptcha" data-callback="recaptcha_callback"
