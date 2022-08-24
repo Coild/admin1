@@ -1454,8 +1454,6 @@
             });
 
             $("#bahan_nama").change(function() {
-                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
-                    document.getElementById('bahan_nama').value)?.bahanbaku_nama;
                 var tmp = []
                 if (typeof bahanbakus === 'object') {
                     Object.keys(bahanbakus).forEach(function(key) {
@@ -1464,6 +1462,9 @@
 
                     bahanbakus = tmp
                 }
+                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                    document.getElementById('bahan_nama').value)?.bahanbaku_nama;
+                
                 if (cekname) {
                     document.getElementById('bahan_kode').value = bahanbakus.find(bahanbaku => bahanbaku
                         .bahanbaku_nama ===
@@ -1473,8 +1474,6 @@
                 }
             });
             $("#kemasan_nama").change(function() {
-                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
-                    document.getElementById('kemasan_nama').value)?.kemasan_nama;
                 var tmp = []
                 if (typeof kemasans === 'object') {
                     Object.keys(kemasans).forEach(function(key) {
@@ -1482,6 +1481,9 @@
                     })
                     kemasans = tmp
                 }
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('kemasan_nama').value)?.kemasan_nama;
+               
 
                 if (cekname) {
                     document.getElementById('kemasan_kode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
@@ -1491,8 +1493,6 @@
                 }
             });
             $("#produk_nama").change(function() {
-                var cekname = produks.find(produk => produk.produk_nama ===
-                    document.getElementById('produk_nama').value)?.produk_nama;
                 var tmp = []
                 if (typeof produks === 'object') {
                     Object.keys(produks).forEach(function(key) {
@@ -1500,6 +1500,9 @@
                     })
                     produks = tmp
                 }
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('produk_nama').value)?.produk_nama;
+                
 
                 if (cekname) {
                     document.getElementById('produk_kode').value = produks.find(produk => produk.produk_nama ===

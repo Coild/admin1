@@ -367,8 +367,6 @@
 
         var produks = JSON.parse('<?= json_encode($data2) ?>')
         $("#namaproduk").change(function() {
-            var cekname = produks.find(produk => produk.produk_nama ===
-                document.getElementById('namaproduk').value)?.produk_nama;
             var tmp = []
             if (typeof produks === 'object') {
                 Object.keys(produks).forEach(function(key) {
@@ -376,6 +374,9 @@
                 })
             }
             produks = tmp
+            var cekname = produks.find(produk => produk.produk_nama ===
+                document.getElementById('namaproduk').value)?.produk_nama;
+            
             if (cekname) {
                 document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('namaproduk').value).produk_kode
@@ -385,14 +386,15 @@
         });
         $("#editnamaproduk").change(function() {
             var tmp = []
-            var cekname = produks.find(produk => produk.produk_nama ===
-                document.getElementById('editnamaproduk').value)?.produk_nama;
             if (typeof produks === 'object') {
                 Object.keys(produks).forEach(function(key) {
                     tmp.push(produks[key]);
                 })
             produks = tmp
             }
+            var cekname = produks.find(produk => produk.produk_nama ===
+                document.getElementById('editnamaproduk').value)?.produk_nama;
+           
             if (cekname) {
                 document.getElementById('editkodeproduk').value = produks.find(produk => produk.produk_nama ===
                     document.getElementById('editnamaproduk').value).produk_kode

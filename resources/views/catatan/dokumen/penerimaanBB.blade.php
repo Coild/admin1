@@ -768,8 +768,6 @@
                 }
             });
             $("#namakemasan").change(function() {
-                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
-                    document.getElementById('namakemasan').value)?.kemasan_nama;
                 var tmp = []
                 if (typeof kemasans === 'object') {
                     Object.keys(kemasans).forEach(function(key) {
@@ -777,6 +775,9 @@
                     })
                 }
                 kemasans = tmp
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('namakemasan').value)?.kemasan_nama;
+                
                 if (cekname) {
                     document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                         document.getElementById('namakemasan').value).kemasan_kode
@@ -785,8 +786,6 @@
                 }
             });
             $("#namaproduk").change(function() {
-                var cekname = produks.find(produk => produk.produk_nama ===
-                    document.getElementById('namaproduk').value)?.produk_nama;
                 var tmp = []
                 if (typeof produks === 'object') {
                     Object.keys(produks).forEach(function(key) {
@@ -794,6 +793,9 @@
                     })
                 }
                 produks = tmp
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value)?.produk_nama;
+                
                 if (typeof kemasans === 'object') {
                     Object.keys(kemasans).forEach(function(key) {
                         tmp.push(kemasans[key]);
@@ -819,7 +821,7 @@
                     bahanbakus = tmp
                 }
 
-                console.log(bahanbakus);
+                // console.log(bahanbakus);
                 if (cekname) {
                     document.getElementById('bahankode').value = bahanbakus.find(bahanbaku => bahanbaku
                         .bahanbaku_nama ===
@@ -829,17 +831,18 @@
                 }
             });
             $("#kemasannama").change(function() {
-                var tmp = []
-                console.log(kemasans);
-                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
-                    document.getElementById('kemasannama').value)?.kemasan_nama;
+                var tmp = [];
+
                 if (typeof kemasans === 'object') {
                     Object.keys(kemasans).forEach(function(key) {
                         tmp.push(kemasans[key]);
 
                     })
                     kemasans = tmp
-                }
+                }                //console.log(kemasans);
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('kemasannama').value)?.kemasan_nama;
+                
                 if (cekname) {
                     document.getElementById('kemasankode').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                         document.getElementById('kemasannama').value).kemasan_kode
@@ -849,14 +852,15 @@
             });
             $("#produknama").change(function() {
                 var tmp = []
-                var cekname = produks.find(produk => produk.produk_nama ===
-                    document.getElementById('produknama').value)?.produk_nama;
                 if (typeof produks === 'object') {
                     Object.keys(produks).forEach(function(key) {
                         tmp.push(produks[key]);
                     })
                     produks = tmp
                 }
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('produknama').value)?.produk_nama;
+               
 
                 if (cekname) {
                     document.getElementById('produkkode').value = produks.find(produk => produk.produk_nama ===

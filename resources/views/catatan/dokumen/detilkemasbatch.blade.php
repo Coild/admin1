@@ -466,9 +466,6 @@
     <script>
         var kemasans = JSON.parse('<?= json_encode($kemasan) ?>')
         $("#namaproduk").change(function() {
-
-            var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
-                document.getElementById('namaproduk').value)?.kemasan_nama;
             var tmp = []
             if (typeof kemasans === 'object') {
                 Object.keys(kemasans).forEach(function(key) {
@@ -476,6 +473,9 @@
                 })
             }
             kemasans = tmp;
+            var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                document.getElementById('namaproduk').value)?.kemasan_nama;
+            
 
             if (cekname) {
                 document.getElementById('kodeproduk').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
