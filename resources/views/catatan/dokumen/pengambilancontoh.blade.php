@@ -1416,8 +1416,6 @@
                 }
             });
             $("#namakemasan").change(function() {
-                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
-                    document.getElementById('namakemasan').value)?.kemasan_nama;
                 var tmp = []
                 if (typeof kemasans === 'object') {
                     Object.keys(kemasans).forEach(function(key) {
@@ -1425,6 +1423,9 @@
                     })
                     kemasans = tmp
                 }
+                var cekname = kemasans.find(kemasan => kemasan.kemasan_nama ===
+                    document.getElementById('namakemasan').value)?.kemasan_nama;
+                
                 if (cekname) {
                     document.getElementById('kodekemasan').value = kemasans.find(kemasan => kemasan.kemasan_nama ===
                         document.getElementById('namakemasan').value).kemasan_kode
@@ -1433,8 +1434,6 @@
                 }
             });
             $("#namaproduk").change(function() {
-                var cekname = produks.find(produk => produk.produk_nama ===
-                    document.getElementById('namaproduk').value)?.produk_nama;
                 var tmp = []
                 if (typeof produks === 'object') {
                     Object.keys(produks).forEach(function(key) {
@@ -1442,6 +1441,9 @@
                     })
                     produks = tmp
                 }
+                var cekname = produks.find(produk => produk.produk_nama ===
+                    document.getElementById('namaproduk').value)?.produk_nama;
+                
                 if (cekname) {
                     document.getElementById('kodeproduk').value = produks.find(produk => produk.produk_nama ===
                         document.getElementById('namaproduk').value).produk_kode
