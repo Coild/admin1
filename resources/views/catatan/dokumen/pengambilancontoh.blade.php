@@ -1398,8 +1398,6 @@
                 return this.numericPattern.test(event.key);
             }
             $("#namabahanbaku").change(function() {
-                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
-                    document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
                 var tmp = []
                 if (typeof bahanbakus === 'object') {
                     Object.keys(bahanbakus).forEach(function(key) {
@@ -1407,6 +1405,9 @@
                     })
                     bahanbakus = tmp
                 }
+                var cekname = bahanbakus.find(bahanbaku => bahanbaku.bahanbaku_nama ===
+                    document.getElementById('namabahanbaku').value)?.bahanbaku_nama;
+                
                 if (cekname) {
                     document.getElementById('kodebahanbaku').value = bahanbakus.find(bahanbaku => bahanbaku
                         .bahanbaku_nama ===
