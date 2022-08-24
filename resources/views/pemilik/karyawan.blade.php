@@ -318,7 +318,7 @@
                             <div class="form-group">
                                 <label for="inputEmail">Posisi</label>
                                 <select style="height: 35px;" class="form-control" name="posisi" id="input_posisi">
-                                    <option value="">Pilih posisi</option>
+                                    <option value="2">Pilih posisi</option>
                                     <option value="2">Penanggung Jawab</option>
                                     <option value="3">Pelaksana</option>
                                 </select>
