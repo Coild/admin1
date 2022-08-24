@@ -318,7 +318,7 @@
                             <div class="form-group">
                                 <label for="inputEmail">Posisi</label>
                                 <select style="height: 35px;" class="form-control" name="posisi" id="input_posisi">
-                                    <option value="2">Pilih posisi</option>
+                                    
                                     <option value="2">Penanggung Jawab</option>
                                     <option value="3">Pelaksana</option>
                                 </select>
@@ -521,114 +521,7 @@
             }
         </script>
 
-         {{-- script strong --}}
-         <script>
-            var banned = [
-                "<",
-                ">",
-                "%",
-                "\"",
-                "\'",
-                "&",
-                "|",
-                "!"
-            ];
-            var myInput = document.getElementById("psw1");
-            myInput.addEventListener("keydown", function(e) {
-                console.log(banned);
-                if (banned.includes(e.key)) {
-                    e.preventDefault();
-                }
-            });
-            var letter = document.getElementById("letter1");
-            var capital = document.getElementById("capital1");
-            var number = document.getElementById("number1");
-            var special = document.getElementById("special1");
-            var length = document.getElementById("length1");
-            var lolos = document.getElementById("lolos1");
-
-            // When the user clicks on the password field, show the message box
-            myInput.onfocus = function() {
-                if (!valdi) document.getElementById("message1").style.display = "block";
-            }
-
-            // When the user clicks outside of the password field, hide the message box
-            myInput.onblur = function() {
-                document.getElementById("message1").style.display = "none";
-            }
-
-            // When the user starts to type something inside the password field
-            myInput.onkeyup = function() {
-
-                // Validate lowercase letters
-                var specialChar = /[\_\@\#]/g;
-                if (myInput.value.match(specialChar)) {
-                    special.classList.remove("invalid");
-                    special.classList.add("valid");
-                } else {
-                    special.classList.remove("valid");
-                    special.classList.add("invalid");
-                }
-
-                // Validate lowercase letters
-                var lowerCaseLetters = /[a-z]/g;
-                if (myInput.value.match(lowerCaseLetters)) {
-                    letter.classList.remove("invalid");
-                    letter.classList.add("valid");
-                } else {
-                    letter.classList.remove("valid");
-                    letter.classList.add("invalid");
-                }
-
-                // Validate capital letters
-                var upperCaseLetters = /[A-Z]/g;
-                if (myInput.value.match(upperCaseLetters)) {
-                    capital.classList.remove("invalid");
-                    capital.classList.add("valid");
-                } else {
-                    capital.classList.remove("valid");
-                    capital.classList.add("invalid");
-                }
-
-                // Validate numbers
-                var numbers = /[0-9]/g;
-                if (myInput.value.match(numbers)) {
-                    number.classList.remove("invalid");
-                    number.classList.add("valid");
-                } else {
-                    number.classList.remove("valid");
-                    number.classList.add("invalid");
-                }
-
-                // Validate length
-                if (myInput.value.length >= 8) {
-                    length.classList.remove("invalid");
-                    length.classList.add("valid");
-                } else {
-                    length.classList.remove("valid");
-                    length.classList.add("invalid");
-                }
-
-                //lolos password 
-
-
-
-
-                if (myInput.value.length >= 8 && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) &&
-                    myInput.value.match(lowerCaseLetters) && myInput.value.match(specialChar)) {
-                    lolos.disabled = false;
-                    document.getElementById("message").style.display = "none";
-                    document.getElementById("lulus").style.display = "block";
-                    valdi = true;
-                } else {
-                    document.getElementById("message").style.display = "block";
-                    document.getElementById("lulus").style.display = "none";
-                    lolos.disabled = true;
-                    valdi = false;
-                }
-
-            }
-        </script>
+         
 
 
     </main>
