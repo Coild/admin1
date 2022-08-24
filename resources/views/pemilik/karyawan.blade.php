@@ -137,7 +137,7 @@
 
                                                 </div>
                                                 <button type="button" id="lolos" class="btn btn-primary"
-                                                    onclick="resetPassword(7)" disabled>Simpan</button>
+                                                    onclick="salert1(7)" disabled>Simpan</button>
                                             </form>
                                         </div>
                                     </div>
