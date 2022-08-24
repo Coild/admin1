@@ -345,6 +345,7 @@
 
         <script type="text/javascript">
             var valdi = false;
+            var valdi1 = false;
             $(document).on('click', "#reset", function() {
                 var id = $(this).data('id');
                 console.log("hai " + id);
@@ -413,113 +414,222 @@
         </script>
 
         {{-- script strong --}}
-        <script>
-            var banned = [
-                "<",
-                ">",
-                "%",
-                "\"",
-                "\'",
-                "&",
-                "|",
-                "!"
-            ];
-            var myInput = document.getElementById("psw");
-            myInput.addEventListener("keydown", function(e) {
-                console.log(banned);
-                if (banned.includes(e.key)) {
-                    e.preventDefault();
-                }
-            });
-            var letter = document.getElementById("letter");
-            var capital = document.getElementById("capital");
-            var number = document.getElementById("number");
-            var special = document.getElementById("special");
-            var length = document.getElementById("length");
-            var lolos = document.getElementById("lolos");
+    <script>
+        var banned = [
+            "<",
+            ">",
+            "%",
+            "\"",
+            "\'",
+            "&",
+            "|",
+            "!"
+        ];
+        var myInput = document.getElementById("psw");
+        myInput.addEventListener("keydown", function(e) {
+            console.log(banned);
+            if (banned.includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var special = document.getElementById("special");
+        var length = document.getElementById("length");
+        var lolos = document.getElementById("lolos");
 
-            // When the user clicks on the password field, show the message box
-            myInput.onfocus = function() {
-                if (!valdi) document.getElementById("message").style.display = "block";
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+            if (!valdi) document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+
+            // Validate lowercase letters
+            var specialChar = /[\_\@\#]/g;
+            if (myInput.value.match(specialChar)) {
+                special.classList.remove("invalid");
+                special.classList.add("valid");
+            } else {
+                special.classList.remove("valid");
+                special.classList.add("invalid");
             }
 
-            // When the user clicks outside of the password field, hide the message box
-            myInput.onblur = function() {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+
+            //lolos password 
+
+
+
+
+            if (myInput.value.length >= 8 && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) &&
+                myInput.value.match(lowerCaseLetters) && myInput.value.match(specialChar)) {
+                lolos.disabled = false;
                 document.getElementById("message").style.display = "none";
+                document.getElementById("lulus").style.display = "block";
+                valdi = true;
+            } else {
+                document.getElementById("message").style.display = "block";
+                document.getElementById("lulus").style.display = "none";
+                lolos.disabled = true;
+                valdi = false;
             }
 
-            // When the user starts to type something inside the password field
-            myInput.onkeyup = function() {
+        }
+    </script>
 
-                // Validate lowercase letters
-                var specialChar = /[\_\@\#]/g;
-                if (myInput.value.match(specialChar)) {
-                    special.classList.remove("invalid");
-                    special.classList.add("valid");
-                } else {
-                    special.classList.remove("valid");
-                    special.classList.add("invalid");
-                }
-
-                // Validate lowercase letters
-                var lowerCaseLetters = /[a-z]/g;
-                if (myInput.value.match(lowerCaseLetters)) {
-                    letter.classList.remove("invalid");
-                    letter.classList.add("valid");
-                } else {
-                    letter.classList.remove("valid");
-                    letter.classList.add("invalid");
-                }
-
-                // Validate capital letters
-                var upperCaseLetters = /[A-Z]/g;
-                if (myInput.value.match(upperCaseLetters)) {
-                    capital.classList.remove("invalid");
-                    capital.classList.add("valid");
-                } else {
-                    capital.classList.remove("valid");
-                    capital.classList.add("invalid");
-                }
-
-                // Validate numbers
-                var numbers = /[0-9]/g;
-                if (myInput.value.match(numbers)) {
-                    number.classList.remove("invalid");
-                    number.classList.add("valid");
-                } else {
-                    number.classList.remove("valid");
-                    number.classList.add("invalid");
-                }
-
-                // Validate length
-                if (myInput.value.length >= 8) {
-                    length.classList.remove("invalid");
-                    length.classList.add("valid");
-                } else {
-                    length.classList.remove("valid");
-                    length.classList.add("invalid");
-                }
-
-                //lolos password 
-
-
-
-
-                if (myInput.value.length >= 8 && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) &&
-                    myInput.value.match(lowerCaseLetters) && myInput.value.match(specialChar)) {
-                    lolos.disabled = false;
-                    document.getElementById("message").style.display = "none";
-                    document.getElementById("lulus").style.display = "block";
-                    valdi = true;
-                } else {
-                    document.getElementById("message").style.display = "block";
-                    document.getElementById("lulus").style.display = "none";
-                    lolos.disabled = true;
-                    valdi = false;
-                }
-
+     {{-- script strong --}}
+     <script>
+        var banned = [
+            "<",
+            ">",
+            "%",
+            "\"",
+            "\'",
+            "&",
+            "|",
+            "!"
+        ];
+        var myInput1 = document.getElementById("psw1");
+        myInput1.addEventListener("keydown", function(e) {
+            console.log("psw1");
+            if (banned.includes(e.key)) {
+                e.preventDefault();
             }
-        </script>
+        });
+        var letter1 = document.getElementById("letter1");
+        var capital1 = document.getElementById("capital1");
+        var number1 = document.getElementById("number1");
+        var special1 = document.getElementById("special1");
+        var length1 = document.getElementById("length1");
+        var lolos1 = document.getElementById("lolos1");
+
+        // When the user clicks on the password field, show the message box
+        myInput1.onfocus = function() {
+            if (!valdi1) document.getElementById("message1").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput1.onblur = function() {
+            document.getElementById("message1").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput1.onkeyup = function() {
+
+            // Validate lowercase letters
+            var specialChar = /[\_\@\#]/g;
+            if (myInput1.value.match(specialChar)) {
+                special1.classList.remove("invalid");
+                special1.classList.add("valid");
+            } else {
+                special1.classList.remove("valid");
+                special1.classList.add("invalid");
+            }
+
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput1.value.match(lowerCaseLetters)) {
+                letter1.classList.remove("invalid");
+                letter1.classList.add("valid");
+            } else {
+                letter1.classList.remove("valid");
+                letter1.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput1.value.match(upperCaseLetters)) {
+                capital1.classList.remove("invalid");
+                capital1.classList.add("valid");
+            } else {
+                capital1.classList.remove("valid");
+                capital1.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput1.value.match(numbers)) {
+                number1.classList.remove("invalid");
+                number1.classList.add("valid");
+            } else {
+                number1.classList.remove("valid");
+                number1.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput1.value.length >= 8) {
+                length1.classList.remove("invalid");
+                length1.classList.add("valid");
+            } else {
+                length1.classList.remove("valid");
+                length1.classList.add("invalid");
+            }
+
+            //lolos password 
+
+
+
+
+            if (myInput1.value.length >= 8 && myInput1.value.match(numbers) && myInput1.value.match(upperCaseLetters) &&
+                myInput1.value.match(lowerCaseLetters) && myInput1.value.match(specialChar)) {
+                lolos1.disabled = false;
+                document.getElementById("message1").style.display = "none";
+                document.getElementById("lulus1").style.display = "block";
+                valdi1 = true;
+            } else {
+                document.getElementById("message1").style.display = "block";
+                document.getElementById("lulus1").style.display = "none";
+                lolos1.disabled = true;
+                valdi1 = false;
+            }
+
+        }
+    </script>
 
          
 
