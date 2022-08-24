@@ -461,7 +461,7 @@ function filecheck() {
 
 
 function salert1(params) {
-    // console.log(params);
+    console.log("forminput"+params);
     const mycomp = document.getElementsByClassName("form-control " + params);
     var pesan =""
     var valid = false;

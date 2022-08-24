@@ -229,7 +229,7 @@
                     <div class="modal-body">
 
                         <div class="card-body">
-                            <form action="/register" method="post" class="forminput1" id='formModalTambahKaryawan'>
+                            <form action="/register" method="post" id="forminput1" id='formModalTambahKaryawan'>
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="row mb-3">
