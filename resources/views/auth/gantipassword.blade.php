@@ -117,7 +117,7 @@
                                             </div>
                                         </div> 
                                         <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                            data-sitekey="6Lecb2YfAAAAAIR2uhydBgujcJ7VLBleTtAkDFQJ"></div>
+                                            data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
                                         <p id="art" class="text-danger"></p>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 

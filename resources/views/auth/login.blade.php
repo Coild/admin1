@@ -48,7 +48,7 @@
 
                             </div>
                             <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                data-sitekey="6Lecb2YfAAAAAIR2uhydBgujcJ7VLBleTtAkDFQJ"></div>
+                                data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
                             <p id="art" class="text-danger"></p>
                             <div class="form-check mb-3">
                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
