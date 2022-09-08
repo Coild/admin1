@@ -235,7 +235,7 @@ class protapController extends Controller
       $hasil = [
          'protap_file' => $nama,
          'protap_nama' => protapController::bersih($req['nama']),
-         'protap_nomor' => protapController::bersih($req['nomor']),
+         'protap_nomor' => protapController::bersih_angka($req['nomor']),
          'protap_ruangan' => protapController::bersih($req['ruangan']),
          'protap_diajukan' => ($req['diajukan']),
          'protap_tgl_diajukan' => $req['tgl_diajukan'],
