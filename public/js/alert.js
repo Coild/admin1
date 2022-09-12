@@ -468,7 +468,7 @@ function salert1(params) {
 
     for (i = 0; i < mycomp.length; i++) {
         // var x = text_gagal[i].value = 'coba';
-        // console.log(mycomp[i].value);
+        console.log(mycomp[i].value);
         
         // if (specialChars.test( mycomp[i].value)) {
         //     pesan = "tidak boleh ada karakter spesial";

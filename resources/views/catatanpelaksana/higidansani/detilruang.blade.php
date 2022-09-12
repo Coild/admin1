@@ -35,7 +35,7 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detilperiksaruang" id='forminput'>
+                                        <form method="post" action="tambah_detilperiksaruang" id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header" id='headertgl'></div>
                                                 @csrf
@@ -49,13 +49,12 @@
                                                         @csrf
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-                                                        <input type="hidden" name="id_induk" value='{{ $id_ruangan }}'
-                                                            class="form-control 1" value="" placeholder="" />
+                                                        <input type="hidden" name="id_induk" value='{{ $id_ruangan }}' class="form-control 99" placeholder="" />
                                                         <div class="form-group row">
                                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Ruangan
                                                             </label>
                                                             <div class="col-sm">
-                                                                <input class="form-control 1" type='text' readonly
+                                                                <input class="form-control 99" type='text' readonly
                                                                     placeholder="Ruangan" style="height: 35px;"
                                                                     value="{{ $nama_ruangan }}"
                                                                     id="inlineFormCustomSelect">
@@ -150,7 +149,7 @@
 
 
                                                 </div>
-                                                <a class="btn btn-primary" onclick="salert(1)" href="#"
+                                                <a class="btn btn-primary" onclick="salert1(1)" href="#"
                                                     style="float:left; width: 100px;  margin-left:25px"
                                                     role="button">Simpan</a>
                                         </form>
