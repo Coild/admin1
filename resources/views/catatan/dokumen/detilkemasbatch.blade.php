@@ -11,9 +11,8 @@
                 <li class="breadcrumb-item active">Pengolahan Batch</li>
             </ol>
             <div class="row">
-                @foreach ($data as $row)
-                    <?php $nobatch = $row['id_pengemasanbatchproduk'];
-                    $status = $row['status'];
+                    <?php $nobatch = $data['id_pengemasanbatchproduk'];
+                    $status = $data['status'];
                     $awal = 0;
                     $akhir = 0; ?>
                     <div class="card mb-4">
@@ -26,16 +25,16 @@
 
 
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan POB No</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['protap'] }} </p>
+                                    <p class="form-control"> {{ $dp['protap_nomor'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Ruangan</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['protap'] }} </p>
+                                    <p class="form-control"> {{ $dp['protap_nama'] }} </p>
                                 </div>
                             </div>
 
@@ -52,53 +51,53 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Produk</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['kode_produk'] }} </p>
+                                    <p class="form-control"> {{ $data['kode_produk'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Produk</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['nama_produk'] }} </p>
+                                    <p class="form-control"> {{ $data['nama_produk'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Batch</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['no_batch'] }} </p>
+                                    <p class="form-control"> {{ $data['no_batch'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Besar Batch</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['besar_batch'] }} </p>
+                                    <p class="form-control"> {{ $data['besar_batch'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Bentuk Sediaan</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['bentuksediaan'] }} </p>
+                                    <p class="form-control"> {{ $data['bentuksediaan'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kemasan</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control"> {{ $row['kemasan'] }} </p>
+                                    <p class="form-control"> {{ $data['kemasan'] }} </p>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Mulai</label>
                                 <div class="col-sm-4">
-                                    <p class="form-control"> {{ $row['mulai'] }} </p>
+                                    <p class="form-control"> {{ $data['mulai'] }} </p>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Selesai</label>
                                 <div class="col-sm-4">
-                                    <p class="form-control"> {{ $row['selesai'] }} </p>
+                                    <p class="form-control"> {{ $data['selesai'] }} </p>
                                 </div>
                             </div>
 
@@ -106,7 +105,6 @@
                         </div>
 
                     </div>
-                @endforeach
 
                 <div class="card mb-4">
                     <div class="card-header">
@@ -266,7 +264,11 @@
                                         <td>{{ $row['j_pakai'] }}</td>
                                         <td>{{ $row['j_kembali'] }}</td>
                                         <td>
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm" onclick="editdata1({{$row}})">Edit</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm"  onclick="editdata1({{$row}})" 
+                                            <?php if ($status > 0) {
+                                                echo 'disabled';
+                                            } ?>
+                                            >Edit</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -357,7 +359,11 @@
                                         </td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm1" onclick="editdata2({{$row}})">Edit</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm1" onclick="editdata2({{$row}})"
+                                            <?php if ($status > 0) {
+                                                echo 'disabled';
+                                            } ?>
+                                            >Edit</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -448,7 +454,10 @@
                                         </td>
                                         <td>
                                             @if (Auth::user()->level != 2)
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm2" onclick="editdata3({{$row}})">Edit</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm2" onclick="editdata3({{$row}})" <?php if ($status > 0) {
+                                                echo 'disabled';
+                                            } ?>
+                                            >Edit</button>
                                             @endif
                                             
                                         </td>

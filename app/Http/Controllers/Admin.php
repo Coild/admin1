@@ -262,7 +262,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/jabatan');
+        return redirect('/jabatan')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_jabatan(Request $req)
@@ -313,7 +313,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/pobpabrik');
+        return redirect('/pobpabrik')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_pobpabrik(Request $req)
@@ -1360,8 +1360,10 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $id = $req['nobatch'] ??  session()->get('detilkemasbatch');
         session(['detilkemasbatch' => $req['nobatch'] ??  $id]);
-        $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id);
-        // dd($id);
+        $data = Pengemasanbatchproduk::all()->where('id_pengemasanbatchproduk', $id)->first();
+        // dd($data);
+        $dp = protap::all()->where('protap_id', $data['protap'])->first();
+        // dd($dp);
         $kemasan = kemasan::all()->where('user_id', $pabrik);
         $prkemas = pr_bahankemas::all()->where('id_kemasbatch', $id);
         $proisi = prosedur_isi::all()->where('id_kemas', $id);
@@ -1371,7 +1373,7 @@ class Admin extends Controller
             'id' => $id,
             'data' => $data, 'kemasan' => $kemasan, 'prkemas' => $prkemas,
             'proisi' => $proisi, 'protanda' => $protanda,
-            'status' => $req['status']
+            'status' => $req['status'], 'dp'=> $dp
         ]);
     }
 
@@ -1542,9 +1544,13 @@ class Admin extends Controller
     {
         // dd($req);
 
+        
         $id = $req['nobatch'] ??  session()->get('detilbatch');
         session(['detilbatch' => $req['nobatch'] ??  $id]);
+        
         $data = pengolahanbatch::all()->where('nomor_batch', $id)->first();
+        $nomer_protap = protap::findOrFail($data['pob']);
+        // dd($nomer_protap);
         // $data = [$data];
         // dd($data['nomor_batch']);
         $kom = komposisi::all()->where('nomor_batch', $id);
@@ -1557,7 +1563,7 @@ class Admin extends Controller
             'id' => $id, 'no' => $req['nomor'],
             'data' => $data, 'list_kom' => $kom, 'list_alat' => $alat, 'list_nimbang' => $nimbang,
             'list_olah' => $olah, 'rekon' => $rekon,
-            'status' => $req['status'], 'bahanbaku' => $bahanbaku
+            'status' => $req['status'], 'bahanbaku' => $bahanbaku, 'nomer_protap' => $nomer_protap
 
         ]);
     }
@@ -1830,7 +1836,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_peralatan($id)
@@ -1845,7 +1851,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_penimbangan($id)
@@ -1859,7 +1865,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_olah($id)
@@ -1874,7 +1880,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_rekonsiliasi($id)
@@ -1889,7 +1895,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tambah_company(Request $req)
@@ -2029,7 +2035,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/setting');
+        return redirect('/setting')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_kemasan($id)
@@ -2042,7 +2048,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        return redirect('/setting');
+        return redirect('/setting')->with('success', 'Data berhasil dihapus!');
     }
 
     public function hapus_bahanbaku($id)
@@ -2056,7 +2062,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/setting');
+        return redirect('/setting')->with('success', 'Data berhasil dihapus!');
     }
     public function hapus_produkantara($id)
     {
@@ -2068,7 +2074,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        return redirect('/setting');
+        return redirect('/setting')->with('success', 'Data berhasil dihapus!');
     }
 
     public function tampil_setting()

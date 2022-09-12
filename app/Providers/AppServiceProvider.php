@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         /* Use https links instead http links */
 
-        URL::forceScheme('https');
+        URL::forceScheme('http'); 
     }
 }

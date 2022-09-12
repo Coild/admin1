@@ -27,7 +27,8 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Sesuai Dengan Protap Nomor</label>
                             <div class="col-sm-10">
-                                <p class="form-control"> {{ $data['pob'] }} </p>
+                                {{-- <p class="form-control"> {{ $data['pob'] }} </p> --}}
+                                <p class="form-control"> {{ $nomer_protap['protap_nomor'] }} </p>
                             </div>
                         </div>
 
