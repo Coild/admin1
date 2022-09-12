@@ -23,7 +23,7 @@ class pjt extends Controller
         return view('catatan.dokumen.pengolahanbatch', ['data' => $data]);
     }
 
-    public function terima_batch(Request  $req)
+    public function terima_batch(Request $req)
     {
         $id = $req['no'];
         // dd($req);
@@ -53,7 +53,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('pengolahanbatch');
+        return redirect()->route('pengolahanbatch')->with('success', 'Catatan sudah diterima!');;
     }
 
     public function terima_kemasbatch(Request  $req)
@@ -87,7 +87,7 @@ class pjt extends Controller
             log::insert($log);
 
 
-        return redirect()->route('pengemasan-batch');
+        return redirect()->route('pengemasan-batch')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_ambilbahankemas(Request $req)
@@ -121,7 +121,7 @@ class pjt extends Controller
             log::insert($log);
 
 
-        return redirect()->route('ambilcontoh');
+        return redirect()->route('ambilcontoh')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_ambilprodukjadi(Request $req)
@@ -153,7 +153,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('ambilcontoh');
+        return redirect()->route('ambilcontoh')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_ambilbahanbaku(Request $req)
@@ -186,7 +186,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('ambilcontoh');
+        return redirect()->route('ambilcontoh')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_cp_bahan(Request $req)
@@ -222,7 +222,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('penerimaanBB');
+        return redirect()->route('penerimaanBB')->with('success', 'Catatan sudah diterima!');
     }
 
 
@@ -256,7 +256,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('penerimaanBB');
+        return redirect()->route('penerimaanBB')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_cp_kemasan(Request $req)
@@ -287,7 +287,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('penerimaanBB');
+        return redirect()->route('penerimaanBB')->with('success', 'Catatan sudah diterima!');
     }
 
     //terima pelatihan higi sani
@@ -319,7 +319,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
+        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_pelatihancpkb(Request $req)
@@ -350,7 +350,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi');
+        return redirect()->route('program-dan-pelatihan-higiene-dan-sanitasi')->with('success', 'Catatan sudah diterima!');
     }
 
     //pengoperasianalat
@@ -382,7 +382,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pengoprasian-alat');
+        return redirect()->route('pengoprasian-alat')->with('success', 'Catatan sudah diterima!');
     }
 
 
@@ -416,7 +416,7 @@ class pjt extends Controller
         ];
         log::insert($log);
 
-        return redirect()->route('periksasaniruang');
+        return redirect()->route('periksasaniruang')->with('success', 'Catatan sudah diterima!');
 
     }
 
@@ -451,7 +451,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pendistribusian-produk');
+        return redirect()->route('pendistribusian-produk')->with('success', 'Catatan sudah diterima!');
     }
 
     //penimbangan
@@ -483,7 +483,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('penimbangan');
+        return redirect()->route('penimbangan')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_penimbanganproduk(Request $req)
@@ -515,7 +515,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('penimbangan');
+        return redirect()->route('penimbangan')->with('success', 'Catatan sudah diterima!');
     }
 
     public function terima_penimbanganruang(Request $req)
@@ -546,7 +546,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('penimbangan');
+        return redirect()->route('penimbangan')->with('success', 'Catatan sudah diterima!');
     }
 
     //pelulusan produk
@@ -579,7 +579,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('pelulusan-produk');
+        return redirect()->route('pelulusan-produk')->with('success', 'Catatan sudah diterima!');
     }
 
 
@@ -614,7 +614,7 @@ class pjt extends Controller
         log::insert($log);
 
 
-        return redirect()->route('penanganan-keluhan');
+        return redirect()->route('penanganan-keluhan')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_penarikanproduk(Request $req)
     {
@@ -645,7 +645,7 @@ class pjt extends Controller
             ];
             log::insert($log);
             
-        return redirect()->route('penarikan-produk');
+        return redirect()->route('penarikan-produk')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemusnahanbahanbaku(Request $req)
     {
@@ -675,7 +675,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pemusnahan-produk');
+        return redirect()->route('pemusnahan-produk')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemusnahanbahankemas(Request $req)
     {
@@ -705,7 +705,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pemusnahan-produk');
+        return redirect()->route('pemusnahan-produk')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemusnahanprodukantara(Request $req)
     {
@@ -736,7 +736,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('pemusnahan-produk');
+        return redirect()->route('pemusnahan-produk')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemusnahanprodukjadi(Request $req)
     {
@@ -766,7 +766,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pemusnahan-produk');
+        return redirect()->route('pemusnahan-produk')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_stokbahanbaku(Request $req)
     {
@@ -796,7 +796,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('kartu-stok');
+        return redirect()->route('kartu-stok')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_stokbahankemas(Request $req)
     {
@@ -856,7 +856,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('kartu-stok');
+        return redirect()->route('kartu-stok')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_stokprodukantara(Request $req)
     {
@@ -886,7 +886,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('kartu-stok');
+        return redirect()->route('kartu-stok')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemeriksaanbahanbaku(Request $req)
     {
@@ -917,7 +917,7 @@ class pjt extends Controller
             ];
             log::insert($log);
 
-        return redirect()->route('pemeriksaan-bahan');
+        return redirect()->route('pemeriksaan-bahan')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemeriksaanbahankemas(Request $req)
     {
@@ -947,7 +947,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pemeriksaan-bahan');
+        return redirect()->route('pemeriksaan-bahan')->with('success', 'Catatan sudah diterima!');
     }
     public function terima_pemeriksaanprodukjadi(Request $req)
     {
@@ -977,7 +977,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('pemeriksaan-bahan');
+        return redirect()->route('pemeriksaan-bahan')->with('success', 'Catatan sudah diterima!');
     }
 
     //higiene dan sanitasi
@@ -1015,7 +1015,7 @@ class pjt extends Controller
                 'id_pabrik' => Auth::user()->pabrik
             ];
             log::insert($log);
-        return redirect()->route('periksasanialat');
+        return redirect()->route('periksasanialat')->with('success', 'Catatan sudah diterima!');
     }
 
 

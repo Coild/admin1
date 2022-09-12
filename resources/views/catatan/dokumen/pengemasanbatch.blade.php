@@ -198,7 +198,7 @@
                                     @csrf
                                     <input type="hidden" name="nobatch" value="{{ $row['id_pengemasanbatchproduk'] }}" />
                                     <input type="hidden" name="status" value="{{ $row['status'] }}" />
-                                    <button type="submit" class="btn btn-primary">lihat</button>
+                                    <button type="submit" class="btn btn-success">lihat</button>
                                 </form>
                                 @if (Auth::user()->level == 2)
                                     <?php if ($row['status'] == 0) { ?>

@@ -217,7 +217,7 @@ class protapController extends Controller
 
       $log['log_isi'] = Auth::user()->namadepan . ' menghapus protap ' . $judul;
       log::insert($log);
-      return redirect('/tampil_protap/' . $jenis);
+      return redirect('/tampil_protap/' . $jenis)->with('success', 'Data berhasil dihapus!');
    }
 
    public function tambah_protap(Request $req)
@@ -345,7 +345,7 @@ class protapController extends Controller
       log::insert($log);
       protap::insert($hasil);
       // // user::deleted()
-      return redirect('/tampil_protap/' . $jenis);
+      return redirect('/tampil_protap/' . $jenis)->with('success', 'Data berhasil ditambah!');
    }
 
    public function tolak(Request $req)
