@@ -1463,7 +1463,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
     public function edit_proisi(Request $req)
@@ -1485,7 +1485,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
     public function edit_prkemas(Request $req)
@@ -1514,7 +1514,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
 
@@ -1712,7 +1712,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //peralatan
@@ -1739,7 +1739,7 @@ class Admin extends Controller
 
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //catat penimbangan
@@ -1770,7 +1770,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //olah
@@ -1795,7 +1795,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     public function tambah_rekonsiliasi(Request $req)
@@ -1819,7 +1819,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     public function hapus_komposisi($id)
