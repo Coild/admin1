@@ -11,5 +11,5 @@ class pemusnahanprodukantara extends Model
     protected $primaryKey = 'id_pemusnahanprodukantara';
     // public $timestamps = true;
 
-    protected $guarded =['id_pemusnahanprodukantara'];
+    protected $guarded = ['id_pemusnahanprodukantara'];
 }
