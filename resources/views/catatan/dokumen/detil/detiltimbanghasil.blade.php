@@ -65,34 +65,87 @@
                                                                 id="nama_bahan" placeholder="No Loth" />
                                                         </div>
                                                     </div>
-
+                                                    
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-3 col-form-label">Jumlah
                                                             Permintaan</label>
-                                                        <div class="col-sm" data-tip="Hanya angka saja">
-                                                            <input type="number" name="jumlah_permintaan"
-                                                                class="form-control 1" id="jumlah_permintaan"
-                                                                placeholder="Jumlah Permintaan" />
+                                                        <div class="col-sm">
+                    
+                                                            <div class="row">
+                                                                <div class="col-sm-8"
+                                                                    data-tip="Hanya angka saja">
+                                                                    <input type="number"
+                                                                    name="jumlah_permintaan"  class="form-control 1"
+                                                                    id="jumlah_permintaan"
+                                                                    placeholder="Jumlah Permintaan" />
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <select class="form-select"
+                                                                        name="satuan" id="satuan">
+                                                                        <option value="gr"> gr</option>
+                                                                    <option value="kg"> kg</option>
+                                                                    <option value="ml"> ml</option>
+                                                                    <option value="L"> L</option>
+                                                                    <option value="Pcs"> Pcs</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-3 col-form-label">Hasil
                                                             Timbang</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="hasil_timbang" class="form-control 1"
+                    
+                                                            <div class="row">
+                                                                <div class="col-sm-8"
+                                                                    data-tip="Hanya angka saja">
+                                                                    <input type="text" name="hasil_timbang" class="form-control 1"
                                                                 id="hasil_timbang" placeholder="Hasil Timbang" />
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <select class="form-select"
+                                                                        name="satuan" id="satuan">
+                                                                        <option value="gr"> gr</option>
+                                                                    <option value="kg"> kg</option>
+                                                                    <option value="ml"> ml</option>
+                                                                    <option value="L"> L</option>
+                                                                    <option value="Pcs"> Pcs</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-3 col-form-label">Sisa
                                                             Bahan</label>
-                                                        <div class="col-sm" data-tip="Hanya angka saja">
-                                                            <input type="number" name="sisa_bahan" class="form-control 1"
+                                                        <div class="col-sm">
+                    
+                                                            <div class="row">
+                                                                <div class="col-sm-8"
+                                                                    data-tip="Hanya angka saja">
+                                                                    <input type="number" name="sisa_bahan" class="form-control 1"
                                                                 id="sisa_bahan" placeholder="Sisa Bahan" />
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <select class="form-select"
+                                                                        name="satuan" id="satuan">
+                                                                        <option value="gr"> gr</option>
+                                                                    <option value="kg"> kg</option>
+                                                                    <option value="ml"> ml</option>
+                                                                    <option value="L"> L</option>
+                                                                    <option value="Pcs"> Pcs</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
 
                                                     <div class="form-group row">
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
@@ -187,7 +240,7 @@
                                     </div>
 
 
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                             Permintaan</label>
                                         <div class="col-sm" data-tip="Hanya angka saja">
@@ -206,6 +259,92 @@
                                     </div>
 
                                     <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa Bahan</label>
+                                        <div class="col-sm" data-tip="Hanya angka saja">
+                                            <input type="number" name="sisa_bahan" class="form-control 6"
+                                                id="isi_sisa" placeholder="Untuk Produk" />
+                                        </div>
+                                    </div> --}}
+                                    
+                                    <div class="form-group row">
+                                        <label for="inputEmail3"
+                                            class="col-sm-3 col-form-label">Jumlah
+                                            Permintaan</label>
+                                        <div class="col-sm">
+    
+                                            <div class="row">
+                                                <div class="col-sm-8"
+                                                    data-tip="Hanya angka saja">
+                                                    <input type="number" name="jumlah_permintaan" class="form-control 6"
+                                                    id="isi_jminta" placeholder="Jumlah Permintaan" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-select"
+                                                        name="satuan" id="satuan">
+                                                        <option value="gr"> gr</option>
+                                                    <option value="kg"> kg</option>
+                                                    <option value="ml"> ml</option>
+                                                    <option value="L"> L</option>
+                                                    <option value="Pcs"> Pcs</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3"
+                                            class="col-sm-3 col-form-label">Hasil
+                                            Timbang</label>
+                                        <div class="col-sm">
+    
+                                            <div class="row">
+                                                <div class="col-sm-8"
+                                                    data-tip="Hanya angka saja">
+                                                    <input type="text" name="hasil_penimbangan" class="form-control 6"
+                                                    id="isi_hasilruang" placeholder="Hasil Penimbangan" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-select"
+                                                        name="satuan" id="satuan">
+                                                        <option value="gr"> gr</option>
+                                                    <option value="kg"> kg</option>
+                                                    <option value="ml"> ml</option>
+                                                    <option value="L"> L</option>
+                                                    <option value="Pcs"> Pcs</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3"
+                                            class="col-sm-3 col-form-label">Sisa
+                                            Bahan</label>
+                                        <div class="col-sm">
+    
+                                            <div class="row">
+                                                <div class="col-sm-8"
+                                                    data-tip="Hanya angka saja">
+                                                    <input type="number" name="sisa_bahan" class="form-control 6"
+                                                id="isi_sisa" placeholder="Untuk Produk" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-select"
+                                                        name="satuan" id="satuan">
+                                                        <option value="gr"> gr</option>
+                                                    <option value="kg"> kg</option>
+                                                    <option value="ml"> ml</option>
+                                                    <option value="L"> L</option>
+                                                    <option value="Pcs"> Pcs</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                             Produk</label>
                                         <div class="col-sm">
@@ -214,13 +353,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Sisa Bahan</label>
-                                        <div class="col-sm" data-tip="Hanya angka saja">
-                                            <input type="number" name="sisa_bahan" class="form-control 6"
-                                                id="isi_sisa" placeholder="Untuk Produk" />
-                                        </div>
-                                    </div>
+                                   
 
                                     <a class="btn btn-primary" onclick="salert1(6)" href="#"
                                         style="float:left; width: 100px;  margin-left:25px" role="button">Simpan</a>

@@ -175,7 +175,7 @@
                         <?php  $i = 0;
                         $i++; ?>
                         <tr>
-                            <td>{{ $i }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $row['protap_nama'] }}</td>
                             <td>{{ $row['kode_produk'] }}</td>
                             <td>{{ $row['nama_produk'] }}</td>
@@ -220,7 +220,7 @@
                                 @else
                                     <?php if ($row['status'] == 0) { ?>
                                         
-                                        <button id="klik_kemas" type="button" class="btn btn-success" data-toggle="modal" data-target="#editkemasbatch" data-protap="{{ $row['protap'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['no_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuksediaan'] }}" data-kemasan="{{ $row['kemasan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])); }}" data-id="{{ $row['id_pengemasanbatchproduk'] }}">edit</button>
+                                        <button id="klik_kemas" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editkemasbatch" data-protap="{{ $row['protap'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['no_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuksediaan'] }}" data-kemasan="{{ $row['kemasan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])); }}" data-id="{{ $row['id_pengemasanbatchproduk'] }}">edit</button>
                                     <?php } elseif ($row['status'] == 1) { ?>
                                         
                                         <button id="klik_kemas" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#editkemasbatch" data-protap="{{ $row['protap'] }}" data-kode="{{ $row['kode_produk'] }}" data-nama="{{ $row['nama_produk'] }}" data-nobatch="{{ $row['no_batch'] }}" data-besar="{{ $row['besar_batch'] }}" data-bentuk="{{ $row['bentuksediaan'] }}" data-kemasan="{{ $row['kemasan'] }}" data-mulai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['mulai'])); }}" data-selesai="{{ $newDate = date('Y-m-d\TH:i', strtotime($row['selesai'])); }}" data-id="{{ $row['id_pengemasanbatchproduk'] }}">edit</button>

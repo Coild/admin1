@@ -438,7 +438,7 @@
                                                                                     <input type="number"
                                                                                         name="jumlah_bahankemas"
                                                                                         class="form-control 2"
-                                                                                        iid="inputnumber1"
+                                                                                        id="inputnumber1"
                                                                                         placeholder="Jumlah Bahan Kemas" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">

@@ -127,7 +127,7 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <p class="statusMsg"></p>
-                                <form action="/input_komposisi" method="post" role="form" id="forminput1">
+                                <form action="/input_komposisi" method="post" role="form" id="forminput4">
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <input type="hidden" name="nobatch" value="{{ $nobatch }}" />
@@ -157,7 +157,7 @@
                                     <div class="form-group">
                                         <label for="inputMessage" class="col-sm">Persentase</label>
                                         <div class="col-sm" data-tip="Hanya angka saja">
-                                            <input type="number" name="persen" class="form-control 1" id="inputNumber"
+                                            <input type="number" name="persen" class="form-control 4" id="inputNumber"
                                                 placeholder="Persentase" />
                                         </div>
 
@@ -167,7 +167,7 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(1)">
+                                        <button type="button" class="btn btn-primary submitBtn" onclick="salert1(4)">
                                             Tambah
                                         </button>
                                     </div>

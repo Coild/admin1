@@ -539,17 +539,33 @@
                                                                 <input type="hidden" name="tanggal" id='ambil_tanggal3'
                                                                     class="form-control 3" placeholder="" />
 
+                                                                
                                                                 <div class="form-group row">
                                                                     <label for="inputEmail3"
-                                                                        class="col-sm-3 col-form-label">Hasil
-                                                                        Penimbangan</label>
+                                                                        class="col-sm-3 col-form-label">Hasil Penimbangan</label>
                                                                     <div class="col-sm">
-                                                                        <input type="text" name="hasil_penimbangan"
-                                                                            class="form-control 3" id="inputEmail3"
-                                                                            placeholder="Hasil Penimbangan" />
+                                
+                                                                        <div class="row">
+                                                                            <div class="col-sm-8"
+                                                                                data-tip="Hanya angka saja">
+                                                                                <input type="number"
+                                                                                name="hasil_penimbangan"  class="form-control 3"
+                                                                                    placeholder="Hasil penimbangan" />
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <select class="form-select"
+                                                                                    name="satuan" id="satuan">
+                                                                                    <option value="gr"> gr</option>
+                                                                                <option value="kg"> kg</option>
+                                                                                <option value="ml"> ml</option>
+                                                                                <option value="L"> L</option>
+                                                                                <option value="Pcs"> Pcs</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-
+                                                                
                                                                 <a class="btn btn-primary" onclick="salert1(3)"
                                                                     href="#"
                                                                     style="float:left; width: 100px;  margin-left:25px"
@@ -858,12 +874,39 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+                                {{-- <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
                                         Penimbangan</label>
                                     <div class="col-sm">
                                         <input type="text" name="hasil_penimbangan" class="form-control 6"
                                             id="isi_hasilruang" placeholder="Hasil Penimbangan" />
+                                    </div>
+                                </div> --}}
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3"
+                                        class="col-sm-3 col-form-label">Hasil Penimbangan</label>
+                                    <div class="col-sm">
+
+                                        <div class="row">
+                                            <div class="col-sm-8"
+                                                data-tip="Hanya angka saja">
+                                                <input type="number"
+                                                name="hasil_penimbangan"  class="form-control 6"
+                                                    placeholder="Hasil penimbangan" />
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-select"
+                                                    name="satuan" id="satuan">
+                                                    <option value="gr"> gr</option>
+                                                <option value="kg"> kg</option>
+                                                <option value="ml"> ml</option>
+                                                <option value="L"> L</option>
+                                                <option value="Pcs"> Pcs</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

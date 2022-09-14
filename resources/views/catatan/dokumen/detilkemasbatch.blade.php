@@ -172,7 +172,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dibutuhkan</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jbutuh" class="form-control 9" id="inputnumber"
+                                                        <input type="number" name="jbutuh" class="form-control 9" id="jbutuh"
                                                             placeholder="Jumlah Dibutuhkan" />
                                                     </div>
 
@@ -182,7 +182,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Ditolak</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jtolak" class="form-control 9" id="inputnumber1"
+                                                        <input type="number" name="jtolak" class="form-control 9" id="jtolak"
                                                             placeholder="Jumlah Ditolak" />
                                                     </div>
                                                 </div>
@@ -199,7 +199,7 @@
                                                     <label for="butuh" class="col-sm-3 col-form-label">Jumlah
                                                         Dipakai</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jpakai" class="form-control 9" id="inputnumber2"
+                                                        <input type="number" name="jpakai" class="form-control 9" id="jpakai"
                                                             placeholder="Jumlah Dipakai" />
                                                     </div>
 
@@ -209,7 +209,7 @@
                                                     <label for="tolak" class="col-sm-3 col-form-label">Jumlah
                                                         Dikembalikan</label>
                                                     <div class="col-sm" data-tip="Hanya angka saja">
-                                                        <input type="number" name="jkembali" class="form-control 9" id="inputnumber3"
+                                                        <input type="number" name="jkembali" class="form-control 9" id="jkembali"
                                                             placeholder="Jumlah Dikembalikan" />
                                                     </div>
                                                 </div>
@@ -511,6 +511,7 @@
             $(inputid).insertAfter("#isi_protanda")
         $("#isi_protanda").val(params.isi)
             }
+
 
             function editdata1(params) {
                 $("#forminput9").attr("action", "edit_prkemas");

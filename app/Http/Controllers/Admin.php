@@ -355,17 +355,19 @@ class Admin extends Controller
         // dd($pelaksana);
         // dd(' ini '.$req->id_ruangan);
         $id = $req->id_ruangan ?? session()->get('induk_ruang');
-        session(['induk_ruang' => $id]);
+        $nama_ruangan = $req->nama_ruangan ?? session()->get('nama_ruangan');
+        session(['induk_ruang' => $id, 'nama_ruangan' => $nama_ruangan]);
+        // dd( $nama_ruangan);
         $data = Detilruangan::all()->where('id_induk', $id);
 
         // $data = Detilruangan::all()->where('id', $req->id_ruangan);
 
         return view('catatanpelaksana.higidansani.detilruang', [
             'data' => $data,
-            'nama_ruangan' => $req->nama_ruangan,
+            'nama_ruangan' => $nama_ruangan,
             'status' => $req->status,
             'pelaksana' => Auth::user()->namadepan . ' ' . Auth::user()->namabelakang,
-            'id_ruangan' => $req->id_ruangan
+            'id_ruangan' => session()->get('induk_ruang')
         ]);
     }
 
@@ -1468,7 +1470,7 @@ class Admin extends Controller
             'id_pabrik' => Auth::user()->pabrik
         ];
         log::insert($log);
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
     public function edit_proisi(Request $req)
@@ -1490,7 +1492,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
     public function edit_prkemas(Request $req)
@@ -1519,7 +1521,7 @@ class Admin extends Controller
         ];
         log::insert($log);
 
-        return redirect('/detilkemasbatch');
+        return redirect('/detilkemasbatch')->with('success', 'Data berhasil diubah!');
     }
 
 
@@ -1717,7 +1719,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //peralatan
@@ -1744,7 +1746,7 @@ class Admin extends Controller
 
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //catat penimbangan
@@ -1775,7 +1777,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     //olah
@@ -1800,7 +1802,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     public function tambah_rekonsiliasi(Request $req)
@@ -1824,7 +1826,7 @@ class Admin extends Controller
         log::insert($log);
 
         $to = $req['nobatch'];
-        return redirect('/detil_batch/');
+        return redirect('/detil_batch/')->with('success', 'Data berhasil ditambah!');
     }
 
     public function hapus_komposisi($id)
