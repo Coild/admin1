@@ -18,11 +18,11 @@ use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, prota
 */
 
 // Route::view('/coba', 'print.pembersihanalat');
-Route::post('coba',[Admin::class, 'coba']);
-Route::get('coba',[Admin::class, 'coba']);
+// Route::post('coba',[Admin::class, 'coba']);
+// Route::get('coba',[Admin::class, 'coba']);
 
-Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
-Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
+
+
 
 
 
@@ -32,9 +32,9 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
+// Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
-Route::post('/reset_password', [AuthController::class, 'reset_pass']);
+// Route::post('/reset_password', [AuthController::class, 'reset_pass']);
 
 // Route::view('/template', 'print.template');
 
@@ -133,12 +133,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/register_audit', [superadmin::class, 'register_audit']);
             Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
             Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
+            Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
             Route::get('/update-protap', [superadmin::class, 'tampil_protap'])->name('updateprotap');
         }
     );
 
     //pemilik
     Route::group(['middleware' => 'pemilik'], function () {
+        Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
         Route::get('/laporanpemilik', [Admin::class, 'tampil_laporan'])->name('laporanpemilik');
         // Route::post('/laporan', [Admin::class, 'tampil_laporan']);
         Route::get('/aplicant', [pemilik::class, 'tampil_aplicant']);

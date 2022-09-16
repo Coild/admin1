@@ -4241,8 +4241,8 @@ class Admin extends Controller
             'tanggal' => $req['tanggal'],
             'nama_bahan' => $req['nama_bahan'],
             'nama_suplier' => Admin::bersih($req['nama_suplier']),
-            'jumlah_bahan' => $req['jumlah_bahan'] . ' ' . $req['satuan'],
-            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']) . ' ' . $req['satuan'],
+            'jumlah_bahan' => $req['jumlah_bahan'] . ' ' . $req['satuanj'],
+            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']) . ' ' . $req['satuanh'],
             'induk'  => session()->get('induk1'),
         ];
 
@@ -4268,8 +4268,8 @@ class Admin extends Controller
             'tanggal' => $req['tanggal'],
             'asal_produk' => Admin::bersih($req['asal_produk']),
             'nama_produk_antara' => Admin::bersih($req['nama']),
-            'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_timbang']),
+            'jumlah_produk' => $req['jumlah_produk'] . ' ' . $req['satuanj'],
+            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_timbang']) . ' ' . $req['satuanh'],
             'untuk_produk' => Admin::bersih($req['untuk_produk']),
             'induk'  => session()->get('induk2'),
         ];
@@ -4317,8 +4317,8 @@ class Admin extends Controller
         $hasil = [
             'nama_bahan' => $req['nama_bahan'],
             'nama_suplier' => Admin::bersih($req['nama_suplier']),
-            'jumlah_bahan' => $req['jumlah_bahan'],
-            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']),
+            'jumlah_bahan' => $req['jumlah_bahan'] . ' ' . $req['satuanj'],
+            'hasil_penimbangan' => $req['hasil_penimbangan'] . ' ' . $req['satuanh'],
         ];
 
         $nomer = detiltimbangbahan::where('id_detiltimbangbahan', $id)->update($hasil);
@@ -4341,8 +4341,8 @@ class Admin extends Controller
         $hasil = [
             'asal_produk' => Admin::bersih($req['asal_produk']),
             'nama_produk_antara' => Admin::bersih($req['nama']),
-            'jumlah_produk' => $req['jumlah_produk'],
-            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_penimbangan']),
+            'jumlah_produk' => $req['jumlah_produk'] . ' ' . $req['satuanj'],
+            'hasil_penimbangan' => Admin::bersih_angka($req['hasil_timbang']) . ' ' . $req['satuanh'],
             'untuk_produk' => Admin::bersih($req['untuk_produk']),
         ];
         // dd($req);

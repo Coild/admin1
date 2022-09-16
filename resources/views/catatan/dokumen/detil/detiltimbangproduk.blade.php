@@ -17,11 +17,12 @@
                         <!-- pop up -->
                         <!-- Button to trigger modal -->
                         @if (Auth::user()->level != 2)
-                            <button class="btn btn-success btn-lg @if($status != 0) disabled @endif" data-toggle="modal" data-target="#modalForm">
+                            <button class="btn btn-success btn-lg @if ($status != 0) disabled @endif"
+                                data-toggle="modal" data-target="#modalForm">
                                 Tambah Data
                             </button>
                         @endif
-                        
+
 
                         <!-- Modal -->
                         <div class="modal fade" id="modalForm" role="dialog">
@@ -37,8 +38,8 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form method="post" action="tambah_detiltimbangproduk" enctype="multipart/form-data"
-                                            id='forminput1'>
+                                        <form method="post" action="tambah_detiltimbangproduk"
+                                            enctype="multipart/form-data" id='forminput1'>
                                             <div class="card mb-4">
                                                 <div class="card-header">
                                                     <i class="fas fa-table me-1"></i>
@@ -60,11 +61,12 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk Antara</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk
+                                                            Antara</label>
                                                         <div class="col-sm">
-                                                            <input class="form-control 1" list="listnamaproduk" type="text" name='nama'
-                                                                autocomplete="off">
-                                                            
+                                                            <input class="form-control 1" list="listnamaproduk"
+                                                                type="text" name='nama' autocomplete="off">
+
                                                             <datalist id='listnamaproduk'>
                                                                 @foreach ($produkantara as $row)
                                                                     <option value="{{ $row['produkantara_nama'] }}">
@@ -85,51 +87,49 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">Jumlah
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                                             Produk </label>
                                                         <div class="col-sm">
-                    
+
                                                             <div class="row">
-                                                                <div class="col-sm-8"
-                                                                    data-tip="Hanya angka saja">
-                                                                    <input type="number" name="jumlah_produk" class="form-control 1"
-                                                                id="jumlah_produk" placeholder="Jumlah Produk" />
+                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                    <input type="number" name="jumlah_produk"
+                                                                        class="form-control 1" id="jumlah_produk"
+                                                                        placeholder="Jumlah Produk" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <select class="form-select"
-                                                                        name="satuan" id="satuan">
+                                                                    <select class="form-select" name="satuanj"
+                                                                        id="satuan">
                                                                         <option value="gr"> gr</option>
-                                                                    <option value="kg"> kg</option>
-                                                                    <option value="ml"> ml</option>
-                                                                    <option value="L"> L</option>
-                                                                    <option value="Pcs"> Pcs</option>
+                                                                        <option value="kg"> kg</option>
+                                                                        <option value="ml"> ml</option>
+                                                                        <option value="L"> L</option>
+                                                                        <option value="Pcs"> Pcs</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                    
+
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3"
-                                                            class="col-sm-3 col-form-label">Hasil Timbang</label>
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
+                                                            Timbang</label>
                                                         <div class="col-sm">
-                    
+
                                                             <div class="row">
-                                                                <div class="col-sm-8"
-                                                                    data-tip="Hanya angka saja">
-                                                                    <input type="number"
-                                                                    name="hasil_timbang"  class="form-control 1"
+                                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                                    <input type="number" name="hasil_timbang"
+                                                                        class="form-control 1"
                                                                         placeholder="Hasil timbang" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <select class="form-select"
-                                                                        name="satuan" id="satuan">
+                                                                    <select class="form-select" name="satuanh"
+                                                                        id="satuan">
                                                                         <option value="gr"> gr</option>
-                                                                    <option value="kg"> kg</option>
-                                                                    <option value="ml"> ml</option>
-                                                                    <option value="L"> L</option>
-                                                                    <option value="Pcs"> Pcs</option>
+                                                                        <option value="kg"> kg</option>
+                                                                        <option value="ml"> ml</option>
+                                                                        <option value="L"> L</option>
+                                                                        <option value="Pcs"> Pcs</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -141,8 +141,9 @@
                                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Untuk
                                                             Produk</label>
                                                         <div class="col-sm">
-                                                            <input type="text" name="untuk_produk" class="form-control 1"
-                                                                id="untuk_produk" placeholder="Untuk Produk" />
+                                                            <input type="text" name="untuk_produk"
+                                                                class="form-control 1" id="untuk_produk"
+                                                                placeholder="Untuk Produk" />
                                                         </div>
                                                     </div>
 
@@ -174,19 +175,29 @@
                         <tbody>
                             <?php $i = 0; ?>
                             @foreach ($data as $row)
-                            <?php $i++; ?>
-                            <tr>
-                                <td>{{ $i }}</td>
-                                <td>{{ $row['tanggal'] }}</td>
-                                <td>{{ $row['nama_produk_antara'] }}</td>
-                                <td>{{ $row['asal_produk'] }}</td>
-                                <td>{{ $row['jumlah_produk'] }}</td>
-                                <td>{{ $row['hasil_penimbangan'] }}</td>
-                                <td>{{ $row['untuk_produk'] }}</td>
-                                <td>
-                                    <button id="klikproduk" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editProduk" data-tanggal="{{ $row['tanggal'] }}" data-nama="{{ $row['nama_produk_antara'] }}" data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}" data-jumlah="{{ $row['jumlah_produk'] }}" data-hasil="{{ $row['hasil_penimbangan'] }}" data-produk="{{ $row['untuk_produk'] }}" data-id="{{ $row['id_detiltimbangproduk']}}">edit</button>
-                                </td>
-                            </tr>
+                                <?php $i++; ?>
+                                <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ $row['tanggal'] }}</td>
+                                    <td>{{ $row['nama_produk_antara'] }}</td>
+                                    <td>{{ $row['asal_produk'] }}</td>
+                                    <td>{{ $row['jumlah_produk'] }}</td>
+                                    <td>{{ $row['hasil_penimbangan'] }}</td>
+                                    <td>{{ $row['untuk_produk'] }}</td>
+                                    <td>
+                                        <button id="klikproduk" type="submit" class="btn btn-primary"
+                                            data-toggle="modal" data-target="#editProduk"
+                                            data-tanggal="{{ $row['tanggal'] }}"
+                                            data-nama="{{ $row['nama_produk_antara'] }}"
+                                            data-nobatch="{{ $row['no_batch'] }}" data-asal="{{ $row['asal_produk'] }}"
+                                            data-jumlah="{{ preg_replace('/[^0-9]/', '', $row['jumlah_produk']) }}"
+                                            data-satuanj="{{ preg_replace('/[^a-zA-Z]+/', '', $row['jumlah_produk']) }}"
+                                            data-hasil="{{ preg_replace('/[^0-9]/', '', $row['hasil_penimbangan']) }}"
+                                            data-satuanh="{{ preg_replace('/[^a-zA-Z]+/', '', $row['hasil_penimbangan']) }}"
+                                            data-produk="{{ $row['untuk_produk'] }}"
+                                            data-id="{{ $row['id_detiltimbangproduk'] }}">edit</button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -218,9 +229,9 @@
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Produk
                                             Antara</label>
                                         <div class="col-sm">
-                                            <input class="form-control 5" list="listnamaproduk" type="text" name='nama'
-                                                id="isi_produknama" autocomplete="off">
-                                            
+                                            <input class="form-control 5" list="listnamaproduk" type="text"
+                                                name='nama' id="isi_produknama" autocomplete="off">
+
                                             <datalist id='listnamaproduk'>
                                                 @foreach ($produkantara as $row)
                                                     <option value="{{ $row['produkantara_nama'] }}">
@@ -233,57 +244,50 @@
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Asal Produk</label>
                                         <div class="col-sm">
-                                            <input type="text" name="asal_produk" class="form-control 5" id="isi_asalproduk"
-                                                placeholder="Asal Produk" />
+                                            <input type="text" name="asal_produk" class="form-control 5"
+                                                id="isi_asalproduk" placeholder="Asal Produk" />
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="inputEmail3"
-                                            class="col-sm-3 col-form-label">Jumlah
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Jumlah
                                             Produk </label>
                                         <div class="col-sm">
-    
+
                                             <div class="row">
-                                                <div class="col-sm-8"
-                                                    data-tip="Hanya angka saja">
+                                                <div class="col-sm-8" data-tip="Hanya angka saja">
                                                     <input type="number" name="jumlah_produk" class="form-control 5"
-                                                id="jumlah_produk" placeholder="Jumlah Produk" />
+                                                        id="jp" placeholder="Jumlah Produk" />
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <select class="form-select"
-                                                        name="satuan" id="satuan">
+                                                    <select class="form-select" name="satuanj" id="satuanj">
                                                         <option value="gr"> gr</option>
-                                                    <option value="kg"> kg</option>
-                                                    <option value="ml"> ml</option>
-                                                    <option value="L"> L</option>
-                                                    <option value="Pcs"> Pcs</option>
+                                                        <option value="kg"> kg</option>
+                                                        <option value="ml"> ml</option>
+                                                        <option value="L"> L</option>
+                                                        <option value="Pcs"> Pcs</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-    
+
                                     <div class="form-group row">
-                                        <label for="inputEmail3"
-                                            class="col-sm-3 col-form-label">Hasil Timbang</label>
+                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil Timbang</label>
                                         <div class="col-sm">
-    
+
                                             <div class="row">
-                                                <div class="col-sm-8"
-                                                    data-tip="Hanya angka saja">
-                                                    <input type="number"
-                                                    name="hasil_timbang"  class="form-control 5"
-                                                        placeholder="Hasil timbang" />
+                                                <div class="col-sm-8" data-tip="Hanya angka saja">
+                                                    <input type="number" name="hasil_timbang" class="form-control 5"
+                                                        placeholder="Hasil timbang" id="hp" />
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <select class="form-select"
-                                                        name="satuan" id="satuan">
+                                                    <select class="form-select" name="satuanh" id="satuanh">
                                                         <option value="gr"> gr</option>
-                                                    <option value="kg"> kg</option>
-                                                    <option value="ml"> ml</option>
-                                                    <option value="L"> L</option>
-                                                    <option value="Pcs"> Pcs</option>
+                                                        <option value="kg"> kg</option>
+                                                        <option value="ml"> ml</option>
+                                                        <option value="L"> L</option>
+                                                        <option value="Pcs"> Pcs</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -317,6 +321,8 @@
                 var asal = $(this).data('asal');
                 var jumlah = $(this).data('jumlah');
                 var hasil = $(this).data('hasil');
+                var satuanj = $(this).data('satuanj');
+                var satuanh = $(this).data('satuanh');
                 var produk = $(this).data('produk');
                 var id = $(this).data('id');
 
@@ -324,10 +330,12 @@
                 // $("#isi_tanggal").val(tanggal);
                 $("#isi_nobatch").val(nobatch);
                 $("#isi_asalproduk").val(asal);
-                $("#isi_jumlahproduk").val(jumlah);
-                $("#isi_hasilproduk").val(hasil);
+                $("#jp").val(jumlah);
+                $("#hp").val(hasil);
                 $("#isi_produkproduk").val(produk);
                 $("#isi_produkid").val(id);
+                $("#satuanj").val(satuanj);
+                $("#satuanh").val(satuanh);
                 // document.getElementById('cpbahan').value = cpid;
             })
         </script>
