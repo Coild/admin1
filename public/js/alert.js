@@ -458,6 +458,29 @@ function filecheck() {
 }
 
 
+function filecheck1(p) {
+    const fileInput = document.getElementById("fileform" + p);
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.pdf)$/i;
+    if (!allowedExtensions.exec(filePath)) {
+        Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Format File Tidak Didukung",
+        });
+        fileInput.value = "";
+        return false;
+    } else if (fileInput.files[0].size / 1024 > 1024) {
+        Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Ukuran Terlalu Besar",
+        });
+        fileInput.value = "";
+        return false;
+    }
+}
+
 
 
 function salert1(params) {

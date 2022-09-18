@@ -53,7 +53,7 @@
                                             @foreach ($Baru as $row)
                                                 <tr>
                                                     <td>
-                                                        {{ $i }}
+                                                        {{ $loop->iteration }}
                                                     </td>
                                                     <td>
                                                         {{ $row['tgl_upload'] }}
@@ -105,7 +105,7 @@
                                             @foreach ($Produk as $row)
                                                 <tr>
                                                     <td>
-                                                        {{ $i }}
+                                                        {{ $loop->iteration }}
                                                     </td>
                                                     <td>
                                                         {{ $row['tgl_upload'] }}
@@ -156,7 +156,7 @@
                                             @foreach ($Pabrik as $row)
                                                 <tr>
                                                     <td>
-                                                        {{ $i }}
+                                                        {{ $loop->iteration }}
                                                     </td>
                                                     <td>
                                                         {{ $row['tgl_upload'] }}
@@ -208,7 +208,7 @@
                                             @foreach ($Iklan as $row)
                                                 <tr>
                                                     <td>
-                                                        {{ $i }}
+                                                        {{ $loop->iteration }}
                                                     </td>
                                                     <td>
                                                         {{ $row['tgl_upload'] }}
@@ -256,7 +256,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control 1" id="exampleFormControlFile1">
+                                <input onchange="return filecheck1(1)"  type="file" name="upload" class="form-control 1" id="fileform1">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
+
+
                             </div>
 
                             <!-- Modal Footer -->
@@ -304,7 +307,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control 2" id="exampleFormControlFile1">
+                                <input onchange="return filecheck1(2)"  type="file" name="upload" class="form-control 2" id="fileform2">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
+
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
@@ -351,7 +356,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control 3" id="exampleFormControlFile1">
+                                <input onchange="return filecheck1(3)"  type="file" name="upload" class="form-control 3" id="fileform3">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
+
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
@@ -398,7 +405,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Pilih File</label>
-                                <input type="file" name="upload" class="form-control 4" id="exampleFormControlFile1">
+                                
+
+                                <input onchange="return filecheck1(4)"  type="file" name="upload" class="form-control 4" id="fileform4">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
                             </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
