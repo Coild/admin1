@@ -23,9 +23,9 @@ $b = 0;
 class Admin extends Controller
 {
 
-    public function lihat_pdf($string)
+    public function lihatpdf(Request $req)
     {
-        return view('lihatpdf', ['pdf', $string]);
+        return view('lihatpdf', ['pdf' => $req['path']]);
     }
 
     public function bersih($string)

@@ -97,7 +97,7 @@
                                                 @csrf
                                                 <input type="hidden" name="path"
                                                     value="/asset/coa/{{ $row['coa_file'] }}">
-                                                <button type="button" class="btn btn-success" onclick=""> Buka</button>
+                                                <button type="submit" class="btn btn-success" onclick=""> Buka</button>
                                             </form>
 
 
