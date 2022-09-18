@@ -16,16 +16,20 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\notif;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Support\Facades\Redirect;
+
+use function PHPUnit\Framework\isNull;
 
 class AuthController extends Controller
 {
 
-    public function bersih($string) {
+    public function bersih($string)
+    {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
         return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
 
-     }
+    }
 
 
     public function showFormLogin()
@@ -58,13 +62,13 @@ class AuthController extends Controller
                 return  view('tunggu');
             } else {
                 $log = [
-                    'log_isi' => Auth::user()->namadepan.' Login ke dalam sistem',
-                    'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+                    'log_isi' => Auth::user()->namadepan . ' Login ke dalam sistem',
+                    'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
                     'log_waktu' => date('Y-m-d H:i:s'),
                     'id_pabrik' => Auth::user()->pabrik
                 ];
                 DB::table('logs')->insert($log);
-                
+
                 $data = pabrik::all()->where('pabrik_id', Auth::user()->pabrik);
                 foreach ($data as $row) {
                     session(['pabrik' => $row['nama']]);
@@ -92,11 +96,11 @@ class AuthController extends Controller
         // dd(session()->get('pabrik'));
         $check_username = User::all()->where("nama", ucwords(strtolower($request->username)))->first();
 
-        if($check_username){
+        if ($check_username) {
             return redirect('/karyawan')->with('error', 'Username Telah tTersedia');
         }
 
-        
+
         $user = new User;
         $user->nama = ucwords(strtolower($request->username));
         $user->namadepan = $request->namadepan;
@@ -108,8 +112,8 @@ class AuthController extends Controller
 
         if ($simpan) {
             $log = [
-                'log_isi' => session()->get('pabrik').' <b> Menambah '. $request->namadepan . ' ' .  $request->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',
-                'log_pabrik' => session()->get('pabrik'), 
+                'log_isi' => session()->get('pabrik') . ' <b> Menambah ' . $request->namadepan . ' ' .  $request->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',
+                'log_pabrik' => session()->get('pabrik'),
                 'log_waktu' => date('Y-m-d H:i:s'),
                 'id_pabrik' => Auth::user()->pabrik
             ];
@@ -125,8 +129,8 @@ class AuthController extends Controller
     public function logout()
     {
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Logout sistem',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Logout sistem',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -152,8 +156,8 @@ class AuthController extends Controller
             return redirect('/gantipassword')->with('status', 'Kata sandi lama anda salah!');
         }
         $log = [
-            'log_isi' => Auth::user()->namadepan.' Mengganti password akun',
-            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang, 
+            'log_isi' => Auth::user()->namadepan . ' Mengganti password akun',
+            'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,
             'log_waktu' => date('Y-m-d H:i:s'),
             'id_pabrik' => Auth::user()->pabrik
         ];
@@ -164,41 +168,47 @@ class AuthController extends Controller
 
     public function reset_pass(Request $req)
     {
+        if (isNull($req)) {
+            return Redirect::back();
+        }
 
-            $id = $req['id'];
-            // dd($id);
-            // $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
-            // dd($ganti);
-            $user = User::all()->where("id", $id)->first()->update([
-                'password' => Hash::make($req['baru']),
-            ]);
-        
+        $id = $req['id'];
+        // dd($id);
+        // $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
+        // dd($ganti);
+        $user = User::all()->where("id", $id)->first()->update([
+            'password' => Hash::make($req['baru']),
+        ]);
+
         return redirect('/karyawan')->with('success', 'Password berhasil diganti!');
     }
 
     public function reset_passa(Request $req)
     {
 
-            $id = $req['id'];
-            // dd($id);
-            // $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
-            // dd($ganti);
-            $user = User::all()->where("id", $id)->first()->update([
-                'password' => Hash::make($req['baru']),
-            ]);
-        
+        $id = $req['id'];
+        // dd($id);
+        // $ganti = User::all()->where('pabrik',$id)->where('level',1)->first();
+        // dd($ganti);
+        $user = User::all()->where("id", $id)->first()->update([
+            'password' => Hash::make($req['baru']),
+        ]);
+
         return redirect('/audit')->with('success', 'Password berhasil diganti!');
     }
 
     public function reset_passu(Request $req)
-    {   
-            $id = user::all()->where('pabrik',$req['id'])
-            ->where('level',1)->first()['id'];
-            // dd($id);
+    {
+        if (isNull($req)) {
+            return Redirect::back();
+        }
+        $id = user::all()->where('pabrik', $req['id'])
+            ->where('level', 1)->first()['id'];
+        // dd($id);
 
-            $user = User::all()->where("id", $id)->first()->update([
-                'password' => Hash::make($req['baru']),
-            ]);
+        $user = User::all()->where("id", $id)->first()->update([
+            'password' => Hash::make($req['baru']),
+        ]);
 
         return redirect('/pabrik')->with('success', 'Password berhasil diganti!');
     }
