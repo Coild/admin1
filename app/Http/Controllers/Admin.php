@@ -23,6 +23,11 @@ $b = 0;
 class Admin extends Controller
 {
 
+    public function lihat_pdf($string)
+    {
+        return view('lihatpdf', ['pdf', $string]);
+    }
+
     public function bersih($string)
     {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
