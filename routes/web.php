@@ -33,6 +33,9 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 // Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/register', function () {
+    return Redirect::back();
+});
 // Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
 // Route::post('/reset_password', [AuthController::class, 'reset_pass']);
