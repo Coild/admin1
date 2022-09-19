@@ -128,8 +128,24 @@
                                                 data-target="#lihat" data-nama="{{ $row['nama'] }}"
                                                 data-alamat="{{ $row['alamat'] }}"
                                                 data-nohp="{{ $row['no_hp'] }}">Lihat</button>
+
                                             <button id="klik" class="btn btn-success btn-sm" data-toggle="modal"
                                                 data-target="#resetpass" data-id="{{ $row['id'] }}">Reset</button>
+
+                                            <form action="/hapus_auditor" method="post"
+                                                id="formHapusAuditor{{ $row['id'] }}" class="float-left pr-2">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $row['id'] }}">
+                                                <input type="hidden" name="namadepan" value="{{ $row['namadepan'] }}">
+                                                <input type="hidden" name="namabelakang"
+                                                    value="{{ $row['namabelakang'] }}">
+                                                <input type="hidden" name="level" value="{{ $row['level'] }}">
+
+                                                <button class="btn btn-danger btn-sm"
+                                                    onclick="buttonHapusAuditor({{ $row['id'] }})" type="button">
+                                                    Hapus</button>
+
+                                            </form>
                                         </td>
                                     </tr>
 
@@ -142,7 +158,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                    <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -194,19 +210,20 @@
                                         <p id="capital" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                         </p>
                                         <p id="number" class="invalid">Minimal 1 buah <b>angka</b></p>
-                                        <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
+                                        <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_)
+                                                &nbsp;</b></p>
                                         <p id="length" class="invalid">Minimal <b>8 characters</b></p>
                                     </div>
                                     <div id="lulus">
                                         <p class="valid"> password kuat </p>
                                     </div>
                                 </div>
-                                
-                                
+
+
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid justify-content-center">
-                                        <button type="button" onclick="salert1(1)" id="lolos" style="width: 200px" disabled
-                                            class="btn btn-primary btn-block">Tambah
+                                        <button type="button" onclick="salert1(1)" id="lolos" style="width: 200px"
+                                            disabled class="btn btn-primary btn-block">Tambah
                                             Akun</button>
                                     </div>
                                 </div>
@@ -269,7 +286,8 @@
                             <input type="hidden" name="id" id="isi_idpass">
                             <div class="form-floating mb-3">
                                 <input class="form-control 3" name="baru" id="psw1" type="text"
-                                    placeholder="masukan password" autocomplete="off" onkeypress="return event.keyCode !=13;"/>
+                                    placeholder="masukan password" autocomplete="off"
+                                    onkeypress="return event.keyCode !=13;" />
                                 <label for="inputEmail">Password Baru</label>
                                 <div id="message1">
                                     <h5>Password harus mengandung:</h5>
@@ -277,14 +295,16 @@
                                     <p id="capital1" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                     </p>
                                     <p id="number1" class="invalid">Minimal 1 buah <b>angka</b></p>
-                                    <p id="special1" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_) &nbsp;</b></p>
+                                    <p id="special1" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_)
+                                            &nbsp;</b></p>
                                     <p id="length1" class="invalid">Minimal <b>8 characters</b></p>
                                 </div>
                                 <div id="lulus1">
                                     <p class="valid"> password kuat </p>
                                 </div>
                             </div>
-                            <button type="button" id="lolos1" class="btn btn-primary" onclick="salert1(3)" disabled>Simpan</button>
+                            <button type="button" id="lolos1" class="btn btn-primary" onclick="salert1(3)"
+                                disabled>Simpan</button>
                         </form>
                     </div>
                 </div>
@@ -422,8 +442,8 @@
         }
     </script>
 
-     {{-- script strong --}}
-     <script>
+    {{-- script strong --}}
+    <script>
         var banned = [
             "<",
             ">",

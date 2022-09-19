@@ -55,7 +55,7 @@
                         <form action="/lihatpdf" method="post">
                             @csrf
                             <input type="hidden" name="path" value="{{ $baru }}">
-                            <button type="submit" class="btn btn-success" onclick=""> Buka</button>
+                            <button type="submit" class="btn btn-light" onclick=""> Buka</button>
                         </form>
                     </div>
                 </div>
@@ -74,11 +74,11 @@
                         @if (Auth::user()->level == 0)
                             {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm2">Ganti</button> --}}
                         @endif
-                        <a href="{{ $produk }}" class="btn btn-light  float-right btn-sm">unduh</a>
+                        {{-- <a href="{{ $produk }}" class="btn btn-light  float-right btn-sm">unduh</a> --}}
                         <form action="/lihatpdf" method="post">
                             @csrf
                             <input type="hidden" name="path" value="{{ $produk }}">
-                            <button type="submit" class="btn btn-success" onclick=""> Buka</button>
+                            <button type="submit" class="btn btn-light" onclick=""> Buka</button>
                         </form>
                     </div>
                 </div>
@@ -97,11 +97,11 @@
                         @if (Auth::user()->level == 0)
                             {{-- <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalForm3">Ganti</button> --}}
                         @endif
-                        <a href="{{ $pabrik }}" class="btn btn-light  float-right btn-sm">unduh</a>
+                        {{-- <a href="{{ $pabrik }}" class="btn btn-light  float-right btn-sm">unduh</a> --}}
                         <form action="/lihatpdf" method="post">
                             @csrf
                             <input type="hidden" name="path" value="{{ $pabrik }}">
-                            <button type="submit" class="btn btn-success" onclick=""> Buka</button>
+                            <button type="submit" class="btn btn-light" onclick=""> Buka</button>
                         </form>
                     </div>
                 </div>
@@ -120,11 +120,11 @@
                         @if (Auth::user()->level == 0)
                             {{-- <button class="btn btn-light float-right btn-sm" data-toggle="modal" data-target="#modalForm4">Ganti</button> --}}
                         @endif
-                        <a href="{{ $iklan }}" class="btn btn-light  float-right btn-sm">unduh</a>
+                        {{-- <a href="{{ $iklan }}" class="btn btn-light  float-right btn-sm">unduh</a> --}}
                         <form action="/lihatpdf" method="post">
                             @csrf
                             <input type="hidden" name="path" value="{{ $iklan }}">
-                            <button type="submit" class="btn btn-success" onclick=""> Buka</button>
+                            <button type="submit" class="btn btn-light" onclick=""> Buka</button>
                         </form>
                     </div>
                 </div>

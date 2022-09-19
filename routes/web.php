@@ -138,6 +138,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
             Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
             Route::get('/update-protap', [superadmin::class, 'tampil_protap'])->name('updateprotap');
+
+            Route::post('/hapus_auditor', [superadmin::class, 'hapus_auditor']);
+            Route::get('/hapus_auditor', [superadmin::class, 'hapus_auditor']);
         }
     );
 

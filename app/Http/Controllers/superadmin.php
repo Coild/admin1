@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\aturan;
+use App\Models\logadmin;
 use App\Models\pabrik;
 use App\Models\user;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+
+use function PHPUnit\Framework\isNull;
 
 class superadmin extends Controller
 {
@@ -20,13 +24,13 @@ class superadmin extends Controller
     public function tampil_pabrik()
     {
         $data  = pabrik::all();
-        return view("admin.tambahuser",['data'=> $data]);
+        return view("admin.tambahuser", ['data' => $data]);
     }
 
     public function tampil_audit()
     {
-        $data = user::all()->where('level',4);
-        return view("admin.tambahauditor",['data' => $data]);
+        $data = user::all()->where('level', 4);
+        return view("admin.tambahauditor", ['data' => $data]);
     }
 
 
@@ -90,7 +94,7 @@ class superadmin extends Controller
         $Produk = aturan::all()->where('kategori', 'Aturan Produk');
         $Pabrik = aturan::all()->where('kategori', 'Aturan Pabrik');
         $Iklan = aturan::all()->where('kategori', 'Aturan Iklan');
-        return view("admin.protap", compact("Baru","Produk", "Pabrik", "Iklan"));
+        return view("admin.protap", compact("Baru", "Produk", "Pabrik", "Iklan"));
     }
     public function tampil_updateprotap()
     {
@@ -112,15 +116,45 @@ class superadmin extends Controller
         $nama = $file->getClientOriginalName();
         $filename = md5(date('Y-m-d H:i:s:u'));
         $tujuan_upload = 'asset/aturan/';
-        $file->move($tujuan_upload, $filename.'.pdf');
+        $file->move($tujuan_upload, $filename . '.pdf');
         // dd($filename.$nama);
         $data = [
-            'nama' => $filename = md5(date('Y-m-d H:i:s:u')).'.pdf',
+            'nama' => $filename = md5(date('Y-m-d H:i:s:u')) . '.pdf',
             'kategori' => $req['kategori'],
             'tgl_upload' => $req['tgl'],
         ];
         aturan::insert($data);
         // // user::deleted()
         return redirect('update-protap');
+    }
+
+    public function hapus_auditor(Request $req)
+    {
+        // dd($req->id);
+        if (!isset($req['_token'])) {
+            return Redirect::back();
+        }
+        $post = user::all()->where('id',  $req->id)->each->delete();
+        // dd($post);
+        // $pabrik = Auth::user()->pabrik;
+        // $data = user::all()->where('pabrik', $pabrik)
+        //     ->where('level', '>=', 4);
+
+        if ($post) {
+            $log = [
+                'log_isi' => "Admin" . ' <b> Menghapus ' . $req->namadepan . ' ' .  $req->namabelakang . ' </b> &nbsp dari Auditor',
+                'log_pabrik' => 0,
+                'log_waktu' => date('Y-m-d H:i:s'),
+                'id_pabrik' => 0
+            ];
+            logadmin::insert($log);
+
+            return redirect('/audit')->with('success', 'Berhasil dihapus!');
+        } else {
+            return redirect('/audit')->with('error', 'Gagal dihapus!');
+        }
+
+
+        // return view("pemilik.karyawan", ['data' => $data]);
     }
 }
