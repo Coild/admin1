@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="css/login.css" rel="stylesheet" />
+
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -25,7 +29,12 @@
 
                 <h1 style="text-align: center">{{ '404 ' }}</h1>
                 <h2 style="text-align: center">{{ 'Halaman Tidak Ditemukan ' }}</h2>
-                <button style="text-align: center" class="btn btn-lg-primary" onclick="history.back()">Kembali</button>
+                <br><br><br>
+                <div class="d-flex justify-content-center">
+
+                    <button style="align-content: center" class="btn btn-lg btn-primary d-flex justify-content-center"
+                        onclick="history.back()">Kembali</button>
+                </div>
             </div>
 
         </div>
