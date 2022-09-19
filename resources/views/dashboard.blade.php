@@ -158,7 +158,8 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="statusMsg"></p>
-                        <form action="/ganti_struktur" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/ganti_struktur" method="post" enctype="multipart/form-data" role="form"
+                            id="forminput3">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -172,7 +173,7 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" class="btn btn-primary submitBtn" onclick="salert()">
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(3)">
                                     Simpan
                                 </button>
                             </div>
