@@ -24,7 +24,8 @@
                 </div>
 
                 <h1 style="text-align: center">{{ '404 ' }}</h1>
-                <h2 style="text-align: center">{{ 'Mohon maaf, anda tidak Memiliki Akses ' }}</h2>
+                <h2 style="text-align: center">{{ 'Maaf akses ke halaman ini tidak diizinkan' }}</h2>
+                <button style="text-align: center" class="btn btn-lg-primary" onclick="history.back()">Kembali</button>
             </div>
 
         </div>

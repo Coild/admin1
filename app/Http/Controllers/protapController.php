@@ -23,7 +23,7 @@ class protapController extends Controller
    {
       //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-      return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+      return preg_replace('/[^A-Za-z0-9_.\-]/', '', $string); // Removes special chars.
 
    }
 
@@ -231,7 +231,7 @@ class protapController extends Controller
       $detil = $req['detil'];
       $id = Auth::user()->pabrik;
       $pabrik = Auth::user()->pabrik;
-      $nama = protapController::bersih($nama);
+      $nama = protapController::bersih_angka($nama);
       $hasil = [
          'protap_file' => $nama,
          'protap_nama' => protapController::bersih($req['nama']),

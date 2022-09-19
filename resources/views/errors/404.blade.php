@@ -25,6 +25,7 @@
 
                 <h1 style="text-align: center">{{ '404 ' }}</h1>
                 <h2 style="text-align: center">{{ 'Halaman Tidak Ditemukan ' }}</h2>
+                <button style="text-align: center" class="btn btn-lg-primary" onclick="history.back()">Kembali</button>
             </div>
 
         </div>
