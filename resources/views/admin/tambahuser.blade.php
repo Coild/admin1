@@ -166,7 +166,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -214,7 +214,7 @@
                                     <label for="inputEmail">Pabrik</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control 1" name="password" id="psw1" type="text"
+                                    <input class="form-control 1" name="password" id="psw1" type="password"
                                         placeholder="Create a password" />
                                     <label for="psw1">Password</label>
 
