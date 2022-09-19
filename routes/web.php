@@ -468,6 +468,9 @@ Route::group(['middleware' => 'auth'], function () {
         //pprotap
         Route::post('/input_protap/{jenis}', [protapController::class, 'tambah_protap']);
         Route::get('/tampil_protap/{jenis}', [protapController::class, 'tampil_protap'])->name('tampil');
+        Route::get('/tampil_protap/{jenis}', function () {
+            return redirect('/tampil_protap/1');
+        });
         Route::get('/hapus_protap/{id}/{jenis}', [protapController::class, 'hapus_protap']);
 
         Route::get('/ajukan_batch/{id}', [Admin::class, 'ajukan_batch']);
