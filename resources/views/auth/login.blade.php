@@ -44,14 +44,15 @@
                             <div class="form-floating mb-3">
                                 <label for="inputPassword">Password</label>
                                 <input name="password" class="form-control" id="inputPassword" type="password"
-                                    placeholder="Masukan Password" onkeypress="return event.keyCode !=13;"/>
+                                    placeholder="Masukan Password" onkeypress="return event.keyCode !=13;" />
 
                             </div>
                             <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
+                                data-sitekey="6LcCPrYhAAAAACVS4fv6cpeMba_VVTQGgLFQf6NQ"></div>
                             <p id="art" class="text-danger"></p>
                             <div class="form-check mb-3">
-                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                <input class="form-check-input" id="inputRememberPassword" type="checkbox"
+                                    value="" />
                                 <label class="form-check-label" for="inputRememberPassword">Remember
                                     Password</label>
                             </div>

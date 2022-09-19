@@ -61,8 +61,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label mb-3">Pabrik</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="search"
-                                                    id="inlineFormCustomSelect">
+                                                <select class="form-control" name="search" id="inlineFormCustomSelect">
                                                     <option value="" selected>Choose...</option>
                                                     @foreach ($data as $row)
                                                         <option value="{{ $row['pabrik_id'] }}">{{ $row['nama'] }}
@@ -89,7 +88,7 @@
                                                 </div>
                                             </div>
                                             <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                                data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
+                                                data-sitekey="6LcCPrYhAAAAACVS4fv6cpeMba_VVTQGgLFQf6NQ"></div>
                                             <p id="art" class="text-danger"></p>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a href="#" onclick="register()"

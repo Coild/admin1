@@ -51,6 +51,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/lihatpdf', [Admin::class, 'lihatpdf']);
+    Route::get('/lihatpdf', [Admin::class, 'lihatpdf']);
 
     //print
     Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);

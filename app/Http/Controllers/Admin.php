@@ -25,6 +25,11 @@ class Admin extends Controller
 
     public function lihatpdf(Request $req)
     {
+
+        // dd($req);
+        if (is_null($req['_token'])) {
+            return Redirect::back();
+        }
         return view('lihatpdf', ['pdf' => $req['path']]);
     }
 

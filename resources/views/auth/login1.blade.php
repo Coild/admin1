@@ -36,16 +36,18 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">
                                             <input name="username" class="form-control" id="inputEmail" type="text"
-                                                placeholder="name@example.com" onkeypress="return event.keyCode !=13;"/>
+                                                placeholder="name@example.com"
+                                                onkeypress="return event.keyCode !=13;" />
                                             <label for="inputEmail">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input name="password" class="form-control" id="inputPassword"
-                                                type="password" placeholder="Password" onkeypress="return event.keyCode !=13;"/>
+                                                type="password" placeholder="Password"
+                                                onkeypress="return event.keyCode !=13;" />
                                             <label for="inputPassword">Password</label>
                                         </div>
                                         <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                            data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
+                                            data-sitekey="6LcCPrYhAAAAACVS4fv6cpeMba_VVTQGgLFQf6NQ"></div>
                                         <p id="art" class="text-danger"></p>
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" id="inputRememberPassword" type="checkbox"
@@ -55,7 +57,8 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="/resetpass"></a>
-                                            <a onclick="recaptchaCallback()" href="#" class="btn btn-primary">Login</a>
+                                            <a onclick="recaptchaCallback()" href="#"
+                                                class="btn btn-primary">Login</a>
                                         </div>
                                     </form>
                                 </div>
@@ -91,9 +94,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
-    <script src="js/recaptcha.js">
-
-    </script>
+    <script src="js/recaptcha.js"></script>
 </body>
 
 </html>

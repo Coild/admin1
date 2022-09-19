@@ -95,13 +95,13 @@
                                         @csrf
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="form-floating mb-3">
-                                            <input name="lama" class="form-control 1 pass1" id="inputEmail" type="password"
-                                                placeholder="password lama" required/>
+                                            <input name="lama" class="form-control 1 pass1" id="inputEmail"
+                                                type="password" placeholder="password lama" required />
                                             <label for="inputEmail">Password Lama</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input name="baru" class="form-control 1 pass2" id="psw" type="password"
-                                                placeholder="Password Baru" required/>
+                                            <input name="baru" class="form-control 1 pass2" id="psw"
+                                                type="password" placeholder="Password Baru" required />
                                             <label for="inputPassword">Password Baru</label>
                                             <div id="message">
                                                 <h5>Password must contain the following:</h5>
@@ -109,15 +109,16 @@
                                                 <p id="capital" class="invalid">Minimal 1 buah <b>huruf kapital </b>
                                                 </p>
                                                 <p id="number" class="invalid">Minimal 1 buah <b>angka</b></p>
-                                                <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter (@,#,_)</b></p>
+                                                <p id="special" class="invalid">Minimal 1 buah <b>spesial karakter
+                                                        (@,#,_)</b></p>
                                                 <p id="length" class="invalid">Minial <b>8 characters</b></p>
                                             </div>
                                             <div id="lulus">
                                                 <p class="valid"> password kuat </p>
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div class="g-recaptcha" data-callback="recaptcha_callback"
-                                            data-sitekey="{!! env('RECAPTCHA_SITE_KEY') !!}"></div>
+                                            data-sitekey="6LcCPrYhAAAAACVS4fv6cpeMba_VVTQGgLFQf6NQ"></div>
                                         <p id="art" class="text-danger"></p>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 
@@ -152,8 +153,9 @@
     <script src="js/scripts.js"></script>
     {{-- <script src="js/error.js"></script> --}}
     <script src="{{ asset('js/alert.js') }}"></script>
-     {{-- script strong --}}
-     <script> var valdi =false;
+    {{-- script strong --}}
+    <script>
+        var valdi = false;
         var banned = [
             "<",
             ">",
