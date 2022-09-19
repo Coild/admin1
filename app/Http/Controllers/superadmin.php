@@ -70,21 +70,29 @@ class superadmin extends Controller
 
     public function register_audit(Request $request)
     {
-        $user = new User;
-        $user->nama = ucwords(strtolower($request->username));
-        $user->namadepan = $request->namadepan;
-        $user->namabelakang = $request->namabelakang;
-        $user->level = 4;
-        $user->pabrik = 0;
-        $user->password = bcrypt($request->password);
-        $simpan = $user->save();
-
-        if ($simpan) {
-            Session::flash('success', 'Data Berhasil Ditambah');
-            return redirect('/audit');
+        $cek = User::all()->where('nama',  ucwords(strtolower($request->username)))->count();
+        // dd($cek);
+        if ($cek > 0) {
+            // Session::flash('errors', ['' => 'Data Gagal Ditambah Username telah digunakan']);
+            return redirect('/audit')->with('message', 'Data Gagal Ditambah Username telah digunakan');
         } else {
-            Session::flash('errors', ['' => 'Data Gagal Ditambah']);
-            return redirect('audit');
+            $user = new User;
+            $user->nama = ucwords(strtolower($request->username));
+            $user->namadepan = $request->namadepan;
+            $user->namabelakang = $request->namabelakang;
+            $user->level = 4;
+            $user->pabrik = 0;
+            $user->password = bcrypt($request->password);
+            $simpan = $user->save();
+
+
+            if ($simpan) {
+                Session::flash('success', 'Data Berhasil Ditambah');
+                return redirect('/audit');
+            } else {
+                Session::flash('errors', ['' => 'Data Gagal Ditambah Username telah digunakan']);
+                return redirect('/audit');
+            }
         }
     }
 

@@ -5,6 +5,7 @@ use App\Models\protap;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin as MiddlewareAdmin;
 use App\Http\Controllers\{Admin, AuthController, pemilik, pjt, superadmin, protapController, auditor, dataPelaksana, PrintController};
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,7 +135,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/inspek', [superadmin::class, 'tampil_inspek']);
             Route::post('/register_pabrik', [superadmin::class, 'register']);
             Route::post('/register_audit', [superadmin::class, 'register_audit']);
-            Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
+            Route::get('/register_pabrik', function () {
+                return Redirect::back();
+            });
+            Route::get('/register_audit', function () {
+                return Redirect::back();
+            });
+            // Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
             Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
             Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
             Route::get('/update-protap', [superadmin::class, 'tampil_protap'])->name('updateprotap');

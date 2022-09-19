@@ -93,7 +93,9 @@
                 <li class="breadcrumb-item active">Admin</li>
             </ol>
             <div class="row">
-
+                @if (Session::has('message'))
+                    <p class="alert alert-danger">{{ Session::get('message') }}</p>
+                @endif
                 <div class="card mb-4">
 
                     <div class="card-body">
@@ -158,7 +160,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                                                                                        <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -173,7 +175,6 @@
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <p class="statusMsg"></p>
                         <div class="container">
                             <form action="/register_audit" method="post" id='forminput1'>
                                 @csrf
