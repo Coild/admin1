@@ -597,6 +597,7 @@ function register() {
 }
 let usern = false;
 
+
 $(document).ready(function () {
     $('#tabel1').DataTable({scrollX: true, responsive: true, "bAutoWidth": false});
 });
