@@ -414,8 +414,8 @@ function filecheck() {
         Swal.fire({icon: "error", title: "Maaf", text: "Format File Tidak Didukung"});
         fileInput.value = "";
         return false;
-    } else if (fileInput.files[0].size / 1024 > 1024) {
-        Swal.fire({icon: "error", title: "Maaf", text: "Ukuran Terlalu Besar"});
+    } else if (fileInput.files[0].size / 2048 > 2048) {
+        Swal.fire({icon: "error", title: "Maaf", text: "Ukuran Terlalu Besar (Maksimal 2MB)"});
         fileInput.value = "";
         return false;
     }
@@ -430,8 +430,8 @@ function filecheck1(p) {
         Swal.fire({icon: "error", title: "Maaf", text: "Format File Tidak Didukung"});
         fileInput.value = "";
         return false;
-    } else if (fileInput.files[0].size / 1024 > 1024) {
-        Swal.fire({icon: "error", title: "Maaf", text: "Ukuran Terlalu Besar"});
+    } else if (fileInput.files[0].size / 2048 > 2048) {
+        Swal.fire({icon: "error", title: "Maaf", text: "Ukuran Terlalu Besar (Maksimal 2MB)"});
         fileInput.value = "";
         return false;
     }
