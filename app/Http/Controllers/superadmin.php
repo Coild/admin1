@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aturan;
-use App\Models\logadmin;
-use App\Models\pabrik;
 use App\Models\user;
+use App\Models\aturan;
+use App\Models\pabrik;
+use App\Models\logadmin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-
 use function PHPUnit\Framework\isNull;
+
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class superadmin extends Controller
 {
@@ -23,7 +24,12 @@ class superadmin extends Controller
 
     public function tampil_pabrik()
     {
-        $data  = pabrik::all();
+        // $data  = pabrik::all();
+
+        $data = DB::table('pabriks')
+            ->leftJoin('users', 'pabriks.pabrik_id', '=', 'users.id')
+            ->get(['pabriks.*','pabriks.nama as nama_pabrik','users.*','users.nama as username_pabrik']);
+            // ddd($data);
         return view("admin.tambahuser", ['data' => $data]);
     }
 

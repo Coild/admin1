@@ -138,26 +138,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
+                                
                                 @foreach ($data as $row)
                                     <tr>
                                         <td>
-                                            {{ $i }}
+                                            {{ $loop->iteration }}
                                         </td>
                                         <td>
-                                            {{ $row['nama'] }}
+                                            {{ $row->nama_pabrik }}
                                         </td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" id="detil" data-toggle="modal"
-                                                data-target="#lihat" data-nama="{{ $row['nama'] }}"
-                                                data-alamat="{{ $row['alamat'] }}"
-                                                data-nohp="{{ $row['no_hp'] }}">Lihat</button>
+                                                data-target="#lihat" data-nama="{{ $row->username_pabrik }}"
+                                                data-alamat="{{ $row->alamat }}"
+                                                data-nohp="{{ $row->no_hp }}">Lihat</button>
                                             <button id="klik" class="btn btn-success btn-sm" data-toggle="modal"
-                                                data-target="#resetpass" data-id="{{ $row['pabrik_id'] }}">Reset</button>
+                                                data-target="#resetpass" data-id="{{ $row->pabrik_id }}">Reset</button>
                                         </td>
                                     </tr>
-
-                                    <?php $i++; ?>
                                 @endforeach
                             </tbody>
                         </table>
