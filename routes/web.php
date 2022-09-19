@@ -423,6 +423,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/pengolahanbatch',  [Admin::class, 'tampil_pengolahanbatch'])->name('pengolahanbatch');
         Route::get('/detilterimabbid', [Admin::class, 'tampil_detilbbid']);
         Route::post('/detilterimabb', [Admin::class, 'tampil_detilbb'])->name('detilBB');
+        Route::get('/detilterimabb', [Admin::class, 'tampil_detilbb']);
         Route::post('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch']);
         Route::get('/detilkemasbatch', [Admin::class, 'tampil_detilkemasbatch'])->name('detilkemasbatch');
         Route::post('/detil_batch', [Admin::class, 'tampil_detilbatch']);

@@ -385,6 +385,9 @@ class Admin extends Controller
 
     public function tampil_detilbb(Request $req)
     {
+        if (isNull($req['_token'])) {
+            return Redirect::back();
+        }
         $pabrik = Auth::user()->pabrik;
         $induk = $req['induk'];
         $jenis = $req['jenis'];

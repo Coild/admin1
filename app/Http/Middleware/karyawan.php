@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class karyawan
 {
@@ -16,6 +17,10 @@ class karyawan
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()->level == 3 or Auth::user()->level == 2) {
+            return $next($request);
+        }
+
+        abort(403, 'Unauthorized action.');
     }
 }
