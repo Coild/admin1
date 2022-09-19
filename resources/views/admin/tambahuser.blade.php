@@ -118,6 +118,9 @@
             </ol>
             <div class="row">
                 <!--  -->
+                @if (Session::has('message'))
+                    <p class="alert alert-danger">{{ Session::get('message') }}</p>
+                @endif
                 <div class="card mb-4">
 
                     <div class="card-body">
@@ -163,7 +166,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -564,7 +567,8 @@
             //lolos password 
 
             if (myInput1.value.length >= 8 && myInput1.value.match(numbers1) && myInput1.value.match(
-                upperCaseLetters1) && myInput1.value.match(lowerCaseLetters1) && myInput1.value.match(specialChar1)) {
+                    upperCaseLetters1) && myInput1.value.match(lowerCaseLetters1) && myInput1.value.match(
+                    specialChar1)) {
                 lolos1.disabled = false;
                 document.getElementById("message1").style.display = "none";
                 document.getElementById("lulus1").style.display = "block";

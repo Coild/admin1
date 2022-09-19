@@ -37,34 +37,46 @@ class superadmin extends Controller
     public function register(Request $request)
     {
 
-        $hasil = [
-            'nama' => $request['pabrik'],
-            'alamat' => 'Belum',
-            'no_hp' => 'Belum',
-            'logo' => 'logo.png',
-            'struktur' => 'logo.png'
-        ];
-
-        pabrik::insert($hasil);
-        $pabrik  = pabrik::all()->where('nama', $request['pabrik']);
-        // dd($pabrik);
-        $user = new User;
-        $user->nama = ucwords(strtolower($request->username));
-        $user->namadepan = $request->namadepan;
-        $user->namabelakang = $request->namabelakang;
-        $user->level = 1;
-        foreach ($pabrik as $row) {
-            $user->pabrik = $row['pabrik_id'];
-        }
-        $user->password = bcrypt($request->password);
-        $simpan = $user->save();
-
-        if ($simpan) {
-            Session::flash('success', 'Data Berhasil Ditambah');
-            return redirect('/pabrik');
+        $cek = User::all()->where('nama',  ucwords(strtolower($request->username)))->count();
+        // dd($cek);
+        if ($cek > 0) {
+            // Session::flash('errors', ['' => 'Data Gagal Ditambah Username telah digunakan']);
+            return redirect('/audit')->with('message', 'Data Gagal Ditambah Username telah digunakan');
         } else {
-            Session::flash('errors', ['' => 'Data Gagal Ditambah']);
-            return redirect('pabrik');
+            $cek = pabrik::all()->where('nama',  ucwords(strtolower($request['pabrik'])))->count();
+            if ($cek > 0) {
+                return redirect('/audit')->with('message', 'Data Gagal Ditambah Nama Pabrik telah digunakan');
+            } else {
+                $hasil = [
+                    'nama' => $request['pabrik'],
+                    'alamat' => 'Belum',
+                    'no_hp' => 'Belum',
+                    'logo' => 'logo.png',
+                    'struktur' => 'logo.png'
+                ];
+
+                pabrik::insert($hasil);
+                $pabrik  = pabrik::all()->where('nama', $request['pabrik']);
+                // dd($pabrik);
+                $user = new User;
+                $user->nama = ucwords(strtolower($request->username));
+                $user->namadepan = $request->namadepan;
+                $user->namabelakang = $request->namabelakang;
+                $user->level = 1;
+                foreach ($pabrik as $row) {
+                    $user->pabrik = $row['pabrik_id'];
+                }
+                $user->password = bcrypt($request->password);
+                $simpan = $user->save();
+
+                if ($simpan) {
+                    Session::flash('success', 'Data Berhasil Ditambah');
+                    return redirect('/pabrik');
+                } else {
+                    Session::flash('errors', ['' => 'Data Gagal Ditambah']);
+                    return redirect('pabrik');
+                }
+            }
         }
     }
 
