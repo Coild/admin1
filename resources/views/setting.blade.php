@@ -20,28 +20,29 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="/input_company" method="post" enctype="multipart/form-data" role="form">
+                        <form action="/input_company" method="post" enctype="multipart/form-data" role="form"
+                            id="forminput5">
 
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="form-group row" margin-bottom=10px;>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama" value="{{ $nama }}" class="form-control"
+                                    <input type="text" name="nama" value="{{ $nama }}" class="form-control 5"
                                         id="inputEmail3" placeholder="Nama">
                                 </div>
                             </div>
                             <div class="form-group row" margin-bottom=10px;>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="alamat" value="{{ $alamat }}" class="form-control"
+                                    <input type="text" name="alamat" value="{{ $alamat }}" class="form-control 5"
                                         id="inputEmail3" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group row" margin-bottom=10px;>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">No. telp</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="telp" value="{{ $no_hp }}" class="form-control"
+                                    <input type="text" name="telp" value="{{ $no_hp }}" class="form-control 5"
                                         id="inputEmail3" placeholder="No. Telp">
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Logo</label>
                                 <div class="col-sm-7">
                                     <input type="file" name="upload" class="form-control-file"
-                                        id="exampleFormControlFile1">
+                                        id="exampleFormControlFile1" class="form-control 5">
                                 </div>
                                 <div class="col-sm-3" margin-bottom=10px;>
                                     <img src="asset/logo/{{ $logo }}" style="height: 150px; width:auto"
@@ -61,7 +62,7 @@
                             </div>
                             <center>
                                 <button type="button" class="btn btn-primary" href="/input_company"
-                                    onclick="salert()">SIMPAN</button>
+                                    onclick="salert1(5)">SIMPAN</button>
 
                             </center>
 
