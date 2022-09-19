@@ -59,7 +59,7 @@ class Admin extends Controller
 
     public function coba(Request $req)
     {
-        if (isNull($req)) {
+        if (isNull($req['_token'])) {
             return Redirect::back();
         } else {
             // dd('isi');
@@ -3379,6 +3379,9 @@ class Admin extends Controller
     public function tampil_detiloperasialat(Request $req)
     {
         // dd($req);
+        if (isNull($req['_token'])) {
+            return Redirect::back();
+        }
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
         $data = Detiloperasialat::all()->where('id_induk', $req['id_alat']);
@@ -3389,6 +3392,9 @@ class Admin extends Controller
     public function tampil_detilperiksaalat(Request $req)
     {
         // dd($req);
+        if (isNull($req['_token'])) {
+            return Redirect::back();
+        }
         $pabrik = Auth::user()->pabrik;
         // session(['idoperasi' => $req['induk']]);
         $data = Detilperiksaalat::all()->where('id_induk', $req['id_alat']);
