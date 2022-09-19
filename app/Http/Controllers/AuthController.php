@@ -97,7 +97,7 @@ class AuthController extends Controller
         $check_username = User::all()->where("nama", ucwords(strtolower($request->username)))->first();
 
         if ($check_username) {
-            return redirect('/karyawan')->with('error', 'Username Telah tTersedia');
+            return redirect('/karyawan')->with('error', 'Username Telah Tersedia');
         }
 
 
