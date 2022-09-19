@@ -30,7 +30,7 @@ Route::get('/login', [AuthController::class, 'showFormLogin'])->name("login");
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/showregister', [AuthController::class, 'showFormRegister']);
+// Route::get('/showregister', [AuthController::class, 'showFormRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 // Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
