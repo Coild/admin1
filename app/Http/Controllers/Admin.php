@@ -110,7 +110,7 @@ class Admin extends Controller
         $id = $req->id;
         $data = coa::all()->where('coa_id', $id)->first();
         // dd($data);
-        unlink("asset/coa/" . $data['coa_file']);
+        // unlink("asset/coa/" . $data['coa_file']);
         $post = coa::all()->where('coa_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menghapus laporan COA',
@@ -162,7 +162,7 @@ class Admin extends Controller
         $id = $req->id;
         $data = dip::all()->where('dip_id', $id)->first();
         // dd($data);
-        unlink("asset/dip/" . $data['dip_file']);
+        // unlink("asset/dip/" . $data['dip_file']);
         $post = dip::all()->where('dip_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menghapus laporan DIP',
@@ -214,7 +214,7 @@ class Admin extends Controller
         $id = $req->id;
         $data = perizinan::all()->where('perizinan_id', $id)->first();
         // dd($data);
-        unlink("asset/perizinan/" . $data['perizinan_file']);
+        // unlink("asset/perizinan/" . $data['perizinan_file']);
         $post = perizinan::all()->where('perizinan_id', $id)->each->delete();
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Mengahapus laporan perizinan',

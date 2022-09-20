@@ -499,6 +499,67 @@ function salert1(params) {
     }
 }
 
+function salert2(params) {
+    console.log("forminput" + params);
+    const mycomp = document.getElementsByClassName("form-control " + params);
+    var pesan = ""
+    var valid = false;
+
+    for (i = 0; i < mycomp.length; i ++) { // var x = text_gagal[i].value = 'coba';
+        console.log(mycomp[i].value);
+
+        // if (specialChars.test( mycomp[i].value)) {
+        //     pesan = "tidak boleh ada karakter spesial";
+        //     break;
+        // }
+        if (mycomp[i].value.length > 200) {
+            pesan = "Data terlalu panjang";
+            break;
+        }
+        if (mycomp[i].value == "") {
+            valid = true;
+            break;
+        }
+    }
+    if (valid) {
+        valid = false;
+
+        Swal.fire({icon: "error", title: "Data tidak sesuai", text: "Sebagian Data Kosong!"});
+
+    } else if (pesan != "") {
+        Swal.fire({icon: "error", title: "Tidak Valid", text: pesan});
+    } else {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Apakah yakin ingin menghapus?",
+            text: "Data yang sudah dihapus tidak dapat dipulihkan!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Hapus",
+            cancelButtonText: "Batal",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("forminput" + params);
+                document.getElementById("forminput" + params).submit();
+                swalWithBootstrapButtons.fire("Terhapus!", "Data berhasil dihapus.", "success");
+            } else if (
+                /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire("Dibatalkan", "Silahkan tinjau kembali data yang dimasukkan :)", "error");
+            }
+        });
+    }
+}
+
 function setdatetoday() {
     const d = new Date();
     const today = moment(d.getTime()).format("YYYY-MM-DD HH:mm:ss");

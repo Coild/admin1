@@ -93,19 +93,20 @@
 
 
 
-                                            <form action="/lihatpdf" method="post">
+                                            <form action="/lihatpdf" method="post" class="float-left pr-2">
                                                 @csrf
                                                 <input type="hidden" name="path"
                                                     value="/asset/perizinan/{{ $row['perizinan_file'] }}">
                                                 <button type="submit" class="btn btn-success" onclick=""> Buka</button>
                                             </form>
 
-                                            <form action="/hapus_perizinan" method="get"
-                                                id="hapupjt{{ $row['perizinan_id'] }}">
+                                            <form action="/hapus_perizinan" method="post"
+                                                id="forminput{{ $row['perizinan_id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['perizinan_id'] }}">
                                                 <button type="button" class="btn btn-danger"
-                                                    onclick="buttonHapuspjt({{ $row['perizinan_id'] }})"> Hapus</button>
+                                                    onclick="salert2({{ $row['perizinan_id'] }})">
+                                                    Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -117,7 +118,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

@@ -93,7 +93,7 @@
                                         <td>{{ $row['coa_nama'] }}</td>
                                         <td>
 
-                                            <form action="/lihatpdf" method="post">
+                                            <form action="/lihatpdf" method="post" class="float-left pr-2">
                                                 @csrf
                                                 <input type="hidden" name="path"
                                                     value="/asset/coa/{{ $row['coa_file'] }}">
@@ -101,11 +101,12 @@
                                             </form>
 
 
-                                            <form action="/hapus_coa" method="get" target="_blank">
+                                            <form action="/hapus_coa" method="post" id="forminput{{ $row['coa_id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['coa_id'] }}">
                                                 <button type="button" class="btn btn-danger"
-                                                    onclick="buttonHapuspjt({{ $row['coa_id'] }})"> Hapus</button>
+                                                    onclick="salert2({{ $row['coa_id'] }})">
+                                                    Hapus</button>
                                             </form>
 
                                         </td>
@@ -118,7 +119,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                        <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
     </main>

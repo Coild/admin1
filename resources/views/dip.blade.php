@@ -94,19 +94,21 @@
                                         <td>
 
 
-                                            <form action="/lihatpdf" method="post">
+                                            <form action="/lihatpdf" method="post" class="float-left pr-2">
                                                 @csrf
                                                 <input type="hidden" name="path"
                                                     value="/asset/dip/{{ $row['dip_file'] }}">
                                                 <button type="submit" class="btn btn-success" onclick=""> Buka</button>
                                             </form>
 
-                                            <form action="/hapus_dip" method="get" id="hapupjt{{ $row['dip_id'] }}">
+                                            <form action="/hapus_dip" method="post" id="forminput{{ $row['dip_id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['dip_id'] }}">
                                                 <button type="button" class="btn btn-danger"
-                                                    onclick="buttonHapuspjt({{ $row['dip_id'] }})"> Hapus</button>
+                                                    onclick="salert2({{ $row['dip_id'] }})">
+                                                    Hapus</button>
                                             </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -117,7 +119,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                        <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

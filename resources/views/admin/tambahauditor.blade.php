@@ -160,7 +160,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                                                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                                                                                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -245,7 +245,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        Detil Pabrik
+                        Detil Auditor
                     </h4>
                 </div>
                 <!-- Modal Body -->
@@ -258,8 +258,6 @@
                                 placeholder="name@example.com" readonly />
                             <label for="inputEmail">Username</label>
                         </div>
-
-
 
                     </div>
                 </div>
