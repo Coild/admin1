@@ -113,13 +113,19 @@
                     e.keyCode === 86 ||
                     e.keyCode === 85 ||
                     e.keyCode === 117)) {
-                alert('not allowed');
+                // alert('not allowed');
+                Swal.fire({
+                    icon: "error",
+                    title: "Maaf, Fitur dinonaktifkan!",
+                });
+                
                 return false;
             } else {
                 return true;
             }
         };
     </script>
+
     {{-- <script src="{{ asset('js/error.js') }}"></script> --}}
     @if (session()->has('success'))
         <script>
