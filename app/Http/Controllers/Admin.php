@@ -262,13 +262,13 @@ class Admin extends Controller
         return view('jabatanpersonil', ['list_dip' => $data]);
     }
 
-    public function hapus_jabatan($id)
+    public function hapus_jabatan(Request $req)
     {
-        $data = jabatan::all()->where('jabatan_id', $id);
+        $data = jabatan::all()->where('jabatan_id', $req['id'])->first();
         // dd($data);
-        $post = jabatan::all()->where('jabatan_id', $id)->each->delete();
+        $post = jabatan::all()->where('jabatan_id', $req['id'])->each->delete();
 
-        unlink("asset/dip/" . $data[0]['jabatan_file']);
+        unlink("asset/dip/" . $data['jabatan_file']);
         $log = [
             'log_isi' => Auth::user()->namadepan . ' Menghapus laporan jabatan',
             'log_user' => Auth::user()->namadepan . Auth::user()->namabelakang,

@@ -195,7 +195,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('/input_jabatan', [Admin::class, 'tambah_jabatan']);
         Route::get('/jabatan', [Admin::class, 'tampil_jabatan'])->name('jabatan');
-        Route::get('/hapus_jabatan/{id}', [Admin::class, 'hapus_jabatan']);
+        Route::post('/hapus_jabatan', [Admin::class, 'hapus_jabatan']);
+        Route::get('/hapus_jabatan', function () {
+            return Redirect::back();
+        });
 
         Route::post('/terimakartustokbahan', [pjt::class, 'terima_kartustok_bahanbaku'])->name('terima_kartustok_bahanbaku');
 
