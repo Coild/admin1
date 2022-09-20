@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\audit;
+use App\Models\log as ModelsLog;
 use App\Models\pabrik;
 use Illuminate\Http\Request;
 use App\Models\logadmin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 use function PHPUnit\Framework\isNull;
@@ -167,6 +169,7 @@ class pemilik extends Controller
         // dd('halo');
         // Posts::orderBy('created_at', 'desc')->get();
         // return view('layout.log', ['dataLog' => DB::select('select * from logs')]);
-        return view('layout.logadmin', ['dataLog' => Logadmin::all()->where('id_pabrik', Auth::user()->pabrik)]);
+        // dd(Log::all()->where('id_pabrik', Auth::user()->pabrik));
+        return view('layout.logadmin', ['dataLog' => ModelsLog::all()->where('id_pabrik', Auth::user()->pabrik)]); //all()->where('id_pabrik', Auth::user()->pabrik)]);
     }
 }
