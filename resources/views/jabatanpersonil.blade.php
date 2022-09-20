@@ -92,11 +92,12 @@
                                         <th scope="row">{{ $i }}</th>
                                         <td>{{ $row['jabatan_nama'] }}</td>
                                         <td>
-                                            <form action="/hapus_jabatan" method="post" class="float-left pr-2">
+                                            <form action="/hapus_jabatan" method="post" class="float-left pr-2"
+                                                id="forminput{{ $row['jabatan_id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $row['jabatan_id'] }}">
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Hapus {{ $nama }}? ')">Hapus</button>
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="salert2({{ $row['jabatan_id'] }})">Hapus</button>
                                             </form>
 
                                             <a href="/asset/dip/{{ $row['jabatan_file'] }}" button type="button"
@@ -111,7 +112,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection

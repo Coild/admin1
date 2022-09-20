@@ -90,9 +90,6 @@
                                         <th scope="row">{{ $i }}</th>
                                         <td class="p-2">{{ $row['perizinan_nama'] }}</td>
                                         <td>
-
-
-
                                             <form action="/lihatpdf" method="post" class="float-left pr-2">
                                                 @csrf
                                                 <input type="hidden" name="path"
@@ -118,7 +115,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection
