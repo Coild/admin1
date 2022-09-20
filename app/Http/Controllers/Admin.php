@@ -1927,7 +1927,9 @@ class Admin extends Controller
             $nama = $file->getClientOriginalName();
             $tujuan_upload = 'asset/logo/';
             $ext = pathinfo($nama, PATHINFO_EXTENSION);
-            $file->move($tujuan_upload, session('pabrik') . '.' . $ext);
+            // $file->move($tujuan_upload, session('pabrik') . '.' . $ext);
+
+            move_uploaded_file($_FILES['upload']['tmp_name'], $tujuan_upload . '/' . session('pabrik') . '.' . $ext);
 
             $user = pabrik::all()->where("pabrik_id", $id)->first()->update([
                 'nama' => Admin::bersih_karakter($req['nama']),

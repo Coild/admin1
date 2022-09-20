@@ -51,7 +51,7 @@
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Logo</label>
                                 <div class="col-sm-7">
                                     <input type="file" name="upload" class="form-control-file"
-                                        id="exampleFormControlFile1" class="form-control 5">
+                                        onchange="return filecheckimg()" id="imginput" class="form-control 5">
                                 </div>
                                 <div class="col-sm-3" margin-bottom=10px;>
                                     <img src="asset/logo/{{ $logo }}" style="height: 150px; width:auto"
@@ -61,8 +61,7 @@
 
                             </div>
                             <center>
-                                <button type="button" class="btn btn-primary"
-                                    onclick="salert1(5)">SIMPAN</button>
+                                <button type="button" class="btn btn-primary" onclick="salert1(5)">SIMPAN</button>
 
                             </center>
 

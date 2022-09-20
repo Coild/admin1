@@ -422,6 +422,21 @@ function filecheck() {
 }
 
 
+function filecheckimg() {
+    const fileInput = document.getElementById("imginput");
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (! allowedExtensions.exec(filePath)) {
+        Swal.fire({icon: "error", title: "Maaf", text: "Format File Tidak Didukung gunakan (file .jpg, .jpeg, atau .png)"});
+        fileInput.value = "";
+        return false;
+    } else if (fileInput.files[0].size / 1024 > 1024) {
+        Swal.fire({icon: "error", title: "Maaf", text: "Ukuran Terlalu Besar (Maksimal 1 MB)"});
+        fileInput.value = "";
+        return false;
+    }
+}
+
 function filecheck1(p) {
     const fileInput = document.getElementById("fileform" + p);
     var filePath = fileInput.value;
@@ -549,7 +564,7 @@ function salert2(params) {
             if (result.isConfirmed) {
                 console.log("forminput" + params);
                 document.getElementById("forminput" + params).submit();
-                swalWithBootstrapButtons.fire("Terhapus!", "Data berhasil dihapus.", "success");
+                swalWithBootstrapButtons.fire("Terhapus!", "Data berhasil di.", "success");
             } else if (
                 /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel
