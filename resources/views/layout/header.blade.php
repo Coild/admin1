@@ -32,7 +32,7 @@
                         
                         $jum = \App\Models\notif::all()
                             ->where('id_pabrik', \Illuminate\Support\Facades\Auth::user()->pabrik)
-                            ->where('notif_3', 1)
+                            ->where('notif_3', 0)
                             ->count();
                         $notif = \App\Models\notif::where('id_pabrik', \Illuminate\Support\Facades\Auth::user()->pabrik)
                             ->where('notif_3', 1)
