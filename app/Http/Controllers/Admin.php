@@ -37,7 +37,7 @@ class Admin extends Controller
     {
         //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
-        return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
+        return preg_replace('/[^A-Za-z\-]/', ' ', $string); // Removes special chars.
 
     }
 
@@ -1470,8 +1470,9 @@ class Admin extends Controller
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $key = $req['key'];
+        // dd($req);
         $data = [
-            'isi' => Admin::bersih($req['isi']),
+            'isi' => Admin::bersih_angka($req['isi']),
             'id_kemas' => $id,
         ];
         // dd($req);
@@ -1492,7 +1493,7 @@ class Admin extends Controller
         $pabrik = Auth::user()->pabrik;
         $key = $req['key'];
         $data = [
-            'isi' => Admin::bersih($req['isi']),
+            'isi' => Admin::bersih_angka($req['isi']),
             'id_kemas' => $id,
         ];
         prosedur_isi::all()->where("id_proisi", $key)->first()->update($data);
