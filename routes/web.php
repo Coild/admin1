@@ -38,7 +38,6 @@ Route::get('/register', function () {
 });
 // Route::get('/autocomplete-search', [AuthController::class, 'autocompleteSearch']);
 
-// Route::post('/reset_password', [AuthController::class, 'reset_pass']);
 
 // Route::view('/template', 'print.template');
 
@@ -156,6 +155,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     //pemilik
     Route::group(['middleware' => 'pemilik'], function () {
+        Route::post('/reset_password', [AuthController::class, 'reset_pass']);
+        Route::get('/reset_password', function () {
+            return Redirect::back();
+        });
+
         Route::get('logPemilik', [pemilik::class, 'log'])->name('logPemilik');
         Route::get('/laporanpemilik', [Admin::class, 'tampil_laporan'])->name('laporanpemilik');
         // Route::post('/laporan', [Admin::class, 'tampil_laporan']);
