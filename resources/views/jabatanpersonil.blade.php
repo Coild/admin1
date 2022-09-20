@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    <title>Jabtan Personil</title>
+    <title>Jabatan Personil</title>
 @endsection
 
 @section('content')
@@ -112,7 +112,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                        <a class="btn btn-primary" href="#">Cetak</a> -->
 
     </main>
 @endsection
