@@ -138,7 +138,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 @foreach ($data as $row)
                                     <tr>
                                         <td>
@@ -149,9 +149,9 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" id="detil" data-toggle="modal"
-                                                data-target="#lihat" data-nama="{{ $row->username_pabrik }}"
+                                                data-target="#lihat" data-nama="{{ $row->nama_pabrik }}"
                                                 data-alamat="{{ $row->alamat }}"
-                                                data-nohp="{{ $row->no_hp }}">Lihat</button>
+                                                data-nohp="{{ $row->phone }}">Lihat</button>
                                             <button id="klik" class="btn btn-success btn-sm" data-toggle="modal"
                                                 data-target="#resetpass" data-id="{{ $row->pabrik_id }}">Reset</button>
                                         </td>
@@ -164,7 +164,7 @@
                 </div>
 
                 <!-- <a class="btn btn-primary" href="#">Edit</a>
-                                                                                                                                                                                            <a class="btn btn-primary" href="#">Cetak</a> -->
+                                                                                                                                                                                                                    <a class="btn btn-primary" href="#">Cetak</a> -->
             </div>
         </div>
         <!-- Modal -->
@@ -335,7 +335,7 @@
     <script>
         $(document).on('click', "#klik", function() {
             var id = $(this).data('id');
-            console.log("hai " + id);
+            // console.log("hai " + id);
             $("#isi_idpass").val(id);
             console.log("in " + $("#isi_idpass").val());
         })
