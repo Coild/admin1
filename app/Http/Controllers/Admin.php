@@ -1402,7 +1402,7 @@ class Admin extends Controller
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
-            'isi' => Admin::bersih($req['isi']),
+            'isi' => Admin::bersih_angka($req['isi']),
             'id_kemas' => $id,
         ];
         prosedur_tanda::insert($data);
@@ -1421,7 +1421,7 @@ class Admin extends Controller
         $id = session()->get('detilkemasbatch');
         $pabrik = Auth::user()->pabrik;
         $data = [
-            'isi' => Admin::bersih($req['isi']),
+            'isi' => Admin::bersih_angka($req['isi']),
             'id_kemas' => $id,
         ];
         prosedur_isi::insert($data);
