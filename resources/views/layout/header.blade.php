@@ -78,14 +78,14 @@
                             </div>
                         </li>
                     @else
-                    <li>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column justify-content-center">
-                                <a href="/notif" class="ml-2">Lihat semua notifikasi <i
-                                        class="fas fa-arrow-right"></i> </a>
+                        <li>
+                            <div class="d-flex">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="/notif" class="ml-2">Lihat semua notifikasi <i
+                                            class="fas fa-arrow-right"></i> </a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     @endif
                 </ul>
             </li>
@@ -102,6 +102,7 @@
                             ->where('status', 0)
                             ->count();
                         $notif = \App\Models\notif::where('status', 0)
+                            ->where('id_pabrik', Auth::user()->pabrik)
                             ->limit(3)
                             ->orderBy('notif_waktu', 'desc')
                             ->get();
@@ -144,14 +145,14 @@
                             </div>
                         </li>
                     @else
-                    <li>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column justify-content-center">
-                                <a href="/notif" class="ml-2">Lihat semua notifikasi <i
-                                        class="fas fa-arrow-right"></i> </a>
+                        <li>
+                            <div class="d-flex">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="/notif" class="ml-2">Lihat semua notifikasi <i
+                                            class="fas fa-arrow-right"></i> </a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     @endif
                 </ul>
             </li>
@@ -161,8 +162,8 @@
     <ul
         @if (Auth::user()->level == 3 || Auth::user()->level == 2) class="navbar-nav mr-1" @else class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" @endif>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 @if (Auth::user()->level == 2)
                     <li><a class="dropdown-item" href="/setting">Settings</a></li>
