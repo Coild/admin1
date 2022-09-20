@@ -99,6 +99,7 @@
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">
                         <?php
                         $jum = \App\Models\notif::all()
+                            ->where('id_pabrik', Auth::user()->pabrik)
                             ->where('status', 0)
                             ->count();
                         $notif = \App\Models\notif::where('status', 0)
