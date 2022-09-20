@@ -61,7 +61,7 @@
 
                             </div>
                             <center>
-                                <button type="button" class="btn btn-primary" href="/input_company"
+                                <button type="button" class="btn btn-primary"
                                     onclick="salert1(5)">SIMPAN</button>
 
                             </center>
