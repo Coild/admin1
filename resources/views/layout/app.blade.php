@@ -109,16 +109,13 @@
     <script>
         document.onkeydown = function(e) {
             if (e.ctrlKey &&
-                (e.keyCode === 67 ||
-                    e.keyCode === 86 ||
-                    e.keyCode === 85 ||
-                    e.keyCode === 117)) {
+                (e.keyCode === 85)) {
                 // alert('not allowed');
                 Swal.fire({
                     icon: "error",
                     title: "Maaf, Fitur dinonaktifkan!",
                 });
-                
+
                 return false;
             } else {
                 return true;
