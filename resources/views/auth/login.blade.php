@@ -16,7 +16,7 @@
 
 <body class="">
     <div class="container-fluid p-5">
-        <div class="row d-flex align-self-center pt-5">
+        <div class="row d-flex align-self-center">
             <div class="col-lg-8 col-md-8 d-none d-md-block image-container"></div>
             <div class="col-lg-4 col-md-4 container">
                 <div class="text-center">
