@@ -145,6 +145,13 @@ Route::group(['middleware' => 'auth'], function () {
             });
             // Route::post('/register_inspek', [superadmin::class, 'register_inspek']);
             Route::post('/input_aturan', [superadmin::class, 'input_aturan']);
+            Route::get('/input_aturan', function () {
+                return Redirect::back();
+            });
+            Route::post('/hapus_aturan', [superadmin::class, 'hapus_aturan']);
+            Route::get('/hapus_aturan', function () {
+                return Redirect::back();
+            });
             Route::get('logAdmin', [Admin::class, 'log'])->name('logAdmin');
             Route::get('/update-protap', [superadmin::class, 'tampil_protap'])->name('updateprotap');
 

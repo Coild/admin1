@@ -45,7 +45,7 @@ class protapController extends Controller
          $judul = ["Pengambilan Contoh", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
       }
       if ($jenis == 3) {
-         $judul = ["Spesifikasi Bahan", 'Bahan Baku', 'Produk Jadi', 'Kemasan'];
+         $judul = ["Spesifikasi BAhan","Bahan Baku", 'Bahan Kemas', 'Produk Antara', 'Produk Jadi'];
       }
       if ($jenis == 4) {
          $judul =  ["Pelatihan Higiene dan Sanitasi Bagi

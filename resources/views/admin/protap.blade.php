@@ -60,7 +60,9 @@
                                                     </td>
                                                     <td>
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
-                                                                class="btn btn-primary">Buka</a>
+                                                                class="btn btn-primary float-left">Buka</a>
+                                                                <button href="#" button type="button"
+                                                                class="btn btn-danger">Hapus</button>
                                                         
                                                     </td>
                                                 </tr>

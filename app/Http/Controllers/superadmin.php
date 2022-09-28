@@ -154,6 +154,14 @@ class superadmin extends Controller
         return redirect('update-protap');
     }
 
+    public function hapus_aturan(Request $req)
+    {
+        $id = $req['id'];   
+        aturan::all()->where('aturan_id', $id)->each->delete();
+        // // user::deleted()
+        return redirect('update-protap');
+    }
+
     public function hapus_auditor(Request $req)
     {
         // dd($req->id);
