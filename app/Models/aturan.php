@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class aturan extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'aturan_id';
+    protected $guarded = ['aturan_id'];
+
 }

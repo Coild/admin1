@@ -61,8 +61,17 @@
                                                     <td>
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary float-left">Buka</a>
-                                                                <button href="#" button type="button"
-                                                                class="btn btn-danger">Hapus</button>
+                                                            
+                                                            <form action="/hapus_aturan" method="post"
+                                                                id="formHapusAturan{{ $row['aturan_id'] }}" class="float-left pr-2">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $row['aturan_id'] }}">
+
+                                                                <button class="btn btn-danger ml-2"
+                                                                    onclick="buttonHapusAturan({{ $row['aturan_id'] }})" type="button">
+                                                                    Hapus</button>
+                
+                                                            </form>
                                                         
                                                     </td>
                                                 </tr>
@@ -116,6 +125,16 @@
                                                         
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary">Buka</a>
+                                                                <form action="/hapus_aturan" method="post"
+                                                                id="formHapusAturan{{ $row['aturan_id'] }}" class="float-left pr-2">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $row['aturan_id'] }}">
+
+                                                                <button class="btn btn-danger ml-2"
+                                                                    onclick="buttonHapusAturan({{ $row['aturan_id'] }})" type="button">
+                                                                    Hapus</button>
+                
+                                                            </form>
                                                         
                                                     </td>
                                                 </tr>
@@ -167,7 +186,16 @@
                                                         
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button type="button"
                                                                 class="btn btn-primary">Buka</a>
-                                                        
+                                                                <form action="/hapus_aturan" method="post"
+                                                                id="formHapusAturan{{ $row['aturan_id'] }}" class="float-left pr-2">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $row['aturan_id'] }}">
+
+                                                                <button class="btn btn-danger ml-2"
+                                                                    onclick="buttonHapusAturan({{ $row['aturan_id'] }})" type="button">
+                                                                    Hapus</button>
+                
+                                                            </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -218,7 +246,16 @@
                                                     <td>
                                                             <a href="asset/aturan/{{ $row['nama'] }}" button
                                                                 type="button" class="btn btn-primary">Buka</a>
-                                                        
+                                                                <form action="/hapus_aturan" method="post"
+                                                                id="formHapusAturan{{ $row['aturan_id'] }}" class="float-left pr-2">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $row['aturan_id'] }}">
+
+                                                                <button class="btn btn-danger ml-2"
+                                                                    onclick="buttonHapusAturan({{ $row['aturan_id'] }})" type="button">
+                                                                    Hapus</button>
+                
+                                                            </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
