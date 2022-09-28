@@ -254,10 +254,16 @@
                     Daftar Jabatan Personil
                 </a>
 
-                <a class="nav-link" href="assets/pdf/cttbpom.pdf" target="_blank">
-                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Format Baku BPOM
-                </a>
+                <?php
+                $aturan = \App\Models\aturan::all()->where('kategori', 'Aturan Baru')->first();
+                $aturan = $aturan==null ? '#' : "asset/aturan/".$aturan['nama'];
+                
+                // dd($aturan);
+            ?>
+            <a class="nav-link" href="{{$aturan}}" target="_blank">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                Format Baku BPOM
+            </a>
                 <!-- <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

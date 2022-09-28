@@ -194,14 +194,16 @@
 
                     </nav>
                 </div>
-                <a class="nav-link" href="{{ route('tampil', 24) }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Pemeriksaan/Pengujian
-                    Bahan
-                </a>
-                <a class="nav-link" href="assets/pdf/cttbpom.pdf" target="_blank">
-                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Format Baku BPOM
-                </a>
+                <?php
+                $aturan = \App\Models\aturan::all()->where('kategori', 'Aturan Baru')->first();
+                $aturan = $aturan==null ? '#' : "asset/aturan/".$aturan['nama'];
+                
+                // dd($aturan);
+            ?>
+            <a class="nav-link" href="{{$aturan}}" target="_blank">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                Format Baku BPOM
+            </a>
             </div>
         </div>
 

@@ -1027,7 +1027,7 @@ class pjt extends Controller
     public function tampil_bahan_baku()
     {
         $id = Auth::user()->pabrik;
-        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',1);
+        $protap = protap::all()->where('protap_jenis',3)->where('protap_detil',1);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 1);
         return view('spesifikasi.bahanbaku', ['list' => $data, 'protap' => $protap]);
@@ -1036,7 +1036,7 @@ class pjt extends Controller
     public function tampil_bahan_kemas()
     {
         $id = Auth::user()->pabrik;
-        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',2);
+        $protap = protap::all()->where('protap_jenis',3)->where('protap_detil',2);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 2);
         return view('spesifikasi.bahankemas', ['list' => $data, 'protap' => $protap]);
@@ -1045,7 +1045,7 @@ class pjt extends Controller
     public function tampil_produk_antara()
     {
         $id = Auth::user()->pabrik;
-        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',3);
+        $protap = protap::all()->where('protap_jenis',3)->where('protap_detil',3);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 3);
         return view('spesifikasi.produkantara', ['list' => $data, 'protap' => $protap]);
@@ -1054,7 +1054,7 @@ class pjt extends Controller
     public function tampil_produk_jadi()
     {
         $id = Auth::user()->pabrik;
-        $protap = protap::all()->where('protap_jenis',24)->where('protap_detil',4);
+        $protap = protap::all()->where('protap_jenis',3)->where('protap_detil',4);
         $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 4);
         return view('spesifikasi.produkjadi', ['list' => $data, 'protap' => $protap]);
