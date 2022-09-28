@@ -240,6 +240,22 @@ function buttonHapusAuditor(p) { // console.log(p);
         }
     });
 }
+function buttonHapusAturan(p) { // console.log(p);
+    var link = "formHapusAturan" + p;
+    Swal.fire({
+        title: "Hapus?",
+        text: "Yakin Ingin Dihapus?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById(link).submit();
+        }
+    });
+}
 
 function salert(params) {
 

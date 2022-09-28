@@ -144,7 +144,7 @@
                                                 <input type="hidden" name="level" value="{{ $row['level'] }}">
 
                                                 <button class="btn btn-danger btn-sm"
-                                                    onclick="buttonHapusAuditor({{ $row['id'] }})" type="button">
+                                                    onclick="buttonHapusAturan({{ $row['id'] }})" type="button">
                                                     Hapus</button>
 
                                             </form>
