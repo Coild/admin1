@@ -1028,7 +1028,7 @@ class pjt extends Controller
     {
         $id = Auth::user()->pabrik;
         $protap = protap::all()->where('protap_jenis',3)->where('protap_detil',1)->where('pabrik_id', $id);
-        $data = spesifikasi::all()->where('pabrik_id', $id)->
+        $data = spesifikasi::all()->where('pabrik_id', $id)
             ->where('kategori', 1);
         return view('spesifikasi.bahanbaku', ['list' => $data, 'protap' => $protap]);
     }
