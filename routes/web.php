@@ -56,7 +56,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/lihatpdf', [Admin::class, 'lihatpdf']);
     Route::get('/lihatpdf', [Admin::class, 'lihatpdf']);
 
-    //print
+    //print 
+    Route::post('/printkalibrasialat', [PrintController::class, 'cetak_kalibrasialat']);
+    Route::get('/printkalibrasialat', function(){
+        return Redirect::back();
+    });
     Route::post('/printpengolahanbatch', [PrintController::class, 'cetak_pengolahanbatch']);
     Route::post('/printpengemasanbatch', [PrintController::class, 'cetak_pengemasanbatch']);
     Route::post('/printambilbahankemas', [PrintController::class, 'cetak_ambilbahankemas'])->name('ambilbahankemas');
@@ -285,6 +289,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/laporan', [Admin::class, 'tampil_laporan']);
 
 
+        
         Route::get('/spek_bahan_baku', [pjt::class, 'tampil_bahan_baku'])->name("tampil_bahanbaku");
         Route::get('/spek_bahan_kemas', [pjt::class, 'tampil_bahan_kemas'])->name("tampil_bahankemas");
         Route::get('/spek_produk_antara', [pjt::class, 'tampil_produk_antara'])->name("tampil_produkantara");

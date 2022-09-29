@@ -351,7 +351,8 @@ class dataPelaksana extends Controller
 
                 elseif ($data->laporan_nama == 'ruang timbang')
                 $form = '<form target="_blank" method="post" action="/printpemeriksaansanitasialat">';
-
+                elseif ($data->laporan_nama == 'Kalibrasi Alat')
+                $form = '<form target="_blank" method="post" action="/printkalibrasialat">';
 
             else
                 $form = '<form target="_blank" method="post" action="/printterimakemasan">';

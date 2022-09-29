@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, Detiloperasialat, Detilperiksaalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, Detilruangan, Periksaalat};
+use App\Models\{contohbahanbaku, contohkemasan, contohprodukjadi, cp_bahan, cp_kemasan, cp_produk, detilalat, Detiloperasialat, Detilperiksaalat, distribusiproduk, pengolahanbatch, komposisi, laporan, pabrik, Pelatihancpkb, pelulusanproduk, pemusnahanbahanbaku, Pemusnahanbahankemas, Pemusnahanprodukantara, Pemusnahanprodukjadi, penanganankeluhan, penarikanproduk, Pengemasanbatchproduk, pengoprasianalat, peralatan, penimbangan, periksaruang, PPbahanbakukeluar, PPbahanbakumasuk, PPkemasankeluar, PPkemasanmasuk, PPprodukjadikeluar, PPprodukjadimasuk, pr_bahankemas, programpelatihan, prosedur_isi, prosedur_tanda, protap, rekonsiliasi, Spesifikasibahanbaku, Spesifikasibahankemas, Spesifikasiprodukjadi, Detilruangan, Kalibrasialat, Periksaalat};
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -497,12 +497,16 @@ class PrintController extends Controller
 
 
 
-    public function cetak_ambilbprodukjadi(Request $req)
+    public function cetak_kalibrasialat(Request $req)
     {
         $id = $req['id'];
         // $id = Session::get('data');
         // echo "ini ".$id;
-        return view('print.ambilprodukjadi');
+        // dd($req);
+        $data = Kalibrasialat::all()->where('kalibrasi_id', $id)->first();
+        // dd($data);
+        return Redirect('/asset/kalibrasi_alat/'.$data['nama_file']);
+        // return view('print.ambilprodukjadi');
     }
 
     public function cetak_ambilbahabaku(Request $req)
