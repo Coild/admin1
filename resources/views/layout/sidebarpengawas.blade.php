@@ -255,7 +255,8 @@
                 </a>
 
                 <?php
-                $aturan = \App\Models\aturan::all()->where('kategori', 'Aturan Baru')->first();
+                // $aturan = \App\Models\aturan::all()->where('kategori', 'Aturan Baru')->first();
+                $aturan = \App\Models\aturan::orderBy('created_at', 'desc')->where('kategori', 'Aturan Baru')->first();
                 $aturan = $aturan==null ? '#' : "asset/aturan/".$aturan['nama'];
                 
                 // dd($aturan);
