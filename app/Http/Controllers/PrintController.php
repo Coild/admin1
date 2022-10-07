@@ -496,7 +496,6 @@ class PrintController extends Controller
     }
 
 
-
     public function cetak_kalibrasialat(Request $req)
     {
         $id = $req['id'];
