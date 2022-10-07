@@ -286,7 +286,7 @@
                                     <!-- pop up -->
                                     @if (Auth::user()->level == 0)
                                         <button class="btn btn-success btn-md" data-toggle="modal"
-                                            data-target="#modalForm4">Tambah Aturan Format Baku</button>
+                                            data-target="#modalForm5">Tambah Aturan Format Baku</button>
                                     @endif
 
                                     <table class="table mt-2" id="tabelbeda3">
@@ -299,7 +299,7 @@
                                         </thead>
                                         <tbody>
                                             <?php $i = 1; ?>
-                                            @foreach ($Iklan as $row)
+                                            @foreach ($Format as $row)
                                                 <tr>
                                                     <td>
                                                         {{ $loop->iteration }}
@@ -532,7 +532,54 @@
                 </div>
             </div>
         </div>
-        <!--  -->
+        <!-- Modal 5 -->
+        <div class="modal fade" id="modalForm5" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Aturan Format Baku
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <p class="statusMsg"></p>
+                        <form action="/input_aturan" method="post" enctype="multipart/form-data" id="forminput5">
+
+                            @csrf
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <input type="hidden" name="kategori" value="Aturan Format Baku" />
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Tanggal</label>
+                                <input type="date" name="tgl" class="form-control 5" id="exampleFormControlFile1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Pilih File</label>
+                                
+
+                                <input onchange="return filecheck1(5)"  type="file" name="upload" class="form-control 5" id="fileform5">
+                                            <p style="font-size: 15px; color:red;">*Hanya menerima file PDF</p>
+                            </div>
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-primary submitBtn" onclick="salert1(5)">
+                                    Tambah
+                                </button>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </main>
 
 @endsection

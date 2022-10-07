@@ -454,7 +454,7 @@ function filecheckimg() {
 }
 
 function filecheck1(p) {
-    const fileInput = document.getElementBybnId("fileform" + p);
+    const fileInput = document.getElementById("fileform" + p);
     var filePath = fileInput.value;
     var allowedExtensions = /(\.pdf)$/i;
     if (! allowedExtensions.exec(filePath)) {

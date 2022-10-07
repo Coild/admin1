@@ -120,7 +120,9 @@ class superadmin extends Controller
         $Produk = aturan::all()->where('kategori', 'Aturan Produk');
         $Pabrik = aturan::all()->where('kategori', 'Aturan Pabrik');
         $Iklan = aturan::all()->where('kategori', 'Aturan Iklan');
-        return view("admin.protap", compact("Baru", "Produk", "Pabrik", "Iklan"));
+        $Format = aturan::all()->where('kategori', 'Aturan Format Baku');
+
+        return view("admin.protap", compact("Baru", "Produk", "Pabrik", "Iklan","Format"));
     }
     public function tampil_updateprotap()
     {
