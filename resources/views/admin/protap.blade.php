@@ -23,6 +23,10 @@
                     <a class="nav-link" id="pills-detail-tab" data-toggle="pill" href="#pills-detail" role="tab"
                         aria-controls="pills-detail" aria-selected="false">Aturan Iklan</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-detail1-tab" data-toggle="pill" href="#pills-detail1" role="tab"
+                        aria-controls="pills-detail1" aria-selected="false">Aturan Format Baku</a>
+                </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
 
@@ -268,6 +272,67 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="tab-pane fade" id="pills-detail1" role="tabpanel" aria-labelledby="pills-detail1-tab">
+                    <div class="container-fluid px-4">
+
+                        <div class="row">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Aturan Format Baku
+                                </div>
+                                <div class="card-body">
+                                    <!-- pop up -->
+                                    @if (Auth::user()->level == 0)
+                                        <button class="btn btn-success btn-md" data-toggle="modal"
+                                            data-target="#modalForm4">Tambah Aturan Format Baku</button>
+                                    @endif
+
+                                    <table class="table mt-2" id="tabelbeda3">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach ($Iklan as $row)
+                                                <tr>
+                                                    <td>
+                                                        {{ $loop->iteration }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $row['tgl_upload'] }}
+                                                    </td>
+                                                    <td>
+                                                            <a href="asset/aturan/{{ $row['nama'] }}" button
+                                                                type="button" class="btn btn-primary">Buka</a>
+                                                                <form action="/hapus_aturan" method="post"
+                                                                id="formHapusAturan{{ $row['aturan_id'] }}" class="float-left pr-2">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $row['aturan_id'] }}">
+
+                                                                <button class="btn btn-danger ml-2"
+                                                                    onclick="buttonHapusAturan({{ $row['aturan_id'] }})" type="button">
+                                                                    Hapus</button>
+                
+                                                            </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- Modal 1 -->
