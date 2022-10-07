@@ -57,7 +57,7 @@
                                         </h6>
                                         <p class="text-xs text-secondary mb-0">
                                             <i class="fa fa-clock me-1"></i>
-                                            {{ \Carbon\Carbon::parse(date('Y-m-d H:i:s', strtotime($isi['updated_at'])))->locale('id')->diffForHumans() }}
+                                            {{ \Carbon\Carbon::parse(date('Y-m-d H:i:s', strtotime($isi['notif_waktu'])))->locale('id')->diffForHumans()  }}
 
                                         </p>
                                     </div>
