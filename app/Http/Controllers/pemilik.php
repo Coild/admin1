@@ -58,11 +58,13 @@ class pemilik extends Controller
 
     public function hapus_karyawan(Request $req)
     {
-        // dd($req->id);
-        if (isNull($req['_token'])) {
+        // dd($req['_token'] == Null);
+        if ($req['_token'] == Null) {
             return Redirect::back();
         }
+
         $post = user::all()->where('id',  $req->id)->each->delete();
+        // dd($post);
         $pabrik = Auth::user()->pabrik;
         $data = user::all()->where('pabrik', $pabrik)
             ->where('level', '>=', 2);

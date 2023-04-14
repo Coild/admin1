@@ -3374,9 +3374,11 @@ class Admin extends Controller
         // dd($protap);
         if (Auth::user()->level == 2) {
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
+                ->where('pabrik', $pabrik)
                 ->get(['pengoprasianalats.*', 'protaps.protap_nama', 'protap_id', 'protap_id']); //all()->where('pabrik', $pabrik);
         } else
             $data = pengoprasianalat::join('protaps', 'pengoprasianalats.pob', '=', 'protaps.protap_id')
+                ->where('pabrik', $pabrik)
                 ->get(['pengoprasianalats.*', 'protaps.protap_nama', 'protap_id']);
 
         return view('catatan.dokumen.pengoprasianalat', compact('data', 'protap'));
