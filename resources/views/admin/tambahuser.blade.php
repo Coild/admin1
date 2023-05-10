@@ -147,16 +147,16 @@
                                         <td>
                                             {{ $row->nama_pabrik }}
                                         </td>
-                                        <td>
-                                            <div class="row">
-                                                <button class="btn btn-primary btn-sm col-sm-1 mr-3" id="detil" data-toggle="modal"
+                                        <td scope="col">
+                                            <div class="col btn-group">
+                                                <button style="float:left; max-width:100px;" class="btn btn-primary btn-sm me-3" id="detil" data-toggle="modal"
                                                     data-target="#lihat" data-pabrik="{{ $row->nama_pabrik }}"
                                                     data-nama="{{ $row->nama }}" data-alamat="{{ $row->alamat }}"
                                                     data-nohp="{{ $row->phone }}">Lihat</button>
-                                                <button id="klik" class="btn btn-success btn-sm col-sm-1" data-toggle="modal"
+                                                <button id="klik" style="float:left; max-width:100px;" class="btn btn-warning btn-sm me-3" data-toggle="modal"
                                                     data-target="#resetpass" data-id="{{ $row->pabrik_id }}">Reset</button>
                                                 <form action="/hapus_pabrik" method="post"
-                                                    id="formHapusPabrik{{ $row->pabrik_id }}" class="col-sm-1">
+                                                    id="formHapusPabrik{{ $row->pabrik_id }}" class="">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $row->pabrik_id }}">
                                                     {{-- <input type="hidden" name="namadepan" value="{{ $row['namadepan'] }}">
@@ -164,7 +164,7 @@
                                                     value="{{ $row['namabelakang'] }}"> --}}
                                                     {{-- <input type="hidden" name="level" value="{{ $row['level'] }}"> --}}
 
-                                                    <button class="btn btn-danger btn-sm me-3"
+                                                    <button style="float:left; max-width:100px;" class="btn btn-danger btn-sm me-3"
                                                         onclick="buttonHapusPabrik({{ $row->pabrik_id }})"
                                                         type="button"><i class="fa fa-trash"></i> Hapus</button>
 
