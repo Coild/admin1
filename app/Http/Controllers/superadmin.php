@@ -27,9 +27,9 @@ class superadmin extends Controller
         // $data  = pabrik::all();
 
         $data = DB::table('pabriks')
-            ->leftJoin('users', 'pabriks.pabrik_id', '=', 'users.id')
+            ->leftJoin('users', 'pabriks.pabrik_id', '=', 'users.pabrik')
             ->get(['pabriks.*', 'pabriks.nama as nama_pabrik', 'users.*', 'users.nama as username_pabrik', 'pabriks.no_hp as phone']);
-        // ddd($data);
+        // dd($data);
         return view("admin.tambahuser", ['data' => $data]);
     }
 
