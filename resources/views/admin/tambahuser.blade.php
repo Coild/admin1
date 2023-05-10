@@ -149,7 +149,8 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" id="detil" data-toggle="modal"
-                                                data-target="#lihat" data-nama="{{ $row->nama_pabrik }}"
+                                                data-target="#lihat" data-pabrik="{{ $row->nama_pabrik }}"
+                                                data-nama="{{ $row->nama }}"
                                                 data-alamat="{{ $row->alamat }}"
                                                 data-nohp="{{ $row->phone }}">Lihat</button>
                                             <button id="klik" class="btn btn-success btn-sm" data-toggle="modal"
@@ -309,9 +310,15 @@
                         <div class="container">
 
                             <div class="form-floating mb-3">
+                                <input class="form-control" name="username" id="isi_pabrik" type="text"
+                                    placeholder="name@example.com" readonly />
+                                <label for="inputEmail">Pabrik</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
                                 <input class="form-control" name="username" id="isi_nama" type="text"
                                     placeholder="name@example.com" readonly />
-                                <label for="inputEmail">Username</label>
+                                <label for="inputEmail">username</label>
                             </div>
 
                             <div class="form-floating mb-3">
@@ -342,11 +349,13 @@
 
         $(document).on('click', "#detil", function() {
             var nama = $(this).data('nama');
+            var pabrik = $(this).data('pabrik');
             var alamat = $(this).data('alamat');
             var nohp = $(this).data('nohp');
 
             console.log("hai " + nama);
             $("#isi_nama").val(nama);
+            $("#isi_pabrik").val(pabrik);
             $("#isi_alamat").val(alamat);
             $("#isi_nohp").val(nohp);
         })
