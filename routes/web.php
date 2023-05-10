@@ -141,6 +141,10 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/inspek', [superadmin::class, 'tampil_inspek']);
             Route::post('/register_pabrik', [superadmin::class, 'register']);
             Route::post('/register_audit', [superadmin::class, 'register_audit']);
+            Route::post('/hapus_pabrik', [superadmin::class, 'hapus_pabrik']);
+            Route::get('/hapus_pabrik', function () {
+                return Redirect::back();
+            });
             Route::get('/register_pabrik', function () {
                 return Redirect::back();
             });

@@ -28,9 +28,29 @@ class superadmin extends Controller
 
         $data = DB::table('pabriks')
             ->leftJoin('users', 'pabriks.pabrik_id', '=', 'users.pabrik')
+            ->where('users.level',1)
             ->get(['pabriks.*', 'pabriks.nama as nama_pabrik', 'users.*', 'users.nama as username_pabrik', 'pabriks.no_hp as phone']);
         // dd($data);
         return view("admin.tambahuser", ['data' => $data]);
+    }
+
+    public function hapus_pabrik(Request $req)
+    {
+        if ($req['_token'] == Null) {
+            return Redirect::back();
+        }
+
+        $post = pabrik::all()->where('pabrik_id',  $req->id)->each->delete();
+        $data = user::where('pabrik',$req->id);
+        $data->delete();
+        // dd($data);
+
+
+        if ($post) {
+            return redirect('/pabrik')->with('success', 'Berhasil dihapus!');
+        } else {
+            return redirect('/pabrik')->with('error', 'Gagal dihapus!');
+        }
     }
 
     public function tampil_audit()
