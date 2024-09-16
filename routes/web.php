@@ -553,7 +553,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cp_kemasan', [dataPelaksana::class, 'cp_kemasan']);
     Route::get('laporandata', [dataPelaksana::class, 'laporan']);
 
+    
+
 
     Route::post('/edit_detilperiksaruang', [Admin::class, 'edit_detilperiksaruang']);
     Route::post('/edit_periksaruang', [Admin::class, 'edit_periksaruang']);
+});
+Route::get('123', function () {
+    echo bcrypt('123');
 });

@@ -102,9 +102,9 @@ class AuthController extends Controller
 
 
         $user = new User;
-        $user->nama = ucwords(strtolower($request->username));
-        $user->namadepan = $request->namadepan;
-        $user->namabelakang = $request->namabelakang;
+        $user->nama = $this->bersih( ucwords(strtolower($request->username)));
+        $user->namadepan = $this->bersih($request->namadepan);
+        $user->namabelakang = $this->bersih($request->namabelakang);
         $user->pabrik = $request->search;
         $user->level = 3;
         $user->password = bcrypt($request->password);
@@ -112,7 +112,7 @@ class AuthController extends Controller
 
         if ($simpan) {
             $log = [
-                'log_isi' => session()->get('pabrik') . ' <b> Menambah ' . $request->namadepan . ' ' .  $request->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',
+                'log_isi' => session()->get('pabrik') . ' <b> Menambah ' . $user->namadepan . ' ' .  $user->namabelakang . ' </b> &nbsp sebagai Pelaksana baru',
                 'log_pabrik' => session()->get('pabrik'),
                 'log_waktu' => date('Y-m-d H:i:s'),
                 'id_pabrik' => Auth::user()->pabrik
